@@ -1,0 +1,1429 @@
+{
+  "schemaVersion": 1,
+  "scope": {
+    "origin": "private_offer",
+    "allowedPlantIds": [
+      "plant-00339b9c73cb8d",
+      "plant-0110deb474ec57",
+      "plant-0162fff99b173d",
+      "plant-022d6a0c76b4f1",
+      "plant-02331224c7eab5",
+      "plant-02376b686cafbb",
+      "plant-028aa17dda3cd5",
+      "plant-02a4706b880817",
+      "plant-02e2d7be8908da",
+      "plant-03312243daa50f",
+      "plant-03332cc004a85e",
+      "plant-03be2c36cba9f4",
+      "plant-04dbe62d941796",
+      "plant-062df85801a479",
+      "plant-0664aa4cd74365",
+      "plant-068e30358a9671",
+      "plant-072321aa05ca04",
+      "plant-073869c49ff921",
+      "plant-0745a6109ba8ea",
+      "plant-07e6882afb9fc1",
+      "plant-0a3abb2853fe35",
+      "plant-0a3d0ef06ffdbf",
+      "plant-0a77808e3edf13",
+      "plant-0b18f2a1d0fb14",
+      "plant-0bdbfa7f9fdc91",
+      "plant-0cae0f5b9d2345",
+      "plant-0d0d6c85274665",
+      "plant-0d4b1c3e4d42ba",
+      "plant-0dbd46667617fb",
+      "plant-0ec567cfdd440e",
+      "plant-0f3e1593ad5099",
+      "plant-1010016b842751",
+      "plant-1031756fae45f1",
+      "plant-1050d874688cb0",
+      "plant-107e4b1a9a5cc6",
+      "plant-10bc3331a85c07",
+      "plant-11060d9ab7a41d",
+      "plant-11206706c5be95",
+      "plant-115062730a44a6",
+      "plant-11c4c988d03b76",
+      "plant-123479a69dd64f",
+      "plant-12d4512c15f964",
+      "plant-12d6406940e4ed",
+      "plant-12fca694ce4bb5",
+      "plant-138cb9bcaeeb45",
+      "plant-13b826e519c11e",
+      "plant-14ae84899db7f4",
+      "plant-1510312fa1fda0",
+      "plant-151e528fd62367",
+      "plant-1525f5bd93c042",
+      "plant-15283a66fb7d3e",
+      "plant-158e048d4ead5d",
+      "plant-15bedd2521f54a",
+      "plant-166ddeecd217ea",
+      "plant-16bee078ca7050",
+      "plant-179b8eb495ffb2",
+      "plant-188273295c67a4",
+      "plant-19779e0433bfdf",
+      "plant-1a416ae9d7ca7a",
+      "plant-1aef7306d1e449",
+      "plant-1b32527d81ccd6",
+      "plant-1b5175e2a2f097",
+      "plant-1b51cad9a929f8",
+      "plant-1d63d032975002",
+      "plant-1e09c82f7b33b3",
+      "plant-1e15dc4052e9b6",
+      "plant-1e781821e75a12",
+      "plant-1f509f3c339c01",
+      "plant-1f61f751aadbd7",
+      "plant-1f6d0735dcb494",
+      "plant-1fae6606e4d0a1",
+      "plant-208f42284d47c4",
+      "plant-218e3c9f664b5b",
+      "plant-22701ebacaa7bc",
+      "plant-238a3b8e5b3e39",
+      "plant-23e4f18822f860",
+      "plant-250d3cfa5a6d06",
+      "plant-2523c81f647623",
+      "plant-2529f7d2d6db2b",
+      "plant-262be7be43b526",
+      "plant-274066fb782dbf",
+      "plant-27b7e43cb46154",
+      "plant-2863008fe662ad",
+      "plant-28aca7b0b70ac6",
+      "plant-28b3c6503e5071",
+      "plant-293e66072541c1",
+      "plant-293f26f1672c4f",
+      "plant-296a689d0f129a",
+      "plant-2a9e3c38f906b6",
+      "plant-2ab84b946b895e",
+      "plant-2b21d71aaecf0a",
+      "plant-2b5ca69a45dcf3",
+      "plant-2b63609672e071",
+      "plant-2b953880fcfed5",
+      "plant-2c7f9070c4620c",
+      "plant-2c93a3023c8235",
+      "plant-2cc25b0186f190",
+      "plant-2d6ea78c9fc019",
+      "plant-2e2f9996af8d7d",
+      "plant-2e5199dc69150e",
+      "plant-2e57bd32d2ecc1",
+      "plant-2ebeb0e8ff455f",
+      "plant-2f56803cd672d6",
+      "plant-2f78aaf28d94d4",
+      "plant-2ffb1314e49114",
+      "plant-300c9363fc8e14",
+      "plant-302baa4f441456",
+      "plant-3093991375a270",
+      "plant-30d9970c3195a1",
+      "plant-30e1ad5d1f2fc3",
+      "plant-317c04c4be9a39",
+      "plant-31f98aa9849f69",
+      "plant-3216d42af9a597",
+      "plant-32eeafd998af25",
+      "plant-33d399ef2aa84f",
+      "plant-33ea6223ae519a",
+      "plant-344c699f8d0e4c",
+      "plant-34d5c3899b3339",
+      "plant-35a27a7abd3f9f",
+      "plant-364875c7fa2f8d",
+      "plant-36c333221f633e",
+      "plant-3790186abdcdff",
+      "plant-37d70ea5aaf3d4",
+      "plant-384cc15e70c86c",
+      "plant-388d067861908f",
+      "plant-38ed2c84f780a6",
+      "plant-3911669b036d7c",
+      "plant-3915d73e34b3bc",
+      "plant-39abdb89d9bcb2",
+      "plant-3a1aeb3df1ce96",
+      "plant-3a72282de5ba3a",
+      "plant-3af4f8935b363e",
+      "plant-3b9f382100ae9a",
+      "plant-3c1bffda6d516f",
+      "plant-3c4890e5846424",
+      "plant-3ce77f82ccc311",
+      "plant-3d52c3673b7b37",
+      "plant-3d9e89d595caec",
+      "plant-3da457b71894cb",
+      "plant-3db829a86790fb",
+      "plant-3dd9a62051ba64",
+      "plant-3e13811d4a1229",
+      "plant-3ea6ef46e8dd85",
+      "plant-3f2ccbb8f11141",
+      "plant-3f70a4b46ba024",
+      "plant-3fb53eb599d3f7",
+      "plant-3fd5ef6f08fccc",
+      "plant-4059520f066f5f",
+      "plant-40eb8ef6290b82",
+      "plant-41ae798227e143",
+      "plant-42a2a2c9bd0f7f",
+      "plant-42b6be0f9e8daf",
+      "plant-42d1335bbb4045",
+      "plant-42ed463c83d4dc",
+      "plant-43201d5e8991bc",
+      "plant-435ab7e4419c14",
+      "plant-436f94cedc6b35",
+      "plant-43738cf1c33f97",
+      "plant-43a8171726fcdd",
+      "plant-4466ccc42f55fb",
+      "plant-449b4a7757cfcb",
+      "plant-44efd7cccf671a",
+      "plant-44fb474b474700",
+      "plant-451a380df8b137",
+      "plant-45622fca5c603f",
+      "plant-45f9cecaa5f3e5",
+      "plant-4653f1f15e0283",
+      "plant-46b7494ce291cb",
+      "plant-46ea4c0a14ebcf",
+      "plant-470f7318053ca5",
+      "plant-47815681828268",
+      "plant-4798564e86aac3",
+      "plant-483b4280162863",
+      "plant-4898632bfde099",
+      "plant-49cddc8d28d2e6",
+      "plant-49d6a0ee201d9f",
+      "plant-49e30437b17525",
+      "plant-49e4ccbed46794",
+      "plant-49fd6fc0ccc301",
+      "plant-4a0054b3f08374",
+      "plant-4a39dc341bd2c6",
+      "plant-4a5b4fedac6f33",
+      "plant-4a8e209e2ca393",
+      "plant-4ad0c977d5c5b8",
+      "plant-4adab3e6770de0",
+      "plant-4ae8a353cc72d2",
+      "plant-4af5b01980e01c",
+      "plant-4bf5a1a6bdd8e0",
+      "plant-4ce27dde39f8e8",
+      "plant-4dc7c992aa63f7",
+      "plant-4e0b1a3d374b1c",
+      "plant-4e7ed2976c3e5e",
+      "plant-4eb881f57af1da",
+      "plant-50a126fb5a0667",
+      "plant-50ae05a518834d",
+      "plant-50e8e2d90353bb",
+      "plant-50f7629c021cd0",
+      "plant-512dcc509b276f",
+      "plant-512f90b29110d3",
+      "plant-51c9c59fd569ea",
+      "plant-52334251b3e7c9",
+      "plant-524bda4c23326a",
+      "plant-52b0a6f600a24b",
+      "plant-52f7978caf4634",
+      "plant-531d204e47ccbb",
+      "plant-5322c7cf067d03",
+      "plant-5396374d374aca",
+      "plant-550cf50a8376e7",
+      "plant-55b265ba733164",
+      "plant-55e98a21d054d2",
+      "plant-55f453754f82bd",
+      "plant-56d5318cbd4af5",
+      "plant-5735647f622ef4",
+      "plant-57c8f17c2654e0",
+      "plant-5893766152d9ef",
+      "plant-59fdabf256a103",
+      "plant-5acd0e95239a5f",
+      "plant-5b3ddc482feec1",
+      "plant-5b42929f0f6d8b",
+      "plant-5bb248f623e584",
+      "plant-5c2da33cccb7f8",
+      "plant-5cd79cc08893a3",
+      "plant-5d6b0d0a028bca",
+      "plant-5dddb1e89ae2b9",
+      "plant-5f4a33b6aabab1",
+      "plant-5f4b7f388898d8",
+      "plant-5f6a3fc29abc87",
+      "plant-6071cdfd4b5d8b",
+      "plant-6114660f69e4aa",
+      "plant-612231899c309b",
+      "plant-6279abbe26f76d",
+      "plant-631cbe20406538",
+      "plant-6350515e113bdc",
+      "plant-638869610de28f",
+      "plant-649f2f45b2d9ee",
+      "plant-65238cc4c86bd4",
+      "plant-6571823f601469",
+      "plant-65d6c4007d282d",
+      "plant-66421d9cad0a90",
+      "plant-66b798eaf0e1c0",
+      "plant-6775e8dd246cf2",
+      "plant-67fae93e32d551",
+      "plant-68087a490ecfa8",
+      "plant-6891eb612d224c",
+      "plant-69314df97d6bcd",
+      "plant-6946aeac61fe92",
+      "plant-694e0718f3e975",
+      "plant-69e36d8474e7d8",
+      "plant-6abc01a65c45b7",
+      "plant-6ad5a61ae79ec8",
+      "plant-6b45ada40f7f76",
+      "plant-6b59a6dd768183",
+      "plant-6bc4c95c997c23",
+      "plant-6da0cb91ead2d6",
+      "plant-6e6c028f6b641b",
+      "plant-6f6f84d77730d7",
+      "plant-6f812f93a79176",
+      "plant-7092140106fe8a",
+      "plant-70f7966491cea4",
+      "plant-7165d79ddfbade",
+      "plant-71a1aa38376c8f",
+      "plant-7215feb5cdd179",
+      "plant-7238b1ae51445f",
+      "plant-726d2a9d22e07e",
+      "plant-73234c6f4f2e5d",
+      "plant-73e1d2d5aad5df",
+      "plant-73e835a5884bea",
+      "plant-742c2f18d43871",
+      "plant-7458dadf44d17a",
+      "plant-746c5b38bacd6f",
+      "plant-74f0f471ae4124",
+      "plant-750e769b7f58ae",
+      "plant-7554ad08ac45af",
+      "plant-75ad0c865be022",
+      "plant-764de04ba1ee48",
+      "plant-7678bcfc643713",
+      "plant-76a27aa2433b7d",
+      "plant-76ea6b5f8f59d4",
+      "plant-76f56a3c61d16a",
+      "plant-77568c87103063",
+      "plant-778120af9b631f",
+      "plant-79e5dadb762dfc",
+      "plant-7a7935c8dc087f",
+      "plant-7b4e6f965b96fe",
+      "plant-7b567e281367e3",
+      "plant-7b646392cc2b04",
+      "plant-7c13f4d3f2e8d1",
+      "plant-7ddbfac0f54d7b",
+      "plant-7e01e6cb52d3de",
+      "plant-7e0b0ea97d6cd5",
+      "plant-7e3875bf4a1023",
+      "plant-7e4d9af7322a93",
+      "plant-7e5800de384123",
+      "plant-7e5f3b9aa07d56",
+      "plant-7e5fc654273568",
+      "plant-7f02e51df91d38",
+      "plant-7fbdfd9e2dcc12",
+      "plant-8033602353d119",
+      "plant-80abfef02e7f27",
+      "plant-80f1da5d27c0c6",
+      "plant-82388a3f4a1284",
+      "plant-849f15111e5047",
+      "plant-84a21a9e2b9275",
+      "plant-84e72281feaa72",
+      "plant-856511bf345f31",
+      "plant-858b60e9ed38f9",
+      "plant-85cf9a9e00e2bc",
+      "plant-8661e721217dbd",
+      "plant-8761ba73111180",
+      "plant-877d8f26a774df",
+      "plant-89320c20562930",
+      "plant-8a8dfbfe7c71ad",
+      "plant-8adf9c15985fac",
+      "plant-8b020c4491eaca",
+      "plant-8b16727918d7bf",
+      "plant-8b2e671fbca3d1",
+      "plant-8b35bc8a4e1800",
+      "plant-8bbfe5fab89603",
+      "plant-8c2ae8ac7ff3af",
+      "plant-8c367f2493e355",
+      "plant-8d20ec29466565",
+      "plant-8df6466e6a68e4",
+      "plant-8dfcdbd9a06e2e",
+      "plant-8eb0ab5cc3a8ca",
+      "plant-8f552578420d7e",
+      "plant-8fd45ed557357a",
+      "plant-8ff82317ab73d4",
+      "plant-9029f769fe9c6e",
+      "plant-9030e7f16d3409",
+      "plant-90434f6cca0439",
+      "plant-9123c0b4481cff",
+      "plant-91aeef5ec0aa1e",
+      "plant-927b19768ff5a1",
+      "plant-927d4bd96193ce",
+      "plant-92c76d3e5b4c77",
+      "plant-92e5a640b0d0f5",
+      "plant-9354d6bf7371b0",
+      "plant-940c1977fca59f",
+      "plant-940f0506bc8700",
+      "plant-94a1fb03291b87",
+      "plant-955c2408fc889c",
+      "plant-9579a4e5d17e48",
+      "plant-95fc3ec4ba0ae9",
+      "plant-960523df19e42d",
+      "plant-96d5e04ef7669b",
+      "plant-975ba765972d4a",
+      "plant-97eabf04169278",
+      "plant-985f42bc5995d5",
+      "plant-986e7dcb29f3b7",
+      "plant-986fb918152d56",
+      "plant-988458088c2942",
+      "plant-98da30d6cdab1b",
+      "plant-991dfa88cabeee",
+      "plant-99271cf1ea580a",
+      "plant-99d1408b6679aa",
+      "plant-9a6f4720f6fd87",
+      "plant-9a807fda9905ea",
+      "plant-9aa74aa98d72df",
+      "plant-9abf6576bdf184",
+      "plant-9b2dff84bab129",
+      "plant-9b99d8432e636b",
+      "plant-9bfd779b012c0c",
+      "plant-9c6500500727f1",
+      "plant-9ccb151e993cb3",
+      "plant-9d42e6565b93dd",
+      "plant-9e161083919896",
+      "plant-9e26fac40b589f",
+      "plant-9e29aabd847d02",
+      "plant-9e3b5ad9f052fd",
+      "plant-9e6c899748fd9e",
+      "plant-9ef2a0110b94c3",
+      "plant-9f074452b6f82a",
+      "plant-9f518cd5506407",
+      "plant-a025e9fd696fbb",
+      "plant-a14f511a15098e",
+      "plant-a2a94fa0e6b6b7",
+      "plant-a302242fe67967",
+      "plant-a3569ab7034ab7",
+      "plant-a4bd3ecf55aa55",
+      "plant-a5058ab0237fd1",
+      "plant-a53598fc7291e7",
+      "plant-a61d5a8e74adf3",
+      "plant-a673ae8c07c8a4",
+      "plant-a856d27df45b46",
+      "plant-a94595f719d660",
+      "plant-a9bab8f6f9bf46",
+      "plant-a9d6a182a4e421",
+      "plant-a9eb6107da9422",
+      "plant-aa59d64c653919",
+      "plant-aab3e9af9da5eb",
+      "plant-aaebb1c1960940",
+      "plant-ab0b485c7a1b12",
+      "plant-ab8a023e09f885",
+      "plant-abf8db858504cf",
+      "plant-abies-concolor",
+      "plant-ac61a7840ed626",
+      "plant-ace8eb433170ee",
+      "plant-acer-campestre",
+      "plant-acer-palmatum",
+      "plant-acer-platanoides",
+      "plant-acer-platanoides-globosum",
+      "plant-acer-pseudoplatanus",
+      "plant-ad030630aebb83",
+      "plant-ad6ac6900a7429",
+      "plant-ade2ce47351665",
+      "plant-aded5452bee6d6",
+      "plant-ae4e248ab385a3",
+      "plant-aecc24943f988c",
+      "plant-af044c2feaa8a5",
+      "plant-af27098d701cd9",
+      "plant-af43a57be76efb",
+      "plant-b00cd90a5cdfdb",
+      "plant-b066984e3e4f72",
+      "plant-b0bc71eeccd9fc",
+      "plant-b0e989a062b640",
+      "plant-b13d7ac3d86694",
+      "plant-b16ae2ce695a79",
+      "plant-b172de1747296d",
+      "plant-b1b4678ea8a72c",
+      "plant-b1f0477fdfe037",
+      "plant-b1fc7ebad5242f",
+      "plant-b2061e49b04e37",
+      "plant-b20f33d07166cb",
+      "plant-b272f5ab1c029d",
+      "plant-b31ab73e8f982d",
+      "plant-b35f577a88766f",
+      "plant-b3d791a8261438",
+      "plant-b3ec587a9a14bd",
+      "plant-b4ef8b5da580a2",
+      "plant-b50f4e6010238c",
+      "plant-b6576634224b1c",
+      "plant-b6e9c6a5542801",
+      "plant-b7230da7de389f",
+      "plant-b8d96ee6a098c5",
+      "plant-b914fa34095584",
+      "plant-b9588aa3055145",
+      "plant-b96dc37004f9ff",
+      "plant-ba23bb5bf35b89",
+      "plant-bad7dfe20ce53c",
+      "plant-bae60cfb03bcc0",
+      "plant-bb1e99b3c785e2",
+      "plant-bb35a2c8b69864",
+      "plant-bcef3f3c122b68",
+      "plant-bd6d032ea834e7",
+      "plant-bd91b93fd2d499",
+      "plant-bde223e31460f3",
+      "plant-bef4074eaff0f2",
+      "plant-betula-pendula",
+      "plant-bfa31129a69bce",
+      "plant-c01671d345f47b",
+      "plant-c025339a5938e8",
+      "plant-c049b88381debf",
+      "plant-c055ddac0a8ad6",
+      "plant-c07e9b70fc9d7e",
+      "plant-c1682a0147cdbb",
+      "plant-c175d5bac333ba",
+      "plant-c18a6ed6995adb",
+      "plant-c1ccee0a920085",
+      "plant-c2ed2a21528e06",
+      "plant-c359ac3598d2df",
+      "plant-c4098de94f77ea",
+      "plant-c442e96076f1f5",
+      "plant-c56754d2b73252",
+      "plant-c5bfa414e6300e",
+      "plant-c5c515ab916b60",
+      "plant-c6a3843c6983ac",
+      "plant-c70544f5f8cf54",
+      "plant-c70c1d1764e1a1",
+      "plant-c72f83a9e95c28",
+      "plant-c76014c0be2fb8",
+      "plant-c780fe1ca2ecb2",
+      "plant-c8e469c1c612b4",
+      "plant-c8fcd44cf2573a",
+      "plant-c929416d95e605",
+      "plant-c98ddc8d98e336",
+      "plant-carpinus-betulus",
+      "plant-cb420bd8b9bff3",
+      "plant-cbae7f1448bf7c",
+      "plant-cc21d9ee76f153",
+      "plant-cc38ba5d6266ed",
+      "plant-cca43d8f0f411f",
+      "plant-cd48a494b63f41",
+      "plant-cd7931ce209e95",
+      "plant-ce1d1852eac338",
+      "plant-ce3fc8d22cadc1",
+      "plant-cea8a5fee268c2",
+      "plant-celtis-australis",
+      "plant-cercis-siliquastrum",
+      "plant-cfbe4fb8f690dc",
+      "plant-d06bcf40111fbd",
+      "plant-d1062b9945f832",
+      "plant-d1d9b7c1e6bd48",
+      "plant-d2196554f65a34",
+      "plant-d22f43268706fa",
+      "plant-d267c555326f7d",
+      "plant-d27ee8a805459f",
+      "plant-d32b3f49740cc5",
+      "plant-d33a9af081ce42",
+      "plant-d40301463147e9",
+      "plant-d4368472f69e93",
+      "plant-d4771d309212f6",
+      "plant-d5b3484c0630a1",
+      "plant-d686f09be0b9bd",
+      "plant-d69ba2c451ed76",
+      "plant-d6bc33f781049f",
+      "plant-d7147c29cd9c07",
+      "plant-d747314d816d97",
+      "plant-d75931aa1e87b7",
+      "plant-d8dfb013fd1c3f",
+      "plant-d9153e5bc9deca",
+      "plant-d9e2434bede7e4",
+      "plant-d9e71a558f3cb1",
+      "plant-da13581afa3d46",
+      "plant-da699c8718bcb2",
+      "plant-db4880291fcf31",
+      "plant-dbbd3c036f603a",
+      "plant-dc12c2322be581",
+      "plant-dc277e6125caf5",
+      "plant-dc6a3535906068",
+      "plant-dc8a08ac87d62f",
+      "plant-dca581b8d717dc",
+      "plant-ddde23d8c4c7c9",
+      "plant-de609ad6a8d046",
+      "plant-dedd338dd3e783",
+      "plant-df0b4015a5afd0",
+      "plant-df19cd984a361e",
+      "plant-df2019301341a0",
+      "plant-df37dcb5c3253a",
+      "plant-df76b734eb608c",
+      "plant-dff5ea909b1ae3",
+      "plant-dff75bb196d8f1",
+      "plant-e0076da0f09d2f",
+      "plant-e04a8258fa76d7",
+      "plant-e0c98a176132c0",
+      "plant-e256c38fec3941",
+      "plant-e31efad7c4f189",
+      "plant-e3cad3ae5fe65d",
+      "plant-e4692474ba5482",
+      "plant-e4aa3716894a85",
+      "plant-e4fc9e40988f75",
+      "plant-e5369db57b740e",
+      "plant-e637cd54010792",
+      "plant-e78be8a2c52e93",
+      "plant-e7c062814b1f7c",
+      "plant-e82f6006d12e5b",
+      "plant-e94badbc80f8a8",
+      "plant-ea2791c468e4c5",
+      "plant-ea47574ea62f62",
+      "plant-ea7813810eba38",
+      "plant-ea9d1ba6a468c5",
+      "plant-eac4a83d81ce66",
+      "plant-ead1d895a5ec98",
+      "plant-eb1645a2cef42c",
+      "plant-eb4e2ea4455224",
+      "plant-eb55a52bc85a2b",
+      "plant-eb65fbb228d141",
+      "plant-eb681a076c5367",
+      "plant-ecb0149026ff84",
+      "plant-eceb6507153902",
+      "plant-ecfe2b17e485e6",
+      "plant-edfcd0785401cb",
+      "plant-ee364e988134ba",
+      "plant-ef7086d1f6252b",
+      "plant-f00c55bd78dd3e",
+      "plant-f01870e2e62f20",
+      "plant-f0bf19b932f227",
+      "plant-f0c20ea1f3f84f",
+      "plant-f15e3e2208445c",
+      "plant-f174b6f4ab417f",
+      "plant-f20d785dd5a422",
+      "plant-f25ea2bbece475",
+      "plant-f36276709be0c4",
+      "plant-f3c06d6a9c2baf",
+      "plant-f45db48e72b497",
+      "plant-f4a8c1ba9fea2e",
+      "plant-f4cc2f6bbf0319",
+      "plant-f528ac363e5c66",
+      "plant-f5569fc2e224b3",
+      "plant-f5f896a9c85e79",
+      "plant-f642f493566928",
+      "plant-f6d69bad2051c1",
+      "plant-f7889a680e5bf0",
+      "plant-f7baf961ce141f",
+      "plant-f7f490785ef2e3",
+      "plant-f7f4e4fe59b035",
+      "plant-f816663b421aad",
+      "plant-f90625c780d65d",
+      "plant-f909981347d7d7",
+      "plant-f9553bb4e36e5b",
+      "plant-f99d11121cdc5f",
+      "plant-fa5e2e84b3b4c8",
+      "plant-fa6c84ddbed96b",
+      "plant-fa97d4a367f142",
+      "plant-fae889cd682b63",
+      "plant-fagus-sylvatica",
+      "plant-fb17183cc97f0d",
+      "plant-fb195caca9a6f0",
+      "plant-fb51bcc17b158c",
+      "plant-fb7b458fed4c0d",
+      "plant-fbd63e50cb51f6",
+      "plant-fc32b5b27e23f7",
+      "plant-fc589f296b8c7a",
+      "plant-fc6e4475197fed",
+      "plant-fd94e185fbc466",
+      "plant-fdb9be6869fab8",
+      "plant-fe182b3f1a759d",
+      "plant-fe1b55084ed4b3",
+      "plant-fe7be764a6a9c6",
+      "plant-ffa3a526613424",
+      "plant-ffdbfd76e4d96d",
+      "plant-ginkgo-biloba",
+      "plant-lavandula-angustifolia",
+      "plant-liquidambar-styraciflua",
+      "plant-magnolia-grandiflora",
+      "plant-pinus-nigra",
+      "plant-quercus-robur",
+      "plant-quercus-rubra",
+      "plant-tilia-cordata",
+      "plant-tilia-tomentosa"
+    ],
+    "allowedNurseryIds": [
+      "arbor",
+      "biojela",
+      "combinatie-mauritz",
+      "ebben",
+      "innocenti-mangoni",
+      "lorberg",
+      "omorika-unresolved",
+      "rasadnik-gold",
+      "rasadnik-jugoslav-unresolved",
+      "rasadnik-tine-unresolved",
+      "rasadnik-vitorovic",
+      "rasadnik-zica",
+      "smits-boomkwekerij",
+      "topalovic-unresolved",
+      "vannucci-piante",
+      "vardar",
+      "vf-pflanzen-von-falkenhayn",
+      "vivai-reali",
+      "vivers-planas",
+      "volentis",
+      "willaert",
+      "zelena-plocica"
+    ]
+  },
+  "sources": [
+    {
+      "id": "price-web-public-a05862f1b6b9b7cb2b",
+      "offerId": "web-public-a05862f1b6b9b7cb2b",
+      "plantId": "plant-acer-campestre",
+      "nurseryId": "lorberg",
+      "adapter": "lorberg_selected_variant",
+      "url": "https://www.lorberg.com/en-gb/article/148/acer-campestre",
+      "offerSourceUrl": "https://www.lorberg.com/en-gb/article/148/acer-campestre",
+      "expected": {
+        "productName": "Acer campestre",
+        "currency": "EUR",
+        "unit": {
+          "kind": "catalogue_unit",
+          "label": "jedinica iz cenovnika"
+        },
+        "variantId": "741",
+        "variantLabel": "He 2xv mB geschn. 100- 125"
+      },
+      "evidence": {
+        "reviewedAt": "2026-11-06",
+        "sourceUrl": "https://www.lorberg.com/en-gb/article/148/acer-campestre"
+      },
+      "enabled": true
+    },
+    {
+      "id": "price-web-public-a26176984e2425f644",
+      "offerId": "web-public-a26176984e2425f644",
+      "plantId": "plant-f0bf19b932f227",
+      "nurseryId": "biojela",
+      "adapter": "biojela_woocommerce",
+      "url": "https://biojela.rs/product/abies-nordmanniana-2/",
+      "offerSourceUrl": "https://biojela.rs/product/abies-nordmanniana-2/",
+      "expected": {
+        "productName": "Abies nordmanniana",
+        "currency": "RSD",
+        "unit": {
+          "kind": "catalogue_unit",
+          "label": "jedinica iz cenovnika"
+        },
+        "variantId": "3477",
+        "variantAttributes": {
+          "attribute_pa_visina": "1-1,2m"
+        }
+      },
+      "evidence": {
+        "reviewedAt": "2026-11-06",
+        "sourceUrl": "https://biojela.rs/product/abies-nordmanniana-2/"
+      },
+      "enabled": true
+    },
+    {
+      "id": "price-web-public-3bf281dcb7036f66ad",
+      "offerId": "web-public-3bf281dcb7036f66ad",
+      "plantId": "plant-f0bf19b932f227",
+      "nurseryId": "biojela",
+      "adapter": "biojela_woocommerce",
+      "url": "https://biojela.rs/product/abies-nordmanniana-2/",
+      "offerSourceUrl": "https://biojela.rs/product/abies-nordmanniana-2/",
+      "expected": {
+        "productName": "Abies nordmanniana",
+        "currency": "RSD",
+        "unit": {
+          "kind": "catalogue_unit",
+          "label": "jedinica iz cenovnika"
+        },
+        "variantId": "3147",
+        "variantAttributes": {
+          "attribute_pa_visina": "1,3-1,5m"
+        }
+      },
+      "evidence": {
+        "reviewedAt": "2026-11-06",
+        "sourceUrl": "https://biojela.rs/product/abies-nordmanniana-2/"
+      },
+      "enabled": true
+    },
+    {
+      "id": "price-web-public-9e8950b86bc2e36ff3",
+      "offerId": "web-public-9e8950b86bc2e36ff3",
+      "plantId": "plant-f0bf19b932f227",
+      "nurseryId": "biojela",
+      "adapter": "biojela_woocommerce",
+      "url": "https://biojela.rs/product/abies-nordmanniana-2/",
+      "offerSourceUrl": "https://biojela.rs/product/abies-nordmanniana-2/",
+      "expected": {
+        "productName": "Abies nordmanniana",
+        "currency": "RSD",
+        "unit": {
+          "kind": "catalogue_unit",
+          "label": "jedinica iz cenovnika"
+        },
+        "variantId": "3148",
+        "variantAttributes": {
+          "attribute_pa_visina": "1,6-1,8m"
+        }
+      },
+      "evidence": {
+        "reviewedAt": "2026-11-06",
+        "sourceUrl": "https://biojela.rs/product/abies-nordmanniana-2/"
+      },
+      "enabled": true
+    },
+    {
+      "id": "price-web-public-185839ce465079cfca",
+      "offerId": "web-public-185839ce465079cfca",
+      "plantId": "plant-f0bf19b932f227",
+      "nurseryId": "biojela",
+      "adapter": "biojela_woocommerce",
+      "url": "https://biojela.rs/product/abies-nordmanniana-2/",
+      "offerSourceUrl": "https://biojela.rs/product/abies-nordmanniana-2/",
+      "expected": {
+        "productName": "Abies nordmanniana",
+        "currency": "RSD",
+        "unit": {
+          "kind": "catalogue_unit",
+          "label": "jedinica iz cenovnika"
+        },
+        "variantId": "3149",
+        "variantAttributes": {
+          "attribute_pa_visina": "1,9-2,1m"
+        }
+      },
+      "evidence": {
+        "reviewedAt": "2026-11-06",
+        "sourceUrl": "https://biojela.rs/product/abies-nordmanniana-2/"
+      },
+      "enabled": true
+    },
+    {
+      "id": "price-web-public-0f0af69aa81931cbdb",
+      "offerId": "web-public-0f0af69aa81931cbdb",
+      "plantId": "plant-4eb881f57af1da",
+      "nurseryId": "biojela",
+      "adapter": "biojela_woocommerce",
+      "url": "https://biojela.rs/product/acer-palmatum-atropurpureum/",
+      "offerSourceUrl": "https://biojela.rs/product/acer-palmatum-atropurpureum/",
+      "expected": {
+        "productName": "Acer palmatum ‘Atropurpureum’",
+        "currency": "RSD",
+        "unit": {
+          "kind": "catalogue_unit",
+          "label": "jedinica iz cenovnika"
+        },
+        "variantId": "3502",
+        "variantAttributes": {
+          "attribute_pa_visina": "1,4-1,8m"
+        }
+      },
+      "evidence": {
+        "reviewedAt": "2026-11-06",
+        "sourceUrl": "https://biojela.rs/product/acer-palmatum-atropurpureum/"
+      },
+      "enabled": true
+    },
+    {
+      "id": "price-web-public-8b333c458a8ecc6279",
+      "offerId": "web-public-8b333c458a8ecc6279",
+      "plantId": "plant-4eb881f57af1da",
+      "nurseryId": "biojela",
+      "adapter": "biojela_woocommerce",
+      "url": "https://biojela.rs/product/acer-palmatum-atropurpureum/",
+      "offerSourceUrl": "https://biojela.rs/product/acer-palmatum-atropurpureum/",
+      "expected": {
+        "productName": "Acer palmatum ‘Atropurpureum’",
+        "currency": "RSD",
+        "unit": {
+          "kind": "catalogue_unit",
+          "label": "jedinica iz cenovnika"
+        },
+        "variantId": "3503",
+        "variantAttributes": {
+          "attribute_pa_visina": "1,2-1,6m"
+        }
+      },
+      "evidence": {
+        "reviewedAt": "2026-11-06",
+        "sourceUrl": "https://biojela.rs/product/acer-palmatum-atropurpureum/"
+      },
+      "enabled": true
+    },
+    {
+      "id": "price-web-public-9255c9b778ce86af30",
+      "offerId": "web-public-9255c9b778ce86af30",
+      "plantId": "plant-4eb881f57af1da",
+      "nurseryId": "biojela",
+      "adapter": "biojela_woocommerce",
+      "url": "https://biojela.rs/product/acer-palmatum-atropurpureum/",
+      "offerSourceUrl": "https://biojela.rs/product/acer-palmatum-atropurpureum/",
+      "expected": {
+        "productName": "Acer palmatum ‘Atropurpureum’",
+        "currency": "RSD",
+        "unit": {
+          "kind": "catalogue_unit",
+          "label": "jedinica iz cenovnika"
+        },
+        "variantId": "3504",
+        "variantAttributes": {
+          "attribute_pa_visina": "1-1,5m"
+        }
+      },
+      "evidence": {
+        "reviewedAt": "2026-11-06",
+        "sourceUrl": "https://biojela.rs/product/acer-palmatum-atropurpureum/"
+      },
+      "enabled": true
+    },
+    {
+      "id": "price-web-public-16672b96bf1ea4ab8c",
+      "offerId": "web-public-16672b96bf1ea4ab8c",
+      "plantId": "plant-4eb881f57af1da",
+      "nurseryId": "biojela",
+      "adapter": "biojela_woocommerce",
+      "url": "https://biojela.rs/product/acer-palmatum-atropurpureum/",
+      "offerSourceUrl": "https://biojela.rs/product/acer-palmatum-atropurpureum/",
+      "expected": {
+        "productName": "Acer palmatum ‘Atropurpureum’",
+        "currency": "RSD",
+        "unit": {
+          "kind": "catalogue_unit",
+          "label": "jedinica iz cenovnika"
+        },
+        "variantId": "3500",
+        "variantAttributes": {
+          "attribute_pa_visina": "1,6-2m"
+        }
+      },
+      "evidence": {
+        "reviewedAt": "2026-11-06",
+        "sourceUrl": "https://biojela.rs/product/acer-palmatum-atropurpureum/"
+      },
+      "enabled": true
+    },
+    {
+      "id": "price-web-public-581ee1874921f5a392",
+      "offerId": "web-public-581ee1874921f5a392",
+      "plantId": "plant-4eb881f57af1da",
+      "nurseryId": "biojela",
+      "adapter": "biojela_woocommerce",
+      "url": "https://biojela.rs/product/acer-palmatum-atropurpureum/",
+      "offerSourceUrl": "https://biojela.rs/product/acer-palmatum-atropurpureum/",
+      "expected": {
+        "productName": "Acer palmatum ‘Atropurpureum’",
+        "currency": "RSD",
+        "unit": {
+          "kind": "catalogue_unit",
+          "label": "jedinica iz cenovnika"
+        },
+        "variantId": "3501",
+        "variantAttributes": {
+          "attribute_pa_visina": "2,2-3m"
+        }
+      },
+      "evidence": {
+        "reviewedAt": "2026-11-06",
+        "sourceUrl": "https://biojela.rs/product/acer-palmatum-atropurpureum/"
+      },
+      "enabled": true
+    },
+    {
+      "id": "price-web-public-3f28d07d984a58a529",
+      "offerId": "web-public-3f28d07d984a58a529",
+      "plantId": "plant-80f1da5d27c0c6",
+      "nurseryId": "biojela",
+      "adapter": "biojela_woocommerce",
+      "url": "https://biojela.rs/product/acer-palmatum-sangokaku/",
+      "offerSourceUrl": "https://biojela.rs/product/acer-palmatum-sangokaku/",
+      "expected": {
+        "productName": "Acer palmatum ‘Sangokaku’",
+        "currency": "RSD",
+        "unit": {
+          "kind": "catalogue_unit",
+          "label": "jedinica iz cenovnika"
+        },
+        "variantId": "3497",
+        "variantAttributes": {
+          "attribute_pa_visina": "0,8-1,3m"
+        }
+      },
+      "evidence": {
+        "reviewedAt": "2026-11-06",
+        "sourceUrl": "https://biojela.rs/product/acer-palmatum-sangokaku/"
+      },
+      "enabled": true
+    },
+    {
+      "id": "price-web-public-6e9d56b03f8277aec7",
+      "offerId": "web-public-6e9d56b03f8277aec7",
+      "plantId": "plant-38ed2c84f780a6",
+      "nurseryId": "biojela",
+      "adapter": "biojela_woocommerce",
+      "url": "https://biojela.rs/product/berberis-thunbergii-atropurpurea-2/",
+      "offerSourceUrl": "https://biojela.rs/product/berberis-thunbergii-atropurpurea-2/",
+      "expected": {
+        "productName": "Berberis thunbergii ‘Atropurpurea’",
+        "currency": "RSD",
+        "unit": {
+          "kind": "catalogue_unit",
+          "label": "jedinica iz cenovnika"
+        }
+      },
+      "evidence": {
+        "reviewedAt": "2026-11-06",
+        "sourceUrl": "https://biojela.rs/product/berberis-thunbergii-atropurpurea-2/"
+      },
+      "enabled": true
+    },
+    {
+      "id": "price-web-public-1d0860cef9877ba451",
+      "offerId": "web-public-1d0860cef9877ba451",
+      "plantId": "plant-3f2ccbb8f11141",
+      "nurseryId": "biojela",
+      "adapter": "biojela_woocommerce",
+      "url": "https://biojela.rs/product/berberis-thunbergii-erecta-2/",
+      "offerSourceUrl": "https://biojela.rs/product/berberis-thunbergii-erecta-2/",
+      "expected": {
+        "productName": "Berberis thunbergii ‘Erecta’",
+        "currency": "RSD",
+        "unit": {
+          "kind": "catalogue_unit",
+          "label": "jedinica iz cenovnika"
+        }
+      },
+      "evidence": {
+        "reviewedAt": "2026-11-06",
+        "sourceUrl": "https://biojela.rs/product/berberis-thunbergii-erecta-2/"
+      },
+      "enabled": true
+    },
+    {
+      "id": "price-web-public-fada3a20c3fd41b0fc",
+      "offerId": "web-public-fada3a20c3fd41b0fc",
+      "plantId": "plant-fd94e185fbc466",
+      "nurseryId": "biojela",
+      "adapter": "biojela_woocommerce",
+      "url": "https://biojela.rs/product/chamaecyparis-obtusa-nana-gracilis-2/",
+      "offerSourceUrl": "https://biojela.rs/product/chamaecyparis-obtusa-nana-gracilis-2/",
+      "expected": {
+        "productName": "Chamaecyparis obtusa ‘Nana Gracilis’",
+        "currency": "RSD",
+        "unit": {
+          "kind": "catalogue_unit",
+          "label": "jedinica iz cenovnika"
+        },
+        "variantId": "3225",
+        "variantAttributes": {
+          "attribute_pa_visina": "0,2-0,3m"
+        }
+      },
+      "evidence": {
+        "reviewedAt": "2026-11-06",
+        "sourceUrl": "https://biojela.rs/product/chamaecyparis-obtusa-nana-gracilis-2/"
+      },
+      "enabled": true
+    },
+    {
+      "id": "price-web-public-4ff7dd9970c8530a91",
+      "offerId": "web-public-4ff7dd9970c8530a91",
+      "plantId": "plant-293e66072541c1",
+      "nurseryId": "biojela",
+      "adapter": "biojela_woocommerce",
+      "url": "https://biojela.rs/product/cornus-alba-sibirica/",
+      "offerSourceUrl": "https://biojela.rs/product/cornus-alba-sibirica/",
+      "expected": {
+        "productName": "Cornus alba ‘Sibirica’",
+        "currency": "RSD",
+        "unit": {
+          "kind": "catalogue_unit",
+          "label": "jedinica iz cenovnika"
+        }
+      },
+      "evidence": {
+        "reviewedAt": "2026-11-06",
+        "sourceUrl": "https://biojela.rs/product/cornus-alba-sibirica/"
+      },
+      "enabled": true
+    },
+    {
+      "id": "price-web-public-de13ca120921fb3927",
+      "offerId": "web-public-de13ca120921fb3927",
+      "plantId": "plant-7b4e6f965b96fe",
+      "nurseryId": "biojela",
+      "adapter": "biojela_woocommerce",
+      "url": "https://biojela.rs/product/juniperus-horizontalis-andorra-compacta-variegata-copy/",
+      "offerSourceUrl": "https://biojela.rs/product/juniperus-horizontalis-andorra-compacta-variegata-copy/",
+      "expected": {
+        "productName": "Pinus nigra ‘Brepo’",
+        "currency": "RSD",
+        "unit": {
+          "kind": "catalogue_unit",
+          "label": "jedinica iz cenovnika"
+        }
+      },
+      "evidence": {
+        "reviewedAt": "2026-11-06",
+        "sourceUrl": "https://biojela.rs/product/juniperus-horizontalis-andorra-compacta-variegata-copy/"
+      },
+      "enabled": true
+    },
+    {
+      "id": "price-web-public-d2c08d4662c376e325",
+      "offerId": "web-public-d2c08d4662c376e325",
+      "plantId": "plant-c2ed2a21528e06",
+      "nurseryId": "biojela",
+      "adapter": "biojela_woocommerce",
+      "url": "https://biojela.rs/product/taxus-baccata-fastigiata/",
+      "offerSourceUrl": "https://biojela.rs/product/taxus-baccata-fastigiata/",
+      "expected": {
+        "productName": "Taxus baccata ‘Fastigiata’",
+        "currency": "RSD",
+        "unit": {
+          "kind": "catalogue_unit",
+          "label": "jedinica iz cenovnika"
+        },
+        "variantId": "3189",
+        "variantAttributes": {
+          "attribute_pa_visina": "0,6-0,9m"
+        }
+      },
+      "evidence": {
+        "reviewedAt": "2026-11-06",
+        "sourceUrl": "https://biojela.rs/product/taxus-baccata-fastigiata/"
+      },
+      "enabled": true
+    },
+    {
+      "id": "price-web-public-0bf9a7827b32d95bd8",
+      "offerId": "web-public-0bf9a7827b32d95bd8",
+      "plantId": "plant-c2ed2a21528e06",
+      "nurseryId": "biojela",
+      "adapter": "biojela_woocommerce",
+      "url": "https://biojela.rs/product/taxus-baccata-fastigiata/",
+      "offerSourceUrl": "https://biojela.rs/product/taxus-baccata-fastigiata/",
+      "expected": {
+        "productName": "Taxus baccata ‘Fastigiata’",
+        "currency": "RSD",
+        "unit": {
+          "kind": "catalogue_unit",
+          "label": "jedinica iz cenovnika"
+        },
+        "variantId": "3471",
+        "variantAttributes": {
+          "attribute_pa_visina": "0,2-0,4m"
+        }
+      },
+      "evidence": {
+        "reviewedAt": "2026-11-06",
+        "sourceUrl": "https://biojela.rs/product/taxus-baccata-fastigiata/"
+      },
+      "enabled": true
+    },
+    {
+      "id": "price-web-public-e75eeaf9c5feee5cc1",
+      "offerId": "web-public-e75eeaf9c5feee5cc1",
+      "plantId": "plant-c2ed2a21528e06",
+      "nurseryId": "biojela",
+      "adapter": "biojela_woocommerce",
+      "url": "https://biojela.rs/product/taxus-baccata-fastigiata/",
+      "offerSourceUrl": "https://biojela.rs/product/taxus-baccata-fastigiata/",
+      "expected": {
+        "productName": "Taxus baccata ‘Fastigiata’",
+        "currency": "RSD",
+        "unit": {
+          "kind": "catalogue_unit",
+          "label": "jedinica iz cenovnika"
+        },
+        "variantId": "3190",
+        "variantAttributes": {
+          "attribute_pa_visina": "1-1,2m"
+        }
+      },
+      "evidence": {
+        "reviewedAt": "2026-11-06",
+        "sourceUrl": "https://biojela.rs/product/taxus-baccata-fastigiata/"
+      },
+      "enabled": true
+    },
+    {
+      "id": "price-web-public-523e81416aec553aeb",
+      "offerId": "web-public-523e81416aec553aeb",
+      "plantId": "plant-c2ed2a21528e06",
+      "nurseryId": "biojela",
+      "adapter": "biojela_woocommerce",
+      "url": "https://biojela.rs/product/taxus-baccata-fastigiata/",
+      "offerSourceUrl": "https://biojela.rs/product/taxus-baccata-fastigiata/",
+      "expected": {
+        "productName": "Taxus baccata ‘Fastigiata’",
+        "currency": "RSD",
+        "unit": {
+          "kind": "catalogue_unit",
+          "label": "jedinica iz cenovnika"
+        },
+        "variantId": "3191",
+        "variantAttributes": {
+          "attribute_pa_visina": "1,3-1,5m"
+        }
+      },
+      "evidence": {
+        "reviewedAt": "2026-11-06",
+        "sourceUrl": "https://biojela.rs/product/taxus-baccata-fastigiata/"
+      },
+      "enabled": true
+    },
+    {
+      "id": "price-web-public-a1b85c9fdd3753bc29",
+      "offerId": "web-public-a1b85c9fdd3753bc29",
+      "plantId": "plant-13b826e519c11e",
+      "nurseryId": "biojela",
+      "adapter": "biojela_woocommerce",
+      "url": "https://biojela.rs/product/thuja-occidentalis-danica/",
+      "offerSourceUrl": "https://biojela.rs/product/thuja-occidentalis-danica/",
+      "expected": {
+        "productName": "Thuja occidentalis ‘Danica’",
+        "currency": "RSD",
+        "unit": {
+          "kind": "catalogue_unit",
+          "label": "jedinica iz cenovnika"
+        },
+        "variantId": "3264",
+        "variantAttributes": {
+          "attribute_pa_visina": "0,3-0,5m"
+        }
+      },
+      "evidence": {
+        "reviewedAt": "2026-11-06",
+        "sourceUrl": "https://biojela.rs/product/thuja-occidentalis-danica/"
+      },
+      "enabled": true
+    },
+    {
+      "id": "price-web-public-9fa959e25891859685",
+      "offerId": "web-public-9fa959e25891859685",
+      "plantId": "plant-13b826e519c11e",
+      "nurseryId": "biojela",
+      "adapter": "biojela_woocommerce",
+      "url": "https://biojela.rs/product/thuja-occidentalis-danica/",
+      "offerSourceUrl": "https://biojela.rs/product/thuja-occidentalis-danica/",
+      "expected": {
+        "productName": "Thuja occidentalis ‘Danica’",
+        "currency": "RSD",
+        "unit": {
+          "kind": "catalogue_unit",
+          "label": "jedinica iz cenovnika"
+        },
+        "variantId": "3465",
+        "variantAttributes": {
+          "attribute_pa_visina": "0,2m"
+        }
+      },
+      "evidence": {
+        "reviewedAt": "2026-11-06",
+        "sourceUrl": "https://biojela.rs/product/thuja-occidentalis-danica/"
+      },
+      "enabled": true
+    },
+    {
+      "id": "price-web-public-55fa597747903d83f5",
+      "offerId": "web-public-55fa597747903d83f5",
+      "plantId": "plant-9b99d8432e636b",
+      "nurseryId": "biojela",
+      "adapter": "biojela_woocommerce",
+      "url": "https://biojela.rs/product/thuja-occidentalis-smaragd/",
+      "offerSourceUrl": "https://biojela.rs/product/thuja-occidentalis-smaragd/",
+      "expected": {
+        "productName": "Thuja occidentalis ‘Smaragd’",
+        "currency": "RSD",
+        "unit": {
+          "kind": "catalogue_unit",
+          "label": "jedinica iz cenovnika"
+        },
+        "variantId": "3196",
+        "variantAttributes": {
+          "attribute_pa_visina": "0,8-1m"
+        }
+      },
+      "evidence": {
+        "reviewedAt": "2026-11-06",
+        "sourceUrl": "https://biojela.rs/product/thuja-occidentalis-smaragd/"
+      },
+      "enabled": true
+    },
+    {
+      "id": "price-web-public-3f69577198970123e4",
+      "offerId": "web-public-3f69577198970123e4",
+      "plantId": "plant-9b99d8432e636b",
+      "nurseryId": "biojela",
+      "adapter": "biojela_woocommerce",
+      "url": "https://biojela.rs/product/thuja-occidentalis-smaragd/",
+      "offerSourceUrl": "https://biojela.rs/product/thuja-occidentalis-smaragd/",
+      "expected": {
+        "productName": "Thuja occidentalis ‘Smaragd’",
+        "currency": "RSD",
+        "unit": {
+          "kind": "catalogue_unit",
+          "label": "jedinica iz cenovnika"
+        },
+        "variantId": "3197",
+        "variantAttributes": {
+          "attribute_pa_visina": "1-1,2m"
+        }
+      },
+      "evidence": {
+        "reviewedAt": "2026-11-06",
+        "sourceUrl": "https://biojela.rs/product/thuja-occidentalis-smaragd/"
+      },
+      "enabled": true
+    },
+    {
+      "id": "price-web-public-731950d476668750aa",
+      "offerId": "web-public-731950d476668750aa",
+      "plantId": "plant-2a9e3c38f906b6",
+      "nurseryId": "biojela",
+      "adapter": "biojela_woocommerce",
+      "url": "https://biojela.rs/product/thuja-orientalis-aurea-nana/",
+      "offerSourceUrl": "https://biojela.rs/product/thuja-orientalis-aurea-nana/",
+      "expected": {
+        "productName": "Thuja orientalis ‘Aurea Nana’",
+        "currency": "RSD",
+        "unit": {
+          "kind": "catalogue_unit",
+          "label": "jedinica iz cenovnika"
+        },
+        "variantId": "3217",
+        "variantAttributes": {
+          "attribute_pa_visina": "0,2-0,3m"
+        }
+      },
+      "evidence": {
+        "reviewedAt": "2026-11-06",
+        "sourceUrl": "https://biojela.rs/product/thuja-orientalis-aurea-nana/"
+      },
+      "enabled": true
+    },
+    {
+      "id": "price-web-public-c1b3c67d2fc5f85a5a",
+      "offerId": "web-public-c1b3c67d2fc5f85a5a",
+      "plantId": "plant-5c2da33cccb7f8",
+      "nurseryId": "rasadnik-vitorovic",
+      "adapter": "vitorovic_shopify",
+      "url": "https://rasadnik-vitorovic.shop/products/smilje-helichrysum-italicum-kontejnerske-sadnice",
+      "offerSourceUrl": "https://rasadnik-vitorovic.shop/products/smilje-helichrysum-italicum-kontejnerske-sadnice?variant=46609440669939",
+      "expected": {
+        "productName": "Kontejnerske sadnice - Smilje (Helichrysum italicum)",
+        "currency": "RSD",
+        "unit": {
+          "kind": "package",
+          "label": "pakovanje od 104 sadnice",
+          "count": 104
+        },
+        "variantUrl": "https://rasadnik-vitorovic.shop/products/smilje-helichrysum-italicum-kontejnerske-sadnice?variant=46609440669939"
+      },
+      "evidence": {
+        "reviewedAt": "2026-11-06",
+        "sourceUrl": "https://rasadnik-vitorovic.shop/products/smilje-helichrysum-italicum-kontejnerske-sadnice?variant=46609440669939"
+      },
+      "enabled": true
+    },
+    {
+      "id": "price-web-public-00a08806fae01e137b",
+      "offerId": "web-public-00a08806fae01e137b",
+      "plantId": "plant-dc8a08ac87d62f",
+      "nurseryId": "rasadnik-vitorovic",
+      "adapter": "vitorovic_shopify",
+      "url": "https://rasadnik-vitorovic.shop/products/lovor-visnja-kontejnerske-sadnice",
+      "offerSourceUrl": "https://rasadnik-vitorovic.shop/products/lovor-visnja-kontejnerske-sadnice?variant=46618159350003",
+      "expected": {
+        "productName": "Kontejnerske sadnice - LOVOR VIŠNJA",
+        "currency": "RSD",
+        "unit": {
+          "kind": "package",
+          "label": "pakovanje od 104 sadnice",
+          "count": 104
+        },
+        "variantUrl": "https://rasadnik-vitorovic.shop/products/lovor-visnja-kontejnerske-sadnice?variant=46618159350003"
+      },
+      "evidence": {
+        "reviewedAt": "2026-11-06",
+        "sourceUrl": "https://rasadnik-vitorovic.shop/products/lovor-visnja-kontejnerske-sadnice?variant=46618159350003"
+      },
+      "enabled": true
+    },
+    {
+      "id": "price-web-public-18de28e41ec1476be2",
+      "offerId": "web-public-18de28e41ec1476be2",
+      "plantId": "plant-ac61a7840ed626",
+      "nurseryId": "rasadnik-vitorovic",
+      "adapter": "vitorovic_shopify",
+      "url": "https://rasadnik-vitorovic.shop/products/santolina-chamaecyparissus-kontejnerske-sadnice",
+      "offerSourceUrl": "https://rasadnik-vitorovic.shop/products/santolina-chamaecyparissus-kontejnerske-sadnice?variant=46618106331379",
+      "expected": {
+        "productName": "Kontejnerske sadnice - Santolina chamaecyparissus",
+        "currency": "RSD",
+        "unit": {
+          "kind": "package",
+          "label": "pakovanje od 104 sadnice",
+          "count": 104
+        },
+        "variantUrl": "https://rasadnik-vitorovic.shop/products/santolina-chamaecyparissus-kontejnerske-sadnice?variant=46618106331379"
+      },
+      "evidence": {
+        "reviewedAt": "2026-11-06",
+        "sourceUrl": "https://rasadnik-vitorovic.shop/products/santolina-chamaecyparissus-kontejnerske-sadnice?variant=46618106331379"
+      },
+      "enabled": true
+    },
+    {
+      "id": "price-web-public-69be01c2038fde3e60",
+      "offerId": "web-public-69be01c2038fde3e60",
+      "plantId": "plant-166ddeecd217ea",
+      "nurseryId": "rasadnik-vitorovic",
+      "adapter": "vitorovic_shopify",
+      "url": "https://rasadnik-vitorovic.shop/products/lavandula-angustifolia-munstead-kontejnerske-sadnice",
+      "offerSourceUrl": "https://rasadnik-vitorovic.shop/products/lavandula-angustifolia-munstead-kontejnerske-sadnice?variant=46606396981491",
+      "expected": {
+        "productName": "Kontejnerske sadnice - Lavandula angustifolia ’Munstead’",
+        "currency": "RSD",
+        "unit": {
+          "kind": "package",
+          "label": "pakovanje od 104 sadnice",
+          "count": 104
+        },
+        "variantUrl": "https://rasadnik-vitorovic.shop/products/lavandula-angustifolia-munstead-kontejnerske-sadnice?variant=46606396981491"
+      },
+      "evidence": {
+        "reviewedAt": "2026-11-06",
+        "sourceUrl": "https://rasadnik-vitorovic.shop/products/lavandula-angustifolia-munstead-kontejnerske-sadnice?variant=46606396981491"
+      },
+      "enabled": true
+    },
+    {
+      "id": "price-web-public-79940588c7cd508e15",
+      "offerId": "web-public-79940588c7cd508e15",
+      "plantId": "plant-aa59d64c653919",
+      "nurseryId": "rasadnik-vitorovic",
+      "adapter": "vitorovic_shopify",
+      "url": "https://rasadnik-vitorovic.shop/products/rosmarinus-officinalis-kontejnerske-sadnice",
+      "offerSourceUrl": "https://rasadnik-vitorovic.shop/products/rosmarinus-officinalis-kontejnerske-sadnice?variant=46618139197683",
+      "expected": {
+        "productName": "Kontejnerske sadnice - Rosmarinus officinalis",
+        "currency": "RSD",
+        "unit": {
+          "kind": "package",
+          "label": "pakovanje od 104 sadnice",
+          "count": 104
+        },
+        "variantUrl": "https://rasadnik-vitorovic.shop/products/rosmarinus-officinalis-kontejnerske-sadnice?variant=46618139197683"
+      },
+      "evidence": {
+        "reviewedAt": "2026-11-06",
+        "sourceUrl": "https://rasadnik-vitorovic.shop/products/rosmarinus-officinalis-kontejnerske-sadnice?variant=46618139197683"
+      },
+      "enabled": true
+    },
+    {
+      "id": "price-web-public-447db5916d7dae1a0c",
+      "offerId": "web-public-447db5916d7dae1a0c",
+      "plantId": "plant-4898632bfde099",
+      "nurseryId": "rasadnik-vitorovic",
+      "adapter": "vitorovic_shopify",
+      "url": "https://rasadnik-vitorovic.shop/products/gaura-lindheimeri-siskiyou-pink-kontejnerske-sadnice",
+      "offerSourceUrl": "https://rasadnik-vitorovic.shop/products/gaura-lindheimeri-siskiyou-pink-kontejnerske-sadnice?variant=46618038468851",
+      "expected": {
+        "productName": "Kontejnerske sadnice - Gaura lindheimeri ’Siskiyou Pink’",
+        "currency": "RSD",
+        "unit": {
+          "kind": "package",
+          "label": "pakovanje od 104 sadnice",
+          "count": 104
+        },
+        "variantUrl": "https://rasadnik-vitorovic.shop/products/gaura-lindheimeri-siskiyou-pink-kontejnerske-sadnice?variant=46618038468851"
+      },
+      "evidence": {
+        "reviewedAt": "2026-11-06",
+        "sourceUrl": "https://rasadnik-vitorovic.shop/products/gaura-lindheimeri-siskiyou-pink-kontejnerske-sadnice?variant=46618038468851"
+      },
+      "enabled": true
+    }
+  ]
+}

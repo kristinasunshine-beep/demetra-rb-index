@@ -1,0 +1,577 @@
+[
+  {
+    "sourceName": "Acer campestre 'Huibers Elegant'",
+    "reason": "identity_caution",
+    "note": "U drugom godištu postoji Huiber’s/Hubers. Referenca nema potvrdu pa se ne određuje kanonsko ime kultivara.",
+    "sourceRef": {
+      "id": "occ-3254a51edf2a5e21dd80",
+      "sourceId": "src-c5bf473702778c",
+      "row": 6
+    }
+  },
+  {
+    "sourceName": "Tilia sp.",
+    "reason": "not_named_genus",
+    "note": "source_identification_incomplete",
+    "sourceRef": {
+      "id": "occ-d31d32e355b421969a05",
+      "sourceId": "src-09eb9cdb4033d1",
+      "row": 18
+    }
+  },
+  {
+    "sourceName": "Hosta sp. Mix",
+    "reason": "not_named_assortment",
+    "note": "source_identification_incomplete",
+    "sourceRef": {
+      "id": "occ-41648a8bb99dbd395688",
+      "sourceId": "src-1dfec791102a95",
+      "row": 35
+    }
+  },
+  {
+    "sourceName": "Hedera mix",
+    "reason": "not_named_assortment",
+    "note": "source_identification_incomplete",
+    "sourceRef": {
+      "id": "occ-6bc5a16be00035168f49",
+      "sourceId": "src-1dfec791102a95",
+      "row": 36
+    }
+  },
+  {
+    "sourceName": "Tilia sp.",
+    "reason": "not_named_genus",
+    "note": "source_identification_incomplete",
+    "sourceRef": {
+      "id": "occ-d4e4035687e1b41e25c8",
+      "sourceId": "src-734a6b2beb5098",
+      "row": 21
+    }
+  },
+  {
+    "sourceName": "Tilia sp.",
+    "reason": "not_named_genus",
+    "note": "source_identification_incomplete",
+    "sourceRef": {
+      "id": "occ-6a5db4c55da8bff2346e",
+      "sourceId": "src-734a6b2beb5098",
+      "row": 24
+    }
+  },
+  {
+    "sourceName": "Tilia sp.",
+    "reason": "not_named_genus",
+    "note": "source_identification_incomplete",
+    "sourceRef": {
+      "id": "occ-d40520db00b1bcaf72e1",
+      "sourceId": "src-734a6b2beb5098",
+      "row": 31
+    }
+  },
+  {
+    "sourceName": "Betula sp.",
+    "reason": "not_named_genus",
+    "note": "source_identification_incomplete",
+    "sourceRef": {
+      "id": "occ-4e9646873994554c6629",
+      "sourceId": "src-734a6b2beb5098",
+      "row": 63
+    }
+  },
+  {
+    "sourceName": "Metasequoia sp.",
+    "reason": "not_named_genus",
+    "note": "source_identification_incomplete",
+    "sourceRef": {
+      "id": "occ-38b7c6da790ed2318c4e",
+      "sourceId": "src-734a6b2beb5098",
+      "row": 92
+    }
+  },
+  {
+    "sourceName": "Berberis sp. Atropurpurea",
+    "reason": "not_named_genus",
+    "note": "source_identification_incomplete",
+    "sourceRef": {
+      "id": "occ-dff935b624a36adf9fb5",
+      "sourceId": "src-734a6b2beb5098",
+      "row": 102
+    }
+  },
+  {
+    "sourceName": "Lonicera sp.",
+    "reason": "not_named_genus",
+    "note": "source_identification_incomplete",
+    "sourceRef": {
+      "id": "occ-22b90aa20b4f51be885b",
+      "sourceId": "src-734a6b2beb5098",
+      "row": 106
+    }
+  },
+  {
+    "sourceName": "Hydrangea sp.",
+    "reason": "not_named_genus",
+    "note": "source_identification_incomplete",
+    "sourceRef": {
+      "id": "occ-82ec05926edad8737828",
+      "sourceId": "src-734a6b2beb5098",
+      "row": 112
+    }
+  },
+  {
+    "sourceName": "Magnolia sp.",
+    "reason": "not_named_genus",
+    "note": "source_identification_incomplete",
+    "sourceRef": {
+      "id": "occ-f727c11afb76096baec4",
+      "sourceId": "src-734a6b2beb5098",
+      "row": 116
+    }
+  },
+  {
+    "sourceName": "Magnolia sp.",
+    "reason": "not_named_genus",
+    "note": "source_identification_incomplete",
+    "sourceRef": {
+      "id": "occ-0fc124bd32f71e350a48",
+      "sourceId": "src-734a6b2beb5098",
+      "row": 118
+    }
+  },
+  {
+    "sourceName": "Fraxinus sp. 'Globosa'",
+    "reason": "not_named_genus",
+    "note": "source_identification_incomplete",
+    "sourceRef": {
+      "id": "occ-72132fb1384c4e92a274",
+      "sourceId": "src-d05715e3aec018",
+      "row": 31
+    }
+  },
+  {
+    "sourceName": "Fraxinus sp. 'Globosa'",
+    "reason": "not_named_genus",
+    "note": "source_identification_incomplete",
+    "sourceRef": {
+      "id": "occ-a2fdf44c58c17e95c6d5",
+      "sourceId": "src-d05715e3aec018",
+      "row": 88
+    }
+  },
+  {
+    "sourceName": "Acer Negl Annea",
+    "reason": "unresolved",
+    "note": "Fragment does not uniquely identify a species/cultivar in the supplied row. Kept as an unresolved source note, not assigned by guess.",
+    "sourceRef": {
+      "id": "occ-74b37b1de852341cedd1",
+      "sourceId": "src-09eb9cdb4033d1",
+      "row": 3
+    }
+  },
+  {
+    "sourceName": "Pendula",
+    "reason": "unresolved",
+    "note": "Fragment does not uniquely identify a species/cultivar in the supplied row. Kept as an unresolved source note, not assigned by guess.",
+    "sourceRef": {
+      "id": "occ-194e2e0bc84a612b4ead",
+      "sourceId": "src-734a6b2beb5098",
+      "row": 65
+    }
+  },
+  {
+    "sourceName": "Pendula",
+    "reason": "unresolved",
+    "note": "Fragment does not uniquely identify a species/cultivar in the supplied row. Kept as an unresolved source note, not assigned by guess.",
+    "sourceRef": {
+      "id": "occ-5e1c28be072ac86ea117",
+      "sourceId": "src-bca831c19f8660",
+      "row": 22
+    }
+  },
+  {
+    "sourceName": "Emerald n ga. eg",
+    "reason": "unresolved",
+    "note": "Fragment does not uniquely identify a species/cultivar in the supplied row. Kept as an unresolved source note, not assigned by guess.",
+    "sourceRef": {
+      "id": "occ-d7d4b35a4e181562cf26",
+      "sourceId": "src-e398a7d2607c15",
+      "row": 12
+    }
+  },
+  {
+    "sourceName": "Other variety viola",
+    "reason": "unresolved",
+    "note": "Fragment does not uniquely identify a species/cultivar in the supplied row. Kept as an unresolved source note, not assigned by guess.",
+    "sourceRef": {
+      "id": "occ-f09a2f06d380956046b5",
+      "sourceId": "src-e398a7d2607c15",
+      "row": 26
+    }
+  },
+  {
+    "sourceName": "Mix of perenas",
+    "reason": "unresolved",
+    "note": "genus_or_lot_requires_review",
+    "sourceRef": {
+      "id": "occ-6172d2b2d06ec240bd64",
+      "sourceId": "src-696204ba883b1d",
+      "row": 4
+    }
+  },
+  {
+    "sourceName": "Acer campestre 'Huibers Elegant'",
+    "reason": "identity_caution",
+    "note": "U drugom godištu postoji Huiber’s/Hubers. Referenca nema potvrdu pa se ne određuje kanonsko ime kultivara.",
+    "sourceRef": {
+      "id": "occ-6b03161d69922912a8f8",
+      "sourceId": "src-0eb6d7d7c46db7",
+      "page": 1,
+      "line": 26
+    }
+  },
+  {
+    "sourceName": "Zelkova serrata 'Flekova'",
+    "reason": "identity_caution",
+    "note": "Izvor eksplicitno navodi Flekova. Referenca potvrđuje Green Vase, ali bez izričite uputnice ne proglašavamo Flekova i Green Vase istim kultivarom.",
+    "sourceRef": {
+      "id": "occ-a863462ae4d3cd61fdaf",
+      "sourceId": "src-00db1310aa2b4d",
+      "page": 1,
+      "line": 30
+    }
+  },
+  {
+    "sourceName": "Lupinus sp",
+    "reason": "not_named_genus",
+    "note": "source_identification_incomplete",
+    "sourceRef": {
+      "id": "occ-2f35f33f497de4666b49",
+      "sourceId": "src-55d410d4581a06",
+      "row": 9
+    }
+  },
+  {
+    "sourceName": "Hakonechloa green",
+    "reason": "identity_caution",
+    "note": "Green je opis boje; izvor ne daje vrstu. Ne pretpostaviti macra na osnovu izgleda ili uobičajenosti.",
+    "sourceRef": {
+      "id": "occ-9781518e490e1b2fce25",
+      "sourceId": "src-55d410d4581a06",
+      "row": 11
+    }
+  },
+  {
+    "sourceName": "Hydrangea sp",
+    "reason": "not_named_genus",
+    "note": "source_identification_incomplete",
+    "sourceRef": {
+      "id": "occ-6b20b49720dbd98b5321",
+      "sourceId": "src-55d410d4581a06",
+      "row": 14
+    }
+  },
+  {
+    "sourceName": "Lupinus sp",
+    "reason": "not_named_genus",
+    "note": "source_identification_incomplete",
+    "sourceRef": {
+      "id": "occ-b24fdc25e71c5119f559",
+      "sourceId": "src-55d410d4581a06",
+      "row": 118
+    }
+  },
+  {
+    "sourceName": "Hakonechloa green",
+    "reason": "identity_caution",
+    "note": "Green je opis boje; izvor ne daje vrstu. Ne pretpostaviti macra na osnovu izgleda ili uobičajenosti.",
+    "sourceRef": {
+      "id": "occ-5cb6bb04c961d9eea45e",
+      "sourceId": "src-55d410d4581a06",
+      "row": 160
+    }
+  },
+  {
+    "sourceName": "Hydrangea sp",
+    "reason": "not_named_genus",
+    "note": "source_identification_incomplete",
+    "sourceRef": {
+      "id": "occ-b3453debdc87e9e734a7",
+      "sourceId": "src-55d410d4581a06",
+      "row": 203
+    }
+  },
+  {
+    "sourceName": "Lupinus 'West Country' Magic Lantern",
+    "reason": "identity_caution",
+    "note": "West Country je serija/komercijalna oznaka na etiketi; tačan nomenklaturni odnos prema Magic Lantern nije potvrđen u dostupnoj referenci.",
+    "sourceRef": {
+      "id": "occ-7672e64863fa1d1de060",
+      "sourceId": "src-55d410d4581a06",
+      "row": 120
+    }
+  },
+  {
+    "sourceName": "Lupinus 'West Country' Terracotta",
+    "reason": "identity_caution",
+    "note": "Ista etiketa sadrži seriju West Country i Terracotta; ne preuzimati Terracotta drugog roda iz reference.",
+    "sourceRef": {
+      "id": "occ-32d19baf34b95de134c6",
+      "sourceId": "src-55d410d4581a06",
+      "row": 135
+    }
+  },
+  {
+    "sourceName": "Astilbe (S.) 'Hennie Graafland'",
+    "reason": "identity_caution",
+    "note": "S. nije prošireno bez potvrde; etiketa se razlikuje od upita Astilbe japonica Europa i ostaje odvojena biljka.",
+    "sourceRef": {
+      "id": "occ-ba1c8730cc1e3c6cc3fa",
+      "sourceId": "src-55d410d4581a06",
+      "row": 170
+    }
+  },
+  {
+    "sourceName": "Buxus",
+    "reason": "not_named_genus",
+    "note": "genus_only_in_source",
+    "sourceRef": {
+      "id": "occ-7e12af34884e5518cc2f",
+      "sourceId": "src-4064091937808b",
+      "page": 1
+    }
+  },
+  {
+    "sourceName": "Buxus",
+    "reason": "not_named_genus",
+    "note": "genus_only_in_source",
+    "sourceRef": {
+      "id": "occ-543d3a1e96db5dabd3af",
+      "sourceId": "src-4064091937808b",
+      "page": 1
+    }
+  },
+  {
+    "sourceName": "buxus",
+    "reason": "not_named_genus",
+    "note": "genus_only_in_source",
+    "sourceRef": {
+      "id": "occ-ae99cd76fdc0cb43a247",
+      "sourceId": "src-4064091937808b",
+      "page": 1
+    }
+  },
+  {
+    "sourceName": "Muhlenbergia",
+    "reason": "not_named_genus",
+    "note": "genus_only_in_source",
+    "sourceRef": {
+      "id": "occ-722b5b1e7f640749d73d",
+      "sourceId": "src-48f116a15a0d1a",
+      "page": 1
+    }
+  },
+  {
+    "sourceName": "echinacea",
+    "reason": "not_named_genus",
+    "note": "genus_only_in_source",
+    "sourceRef": {
+      "id": "occ-a1a206253f7f49e4965e",
+      "sourceId": "src-48f116a15a0d1a",
+      "page": 1
+    }
+  },
+  {
+    "sourceName": "euphorbia",
+    "reason": "not_named_genus",
+    "note": "genus_only_in_source",
+    "sourceRef": {
+      "id": "occ-c8341bbc9ede5dd2dbe6",
+      "sourceId": "src-48f116a15a0d1a",
+      "page": 1
+    }
+  },
+  {
+    "sourceName": "Echinacea lacota orange",
+    "reason": "identity_caution",
+    "note": "Moguća greška Lakota Orange, ali u referentnom skupu nema potvrde i nije navedena vrsta. Ne pretpostaviti E. purpurea.",
+    "sourceRef": {
+      "id": "occ-d0c755ef4c76cd2e43bb",
+      "sourceId": "src-48f116a15a0d1a",
+      "page": 1
+    }
+  },
+  {
+    "sourceName": "sedum spectable",
+    "reason": "identity_caution",
+    "note": "Moguća greška spectabile. Izvor izričito kaže da biljka nije dostupna i nudi Sedum makinoi kao zamenu; nisu ista biljka.",
+    "sourceRef": {
+      "id": "occ-dee990fd543a2d8caa60",
+      "sourceId": "src-48f116a15a0d1a",
+      "page": 1
+    }
+  },
+  {
+    "sourceName": "coreopsis",
+    "reason": "not_named_genus",
+    "note": "genus_only_in_source",
+    "sourceRef": {
+      "id": "occ-05cbb78d53c434b7839f",
+      "sourceId": "src-48f116a15a0d1a",
+      "page": 1
+    }
+  },
+  {
+    "sourceName": "Pennisetum",
+    "reason": "not_named_genus",
+    "note": "genus_only_in_source",
+    "sourceRef": {
+      "id": "occ-2379c0682423caea39b6",
+      "sourceId": "src-d85cc9b96f8c2b",
+      "page": 1
+    }
+  },
+  {
+    "sourceName": "Eounim Microf",
+    "reason": "unresolved",
+    "note": "genus_or_lot_requires_review",
+    "sourceRef": {
+      "id": "occ-e67b3b428004e65a1c55",
+      "sourceId": "src-d85cc9b96f8c2b",
+      "page": 1
+    }
+  },
+  {
+    "sourceName": "PenLittleBunn",
+    "reason": "unresolved",
+    "note": "genus_or_lot_requires_review",
+    "sourceRef": {
+      "id": "occ-7e91a5b5111fa4821ece",
+      "sourceId": "src-d85cc9b96f8c2b",
+      "page": 1
+    }
+  },
+  {
+    "sourceName": "euon Micro",
+    "reason": "unresolved",
+    "note": "genus_or_lot_requires_review",
+    "sourceRef": {
+      "id": "occ-e014898b74f5264021ea",
+      "sourceId": "src-d85cc9b96f8c2b",
+      "page": 1
+    }
+  },
+  {
+    "sourceName": "Hibiscus Carousel Pink Candy",
+    "reason": "identity_caution",
+    "note": "Tačan tekst iz ponude, ali botanička vrsta nije napisana uz ponuđenu varijantu; prethodni upit nije dokaz da je ponuda identična traženoj vrsti.",
+    "sourceRef": {
+      "id": "occ-891cafee6e6e69923d5d",
+      "sourceId": "src-daba48886fa824",
+      "page": 1
+    }
+  },
+  {
+    "sourceName": "Hibiscus Carousel Ghost",
+    "reason": "identity_caution",
+    "note": "Vrsta nije određena u ponuđenom nazivu. Ghost i Pink Candy ostaju zasebne varijante.",
+    "sourceRef": {
+      "id": "occ-6cacbb396be8a5376dda",
+      "sourceId": "src-daba48886fa824",
+      "page": 1
+    }
+  },
+  {
+    "sourceName": "Hibiscus Carousel geant red",
+    "reason": "identity_caution",
+    "note": "Geant red je izvorni zapis; nema potvrde punog kultivara/vrste u referenci. Ne menjati u Giant Red na osnovu sličnosti.",
+    "sourceRef": {
+      "id": "occ-7722cd435258d1e0109e",
+      "sourceId": "src-daba48886fa824",
+      "page": 1
+    }
+  },
+  {
+    "sourceName": "Nepeta faaseni",
+    "reason": "identity_caution",
+    "note": "Najverovatniji cilj je faassenii, ali u priloženoj referenci nema tog taksona. Potrebna primarna potvrda pre određivanja hibridnog znaka i kanonskog imena.",
+    "sourceRef": {
+      "id": "occ-03f9f69a3460c088ba33",
+      "sourceId": "src-e6253527548f19",
+      "page": 1
+    }
+  },
+  {
+    "sourceName": "cornus",
+    "reason": "not_named_genus",
+    "note": "genus_only_in_source",
+    "sourceRef": {
+      "id": "occ-5de0e5de0464559f7d5d",
+      "sourceId": "src-125e8b8c27ef4f",
+      "page": 1
+    }
+  },
+  {
+    "sourceName": "cornus",
+    "reason": "not_named_genus",
+    "note": "genus_only_in_source",
+    "sourceRef": {
+      "id": "occ-83e30817c27fddf8141f",
+      "sourceId": "src-125e8b8c27ef4f",
+      "page": 1
+    }
+  },
+  {
+    "sourceName": "Cornus",
+    "reason": "not_named_genus",
+    "note": "genus_only_in_source",
+    "sourceRef": {
+      "id": "occ-7d195347c53565f70668",
+      "sourceId": "src-125e8b8c27ef4f",
+      "page": 1
+    }
+  },
+  {
+    "sourceName": "Photinia",
+    "reason": "not_named_genus",
+    "note": "genus_only_in_source",
+    "sourceRef": {
+      "id": "occ-a0f3400fefeab70c1523",
+      "sourceId": "src-125e8b8c27ef4f",
+      "page": 1
+    }
+  },
+  {
+    "sourceName": "Ulmus resista 'New Horizon'",
+    "reason": "identity_caution",
+    "note": "Resista može biti tržišna oznaka, a ne vrsta; pun kultivar New Horizon u referenci nije potvrđen.",
+    "sourceRef": {
+      "id": "occ-ed4909b40eae5c6f6499",
+      "sourceId": "src-83368850bc6a22",
+      "page": 3,
+      "row": 30
+    }
+  },
+  {
+    "sourceName": "Catalpa bignonioides 'Globosa/Nana'",
+    "reason": "unresolved",
+    "note": "notation_requires_review",
+    "sourceRef": {
+      "id": "occ-8268aabc1fe6abc77653",
+      "sourceId": "src-325e04e44cc7c6",
+      "page": 1,
+      "row": 3
+    }
+  },
+  {
+    "sourceName": "Salix alba var. vitelina F. 'Pendula'",
+    "reason": "unresolved",
+    "note": "Izvor koristi botaničke rangove var./F. i pogrešan zapis vitelina; referenca navodi kultivar Vitellina Pendula. Promena rangova zahteva potvrdu.",
+    "sourceRef": {
+      "id": "occ-5d8fdce6580294295751",
+      "sourceId": "src-399eaf37529a88",
+      "page": 1,
+      "row": 4
+    }
+  }
+]

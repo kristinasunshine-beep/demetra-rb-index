@@ -1,0 +1,63 @@
+{
+  "plants": 619,
+  "nurseries": 22,
+  "catalogueRecords": 3250,
+  "plantNurseryLinks": 1928,
+  "publicPriceVariants": 31,
+  "plantsWithPublicPrices": 19,
+  "offerSourceFiles": 108,
+  "resolvedOfferOccurrences": 1720,
+  "reviewOccurrences": 57,
+  "plantsAwaitingNurseryEvidence": [
+    {
+      "id": "plant-d9153e5bc9deca",
+      "latinName": "Astilbe japonica 'Europa'"
+    },
+    {
+      "id": "plant-0d0d6c85274665",
+      "latinName": "Euphorbia palustris"
+    },
+    {
+      "id": "plant-5d6b0d0a028bca",
+      "latinName": "Hibiscus Carousel Ghost"
+    },
+    {
+      "id": "plant-3da457b71894cb",
+      "latinName": "Hibiscus moscheutos"
+    },
+    {
+      "id": "plant-a673ae8c07c8a4",
+      "latinName": "Persicaria bistorta"
+    },
+    {
+      "id": "plant-f7f490785ef2e3",
+      "latinName": "Salvia x sylvestris 'Mainacht'"
+    },
+    {
+      "id": "plant-9c6500500727f1",
+      "latinName": "Sedum makinoi"
+    },
+    {
+      "id": "plant-1b5175e2a2f097",
+      "latinName": "Vinca minor ralph shugert"
+    }
+  ],
+  "scope": "Isključivo biljke iz ponuda/upita; isključivo 22 rasadnika sa rukopisnog spiska.",
+  "updatedAt": "2026-11-06",
+  "sourcePolicy": "Kupčeve ponude dokazuju nazive biljaka. Privatne cene, kontakti i dokumenti nisu deo javnog paketa.",
+  "seedExclusions": [
+    {
+      "sourceId": "src-19d59271fa7a0f",
+      "reason": "Lager-lista nije ponuda; koristi se isključivo za dopunu već odobrenih biljaka."
+    }
+  ],
+  "localPhotos": 719,
+  "unavailablePhotoUrls": 0,
+  "nameCorrections": [
+    {
+      "sourceSpelling": "Abies nordmaniana",
+      "canonicalName": "Abies nordmanniana",
+      "reference": "https://www.vivainord.it/varietà/abies-nordmanniana/"
+    }
+  ]
+}

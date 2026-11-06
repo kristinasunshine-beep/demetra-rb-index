@@ -1,0 +1,23 @@
+{
+  "date": "2026-11-06",
+  "scope": "private_offer_only",
+  "plants": 619,
+  "nurseries": 22,
+  "catalogueRecords": 3250,
+  "localPhotos": 719,
+  "publicPriceSources": 31,
+  "publicPriceProductUrls": 19,
+  "unitTestsPassed": 26,
+  "cachedSourceChecksPassed": 31,
+  "liveSourceChecksPassed": 3,
+  "liveSourceChecksNote": "Po jedan javni GET za svaki od tri adaptera; podaci paketa nisu prepisivani testom.",
+  "browserChecks": [
+    "Učitavanje stranice iz samostalnog index.html",
+    "Pet predloga za A",
+    "ACER se prikazuje kao Acer",
+    "Otvaranje kartice Abies nordmanniana",
+    "Ispravna lokalna fotografija i 4.200 RSD za odabranu BIOJela varijantu"
+  ],
+  "githubWorkflowExecuted": false,
+  "githubWorkflowNote": "Počinje nakon prenosa paketa u korisnički repozitorijum i podešavanja Pages."
+}
