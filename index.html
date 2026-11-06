@@ -1,0 +1,1510 @@
+<!doctype html>
+<html lang="sr-Latn">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#f4f4ed">
+    <meta name="description" content="Unesite početak latinskog naziva. Pronađite biljku i otvorite njen digitalni zapis.">
+    <title>demetra rb index</title>
+    <link rel="icon" href="data:,">
+    <style>
+:root {
+  --paper: #f7f7f2;
+  --surface: #fff;
+  --ink: #1a3025;
+  --muted: #6f796f;
+  --green: #234d36;
+  --green-deep: #173a29;
+  --soft: #eaf0e5;
+  --softest: #f2f5ed;
+  --line: #e1e5db;
+  --danger: #aa413a;
+  --gold: #a78b4b;
+  --serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--paper);
+  font-synthesis: none;
+  -webkit-font-smoothing: antialiased;
+}
+* { box-sizing: border-box; }
+body { margin: 0; min-width: 280px; }
+button, input, select, textarea { font: inherit; }
+button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+button, select { cursor: pointer; }
+button { color: inherit; }
+a { color: inherit; }
+button { border: 0; }
+button:disabled { cursor: wait; opacity: .6; }
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid #8daa75; outline-offset: 3px; }
+input, select, textarea { min-width: 0; }
+img, svg { display: block; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+.icon { width: 19px; height: 19px; flex: 0 0 auto; fill: none; stroke: currentColor; stroke-width: 1.65; stroke-linecap: round; stroke-linejoin: round; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+.skip-link { position: fixed; top: -60px; left: 16px; z-index: 100; padding: 12px 18px; background: var(--ink); color: white; border-radius: 6px; }
+.skip-link:focus { top: 12px; }
+
+.app-header { background: rgba(255,255,255,.88); border-bottom: 1px solid var(--line); }
+.header-inner { max-width: 1440px; margin: auto; min-height: 96px; padding: 18px 52px; display: flex; align-items: center; gap: 44px; }
+.brand { display: flex; gap: 11px; align-items: center; text-decoration: none; flex-shrink: 0; }
+.brand-mark { background: var(--green-deep); border-radius: 12px; height: 43px; width: 43px; display: grid; place-items: center; }
+.brand-mark svg { width: 34px; height: 34px; stroke: #e9eedf; fill: none; stroke-width: 1.6; stroke-linecap: round; }
+.brand-wordmark { font-size: 24px; font-weight: 600; letter-spacing: -.9px; line-height: 1; }
+.brand-wordmark > span { font-weight: 350; }
+.brand-wordmark small { display: block; font-size: 8px; font-weight: 600; letter-spacing: 2px; margin-top: 8px; color: var(--muted); }
+.main-nav { display: flex; align-items: center; gap: 4px; margin-left: 15px; }
+.nav-item { display: inline-flex; align-items: center; gap: 7px; min-height: 42px; padding: 9px 16px; background: transparent; font-size: 13px; color: var(--muted); white-space: nowrap; border-radius: 7px; font-weight: 500; }
+.nav-item:hover { color: var(--ink); background: var(--softest); }
+.nav-item.active { color: var(--green-deep); background: var(--soft); }
+.nav-count { display: inline-grid; place-items: center; min-width: 18px; height: 18px; padding: 0 4px; border-radius: 5px; background: #e2e6dd; font-size: 10px; }
+.header-actions { display: flex; gap: 10px; margin-left: auto; }
+.button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 42px; padding: 10px 16px; border-radius: 7px; font-size: 12px; font-weight: 550; line-height: 1.4; text-decoration: none; border: 1px solid transparent; transition: background .16s, border-color .16s; }
+.button-primary { background: var(--green); color: #fff; }
+.button-primary:hover { background: var(--green-deep); }
+.button-quiet { background: transparent; border-color: var(--line); }
+.button-quiet:hover { background: var(--softest); border-color: #c9d2c1; }
+.button-soft { background: var(--soft); color: var(--green); }
+.button-soft:hover { background: #dce7d5; }
+.button-danger { background: var(--danger); color: #fff; }
+.button-small { min-height: 34px; padding: 7px 11px; font-size: 11px; }
+.icon-button { width: 36px; height: 36px; border-radius: 7px; display: inline-grid; place-items: center; background: transparent; color: var(--muted); flex: 0 0 auto; }
+.icon-button:hover { background: var(--soft); color: var(--ink); }
+.icon-button.danger:hover { color: var(--danger); background: #faecea; }
+.text-button { padding: 5px 0; background: none; font-size: 12px; color: var(--green); text-underline-offset: 4px; }
+.text-button:hover { text-decoration: underline; }
+
+.workspace { max-width: 1328px; margin: auto; padding: 47px 40px 24px; }
+.page-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 30px; margin-bottom: 32px; }
+.eyebrow { font-size: 9px; letter-spacing: 2.2px; font-weight: 650; color: var(--green); margin: 0 0 12px; }
+h1 { font-family: var(--serif); font-size: clamp(34px,4.1vw,53px); font-weight: 400; line-height: 1.12; letter-spacing: -1.8px; margin: 0; }
+.heading-dot { color: #8da178; }
+.page-description { font-size: 13px; color: var(--muted); line-height: 1.6; margin: 13px 0 0; }
+.heading-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; padding-bottom: 2px; }
+.catalog-summary { display: flex; gap: 30px; }
+.summary-item { min-width: 75px; border-left: 1px solid #d9dfd1; padding-left: 20px; }
+.summary-item strong { font-family: var(--serif); font-size: 27px; font-weight: 400; line-height: 1; }
+.summary-item span { display: block; color: var(--muted); font-size: 10px; margin-top: 7px; }
+.catalog-tools { margin-bottom: 21px; }
+.search-row { display: flex; gap: 13px; }
+.search-wrap { flex: 1; position: relative; min-width: 0; z-index: 5; }
+.search-field { display: flex; align-items: center; position: relative; background: var(--surface); border: 1px solid #d8dfd1; border-radius: 9px; box-shadow: 0 3px 9px #1b3a2303; }
+.search-field:focus-within { border-color: #79966e; box-shadow: 0 0 0 3px #e8eee1; }
+.search-icon { margin-left: 18px; color: #698064; width: 20px; height: 20px; }
+#plant-search { appearance: none; -webkit-appearance: none; border: 0; background: transparent; padding: 17px 46px 17px 13px; width: 100%; height: 58px; font-size: 14px; color: var(--ink); outline: none; }
+#plant-search::-webkit-search-cancel-button { display: none; }
+#plant-search::placeholder { color: #8a9387; font-size: 13px; }
+.clear-search { position: absolute; right: 9px; top: 10px; }
+.nursery-select-wrap { display: flex; align-items: center; padding: 0 17px; gap: 10px; width: 245px; border: 1px solid var(--line); border-radius: 9px; background: var(--surface); color: #74806d; }
+.nursery-select-wrap select { border: 0; background: transparent; width: 100%; height: 56px; font-size: 12px; color: var(--ink); padding-right: 4px; }
+.filter-row { margin-top: 22px; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+.category-filters { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.filter-chip { padding: 8px 16px; min-height: 35px; background: transparent; color: var(--muted); border-radius: 6px; font-size: 11px; border: 1px solid transparent; }
+.filter-chip.active { color: var(--green-deep); background: #e8eddf; border-color: #e0e7d7; font-weight: 600; }
+.filter-chip:hover { background: #eef1e9; }
+.sort-control { display: flex; align-items: center; font-size: 11px; gap: 9px; color: #899082; flex: 0 0 auto; }
+.sort-control select { color: var(--muted); border: 0; background: transparent; padding: 8px 1px; font-size: 11px; }
+.search-popup { position: absolute; z-index: 20; top: calc(100% + 8px); left: 0; right: 0; border: 1px solid #d8e1cf; border-radius: 10px; background: #fff; box-shadow: 0 14px 40px #18352719; overflow: hidden; }
+.suggestions-label { display: flex; justify-content: space-between; padding: 13px 17px 10px; font-size: 10px; color: var(--muted); border-bottom: 1px solid #f0f2ec; }
+.suggestions-list { list-style: none; margin: 0; padding: 5px; }
+.suggestion { display: flex; align-items: center; justify-content: space-between; gap: 15px; border-radius: 6px; padding: 11px 12px; min-height: 48px; cursor: pointer; }
+.suggestion:hover, .suggestion.selected { background: var(--soft); }
+.suggestion-name { font-family: var(--serif); font-size: 19px; }
+.suggestion-meta { color: var(--muted); font-size: 10px; white-space: nowrap; }
+.suggestions-more { width: 100%; text-align: left; padding: 13px 17px; border-top: 1px solid var(--line); background: #f9faf5; font-size: 11px; color: var(--green); }
+.suggestions-empty { margin: 0; padding: 22px 17px; font-size: 12px; color: var(--muted); }
+.results-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 0 0 18px; padding-top: 21px; border-top: 1px solid var(--line); min-height: 40px; }
+.results-heading p { margin: 0; color: #77816f; font-size: 11px; }
+.results-heading strong { color: var(--ink); font-weight: 600; }
+
+.plant-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 23px; }
+.plant-card { position: relative; background: var(--surface); border: 1px solid #e3e7dd; border-radius: 11px; overflow: hidden; transition: transform .18s, box-shadow .18s, border-color .18s; }
+.plant-card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px #233b2410; border-color: #cbd7c1; }
+.plant-card-main { width: 100%; display: block; text-align: left; padding: 0; background: transparent; }
+.plant-picture { height: 186px; display: block; background: #edf1e5; position: relative; overflow: hidden; }
+.plant-picture img { height: 100%; width: 100%; object-fit: cover; }
+.empty-image { height: 100%; min-height: 120px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; background: #edf0e5; color: #9aa98b; }
+.plant-card:nth-child(3n+2) .empty-image { background: #e9eee4; color: #91a38e; }
+.plant-card:nth-child(3n+3) .empty-image { background: #f0efe5; color: #a4a58a; }
+.empty-image svg { height: 63px; width: 63px; fill: none; stroke: currentColor; stroke-width: 1; }
+.empty-image > span { font-size: 9px; letter-spacing: .3px; color: #8a967e; }
+.card-bookmark { position: absolute; top: 13px; right: 13px; width: 32px; height: 32px; background: rgba(255,255,255,.88); border: 1px solid #fff9; border-radius: 7px; color: #738068; display: grid; place-items: center; z-index: 2; }
+.card-bookmark:hover, .card-bookmark.is-saved { background: var(--green); color: #fff; border-color: var(--green); }
+.card-bookmark.is-saved .icon { fill: currentColor; stroke-width: 1; }
+.card-content { display: block; padding: 19px 21px 16px; }
+.card-category-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; gap: 12px; }
+.category-label { color: #839477; font-size: 8px; text-transform: uppercase; letter-spacing: 1.6px; font-weight: 650; }
+.demo-badge { display: inline-flex; width: max-content; align-items: center; color: #8f8c71; background: #f3f1e6; border-radius: 4px; padding: 3px 5px; font-size: 8px; font-family: var(--sans); font-weight: 500; letter-spacing: .7px; text-transform: uppercase; line-height: 1.1; }
+.card-latin { display: block; font-family: var(--serif); font-weight: 400; font-size: 25px; line-height: 1.2; letter-spacing: -.45px; overflow-wrap: anywhere; min-height: 60px; }
+.card-common { display: block; color: #8a9283; font-size: 11px; min-height: 17px; margin: 7px 0 18px; }
+.card-bottom { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid #edf0e8; padding-top: 13px; gap: 10px; }
+.offer-count { display: inline-flex; align-items: center; gap: 6px; color: #748069; font-size: 10px; }
+.offer-count .icon { width: 13px; height: 13px; }
+.card-arrow { color: #6a8259; font-size: 18px; line-height: 1; }
+.nursery-grid { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 22px; }
+.nursery-card { background: #fff; border: 1px solid var(--line); border-radius: 11px; padding: 27px; }
+.nursery-card-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.nursery-avatar { width: 48px; height: 48px; background: var(--soft); border-radius: 11px; display: grid; place-items: center; color: #6f875a; font-family: var(--serif); font-size: 24px; }
+.nursery-card h2 { font-family: var(--serif); font-size: 27px; line-height: 1.2; margin: 19px 0 7px; font-weight: 400; }
+.nursery-country { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--muted); margin: 0 0 20px; }
+.nursery-country .icon { width: 13px; height: 13px; }
+.nursery-contact { color: var(--muted); font-size: 12px; line-height: 1.7; margin: 14px 0 20px; overflow-wrap: anywhere; }
+.nursery-contact a { color: var(--green); text-underline-offset: 3px; }
+.nursery-card-bottom { border-top: 1px solid var(--line); padding-top: 18px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.nursery-card-bottom .text-button { margin-left: auto; }
+.action-icons { display: inline-flex; align-items: center; gap: 2px; }
+.empty-state { background: #fff; border: 1px dashed #d4decb; border-radius: 12px; text-align: center; padding: 60px 25px; max-width: 100%; }
+.empty-state > .icon { margin: 0 auto 20px; width: 37px; height: 37px; color: #8ba076; stroke-width: 1.1; }
+.empty-state h2 { font: 400 29px/1.2 var(--serif); margin: 0 0 12px; }
+.empty-state p { margin: 0 auto 23px; max-width: 430px; font-size: 13px; line-height: 1.65; color: var(--muted); }
+.empty-state-actions { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; }
+.loading-state { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 75px 20px; font-size: 13px; color: var(--muted); }
+.loading-dot { width: 8px; height: 8px; border-radius: 100%; background: #819867; animation: breathe 1.3s infinite; }
+@keyframes breathe { 50% { opacity: .3; } }
+.workspace-footer { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 26px 0 0; margin-top: 35px; border-top: 1px solid var(--line); font-size: 10px; line-height: 1.5; color: #8a9382; }
+.storage-note { display: flex; align-items: center; gap: 8px; max-width: 620px; }
+.status-dot { width: 5px; height: 5px; background: #93a57d; border-radius: 100%; flex-shrink: 0; }
+.footer-links { display: flex; gap: 18px; align-items: center; text-align: right; }
+.footer-links .text-button { font-size: 10px; white-space: nowrap; }
+.demo-note { font-size: 9px; }
+
+.dialog { border: 0; padding: 0; background: #fff; color: var(--ink); box-shadow: 0 20px 80px #112b2d26; }
+.dialog::backdrop { background: rgba(24,39,29,.38); backdrop-filter: blur(3px); }
+.detail-dialog { width: min(870px,100% - 28px); max-width: 870px; height: 100dvh; max-height: 100dvh; margin: 0 0 0 auto; border-radius: 16px 0 0 16px; overflow-y: auto; }
+.dialog-topline { display: flex; align-items: center; justify-content: space-between; gap: 15px; padding: 20px 32px; border-bottom: 1px solid var(--line); background: #fff; }
+.dialog-topline-label { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 10px; letter-spacing: .7px; text-transform: uppercase; }
+.detail-topline { position: sticky; top: 0; z-index: 2; }
+.detail-topline-actions { display: flex; align-items: center; gap: 3px; }
+.detail-hero { padding: 31px 34px 28px; background: linear-gradient(120deg,#fafbf6,#f5f7ed); border-bottom: 1px solid var(--line); }
+.detail-hero .category-label { margin: 0 0 12px; }
+.detail-hero h2 { font-family: var(--serif); font-weight: 400; font-size: clamp(31px,4vw,43px); line-height: 1.1; letter-spacing: -.7px; margin: 0; overflow-wrap: anywhere; }
+.detail-common { font-size: 13px; color: #7a866e; margin: 10px 0 0; }
+.detail-description { font-size: 12px; color: var(--muted); line-height: 1.75; max-width: 660px; margin: 17px 0 0; white-space: pre-wrap; }
+.detail-synonyms { font-size: 11px; color: var(--muted); margin: 12px 0 0; line-height: 1.6; }
+.detail-meta { display: flex; align-items: center; justify-content: space-between; gap: 15px; flex-wrap: wrap; margin-top: 24px; }
+.detail-meta > span { font-size: 11px; color: var(--muted); }
+.detail-body { padding: 27px 34px 38px; }
+.section-label { font-size: 10px; font-weight: 600; letter-spacing: 1.8px; margin: 0 0 20px; color: #6f8163; text-transform: uppercase; }
+.supplier-group { margin-bottom: 30px; }
+.supplier-group:last-child { margin-bottom: 0; }
+.supplier-group-heading { display: flex; align-items: center; justify-content: space-between; gap: 15px; margin: 0 0 12px; }
+.supplier-group-heading h3 { display: flex; align-items: center; gap: 10px; font-size: 15px; font-weight: 550; margin: 0; }
+.supplier-group-heading .icon { color: #7a926b; width: 17px; height: 17px; }
+.supplier-country { color: #8c9583; font-size: 10px; }
+.offer-card { border: 1px solid var(--line); border-radius: 9px; overflow: hidden; margin-top: 10px; }
+.offer-card-body { display: grid; grid-template-columns: 180px minmax(0,1fr); gap: 22px; padding: 18px; }
+.offer-photo { position: relative; border-radius: 6px; overflow: hidden; background: #edf0e5; min-height: 180px; align-self: start; aspect-ratio: 1 / 1.04; }
+.offer-photo img { width: 100%; height: 100%; object-fit: contain; background: #eef1e7; }
+.offer-photo .empty-image { min-height: 180px; padding: 15px; text-align: center; }
+.offer-photo .empty-image > span { max-width: 120px; line-height: 1.6; }
+.image-kind { margin: 7px 0 0; font-size: 9px; color: #8b957e; }
+.offer-topline { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 7px; }
+.availability { font-size: 9px; display: inline-flex; align-items: center; gap: 6px; color: #7c856d; background: #f3f5ed; border-radius: 4px; padding: 5px 7px; }
+.availability::before { content: ""; width: 4px; height: 4px; background: #9ba887; border-radius: 100%; }
+.measurements { display: grid; grid-template-columns: 1fr 1fr; column-gap: 18px; margin: 0; }
+.measurement { border-bottom: 1px solid #eef0e9; padding: 9px 0; min-width: 0; }
+.measurement dt { font-size: 9px; color: #849077; margin-bottom: 4px; }
+.measurement dd { font-size: 12px; margin: 0; color: #394d31; overflow-wrap: anywhere; }
+.measurement dd.missing { color: #9b9f93; font-size: 11px; }
+.offer-price { display: flex; align-items: baseline; flex-wrap: wrap; gap: 7px; margin-top: 14px; }
+.price-caption { font-size: 9px; color: #849077; margin-top: 14px; }
+.price-caption + .offer-price { margin-top: 3px; }
+.icon-button.is-saved { color: var(--green); }
+.icon-button.is-saved .icon { fill: currentColor; stroke-width: 1; }
+.offer-price strong { font-family: var(--sans); font-weight: 400; font-size: 26px; }
+.offer-price small { color: #89917e; font-size: 10px; }
+.offer-footer { background: #fafbf7; border-top: 1px solid #edf0e7; padding: 10px 17px; display: flex; align-items: center; justify-content: space-between; gap: 15px; }
+.offer-source { color: #8b9380; font-size: 9px; line-height: 1.6; overflow-wrap: anywhere; }
+.offer-source strong { color: #6e7c60; font-weight: 500; }
+.offer-footer .icon-button { height: 30px; width: 30px; }
+.offer-footer .icon { height: 15px; width: 15px; }
+.detail-empty { padding: 35px 25px; }
+.editor-dialog, .data-dialog { width: min(660px,100% - 32px); max-width: 660px; max-height: calc(100dvh - 40px); border-radius: 14px; }
+.data-dialog { width: min(720px,100% - 32px); max-width: 720px; }
+.editor-dialog .dialog-topline, .data-dialog .dialog-topline { padding: 20px 26px; }
+.dialog-title { font-family: var(--serif); font-size: 27px; font-weight: 400; margin: 0; }
+.editor-form { padding: 24px 26px 26px; }
+.form-intro { font-size: 12px; line-height: 1.65; color: var(--muted); margin: 0 0 22px; }
+.form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 17px; }
+.form-field { display: block; min-width: 0; }
+.form-field.full { grid-column: 1 / -1; }
+.form-field > span { display: block; font-size: 11px; font-weight: 550; margin-bottom: 7px; color: #526449; }
+.form-field input, .form-field select, .form-field textarea { width: 100%; border: 1px solid #d9e1d1; border-radius: 6px; color: var(--ink); background: #fff; padding: 10px 12px; font-size: 13px; min-height: 41px; }
+.form-field textarea { resize: vertical; min-height: 78px; line-height: 1.6; }
+.form-field input:focus, .form-field textarea:focus, .form-field select:focus { border-color: #8da27b; }
+.form-hint { display: block; font-size: 10px; color: #909983; line-height: 1.6; margin-top: 6px; }
+.form-divider { margin: 23px 0 18px; border-top: 1px solid var(--line); padding-top: 18px; color: #6e835e; font-size: 9px; letter-spacing: 1.8px; text-transform: uppercase; font-weight: 600; }
+.check-label { display: flex; gap: 8px; align-items: center; font-size: 11px; color: #819073; margin-top: 18px; }
+.check-label input { accent-color: var(--green); }
+.form-actions { display: flex; align-items: center; justify-content: flex-end; gap: 10px; border-top: 1px solid var(--line); padding-top: 20px; margin-top: 23px; }
+.form-actions .text-button { margin-right: auto; }
+.form-error { background: #fbefec; color: #a14a40; padding: 10px 13px; margin: 17px 0 0; border-radius: 5px; font-size: 12px; line-height: 1.6; }
+.photo-upload { border: 1px dashed #c9d5be; border-radius: 8px; padding: 17px; background: #f9faf5; }
+.photo-upload-row { display: flex; align-items: center; gap: 15px; }
+.photo-preview { width: 74px; height: 74px; border-radius: 6px; object-fit: contain; background: #e9eee0; flex-shrink: 0; }
+.photo-preview-empty { display: grid; place-items: center; width: 74px; height: 74px; border-radius: 6px; background: #e9eee0; color: #90a07c; flex-shrink: 0; }
+.photo-preview-empty .icon { width: 29px; height: 29px; }
+.photo-controls { min-width: 0; }
+.photo-controls input { display: block; width: 100%; font-size: 10px; color: #7a896a; margin-top: 8px; }
+.photo-controls .text-button { font-size: 10px; }
+.photo-message { font-size: 10px; color: #8b967c; margin: 9px 0 0; }
+.data-content { padding: 24px 26px 26px; }
+.data-lead { font-size: 12px; line-height: 1.75; color: var(--muted); margin: 0 0 22px; }
+.data-section { padding: 21px 0; border-top: 1px solid var(--line); }
+.data-section h3 { font-size: 13px; margin: 0 0 8px; font-weight: 600; }
+.data-section p { font-size: 11px; color: var(--muted); line-height: 1.7; margin: 0 0 14px; }
+.data-buttons { display: flex; flex-wrap: wrap; gap: 9px; align-items: center; }
+.upload-label { cursor: pointer; }
+.data-result { background: #eef3e8; color: #536b40; border-radius: 7px; padding: 15px 17px; margin-top: 15px; font-size: 12px; line-height: 1.7; }
+.data-result.is-error { background: #fbefec; color: #a14a40; }
+.data-result ul { padding-left: 18px; margin: 10px 0 0; font-size: 11px; }
+.csv-template-note { font-size: 10px !important; }
+.confirm-dialog { width: min(430px,100% - 32px); border-radius: 13px; padding: 28px; }
+.confirm-dialog h2 { font-family: var(--serif); font-size: 27px; font-weight: 400; margin: 0 0 13px; }
+.confirm-dialog p { font-size: 12px; line-height: 1.8; color: var(--muted); margin: 0; white-space: pre-line; }
+.confirm-dialog .form-actions { border-top: 0; padding-top: 0; }
+.toast-region { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%); z-index: 100; display: grid; gap: 8px; width: max-content; max-width: calc(100% - 32px); pointer-events: none; }
+.toast { padding: 13px 19px; background: #234632; color: #fff; border: 1px solid #486649; border-radius: 8px; box-shadow: 0 5px 25px #142c1a22; font-size: 12px; line-height: 1.6; animation: toast-in .2s ease; }
+.toast.error { background: #914b41; border-color: #a8655c; }
+@keyframes toast-in { from { transform: translateY(5px); opacity: 0; } }
+.noscript-notice { margin: 25px; padding: 25px; text-align: center; background: #fff; border: 1px solid var(--line); }
+
+@media (min-width:1400px) { .plant-picture { height: 205px; } }
+@media (max-width:1150px) {
+  .header-inner { padding: 18px 30px; gap: 25px; }
+  .main-nav { margin-left: 0; }
+  .nav-item { padding: 9px 12px; }
+  .header-actions .button-quiet { padding: 10px; }
+  .header-actions .button-quiet > span { display: none; }
+  .workspace { padding: 40px 30px 24px; }
+  .plant-grid { gap: 18px; }
+  .plant-picture { height: 170px; }
+  .card-content { padding: 17px; }
+  .card-latin { font-size: 23px; }
+}
+@media (max-width:850px) {
+  .header-inner { flex-wrap: wrap; gap: 15px 20px; padding: 18px 24px 0; }
+  .brand { order: 0; }
+  .header-actions { order: 1; }
+  .main-nav { order: 2; width: 100%; border-top: 1px solid var(--line); padding: 10px 0; gap: 7px; }
+  .nav-item { flex: 1; justify-content: center; }
+  .workspace { padding: 34px 24px 22px; }
+  .page-heading { gap: 20px; }
+  .catalog-summary { gap: 15px; }
+  .summary-item { padding-left: 12px; min-width: 55px; }
+  .summary-item strong { font-size: 24px; }
+  .summary-item span { font-size: 9px; }
+  .plant-grid { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 18px; }
+  .plant-picture { height: 180px; }
+  .nursery-select-wrap { width: 205px; }
+  .nursery-grid { gap: 16px; }
+  .nursery-card { padding: 22px; }
+  .filter-chip { padding: 7px 12px; }
+  .sort-control label { display: none; }
+  .workspace-footer { align-items: flex-start; flex-direction: column; gap: 10px; }
+  .footer-links { width: 100%; justify-content: space-between; }
+}
+@media (max-width:600px) {
+  .header-inner { padding: 15px 18px 0; gap: 13px 10px; }
+  .brand-mark { width: 36px; height: 36px; border-radius: 9px; }
+  .brand-mark svg { width: 30px; height: 30px; }
+  .brand { gap: 8px; }
+  .brand-wordmark { font-size: 22px; }
+  .brand-wordmark small { font-size: 6px; letter-spacing: 1.65px; margin-top: 6px; }
+  .header-actions { gap: 6px; }
+  .header-actions .button { min-height: 37px; padding: 9px 11px; font-size: 11px; }
+  .header-actions .button .icon { width: 16px; height: 16px; }
+  .header-actions .button-quiet { padding: 9px; }
+  .main-nav { padding: 8px 0; }
+  .nav-item { font-size: 12px; min-height: 39px; padding: 8px; }
+  .workspace { padding: 30px 18px 20px; }
+  .page-heading { display: block; margin-bottom: 26px; }
+  .eyebrow { font-size: 8px; margin-bottom: 12px; }
+  h1 { font-size: 41px; letter-spacing: -1.4px; }
+  .page-description { font-size: 12px; max-width: 310px; }
+  .heading-actions { margin-top: 20px; }
+  .catalog-summary { gap: 23px; }
+  .summary-item { border-left: 0; padding-left: 0; }
+  .summary-item strong { display: inline; font: 600 12px var(--sans); }
+  .summary-item span { display: inline; font-size: 10px; margin: 0 0 0 5px; }
+  .search-row { flex-direction: column; gap: 10px; }
+  #plant-search { height: 54px; font-size: 16px; }
+  #plant-search::placeholder { font-size: 12px; }
+  .search-icon { margin-left: 15px; width: 18px; height: 18px; }
+  .clear-search { top: 8px; }
+  .nursery-select-wrap { width: 100%; height: 43px; padding: 0 15px; }
+  .nursery-select-wrap select { height: 41px; font-size: 11px; }
+  .nursery-select-wrap .icon { width: 16px; height: 16px; }
+  .filter-row { gap: 10px; margin-top: 16px; flex-wrap: wrap; align-items: center; }
+  .category-filters { gap: 2px; }
+  .filter-chip { padding: 7px 10px; min-height: 32px; font-size: 10px; }
+  .sort-control { margin-left: auto; }
+  .sort-control select { font-size: 10px; }
+  .results-heading { padding-top: 16px; margin-bottom: 16px; }
+  .plant-grid { gap: 13px; }
+  .plant-picture { height: 144px; }
+  .empty-image svg { width: 46px; height: 46px; }
+  .empty-image > span { font-size: 8px; text-align: center; padding: 0 8px; }
+  .card-content { padding: 14px 13px 13px; }
+  .card-category-row { gap: 5px; margin-bottom: 9px; }
+  .category-label { font-size: 7px; letter-spacing: 1px; }
+  .demo-badge { font-size: 6px; padding: 3px 4px; }
+  .card-latin { font-size: 21px; min-height: 50px; }
+  .card-common { font-size: 10px; margin-bottom: 13px; }
+  .card-bottom { padding-top: 11px; gap: 5px; }
+  .offer-count { font-size: 9px; gap: 4px; }
+  .offer-count .icon { width: 11px; height: 11px; }
+  .card-bookmark { width: 29px; height: 29px; top: 9px; right: 9px; }
+  .card-bookmark .icon { width: 16px; height: 16px; }
+  .nursery-grid { grid-template-columns: 1fr; }
+  .empty-state { padding: 43px 20px; }
+  .empty-state h2 { font-size: 27px; }
+  .empty-state p { font-size: 12px; }
+  .detail-dialog { width: 100%; max-width: 100%; border-radius: 0; }
+  .dialog-topline { padding: 14px 18px; }
+  .detail-hero { padding: 25px 22px; }
+  .detail-hero h2 { font-size: 35px; }
+  .detail-body { padding: 24px 18px; }
+  .detail-topline-actions { gap: 0; }
+  .detail-topline-actions .icon-button { width: 33px; height: 33px; }
+  .dialog-topline-label { font-size: 9px; letter-spacing: .4px; }
+  .offer-card-body { grid-template-columns: 120px minmax(0,1fr); gap: 15px; padding: 14px; }
+  .offer-photo { min-height: 140px; aspect-ratio: 1 / 1.2; }
+  .offer-photo .empty-image { min-height: 140px; padding: 10px; }
+  .offer-photo .empty-image > span { font-size: 8px; padding: 0; }
+  .offer-photo .empty-image svg { width: 37px; height: 37px; }
+  .measurements { column-gap: 12px; }
+  .measurement dd { font-size: 11px; }
+  .measurement dt { font-size: 8px; }
+  .measurement { padding: 8px 0; }
+  .offer-price strong { font-size: 23px; }
+  .offer-topline { flex-wrap: wrap; gap: 5px; margin-bottom: 3px; }
+  .availability { font-size: 8px; }
+  .offer-footer { padding: 9px 12px; gap: 9px; }
+  .supplier-group-heading h3 { font-size: 13px; }
+  .supplier-country { font-size: 9px; }
+  .editor-dialog, .data-dialog { width: calc(100% - 20px); max-height: calc(100dvh - 24px); border-radius: 10px; }
+  .editor-dialog .dialog-topline, .data-dialog .dialog-topline { padding: 16px 19px; }
+  .dialog-title { font-size: 25px; }
+  .editor-form, .data-content { padding: 21px 19px; }
+  .form-grid { gap: 15px; }
+  .form-field input, .form-field select, .form-field textarea { font-size: 16px; }
+  .form-field > span { font-size: 10px; }
+  .form-actions .button { padding: 10px 13px; font-size: 11px; }
+  .suggestion-name { font-size: 18px; }
+  .suggestion-meta { font-size: 9px; }
+  .suggestions-label { font-size: 9px; }
+}
+@media (max-width:380px) {
+  .header-inner { padding: 13px 13px 0; }
+  .header-actions .button-primary { padding: 9px; }
+  .header-actions .button-primary > span { font-size: 10px; }
+  .header-actions .button-primary .icon { display: none; }
+  .workspace { padding-left: 14px; padding-right: 14px; }
+  .brand-wordmark { font-size: 20px; }
+  .brand-mark { width: 33px; height: 33px; }
+  h1 { font-size: 36px; }
+  .plant-grid { grid-template-columns: 1fr; gap: 18px; }
+  .plant-picture { height: 178px; }
+  .card-content { padding: 17px 19px; }
+  .card-latin { font-size: 26px; min-height: 0; }
+  .card-common { font-size: 11px; }
+  .category-label { font-size: 8px; }
+  .demo-badge { font-size: 7px; }
+  .offer-count { font-size: 10px; }
+  .offer-card-body { grid-template-columns: 1fr; }
+  .offer-photo { aspect-ratio: auto; height: 170px; }
+  .offer-photo .empty-image { min-height: 170px; }
+  .form-grid { grid-template-columns: 1fr; }
+  .form-field.full { grid-column: auto; }
+  .photo-upload-row { gap: 10px; }
+  .photo-preview, .photo-preview-empty { width: 55px; height: 55px; }
+  .filter-chip { padding: 7px 9px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+/* Search-first interface. The record is the destination; administration stays secondary. */
+:root { --paper:#f4f4ed; --ink:#17281d; --green:#243e2c; --green-deep:#17281d; --line:#d8ddd0; --accent:#d7f269; }
+body { background:var(--paper); }
+.app-header { background:var(--paper); border-bottom:1px solid #d0d7c9; }
+.header-inner { max-width:1440px; min-height:100px; padding:22px 56px; gap:38px; }
+.brand-mark { background:var(--ink); border-radius:3px; }
+.brand-mark svg { stroke:var(--accent); }
+.brand-wordmark { font-size:28px; letter-spacing:-1.5px; }
+.brand-wordmark small { font-size:7px; letter-spacing:1.8px; margin-top:9px; }
+.main-nav { margin-left:auto; gap:22px; }
+.nav-item { padding:9px 0; border-radius:0; background:transparent; font-size:12px; }
+.nav-item.active { background:transparent; color:var(--ink); box-shadow:0 1px var(--ink); }
+.nav-item:hover { background:transparent; color:var(--ink); }
+.nav-count { background:#e3e8da; border-radius:2px; }
+.workspace-menu { position:relative; margin-left:16px; z-index:40; }
+.workspace-menu summary { list-style:none; display:flex; align-items:center; gap:28px; min-height:42px; border:1px solid #bec8b6; padding:10px 15px; cursor:pointer; font-size:11px; }
+.workspace-menu summary::-webkit-details-marker { display:none; }
+.workspace-menu summary span { font-size:21px; line-height:1; font-weight:300; }
+.workspace-menu[open] summary { background:var(--ink); color:#fff; border-color:var(--ink); }
+.workspace-menu-panel { position:absolute; top:calc(100% + 8px); right:0; background:#fff; border:1px solid var(--line); padding:13px; min-width:240px; box-shadow:0 14px 40px #152a1920; }
+.menu-caption { display:block; color:var(--muted); font-size:8px; letter-spacing:1.5px; margin:5px 10px 12px; }
+.workspace-menu-panel button { display:flex; justify-content:space-between; align-items:center; width:100%; padding:13px 10px; background:transparent; text-align:left; font-size:12px; }
+.workspace-menu-panel button:hover { background:var(--soft); }
+.search-only { display:none; }
+body[data-view="search"] .search-only { display:block; }
+body[data-view="search"] .workspace { max-width:1440px; min-height:calc(100dvh - 101px); display:flex; flex-direction:column; padding:42px 56px 23px; }
+body[data-view="search"] #page-heading, body[data-view="search"] #results-heading, body[data-view="search"] #view-content, body[data-view="search"] .nursery-select-wrap, body[data-view="search"] .filter-row { display:none!important; }
+body[data-view="search"] .search-intro { display:grid; grid-template-columns:minmax(0,1fr) 310px; align-items:center; gap:50px; margin-bottom:34px; }
+.index-eyebrow { display:flex; align-items:center; gap:11px; font-size:9px; letter-spacing:2.2px; font-weight:600; margin:0 0 22px; }
+.index-dot { width:7px; height:7px; background:var(--ink); }
+.index-edition { margin-left:12px; color:#87907b; }
+.search-intro h1 { font-family:Arial,Helvetica,sans-serif; font-size:clamp(58px,6.8vw,91px); font-weight:700; letter-spacing:-5px; line-height:.99; }
+.search-intro h1 em { font-family:Georgia,'Times New Roman',serif; font-weight:400; letter-spacing:-4px; color:#34482d; }
+.search-lead { margin:23px 0 0; color:#687361; font-size:12px; line-height:1.75; }
+.specimen-study { width:100%; max-width:310px; margin:0 0 0 auto; }
+.specimen-study svg { display:block; width:100%; }
+body[data-view="search"] .catalog-tools { margin:0; }
+body[data-view="search"] .search-brow { display:flex; justify-content:space-between; align-items:center; gap:15px; margin-bottom:12px; font-size:9px; letter-spacing:1.6px; font-weight:600; color:#536248; }
+.search-brow > span { font:italic 15px Georgia,serif; letter-spacing:0; color:#7c866e; }
+.search-brow > span > span { font-size:12px; margin:0 8px; color:#a3ad96; }
+body[data-view="search"] .search-field { border:1.5px solid var(--ink); border-radius:2px; background:#fffef9; box-shadow:5px 5px 0 #dfe6d2; transition:box-shadow .2s; }
+body[data-view="search"] .search-field:focus-within { box-shadow:5px 5px 0 var(--accent); border-color:var(--ink); }
+body[data-view="search"] .search-icon { width:34px; height:34px; margin-left:29px; color:#526046; stroke-width:1.3; flex:0 0 auto; }
+body[data-view="search"] #plant-search { font-family:Georgia,'Times New Roman',serif; font-size:clamp(25px,3.2vw,43px); font-style:italic; font-weight:400; height:118px; padding:22px 60px 22px 25px; letter-spacing:-1px; }
+body[data-view="search"] #plant-search::placeholder { font-family:inherit; font-size:inherit; color:#9aa18e; letter-spacing:-1px; }
+body[data-view="search"] .search-go { display:grid; place-items:center; width:92px; height:92px; margin:12px; background:var(--accent); color:var(--ink); flex:0 0 auto; border:1px solid transparent; }
+.search-go:hover { background:#c7e750; }
+.search-go svg { width:40px; height:40px; fill:none; stroke:currentColor; stroke-width:1.5; }
+body[data-view="search"] .clear-search { right:125px; top:40px; }
+body[data-view="search"] .search-popup { border:1px solid var(--ink); border-radius:2px; top:calc(100% + 12px); box-shadow:5px 5px 0 #dfe6d2; max-height:55dvh; overflow:auto; }
+body[data-view="search"] .suggestions-label { font-size:9px; letter-spacing:1.1px; padding:14px 24px; background:#f5f6ed; }
+body[data-view="search"] .suggestions-list { padding:0; }
+body[data-view="search"] .suggestion { min-height:62px; border-radius:0; padding:13px 24px; border-bottom:1px solid #e6e9df; }
+body[data-view="search"] .suggestion:last-child { border-bottom:0; }
+body[data-view="search"] .suggestion:hover, body[data-view="search"] .suggestion.selected { background:var(--accent); }
+body[data-view="search"] .suggestion-name { font-family:Georgia,serif; font-size:24px; font-style:italic; }
+body[data-view="search"] .suggestion-meta { color:#57684c; font-size:11px; }
+body[data-view="search"] .search-context { margin-top:18px; }
+.search-guidance { display:flex; align-items:center; justify-content:space-between; gap:20px; }
+.search-guidance p { margin:0; font-size:11px; line-height:1.65; color:#6e7863; }
+.keyboard-tip { display:flex; align-items:center; gap:5px; font-size:9px; color:#7c866f; white-space:nowrap; }
+.keyboard-tip kbd { display:inline-grid; place-items:center; min-width:21px; height:21px; border:1px solid #cfd6c3; background:#f9faf3; font:11px var(--sans); border-radius:3px; }
+.keyboard-tip kbd:last-child { margin-left:9px; }
+.sample-searches { display:flex; align-items:center; flex-wrap:wrap; gap:10px 23px; margin-top:29px; }
+.sample-searches > span { font-size:8px; letter-spacing:1.5px; color:#87917b; }
+.sample-searches button { display:flex; align-items:center; gap:19px; background:transparent; padding:7px 0; border-bottom:1px solid #cbd4bf; color:#405433; }
+.sample-searches button i { font:italic 15px Georgia,serif; }
+.sample-searches button > span { font-size:14px; color:#7d916d; }
+.sample-searches button:hover { border-color:var(--ink); color:var(--ink); }
+.prototype-note { display:flex; align-items:center; gap:7px; margin:22px 0 0; font-size:9px; color:#919985; }
+.prototype-note > span { font-size:16px; }
+body[data-view="search"] .workspace-footer { margin-top:auto; padding-top:24px; border:0; }
+.workspace-footer { font-size:9px; }
+.workspace-footer .demo-note { display:none; }
+.workspace-footer .text-button { font-size:9px; }
+.dialog::backdrop { background:#0b1c175e; backdrop-filter:blur(5px); }
+.detail-dialog { width:min(1080px,calc(100% - 48px)); max-width:1080px; height:auto; max-height:calc(100dvh - 48px); margin:auto; border-radius:3px; border:1px solid #253a2a; }
+.detail-topline { padding:16px 32px; }
+.detail-hero { background:var(--ink); padding:32px 38px; color:#fafcf4; }
+.detail-hero .category-label { color:#b9d29e; font-size:9px; }
+.detail-hero h2 { font-size:clamp(35px,4.5vw,61px); font-family:Georgia,serif; font-style:italic; letter-spacing:-1.4px; }
+.detail-common { color:#c4d0b8; }
+.detail-description, .detail-synonyms, .detail-meta > span { color:#aeba9f; }
+.detail-hero .button-soft { background:var(--accent); color:var(--ink); border-radius:2px; }
+.detail-body { padding:29px 38px 38px; }
+.offer-card { border-radius:2px; border-color:#d3dcc8; }
+.offer-card-body { grid-template-columns:220px minmax(0,1fr); gap:27px; padding:22px; }
+.offer-photo, .offer-photo .empty-image { min-height:220px; border-radius:1px; }
+.offer-photo .empty-image { background:#f0f3e7; }
+.offer-photo .empty-image svg { width:76px; height:76px; }
+.measurement { padding:11px 0; }
+.measurement dt { font-size:10px; }
+.measurement dd { font-size:14px; }
+.measurement dd.missing { font-size:12px; }
+.offer-price strong { font-size:32px; }
+.price-caption { font-size:10px; }
+.offer-footer { padding:12px 22px; }
+.offer-source { font-size:10px; }
+.supplier-group-heading h3 { font-size:17px; }
+@media (max-width:900px) {
+  .header-inner { padding:20px 32px; gap:22px; }
+  .main-nav { gap:18px; }
+  .workspace-menu { margin-left:0; }
+  .workspace-menu summary { gap:15px; }
+  body[data-view="search"] .workspace { padding:36px 32px 22px; }
+  body[data-view="search"] .search-intro { grid-template-columns:1fr 230px; gap:20px; }
+  .search-intro h1 { font-size:70px; letter-spacing:-3.5px; }
+  .search-intro h1 em { letter-spacing:-3px; }
+  .search-lead { max-width:360px; font-size:11px; }
+  body[data-view="search"] #plant-search { height:106px; }
+  body[data-view="search"] .search-go { height:80px; width:80px; }
+  body[data-view="search"] .clear-search { right:112px; top:34px; }
+  .detail-dialog { width:calc(100% - 30px); max-height:calc(100dvh - 30px); }
+}
+@media (max-width:600px) {
+  .header-inner { min-height:82px; padding:17px 20px; gap:14px; flex-wrap:wrap; }
+  .brand-mark { width:34px; height:34px; border-radius:2px; }
+  .brand-wordmark { font-size:24px; }
+  .brand-wordmark small { font-size:5.7px; letter-spacing:1.2px; margin-top:7px; }
+  .main-nav { order:0; flex-basis:auto; margin:0 0 0 auto; padding:0; gap:13px; }
+  .nav-item { min-height:34px; font-size:10px; }
+  .nav-count { min-width:14px; height:14px; font-size:8px; }
+  .workspace-menu { margin-left:auto; }
+  .workspace-menu summary { min-height:31px; padding:5px 9px; font-size:9px; gap:14px; }
+  .workspace-menu summary span { font-size:17px; }
+  .workspace-menu-panel { min-width:215px; }
+  body[data-view="search"] .workspace { min-height:calc(100dvh - 119px); padding:28px 20px 21px; }
+  body[data-view="search"] .search-intro { position:relative; grid-template-columns:1fr; margin-bottom:28px; }
+  .index-eyebrow { font-size:8px; letter-spacing:1.7px; margin-bottom:23px; }
+  .search-intro h1 { font-size:clamp(51px,11.8vw,70px); letter-spacing:-2.8px; line-height:1.02; }
+  .search-intro h1 em { letter-spacing:-2.8px; }
+  .search-lead { max-width:285px; font-size:10px; margin-top:19px; }
+  .specimen-study { display:none; }
+  body[data-view="search"] .search-brow { font-size:7px; letter-spacing:1.2px; margin-bottom:11px; }
+  .search-brow > span { font-size:12px; }
+  .search-brow > span > span { margin:0 3px; font-size:10px; }
+  body[data-view="search"] .search-field { box-shadow:3px 3px 0 #dfe6d2; }
+  body[data-view="search"] .search-field:focus-within { box-shadow:3px 3px 0 var(--accent); }
+  body[data-view="search"] .search-icon { width:22px; height:22px; margin-left:15px; }
+  body[data-view="search"] #plant-search { height:88px; padding:18px 32px 18px 12px; font-size:clamp(20px,5vw,28px); letter-spacing:-.5px; }
+  body[data-view="search"] #plant-search::placeholder { letter-spacing:-.6px; }
+  body[data-view="search"] .search-go { width:55px; height:66px; margin:9px; }
+  .search-go svg { width:29px; height:29px; }
+  body[data-view="search"] .clear-search { right:77px; top:28px; height:30px; width:28px; }
+  body[data-view="search"] .clear-search .icon { width:16px; }
+  .search-guidance { display:block; }
+  .search-guidance p { font-size:9px; max-width:310px; }
+  .keyboard-tip { display:none; }
+  .sample-searches { gap:7px 18px; margin-top:22px; }
+  .sample-searches > span { width:100%; font-size:7px; margin-bottom:1px; }
+  .sample-searches button { gap:10px; }
+  .sample-searches button i { font-size:13px; }
+  .prototype-note { font-size:8px; margin-top:20px; }
+  body[data-view="search"] .workspace-footer { margin-top:40px; padding-top:19px; border-top:1px solid var(--line); flex-direction:column; align-items:flex-start; gap:9px; }
+  .storage-note { font-size:8px; }
+  body[data-view="search"] .suggestion { min-height:55px; padding:12px 16px; }
+  body[data-view="search"] .suggestion-name { font-size:19px; }
+  body[data-view="search"] .suggestion-meta { font-size:9px; }
+  body[data-view="search"] .suggestions-label { padding:13px 16px; font-size:8px; }
+  .detail-dialog { width:100%; max-width:100%; height:100dvh; max-height:100dvh; margin:0; border-radius:0; border:0; }
+  .detail-topline { padding:14px 16px; }
+  .detail-hero { padding:27px 22px; }
+  .detail-hero h2 { font-size:39px; }
+  .detail-body { padding:24px 18px; }
+  .offer-card-body { grid-template-columns:1fr; padding:17px; gap:18px; }
+  .offer-photo, .offer-photo .empty-image { min-height:170px; height:170px; aspect-ratio:auto; }
+  .offer-photo img { object-fit:contain; }
+  .measurement dd { font-size:13px; }
+  .offer-price strong { font-size:29px; }
+  .offer-footer { padding:10px 16px; }
+  .supplier-group-heading h3 { font-size:15px; }
+}
+
+/* The search field is the visual centerpiece. */
+body[data-view="search"] .workspace { padding-top:68px; }
+body[data-view="search"] .search-intro { grid-template-columns:minmax(0,1fr) 160px; margin-bottom:30px; gap:40px; }
+.index-eyebrow { margin-bottom:18px; }
+.search-intro h1 { font-size:clamp(30px,3.2vw,45px); line-height:1.15; letter-spacing:-1.7px; font-weight:500; }
+.search-intro h1 em { letter-spacing:-1.3px; }
+.search-lead { margin-top:15px; font-size:11px; }
+.specimen-study { max-width:160px; }
+.search-brow .search-field-caption { font:600 9px var(--sans); letter-spacing:1.6px; color:#536248; }
+body[data-view="search"] .search-field { background:#1b3324; border:1px solid #1b3324; border-radius:13px; box-shadow:0 16px 40px #21382315, 0 5px 0 #d7f269; }
+body[data-view="search"] .search-field:focus-within { border-color:#d7f269; box-shadow:0 0 0 3px #d7f26955, 0 18px 45px #2138231a; }
+body[data-view="search"] #plant-search { height:178px; color:#f6f8ed; font-size:clamp(36px,5.1vw,70px); padding:26px 60px 26px 29px; letter-spacing:-2px; }
+body[data-view="search"] #plant-search::placeholder { color:#dce5cf; letter-spacing:-2px; opacity:1; }
+body[data-view="search"] .search-icon { color:#b7cb9b; width:38px; height:38px; margin-left:35px; }
+body[data-view="search"] .search-go { width:144px; height:144px; margin:16px; border-radius:5px; background:#d7f269; }
+body[data-view="search"] .search-go:hover { background:#e5ff84; }
+body[data-view="search"] .search-go svg { width:54px; height:54px; stroke-width:1.1; }
+body[data-view="search"] .clear-search { right:188px; top:71px; color:#dce5cf; }
+body[data-view="search"] .clear-search:hover { color:#fff; background:#ffffff13; }
+body[data-view="search"] .search-context { margin-top:23px; }
+body[data-view="search"] .search-popup { top:calc(100% + 16px); }
+body[data-view="search"] .suggestion { min-height:50px; padding:10px 24px; }
+body[data-view="search"] .suggestion-name { font-size:22px; }
+@media (max-width:900px) {
+  body[data-view="search"] .workspace { padding-top:48px; }
+  body[data-view="search"] .search-intro { grid-template-columns:minmax(0,1fr) 130px; gap:20px; }
+  .search-intro h1 { font-size:35px; letter-spacing:-1.2px; }
+  .search-intro h1 em { letter-spacing:-1px; }
+  body[data-view="search"] #plant-search { height:156px; padding-left:22px; }
+  body[data-view="search"] .search-go { width:126px; height:126px; margin:14px; }
+  body[data-view="search"] .clear-search { right:167px; top:60px; }
+  body[data-view="search"] .search-icon { margin-left:26px; width:31px; height:31px; }
+}
+@media (max-width:600px) {
+  body[data-view="search"] .workspace { padding-top:44px; }
+  body[data-view="search"] .search-intro { grid-template-columns:1fr; margin-bottom:28px; }
+  .search-intro h1 { font-size:clamp(27px,6.8vw,39px); letter-spacing:-1.2px; }
+  .search-intro h1 em { letter-spacing:-1px; }
+  .search-lead { font-size:10px; line-height:1.7; max-width:280px; }
+  .search-brow .search-field-caption { font-size:7px; letter-spacing:1.1px; }
+  body[data-view="search"] .search-field { border-radius:8px; box-shadow:0 10px 24px #21382316, 0 4px 0 #d7f269; }
+  body[data-view="search"] #plant-search { height:124px; font-size:clamp(25px,6.4vw,37px); padding:20px 27px 20px 13px; letter-spacing:-.8px; min-width:0; }
+  body[data-view="search"] #plant-search::placeholder { letter-spacing:-.8px; }
+  body[data-view="search"] .search-icon { width:23px; height:23px; margin-left:18px; }
+  body[data-view="search"] .search-go { width:65px; height:100px; margin:11px; border-radius:3px; }
+  body[data-view="search"] .search-go svg { width:34px; height:34px; }
+  body[data-view="search"] .clear-search { right:85px; top:47px; }
+  body[data-view="search"] .suggestion { min-height:50px; padding:11px 16px; }
+  body[data-view="search"] .suggestion-name { font-size:19px; }
+}
+
+/* Demetra RB Index: geometric type, functional forms, botanical contrast. */
+@font-face { font-family:'Space Grotesk'; src:url('./fonts/SpaceGrotesk.ttf') format('truetype'); font-weight:300 700; font-style:normal; font-display:swap; }
+:root { --sans:'Space Grotesk',Arial,Helvetica,sans-serif; --paper:#f4f2e9; }
+body { font-family:var(--sans); }
+.brand-wordmark { font-family:var(--sans); font-size:31px; font-weight:700; letter-spacing:-1.8px; }
+.brand-wordmark .brand-rb { display:inline-block; vertical-align:top; margin:2px 0 0 8px; font-size:10px; line-height:1; padding:4px 5px; font-weight:600; letter-spacing:0; color:#253a2a; border:1px solid #253a2a; }
+.brand-wordmark small { font-size:6px; letter-spacing:1.3px; }
+.brand-mark { width:46px; height:46px; border-radius:0; }
+.brand-mark svg { width:40px; height:40px; }
+.search-intro h1 { font-family:var(--sans); font-weight:600; font-size:clamp(29px,3.1vw,43px); letter-spacing:-2px; }
+.search-intro h1 em { font-family:var(--sans); font-style:normal; font-weight:400; letter-spacing:-2px; }
+.index-dot { border-radius:100%; background:#d86343; }
+.search-brow > span:not(.search-field-caption) { font-family:var(--sans); font-style:normal; }
+body[data-view="search"] .search-field { border-radius:0; box-shadow:0 7px 0 #d7f269,0 17px 34px #1d302213; }
+body[data-view="search"] #plant-search { font-family:var(--sans); font-style:normal; font-weight:400; font-size:clamp(36px,5.2vw,72px); letter-spacing:-3px; caret-color:#d7f269; }
+body[data-view="search"] #plant-search::placeholder { letter-spacing:-3px; color:#e2e8d4; }
+body[data-view="search"] .search-go { width:138px; height:138px; margin:19px; border-radius:100%; }
+body[data-view="search"] .search-go svg { width:56px; height:56px; stroke-width:1.4; }
+body[data-view="search"] .search-go:hover svg { transform:translate(2px,-2px); }
+body[data-view="search"] .search-popup { border-radius:0; box-shadow:0 8px 0 #dbe1cc; }
+.suggestion-name { font-family:var(--sans); }
+.sample-searches button { border-color:#bfc9ae; }
+.prototype-note { font-family:var(--sans); }
+.detail-hero .button-primary { background:#d7f269; color:#17281d; border-radius:0; }
+.detail-dialog { border-radius:0; }
+@media (max-width:900px) {
+  body[data-view="search"] .search-go { width:120px; height:120px; margin:17px; }
+  .brand-wordmark { font-size:28px; }
+}
+@media (max-width:600px) {
+  .header-inner { gap:12px; }
+  .brand-mark { width:34px; height:34px; }
+  .brand-mark svg { width:31px; height:31px; }
+  .brand-wordmark { font-size:25px; letter-spacing:-1.4px; }
+  .brand-wordmark .brand-rb { margin:0 0 0 6px; font-size:8px; padding:3px 4px; }
+  .brand-wordmark small { font-size:4.8px; letter-spacing:1px; }
+  .search-intro h1, .search-intro h1 em { letter-spacing:-1.5px; }
+  body[data-view="search"] #plant-search { font-size:clamp(25px,6.5vw,38px); letter-spacing:-1.2px; }
+  body[data-view="search"] #plant-search::placeholder { letter-spacing:-1.2px; }
+  body[data-view="search"] .search-go { width:70px; height:70px; margin:13px; }
+  body[data-view="search"] .search-go svg { width:32px; height:32px; }
+  body[data-view="search"] .clear-search { right:97px; }
+}
+@media (max-width:600px) {
+  .header-inner { gap:10px 12px; padding-bottom:11px; }
+  .workspace-menu { order:1; margin-left:auto; }
+  .main-nav { order:2; width:100%; flex-basis:100%; border-top:0; gap:24px; justify-content:flex-start; }
+  .nav-item { flex:0 0 auto; min-height:28px; padding:4px 0; }
+}
+
+/* Official Demetra RB symbol with the complete platform name. */
+.official-brand-mark { width:48px; height:48px; object-fit:contain; flex:0 0 auto; }
+.brand-wordmark { font-size:29px; font-weight:600; letter-spacing:-1.5px; line-height:1.08; }
+.brand-wordmark small { font-size:6px; letter-spacing:2px; margin-top:8px; }
+.index-dot { background:#d92528; }
+@media (max-width:900px) {
+  .brand-wordmark { font-size:26px; }
+  .official-brand-mark { width:42px; height:42px; }
+}
+@media (max-width:600px) {
+  .brand { width:100%; gap:10px; }
+  .brand-wordmark { font-size:25px; letter-spacing:-1.3px; }
+  .brand-wordmark small { font-size:5.4px; letter-spacing:1.7px; }
+  .official-brand-mark { width:38px; height:38px; }
+  .main-nav { order:1; flex-basis:auto; width:auto; margin:0; gap:20px; }
+  .workspace-menu { order:2; margin-left:auto; }
+}
+
+/* Requested changes only: text name, no logo, a small arrow without a circle. */
+.brand-wordmark{font-size:29px;font-weight:600;letter-spacing:-1.5px}
+.brand{gap:0}
+body[data-view="search"] .search-go{width:58px;height:58px;margin:32px;background:transparent;color:var(--accent);border-radius:0}
+body[data-view="search"] .search-go:hover{background:transparent;color:#f5f8ed}
+body[data-view="search"] .search-go svg{width:36px;height:36px;stroke-width:1.35}
+body[data-view="search"] .clear-search{right:125px}
+.search-status.is-error{position:static;width:auto;height:auto;padding:12px 0;margin:16px 0 0;overflow:visible;clip:auto;white-space:normal;color:#994537;font-size:14px;line-height:1.6}
+@media(max-width:900px){body[data-view="search"] .search-go{width:50px;height:50px;margin:25px}body[data-view="search"] .search-go svg{width:32px;height:32px}body[data-view="search"] .clear-search{right:108px}}
+@media(max-width:600px){.header-inner{min-height:82px;padding:20px}.brand-wordmark{font-size:26px}body[data-view="search"] .search-go{width:35px;height:35px;margin:13px}body[data-view="search"] .search-go svg{width:26px;height:26px}body[data-view="search"] .clear-search{right:64px}}
+
+/* Borderless search surfaces. */
+body[data-view="search"] .search-field,
+body[data-view="search"] .search-field:focus-within,
+body[data-view="search"] .search-popup {
+  border:0;
+  outline:0;
+  box-shadow:none;
+}
+body[data-view="search"] .search-field:focus-within .search-icon { color:var(--accent); }
+
+/* Fluid glass is applied to the header lettering itself. */
+.brand { gap:10px; }
+.brand-apple { width:14px; height:14px; object-fit:contain; flex:0 0 14px; align-self:flex-start; margin-top:2px; }
+.brand-wordmark { font-size:18px; letter-spacing:-.9px; }
+.brand-wordmark > .brand-title { display:inline-block; font-weight:inherit; }
+.header-glass-text {
+  --glass-rise:-1px;
+  --glass-tilt:-.6deg;
+  transform-origin:left center;
+}
+@supports ((background-clip:text) or (-webkit-background-clip:text)) {
+  .header-glass-text {
+    background-image:linear-gradient(110deg,#17281d 18%,#355541 33%,#6e8b7a 42%,#a0b5a8 46%,#557663 50%,#253e2d 60%,#17281d 78%);
+    background-size:280% 100%;
+    background-position:100% 50%;
+    background-clip:text;
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    text-shadow:0 1px 1px #fafff51a;
+    animation:header-glass-light 28s ease-in-out infinite,header-glass-wave 36s ease-in-out infinite;
+  }
+  .brand-wordmark small.header-glass-text {
+    --glass-rise:-.4px;
+    --glass-tilt:.35deg;
+    animation-delay:-2.6s,-4.8s;
+  }
+}
+@keyframes header-glass-light {
+  0%,8%,100% { background-position:100% 50%; }
+  48%,60% { background-position:0% 50%; }
+}
+@keyframes header-glass-wave {
+  0%,100% { transform:translateY(0) skewX(0); }
+  50% { transform:translateY(var(--glass-rise)) skewX(var(--glass-tilt)); }
+}
+@media(prefers-reduced-motion:reduce) {
+  .header-glass-text {
+    background:none;
+    -webkit-text-fill-color:currentColor;
+    text-shadow:none;
+    transform:none;
+  }
+}
+#plant-dialog { border:0; }
+
+/* One light pulse follows the crown, trunk and base, then returns to the crown. */
+.specimen-pulse use {
+  stroke-dasharray:3.5 96.5;
+  stroke-dashoffset:100;
+  animation:specimen-light-pulse 7s linear infinite;
+}
+.specimen-pulse-halo { opacity:.85; }
+@keyframes specimen-light-pulse {
+  from { stroke-dashoffset:100; }
+  to { stroke-dashoffset:0; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .specimen-pulse { display:none; }
+}
+
+    </style>
+  </head>
+  <body data-view="search">
+    <a class="skip-link" href="#main">Pređi na sadržaj</a>
+    <header class="app-header">
+      <div class="header-inner">
+        <a class="brand" href="#search" data-action="navigate" data-view="search" aria-label="Demetra RB Index početna">
+          <img class="brand-apple" src="./assets/demetra-rb-favicon-original.png" width="14" height="14" alt="" aria-hidden="true">
+          <span class="brand-wordmark"><span class="brand-title header-glass-text">demetra rb index</span><small class="header-glass-text">DIGITALNI REGISTAR BILJAKA</small></span>
+        </a>
+      </div>
+    </header>
+
+    <main id="main" class="workspace">
+      <section id="search-intro" class="search-intro search-only" aria-labelledby="search-heading">
+        <div class="search-intro-copy">
+          <p class="index-eyebrow"><span class="index-dot" aria-hidden="true"></span> BOTANIČKI INDEKS <span class="index-edition">/ 01</span></p>
+          <h1 id="search-heading">Jedno ime. <em>Cela biljka.</em></h1>
+          <p class="search-lead">Fotografije, dimenzije i nabavne cene u digitalnoj kartici biljke.</p>
+        </div>
+        <figure class="specimen-study" aria-hidden="true">
+          <svg viewBox="0 0 340 310" fill="none">
+            <defs>
+              <path id="specimen-pulse-track" d="M171 37V268H132H210H171V37" pathLength="100"/>
+              <filter id="specimen-pulse-glow" x="110" y="15" width="122" height="275" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feGaussianBlur stdDeviation="3"/>
+              </filter>
+            </defs>
+            <path d="M32 272H310M171 21V287" stroke="#aeb8a2" stroke-width="1"/>
+            <circle cx="171" cy="136" r="99" fill="#d7f269"/>
+            <path d="M171 37a99 99 0 0 0 0 198Z" fill="#243a2a"/>
+            <path d="M171 136v136" stroke="#17281d" stroke-width="13"/>
+            <path d="m171 207 59-58" stroke="#000000" stroke-width="6"/>
+            <path d="M171 179l-54-54" stroke="#f4f4ed" stroke-width="2"/>
+            <rect x="128" y="264" width="86" height="8" fill="#17281d"/>
+            <g class="specimen-pulse" fill="none" stroke-linecap="round" pointer-events="none">
+              <use href="#specimen-pulse-track" class="specimen-pulse-halo" stroke="#edffb7" stroke-width="12" filter="url(#specimen-pulse-glow)"/>
+              <use href="#specimen-pulse-track" class="specimen-pulse-core" stroke="#fcfff1" stroke-width="4"/>
+            </g>
+            <path d="M32 29h23M43.5 17.5v23" stroke="#263b2c"/>
+            <text x="60" y="302" fill="#64705d" font-size="10" letter-spacing="2" font-family="Arial,sans-serif">PRIRODA × STRUKTURA</text>
+          </svg>
+        </figure>
+      </section>
+
+      <section class="page-heading" id="page-heading" hidden>
+        <div>
+          <p class="eyebrow" id="page-eyebrow">BILJKE I NJIHOVE PONUDE</p>
+          <h1 id="page-title">Katalog biljaka<span class="heading-dot">.</span></h1>
+          <p class="page-description" id="page-description">Pronađite biljku. Pregledajte dimenzije i ponude rasadnika.</p>
+        </div>
+        <div id="heading-actions" class="heading-actions"></div>
+      </section>
+
+      <section id="catalog-tools" class="catalog-tools" aria-label="Pretraga i filteri">
+        <div class="search-brow search-only"><span class="search-field-caption">POČNITE LATINSKIM NAZIVOM</span><span>A <span aria-hidden="true">→</span> Ac <span aria-hidden="true">→</span> Acer…</span></div>
+        <div class="search-row">
+          <div class="search-wrap">
+            <div class="search-field">
+              <svg class="icon search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
+              <label class="sr-only" for="plant-search">Pretražite po latinskom nazivu</label>
+              <input id="plant-search" type="search" autocomplete="off" spellcheck="false" placeholder="Latinski naziv…" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="search-options" aria-describedby="search-help">
+              <button id="clear-search" type="button" class="icon-button clear-search" data-action="clear-search" aria-label="Obriši pretragu" hidden><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></button>
+              <button id="search-go" type="button" class="search-go search-only" data-action="search-go" aria-label="Pronađi biljku"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M8 31 31 8M9 8h22v22"/></svg></button>
+            </div>
+            <div id="search-popup" class="search-popup" hidden></div>
+          </div>
+          <div class="nursery-select-wrap">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11 12 3l9 8M5 9v12h14V9M9 21v-7h6v7"/></svg>
+            <label class="sr-only" for="nursery-filter">Filtriraj prema rasadniku</label>
+            <select id="nursery-filter"><option value="">Svi rasadnici</option></select>
+          </div>
+        </div>
+        <div class="filter-row">
+          <div class="category-filters" id="category-filters" aria-label="Kategorije biljaka"></div>
+          <div class="sort-control">
+            <label for="sort-order">Redosled</label>
+            <select id="sort-order">
+              <option value="az">Naziv A–Z</option>
+              <option value="za">Naziv Z–A</option>
+              <option value="offers">Broj ponuda</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section id="search-context" class="search-context search-only" aria-label="Pomoć pri pretrazi">
+        <div class="search-guidance"><p id="search-help">Prvo slovo otvara do pet predloga. Nastavite da kucate i izaberite biljku.</p><span class="keyboard-tip"><kbd>↑</kbd><kbd>↓</kbd> izbor <kbd>↵</kbd> otvori</span></div>
+        <p class="prototype-note"><span aria-hidden="true">◌</span> Prvo izdanje · povezani podaci iz materijala i kataloga rasadnika.</p>
+      </section>
+
+      <p id="search-status" class="search-status sr-only" role="status" aria-live="polite"></p>
+      <div class="results-heading" id="results-heading" hidden>
+        <p id="results-count" role="status" aria-live="polite">Učitavanje kataloga…</p>
+        <button type="button" id="reset-filters" class="text-button" data-action="reset-filters" hidden>Ukloni filtere</button>
+      </div>
+      <section id="view-content" class="view-content" aria-label="Rezultati" hidden>
+        <div class="loading-state"><span class="loading-dot"></span> Pripremamo vaš katalog…</div>
+      </section>
+
+    </main>
+
+    <dialog id="plant-dialog" class="dialog detail-dialog" aria-labelledby="plant-detail-title"><div id="plant-dialog-content"></div></dialog>
+    <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="false"></div>
+    <noscript><p class="noscript-notice">Za korišćenje kataloga potrebno je uključiti JavaScript u pregledaču.</p></noscript>
+    <script type="module">
+// BEGIN CATALOG CORE
+const {validateImport,searchPlants,normalize}=(()=>{
+const MAX_TEXT=4000;
+const MAX_IMAGE_CHARS=4*1024*1024;
+const MAX_TOTAL_IMAGE_CHARS=40*1024*1024;
+function normalize(value) {
+  return String(value ?? '').normalize('NFKD').replace(/[\u0300-\u036f]/g, '')
+    .replace(/[đĐ]/g, 'dj').replace(/[‘’ʼ]/g, "'")
+    .replace(/[‐‑‒–—]/g, '-').replace(/\s+/g, ' ').trim().toLowerCase();
+}
+
+function searchPlants(data, query, { limit = 5 } = {}) {
+  const q = normalize(query);
+  if (!q || !Array.isArray(data?.plants)) return [];
+  const cap = Number.isFinite(Number(limit)) ? Math.max(0, Math.min(10000, Math.floor(Number(limit)))) : 5;
+  return data.plants.map(plant => {
+    const name = normalize(plant.latinName);
+    const aliases = [...(plant.synonyms || []), ...(plant.searchAliases || [])].map(normalize);
+    const rank = name === q ? 0 : name.startsWith(q) ? 1 :
+      aliases.some(alias => alias === q) ? 2 : aliases.some(alias => alias.startsWith(q)) ? 3 : 99;
+    return { plant, rank, name };
+  }).filter(item => item.rank < 99).sort((a, b) => a.rank - b.rank ||
+    (a.name < b.name ? -1 : a.name > b.name ? 1 : String(a.plant.id).localeCompare(String(b.plant.id))))
+    .slice(0, cap).map(item => item.plant);
+}
+
+function isObject(value) { return value !== null && typeof value === 'object' && !Array.isArray(value); }
+
+function textValue(value, label, { required = false, max = MAX_TEXT, fallback = '' } = {}) {
+  if (value === undefined || value === null) value = fallback;
+  if (typeof value !== 'string') throw new Error(`${label}: očekivan je tekst.`);
+  const result = value.trim();
+  if (required && !result) throw new Error(`${label}: obavezno polje je prazno.`);
+  if (result.length > max) throw new Error(`${label}: najviše ${max} znakova.`);
+  if (/\u0000/.test(result)) throw new Error(`${label}: nedozvoljen kontrolni znak.`);
+  return result;
+}
+
+function idValue(value, label) {
+  const id = textValue(value, label, { required: true, max: 128 });
+  if (!/^[a-zA-Z0-9][a-zA-Z0-9_.:-]*$/.test(id)) throw new Error(`${label}: neispravan identifikator.`);
+  return id;
+}
+
+function boolValue(value, label) {
+  if (value === undefined) return false;
+  if (typeof value !== 'boolean') throw new Error(`${label}: očekivana je logička vrednost.`);
+  return value;
+}
+
+function dateValue(value, label) {
+  let result = textValue(value, label, { max: 20 });
+  if (!result) return '';
+  const local = /^(\d{1,2})\.(\d{1,2})\.(\d{4})\.?$/.exec(result);
+  if (local) result = `${local[3]}-${local[2].padStart(2, '0')}-${local[1].padStart(2, '0')}`;
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(result)) throw new Error(`${label}: koristite GGGG-MM-DD ili DD.MM.GGGG.`);
+  const date = new Date(`${result}T00:00:00Z`);
+  if (!Number.isFinite(date.getTime()) || date.toISOString().slice(0, 10) !== result) {
+    throw new Error(`${label}: datum ne postoji.`);
+  }
+  return result;
+}
+
+function safeURL(value, label, { image = false } = {}) {
+  const url = textValue(value, label, { max: image ? MAX_IMAGE_CHARS : 2048 });
+  if (!url) return '';
+  if (image && /^assets\/biljke\/[a-zA-Z0-9_-]+\.(?:jpg|jpeg|png|webp)$/i.test(url)) return url;
+  if (image && /^data:/i.test(url)) {
+    const match = /^data:image\/(png|jpeg|webp);base64,([A-Za-z0-9+/]+={0,2})$/i.exec(url);
+    if (!match || match[2].length % 4 !== 0) throw new Error(`${label}: dozvoljene su PNG, JPEG i WebP slike.`);
+    let head;
+    try { head = globalThis.atob(match[2].slice(0, 48)); }
+    catch { throw new Error(`${label}: neispravni podaci slike.`); }
+    const type = match[1].toLowerCase();
+    const valid = type === 'png' ? head.startsWith('\x89PNG\r\n\x1a\n') :
+      type === 'jpeg' ? head.startsWith('\xff\xd8\xff') :
+        head.startsWith('RIFF') && head.slice(8, 12) === 'WEBP';
+    if (!valid) throw new Error(`${label}: sadržaj ne odgovara tipu slike.`);
+    return url;
+  }
+  if (url.length > 2048) throw new Error(`${label}: URL je predugačak.`);
+  let parsed;
+  try { parsed = new URL(url); } catch { throw new Error(`${label}: potreban je pun HTTP ili HTTPS URL.`); }
+  if (!['http:', 'https:'].includes(parsed.protocol) || parsed.username || parsed.password) {
+    throw new Error(`${label}: dozvoljeni su samo HTTP i HTTPS URL-ovi bez pristupnih podataka.`);
+  }
+  if (image && /\.svgz?$/i.test(parsed.pathname)) throw new Error(`${label}: SVG slike nisu podržane.`);
+  return url;
+}
+
+function priceValue(value, label) {
+  if (value === undefined || value === null || value === '') return null;
+  if (typeof value !== 'number' || !Number.isFinite(value) || value < 0 || value > 1e9) {
+    throw new Error(`${label}: cena mora biti broj između 0 i 1.000.000.000 ili prazna.`);
+  }
+  return value;
+}
+
+function uniqueId(id, seen, label) {
+  if (seen.has(id)) throw new Error(`${label}: dupliran ID „${id}”.`);
+  seen.add(id);
+}
+
+function arrayValue(value, label, max) {
+  if (!Array.isArray(value)) throw new Error(`${label}: očekivana je lista.`);
+  if (value.length > max) throw new Error(`${label}: najviše ${max} zapisa u jednoj lokalnoj bazi.`);
+  return value;
+}
+
+function validateOffer(item, index, plantIds, nurseryIds) {
+  if (!isObject(item)) throw new Error(`Ponuda ${index}: očekivan je objekat.`);
+  const label = `Ponuda ${index}`;
+  const price = priceValue(item.price, `${label}, cena`);
+  const currency = textValue(item.currency, `${label}, valuta`, { max: 3 }).toUpperCase();
+  if ((currency && !/^[A-Z]{3}$/.test(currency)) || (price !== null && !currency)) {
+    throw new Error(`${label}: uz cenu navedite troslovnu valutu, npr. EUR ili RSD.`);
+  }
+  const offer = {
+    id: idValue(item.id, `${label}, ID`),
+    plantId: idValue(item.plantId, `${label}, biljka`),
+    nurseryId: idValue(item.nurseryId, `${label}, rasadnik`),
+    circumference: textValue(item.circumference, `${label}, obim`, { max: 100 }),
+    height: textValue(item.height, `${label}, visina`, { max: 100 }),
+    crownWidth: textValue(item.crownWidth, `${label}, širina krošnje`, { max: 100 }),
+    rootBall: textValue(item.rootBall, `${label}, busen`, { max: 100 }),
+    potSize: textValue(item.potSize, `${label}, saksija`, { max: 100 }),
+    rootType: textValue(item.rootType, `${label}, način isporuke`, { max: 100, fallback: 'Nije navedeno' }),
+    price, currency,
+    unit: textValue(item.unit, `${label}, jedinica`, { max: 30, fallback: 'kom' }),
+    taxStatus: textValue(item.taxStatus, `${label}, PDV`, { max: 100, fallback: 'Nije navedeno' }),
+    availability: textValue(item.availability, `${label}, dostupnost`, { max: 150, fallback: 'U katalogu — proveriti' }),
+    source: textValue(item.source, `${label}, izvor`, { max: 2000 }),
+    sourceDate: dateValue(item.sourceDate, `${label}, datum izvora`),
+    sourceUrl: safeURL(item.sourceUrl, `${label}, link izvora`),
+    sourcePeriod: textValue(item.sourcePeriod, `${label}, period izvora`, { max: 60 }),
+    checkedAt: dateValue(item.checkedAt, `${label}, datum provere`),
+    priceKind: textValue(item.priceKind, `${label}, vrsta cene`, { max: 30 }),
+    priceNote: textValue(item.priceNote, `${label}, napomena o ceni`, { max: 600 }),
+    specification: textValue(item.specification, `${label}, izvorna specifikacija`, { max: 2000 }),
+    image: safeURL(item.image, `${label}, fotografija`, { image: true }),
+    imageSourceUrl: safeURL(item.imageSourceUrl, `${label}, izvor fotografije`),
+    imageKind: textValue(item.imageKind, `${label}, tip fotografije`, { max: 100, fallback: 'Kataloška fotografija' }),
+    demo: boolValue(item.demo, `${label}, demo`)
+  };
+  if (!plantIds.has(offer.plantId)) throw new Error(`${label}: biljka „${offer.plantId}” ne postoji.`);
+  if (!nurseryIds.has(offer.nurseryId)) throw new Error(`${label}: rasadnik „${offer.nurseryId}” ne postoji.`);
+  return offer;
+}
+
+function validateImport(obj) {
+  if (!isObject(obj) || obj.schemaVersion !== 1) {
+    throw new Error('JSON mora biti Demetra RB Index rezervna kopija sa schemaVersion: 1.');
+  }
+  const warnings = [];
+  const plantIds = new Set(), nurseryIds = new Set(), offerIds = new Set();
+  const plants = arrayValue(obj.plants, 'Biljke', 10000).map((item, i) => {
+    if (!isObject(item)) throw new Error(`Biljka ${i + 1}: očekivan je objekat.`);
+    const id = idValue(item.id, `Biljka ${i + 1}, ID`);
+    uniqueId(id, plantIds, 'Biljke');
+    const synonyms = item.synonyms === undefined ? [] : arrayValue(item.synonyms, `Biljka ${i + 1}, sinonimi`, 50);
+    return {
+      id, latinName: textValue(item.latinName, `Biljka ${i + 1}, latinski naziv`, { required: true, max: 240 }),
+      commonName: textValue(item.commonName, `Biljka ${i + 1}, narodni naziv`, { max: 240 }),
+      category: textValue(item.category, `Biljka ${i + 1}, kategorija`, { max: 100 }),
+      description: textValue(item.description, `Biljka ${i + 1}, opis`),
+      synonyms: [...new Set(synonyms.map(value => textValue(value, 'Sinonim', { required: true, max: 240 })))],
+      searchAliases: arrayValue(item.searchAliases ?? [], `Biljka ${i + 1}, nazivi za pretragu`, 50)
+        .map(value => textValue(value, 'Naziv za pretragu', { required: true, max: 240 })),
+      demo: boolValue(item.demo, `Biljka ${i + 1}, demo`)
+    };
+  });
+  const nurseries = arrayValue(obj.nurseries, 'Rasadnici', 5000).map((item, i) => {
+    if (!isObject(item)) throw new Error(`Rasadnik ${i + 1}: očekivan je objekat.`);
+    const id = idValue(item.id, `Rasadnik ${i + 1}, ID`);
+    uniqueId(id, nurseryIds, 'Rasadnici');
+    return {
+      id, name: textValue(item.name, `Rasadnik ${i + 1}, naziv`, { required: true, max: 240 }),
+      country: textValue(item.country, `Rasadnik ${i + 1}, država`, { max: 100 }),
+      website: safeURL(item.website, `Rasadnik ${i + 1}, sajt`),
+      contact: textValue(item.contact, `Rasadnik ${i + 1}, kontakt`, { max: 1000 }),
+      demo: boolValue(item.demo, `Rasadnik ${i + 1}, demo`)
+    };
+  });
+  let imageChars = 0;
+  const offers = arrayValue(obj.offers, 'Ponude', 50000).map((item, i) => {
+    const offer = validateOffer(item, i + 1, plantIds, nurseryIds);
+    uniqueId(offer.id, offerIds, 'Ponude');
+    imageChars += offer.image.startsWith('data:') ? offer.image.length : 0;
+    if (imageChars > MAX_TOTAL_IMAGE_CHARS) throw new Error('Slike u jednoj rezervnoj kopiji prelaze lokalni limit od oko 40 MB.');
+    return offer;
+  });
+  const favorites = [...new Set(arrayValue(obj.favorites ?? [], 'Omiljene biljke', 10000).map((value, i) => {
+    const id = idValue(value, `Omiljena biljka ${i + 1}`);
+    if (!plantIds.has(id)) throw new Error(`Omiljena biljka „${id}” ne postoji u bazi.`);
+    return id;
+  }))];
+  let updatedAt = obj.updatedAt ?? new Date().toISOString();
+  if (typeof updatedAt !== 'string' || !/^\d{4}-\d{2}-\d{2}T/.test(updatedAt) || !Number.isFinite(Date.parse(updatedAt))) {
+    throw new Error('updatedAt: neispravan datum rezervne kopije.');
+  }
+  updatedAt = new Date(updatedAt).toISOString();
+  return { data: { schemaVersion: 1, plants, nurseries, offers, favorites, updatedAt }, warnings };
+}
+
+
+return {validateImport,searchPlants,normalize};
+})();
+// END CATALOG CORE
+
+const $ = (id) => document.getElementById(id);
+const escapeHTML = (value) => String(value ?? '').replace(/[&<>"']/g, (character) => ({
+  '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+}[character]));
+
+const state = {
+  catalog: null,
+  query: '',
+  matches: [],
+  suggestions: [],
+  activeIndex: -1,
+  popupOpen: false,
+  selectedPlantId: null,
+  error: ''
+};
+
+const input = $('plant-search');
+const popup = $('search-popup');
+const status = $('search-status');
+const dialog = $('plant-dialog');
+const closeIcon = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg>';
+
+function freezeDeep(value) {
+  if (value && typeof value === 'object' && !Object.isFrozen(value)) {
+    Object.values(value).forEach(freezeDeep);
+    Object.freeze(value);
+  }
+  return value;
+}
+
+function setStatus(message = '', error = false) {
+  status.textContent = message;
+  status.classList.toggle('is-error', error);
+}
+
+function countLabel(count, one, few, many) {
+  const last = count % 10;
+  const lastTwo = count % 100;
+  const word = last === 1 && lastTwo !== 11 ? one :
+    [2,3,4].includes(last) && ![12,13,14].includes(lastTwo) ? few : many;
+  return count + ' ' + word;
+}
+
+const offerCountLabel = (count) => countLabel(count, 'kataloški zapis', 'kataloška zapisa', 'kataloških zapisa');
+const nurseryCountLabel = (count) => countLabel(count, 'rasadnik', 'rasadnika', 'rasadnika');
+const plantById = (id) => state.catalog?.plants.find((plant) => plant.id === id);
+const nurseryById = (id) => state.catalog?.nurseries.find((nursery) => nursery.id === id);
+const offersFor = (id) => state.catalog.offers.filter((offer) => offer.plantId === id);
+
+function imageURL(value) {
+  if (typeof value !== 'string') return '';
+  if (/^assets\/biljke\/[a-zA-Z0-9_-]+\.(?:jpg|jpeg|png|webp)$/i.test(value)) return new URL(value, document.baseURI).href;
+  if (/^data:image\/(?:png|jpe?g|webp|avif|gif);base64,/i.test(value)) return value;
+  try {
+    const url = new URL(value);
+    return ['https:', 'http:'].includes(url.protocol) ? url.href : '';
+  } catch { return ''; }
+}
+
+function imageMarkup(value, alt) {
+  const src = imageURL(value);
+  return (src ? '<img src="' + escapeHTML(src) + '" alt="' + escapeHTML(alt) + '" loading="lazy" data-catalog-image>' : '') +
+    '<span class="empty-image"' + (src ? ' hidden' : '') + '><span>Fotografija nije dostupna u obrađenom izvoru</span></span>';
+}
+
+function formattedDate(value) {
+  if (!value) return '';
+  const date = new Date(value);
+  return Number.isNaN(date.getTime()) ? String(value) : date.toLocaleDateString('sr-Latn-RS');
+}
+
+function formattedPrice(offer) {
+  if (offer.price === null || offer.price === undefined || offer.price === '') return 'Cena nije navedena';
+  const amount = Number(offer.price);
+  if (!Number.isFinite(amount)) return 'Cena nije navedena';
+  try {
+    return new Intl.NumberFormat('sr-Latn-RS', {
+      style: 'currency', currency: offer.currency || 'EUR', maximumFractionDigits: 2
+    }).format(amount);
+  } catch { return amount.toLocaleString('sr-Latn-RS') + ' ' + (offer.currency || ''); }
+}
+
+function closeSuggestions() {
+  state.popupOpen = false;
+  state.activeIndex = -1;
+  state.suggestions = [];
+  state.matches = [];
+  popup.hidden = true;
+  input.setAttribute('aria-expanded', 'false');
+  input.removeAttribute('aria-activedescendant');
+}
+
+function highlightSuggestion() {
+  popup.querySelectorAll('[role="option"]').forEach((option, index) => {
+    const active = index === state.activeIndex;
+    option.classList.toggle('selected', active);
+    option.setAttribute('aria-selected', String(active));
+  });
+  if (state.activeIndex >= 0) {
+    input.setAttribute('aria-activedescendant', 'suggestion-' + state.activeIndex);
+  } else input.removeAttribute('aria-activedescendant');
+}
+
+function formatSearchQuery(value) {
+  return value.toLowerCase().replace(/\p{L}/u, (letter) => letter.toUpperCase());
+}
+
+function handleSearchInput(event) {
+  if (event.isComposing) return;
+  const value = input.value;
+  const formatted = formatSearchQuery(value);
+  if (formatted !== value) {
+    const { selectionStart, selectionEnd, selectionDirection } = input;
+    input.value = formatted;
+    if (selectionStart !== null && selectionEnd !== null) {
+      input.setSelectionRange(
+        formatSearchQuery(value.slice(0, selectionStart)).length,
+        formatSearchQuery(value.slice(0, selectionEnd)).length,
+        selectionDirection || 'none'
+      );
+    }
+  }
+  updateSearch();
+}
+
+function updateSearch() {
+  state.query = input.value;
+  $('clear-search').hidden = !state.query;
+  if (!state.query.trim()) {
+    closeSuggestions();
+    setStatus(state.error, !!state.error);
+    return;
+  }
+  if (!state.catalog) {
+    closeSuggestions();
+    setStatus(state.error || 'Učitavanje podataka…', !!state.error);
+    return;
+  }
+
+  state.matches = searchPlants(state.catalog, state.query, {
+    limit: Math.max(state.catalog.plants.length, 5)
+  });
+  state.suggestions = state.matches.slice(0, 5);
+  state.activeIndex = -1;
+  state.popupOpen = true;
+  input.removeAttribute('aria-activedescendant');
+  input.setAttribute('aria-expanded', 'true');
+  popup.hidden = false;
+
+  if (!state.suggestions.length) {
+    popup.innerHTML = '<p class="suggestions-empty">Nema biljaka sa ovim početkom naziva.</p><ul id="search-options" role="listbox" aria-label="Predlozi biljaka" hidden></ul>';
+    setStatus('Nema biljaka sa ovim početkom naziva.');
+    return;
+  }
+
+  popup.innerHTML = '<ul id="search-options" class="suggestions-list" role="listbox" aria-label="Predlozi biljaka">' +
+    state.suggestions.map((plant, index) =>
+      '<li id="suggestion-' + index + '" class="suggestion" role="option" aria-selected="false" data-plant-id="' + escapeHTML(plant.id) + '">' +
+      '<span class="suggestion-name">' + escapeHTML(plant.latinName) + '</span>' +
+      '<span class="suggestion-meta">' + escapeHTML(offerCountLabel(offersFor(plant.id).length)) + '</span></li>'
+    ).join('') + '</ul>';
+  setStatus('Prikazano ' + state.suggestions.length + ' od ' + state.matches.length + ' rezultata. Strelicama izaberite biljku, a tasterom Enter otvorite zapis.');
+}
+
+function renderOffer(offer, plant, nursery) {
+  const measurements = [
+    ['Obim stabla', offer.circumference],
+    ['Visina sadnice', offer.height],
+    ['Širina krošnje', offer.crownWidth],
+    ['Veličina busena', offer.rootBall],
+    ['Veličina saksije', offer.potSize],
+    ['Način isporuke', offer.rootType]
+  ];
+  const hasPrice = offer.price !== null && offer.price !== undefined && offer.price !== '';
+  const priceLabel = offer.priceKind === 'historical' ? 'Istorijska kataloška cena' :
+    offer.priceKind === 'public' ? 'Javna kataloška cena' : 'Nabavna cena';
+  const sourceLabel = escapeHTML(offer.source || 'Izvor nije naveden');
+  const sourceLink = offer.sourceUrl ? '<a href="' + escapeHTML(offer.sourceUrl) + '" target="_blank" rel="noopener noreferrer">' + sourceLabel + ' ↗</a>' : sourceLabel;
+  const sourceTiming = [offer.sourceDate ? 'Datum izvora: ' + formattedDate(offer.sourceDate) :
+    offer.sourcePeriod ? 'Period izvora: ' + offer.sourcePeriod : 'Datum objave nije naveden',
+    offer.checkedAt ? 'Provereno: ' + formattedDate(offer.checkedAt) : ''].filter(Boolean).join(' · ');
+  const imageKind = {
+    catalog: 'Kataloška fotografija',
+    specimen: 'Fotografija sadnice',
+    illustration: 'Ilustracija'
+  }[offer.imageKind] || offer.imageKind || 'Vrsta fotografije nije navedena';
+
+  return '<article class="offer-card" data-offer-id="' + escapeHTML(offer.id) + '">' +
+    '<div class="offer-card-body"><div><div class="offer-photo">' +
+    imageMarkup(offer.image, plant.latinName + ' — ' + nursery.name) +
+    '</div>' + (imageURL(offer.image) ? '<p class="image-kind">' + escapeHTML(imageKind) + '</p>' : '') +
+    '</div><div><div class="offer-topline"><span class="availability">' +
+    escapeHTML(offer.availability || 'Dostupnost nije navedena') + '</span>' +
+    (offer.demo || nursery.demo ? '<span class="demo-badge">Demo ponuda</span>' : '') +
+    '</div><dl class="measurements">' +
+    measurements.map(([label, value]) =>
+      '<div class="measurement"><dt>' + label + '</dt><dd' +
+      (!value || /nije|nepoznat/i.test(value) ? ' class="missing"' : '') + '>' +
+      escapeHTML(value || 'Nije navedeno') + '</dd></div>'
+    ).join('') + '</dl><div class="price-caption">' + priceLabel + '</div>' +
+    '<div class="offer-price"><strong>' + escapeHTML(formattedPrice(offer)) +
+    '</strong><small>' + escapeHTML((hasPrice ? '/ ' + (offer.unit || 'kom') + ' · ' : '') +
+      (offer.taxStatus || 'PDV nije naveden')) + '</small></div>' +
+    (offer.priceNote ? '<p class="image-kind">' + escapeHTML(offer.priceNote) + '</p>' : '') + '</div></div>' +
+    '<div class="offer-footer"><div class="offer-source"><strong>' +
+    sourceLink + '</strong><br>' + escapeHTML(sourceTiming) +
+    (offer.specification ? '<br>Specifikacija izvora: ' + escapeHTML(offer.specification) : '') +
+    (offer.imageSourceUrl && offer.imageSourceUrl !== offer.sourceUrl ? '<br><a href="' + escapeHTML(offer.imageSourceUrl) + '" target="_blank" rel="noopener noreferrer">Izvor kataloške fotografije ↗</a>' : '') +
+    '</div></div></article>';
+}
+
+function renderRecord(plant) {
+  const offers = offersFor(plant.id);
+  const nurseryIds = [...new Set(offers.map((offer) => offer.nurseryId))].sort((left, right) =>
+    (nurseryById(left)?.name || '').localeCompare(nurseryById(right)?.name || '')
+  );
+  $('plant-dialog-content').innerHTML =
+    '<div class="dialog-topline detail-topline"><span class="dialog-topline-label">Digitalna kartica biljke</span>' +
+    '<div class="detail-topline-actions"><button type="button" class="icon-button" data-action="close-record" aria-label="Zatvori zapis i vrati se na pretragu">' +
+    closeIcon + '</button></div></div>' +
+    '<div class="detail-hero"><p class="category-label">' +
+    escapeHTML(plant.category || 'Biljka') + (plant.demo ? ' · DEMO ZAPIS' : '') +
+    '</p><h2 id="plant-detail-title">' + escapeHTML(plant.latinName) + '</h2>' +
+    (plant.commonName ? '<p class="detail-common">' + escapeHTML(plant.commonName) + '</p>' : '') +
+    (plant.description ? '<p class="detail-description">' + escapeHTML(plant.description) + '</p>' : '') +
+    (plant.synonyms?.length ? '<p class="detail-synonyms">Drugi nazivi: ' + escapeHTML(plant.synonyms.join(' · ')) + '</p>' : '') +
+    '<div class="detail-meta"><span>' + escapeHTML(nurseryCountLabel(nurseryIds.length) + ' · ' + offerCountLabel(offers.length)) +
+    '</span></div></div><div class="detail-body"><h3 class="section-label">Kataloški zapisi rasadnika</h3>' +
+    (offers.length ? nurseryIds.map((nurseryId) => {
+      const nursery = nurseryById(nurseryId) || { id: nurseryId, name: 'Rasadnik nije naveden', country: '' };
+      const variants = offers.filter((offer) => offer.nurseryId === nurseryId);
+      return '<section class="supplier-group"><div class="supplier-group-heading"><h3>' +
+        escapeHTML(nursery.name) + '</h3><span class="supplier-country">' +
+        escapeHTML(nursery.country || '') + '</span></div>' +
+        renderOffer(variants[0], plant, nursery) +
+        (variants.length > 1 ? '<details class="supplier-variants"><summary>Prikaži ostale varijante (' + (variants.length - 1) + ')</summary>' + variants.slice(1).map((offer) => renderOffer(offer, plant, nursery)).join('') + '</details>' : '') +
+        '</section>';
+    }).join('') : '<div class="empty-state detail-empty"><p>Ponude rasadnika za ovu biljku još nisu unete.</p></div>') +
+    '</div>';
+}
+
+function openRecord(id) {
+  const plant = plantById(id);
+  if (!plant) {
+    closeSuggestions();
+    setStatus('Tražena biljka nije pronađena u katalogu.', true);
+    returnToSearch();
+    return;
+  }
+  state.selectedPlantId = id;
+  input.value = plant.latinName;
+  state.query = plant.latinName;
+  $('clear-search').hidden = false;
+  closeSuggestions();
+  setStatus('');
+  renderRecord(plant);
+  if (!dialog.open) dialog.showModal();
+  document.title = plant.latinName + ' · demetra rb index';
+  history.replaceState(null, '', '#plant=' + encodeURIComponent(id));
+}
+
+function returnToSearch() {
+  state.selectedPlantId = null;
+  if (dialog.open) dialog.close();
+  document.title = 'demetra rb index';
+  history.replaceState(null, '', '#search');
+}
+
+function submitSearch(useActiveSuggestion = true) {
+  if (!input.value.trim()) { input.focus(); return; }
+  if (!state.popupOpen || state.query !== input.value) updateSearch();
+  if (!state.catalog || !state.suggestions.length) { input.focus(); return; }
+  if (useActiveSuggestion && state.activeIndex >= 0) {
+    openRecord(state.suggestions[state.activeIndex].id);
+    return;
+  }
+  const normalized = normalize(state.query);
+  const exact = state.matches.filter((plant) => normalize(plant.latinName) === normalized);
+  if (exact.length === 1) { openRecord(exact[0].id); return; }
+  if (state.matches.length === 1) { openRecord(state.matches[0].id); return; }
+  input.focus({ preventScroll: true });
+  state.activeIndex = 0;
+  highlightSuggestion();
+}
+
+function handleRoute() {
+  if (!state.catalog) return;
+  const hash = location.hash.slice(1);
+  if (hash.startsWith('plant=')) {
+    try { openRecord(decodeURIComponent(hash.slice(6))); }
+    catch { returnToSearch(); }
+  } else {
+    returnToSearch();
+  }
+}
+
+input.addEventListener('input', handleSearchInput);
+input.addEventListener('compositionend', handleSearchInput);
+input.addEventListener('focus', () => {
+  if (!dialog.open && state.query.trim() && !state.popupOpen) updateSearch();
+});
+input.addEventListener('keydown', (event) => {
+  if (event.isComposing) return;
+  if (event.key === 'Escape') {
+    event.preventDefault();
+    closeSuggestions();
+    setStatus('');
+    return;
+  }
+  if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+    if (!state.popupOpen) updateSearch();
+    if (!state.suggestions.length) return;
+    event.preventDefault();
+    state.activeIndex = event.key === 'ArrowDown'
+      ? (state.activeIndex + 1) % state.suggestions.length
+      : state.activeIndex <= 0 ? state.suggestions.length - 1 : state.activeIndex - 1;
+    highlightSuggestion();
+  } else if (event.key === 'Enter') {
+    event.preventDefault();
+    submitSearch();
+  } else if (event.key === 'Tab') closeSuggestions();
+});
+
+$('clear-search').addEventListener('click', () => {
+  input.value = '';
+  state.query = '';
+  $('clear-search').hidden = true;
+  closeSuggestions();
+  setStatus(state.error, !!state.error);
+  input.focus();
+});
+$('search-go').addEventListener('click', () => submitSearch(false));
+popup.addEventListener('click', (event) => {
+  const option = event.target.closest('[data-plant-id]');
+  if (option && popup.contains(option)) openRecord(option.dataset.plantId);
+});
+document.addEventListener('click', (event) => {
+  if (popup.contains(event.target) || event.target === input ||
+      $('clear-search').contains(event.target) || $('search-go').contains(event.target)) return;
+  closeSuggestions();
+});
+dialog.addEventListener('click', (event) => {
+  if (event.target.closest('[data-action="close-record"]')) { dialog.close(); return; }
+  if (event.target !== dialog) return;
+  const bounds = dialog.getBoundingClientRect();
+  if (event.clientX < bounds.left || event.clientX > bounds.right ||
+      event.clientY < bounds.top || event.clientY > bounds.bottom) dialog.close();
+});
+dialog.addEventListener('close', () => {
+  state.selectedPlantId = null;
+  document.title = 'demetra rb index';
+  history.replaceState(null, '', '#search');
+});
+dialog.addEventListener('error', (event) => {
+  const image = event.target;
+  if (image instanceof HTMLImageElement && image.hasAttribute('data-catalog-image')) {
+    image.hidden = true;
+    if (image.nextElementSibling?.classList.contains('empty-image')) image.nextElementSibling.hidden = false;
+  }
+}, true);
+window.addEventListener('hashchange', handleRoute);
+
+async function init() {
+  document.title = 'demetra rb index';
+  input.setAttribute('aria-busy', 'true');
+  try {
+    const [plants, nurseries, offers] = await Promise.all(
+      ['biljke.json', 'rasadnici.json', 'kataloske-stavke.json'].map(async (name) => {
+        const response = await fetch(new URL('./data/' + name, document.baseURI), { cache: 'no-store' });
+        if (!response.ok) throw new Error('Katalog nije dostupan.');
+        return response.json();
+      })
+    );
+    const result = validateImport({ schemaVersion: 1, plants: plants.plants, nurseries: nurseries.nurseries,
+      offers: offers.offers, favorites: [], updatedAt: plants.updatedAt });
+    state.catalog = freezeDeep(result.data);
+    input.removeAttribute('aria-busy');
+    if (input.value.trim()) updateSearch();
+    handleRoute();
+  } catch {
+    state.error = 'Podaci trenutno nisu dostupni. Osvežite stranicu i pokušajte ponovo.';
+    input.removeAttribute('aria-busy');
+    closeSuggestions();
+    setStatus(state.error, true);
+  }
+}
+
+init();
+
+    </script>
+  </body>
+</html>
