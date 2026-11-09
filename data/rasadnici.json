@@ -1,1 +1,269 @@
-{"schemaVersion":1,"updatedAt":"2026-11-06T00:00:00.000Z","nurseries":[{"id":"vannucci-piante","name":"Vannucci Piante","country":"Italija","website":"https://www.vannuccipiante.it/","contact":"","demo":false,"verificationStatus":"verified","catalogueAccess":"public_catalogue_and_quote_portal"},{"id":"innocenti-mangoni","name":"Innocenti & Mangoni Piante","country":"Italija","website":"https://innocentiemangonipiante.it/","contact":"","demo":false,"verificationStatus":"verified","catalogueAccess":"public_botanical_catalogue_professional_portal"},{"id":"vivai-reali","name":"Vivai Reali","country":"Italija","website":"https://www.reali.it/","contact":"","demo":false,"verificationStatus":"verified","catalogueAccess":"public_catalogue"},{"id":"lorberg","name":"Lorberg Quality Plants GmbH & Co. KG","country":"Nemačka","website":"https://www.lorberg.com/","contact":"","demo":false,"verificationStatus":"verified","catalogueAccess":"public_products_and_business_portal"},{"id":"vf-pflanzen-von-falkenhayn","name":"VF-Pflanzen von Falkenhayn","country":"Nemačka","website":"https://www.vf-pflanzen.de/","contact":"","demo":false,"verificationStatus":"verified","catalogueAccess":"public_assortment"},{"id":"smits-boomkwekerij","name":"Smits Boomkwekerij","country":"Holandija","website":"https://smitsbv.nl/","contact":"","demo":false,"verificationStatus":"verified","catalogueAccess":"public_assortment_quote_on_request"},{"id":"volentis","name":"Volentis","country":"Holandija","website":"https://www.volentis.com/","contact":"","demo":false,"verificationStatus":"verified","catalogueAccess":"public_assortment_portal_access_to_check"},{"id":"ebben","name":"Ebben Nurseries","country":"Holandija","website":"https://www.ebben.nl/en/","contact":"","demo":false,"verificationStatus":"verified","catalogueAccess":"public_botanical_reference"},{"id":"combinatie-mauritz","name":"Combinatie Mauritz B.V.","country":"Holandija","website":"https://combinatiemauritz.com/","contact":"","demo":false,"verificationStatus":"verified","catalogueAccess":"public_assortment_stock_list_request_form"},{"id":"arbor","name":"Arbor Nurseries","country":"Belgija","website":"https://www.arbor.be/en","contact":"","demo":false,"verificationStatus":"verified","catalogueAccess":"public_range_reference_no_stock_list_found"},{"id":"willaert","name":"Willaert","country":"Belgija","website":"https://www.willaert.be/","contact":"","demo":false,"verificationStatus":"verified","catalogueAccess":"public_plant_guide"},{"id":"vardar","name":"Vardar Fidancılık","country":"Turska","website":"https://vardarfidancilik.com.tr/","contact":"","demo":false,"verificationStatus":"verified","catalogueAccess":"public_catalogue_plugin_broken_stock_on_request"},{"id":"vivers-planas","name":"Vivers Planas","country":"Španija","website":"https://www.viversplanas.com/","contact":"","demo":false,"verificationStatus":"verified","catalogueAccess":"public_product_catalogue"},{"id":"zelena-plocica","name":"Rasadnik Zelena Pločica","country":"Srbija","website":"https://www.zelenaplocica.rs/","contact":"","demo":false,"verificationStatus":"verified","catalogueAccess":"public_assortment_and_catalogue"},{"id":"topalovic-unresolved","name":"Topalović — izdavač za potvrdu","country":"Srbija","website":"","contact":"","demo":false,"verificationStatus":"ambiguous","catalogueAccess":"multiple_public_candidate_catalogues"},{"id":"rasadnik-zica","name":"Rasadnik Žića","country":"Srbija","website":"https://www.rasadnikzica.co.rs/","contact":"","demo":false,"verificationStatus":"verified","catalogueAccess":"website_suspended"},{"id":"rasadnik-tine-unresolved","name":"Rasadnik Tine — verovatno DOO Rasadnik Tine Veliki Šiljegovac","country":"Srbija","website":"","contact":"","demo":false,"verificationStatus":"unresolved","catalogueAccess":"no_official_catalogue_found"},{"id":"rasadnik-jugoslav-unresolved","name":"Jugoslav / Juga — identitet za potvrdu","country":"Srbija","website":"","contact":"","demo":false,"verificationStatus":"unresolved","catalogueAccess":"not_found"},{"id":"biojela","name":"Rasadnik BIOJela","country":"Srbija","website":"https://biojela.rs/","contact":"","demo":false,"verificationStatus":"verified","catalogueAccess":"public_product_catalogue"},{"id":"omorika-unresolved","name":"Omorika — kandidat Rasadnik Omorika, Sremčica","country":"Srbija","website":"","contact":"","demo":false,"verificationStatus":"unresolved","catalogueAccess":"no_official_taxon_catalogue_found"},{"id":"rasadnik-gold","name":"Rasadnik Gold","country":"Srbija","website":"https://rasadnikgold.com/","contact":"","demo":false,"verificationStatus":"verified","catalogueAccess":"public_assortment_no_prices_in_reviewed_cards"},{"id":"rasadnik-vitorovic","name":"Rasadnik Vitorović","country":"Srbija","website":"https://www.rasadnik-vitorovic.rs/","contact":"","demo":false,"verificationStatus":"verified","catalogueAccess":"public_shop_linked_from_official_site"}]}
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-11-09T10:18:58Z",
+  "nurseries": [
+    {
+      "id": "vannucci-piante",
+      "name": "Vannucci Piante",
+      "country": "Italija",
+      "website": "https://www.vannuccipiante.it/",
+      "contact": "",
+      "demo": false,
+      "verificationStatus": "verified",
+      "catalogueAccess": "public_catalogue_and_quote_portal"
+    },
+    {
+      "id": "innocenti-mangoni",
+      "name": "Innocenti & Mangoni Piante",
+      "country": "Italija",
+      "website": "https://innocentiemangonipiante.it/",
+      "contact": "",
+      "demo": false,
+      "verificationStatus": "verified",
+      "catalogueAccess": "public_botanical_catalogue_professional_portal"
+    },
+    {
+      "id": "vivai-reali",
+      "name": "Vivai Reali",
+      "country": "Italija",
+      "website": "https://www.reali.it/",
+      "contact": "",
+      "demo": false,
+      "verificationStatus": "verified",
+      "catalogueAccess": "public_catalogue"
+    },
+    {
+      "id": "lorberg",
+      "name": "Lorberg Quality Plants GmbH & Co. KG",
+      "country": "Nemačka",
+      "website": "https://www.lorberg.com/",
+      "contact": "",
+      "demo": false,
+      "verificationStatus": "verified",
+      "catalogueAccess": "public_products_and_business_portal"
+    },
+    {
+      "id": "vf-pflanzen-von-falkenhayn",
+      "name": "VF-Pflanzen von Falkenhayn",
+      "country": "Nemačka",
+      "website": "https://www.vf-pflanzen.de/",
+      "contact": "",
+      "demo": false,
+      "verificationStatus": "verified",
+      "catalogueAccess": "public_assortment"
+    },
+    {
+      "id": "smits-boomkwekerij",
+      "name": "Smits Boomkwekerij",
+      "country": "Holandija",
+      "website": "https://smitsbv.nl/",
+      "contact": "",
+      "demo": false,
+      "verificationStatus": "verified",
+      "catalogueAccess": "public_assortment_quote_on_request"
+    },
+    {
+      "id": "volentis",
+      "name": "Volentis",
+      "country": "Holandija",
+      "website": "https://www.volentis.com/",
+      "contact": "",
+      "demo": false,
+      "verificationStatus": "verified",
+      "catalogueAccess": "public_assortment_portal_access_to_check"
+    },
+    {
+      "id": "ebben",
+      "name": "Ebben Nurseries",
+      "country": "Holandija",
+      "website": "https://www.ebben.nl/en/",
+      "contact": "",
+      "demo": false,
+      "verificationStatus": "verified",
+      "catalogueAccess": "public_botanical_reference"
+    },
+    {
+      "id": "combinatie-mauritz",
+      "name": "Combinatie Mauritz B.V.",
+      "country": "Holandija",
+      "website": "https://combinatiemauritz.com/",
+      "contact": "",
+      "demo": false,
+      "verificationStatus": "verified",
+      "catalogueAccess": "public_assortment_stock_list_request_form"
+    },
+    {
+      "id": "arbor",
+      "name": "Arbor Nurseries",
+      "country": "Belgija",
+      "website": "https://www.arbor.be/en",
+      "contact": "",
+      "demo": false,
+      "verificationStatus": "verified",
+      "catalogueAccess": "public_range_reference_no_stock_list_found"
+    },
+    {
+      "id": "willaert",
+      "name": "Willaert",
+      "country": "Belgija",
+      "website": "https://www.willaert.be/",
+      "contact": "",
+      "demo": false,
+      "verificationStatus": "verified",
+      "catalogueAccess": "public_plant_guide"
+    },
+    {
+      "id": "vardar",
+      "name": "Vardar Fidancılık",
+      "country": "Turska",
+      "website": "https://vardarfidancilik.com.tr/",
+      "contact": "",
+      "demo": false,
+      "verificationStatus": "verified",
+      "catalogueAccess": "public_catalogue_plugin_broken_stock_on_request"
+    },
+    {
+      "id": "vivers-planas",
+      "name": "Vivers Planas",
+      "country": "Španija",
+      "website": "https://www.viversplanas.com/",
+      "contact": "",
+      "demo": false,
+      "verificationStatus": "verified",
+      "catalogueAccess": "public_product_catalogue"
+    },
+    {
+      "id": "zelena-plocica",
+      "name": "Rasadnik Zelena Pločica",
+      "country": "Srbija",
+      "website": "https://www.zelenaplocica.rs/",
+      "contact": "",
+      "demo": false,
+      "verificationStatus": "verified",
+      "catalogueAccess": "public_assortment_and_catalogue"
+    },
+    {
+      "id": "topalovic-unresolved",
+      "name": "Topalović — izdavač za potvrdu",
+      "country": "Srbija",
+      "website": "",
+      "contact": "",
+      "demo": false,
+      "verificationStatus": "ambiguous",
+      "catalogueAccess": "multiple_public_candidate_catalogues"
+    },
+    {
+      "id": "rasadnik-zica",
+      "name": "Rasadnik Žića",
+      "country": "Srbija",
+      "website": "https://www.rasadnikzica.co.rs/",
+      "contact": "",
+      "demo": false,
+      "verificationStatus": "verified",
+      "catalogueAccess": "website_suspended"
+    },
+    {
+      "id": "rasadnik-tine-unresolved",
+      "name": "Rasadnik Tine — verovatno DOO Rasadnik Tine Veliki Šiljegovac",
+      "country": "Srbija",
+      "website": "",
+      "contact": "",
+      "demo": false,
+      "verificationStatus": "unresolved",
+      "catalogueAccess": "no_official_catalogue_found"
+    },
+    {
+      "id": "rasadnik-jugoslav-unresolved",
+      "name": "Jugoslav / Juga — identitet za potvrdu",
+      "country": "Srbija",
+      "website": "",
+      "contact": "",
+      "demo": false,
+      "verificationStatus": "unresolved",
+      "catalogueAccess": "not_found"
+    },
+    {
+      "id": "biojela",
+      "name": "Rasadnik BIOJela",
+      "country": "Srbija",
+      "website": "https://biojela.rs/",
+      "contact": "",
+      "demo": false,
+      "verificationStatus": "verified",
+      "catalogueAccess": "public_product_catalogue"
+    },
+    {
+      "id": "omorika-unresolved",
+      "name": "Omorika — kandidat Rasadnik Omorika, Sremčica",
+      "country": "Srbija",
+      "website": "",
+      "contact": "",
+      "demo": false,
+      "verificationStatus": "unresolved",
+      "catalogueAccess": "no_official_taxon_catalogue_found"
+    },
+    {
+      "id": "rasadnik-gold",
+      "name": "Rasadnik Gold",
+      "country": "Srbija",
+      "website": "https://rasadnikgold.com/",
+      "contact": "",
+      "demo": false,
+      "verificationStatus": "verified",
+      "catalogueAccess": "public_assortment_no_prices_in_reviewed_cards"
+    },
+    {
+      "id": "rasadnik-vitorovic",
+      "name": "Rasadnik Vitorović",
+      "country": "Srbija",
+      "website": "https://www.rasadnik-vitorovic.rs/",
+      "contact": "",
+      "demo": false,
+      "verificationStatus": "verified",
+      "catalogueAccess": "public_shop_linked_from_official_site"
+    },
+    {
+      "id": "royal-garden",
+      "name": "Royal Garden",
+      "country": "Srbija",
+      "website": "",
+      "contact": "",
+      "demo": false,
+      "verificationStatus": "verified_in_archive",
+      "catalogueAccess": "archived_supplier_email_and_inquiry",
+      "sourceEvidence": {
+        "sourceId": "src-daba48886fa824",
+        "sourceArchive": "Rasadnici ponude.zip",
+        "sourcePath": "Rasadnici ponude/Srbija/Royal/Ponude/Hibiscus i vinka.jpg",
+        "sourceSha256": "9b8a590ecd8d8644af40334d710cbb099f8b52f775d2a253676fd268b22934a3",
+        "kind": "supplier_email_in_archive",
+        "page": 1,
+        "sourceDate": "2025-09-04",
+        "issuerEvidence": "Odgovor na upit za Demetra RB; pošiljalac sa domena royalgarden.co.rs. Datoteka je u folderu Srbija/Royal/Ponude.",
+        "emailDomain": "royalgarden.co.rs"
+      }
+    },
+    {
+      "id": "lorenz-von-ehren",
+      "name": "Baumschule Lorenz von Ehren",
+      "country": "Nemačka",
+      "website": "https://www.lve.de/",
+      "contact": "",
+      "demo": false,
+      "verificationStatus": "verified_in_archive",
+      "catalogueAccess": "archived_supplier_quotation",
+      "sourceEvidence": {
+        "sourceId": "src-a085c5c732d3f8",
+        "sourceArchive": "Rasadnici ponude.zip",
+        "sourcePath": "Rasadnici ponude/Nemačka/Lorenz von Ehren/Quotation No 42418134.pdf",
+        "sourceSha256": "3516ee9f9f49e919f7ba84806c0ba0ff78ba66463c9d83a2111b2de58702ef47",
+        "kind": "supplier_quotation",
+        "page": 1,
+        "sourceDate": "2025-03-06",
+        "quoteReference": "42418134",
+        "issuerEvidence": "Baumschule Lorenz von Ehren GmbH & Co. KG je naveden u zaglavlju ponude.",
+        "issuer": "Baumschule Lorenz von Ehren GmbH & Co. KG"
+      }
+    }
+  ]
+}
