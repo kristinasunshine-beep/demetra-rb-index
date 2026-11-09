@@ -66,7 +66,7 @@ def row_text(offer):
     return ''
 
 
-def type_markings(text):
+def type_markings(text, nursery_id=''):
     standards = [m.group() for m in STANDARD.finditer(text)]
     multis = [m.group() for m in MULTISTEM.finditer(text)]
     # Explicit negation of a form is not a positive type declaration.
@@ -79,6 +79,18 @@ def type_markings(text):
             values.append(match.group())
         return unique(values)
     standards, multis = positive(STANDARD), positive(MULTISTEM)
+    # Codes are scoped to the suppliers whose source grammar uses them.  Ho
+    # is Dutch hoogstam; HS is the standard-tree form in Volentis size rows.
+    # H is NOT a form globally: for other suppliers H introduces height.
+    if nursery_id in ('combinatie-mauritz', 'volentis'):
+        standards += positive(re.compile(r'(?<![A-Za-z])(?:HO|HS|HST|hoogstam)(?![A-Za-z])', re.I))
+        multis += positive(re.compile(r'(?<![A-Za-z])(?:MS|MRSTAM|meerstammig|meerstam)(?![A-Za-z])', re.I))
+    if nursery_id == 'lorberg':
+        standards += positive(re.compile(r'(?<!\w)(?:H(?=\s+\d+xv)|Hochst\.?|Hochstamm|Sol\s+(?:Baum|Tree))(?![A-Za-z])', re.I))
+    if nursery_id in ('innocenti-mangoni', 'vannucci-piante'):
+        standards += positive(re.compile(r'(?<!\w)(?:ALTO\s+FUSTO|A\.F\.)(?![A-Za-z])', re.I))
+        multis += positive(re.compile(r'(?<!\w)MULTITRONCO(?!\w)', re.I))
+    standards, multis = unique(standards), unique(multis)
     if standards and multis:
         return '', unique(standards + multis), 'conflicting_type_markings'
     if multis:
@@ -156,7 +168,7 @@ def classify_offer(offer, source=None):
     if offer.get('priceKind') == 'public':
         raise ValueError('Public catalogue rows are not archive inputs.')
     text = row_text(offer)
-    form, codes, reason = type_markings(text)
+    form, codes, reason = type_markings(text, offer.get('nurseryId', ''))
     transplant_note, transplant = transplant_markings(text)
     source_evidence = offer.get('sourceEvidence') or {}
     multiple_variants = bool(source_evidence.get('multipleVariants'))
@@ -263,7 +275,7 @@ def build_patch(document, source_index=None, verified_hashes=None):
             'preservedFields': 'Every field other than seedlingType, seedlingTypeCode, transplantNote, dataAccuracyNote and traitsEvidence is unchanged.',
             'rules': ['No web data or requests.', 'STD and literal standard are standard.',
                       'MULTISTEM, MULTI-STEM, MSTEM and mehrst. are multistem.',
-                      'HS/HST/FTH/SOL without a supplied legend are unresolved, never guessed.',
+                      'Supplier-scoped Ho/HS/HST and Lorberg H/Sol Baum identify standard; MS and Multitronco identify multistem. FTH/SOL/STR retain their own form and never default to standard.',
                       'Nxv, Nxtr and explicitly labelled Roman/Arabic counts are notes; plain quantities and dimension products are ignored.',
                       'No numeric measure is assigned to a different measurement field.']}
 

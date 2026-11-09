@@ -1,0 +1,171 @@
+#!/usr/bin/env python3
+"""Move verified archived offer specifications into every plant-card panel.
+
+Offline and idempotent. Values remain tied to their own archived offer row.
+This does not fetch data, change prices/photos, or add plants or nurseries.
+"""
+import argparse
+import copy
+from collections import Counter
+from datetime import datetime, timezone
+import hashlib
+import json
+from pathlib import Path
+import re
+
+from classify_offer_traits import classify_offer
+from extract_offer_parameters import extract_offer_parameters
+
+FIELDS = ('seedlingType', 'circumference', 'height', 'crownWidth',
+          'rootBall', 'potSize', 'rootType')
+PROTECTED = ('price', 'currency', 'priceKind', 'priceNote', 'priceEvidence',
+             'taxStatus', 'image', 'imageSourceUrl', 'plantId', 'nurseryId',
+             'sourceDate', 'sourceUrl', 'specification', 'recordStatus')
+INACTIVE = {'superseded', 'needs_review'}
+OLD_NOTE_SENTENCES = (
+    'Neoznačena dimenzija preneta je u izvornu specifikaciju; bez izričitog naziva mere nije proglašena obimom ili visinom.',
+    'Mere u zasebnim poljima prenete su iz ove varijante i njihovih izričitih oznaka.',
+    'Neoznačene mere ostaju u specifikaciji dok njihov tip nije potvrđen.',
+)
+
+
+def read(path):
+    return json.loads(Path(path).read_text(encoding='utf-8'))
+
+
+def write(path, document):
+    Path(path).parent.mkdir(parents=True, exist_ok=True)
+    Path(path).write_text(json.dumps(document, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+
+def clean_note(value):
+    value = str(value or '')
+    for sentence in OLD_NOTE_SENTENCES:
+        value = value.replace(sentence, '')
+    value = value.replace('Broj presađivanja prenet je u napomenu sa izvornom neodređenošću.',
+                          'Broj presađivanja prikazan je u glavnom panelu sa izvornom neodređenošću.')
+    value = value.replace('kodovi HS, MSTEM, SOL, WRB, CG i KL nisu pretvarani u druge mere.',
+                          'izvorne oznake ostaju vidljive uz izdvojene parametre.')
+    return ' '.join(value.split())
+
+
+def merge_parameters(existing, extracted):
+    """One readable field per label; retain all distinct source evidence."""
+    grouped = {}
+    for item in [*existing, *extracted]:
+        label = item.get('label', '').strip()
+        value = str(item.get('value', '')).strip()
+        if not label or not value:
+            continue
+        if label == 'Nerazvrstana mera iz ponude':
+            label = 'Dimenzija iz ponude'
+        group = grouped.setdefault(label, {'label': label, 'values': [], 'sources': []})
+        for part in re.split(r';\s+', value):
+            if part not in group['values']:
+                group['values'].append(part)
+        refs = item.get('sources') or ([item['source']] if item.get('source') else [])
+        for ref in refs:
+            if ref not in group['sources']:
+                group['sources'].append(copy.deepcopy(ref))
+    result = []
+    for group in grouped.values():
+        item = {'label': group['label'], 'value': '; '.join(group['values'])}
+        if group['sources']:
+            item['sources'] = group['sources']
+        assert len(item['value']) <= 600, item
+        result.append(item)
+    return result
+
+
+def migrate(document):
+    assert document.get('sourcePolicy') == {'nonPhoto': 'rasadnici-ponude-zip', 'onlineUpdates': ['photos']}
+    result = copy.deepcopy(document)
+    report = {'operation': 'archive-specification-to-all-main-panels',
+              'changes': [], 'unresolved': [], 'sourcePolicy': result['sourcePolicy']}
+    for before, offer in zip(document['offers'], result['offers']):
+        if offer.get('recordStatus') in INACTIVE:
+            continue
+        assert offer.get('sourceEvidence', {}).get('archiveVerified'), offer['id']
+        parsed = extract_offer_parameters(offer)
+        assert set(parsed['set']) <= set(FIELDS) - {'seedlingType'}
+        offer.update(parsed['set'])
+        previous_parameters = offer.get('additionalParameters', [])
+        additional = merge_parameters(previous_parameters, parsed.get('additionalParameters', []))
+        if additional:
+            offer['additionalParameters'] = additional
+        source = offer.get('sourceEvidence', {})
+        if source.get('note'):
+            cleaned = clean_note(source['note'])
+            if cleaned != source['note']:
+                source.setdefault('originalExtractionNote', source['note'])
+                source['note'] = cleaned
+        if offer.get('measurementNote'):
+            offer['measurementNote'] = clean_note(offer['measurementNote'])
+        offer.update(classify_offer(offer, source))
+        offer['dataAccuracyNote'] = clean_note(offer['dataAccuracyNote'])
+        if any(e.get('unitStatus') == 'not_stated' for field, e in parsed['evidence'].items()
+               if field in ('height', 'circumference', 'crownWidth', 'rootBall')):
+            note = 'Jedinica dužine nije navedena uz ovu meru u izvoru.'
+            if note not in offer.get('measurementNote', ''):
+                offer['measurementNote'] = (offer.get('measurementNote', '') + ' ' + note).strip()
+        assert len(offer.get('measurementNote', '')) <= 300, offer['id']
+        assert len(offer['dataAccuracyNote']) <= 1600, offer['id']
+        changes = {field: {'from': before.get(field, ''), 'to': offer.get(field, '')}
+                   for field in FIELDS if before.get(field, '') != offer.get(field, '')}
+        if changes:
+            # Preserve existing evidence and attach the exact newly used rules.
+            evidence = offer.setdefault('panelParameterEvidence', {'origin': 'Rasadnici ponude.zip'})
+            rules = evidence.setdefault('rules', {})
+            for field in changes:
+                if field in parsed['evidence']:
+                    rules[field] = copy.deepcopy(parsed['evidence'][field])
+            report['changes'].append({'offerId': offer['id'], 'fields': changes,
+                                      'source': {k: source[k] for k in
+                                                 ('sourceFile', 'sourceSha256', 'sheet', 'row') if k in source}})
+        if parsed['unresolved']:
+            report['unresolved'].append({'offerId': offer['id'], 'items': parsed['unresolved']})
+        for field in PROTECTED:
+            assert offer.get(field) == before.get(field), (offer['id'], field)
+    active = [o for o in result['offers'] if o.get('recordStatus') not in INACTIVE]
+    prior_active = [o for o in document['offers'] if o.get('recordStatus') not in INACTIVE]
+    report['summary'] = {
+        'records': len(result['offers']), 'activeRecords': len(active),
+        'recordsWithStructuredFieldChanges': len(report['changes']),
+        'changedFields': dict(Counter(field for item in report['changes'] for field in item['fields'])),
+        'activeParameters': {field: sum(bool(o.get(field)) for o in active) for field in FIELDS},
+        'emptyOriginalPanelsBefore': sum(not any(o.get(field) for field in FIELDS) for o in prior_active),
+        'emptyOriginalPanelsAfter': sum(not any(o.get(field) for field in FIELDS) for o in active),
+        'additionalParameters': sum(len(o.get('additionalParameters', [])) for o in active),
+        'recordsWithAdditionalParameters': sum(bool(o.get('additionalParameters')) for o in active),
+        'transplantsInMainPanel': sum(bool(o.get('transplantNote')) for o in active),
+        'sourceSpecificationsInMainPanel': sum(bool(o.get('specification')) for o in active),
+        'pricesPreserved': sum(o.get('price') is not None for o in result['offers']),
+        'existingPricesPhotosAndSpeciesUnchanged': True,
+        'onlinePriceOrParameterRequests': 0,
+    }
+    if result != document:
+        result['updatedAt'] = datetime.now(timezone.utc).isoformat(timespec='seconds').replace('+00:00', 'Z')
+    report['updatedAt'] = result['updatedAt']
+    return result, report
+
+
+def main():
+    root = Path(__file__).resolve().parents[1]
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--input', type=Path, default=root / 'data/kataloske-stavke.json')
+    parser.add_argument('--output', type=Path, help='Omit to inspect without writing catalogue data.')
+    parser.add_argument('--report', type=Path)
+    args = parser.parse_args()
+    before = read(args.input)
+    after, report = migrate(before)
+    report['inputSha256'] = hashlib.sha256(args.input.read_bytes()).hexdigest()
+    if args.output:
+        write(args.output, after)
+        report['outputSha256'] = hashlib.sha256(args.output.read_bytes()).hexdigest()
+    if args.report:
+        write(args.report, report)
+    print(json.dumps(report['summary'], ensure_ascii=False, indent=2))
+
+
+if __name__ == '__main__':
+    main()

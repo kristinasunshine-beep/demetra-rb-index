@@ -54,6 +54,7 @@ assert(standard.includes('<dt>Visina sadnice</dt><dd class="missing">Nije navede
 assert(standard.includes('<dt>Obim sadnice</dt><dd>25–30</dd>'));
 assert(!standard.includes('Obim sadnice u ponudi: 25–30.'));
 assert(!standard.includes('<dt>Visina sadnice</dt><dd>25–30</dd>'));
+assert(standard.includes('<dt>Broj presađivanja</dt><dd class="missing">Nije navedeno</dd>'));
 
 const multistem = render({ seedlingType: 'multistem', seedlingTypeCode: 'MSTEM',
   circumference: '12–14', height: '300–350 cm', transplantCount: 3,
@@ -62,8 +63,8 @@ assert(multistem.includes('<dt>Tip sadnice</dt><dd>Multistem</dd>'));
 assert(multistem.includes('<dt>Obim sadnice</dt><dd>12–14</dd>'));
 assert(multistem.includes('<dt>Visina sadnice</dt><dd>300–350 cm</dd>'));
 assert(!multistem.includes('Visina sadnice u ponudi: 300–350 cm.'));
-assert(multistem.includes('Napomena o presađivanju:</strong> 3xv'));
-assert(!multistem.includes('<dt>Broj presađivanja</dt>'));
+assert(multistem.includes('<dt>Broj presađivanja</dt><dd>3xv — tri presađivanja prema oznaci iz ponude.</dd>'));
+assert(!multistem.includes('Napomena o presađivanju:</strong>'));
 
 const unknown = render({ seedlingType: '', seedlingTypeCode: '', height: '200 cm' });
 assert(unknown.includes('<dt>Tip sadnice</dt><dd class="missing">Nije navedeno u ponudi</dd>'));
@@ -85,6 +86,36 @@ for (const seedlingType of ['standard', 'multistem', '']) {
       `Tip ${seedlingType || 'nepoznat'} mora prikazati ${parameterLabels[field]} u glavnom panelu.`);
   }
 }
+// The reported regression: the original Ho/3xv source must be visible in the
+// main panel, as well as its independently extracted circumference and form.
+const mauritzSpec = 'Acer Norwegian Sunset; Izvorna oznaka: 14-16 Ho 3xv';
+const mauritz = render({ circumference: '14–16', seedlingTypeCode: 'Ho',
+  specification: mauritzSpec, transplantCount: null,
+  traitsEvidence: { transplants: { status: 'exact', count: 3, raw: ['3xv'] } },
+  transplantNote: 'Broj presađivanja: 3 (oznaka u ponudi: 3xv).' });
+const mauritzPanel = mauritz.match(/<dl class="measurements">([\s\S]*?)<\/dl>/)[1];
+assert(mauritzPanel.includes('<dt>Obim sadnice</dt><dd>14–16</dd>'));
+assert(mauritzPanel.includes('<dt>Broj presađivanja</dt><dd>3 (3xv)</dd>'));
+assert(mauritzPanel.includes('<dt>Specifikacija iz ponude</dt><dd>' + mauritzSpec + '</dd>'));
+assert(!mauritz.split('<div class="offer-footer">')[1].includes(mauritzSpec));
+const rangeNote = 'Broj presađivanja: 3–4 (oznaka u ponudi: III–IV).';
+const ranged = render({ transplantNote: rangeNote,
+  traitsEvidence: { transplants: { status: 'range', count: null, raw: ['III–IV'] } } });
+assert(ranged.includes('<dt>Broj presađivanja</dt><dd>' + rangeNote + '</dd>'));
+const unclassified = render({ seedlingType: '', circumference: '', height: '',
+  specification: 'Acer test; mera iz ponude: 125/150; oznaka XY' });
+assert(unclassified.match(/<dl class="measurements">([\s\S]*?)<\/dl>/)[1]
+  .includes('Acer test; mera iz ponude: 125/150; oznaka XY'));
+assert(unclassified.includes('<dt>Visina sadnice</dt><dd class="missing">Nije navedeno</dd>'));
+const additional = render({ additionalParameters: [
+  { label: 'Visina čistog debla', value: '220 cm' },
+  { label: 'Dimenzije panela', value: '150 × 180 cm' },
+  { label: '<img src=x>', value: '<script>alert(1)</script>' }
+] });
+assert(additional.includes('<dt>Visina čistog debla</dt><dd>220 cm</dd>'));
+assert(additional.includes('<dt>Dimenzije panela</dt><dd>150 × 180 cm</dd>'));
+assert(additional.includes('<dt>&lt;img src=x&gt;</dt><dd>&lt;script&gt;alert(1)&lt;/script&gt;</dd>'));
+assert(!additional.includes('<img src=x>') && !additional.includes('<script>alert(1)</script>'));
 const escaped = render({ dataAccuracyNote: '<img src=x onerror=alert(1)>' });
 assert(!escaped.includes('<img src=x'));
 assert(escaped.includes('&lt;img src=x'));
@@ -102,8 +133,11 @@ rejects({ dataOrigin: 'online' }, {}, /dostavljenih ponuda/);
 rejects({ priceKind: 'public' }, {}, /dostavljenih ponuda/);
 rejects({ matureHeight: '10 m' }, {}, /online kataloga/);
 rejects({ transplantCount: -1 }, {}, /broj presađivanja/);
+rejects({ traitsEvidence: { transplants: { status: 'exact', count: -1, raw: ['-1xv'] } } }, {}, /broj presađivanja/);
+rejects({ additionalParameters: [{ label: 'Visina čistog debla', value: '' }] }, {}, /vrednost dodatnog parametra/);
 rejects({}, { sourcePolicy: { nonPhoto: 'rasadnici-ponude-zip', onlineUpdates: ['photos', 'prices'] } }, /online se ažuriraju samo fotografije/);
 console.log(JSON.stringify({ ok: true, allKnownParametersInMainPanelForEveryType: true,
   girthAndHeightRemainSeparate: true, noGeneratedDimensionFootnote: true, unknownTypeExplicit: true,
-  transplantCountOnlyInNotes: true, sourcePolicyEnforced: true, notesEscaped: true,
+  transplantsAndSourceSpecificationInMainPanel: true, additionalSourceParametersInMainPanel: true,
+  sourcePolicyEnforced: true, notesEscaped: true,
   reviewExplainedWithoutUnconfirmedOffer: true }, null, 2));

@@ -35,7 +35,6 @@ class ExtractOfferParametersTests(unittest.TestCase):
 
     def test_large_range_rule_is_not_a_generic_measurement_guess(self):
         for spec, nursery in [('Acer 350-400 C230L', 'arbor'),
-                              ('Acer MULTISTEM 80-100 C30L', 'arbor'),
                               ('Acer MULTISTEM 350-400 C230L', 'unknown-supplier'),
                               ('Acer 20-25 MULTISTEM 350-400 C230L', 'arbor')]:
             with self.subTest(spec=spec, nursery=nursery):
@@ -107,7 +106,8 @@ class ExtractOfferParametersTests(unittest.TestCase):
         for token in ['br.150-200', 'br300-400', 'br 200-300']:
             with self.subTest(token=token):
                 r = extract_offer_parameters(offer('Parrotia Schirm 4xv mDb '+token+' 400-500', nurseryId='lorberg'))
-                self.assertNotIn('rootType', r['set'])
+                self.assertEqual(r['set']['rootType'], 'Busen u žičanoj korpi (mDb)')
+                self.assertIn('crownWidth', r['set'])
 
     def test_explicit_litres_after_clt_are_not_lost(self):
         for text, expected in [('Plant CLT10L', '10 L'), ('Plant clt 35 L', '35 L'),
@@ -132,7 +132,7 @@ class ExtractOfferParametersTests(unittest.TestCase):
         self.assertNotIn('existing_value_conflict', {x['reason'] for x in r['unresolved']})
 
     def test_rootball_code_and_unexplained_supplier_codes_never_become_dimensions(self):
-        for text in ['Plant 20-30 RB', 'Plant 100-120 KL', 'Plant 300-350 MSTEM CG', 'Plant 25-30HS WRB']:
+        for text in ['Plant 20-30 RB', 'Plant 100-120 KL']:
             with self.subTest(text=text):
                 r = extract_offer_parameters(offer(text, nurseryId='volentis'))
                 self.assertNotIn('rootBall', r['set'])
@@ -174,6 +174,101 @@ class ExtractOfferParametersTests(unittest.TestCase):
         r = extract_offer_parameters(original)
         self.assertEqual(original, before)
         self.assertFalse({'price','currency','image','seedlingType','priceKind'} & r['set'].keys())
+
+    def test_mauritz_norwegian_sunset_14_16_ho_goes_to_girth(self):
+        r = extract_offer_parameters(offer('Acer Norwegian Sunset; Izvorna oznaka: 14-16 Ho 3xv', nurseryId='combinatie-mauritz'))
+        self.assertEqual(r['set']['circumference'], '14–16')
+        self.assertNotIn('height', r['set'])
+        self.assertIn('interpretationSource', r['evidence']['circumference'])
+
+    def test_scoped_dutch_form_and_package_codes(self):
+        for nursery, text, field, value, root in [
+            ('volentis', '25-30HS WRB', 'circumference', '25–30', 'Busen u žičanoj korpi (WRB)'),
+            ('volentis', 'Carpinus 200-250 MS DRKL', 'height', '200–250', 'Busen u žičanoj korpi (DRKL)'),
+            ('volentis', '300-350 MSTEM CG', 'height', '300–350', 'Kontejner (CG)'),
+            ('combinatie-mauritz', 'Alnus; Izvorna oznaka: Multistem 450-500', 'height', '450–500', None),
+        ]:
+            with self.subTest(text=text):
+                r = extract_offer_parameters(offer(text, nurseryId=nursery))
+                self.assertEqual(r['set'][field], value)
+                if root: self.assertEqual(r['set']['rootType'], root)
+        self.assertNotIn('circumference', extract_offer_parameters(offer('25-30HS WRB', nurseryId='unknown'))['set'])
+
+    def test_source_codes_do_not_invent_units_or_numeric_measures(self):
+        for text, root in [('Acer WOODBOX', 'Drvena kutija (WOODBOX)'), ('Acer AIRPOT', 'Air-Pot kontejner (AIRPOT)')]:
+            r = extract_offer_parameters(offer(text))
+            self.assertEqual(r['set'], {'rootType': root})
+        r = extract_offer_parameters(offer('Plant; Size CS9', nurseryId='combinatie-mauritz'))
+        self.assertEqual(r['set']['potSize'], 'CS9')
+        self.assertEqual(r['set']['rootType'], 'Kontejner')
+        self.assertNotIn('height', r['set'])
+
+    def test_lorberg_standard_and_wire_rootball_codes(self):
+        r = extract_offer_parameters(offer('Acer Cleveland; H 3xv mDb 25-30', nurseryId='lorberg', rootType='mDb (oznaka izvora)'))
+        self.assertEqual(r['set']['circumference'], '25–30')
+        self.assertEqual(r['set']['rootType'], 'Busen u žičanoj korpi (mDb)')
+        self.assertNotIn('height', r['set'])
+        self.assertNotIn('rootBall', r['set'])
+
+    def test_clear_stem_and_topiary_dimensions_are_preserved_outside_total_height(self):
+        r = extract_offer_parameters(offer('Carpinus PLEACHED 40-45 STD STEM220 H420L250 WOODBOX'))
+        self.assertEqual(r['set']['circumference'], '40–45')
+        self.assertNotIn('height', r['set'])
+        extras = {x['label']: x['value'] for x in r['additionalParameters']}
+        self.assertEqual(extras['Visina čistog debla'], '220')
+        self.assertEqual(extras['Dimenzije oblikovane krošnje'], 'H420L250')
+
+    def test_unclassified_range_remains_explicit_in_main_panel_payload(self):
+        r = extract_offer_parameters(offer('Plant; DIMENZIJE: 150-200x300-350', nurseryId='lorberg'))
+        self.assertNotIn('height', r['set'])
+        self.assertNotIn('crownWidth', r['set'])
+        self.assertTrue(any(x['reason']=='unclassified_source_measure' for x in r['unresolved']))
+        self.assertTrue(any('150-200x300-350' in x['value'] for x in r['additionalParameters']))
+
+    def test_str_is_a_shrub_form_not_multistem_or_standard(self):
+        r = extract_offer_parameters(offer('Plant STR 60-80', nurseryId='combinatie-mauritz'))
+        self.assertTrue(any(x['label']=='Forma sadnice' and 'Žbunasta' in x['value'] for x in r['additionalParameters']))
+
+    def test_gum_ball_cultivar_is_not_a_ball_form(self):
+        r = extract_offer_parameters(offer('Liquidambar styraciflua Gum Ball 16-18 STD C50L'))
+        self.assertFalse(any('Kuglasta' in x['value'] for x in r['additionalParameters']))
+
+    def test_arbor_multistem_height_does_not_require_large_number(self):
+        r = extract_offer_parameters(offer('Acer MULTISTEM 80-100 C30L'))
+        self.assertEqual(r['set']['height'], '80–100')
+
+    def test_half_standard_fraction_is_a_form_not_one_to_two_girth(self):
+        r = extract_offer_parameters(offer('Betula Youngii 1/2 STD C25L'))
+        self.assertNotIn('circumference', r['set'])
+        self.assertTrue(any('Polustandard' in x['value'] for x in r['additionalParameters']))
+        r = extract_offer_parameters(offer('Betula Youngii 14-16 1/2 STD C25L'))
+        self.assertEqual(r['set']['circumference'],'14–16')
+
+    def test_explicit_royal_garden_h_and_w_are_distinct(self):
+        r = extract_offer_parameters(offer('Pinus mugo in container; h 40-50 cm; w 40-50 cm',nurseryId='royal-garden'))
+        self.assertEqual(r['set']['height'],'40–50 cm')
+        self.assertEqual(r['set']['crownWidth'],'40–50 cm')
+
+    def test_italian_AF_range_is_girth_and_not_the_container_range(self):
+        r = extract_offer_parameters(offer('JUGLANS REGIA CLT 70-90 16-18 A.F.',nurseryId='innocenti-mangoni'))
+        self.assertEqual(r['set']['circumference'],'16–18')
+        self.assertEqual(r['set']['potSize'],'CLT 70–90')
+        self.assertNotIn('height',r['set'])
+
+    def test_unclassified_single_measure_and_plus_are_visible_without_guessing(self):
+        for text, value in [('Euphorbia palustris 18 cm','18 cm'),('Plant 400+','400+'),('Plant 150-175+','150-175+')]:
+            r = extract_offer_parameters(offer(text,nurseryId='royal-garden'))
+            self.assertTrue(any(x['label']=='Dimenzija iz ponude' and value in x['value'] for x in r['additionalParameters']))
+            self.assertNotIn('height',r['set'])
+            self.assertNotIn('potSize',r['set'])
+
+    def test_glued_arbor_stem_and_container_markings_stay_separate(self):
+        r = extract_offer_parameters(offer('Product: Liquidambar styraciflua ROOF20-25 STEM220C130L'))
+        self.assertEqual(r['set']['potSize'],'130 L')
+        self.assertEqual(r['set']['rootType'],'Kontejner')
+        self.assertNotIn('height',r['set'])
+        self.assertNotIn('circumference',r['set'])
+        self.assertTrue(any(x['label']=='Visina čistog debla' and x['value']=='220' for x in r['additionalParameters']))
 
     def test_patch_guards_every_field_it_will_change(self):
         r = build_patch({'offers':[offer('Plant RB')]})['updates'][0]

@@ -129,6 +129,22 @@ class OfferTraitTests(unittest.TestCase):
         self.assertEqual(result['transplantNote'], '')
         self.assertIsNone(result['traitsEvidence']['transplants']['count'])
 
+    def test_supplier_scoped_standard_and_multistem_codes(self):
+        for nursery, text, expected in [
+            ('combinatie-mauritz', '14-16 Ho 3xv', 'standard'),
+            ('volentis', '25-30HS WRB', 'standard'),
+            ('volentis', 'Carpinus 200-250 MS DRKL', 'multistem'),
+            ('lorberg', 'Acer; H 3xv mDb 25-30', 'standard'),
+            ('lorberg', 'Acer; Sol Baum 4xv mDb 150-200 x 400-500 25-30', 'standard'),
+            ('vannucci-piante', 'Girth 20/25; Shape ALTO FUSTO', 'standard'),
+            ('vannucci-piante', 'CLT 150; Shape Multitronco', 'multistem'),
+            ('innocenti-mangoni', 'JUGLANS CLT 70-90 16-18 A.F.', 'standard'),
+        ]:
+            with self.subTest(nursery=nursery,text=text):
+                self.assertEqual(classify_offer(offer(text,nurseryId=nursery))['seedlingType'],expected)
+        for text in ['20-25HS', '20-25HO', 'STR 60-80', 'STAM 180cm']:
+            self.assertEqual(classify_offer(offer(text,nurseryId='unknown'))['seedlingType'],'')
+
     def test_source_proof_and_unmodified_financial_fields(self):
         r = offer('25-30 STD RB', priceEvidence={'sourceSha256': 'a'*64, 'sourceFile': 'offer.pdf', 'page': 1, 'row': 2})
         before = copy.deepcopy(r)
