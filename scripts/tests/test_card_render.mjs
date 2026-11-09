@@ -51,8 +51,8 @@ function rejects(offerChanges, envelopeChanges, expected) {
 const standard = render({});
 assert(standard.includes('<dt>Tip sadnice</dt><dd>Standard</dd>'));
 assert(standard.includes('<dt>Visina sadnice</dt><dd class="missing">Nije navedeno</dd>'));
-assert(!standard.includes('<dt>Obim sadnice</dt>'));
-assert(standard.includes('Obim sadnice u ponudi: 25–30.'));
+assert(standard.includes('<dt>Obim sadnice</dt><dd>25–30</dd>'));
+assert(!standard.includes('Obim sadnice u ponudi: 25–30.'));
 assert(!standard.includes('<dt>Visina sadnice</dt><dd>25–30</dd>'));
 
 const multistem = render({ seedlingType: 'multistem', seedlingTypeCode: 'MSTEM',
@@ -60,8 +60,8 @@ const multistem = render({ seedlingType: 'multistem', seedlingTypeCode: 'MSTEM',
   transplantNote: '3xv — tri presađivanja prema oznaci iz ponude.' });
 assert(multistem.includes('<dt>Tip sadnice</dt><dd>Multistem</dd>'));
 assert(multistem.includes('<dt>Obim sadnice</dt><dd>12–14</dd>'));
-assert(!multistem.includes('<dt>Visina sadnice</dt>'));
-assert(multistem.includes('Visina sadnice u ponudi: 300–350 cm.'));
+assert(multistem.includes('<dt>Visina sadnice</dt><dd>300–350 cm</dd>'));
+assert(!multistem.includes('Visina sadnice u ponudi: 300–350 cm.'));
 assert(multistem.includes('Napomena o presađivanju:</strong> 3xv'));
 assert(!multistem.includes('<dt>Broj presađivanja</dt>'));
 
@@ -70,6 +70,21 @@ assert(unknown.includes('<dt>Tip sadnice</dt><dd class="missing">Nije navedeno u
 assert(unknown.includes('<dt>Obim sadnice</dt>') && unknown.includes('<dt>Visina sadnice</dt>'));
 assert(!unknown.includes('Obim stabla'));
 assert(!unknown.includes('Maksimalna visina biljke'));
+const fullParameters = {
+  circumference: '16–18 cm', height: '300–350 cm', crownWidth: '80–100 cm',
+  rootBall: '60 cm', potSize: 'C80', rootType: 'Busen (RB)'
+};
+const parameterLabels = {
+  circumference: 'Obim sadnice', height: 'Visina sadnice', crownWidth: 'Širina krošnje',
+  rootBall: 'Veličina busena', potSize: 'Veličina saksije', rootType: 'Način isporuke'
+};
+for (const seedlingType of ['standard', 'multistem', '']) {
+  const markup = render({ seedlingType, ...fullParameters });
+  for (const [field, value] of Object.entries(fullParameters)) {
+    assert(markup.includes('<dt>' + parameterLabels[field] + '</dt><dd>' + value + '</dd>'),
+      `Tip ${seedlingType || 'nepoznat'} mora prikazati ${parameterLabels[field]} u glavnom panelu.`);
+  }
+}
 const escaped = render({ dataAccuracyNote: '<img src=x onerror=alert(1)>' });
 assert(!escaped.includes('<img src=x'));
 assert(escaped.includes('&lt;img src=x'));
@@ -88,7 +103,7 @@ rejects({ priceKind: 'public' }, {}, /dostavljenih ponuda/);
 rejects({ matureHeight: '10 m' }, {}, /online kataloga/);
 rejects({ transplantCount: -1 }, {}, /broj presađivanja/);
 rejects({}, { sourcePolicy: { nonPhoto: 'rasadnici-ponude-zip', onlineUpdates: ['photos', 'prices'] } }, /online se ažuriraju samo fotografije/);
-console.log(JSON.stringify({ ok: true, standardHeightSeparateFromGirth: true,
-  multistemGirthSeparateFromHeight: true, unknownTypeExplicit: true,
+console.log(JSON.stringify({ ok: true, allKnownParametersInMainPanelForEveryType: true,
+  girthAndHeightRemainSeparate: true, noGeneratedDimensionFootnote: true, unknownTypeExplicit: true,
   transplantCountOnlyInNotes: true, sourcePolicyEnforced: true, notesEscaped: true,
   reviewExplainedWithoutUnconfirmedOffer: true }, null, 2));

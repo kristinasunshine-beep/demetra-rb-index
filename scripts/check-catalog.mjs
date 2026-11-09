@@ -58,5 +58,7 @@ try{
   }
   const sample=new Script('searchPlants(JSON.parse(catalogJSON),"A",{limit:5}).map(p=>p.id)').runInContext(context,{timeout:1000});
   if(sample.length>5)fail('Pretraga vraća više od pet predloga.');
-  console.log(JSON.stringify({ok:true,plants:catalog.plants.length,nurseries:catalog.nurseries.length,records:catalog.offers.length,nonPhotoSource:catalog.sourcePolicy.nonPhoto,onlineUpdates:catalog.sourcePolicy.onlineUpdates,priceSources:config.sources.filter(s=>s.enabled).length,localPhotos:new Set(catalog.offers.map(o=>o.image).filter(Boolean)).size},null,2));
+  const {verifyPanels}=await import('./check-panels.mjs');
+  const panels=await verifyPanels(root);
+  console.log(JSON.stringify({ok:true,plants:catalog.plants.length,nurseries:catalog.nurseries.length,records:catalog.offers.length,nonPhotoSource:catalog.sourcePolicy.nonPhoto,onlineUpdates:catalog.sourcePolicy.onlineUpdates,priceSources:config.sources.filter(s=>s.enabled).length,localPhotos:new Set(catalog.offers.map(o=>o.image).filter(Boolean)).size,panels},null,2));
 }catch(error){console.error('Provera nije prošla: '+error.message);process.exitCode=1;}
