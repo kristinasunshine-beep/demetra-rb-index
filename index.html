@@ -1021,20 +1021,46 @@ function validateOffer(item, index, plantIds, nurseryIds) {
   const label = `Ponuda ${index}`;
   const price = priceValue(item.price, `${label}, cena`);
   const currency = textValue(item.currency, `${label}, valuta`, { max: 3 }).toUpperCase();
-  if ((currency && !/^[A-Z]{3}$/.test(currency)) || (price !== null && !currency)) {
+  const priceKind = textValue(item.priceKind, `${label}, vrsta cene`, { max: 30 });
+  const currencyStatus = textValue(item.currencyStatus, `${label}, status valute`, { max: 30 });
+  const priceNote = textValue(item.priceNote, `${label}, napomena o ceni`, { max: 600 });
+  const seedlingType = textValue(item.seedlingType, `${label}, tip sadnice`, { max: 20 });
+  if (!['', 'standard', 'multistem'].includes(seedlingType)) {
+    throw new Error(`${label}: tip sadnice mora biti standard, multistem ili prazan kada nije naveden u ponudi.`);
+  }
+  const transplantCount = item.transplantCount ?? null;
+  if (transplantCount !== null && (!Number.isInteger(transplantCount) || transplantCount < 0 || transplantCount > 99)) {
+    throw new Error(`${label}: broj presađivanja mora biti ceo broj iz ponude ili prazan.`);
+  }
+  const dataOrigin = textValue(item.dataOrigin, `${label}, poreklo podataka`, { max: 40 });
+  if (dataOrigin !== 'rasadnici-ponude-zip' || priceKind === 'public') {
+    throw new Error(`${label}: podaci kartice moraju poticati iz dostavljenih ponuda.`);
+  }
+  if (item.matureHeight || item.matureCrownWidth || item.parameterObservation) {
+    throw new Error(`${label}: botaničke mere iz online kataloga nisu podaci iz ponude.`);
+  }
+  const historicalAmountWithoutCurrency = priceKind === 'historical' &&
+    currencyStatus === 'not_stated' && Boolean(priceNote);
+  if ((currency && !/^[A-Z]{3}$/.test(currency)) ||
+      (price !== null && !currency && !historicalAmountWithoutCurrency)) {
     throw new Error(`${label}: uz cenu navedite troslovnu valutu, npr. EUR ili RSD.`);
+  }
+  if (currency && currencyStatus === 'not_stated') {
+    throw new Error(`${label}: navedena valuta ne može istovremeno imati status nepoznate valute.`);
   }
   const offer = {
     id: idValue(item.id, `${label}, ID`),
     plantId: idValue(item.plantId, `${label}, biljka`),
     nurseryId: idValue(item.nurseryId, `${label}, rasadnik`),
+    seedlingType,
+    seedlingTypeCode: textValue(item.seedlingTypeCode, `${label}, oznaka tipa u ponudi`, { max: 100 }),
     circumference: textValue(item.circumference, `${label}, obim`, { max: 100 }),
     height: textValue(item.height, `${label}, visina`, { max: 100 }),
     crownWidth: textValue(item.crownWidth, `${label}, širina krošnje`, { max: 100 }),
     rootBall: textValue(item.rootBall, `${label}, busen`, { max: 100 }),
-    potSize: textValue(item.potSize, `${label}, saksija`, { max: 100 }),
+    potSize: textValue(item.potSize, `${label}, saksija`, { max: 160 }),
     rootType: textValue(item.rootType, `${label}, način isporuke`, { max: 100, fallback: 'Nije navedeno' }),
-    price, currency,
+    price, currency, currencyStatus,
     unit: textValue(item.unit, `${label}, jedinica`, { max: 30, fallback: 'kom' }),
     taxStatus: textValue(item.taxStatus, `${label}, PDV`, { max: 100, fallback: 'Nije navedeno' }),
     availability: textValue(item.availability, `${label}, dostupnost`, { max: 150, fallback: 'U katalogu — proveriti' }),
@@ -1043,8 +1069,16 @@ function validateOffer(item, index, plantIds, nurseryIds) {
     sourceUrl: safeURL(item.sourceUrl, `${label}, link izvora`),
     sourcePeriod: textValue(item.sourcePeriod, `${label}, period izvora`, { max: 60 }),
     checkedAt: dateValue(item.checkedAt, `${label}, datum provere`),
-    priceKind: textValue(item.priceKind, `${label}, vrsta cene`, { max: 30 }),
-    priceNote: textValue(item.priceNote, `${label}, napomena o ceni`, { max: 600 }),
+    priceKind, priceNote,
+    dataOrigin,
+    transplantCount,
+    transplantNote: textValue(item.transplantNote, `${label}, napomena o presađivanju`, { max: 600 }),
+    dataAccuracyNote: textValue(item.dataAccuracyNote, `${label}, napomena o tačnosti podataka`, { required: true, max: 1600 }),
+    recordStatus: textValue(item.recordStatus, `${label}, status zapisa`, { max: 30, fallback: 'active' }),
+    sourceFile: textValue(item.sourceEvidence?.sourceFile || item.sourceFile, `${label}, naziv izvornog priloga`, { max: 300 }),
+    replacedByOfferIds: arrayValue(item.replacedByOfferIds || [], `${label}, zamenski zapisi`, 100)
+      .map((id) => idValue(id, `${label}, ID zamenskog zapisa`)),
+    measurementNote: textValue(item.measurementNote, `${label}, napomena o merama`, { max: 300 }),
     specification: textValue(item.specification, `${label}, izvorna specifikacija`, { max: 2000 }),
     image: safeURL(item.image, `${label}, fotografija`, { image: true }),
     imageSourceUrl: safeURL(item.imageSourceUrl, `${label}, izvor fotografije`),
@@ -1060,6 +1094,12 @@ function validateImport(obj) {
   if (!isObject(obj) || obj.schemaVersion !== 1) {
     throw new Error('JSON mora biti Demetra RB Index rezervna kopija sa schemaVersion: 1.');
   }
+  if (!isObject(obj.sourcePolicy) || obj.sourcePolicy.nonPhoto !== 'rasadnici-ponude-zip' ||
+      !Array.isArray(obj.sourcePolicy.onlineUpdates) || obj.sourcePolicy.onlineUpdates.length !== 1 ||
+      obj.sourcePolicy.onlineUpdates[0] !== 'photos') {
+    throw new Error('Izvor podataka mora biti Rasadnici ponude ZIP; online se ažuriraju samo fotografije.');
+  }
+  const sourcePolicy = { nonPhoto: 'rasadnici-ponude-zip', onlineUpdates: ['photos'] };
   const warnings = [];
   const plantIds = new Set(), nurseryIds = new Set(), offerIds = new Set();
   const plants = arrayValue(obj.plants, 'Biljke', 10000).map((item, i) => {
@@ -1108,7 +1148,7 @@ function validateImport(obj) {
     throw new Error('updatedAt: neispravan datum rezervne kopije.');
   }
   updatedAt = new Date(updatedAt).toISOString();
-  return { data: { schemaVersion: 1, plants, nurseries, offers, favorites, updatedAt }, warnings };
+  return { data: { schemaVersion: 1, sourcePolicy, plants, nurseries, offers, favorites, updatedAt }, warnings };
 }
 
 
@@ -1163,7 +1203,13 @@ const offerCountLabel = (count) => countLabel(count, 'kataloški zapis', 'katalo
 const nurseryCountLabel = (count) => countLabel(count, 'rasadnik', 'rasadnika', 'rasadnika');
 const plantById = (id) => state.catalog?.plants.find((plant) => plant.id === id);
 const nurseryById = (id) => state.catalog?.nurseries.find((nursery) => nursery.id === id);
-const offersFor = (id) => state.catalog.offers.filter((offer) => offer.plantId === id);
+const offersFor = (id) => state.catalog.offers.filter((offer) =>
+  offer.plantId === id && !['needs_review', 'superseded'].includes(offer.recordStatus)).sort((a, b) => {
+    const rank = (offer) => offer.price !== null ?
+      (offer.priceKind === 'public' ? 3 : offer.currency ? 2 : 1) : 0;
+    return rank(b) - rank(a) || (b.sourceDate || '').localeCompare(a.sourceDate || '') ||
+      (a.specification || '').localeCompare(b.specification || '', 'sr-Latn', { numeric: true });
+  });
 
 function imageURL(value) {
   if (typeof value !== 'string') return '';
@@ -1191,9 +1237,12 @@ function formattedPrice(offer) {
   if (offer.price === null || offer.price === undefined || offer.price === '') return 'Cena nije navedena';
   const amount = Number(offer.price);
   if (!Number.isFinite(amount)) return 'Cena nije navedena';
+  if (!offer.currency) {
+    return new Intl.NumberFormat('sr-Latn-RS', { maximumFractionDigits: 2 }).format(amount);
+  }
   try {
     return new Intl.NumberFormat('sr-Latn-RS', {
-      style: 'currency', currency: offer.currency || 'EUR', maximumFractionDigits: 2
+      style: 'currency', currency: offer.currency, maximumFractionDigits: 2
     }).format(amount);
   } catch { return amount.toLocaleString('sr-Latn-RS') + ' ' + (offer.currency || ''); }
 }
@@ -1281,17 +1330,25 @@ function updateSearch() {
 }
 
 function renderOffer(offer, plant, nursery) {
+  const typeLabel = offer.seedlingType === 'standard' ? 'Standard' :
+    offer.seedlingType === 'multistem' ? 'Multistem' : 'Nije navedeno u ponudi';
+  const sizeMeasurements = offer.seedlingType === 'multistem' ? [['Obim sadnice', offer.circumference]] :
+    offer.seedlingType === 'standard' ? [['Visina sadnice', offer.height]] :
+      [['Obim sadnice', offer.circumference], ['Visina sadnice', offer.height]];
   const measurements = [
-    ['Obim stabla', offer.circumference],
-    ['Visina sadnice', offer.height],
+    ['Tip sadnice', typeLabel],
+    ...sizeMeasurements,
     ['Širina krošnje', offer.crownWidth],
     ['Veličina busena', offer.rootBall],
     ['Veličina saksije', offer.potSize],
     ['Način isporuke', offer.rootType]
   ];
+  const sourceSizeNote = offer.seedlingType === 'standard' && offer.circumference ?
+    'Obim sadnice u ponudi: ' + offer.circumference + '.' :
+    offer.seedlingType === 'multistem' && offer.height ? 'Visina sadnice u ponudi: ' + offer.height + '.' : '';
+  const dataNotes = [...new Set([offer.dataAccuracyNote, sourceSizeNote, offer.measurementNote].filter(Boolean))];
   const hasPrice = offer.price !== null && offer.price !== undefined && offer.price !== '';
-  const priceLabel = offer.priceKind === 'historical' ? 'Istorijska kataloška cena' :
-    offer.priceKind === 'public' ? 'Javna kataloška cena' : 'Nabavna cena';
+  const priceLabel = offer.priceKind === 'historical' ? 'Cena iz arhivirane ponude' : 'Nabavna cena iz ponude';
   const sourceLabel = escapeHTML(offer.source || 'Izvor nije naveden');
   const sourceLink = offer.sourceUrl ? '<a href="' + escapeHTML(offer.sourceUrl) + '" target="_blank" rel="noopener noreferrer">' + sourceLabel + ' ↗</a>' : sourceLabel;
   const sourceTiming = [offer.sourceDate ? 'Datum izvora: ' + formattedDate(offer.sourceDate) :
@@ -1317,14 +1374,42 @@ function renderOffer(offer, plant, nursery) {
       escapeHTML(value || 'Nije navedeno') + '</dd></div>'
     ).join('') + '</dl><div class="price-caption">' + priceLabel + '</div>' +
     '<div class="offer-price"><strong>' + escapeHTML(formattedPrice(offer)) +
-    '</strong><small>' + escapeHTML((hasPrice ? '/ ' + (offer.unit || 'kom') + ' · ' : '') +
+    '</strong><small>' + escapeHTML((hasPrice && !offer.currency ? 'Valuta nije navedena · ' : '') +
+      (hasPrice ? '/ ' + (offer.unit || 'kom') + ' · ' : '') +
       (offer.taxStatus || 'PDV nije naveden')) + '</small></div>' +
     (offer.priceNote ? '<p class="image-kind">' + escapeHTML(offer.priceNote) + '</p>' : '') + '</div></div>' +
     '<div class="offer-footer"><div class="offer-source"><strong>' +
     sourceLink + '</strong><br>' + escapeHTML(sourceTiming) +
     (offer.specification ? '<br>Specifikacija izvora: ' + escapeHTML(offer.specification) : '') +
+    (offer.transplantNote ? '<br><strong>Napomena o presađivanju:</strong> ' + escapeHTML(offer.transplantNote) : '') +
+    (dataNotes.length ? '<br><strong>Tačnost podataka:</strong> ' + escapeHTML(dataNotes.join(' ')) : '') +
     (offer.imageSourceUrl && offer.imageSourceUrl !== offer.sourceUrl ? '<br><a href="' + escapeHTML(offer.imageSourceUrl) + '" target="_blank" rel="noopener noreferrer">Izvor kataloške fotografije ↗</a>' : '') +
     '</div></div></article>';
+}
+
+function renderEmptyRecord(plant) {
+  const records = state.catalog.offers.filter((offer) => offer.plantId === plant.id);
+  const reviews = records.filter((offer) => offer.recordStatus === 'needs_review');
+  const notes = reviews.length ? reviews : records.filter((offer) => offer.recordStatus === 'superseded');
+  const replacementPlants = new Map();
+  if (!reviews.length) {
+    records.filter((offer) => offer.recordStatus === 'superseded').forEach((offer) => {
+      offer.replacedByOfferIds.forEach((id) => {
+        const replacement = state.catalog.offers.find((item) => item.id === id);
+        const replacementPlant = replacement && !['needs_review', 'superseded'].includes(replacement.recordStatus) &&
+          replacement.plantId !== plant.id ? plantById(replacement.plantId) : null;
+        if (replacementPlant) replacementPlants.set(replacementPlant.id, replacementPlant);
+      });
+    });
+  }
+  if (!notes.length) return '<div class="empty-state detail-empty"><p>Ponude rasadnika za ovu biljku još nisu unete.</p></div>';
+  return '<div class="empty-state detail-empty"><p><strong>Tačnost podataka</strong></p>' +
+    notes.map((offer) => '<p data-review-offer-id="' + escapeHTML(offer.id) + '">' +
+      escapeHTML(offer.dataAccuracyNote) +
+      (offer.sourceFile ? '<br>Prilog: ' + escapeHTML(offer.sourceFile) : '') + '</p>').join('') +
+    (replacementPlants.size ? '<p>Ovaj naziv je povezan sa ispravljenim zapisom biljke: ' +
+      [...replacementPlants.values()].map((item) => '<a href="#plant=' + encodeURIComponent(item.id) + '">' +
+        escapeHTML(item.latinName) + '</a>').join(' · ') + '.</p>' : '') + '</div>';
 }
 
 function renderRecord(plant) {
@@ -1353,7 +1438,7 @@ function renderRecord(plant) {
         renderOffer(variants[0], plant, nursery) +
         (variants.length > 1 ? '<details class="supplier-variants"><summary>Prikaži ostale varijante (' + (variants.length - 1) + ')</summary>' + variants.slice(1).map((offer) => renderOffer(offer, plant, nursery)).join('') + '</details>' : '') +
         '</section>';
-    }).join('') : '<div class="empty-state detail-empty"><p>Ponude rasadnika za ovu biljku još nisu unete.</p></div>') +
+    }).join('') : renderEmptyRecord(plant)) +
     '</div>';
 }
 
@@ -1489,8 +1574,9 @@ async function init() {
         return response.json();
       })
     );
-    const result = validateImport({ schemaVersion: 1, plants: plants.plants, nurseries: nurseries.nurseries,
-      offers: offers.offers, favorites: [], updatedAt: plants.updatedAt });
+    const result = validateImport({ schemaVersion: 1, sourcePolicy: offers.sourcePolicy,
+      plants: plants.plants, nurseries: nurseries.nurseries,
+      offers: offers.offers, favorites: [], updatedAt: offers.updatedAt });
     state.catalog = freezeDeep(result.data);
     input.removeAttribute('aria-busy');
     if (input.value.trim()) updateSearch();
