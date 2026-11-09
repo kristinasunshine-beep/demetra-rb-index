@@ -1028,7 +1028,9 @@ function validateOffer(item, index, plantIds, nurseryIds) {
   if (!['', 'standard', 'multistem'].includes(seedlingType)) {
     throw new Error(`${label}: tip sadnice mora biti standard, multistem ili prazan kada nije naveden u ponudi.`);
   }
-  const transplantCount = item.transplantCount ?? null;
+  const transplantEvidence = item.traitsEvidence?.transplants;
+  const transplantCount = item.transplantCount ??
+    (transplantEvidence?.status === 'exact' ? transplantEvidence.count : null) ?? null;
   if (transplantCount !== null && (!Number.isInteger(transplantCount) || transplantCount < 0 || transplantCount > 99)) {
     throw new Error(`${label}: broj presađivanja mora biti ceo broj iz ponude ili prazan.`);
   }
@@ -1072,7 +1074,17 @@ function validateOffer(item, index, plantIds, nurseryIds) {
     priceKind, priceNote,
     dataOrigin,
     transplantCount,
+    transplantCodes: arrayValue(item.transplantCodes || transplantEvidence?.raw || [], `${label}, izvorne oznake presađivanja`, 30)
+      .map((code) => textValue(code, `${label}, oznaka presađivanja`, { required: true, max: 100 })),
     transplantNote: textValue(item.transplantNote, `${label}, napomena o presađivanju`, { max: 600 }),
+    additionalParameters: arrayValue(item.additionalParameters || [], `${label}, dodatni parametri iz ponude`, 40)
+      .map((parameter) => {
+        if (!isObject(parameter)) throw new Error(`${label}: dodatni parametar mora imati naziv i vrednost.`);
+        return {
+          label: textValue(parameter.label, `${label}, naziv dodatnog parametra`, { required: true, max: 100 }),
+          value: textValue(parameter.value, `${label}, vrednost dodatnog parametra`, { required: true, max: 600 })
+        };
+      }),
     dataAccuracyNote: textValue(item.dataAccuracyNote, `${label}, napomena o tačnosti podataka`, { required: true, max: 1600 }),
     recordStatus: textValue(item.recordStatus, `${label}, status zapisa`, { max: 30, fallback: 'active' }),
     sourceFile: textValue(item.sourceEvidence?.sourceFile || item.sourceFile, `${label}, naziv izvornog priloga`, { max: 300 }),
@@ -1332,6 +1344,11 @@ function updateSearch() {
 function renderOffer(offer, plant, nursery) {
   const typeLabel = offer.seedlingType === 'standard' ? 'Standard' :
     offer.seedlingType === 'multistem' ? 'Multistem' : 'Nije navedeno u ponudi';
+  const transplantCodes = [...new Set(offer.transplantCodes || [])];
+  const transplantValue = offer.transplantCount !== null && offer.transplantCount !== undefined ?
+    (transplantCodes.length ? String(offer.transplantCount) + ' (' + transplantCodes.join(', ') + ')' :
+      offer.transplantNote || String(offer.transplantCount)) :
+    offer.transplantNote || transplantCodes.join(', ');
   const measurements = [
     ['Tip sadnice', typeLabel],
     ['Obim sadnice', offer.circumference],
@@ -1339,8 +1356,11 @@ function renderOffer(offer, plant, nursery) {
     ['Širina krošnje', offer.crownWidth],
     ['Veličina busena', offer.rootBall],
     ['Veličina saksije', offer.potSize],
-    ['Način isporuke', offer.rootType]
+    ['Način isporuke', offer.rootType],
+    ['Broj presađivanja', transplantValue],
+    ...(offer.additionalParameters || []).map(({ label, value }) => [label, value])
   ];
+  if (offer.specification) measurements.push(['Specifikacija iz ponude', offer.specification, true]);
   const dataNotes = [...new Set([offer.dataAccuracyNote, offer.measurementNote].filter(Boolean))];
   const hasPrice = offer.price !== null && offer.price !== undefined && offer.price !== '';
   const priceLabel = offer.priceKind === 'historical' ? 'Cena iz arhivirane ponude' : 'Nabavna cena iz ponude';
@@ -1363,8 +1383,8 @@ function renderOffer(offer, plant, nursery) {
     escapeHTML(offer.availability || 'Dostupnost nije navedena') + '</span>' +
     (offer.demo || nursery.demo ? '<span class="demo-badge">Demo ponuda</span>' : '') +
     '</div><dl class="measurements">' +
-    measurements.map(([label, value]) =>
-      '<div class="measurement"><dt>' + label + '</dt><dd' +
+    measurements.map(([label, value, fullWidth]) =>
+      '<div class="measurement"' + (fullWidth ? ' style="grid-column:1 / -1"' : '') + '><dt>' + escapeHTML(label) + '</dt><dd' +
       (!value || /nije|nepoznat/i.test(value) ? ' class="missing"' : '') + '>' +
       escapeHTML(value || 'Nije navedeno') + '</dd></div>'
     ).join('') + '</dl><div class="price-caption">' + priceLabel + '</div>' +
@@ -1375,8 +1395,6 @@ function renderOffer(offer, plant, nursery) {
     (offer.priceNote ? '<p class="image-kind">' + escapeHTML(offer.priceNote) + '</p>' : '') + '</div></div>' +
     '<div class="offer-footer"><div class="offer-source"><strong>' +
     sourceLink + '</strong><br>' + escapeHTML(sourceTiming) +
-    (offer.specification ? '<br>Specifikacija izvora: ' + escapeHTML(offer.specification) : '') +
-    (offer.transplantNote ? '<br><strong>Napomena o presađivanju:</strong> ' + escapeHTML(offer.transplantNote) : '') +
     (dataNotes.length ? '<br><strong>Tačnost podataka:</strong> ' + escapeHTML(dataNotes.join(' ')) : '') +
     (offer.imageSourceUrl && offer.imageSourceUrl !== offer.sourceUrl ? '<br><a href="' + escapeHTML(offer.imageSourceUrl) + '" target="_blank" rel="noopener noreferrer">Izvor kataloške fotografije ↗</a>' : '') +
     '</div></div></article>';
