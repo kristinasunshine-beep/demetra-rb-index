@@ -488,9 +488,20 @@ def observation_fields(observation, source, now):
 
 
 def update_document(document, config, fetcher, now=None, dry_run=False):
-    validate_config(config)
     now = now or datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
     require(isinstance(document, dict) and document.get("schemaVersion") == 1 and isinstance(document.get("offers"), list), "data_invalid", "Expected the existing {schemaVersion:1, updatedAt, offers:[...]} catalogue.")
+    if isinstance(document.get("sourcePolicy"), dict) and document["sourcePolicy"].get("nonPhoto") == "rasadnici-ponude-zip":
+        # The supplied archive is authoritative. This guard also protects
+        # against an older scheduled workflow still calling this script.
+        return copy.deepcopy(document), {
+            "schemaVersion": 1, "startedAt": now, "dryRun": bool(dry_run),
+            "status": "disabled_by_source_policy", "scopeOrigin": "private_offer",
+            "reason": "Cene i mere poticu iskljucivo iz Rasadnici ponude ZIP-a; online se osvezavaju samo fotografije.",
+            "requests": 0, "checked": 0, "updated": 0, "verifiedUnchanged": 0,
+            "failed": 0, "skipped": len(document["offers"]), "sources": [],
+            "dataChanged": False, "successfulObservations": 0, "catalogueWritten": False,
+        }
+    validate_config(config)
     original = document["offers"]
     require(all(isinstance(x, dict) and isinstance(x.get("id"), str) for x in original), "data_invalid", "Every existing offer must have an ID.")
     require(len({x["id"] for x in original}) == len(original), "data_invalid", "Duplicate offer IDs prevent a safe update.")
@@ -578,11 +589,14 @@ def main(argv=None):
     catalogue_written = False
     try:
         require(Path(args.data).resolve() != Path(args.report).resolve(), "config_invalid", "Report and catalogue paths must differ.")
-        config = json.loads(Path(args.config).read_text(encoding="utf-8"))
-        validate_config(config)
         data = json.loads(Path(args.data).read_text(encoding="utf-8"))
-        limits = config.get("limits", {})
-        fetch = PublicFetcher(limits.get("timeoutSeconds", 20), limits.get("maxResponseBytes", 5000000), limits.get("requestDelaySeconds", 1.25))
+        if isinstance(data.get("sourcePolicy"), dict) and data["sourcePolicy"].get("nonPhoto") == "rasadnici-ponude-zip":
+            config, fetch = {}, None
+        else:
+            config = json.loads(Path(args.config).read_text(encoding="utf-8"))
+            validate_config(config)
+            limits = config.get("limits", {})
+            fetch = PublicFetcher(limits.get("timeoutSeconds", 20), limits.get("maxResponseBytes", 5000000), limits.get("requestDelaySeconds", 1.25))
         result, report = update_document(data, config, fetch, dry_run=args.dry_run)
         if not args.dry_run and report["dataChanged"]:
             atomic_json(args.data, result)

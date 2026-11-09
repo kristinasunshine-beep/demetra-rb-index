@@ -9,12 +9,14 @@
     "ebben",
     "innocenti-mangoni",
     "lorberg",
+    "lorenz-von-ehren",
     "omorika-unresolved",
     "rasadnik-gold",
     "rasadnik-jugoslav-unresolved",
     "rasadnik-tine-unresolved",
     "rasadnik-vitorovic",
     "rasadnik-zica",
+    "royal-garden",
     "smits-boomkwekerij",
     "topalovic-unresolved",
     "vannucci-piante",
@@ -15220,6 +15222,47 @@
       "kind": "reviewed_typographic_correction",
       "reference": "https://www.vivainord.it/varietà/abies-nordmanniana/",
       "botanicalSynonym": false
+    }
+  ],
+  "sourcePolicy": {
+    "nonPhoto": "rasadnici-ponude-zip",
+    "onlineUpdates": [
+      "photos"
+    ]
+  },
+  "archiveNurseryAdditions": [
+    {
+      "id": "royal-garden",
+      "name": "Royal Garden",
+      "sourceEvidence": {
+        "sourceId": "src-daba48886fa824",
+        "sourceArchive": "Rasadnici ponude.zip",
+        "sourcePath": "Rasadnici ponude/Srbija/Royal/Ponude/Hibiscus i vinka.jpg",
+        "sourceSha256": "9b8a590ecd8d8644af40334d710cbb099f8b52f775d2a253676fd268b22934a3",
+        "kind": "supplier_email_in_archive",
+        "page": 1,
+        "sourceDate": "2025-09-04",
+        "issuerEvidence": "Odgovor na upit za Demetra RB; pošiljalac sa domena royalgarden.co.rs. Datoteka je u folderu Srbija/Royal/Ponude.",
+        "emailDomain": "royalgarden.co.rs"
+      },
+      "reason": "Existing scoped plants linked to their original supplier in the supplied ZIP; no plants added."
+    },
+    {
+      "id": "lorenz-von-ehren",
+      "name": "Baumschule Lorenz von Ehren",
+      "sourceEvidence": {
+        "sourceId": "src-a085c5c732d3f8",
+        "sourceArchive": "Rasadnici ponude.zip",
+        "sourcePath": "Rasadnici ponude/Nemačka/Lorenz von Ehren/Quotation No 42418134.pdf",
+        "sourceSha256": "3516ee9f9f49e919f7ba84806c0ba0ff78ba66463c9d83a2111b2de58702ef47",
+        "kind": "supplier_quotation",
+        "page": 1,
+        "sourceDate": "2025-03-06",
+        "quoteReference": "42418134",
+        "issuerEvidence": "Baumschule Lorenz von Ehren GmbH & Co. KG je naveden u zaglavlju ponude.",
+        "issuer": "Baumschule Lorenz von Ehren GmbH & Co. KG"
+      },
+      "reason": "Existing scoped plants linked to their original supplier in the supplied ZIP; no plants added."
     }
   ]
 }

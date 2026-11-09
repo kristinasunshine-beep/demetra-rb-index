@@ -630,12 +630,14 @@
       "ebben",
       "innocenti-mangoni",
       "lorberg",
+      "lorenz-von-ehren",
       "omorika-unresolved",
       "rasadnik-gold",
       "rasadnik-jugoslav-unresolved",
       "rasadnik-tine-unresolved",
       "rasadnik-vitorovic",
       "rasadnik-zica",
+      "royal-garden",
       "smits-boomkwekerij",
       "topalovic-unresolved",
       "vannucci-piante",
@@ -671,7 +673,8 @@
         "reviewedAt": "2026-11-06",
         "sourceUrl": "https://www.lorberg.com/en-gb/article/148/acer-campestre"
       },
-      "enabled": true
+      "enabled": false,
+      "reason": "source_policy: non-photo data comes only from Rasadnici ponude ZIP; online updates are limited to photos."
     },
     {
       "id": "price-web-public-a26176984e2425f644",
@@ -697,7 +700,8 @@
         "reviewedAt": "2026-11-06",
         "sourceUrl": "https://biojela.rs/product/abies-nordmanniana-2/"
       },
-      "enabled": true
+      "enabled": false,
+      "reason": "source_policy: non-photo data comes only from Rasadnici ponude ZIP; online updates are limited to photos."
     },
     {
       "id": "price-web-public-3bf281dcb7036f66ad",
@@ -723,7 +727,8 @@
         "reviewedAt": "2026-11-06",
         "sourceUrl": "https://biojela.rs/product/abies-nordmanniana-2/"
       },
-      "enabled": true
+      "enabled": false,
+      "reason": "source_policy: non-photo data comes only from Rasadnici ponude ZIP; online updates are limited to photos."
     },
     {
       "id": "price-web-public-9e8950b86bc2e36ff3",
@@ -749,7 +754,8 @@
         "reviewedAt": "2026-11-06",
         "sourceUrl": "https://biojela.rs/product/abies-nordmanniana-2/"
       },
-      "enabled": true
+      "enabled": false,
+      "reason": "source_policy: non-photo data comes only from Rasadnici ponude ZIP; online updates are limited to photos."
     },
     {
       "id": "price-web-public-185839ce465079cfca",
@@ -775,7 +781,8 @@
         "reviewedAt": "2026-11-06",
         "sourceUrl": "https://biojela.rs/product/abies-nordmanniana-2/"
       },
-      "enabled": true
+      "enabled": false,
+      "reason": "source_policy: non-photo data comes only from Rasadnici ponude ZIP; online updates are limited to photos."
     },
     {
       "id": "price-web-public-0f0af69aa81931cbdb",
@@ -801,7 +808,8 @@
         "reviewedAt": "2026-11-06",
         "sourceUrl": "https://biojela.rs/product/acer-palmatum-atropurpureum/"
       },
-      "enabled": true
+      "enabled": false,
+      "reason": "source_policy: non-photo data comes only from Rasadnici ponude ZIP; online updates are limited to photos."
     },
     {
       "id": "price-web-public-8b333c458a8ecc6279",
@@ -827,7 +835,8 @@
         "reviewedAt": "2026-11-06",
         "sourceUrl": "https://biojela.rs/product/acer-palmatum-atropurpureum/"
       },
-      "enabled": true
+      "enabled": false,
+      "reason": "source_policy: non-photo data comes only from Rasadnici ponude ZIP; online updates are limited to photos."
     },
     {
       "id": "price-web-public-9255c9b778ce86af30",
@@ -853,7 +862,8 @@
         "reviewedAt": "2026-11-06",
         "sourceUrl": "https://biojela.rs/product/acer-palmatum-atropurpureum/"
       },
-      "enabled": true
+      "enabled": false,
+      "reason": "source_policy: non-photo data comes only from Rasadnici ponude ZIP; online updates are limited to photos."
     },
     {
       "id": "price-web-public-16672b96bf1ea4ab8c",
@@ -879,7 +889,8 @@
         "reviewedAt": "2026-11-06",
         "sourceUrl": "https://biojela.rs/product/acer-palmatum-atropurpureum/"
       },
-      "enabled": true
+      "enabled": false,
+      "reason": "source_policy: non-photo data comes only from Rasadnici ponude ZIP; online updates are limited to photos."
     },
     {
       "id": "price-web-public-581ee1874921f5a392",
@@ -905,7 +916,8 @@
         "reviewedAt": "2026-11-06",
         "sourceUrl": "https://biojela.rs/product/acer-palmatum-atropurpureum/"
       },
-      "enabled": true
+      "enabled": false,
+      "reason": "source_policy: non-photo data comes only from Rasadnici ponude ZIP; online updates are limited to photos."
     },
     {
       "id": "price-web-public-3f28d07d984a58a529",
@@ -931,7 +943,8 @@
         "reviewedAt": "2026-11-06",
         "sourceUrl": "https://biojela.rs/product/acer-palmatum-sangokaku/"
       },
-      "enabled": true
+      "enabled": false,
+      "reason": "source_policy: non-photo data comes only from Rasadnici ponude ZIP; online updates are limited to photos."
     },
     {
       "id": "price-web-public-6e9d56b03f8277aec7",
@@ -953,7 +966,8 @@
         "reviewedAt": "2026-11-06",
         "sourceUrl": "https://biojela.rs/product/berberis-thunbergii-atropurpurea-2/"
       },
-      "enabled": true
+      "enabled": false,
+      "reason": "source_policy: non-photo data comes only from Rasadnici ponude ZIP; online updates are limited to photos."
     },
     {
       "id": "price-web-public-1d0860cef9877ba451",
@@ -975,7 +989,8 @@
         "reviewedAt": "2026-11-06",
         "sourceUrl": "https://biojela.rs/product/berberis-thunbergii-erecta-2/"
       },
-      "enabled": true
+      "enabled": false,
+      "reason": "source_policy: non-photo data comes only from Rasadnici ponude ZIP; online updates are limited to photos."
     },
     {
       "id": "price-web-public-fada3a20c3fd41b0fc",
@@ -1001,7 +1016,8 @@
         "reviewedAt": "2026-11-06",
         "sourceUrl": "https://biojela.rs/product/chamaecyparis-obtusa-nana-gracilis-2/"
       },
-      "enabled": true
+      "enabled": false,
+      "reason": "source_policy: non-photo data comes only from Rasadnici ponude ZIP; online updates are limited to photos."
     },
     {
       "id": "price-web-public-4ff7dd9970c8530a91",
@@ -1023,7 +1039,8 @@
         "reviewedAt": "2026-11-06",
         "sourceUrl": "https://biojela.rs/product/cornus-alba-sibirica/"
       },
-      "enabled": true
+      "enabled": false,
+      "reason": "source_policy: non-photo data comes only from Rasadnici ponude ZIP; online updates are limited to photos."
     },
     {
       "id": "price-web-public-de13ca120921fb3927",
@@ -1045,7 +1062,8 @@
         "reviewedAt": "2026-11-06",
         "sourceUrl": "https://biojela.rs/product/juniperus-horizontalis-andorra-compacta-variegata-copy/"
       },
-      "enabled": true
+      "enabled": false,
+      "reason": "source_policy: non-photo data comes only from Rasadnici ponude ZIP; online updates are limited to photos."
     },
     {
       "id": "price-web-public-d2c08d4662c376e325",
@@ -1071,7 +1089,8 @@
         "reviewedAt": "2026-11-06",
         "sourceUrl": "https://biojela.rs/product/taxus-baccata-fastigiata/"
       },
-      "enabled": true
+      "enabled": false,
+      "reason": "source_policy: non-photo data comes only from Rasadnici ponude ZIP; online updates are limited to photos."
     },
     {
       "id": "price-web-public-0bf9a7827b32d95bd8",
@@ -1097,7 +1116,8 @@
         "reviewedAt": "2026-11-06",
         "sourceUrl": "https://biojela.rs/product/taxus-baccata-fastigiata/"
       },
-      "enabled": true
+      "enabled": false,
+      "reason": "source_policy: non-photo data comes only from Rasadnici ponude ZIP; online updates are limited to photos."
     },
     {
       "id": "price-web-public-e75eeaf9c5feee5cc1",
@@ -1123,7 +1143,8 @@
         "reviewedAt": "2026-11-06",
         "sourceUrl": "https://biojela.rs/product/taxus-baccata-fastigiata/"
       },
-      "enabled": true
+      "enabled": false,
+      "reason": "source_policy: non-photo data comes only from Rasadnici ponude ZIP; online updates are limited to photos."
     },
     {
       "id": "price-web-public-523e81416aec553aeb",
@@ -1149,7 +1170,8 @@
         "reviewedAt": "2026-11-06",
         "sourceUrl": "https://biojela.rs/product/taxus-baccata-fastigiata/"
       },
-      "enabled": true
+      "enabled": false,
+      "reason": "source_policy: non-photo data comes only from Rasadnici ponude ZIP; online updates are limited to photos."
     },
     {
       "id": "price-web-public-a1b85c9fdd3753bc29",
@@ -1175,7 +1197,8 @@
         "reviewedAt": "2026-11-06",
         "sourceUrl": "https://biojela.rs/product/thuja-occidentalis-danica/"
       },
-      "enabled": true
+      "enabled": false,
+      "reason": "source_policy: non-photo data comes only from Rasadnici ponude ZIP; online updates are limited to photos."
     },
     {
       "id": "price-web-public-9fa959e25891859685",
@@ -1201,7 +1224,8 @@
         "reviewedAt": "2026-11-06",
         "sourceUrl": "https://biojela.rs/product/thuja-occidentalis-danica/"
       },
-      "enabled": true
+      "enabled": false,
+      "reason": "source_policy: non-photo data comes only from Rasadnici ponude ZIP; online updates are limited to photos."
     },
     {
       "id": "price-web-public-55fa597747903d83f5",
@@ -1227,7 +1251,8 @@
         "reviewedAt": "2026-11-06",
         "sourceUrl": "https://biojela.rs/product/thuja-occidentalis-smaragd/"
       },
-      "enabled": true
+      "enabled": false,
+      "reason": "source_policy: non-photo data comes only from Rasadnici ponude ZIP; online updates are limited to photos."
     },
     {
       "id": "price-web-public-3f69577198970123e4",
@@ -1253,7 +1278,8 @@
         "reviewedAt": "2026-11-06",
         "sourceUrl": "https://biojela.rs/product/thuja-occidentalis-smaragd/"
       },
-      "enabled": true
+      "enabled": false,
+      "reason": "source_policy: non-photo data comes only from Rasadnici ponude ZIP; online updates are limited to photos."
     },
     {
       "id": "price-web-public-731950d476668750aa",
@@ -1279,7 +1305,8 @@
         "reviewedAt": "2026-11-06",
         "sourceUrl": "https://biojela.rs/product/thuja-orientalis-aurea-nana/"
       },
-      "enabled": true
+      "enabled": false,
+      "reason": "source_policy: non-photo data comes only from Rasadnici ponude ZIP; online updates are limited to photos."
     },
     {
       "id": "price-web-public-c1b3c67d2fc5f85a5a",
@@ -1303,7 +1330,8 @@
         "reviewedAt": "2026-11-06",
         "sourceUrl": "https://rasadnik-vitorovic.shop/products/smilje-helichrysum-italicum-kontejnerske-sadnice?variant=46609440669939"
       },
-      "enabled": true
+      "enabled": false,
+      "reason": "source_policy: non-photo data comes only from Rasadnici ponude ZIP; online updates are limited to photos."
     },
     {
       "id": "price-web-public-00a08806fae01e137b",
@@ -1327,7 +1355,8 @@
         "reviewedAt": "2026-11-06",
         "sourceUrl": "https://rasadnik-vitorovic.shop/products/lovor-visnja-kontejnerske-sadnice?variant=46618159350003"
       },
-      "enabled": true
+      "enabled": false,
+      "reason": "source_policy: non-photo data comes only from Rasadnici ponude ZIP; online updates are limited to photos."
     },
     {
       "id": "price-web-public-18de28e41ec1476be2",
@@ -1351,7 +1380,8 @@
         "reviewedAt": "2026-11-06",
         "sourceUrl": "https://rasadnik-vitorovic.shop/products/santolina-chamaecyparissus-kontejnerske-sadnice?variant=46618106331379"
       },
-      "enabled": true
+      "enabled": false,
+      "reason": "source_policy: non-photo data comes only from Rasadnici ponude ZIP; online updates are limited to photos."
     },
     {
       "id": "price-web-public-69be01c2038fde3e60",
@@ -1375,7 +1405,8 @@
         "reviewedAt": "2026-11-06",
         "sourceUrl": "https://rasadnik-vitorovic.shop/products/lavandula-angustifolia-munstead-kontejnerske-sadnice?variant=46606396981491"
       },
-      "enabled": true
+      "enabled": false,
+      "reason": "source_policy: non-photo data comes only from Rasadnici ponude ZIP; online updates are limited to photos."
     },
     {
       "id": "price-web-public-79940588c7cd508e15",
@@ -1399,7 +1430,8 @@
         "reviewedAt": "2026-11-06",
         "sourceUrl": "https://rasadnik-vitorovic.shop/products/rosmarinus-officinalis-kontejnerske-sadnice?variant=46618139197683"
       },
-      "enabled": true
+      "enabled": false,
+      "reason": "source_policy: non-photo data comes only from Rasadnici ponude ZIP; online updates are limited to photos."
     },
     {
       "id": "price-web-public-447db5916d7dae1a0c",
@@ -1423,7 +1455,15 @@
         "reviewedAt": "2026-11-06",
         "sourceUrl": "https://rasadnik-vitorovic.shop/products/gaura-lindheimeri-siskiyou-pink-kontejnerske-sadnice?variant=46618038468851"
       },
-      "enabled": true
+      "enabled": false,
+      "reason": "source_policy: non-photo data comes only from Rasadnici ponude ZIP; online updates are limited to photos."
     }
-  ]
+  ],
+  "onlineUpdatesEnabled": false,
+  "sourcePolicy": {
+    "nonPhoto": "rasadnici-ponude-zip",
+    "onlineUpdates": [
+      "photos"
+    ]
+  }
 }

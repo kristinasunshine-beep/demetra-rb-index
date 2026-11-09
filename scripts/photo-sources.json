@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "pillowVersion": "13.0.0",
+  "notes": "Only reviewed nursery hosts. Direct mode rechecks the existing manifest URL; it does not discover a newer photo. Product mode requires an exact primary botanical name and never searches the web.",
+  "limits": {
+    "timeout": 20,
+    "maxPageBytes": 3000000,
+    "maxImageBytes": 10485760,
+    "maxPixels": 20000000,
+    "maxSide": 1200,
+    "jpegQuality": 82
+  },
+  "sources": [
+    {
+      "nurseryId": "biojela",
+      "resolver": "direct",
+      "fillMissing": false,
+      "pageHosts": [
+        "biojela.rs"
+      ],
+      "imageHosts": [
+        "media.biojela.rs"
+      ]
+    },
+    {
+      "nurseryId": "combinatie-mauritz",
+      "resolver": "direct",
+      "fillMissing": false,
+      "pageHosts": [
+        "combinatiemauritz.com"
+      ],
+      "imageHosts": [
+        "combinatiemauritz.com"
+      ]
+    },
+    {
+      "nurseryId": "ebben",
+      "resolver": "direct",
+      "fillMissing": false,
+      "pageHosts": [
+        "www.ebben.nl"
+      ],
+      "imageHosts": [
+        "www.ebben.nl"
+      ]
+    },
+    {
+      "nurseryId": "innocenti-mangoni",
+      "resolver": "product",
+      "fillMissing": true,
+      "pageHosts": [
+        "innocentiemangonipiante.it"
+      ],
+      "imageHosts": [
+        "innocentiemangonipiante.it"
+      ],
+      "pagePathPattern": "/en/[A-Za-z0-9%._-]+/?"
+    },
+    {
+      "nurseryId": "lorberg",
+      "resolver": "direct",
+      "fillMissing": false,
+      "pageHosts": [
+        "www.lorberg.com"
+      ],
+      "imageHosts": [
+        "www.lorberg.com"
+      ]
+    },
+    {
+      "nurseryId": "rasadnik-gold",
+      "resolver": "direct",
+      "fillMissing": false,
+      "pageHosts": [
+        "rasadnikgold.com"
+      ],
+      "imageHosts": [
+        "rasadnikgold.com"
+      ]
+    },
+    {
+      "nurseryId": "rasadnik-vitorovic",
+      "resolver": "direct",
+      "fillMissing": false,
+      "pageHosts": [
+        "rasadnik-vitorovic.shop"
+      ],
+      "imageHosts": [
+        "rasadnik-vitorovic.shop"
+      ]
+    },
+    {
+      "nurseryId": "smits-boomkwekerij",
+      "resolver": "direct",
+      "fillMissing": false,
+      "pageHosts": [
+        "smitsbv.nl"
+      ],
+      "imageHosts": [
+        "smitsbv.nl"
+      ]
+    },
+    {
+      "nurseryId": "vannucci-piante",
+      "resolver": "product",
+      "fillMissing": true,
+      "pageHosts": [
+        "webshop.vannuccipiante.it"
+      ],
+      "imageHosts": [
+        "webshop.vannuccipiante.it"
+      ],
+      "pagePathPattern": "/product/[A-Za-z0-9%._-]+/?"
+    },
+    {
+      "nurseryId": "vivai-reali",
+      "resolver": "product",
+      "fillMissing": true,
+      "pageHosts": [
+        "www.reali.it"
+      ],
+      "imageHosts": [
+        "www.reali.it"
+      ],
+      "pagePathPattern": "/piante/[A-Za-z0-9%._-]+/?"
+    },
+    {
+      "nurseryId": "vivers-planas",
+      "resolver": "direct",
+      "fillMissing": false,
+      "pageHosts": [
+        "www.viversplanas.com"
+      ],
+      "imageHosts": [
+        "images.hoobaweb.com"
+      ],
+      "imagePathPrefixes": {
+        "images.hoobaweb.com": [
+          "/1298/"
+        ]
+      }
+    },
+    {
+      "nurseryId": "willaert",
+      "resolver": "direct",
+      "fillMissing": false,
+      "pageHosts": [
+        "www.willaert.be"
+      ],
+      "imageHosts": [
+        "www.willaert.be"
+      ]
+    },
+    {
+      "nurseryId": "zelena-plocica",
+      "resolver": "direct",
+      "fillMissing": false,
+      "pageHosts": [
+        "www.zelenaplocica.rs"
+      ],
+      "imageHosts": [
+        "www.zelenaplocica.rs"
+      ]
+    }
+  ]
+}

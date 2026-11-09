@@ -17,7 +17,7 @@ try{
   for(const envelope of [plants,nurseries,offers]){
     if(envelope.schemaVersion!==1||!Number.isFinite(Date.parse(envelope.updatedAt)))fail('Neispravna verzija ili datum datoteke.');
   }
-  const catalog={schemaVersion:1,plants:plants.plants,nurseries:nurseries.nurseries,offers:offers.offers,updatedAt:plants.updatedAt};
+  const catalog={schemaVersion:1,sourcePolicy:offers.sourcePolicy,plants:plants.plants,nurseries:nurseries.nurseries,offers:offers.offers,updatedAt:offers.updatedAt};
   const context=createContext({URL,atob:globalThis.atob,catalogJSON:JSON.stringify(catalog)},{codeGeneration:{strings:false,wasm:false}});
   new Script(core[1]+'\nvalidateImport(JSON.parse(catalogJSON));').runInContext(context,{timeout:5000});
   const exact=(actual,expected,label)=>{
@@ -35,10 +35,14 @@ try{
     if(proof.latinName!==plant.latinName||!proof.offerEvidence?.length)fail('Nedostaje dokaz iz ponude: '+plant.latinName);
     if(plant.demo)fail('Demo biljke nisu dozvoljene.');
   }
-  const offerMap=new Map(catalog.offers.map(o=>[o.id,o]));
   const localImage=/^assets\/biljke\/[a-zA-Z0-9_-]+\.(?:jpg|jpeg|png|webp)$/i;
   for(const offer of catalog.offers){
     if(offer.demo)fail('Demo zapis nije dozvoljen: '+offer.id);
+    if(offer.dataOrigin!=='rasadnici-ponude-zip')fail('Podaci nisu vezani za ZIP ponude: '+offer.id);
+    if(offer.priceKind==='public')fail('Online cenovni zapis nije dozvoljen: '+offer.id);
+    if(!['','standard','multistem'].includes(offer.seedlingType ?? ''))fail('Nepoznat tip sadnice: '+offer.id);
+    if(offer.matureHeight||offer.matureCrownWidth||offer.parameterObservation)fail('Online botanički parametri nisu dozvoljeni: '+offer.id);
+    if(offer.transplantCount!==undefined&&offer.transplantCount!==null&&!offer.transplantNote)fail('Broj presađivanja mora biti objašnjen u napomeni: '+offer.id);
     if(offer.price!==null&&!(offer.price>0))fail('Cena mora biti pozitivna ili null: '+offer.id);
     if(offer.image&&!localImage.test(offer.image))fail('Fotografija mora biti sačuvana u repozitorijumu: '+offer.id);
   }
@@ -46,15 +50,13 @@ try{
     if(!(await stat(join(root,path))).isFile())fail('Nedostaje fotografija: '+path);
   }
   const sourceIds=new Set(),sourceOffers=new Set();
+  if(!Array.isArray(config.sources))fail('Konfiguracija cenovnih izvora mora sadržati listu.');
   for(const source of config.sources){
     if(sourceIds.has(source.id)||sourceOffers.has(source.offerId))fail('Dupliran izvor ažuriranja.');
     sourceIds.add(source.id);sourceOffers.add(source.offerId);
-    const offer=offerMap.get(source.offerId);
-    if(!offer||offer.plantId!==source.plantId||offer.nurseryId!==source.nurseryId||offer.sourceUrl!==source.offerSourceUrl)fail('Izvor nije vezan za tačan zapis: '+source.id);
-    if(source.enabled&&(source.expected.currency!==offer.currency||source.expected.unit.label!==offer.unit||offer.priceKind!=='public'))fail('Neslaganje jedinice/valute/vrste cene: '+source.id);
-    if(new URL(source.url).protocol!=='https:')fail('Izvor mora koristiti HTTPS.');
+    if(source.enabled!==false)fail('Online osvežavanje cena mora biti isključeno: '+source.id);
   }
   const sample=new Script('searchPlants(JSON.parse(catalogJSON),"A",{limit:5}).map(p=>p.id)').runInContext(context,{timeout:1000});
   if(sample.length>5)fail('Pretraga vraća više od pet predloga.');
-  console.log(JSON.stringify({ok:true,plants:catalog.plants.length,nurseries:catalog.nurseries.length,records:catalog.offers.length,priceSources:config.sources.filter(s=>s.enabled).length,localPhotos:new Set(catalog.offers.map(o=>o.image).filter(Boolean)).size},null,2));
+  console.log(JSON.stringify({ok:true,plants:catalog.plants.length,nurseries:catalog.nurseries.length,records:catalog.offers.length,nonPhotoSource:catalog.sourcePolicy.nonPhoto,onlineUpdates:catalog.sourcePolicy.onlineUpdates,priceSources:config.sources.filter(s=>s.enabled).length,localPhotos:new Set(catalog.offers.map(o=>o.image).filter(Boolean)).size},null,2));
 }catch(error){console.error('Provera nije prošla: '+error.message);process.exitCode=1;}
