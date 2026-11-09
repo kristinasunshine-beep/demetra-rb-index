@@ -703,6 +703,7 @@
     "githubPublished": false
   },
   "reportStatus": "historical_snapshot_superseded",
-  "currentReport": "docs/panel-parameters-report.json",
-  "notice": "Istorijski izveštaj prelaska na ZIP izvore. Sada svi poznati parametri stoje u glavnom panelu; aktuelni broj varijanti i provere su u panel-parameters-report.json."
+  "currentReport": "docs/all-fields-migration-report.json",
+  "notice": "Istorijski izveštaj. Aktuelna globalna ekstrakcija i prikaz svih izvornih podataka u glavnom panelu evidentirani su u all-fields-migration-report.json.",
+  "historical": true
 }

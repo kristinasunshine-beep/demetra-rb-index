@@ -18544,5 +18544,8 @@
     ],
     "suspiciousRootBall505NotImported": true,
     "githubPublished": false
-  }
+  },
+  "historical": true,
+  "currentReport": "docs/all-fields-migration-report.json",
+  "notice": "Istorijski izveštaj. Aktuelna globalna ekstrakcija i prikaz svih izvornih podataka u glavnom panelu evidentirani su u all-fields-migration-report.json."
 }
