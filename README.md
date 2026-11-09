@@ -19,9 +19,10 @@ Osam biljnih kartica nema pouzdanu aktivnu ponudu: sada prikazuju razlog u odelj
 ## Polja digitalne kartice
 
 - **Tip sadnice**: Standard ili Multistem, samo uz izričitu oznaku u ponudi; inače „Nije navedeno u ponudi”, uz objašnjenje.
-- **Svi tipovi sadnica prikazuju sve poznate parametre u glavnom panelu:** tip, obim, visinu, širinu krošnje, veličinu busena, veličinu saksije i način isporuke. Raniji naziv „Obim stabla” više se ne koristi.
+- **Svi tipovi sadnica prikazuju sve poznate parametre u glavnom panelu:** tip, obim, visinu, širinu krošnje, veličinu busena, veličinu saksije, način isporuke i broj presađivanja. Raniji naziv „Obim stabla” više se ne koristi.
 - Obim i visina ostaju u svojim poljima za standardne i multistem sadnice. Podatak se ne sklanja u napomenu zbog tipa sadnice; jedna mera nikad se ne preimenuje u drugu.
-- **Napomena o presađivanju** čuva broj i originalnu oznaku (`3xv`, `5xtr`, označen rimski broj ili raspon), kada postoje. To nije zasebno standardizovano polje na kartici.
+- **Broj presađivanja** ima svoje polje u glavnom panelu, sa izvornom oznakom, npr. **3 (3xv)**.
+- **Specifikacija iz ponude** u celosti je u glavnom panelu. Dodatne karakteristike — visina čistog debla, oblikovana krošnja, forma i slično — imaju svoja polja. Neoznačena mera prikazuje se kao **Dimenzija iz ponude**, bez proizvoljne zamene obima i visine.
 - **Tačnost podataka** objašnjava nepoznat tip, neoznačenu meru, više varijanti, upit ili ponuđenu zamenu.
 - Širina krošnje, veličina busena, veličina saksije, način isporuke i cena ostaju vezani za isti izvorni red/varijantu.
 
@@ -50,8 +51,12 @@ Nova ponuda se obrađuje iz novog dokumenta, sa svojim datumom i redom; ne prepi
 
 ## Provera i evidencija
 
-Prolaze 117 Python testova, provera kataloga, regresiona provera prikaza i izvršavanje stvarnog renderer-a za svih 619 kartica. CSS, heder, fontovi i animacije imaju isti izvorni kod kao prethodno postavljena verzija; dopunjen je sadržaj kartica.
+Prolaze 132 Python testa, provera kataloga, regresiona provera prikaza i izvršavanje stvarnog renderer-a za svih 619 kartica. CSS, heder, fontovi i animacije imaju isti izvorni kod kao prethodno postavljena verzija; dopunjen je sadržaj kartica.
 
 Za lokalni pregled pokrenite `python3 -m http.server 8000` iz repozitorijuma i otvorite `http://localhost:8000/`. Proveru podataka pokreće `node scripts/check-catalog.mjs`.
 
-Aktuelni izveštaj je `docs/panel-parameters-report.json`. Provera `scripts/check-catalog.mjs` pre objave izvršava stvarni renderer za sve kartice i proverava da je svaki poznati parametar u glavnom panelu. `docs/catalog-repair-report.json` i `docs/arbor-import-repair.json` ostaju jasno označeni istorijski tragovi ranijih uvoza. Njihovi stari zbirni brojevi i pravila osvežavanja ne opisuju ovo izdanje.
+Aktuelni izveštaj je `docs/all-fields-migration-report.json`. Dopunjena ili normalizovana su glavna polja u 807 zapisa; 1.797 dodatnih karakteristika prikazuje se u panelima. Svih 2.927 aktivnih panela prikazuje punu izvornu specifikaciju. Pet nezavisnih primera iz ponuda zaustavlja proveru ako poznat podatak ponovo nedostaje, čak i ako je prazno polje i u JSON-u. Provera `scripts/check-catalog.mjs` pre objave izvršava stvarni renderer za sve kartice i proverava da je svaki poznati parametar u glavnom panelu. `docs/catalog-repair-report.json` i `docs/arbor-import-repair.json` ostaju jasno označeni istorijski tragovi ranijih uvoza. Njihovi stari zbirni brojevi i pravila osvežavanja ne opisuju ovo izdanje.
+
+## Ponovljiva obrada podataka
+
+`scripts/migrate-panel-data.py` obrađuje postojeće arhivske specifikacije bez internet zahteva. Bez argumenata prikazuje pregled; `python3 scripts/migrate-panel-data.py --output data/kataloske-stavke.json` primenjuje promene. Ponovni prolaz ne menja već ispravljene podatke. Objava radi kroz postojeći GitHub Actions postupak.
