@@ -1,0 +1,705 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-11-09T10:18:58Z",
+  "sourceArchive": {
+    "file": "Rasadnici ponude.zip",
+    "sha256": "610fcb837c6cc1f5e22ce5035437ef03ab5ea0bdd48054ad710bec360c7a3c65",
+    "fileCount": 223
+  },
+  "sourcePolicy": {
+    "nonPhoto": "rasadnici-ponude-zip",
+    "onlineUpdates": [
+      "photos"
+    ]
+  },
+  "removedWebRows": 850,
+  "removedWebPrices": 31,
+  "appliedPatches": [
+    {
+      "file": "archive-placeholder-patch.json",
+      "sha256": "a3be77bb2eae49da81153f868b6f527d97f9905760e0b83d9c1187a1c49890db",
+      "summary": {}
+    },
+    {
+      "file": "archive-pdf-placeholder-patch.json",
+      "sha256": "99177d6a2616220911f8eb05dd9e2f58b52765765d887a24850010b2014af1e3",
+      "summary": {
+        "records": 37,
+        "byNursery": {
+          "arbor": 8,
+          "smits-boomkwekerij": 2,
+          "rasadnik-zica": 16,
+          "volentis": 3,
+          "vannucci-piante": 2,
+          "lorberg": 6
+        },
+        "pdfRecords": 26,
+        "photoAttachmentRecords": 11,
+        "superseded": 4,
+        "needsReview": 12,
+        "pricesChanged": 0
+      }
+    },
+    {
+      "file": "missing-archive-plants-patch.json",
+      "sha256": "f285510c52404d82fc51e3d07863925dc51be5499c29855f6d6c948b50c108b5",
+      "summary": {
+        "plantsCovered": 12,
+        "newNurseries": 2,
+        "newOffers": 15,
+        "pricedHistoricalOffers": 8,
+        "inquiryRecords": 7,
+        "plantsAdded": 0,
+        "sourcesProcessed": 4
+      }
+    },
+    {
+      "file": "last-volentis-placeholder-patch.json",
+      "sha256": "3e61930c6d47fc5d07e7cf6cad83fb7e713deba9bc004e910447b9b1a7394926",
+      "summary": {
+        "updates": 1,
+        "newPlants": 0,
+        "newOffers": 0,
+        "networkRequests": 0,
+        "sharedCultivarPriceRows": 1
+      }
+    }
+  ],
+  "patchStageUnresolved": [
+    {
+      "id": "record-abd2b1321ff2be",
+      "plantId": "plant-e31efad7c4f189",
+      "source": "Volentis · prilog 586767",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-f80bf9874479e4",
+      "plantId": "plant-carpinus-betulus",
+      "source": "Volentis · prilog 76df3d",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-903dfb59efd3b0",
+      "plantId": "plant-ad030630aebb83",
+      "source": "Volentis · prilog e398a7",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-3181483a89cabe",
+      "plantId": "plant-2b5ca69a45dcf3",
+      "source": "Lorberg Quality Plants GmbH & Co. KG · prilog 255a38",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-8e61b67d9f0ab7",
+      "plantId": "plant-65238cc4c86bd4",
+      "source": "Arbor Nurseries · prilog d2740a",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-d0496faa654ba6",
+      "plantId": "plant-c8e469c1c612b4",
+      "source": "Arbor Nurseries · prilog d2740a",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-602cd8ad4b979a",
+      "plantId": "plant-03be2c36cba9f4",
+      "source": "Arbor Nurseries · prilog d2740a",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-359ce212e5ca97",
+      "plantId": "plant-bd91b93fd2d499",
+      "source": "Arbor Nurseries · prilog d2740a",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-3c2fe30aef096b",
+      "plantId": "plant-068e30358a9671",
+      "source": "Arbor Nurseries · prilog d2740a",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-1572c1507bd7d3",
+      "plantId": "plant-f0c20ea1f3f84f",
+      "source": "Arbor Nurseries · prilog ccccb8",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-9fbcafba9fb8e4",
+      "plantId": "plant-b1fc7ebad5242f",
+      "source": "Smits Boomkwekerij · prilog c2780e",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-6264713ffd962c",
+      "plantId": "plant-eb4e2ea4455224",
+      "source": "Smits Boomkwekerij · prilog c2780e",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-c78f5c0abf3e6c",
+      "plantId": "plant-250d3cfa5a6d06",
+      "source": "Volentis · prilog 882b21",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-2200e491ed2bce",
+      "plantId": "plant-cfbe4fb8f690dc",
+      "source": "Vannucci Piante · prilog 75c64c",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-0f324540e48a4e",
+      "plantId": "plant-dff75bb196d8f1",
+      "source": "Lorberg Quality Plants GmbH & Co. KG · prilog a8214d",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-7acf3312f52c21",
+      "plantId": "plant-37d70ea5aaf3d4",
+      "source": "Lorberg Quality Plants GmbH & Co. KG · prilog 1ef232",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-9d0dfad9922454",
+      "plantId": "plant-dc277e6125caf5",
+      "source": "Lorberg Quality Plants GmbH & Co. KG · prilog 291a5f",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-8b99b36d1e4026",
+      "plantId": "plant-9029f769fe9c6e",
+      "source": "Lorberg Quality Plants GmbH & Co. KG · prilog 2278ee",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-adff88cfd70dee",
+      "plantId": "plant-991dfa88cabeee",
+      "source": "Arbor Nurseries · prilog 61771e",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-1a0a37cf6bdc3c",
+      "plantId": "plant-95fc3ec4ba0ae9",
+      "source": "Arbor Nurseries · prilog f39dc8",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-8f0c05b63b2dab",
+      "plantId": "plant-6f6f84d77730d7",
+      "source": "Combinatie Mauritz B.V. · prilog 8c1b28",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-95c9fd542cd02a",
+      "plantId": "plant-52334251b3e7c9",
+      "source": "Combinatie Mauritz B.V. · prilog fcf95d",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-49d5e785f1d597",
+      "plantId": "plant-eb4e2ea4455224",
+      "source": "Vannucci Piante · prilog cb3ed4",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-4113bbdab51126",
+      "plantId": "plant-edfcd0785401cb",
+      "source": "Lorberg Quality Plants GmbH & Co. KG · prilog fab71e",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-996340c6bb3800",
+      "plantId": "plant-7e5800de384123",
+      "source": "Rasadnik Žića · prilog 833688",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-dec076a2ee8b2d",
+      "plantId": "plant-694e0718f3e975",
+      "source": "Rasadnik Žića · prilog 833688",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-b10d1e056de6af",
+      "plantId": "plant-45622fca5c603f",
+      "source": "Rasadnik Žića · prilog 399eaf",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-e1e3c0fad230dc",
+      "plantId": "plant-8dfcdbd9a06e2e",
+      "source": "Rasadnik Žića · prilog 358312",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-9c51ac6e174a1e",
+      "plantId": "plant-6775e8dd246cf2",
+      "source": "Rasadnik Žića · prilog 358312",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-5ec2f15aed75ee",
+      "plantId": "plant-aded5452bee6d6",
+      "source": "Rasadnik Žića · prilog 358312",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-69109de9535931",
+      "plantId": "plant-46b7494ce291cb",
+      "source": "Rasadnik Žića · prilog 358312",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-f3be20d5667456",
+      "plantId": "plant-ef7086d1f6252b",
+      "source": "Rasadnik Žića · prilog 358312",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-6e1c9ef02b69af",
+      "plantId": "plant-df76b734eb608c",
+      "source": "Rasadnik Žića · prilog 358312",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-eb3f19f1a35ce1",
+      "plantId": "plant-da699c8718bcb2",
+      "source": "Rasadnik Žića · prilog 358312",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-d2e9fdf74f476c",
+      "plantId": "plant-7c13f4d3f2e8d1",
+      "source": "Rasadnik Žića · prilog 358312",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-01e84272d2fc75",
+      "plantId": "plant-8b35bc8a4e1800",
+      "source": "Rasadnik Žića · prilog 1f3d72",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-c71b12a141e5dc",
+      "plantId": "plant-3f70a4b46ba024",
+      "source": "Rasadnik Žića · prilog 1f3d72",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-f3373492ef7a8a",
+      "plantId": "plant-4dc7c992aa63f7",
+      "source": "Rasadnik Žića · prilog 399eaf",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-dbe1ab37f16025",
+      "plantId": "plant-ade2ce47351665",
+      "source": "Rasadnik Žića · prilog 833688",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "id": "record-187b953c69afac",
+      "plantId": "plant-4059520f066f5f",
+      "source": "Rasadnik Žića · prilog 833688",
+      "reason": "Izvor nije obuhvaćen normalizovanim XLSX/XLS/ODS tabelama."
+    },
+    {
+      "kind": "missing_supplier_response",
+      "plantIds": [
+        "plant-3da457b71894cb",
+        "plant-a673ae8c07c8a4",
+        "plant-bef4074eaff0f2",
+        "plant-d9153e5bc9deca",
+        "plant-dedd338dd3e783",
+        "plant-f7f490785ef2e3"
+      ],
+      "detail": "Za pet vrsta u Royal XLSX i Hibiscus moscheutos dostavljen je samo upit. Veza je dokumentovana kao inquiry, cena ostaje null i nema potvrde dostupnosti."
+    },
+    {
+      "kind": "unclassified_source_measurements",
+      "offerIds": [
+        "record-archive-c734df3af37d6e",
+        "record-archive-6b5cb746a91b1f",
+        "record-archive-3b6c3b1fb9bb12",
+        "record-archive-52d4f5aa52a4c9",
+        "record-archive-3a9482be6f954d",
+        "record-archive-b3af36b18a88c4",
+        "record-archive-894616a11a45f9",
+        "record-archive-99e5462ab003eb"
+      ],
+      "detail": "Neoznačene mere ostaju u specifikaciji/napomeni i nisu proizvoljno pretvorene u visinu/obim/širinu krošnje."
+    }
+  ],
+  "sourceResolutionWarnings": [],
+  "photoMigration": [
+    {
+      "offerId": "offer-pdf-2fa6700b85b1cabc0ef3",
+      "sourcePhotoReferenceId": "web-public-6efc981cbc2a1de711",
+      "plantId": "plant-acer-campestre",
+      "nurseryId": "innocenti-mangoni"
+    },
+    {
+      "offerId": "offer-pdf-201db9a81ea18b09bb00",
+      "sourcePhotoReferenceId": "web-public-9aaa78987f38d464e8",
+      "plantId": "plant-cd7931ce209e95",
+      "nurseryId": "innocenti-mangoni"
+    },
+    {
+      "offerId": "offer-pdf-6468d88e105817d4b0b7",
+      "sourcePhotoReferenceId": "web-public-9de314f67a0c023f0c",
+      "plantId": "plant-4adab3e6770de0",
+      "nurseryId": "innocenti-mangoni"
+    },
+    {
+      "offerId": "offer-pdf-6b2e3c9b23648da09140",
+      "sourcePhotoReferenceId": "web-public-69f5561ae03048471c",
+      "plantId": "plant-7165d79ddfbade",
+      "nurseryId": "innocenti-mangoni"
+    },
+    {
+      "offerId": "offer-pdf-7d3d7a2d1604574e904c",
+      "sourcePhotoReferenceId": "web-public-8736dddc62b294e488",
+      "plantId": "plant-65d6c4007d282d",
+      "nurseryId": "innocenti-mangoni"
+    },
+    {
+      "offerId": "offer-pdf-0103f70f5fb47b996c5f",
+      "sourcePhotoReferenceId": "web-public-afa32051b94ad20d1e",
+      "plantId": "plant-d7147c29cd9c07",
+      "nurseryId": "innocenti-mangoni"
+    },
+    {
+      "offerId": "offer-pdf-16ebede3c15d7b775c27",
+      "sourcePhotoReferenceId": "web-public-8736dddc62b294e488",
+      "plantId": "plant-65d6c4007d282d",
+      "nurseryId": "innocenti-mangoni"
+    },
+    {
+      "offerId": "offer-pdf-cd22c9e494938a0f8595",
+      "sourcePhotoReferenceId": "web-public-de7ed204a622f8da71",
+      "plantId": "plant-ecfe2b17e485e6",
+      "nurseryId": "innocenti-mangoni"
+    },
+    {
+      "offerId": "offer-pdf-adcf02b997284443fe4b",
+      "sourcePhotoReferenceId": "web-public-e7b175f5e0ce9d903a",
+      "plantId": "plant-3a1aeb3df1ce96",
+      "nurseryId": "innocenti-mangoni"
+    },
+    {
+      "offerId": "offer-pdf-197f3780ccb8d894b141",
+      "sourcePhotoReferenceId": "web-public-e6eba792f2f77d97cc",
+      "plantId": "plant-c5c515ab916b60",
+      "nurseryId": "innocenti-mangoni"
+    },
+    {
+      "offerId": "offer-pdf-f30f04da6544126053fa",
+      "sourcePhotoReferenceId": "web-public-3b63368cb05d91f6ce",
+      "plantId": "plant-8c2ae8ac7ff3af",
+      "nurseryId": "innocenti-mangoni"
+    },
+    {
+      "offerId": "offer-pdf-a0292f1d96f495c5a03f",
+      "sourcePhotoReferenceId": "web-public-408c5165116a0f1be6",
+      "plantId": "plant-302baa4f441456",
+      "nurseryId": "innocenti-mangoni"
+    },
+    {
+      "offerId": "offer-pdf-343b82e347ae67dd4d46",
+      "sourcePhotoReferenceId": "web-public-a69be9bcbb31db6445",
+      "plantId": "plant-6f812f93a79176",
+      "nurseryId": "innocenti-mangoni"
+    },
+    {
+      "offerId": "offer-pdf-cdc82e59d65197d0227d",
+      "sourcePhotoReferenceId": "web-public-ada4a6f368d104638c",
+      "plantId": "plant-liquidambar-styraciflua",
+      "nurseryId": "innocenti-mangoni"
+    },
+    {
+      "offerId": "offer-pdf-65923d60952626f104e5",
+      "sourcePhotoReferenceId": "web-public-ada4a6f368d104638c",
+      "plantId": "plant-liquidambar-styraciflua",
+      "nurseryId": "innocenti-mangoni"
+    },
+    {
+      "offerId": "offer-pdf-e036ae6f9f6fd823c028",
+      "sourcePhotoReferenceId": "web-public-83bc5760162acca037",
+      "plantId": "plant-34d5c3899b3339",
+      "nurseryId": "innocenti-mangoni"
+    },
+    {
+      "offerId": "offer-pdf-1b71a7af9cea8e9bb472",
+      "sourcePhotoReferenceId": "web-public-83bc5760162acca037",
+      "plantId": "plant-34d5c3899b3339",
+      "nurseryId": "innocenti-mangoni"
+    },
+    {
+      "offerId": "offer-pdf-2d56f4abbbe6d962c108",
+      "sourcePhotoReferenceId": "web-public-e7b175f5e0ce9d903a",
+      "plantId": "plant-3a1aeb3df1ce96",
+      "nurseryId": "innocenti-mangoni"
+    },
+    {
+      "offerId": "offer-pdf-f6b641306e075eb1874f",
+      "sourcePhotoReferenceId": "web-public-e7b175f5e0ce9d903a",
+      "plantId": "plant-3a1aeb3df1ce96",
+      "nurseryId": "innocenti-mangoni"
+    },
+    {
+      "offerId": "offer-pdf-9e2824827eb31fd5f8fe",
+      "sourcePhotoReferenceId": "web-public-d69e0b7a1850b374a0",
+      "plantId": "plant-3dd9a62051ba64",
+      "nurseryId": "innocenti-mangoni"
+    },
+    {
+      "offerId": "offer-pdf-330c86af5f47227cb9cb",
+      "sourcePhotoReferenceId": "web-public-d356042e8e0e7102bf",
+      "plantId": "plant-3ce77f82ccc311",
+      "nurseryId": "innocenti-mangoni"
+    },
+    {
+      "offerId": "offer-pdf-58408113b021d5a3c94a",
+      "sourcePhotoReferenceId": "web-public-8547f253e0cf1b82c3",
+      "plantId": "plant-6279abbe26f76d",
+      "nurseryId": "vannucci-piante"
+    },
+    {
+      "offerId": "offer-pdf-9c043a423a5029d49d49",
+      "sourcePhotoReferenceId": "web-public-235facc4d8bc803d65",
+      "plantId": "plant-138cb9bcaeeb45",
+      "nurseryId": "vannucci-piante"
+    },
+    {
+      "offerId": "offer-pdf-2b4ad94613d2112f9f6d",
+      "sourcePhotoReferenceId": "web-public-bcb923730c2d5ee443",
+      "plantId": "plant-b50f4e6010238c",
+      "nurseryId": "vannucci-piante"
+    },
+    {
+      "offerId": "offer-pdf-a1c788075c4d4d6a35eb",
+      "sourcePhotoReferenceId": "web-public-6ec1569cf175019aca",
+      "plantId": "plant-36c333221f633e",
+      "nurseryId": "vannucci-piante"
+    },
+    {
+      "offerId": "offer-pdf-89ac3d2dc8a574d36234",
+      "sourcePhotoReferenceId": "web-public-ada3deb6c218141dc4",
+      "plantId": "plant-9ef2a0110b94c3",
+      "nurseryId": "vannucci-piante"
+    },
+    {
+      "offerId": "offer-pdf-c74f9bc329f4824c48ab",
+      "sourcePhotoReferenceId": "web-public-232f6de814ac625208",
+      "plantId": "plant-37d70ea5aaf3d4",
+      "nurseryId": "vannucci-piante"
+    },
+    {
+      "offerId": "offer-pdf-0a1acb7696bcedd0cf27",
+      "sourcePhotoReferenceId": "web-public-70cccb3e40974753ec",
+      "plantId": "plant-3a1aeb3df1ce96",
+      "nurseryId": "vannucci-piante"
+    },
+    {
+      "offerId": "offer-pdf-9510f2ff92870ba818d6",
+      "sourcePhotoReferenceId": "web-public-70cccb3e40974753ec",
+      "plantId": "plant-3a1aeb3df1ce96",
+      "nurseryId": "vannucci-piante"
+    },
+    {
+      "offerId": "offer-pdf-e0f66fad73ea87df4607",
+      "sourcePhotoReferenceId": "web-public-51d61f99b3f46b9e03",
+      "plantId": "plant-8eb0ab5cc3a8ca",
+      "nurseryId": "vannucci-piante"
+    },
+    {
+      "offerId": "offer-pdf-c6104feab4d47f86f7d6",
+      "sourcePhotoReferenceId": "web-public-cb80cdf6ed27dd3f0e",
+      "plantId": "plant-ce3fc8d22cadc1",
+      "nurseryId": "vannucci-piante"
+    },
+    {
+      "offerId": "offer-pdf-1e6682a28ed78dddf9fc",
+      "sourcePhotoReferenceId": "web-public-295e879aab591652b4",
+      "plantId": "plant-55e98a21d054d2",
+      "nurseryId": "vannucci-piante"
+    },
+    {
+      "offerId": "offer-pdf-ffd9c687c7d45fab2fa1",
+      "sourcePhotoReferenceId": "web-public-7f1fa64f446140a126",
+      "plantId": "plant-3ce77f82ccc311",
+      "nurseryId": "vannucci-piante"
+    },
+    {
+      "offerId": "offer-pdf-0aa5022fdb90d0783a5b",
+      "sourcePhotoReferenceId": "web-public-7f1fa64f446140a126",
+      "plantId": "plant-3ce77f82ccc311",
+      "nurseryId": "vannucci-piante"
+    },
+    {
+      "offerId": "offer-pdf-e68b1ea5674495be6b83",
+      "sourcePhotoReferenceId": "web-public-4806631d7be2fd6ac8",
+      "plantId": "plant-7165d79ddfbade",
+      "nurseryId": "vannucci-piante"
+    }
+  ],
+  "summary": {
+    "plants": 619,
+    "nurseries": 24,
+    "records": 2872,
+    "activeRecords": 2838,
+    "pricesFromArchive": 2351,
+    "standard": 647,
+    "multistem": 269,
+    "typeNotStatedOrUnresolved": 1956,
+    "transplantNotes": 75,
+    "sourceVerified": 2872,
+    "photos": 204,
+    "uniquePhotos": 63,
+    "photoReferencesRetained": 850,
+    "onlinePriceUpdates": 0,
+    "onlineParameterUpdates": 0,
+    "recordsAwaitingReview": 12,
+    "supersededRecords": 22,
+    "blankSpecifications": 2
+  },
+  "plantCoverage": {
+    "withArchiveRecords": 619,
+    "withActiveArchiveRecords": 611,
+    "missingPlantIds": []
+  },
+  "unresolved": [
+    {
+      "offerId": "record-8e61b67d9f0ab7",
+      "plantId": "plant-65238cc4c86bd4",
+      "source": "Arbor Nurseries · prilog d2740a",
+      "reason": "Opis je iz dokumenta 1598_001.pdf u fascikli Arbor. Izdavalac nije naveden na listu; zato pripadnost rasadniku i rukom menjane stavke nisu označene kao potvrđena ponuda. Mere su sačuvane kao izvorni opis; broj bez jasno navedene jedinice nije pretvaran u centimetre."
+    },
+    {
+      "offerId": "record-d0496faa654ba6",
+      "plantId": "plant-c8e469c1c612b4",
+      "source": "Arbor Nurseries · prilog d2740a",
+      "reason": "Opis je iz dokumenta 1598_001.pdf u fascikli Arbor. Izdavalac nije naveden na listu; zato pripadnost rasadniku i rukom menjane stavke nisu označene kao potvrđena ponuda. Mere su sačuvane kao izvorni opis; broj bez jasno navedene jedinice nije pretvaran u centimetre."
+    },
+    {
+      "offerId": "record-602cd8ad4b979a",
+      "plantId": "plant-03be2c36cba9f4",
+      "source": "Arbor Nurseries · prilog d2740a",
+      "reason": "Opis je iz dokumenta 1598_001.pdf u fascikli Arbor. Izdavalac nije naveden na listu; zato pripadnost rasadniku i rukom menjane stavke nisu označene kao potvrđena ponuda. Mere su sačuvane kao izvorni opis; broj bez jasno navedene jedinice nije pretvaran u centimetre."
+    },
+    {
+      "offerId": "record-359ce212e5ca97",
+      "plantId": "plant-bd91b93fd2d499",
+      "source": "Arbor Nurseries · prilog d2740a",
+      "reason": "Opis je iz dokumenta 1598_001.pdf u fascikli Arbor. Izdavalac nije naveden na listu; zato pripadnost rasadniku i rukom menjane stavke nisu označene kao potvrđena ponuda. Mere su sačuvane kao izvorni opis; broj bez jasno navedene jedinice nije pretvaran u centimetre."
+    },
+    {
+      "offerId": "record-3c2fe30aef096b",
+      "plantId": "plant-068e30358a9671",
+      "source": "Arbor Nurseries · prilog d2740a",
+      "reason": "Opis je iz dokumenta 1598_001.pdf u fascikli Arbor. Izdavalac nije naveden na listu; zato pripadnost rasadniku i rukom menjane stavke nisu označene kao potvrđena ponuda. Mere su sačuvane kao izvorni opis; broj bez jasno navedene jedinice nije pretvaran u centimetre."
+    },
+    {
+      "offerId": "record-1572c1507bd7d3",
+      "plantId": "plant-f0c20ea1f3f84f",
+      "source": "Arbor Nurseries · prilog ccccb8",
+      "reason": "Ponuda S2526-01613 navodi Chimonanthus praecox kao zamenu za traženi Chimonanthus virginicus. Mere i cena zamene nisu pripisane traženoj biljci."
+    },
+    {
+      "offerId": "record-2200e491ed2bce",
+      "plantId": "plant-cfbe4fb8f690dc",
+      "source": "Vannucci Piante · prilog 75c64c",
+      "reason": "Izvor navodi Hydrangea macrophylla, dok je postojeći zapis vezan za Hydrangea aspera Macrophylla. To nisu isti nazivi; mere i cena nisu preneti na nepovezanu vrstu."
+    },
+    {
+      "offerId": "record-dec076a2ee8b2d",
+      "plantId": "plant-694e0718f3e975",
+      "source": "Rasadnik Žića · prilog 833688",
+      "reason": "Sorbus aucuparia je precrtan u izvornom redu 22. Rukom su navedene dve zamene; njihove mere i cena nisu pripisane precrtanoj biljci."
+    },
+    {
+      "offerId": "record-b10d1e056de6af",
+      "plantId": "plant-45622fca5c603f",
+      "source": "Rasadnik Žića · prilog 399eaf",
+      "reason": "Izvor navodi Tilia argentea, dok postojeća veza vodi na Tilia hybrida argentea. Taksonomska veza nije potvrđena; mere i cena nisu pripisani tom zapisu."
+    },
+    {
+      "offerId": "record-f3373492ef7a8a",
+      "plantId": "plant-4dc7c992aa63f7",
+      "source": "Rasadnik Žića · prilog 399eaf",
+      "reason": "Traženi Crataegus zamenjen je biljkom Prunus serrulata Kanzan. Cena zamene nije cena tražene biljke; izvorna mera upita ostaje samo u opisu."
+    },
+    {
+      "offerId": "record-dbe1ab37f16025",
+      "plantId": "plant-ade2ce47351665",
+      "source": "Rasadnik Žića · prilog 833688",
+      "reason": "Sorbus scandica i Sorbus aria navedeni su zajedno kao zamene uz jednu cenu. Izvor ne razdvaja njihove mere i cenu; podaci nisu proizvoljno podeljeni."
+    },
+    {
+      "offerId": "record-187b953c69afac",
+      "plantId": "plant-4059520f066f5f",
+      "source": "Rasadnik Žića · prilog 833688",
+      "reason": "Sorbus aria i Sorbus scandica navedeni su zajedno kao zamene uz jednu cenu. Izvor ne razdvaja njihove mere i cenu; podaci nisu proizvoljno podeljeni."
+    }
+  ],
+  "verification": {
+    "pythonTestsPassed": 93,
+    "catalogValidator": true,
+    "renderer": {
+      "ok": true,
+      "cardsRendered": 619,
+      "nurseryIdsLoaded": 24,
+      "totalOffersChecked": 2872,
+      "activeOffersRendered": 2838,
+      "hiddenOffersAlsoChecked": 34,
+      "sourcePolicy": {
+        "nonPhoto": "rasadnici-ponude-zip",
+        "onlineUpdates": [
+          "photos"
+        ]
+      },
+      "standard": 644,
+      "multistem": 267,
+      "unknownType": 1927,
+      "sourceDimensionNotes": 605,
+      "transplantNotes": 74,
+      "accuracyNotes": 2838,
+      "cardsWithOffers": 611,
+      "cardsWithoutOffers": 8,
+      "emptyCardsExplained": 8,
+      "correctedPlantLinks": 1,
+      "checks": [
+        "realHtmlValidator",
+        "realHtmlRenderRecordForEveryPlant",
+        "realHtmlRenderOfferForEveryVariant",
+        "standardHeightOnly",
+        "multistemGirthOnly",
+        "otherDimensionInNote",
+        "transplantCountInNote",
+        "accuracyNote",
+        "archiveOnlyData",
+        "noOnlineMatureFields",
+        "newNurseryIdsFromRealFile",
+        "numericPricesVisible",
+        "emptyCardsExplainSourceReview",
+        "emptyCardsHaveNoUnconfirmedPriceOrMeasurements",
+        "correctedNameLinksToExistingPlant"
+      ],
+      "errors": []
+    },
+    "sourceProofsVerifiedAgainstArchive": 2872,
+    "sourcePolicyGuards": {
+      "prices": "disabled_by_source_policy",
+      "parameters": "disabled_by_source_policy",
+      "requests": 0,
+      "catalogueBytesUnchanged": true
+    },
+    "cssAndHeaderUnchanged": true,
+    "workflowYamlValid": true,
+    "sourceOnlyCatalogueSha256": "ebde81696b159c113864ae8bba042f4ed58697c727070c4188cf9ef052041d35",
+    "githubPublished": false
+  }
+}
