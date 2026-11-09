@@ -701,5 +701,8 @@
     "workflowYamlValid": true,
     "sourceOnlyCatalogueSha256": "ebde81696b159c113864ae8bba042f4ed58697c727070c4188cf9ef052041d35",
     "githubPublished": false
-  }
+  },
+  "reportStatus": "historical_snapshot_superseded",
+  "currentReport": "docs/panel-parameters-report.json",
+  "notice": "Istorijski izveštaj prelaska na ZIP izvore. Sada svi poznati parametri stoje u glavnom panelu; aktuelni broj varijanti i provere su u panel-parameters-report.json."
 }

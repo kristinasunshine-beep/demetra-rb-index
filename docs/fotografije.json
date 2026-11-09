@@ -1,5 +1,5 @@
 {
-  "snapshotAt": "2026-11-09T10:18:58Z",
+  "snapshotAt": "2026-11-09T12:25:28Z",
   "photos": [
     {
       "offerId": "record-fb079ce5667853",
@@ -368,6 +368,26 @@
       "localPath": "assets/biljke/a3ddf8023927ccff51af.jpg",
       "sourcePage": "https://webshop.vannuccipiante.it/product/zelkova-serrata/",
       "sourcePhotoReferenceId": "web-public-4806631d7be2fd6ac8"
+    },
+    {
+      "offerId": "record-variant-ca9686452c9388a882",
+      "plantId": "plant-5322c7cf067d03",
+      "nurseryId": "combinatie-mauritz",
+      "sourceUrl": "https://combinatiemauritz.com/wp-content/uploads/2020/08/IMG_5068.jpeg",
+      "status": "saved",
+      "localPath": "assets/biljke/cb0e743ca5add8114712.jpg",
+      "sourcePage": "https://combinatiemauritz.com/laanbomen-en/acer-platanoides-mauritz-upright-zuilvormige-noorse-esdoorn-2/",
+      "sourceArchiveOfferId": "record-fb079ce5667853"
+    },
+    {
+      "offerId": "record-variant-aa44f24c75f470cb78",
+      "plantId": "plant-5322c7cf067d03",
+      "nurseryId": "combinatie-mauritz",
+      "sourceUrl": "https://combinatiemauritz.com/wp-content/uploads/2020/08/IMG_5068.jpeg",
+      "status": "saved",
+      "localPath": "assets/biljke/cb0e743ca5add8114712.jpg",
+      "sourcePage": "https://combinatiemauritz.com/laanbomen-en/acer-platanoides-mauritz-upright-zuilvormige-noorse-esdoorn-2/",
+      "sourceArchiveOfferId": "record-fb079ce5667853"
     }
   ]
 }

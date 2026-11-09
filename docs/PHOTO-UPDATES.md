@@ -16,7 +16,7 @@ Pre snimanja se proverava da su sva nefoto polja svakog zapisa nepromenjena, ukl
 
 Svih 31 ranijih javnih cenovnih izvora u `scripts/price-sources.json` sada ima `enabled: false`. `update-prices.yml` nema raspored, nema pristup za pisanje i nema preuzimanje sa interneta; ručno pokretanje prikazuje samo obaveštenje o novom pravilu izvora.
 
-Za kompatibilnost sa ranijim paketima isti bezopasni fajl zamenjuje i stari pogrešno ugnježden put `.github/workflows/.github/workflows/update-prices.yml`. To nije nova automatizacija.
+Važeći workflow fajlovi nalaze se neposredno u `.github/workflows`. Prethodno pogrešno ugnježdeni folderi su uklonjeni; dopuna glavnog panela ne dodaje nove workflow fajlove.
 
 Obe ranije skripte, `update_prices.py` i `update_catalog_parameters.py`, imaju zaštitu na `sourcePolicy.nonPhoto = "rasadnici-ponude-zip"`. Čak i ako ih pozove stari workflow, vratiće `disabled_by_source_policy`, napraviće **0 internet zahteva** i sačuvaće podatkovnu datoteku bez izmene. U foto workflow-u nema poziva za ažuriranje cena ili botaničkih mera.
 
