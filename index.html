@@ -1332,21 +1332,16 @@ function updateSearch() {
 function renderOffer(offer, plant, nursery) {
   const typeLabel = offer.seedlingType === 'standard' ? 'Standard' :
     offer.seedlingType === 'multistem' ? 'Multistem' : 'Nije navedeno u ponudi';
-  const sizeMeasurements = offer.seedlingType === 'multistem' ? [['Obim sadnice', offer.circumference]] :
-    offer.seedlingType === 'standard' ? [['Visina sadnice', offer.height]] :
-      [['Obim sadnice', offer.circumference], ['Visina sadnice', offer.height]];
   const measurements = [
     ['Tip sadnice', typeLabel],
-    ...sizeMeasurements,
+    ['Obim sadnice', offer.circumference],
+    ['Visina sadnice', offer.height],
     ['Širina krošnje', offer.crownWidth],
     ['Veličina busena', offer.rootBall],
     ['Veličina saksije', offer.potSize],
     ['Način isporuke', offer.rootType]
   ];
-  const sourceSizeNote = offer.seedlingType === 'standard' && offer.circumference ?
-    'Obim sadnice u ponudi: ' + offer.circumference + '.' :
-    offer.seedlingType === 'multistem' && offer.height ? 'Visina sadnice u ponudi: ' + offer.height + '.' : '';
-  const dataNotes = [...new Set([offer.dataAccuracyNote, sourceSizeNote, offer.measurementNote].filter(Boolean))];
+  const dataNotes = [...new Set([offer.dataAccuracyNote, offer.measurementNote].filter(Boolean))];
   const hasPrice = offer.price !== null && offer.price !== undefined && offer.price !== '';
   const priceLabel = offer.priceKind === 'historical' ? 'Cena iz arhivirane ponude' : 'Nabavna cena iz ponude';
   const sourceLabel = escapeHTML(offer.source || 'Izvor nije naveden');
