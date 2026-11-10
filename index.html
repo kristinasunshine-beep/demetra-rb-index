@@ -1019,6 +1019,23 @@ function arrayValue(value, label, max) {
 function validateReferencePhoto(value, label, latinName, synonyms) {
   if (value === undefined || value === null) return null;
   if (!isObject(value)) throw new Error(`${label}: referentna fotografija mora biti objekat.`);
+  // The coverage workflow keeps identity and rights evidence in docs/. Public
+  // records contain only the local photograph and its source page.
+  const compact = Object.keys(value).every(key => ['image', 'sourceUrl', 'status'].includes(key));
+  if (compact) {
+    const image = textValue(value.image, `${label}, lokalna slika`, { required: true, max: 200 });
+    if (!/^assets\/biljke\/reference-[a-f0-9]{16,64}\.jpg$/i.test(image)) {
+      throw new Error(`${label}: referentna slika mora biti lokalni JPEG u assets/biljke/.`);
+    }
+    const sourceUrl = safeURL(value.sourceUrl, `${label}, izvor slike`);
+    if (!sourceUrl || new URL(sourceUrl).protocol !== 'https:') {
+      throw new Error(`${label}: potreban je HTTPS izvor fotografije.`);
+    }
+    if (value.status !== undefined && value.status !== 'verified') {
+      throw new Error(`${label}: fotografija mora biti potvrđena.`);
+    }
+    return { image, sourceUrl };
+  }
   if (value.status !== 'verified' || value.origin !== 'wikimedia') {
     throw new Error(`${label}: referentna fotografija mora imati potvrđen Wikimedia izvor.`);
   }
@@ -1295,14 +1312,12 @@ function imageMarkup(value, alt) {
 
 function referencePhotoMarkup(plant) {
   const photo = plant.photo;
-  if (!photo || photo.status !== 'verified' || !imageURL(photo.image)) return '';
-  const caption = photo.matchLevel === 'species_reference' ?
-    'Referentna fotografija vrste: ' + photo.taxon : 'Referentna fotografija biljke';
-  return '<div class="offer-photo">' + imageMarkup(photo.image, caption + ' — ' + photo.taxon) + '</div>' +
-    '<p class="image-kind">' + escapeHTML(caption) + '<br>Autor: ' + escapeHTML(photo.author) +
-    '<br><a href="' + escapeHTML(photo.sourceUrl) + '" target="_blank" rel="noopener noreferrer">Izvor: Wikimedia Commons ↗</a>' +
-    ' · Licenca: <a href="' + escapeHTML(photo.licenseUrl) + '" target="_blank" rel="noopener noreferrer">' +
-    escapeHTML(photo.license) + '</a></p>';
+  if (!photo || !imageURL(photo.image)) return '';
+  // Legacy references that need attribution or show only a cultivar's parent
+  // species cannot be displayed as an unlabelled exact photograph.
+  if (photo.matchLevel && (photo.matchLevel !== 'exact' || photo.status !== 'verified' ||
+      !/^(?:public domain|cc0(?: 1\.0)?|cc-zero)$/i.test(photo.license || ''))) return '';
+  return '<div class="offer-photo">' + imageMarkup(photo.image, plant.latinName) + '</div>';
 }
 
 function formattedDate(value) {
@@ -1507,15 +1522,10 @@ function renderOffer(offer, plant, nursery) {
   const sourceTiming = [offer.sourceDate ? 'Datum izvora: ' + formattedDate(offer.sourceDate) :
     offer.sourcePeriod ? 'Period izvora: ' + offer.sourcePeriod : 'Datum objave nije naveden',
     offer.checkedAt ? 'Provereno: ' + formattedDate(offer.checkedAt) : ''].filter(Boolean).join(' · ');
-  const imageKind = {
-    catalog: 'Kataloška fotografija',
-    specimen: 'Fotografija sadnice',
-    illustration: 'Ilustracija'
-  }[offer.imageKind] || offer.imageKind || 'Vrsta fotografije nije navedena';
   const supplierPhoto = imageURL(offer.image);
   const photoMarkup = supplierPhoto ?
     '<div class="offer-photo">' + imageMarkup(offer.image, plant.latinName + ' — ' + nursery.name) +
-    '</div><p class="image-kind">' + escapeHTML(imageKind) + '</p>' :
+    '</div>' :
     referencePhotoMarkup(plant) || '<div class="offer-photo">' +
       imageMarkup('', plant.latinName + ' — ' + nursery.name) + '</div>';
 
@@ -1538,7 +1548,6 @@ function renderOffer(offer, plant, nursery) {
     '<div class="offer-footer"><div class="offer-source"><strong>' +
     sourceLink + '</strong><br>' + escapeHTML(sourceTiming) +
     (dataNotes.length ? '<br><strong>Tačnost podataka:</strong> ' + escapeHTML(dataNotes.join(' ')) : '') +
-    (supplierPhoto && offer.imageSourceUrl && offer.imageSourceUrl !== offer.sourceUrl ? '<br><a href="' + escapeHTML(offer.imageSourceUrl) + '" target="_blank" rel="noopener noreferrer">Izvor kataloške fotografije ↗</a>' : '') +
     '</div></div></article>';
 }
 
