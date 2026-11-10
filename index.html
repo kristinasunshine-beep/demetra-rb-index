@@ -1016,6 +1016,57 @@ function arrayValue(value, label, max) {
   return value;
 }
 
+function validateReferencePhoto(value, label, latinName, synonyms) {
+  if (value === undefined || value === null) return null;
+  if (!isObject(value)) throw new Error(`${label}: referentna fotografija mora biti objekat.`);
+  if (value.status !== 'verified' || value.origin !== 'wikimedia') {
+    throw new Error(`${label}: referentna fotografija mora imati potvrđen Wikimedia izvor.`);
+  }
+  if (!['exact', 'species_reference'].includes(value.matchLevel)) {
+    throw new Error(`${label}: nepoznata podudarnost referentne fotografije.`);
+  }
+  const image = textValue(value.image, `${label}, lokalna slika`, { required: true, max: 200 });
+  if (!/^assets\/biljke\/reference-[a-f0-9]{16,64}\.jpg$/i.test(image)) {
+    throw new Error(`${label}: referentna slika mora biti lokalni JPEG u assets/biljke/.`);
+  }
+  const sourceUrl = safeURL(value.sourceUrl, `${label}, izvor slike`);
+  const imageUrl = safeURL(value.imageUrl, `${label}, originalna slika`);
+  const licenseUrl = safeURL(value.licenseUrl, `${label}, link licence`);
+  const approved = (url, hosts) => {
+    if (!url) return false;
+    const parsed = new URL(url);
+    return parsed.protocol === 'https:' && (!hosts || hosts.includes(parsed.hostname));
+  };
+  if (!approved(sourceUrl, ['commons.wikimedia.org']) ||
+      !approved(imageUrl, ['upload.wikimedia.org']) || !approved(licenseUrl)) {
+    throw new Error(`${label}: potrebni su potvrđeni HTTPS linkovi Wikimedia izvora, originala i licence.`);
+  }
+  const taxon = textValue(value.taxon, `${label}, takson fotografije`, { required: true, max: 240 });
+  const key = text => normalize(text).replace(/×/g, ' x ').replace(/['"ʼ]/g, '').replace(/\s+/g, ' ').trim();
+  const names = [latinName, ...synonyms];
+  const species = text => {
+    const match = normalize(text).match(/^([a-z][a-z-]+)\s+(?:(x|×)\s*)?([a-z][a-z-]+)(?=$|\s)/);
+    return match ? [match[1], ...(match[2] ? ['x'] : []), match[3]].join(' ') : '';
+  };
+  // A broad species alias must not turn a cultivar into an exact photo match.
+  const broaderSpecies = species(latinName) && key(latinName) !== species(latinName) &&
+    key(taxon) === species(taxon);
+  const matches = value.matchLevel === 'exact' ? !broaderSpecies && names.some(name => key(name) === key(taxon)) :
+    names.some(name => species(name) && species(name) === key(taxon));
+  if (!matches) throw new Error(`${label}: takson referentne fotografije ne odgovara biljci ili označenoj vrsti.`);
+  const checkedAt = textValue(value.checkedAt, `${label}, datum provere`, { required: true, max: 40 });
+  dateValue(checkedAt.slice(0, 10), `${label}, datum provere`);
+  if (!/^\d{4}-\d{2}-\d{2}(?:T\d{2}:\d{2}:\d{2}(?:\.\d+)?(?:Z|[+-]\d{2}:\d{2}))?$/.test(checkedAt) ||
+      !Number.isFinite(Date.parse(checkedAt))) throw new Error(`${label}: neispravan datum provere fotografije.`);
+  return {
+    image, sourceUrl, imageUrl, taxon, matchLevel: value.matchLevel,
+    origin: 'wikimedia', status: 'verified', checkedAt,
+    author: textValue(value.author, `${label}, autor`, { required: true, max: 2000 }),
+    license: textValue(value.license, `${label}, licenca`, { required: true, max: 300 }),
+    licenseUrl
+  };
+}
+
 function validateOffer(item, index, plantIds, nurseryIds) {
   if (!isObject(item)) throw new Error(`Ponuda ${index}: očekivan je objekat.`);
   const label = `Ponuda ${index}`;
@@ -1119,15 +1170,18 @@ function validateImport(obj) {
     const id = idValue(item.id, `Biljka ${i + 1}, ID`);
     uniqueId(id, plantIds, 'Biljke');
     const synonyms = item.synonyms === undefined ? [] : arrayValue(item.synonyms, `Biljka ${i + 1}, sinonimi`, 50);
+    const latinName = textValue(item.latinName, `Biljka ${i + 1}, latinski naziv`, { required: true, max: 240 });
+    const cleanSynonyms = [...new Set(synonyms.map(value => textValue(value, 'Sinonim', { required: true, max: 240 })))];
     return {
-      id, latinName: textValue(item.latinName, `Biljka ${i + 1}, latinski naziv`, { required: true, max: 240 }),
+      id, latinName,
       commonName: textValue(item.commonName, `Biljka ${i + 1}, narodni naziv`, { max: 240 }),
       category: textValue(item.category, `Biljka ${i + 1}, kategorija`, { max: 100 }),
       description: textValue(item.description, `Biljka ${i + 1}, opis`),
-      synonyms: [...new Set(synonyms.map(value => textValue(value, 'Sinonim', { required: true, max: 240 })))],
+      synonyms: cleanSynonyms,
       searchAliases: arrayValue(item.searchAliases ?? [], `Biljka ${i + 1}, nazivi za pretragu`, 50)
         .map(value => textValue(value, 'Naziv za pretragu', { required: true, max: 240 })),
-      demo: boolValue(item.demo, `Biljka ${i + 1}, demo`)
+      demo: boolValue(item.demo, `Biljka ${i + 1}, demo`),
+      photo: validateReferencePhoto(item.photo, `Biljka ${i + 1}`, latinName, cleanSynonyms)
     };
   });
   const nurseries = arrayValue(obj.nurseries, 'Rasadnici', 5000).map((item, i) => {
@@ -1239,6 +1293,18 @@ function imageMarkup(value, alt) {
     '<span class="empty-image"' + (src ? ' hidden' : '') + '><span>Fotografija nije dostupna u obrađenom izvoru</span></span>';
 }
 
+function referencePhotoMarkup(plant) {
+  const photo = plant.photo;
+  if (!photo || photo.status !== 'verified' || !imageURL(photo.image)) return '';
+  const caption = photo.matchLevel === 'species_reference' ?
+    'Referentna fotografija vrste: ' + photo.taxon : 'Referentna fotografija biljke';
+  return '<div class="offer-photo">' + imageMarkup(photo.image, caption + ' — ' + photo.taxon) + '</div>' +
+    '<p class="image-kind">' + escapeHTML(caption) + '<br>Autor: ' + escapeHTML(photo.author) +
+    '<br><a href="' + escapeHTML(photo.sourceUrl) + '" target="_blank" rel="noopener noreferrer">Izvor: Wikimedia Commons ↗</a>' +
+    ' · Licenca: <a href="' + escapeHTML(photo.licenseUrl) + '" target="_blank" rel="noopener noreferrer">' +
+    escapeHTML(photo.license) + '</a></p>';
+}
+
 function formattedDate(value) {
   if (!value) return '';
   const date = new Date(value);
@@ -1341,6 +1407,26 @@ function updateSearch() {
   setStatus('Prikazano ' + state.suggestions.length + ' od ' + state.matches.length + ' rezultata. Strelicama izaberite biljku, a tasterom Enter otvorite zapis.');
 }
 
+function visibleAdditionalParameters(offer) {
+  const measure = value => {
+    const text = String(value || '').toLowerCase().replace(/\s+/g, '')
+      .replace(/(?<=\d),(?=\d)/g, '.').replace(/[-–—/]/g, '–');
+    const match = text.match(/^([\d.]+(?:–[\d.]+)?\+?)(cm|mm|m)?$/);
+    return match ? { number: match[1], unit: match[2] || '' } : null;
+  };
+  const known = [offer.circumference, offer.height, offer.crownWidth, offer.rootBall]
+    .map(measure).filter(Boolean);
+  return (offer.additionalParameters || []).flatMap(parameter => {
+    if (!['Dimenzija iz ponude', 'Nerazvrstana mera iz ponude'].includes(parameter.label)) return [parameter];
+    const remaining = parameter.value.split(/[;·]/).map(value => value.trim()).filter(Boolean).filter(value => {
+      const parsed = measure(value);
+      return !parsed || !known.some(item => item.number === parsed.number &&
+        (!item.unit || !parsed.unit || item.unit === parsed.unit));
+    });
+    return remaining.length ? [{ ...parameter, value: remaining.join(' · ') }] : [];
+  });
+}
+
 function renderOffer(offer, plant, nursery) {
   const typeLabel = offer.seedlingType === 'standard' ? 'Standard' :
     offer.seedlingType === 'multistem' ? 'Multistem' : 'Nije navedeno u ponudi';
@@ -1358,9 +1444,8 @@ function renderOffer(offer, plant, nursery) {
     ['Veličina saksije', offer.potSize],
     ['Način isporuke', offer.rootType],
     ['Broj presađivanja', transplantValue],
-    ...(offer.additionalParameters || []).map(({ label, value }) => [label, value])
+    ...visibleAdditionalParameters(offer).map(({ label, value }) => [label, value])
   ];
-  if (offer.specification) measurements.push(['Specifikacija iz ponude', offer.specification, true]);
   const dataNotes = [...new Set([offer.dataAccuracyNote, offer.measurementNote].filter(Boolean))];
   const hasPrice = offer.price !== null && offer.price !== undefined && offer.price !== '';
   const priceLabel = offer.priceKind === 'historical' ? 'Cena iz arhivirane ponude' : 'Nabavna cena iz ponude';
@@ -1374,11 +1459,15 @@ function renderOffer(offer, plant, nursery) {
     specimen: 'Fotografija sadnice',
     illustration: 'Ilustracija'
   }[offer.imageKind] || offer.imageKind || 'Vrsta fotografije nije navedena';
+  const supplierPhoto = imageURL(offer.image);
+  const photoMarkup = supplierPhoto ?
+    '<div class="offer-photo">' + imageMarkup(offer.image, plant.latinName + ' — ' + nursery.name) +
+    '</div><p class="image-kind">' + escapeHTML(imageKind) + '</p>' :
+    referencePhotoMarkup(plant) || '<div class="offer-photo">' +
+      imageMarkup('', plant.latinName + ' — ' + nursery.name) + '</div>';
 
   return '<article class="offer-card" data-offer-id="' + escapeHTML(offer.id) + '">' +
-    '<div class="offer-card-body"><div><div class="offer-photo">' +
-    imageMarkup(offer.image, plant.latinName + ' — ' + nursery.name) +
-    '</div>' + (imageURL(offer.image) ? '<p class="image-kind">' + escapeHTML(imageKind) + '</p>' : '') +
+    '<div class="offer-card-body"><div>' + photoMarkup +
     '</div><div><div class="offer-topline"><span class="availability">' +
     escapeHTML(offer.availability || 'Dostupnost nije navedena') + '</span>' +
     (offer.demo || nursery.demo ? '<span class="demo-badge">Demo ponuda</span>' : '') +
@@ -1396,7 +1485,7 @@ function renderOffer(offer, plant, nursery) {
     '<div class="offer-footer"><div class="offer-source"><strong>' +
     sourceLink + '</strong><br>' + escapeHTML(sourceTiming) +
     (dataNotes.length ? '<br><strong>Tačnost podataka:</strong> ' + escapeHTML(dataNotes.join(' ')) : '') +
-    (offer.imageSourceUrl && offer.imageSourceUrl !== offer.sourceUrl ? '<br><a href="' + escapeHTML(offer.imageSourceUrl) + '" target="_blank" rel="noopener noreferrer">Izvor kataloške fotografije ↗</a>' : '') +
+    (supplierPhoto && offer.imageSourceUrl && offer.imageSourceUrl !== offer.sourceUrl ? '<br><a href="' + escapeHTML(offer.imageSourceUrl) + '" target="_blank" rel="noopener noreferrer">Izvor kataloške fotografije ↗</a>' : '') +
     '</div></div></article>';
 }
 
@@ -1415,14 +1504,16 @@ function renderEmptyRecord(plant) {
       });
     });
   }
-  if (!notes.length) return '<div class="empty-state detail-empty"><p>Ponude rasadnika za ovu biljku još nisu unete.</p></div>';
-  return '<div class="empty-state detail-empty"><p><strong>Tačnost podataka</strong></p>' +
+  const reference = referencePhotoMarkup(plant);
+  const withReference = content => reference ? '<div class="offer-card-body"><div>' + reference + '</div>' + content + '</div>' : content;
+  if (!notes.length) return withReference('<div class="empty-state detail-empty"><p>Ponude rasadnika za ovu biljku još nisu unete.</p></div>');
+  return withReference('<div class="empty-state detail-empty"><p><strong>Tačnost podataka</strong></p>' +
     notes.map((offer) => '<p data-review-offer-id="' + escapeHTML(offer.id) + '">' +
       escapeHTML(offer.dataAccuracyNote) +
       (offer.sourceFile ? '<br>Prilog: ' + escapeHTML(offer.sourceFile) : '') + '</p>').join('') +
     (replacementPlants.size ? '<p>Ovaj naziv je povezan sa ispravljenim zapisom biljke: ' +
       [...replacementPlants.values()].map((item) => '<a href="#plant=' + encodeURIComponent(item.id) + '">' +
-        escapeHTML(item.latinName) + '</a>').join(' · ') + '.</p>' : '') + '</div>';
+        escapeHTML(item.latinName) + '</a>').join(' · ') + '.</p>' : '') + '</div>');
 }
 
 function renderRecord(plant) {
