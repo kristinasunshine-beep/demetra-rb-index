@@ -1,0 +1,169 @@
+{
+  "operation": "one-source-row-per-panel",
+  "changes": [
+    {
+      "offerId": "record-f129aa8e83d4c5",
+      "replacedByOfferIds": [
+        "record-source-5ae5751a029e649540",
+        "record-source-36bc0eb770b0210626"
+      ]
+    },
+    {
+      "offerId": "record-dca1ea2f28820b",
+      "replacedByOfferIds": [
+        "record-source-9868853dfae265f8c4",
+        "record-source-62d101b7bf36b54803"
+      ]
+    },
+    {
+      "offerId": "record-f92411a77fd341",
+      "replacedByOfferIds": [
+        "record-source-e23c911c0149c0f491",
+        "record-source-219ea3553d58739d26"
+      ]
+    },
+    {
+      "offerId": "record-fc0abf8c34dd91",
+      "replacedByOfferIds": [
+        "record-source-9f5cc33aae60c1be9b",
+        "record-source-395c5b76631cb16447"
+      ]
+    },
+    {
+      "offerId": "record-e72e040f6541f3",
+      "replacedByOfferIds": [
+        "record-source-0d40f45206337b5bd9",
+        "record-source-f55e0f4980c691ebbe"
+      ]
+    },
+    {
+      "offerId": "record-5a83e8eb11d74c",
+      "replacedByOfferIds": [
+        "record-source-52d200174778a3d4d5",
+        "record-source-ea6d383da02c18d927"
+      ]
+    },
+    {
+      "offerId": "record-89908cc37c1fa9",
+      "replacedByOfferIds": [
+        "record-source-c85191f417a67aff95",
+        "record-source-1a696598157147c198"
+      ]
+    },
+    {
+      "offerId": "record-d1ba099aad3b34",
+      "replacedByOfferIds": [
+        "record-source-8c2b7448fef8ff2737",
+        "record-source-56931d3149493425cb"
+      ]
+    },
+    {
+      "offerId": "record-8369ad2fc34c3b",
+      "replacedByOfferIds": [
+        "record-source-ed8b156c25c0724557",
+        "record-source-c1071e0166aaab3399"
+      ]
+    },
+    {
+      "offerId": "record-6110196444db19",
+      "replacedByOfferIds": [
+        "record-source-456feeac8b499a5d1e",
+        "record-source-de3e93ced2e87e6902"
+      ]
+    },
+    {
+      "offerId": "record-116fe114c3cdcb",
+      "replacedByOfferIds": [
+        "record-source-4173b672a603f02593",
+        "record-source-e0be4d0fd9ef31e008"
+      ]
+    },
+    {
+      "offerId": "record-572a5281b5185a",
+      "replacedByOfferIds": [
+        "record-source-556c111fa68cc673c6",
+        "record-source-30c821eb9c4bb2265e"
+      ]
+    },
+    {
+      "offerId": "record-3181483a89cabe",
+      "replacedByOfferIds": [
+        "record-source-72bf704b191f56c69b",
+        "record-source-bdba3cc31c16da097f"
+      ]
+    },
+    {
+      "offerId": "record-7acf3312f52c21",
+      "replacedByOfferIds": [
+        "record-source-539ebcfb06dcbd1747",
+        "record-source-dcd5b0a4b3fa95c213"
+      ]
+    },
+    {
+      "offerId": "record-8b99b36d1e4026",
+      "replacedByOfferIds": [
+        "record-source-a416601aefb18f5110",
+        "record-source-8ecf15be70644ed5c1"
+      ]
+    }
+  ],
+  "verifiedFiles": {
+    "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+    "Rasadnici ponude/Holandija/Combinatie Mauritz/ponuda Marina Dorćol.ods": "8caa2e41d8d2cb80c9e6d364ce301c11f7c50efe4d7e4a2ebdcae922efd0ac02",
+    "Rasadnici ponude/Nemačka/Lorberg/Acer Elsrijk/Acer campestre Elsrijk 20-25 (4).JPG": "6a8cd91bd9b6ff3b2d21667e810b050381c0e5051e2957a5f0fa254c28cf1fd2",
+    "Rasadnici ponude/Nemačka/Lorberg/Acer Elsrijk/Acer campestre Elsrijk 30-35-40 (1).JPG": "bd6da5db202d329ef7638087b0e6500adce518d3d6fcc7c03b67b6132d7f04ed",
+    "Rasadnici ponude/Nemačka/Lorberg/Soliterna stabla/Parrotia persica Schirm 150-200 x 300-350 (3).JPG": "e723e19c099db9d68ac5c7706628b932f167001fb661b95a1b96ff1480306a68",
+    "Rasadnici ponude/Nemačka/Lorberg/Soliterna stabla/Parrotia persica Schirm 500-600.jpg": "9d9ddedc4229af055967215514ddbf4c069ddf66936034d27e4d07c25afdf4a4",
+    "Rasadnici ponude/Nemačka/Lorberg/Fotografije-Lorberg/Platanus acerifolia 30-35-40.JPG": "0aa456b4d26aabdc43b1fa520f586526f11ebdf0dd83645cc141aa5b0ffc0684",
+    "Rasadnici ponude/Nemačka/Lorberg/Soliterna stabla/Platanus acerifolia Schirm (3).JPG": "c938cca62bf97d9c2ba364fad3c50091a886610c155e810336e8f1433c6d71c6",
+    "Rasadnici ponude/Holandija/Combinatie Mauritz/1. Offer for trees.xlsx": "6b0c51d4f100c1dd349b32d4104b013fb2e2b3374a911f6ba42bd9b7e24532a8",
+    "Rasadnici ponude/Holandija/Combinatie Mauritz/Iva Kadena/Copy of Kopie van Plants for spring 2026.xlsx": "298ee04a74f73c75443f0e153df6badcb02bdff8fa90ba84d0e46d60dc02a100",
+    "Rasadnici ponude/Holandija/Combinatie Mauritz/MAURITZ .xlsx": "043b68f24157e87371f70ad3c75b49a9933e1c36e2a445628a66160386eef110",
+    "Rasadnici ponude/Holandija/Combinatie Mauritz/Offer request-trees.xls": "c600d4a5702e230e8cbda1ec557dc42deeadfa61f3e81e9d11a200b334ad31fd",
+    "Rasadnici ponude/Holandija/Combinatie Mauritz/Tenderi ponude/Offer request 3_Demetra RB.xlsx": "c6408e86106175a86379d35b8ef174064b4637e54ed67dbf89134665b80040cc",
+    "Rasadnici ponude/Holandija/Combinatie Mauritz/Tenderi ponude/Tender 1_Demetra RB.xlsx": "41b96356e5b5667191fcda18af2837c888b9aa02db0615f0dd33b451562fb4d1",
+    "Rasadnici ponude/Holandija/Combinatie Mauritz/Tenderi ponude/Tender 2_Demetra RB.xlsx": "1b946291a997898129f8f3d45a7baf66dbe9757e84a37f956b04be4d908a77dc",
+    "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Trees (002).xlsx": "5072a2df19377687044059cbe42c6ec2f21a7cfdebf13c205b1781929a79052c"
+  },
+  "newOffers": [
+    "record-source-5ae5751a029e649540",
+    "record-source-36bc0eb770b0210626",
+    "record-source-9868853dfae265f8c4",
+    "record-source-62d101b7bf36b54803",
+    "record-source-e23c911c0149c0f491",
+    "record-source-219ea3553d58739d26",
+    "record-source-9f5cc33aae60c1be9b",
+    "record-source-395c5b76631cb16447",
+    "record-source-0d40f45206337b5bd9",
+    "record-source-f55e0f4980c691ebbe",
+    "record-source-52d200174778a3d4d5",
+    "record-source-ea6d383da02c18d927",
+    "record-source-c85191f417a67aff95",
+    "record-source-1a696598157147c198",
+    "record-source-8c2b7448fef8ff2737",
+    "record-source-56931d3149493425cb",
+    "record-source-ed8b156c25c0724557",
+    "record-source-c1071e0166aaab3399",
+    "record-source-456feeac8b499a5d1e",
+    "record-source-de3e93ced2e87e6902",
+    "record-source-4173b672a603f02593",
+    "record-source-e0be4d0fd9ef31e008",
+    "record-source-556c111fa68cc673c6",
+    "record-source-30c821eb9c4bb2265e",
+    "record-source-72bf704b191f56c69b",
+    "record-source-bdba3cc31c16da097f",
+    "record-source-539ebcfb06dcbd1747",
+    "record-source-dcd5b0a4b3fa95c213",
+    "record-source-a416601aefb18f5110",
+    "record-source-8ecf15be70644ed5c1"
+  ],
+  "reusedOffers": [],
+  "pending": [],
+  "summary": {
+    "aggregatesSplit": 15,
+    "newRows": 30,
+    "reusedRows": 0,
+    "sourceFilesVerified": 16,
+    "activeAggregatesRemaining": 0
+  }
+}

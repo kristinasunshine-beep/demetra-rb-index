@@ -1,0 +1,467 @@
+{
+  "sourceFile": "Rasadnici ponude/Holandija/Combinatie Mauritz/ponuda Marina Dorćol.ods",
+  "sourceSha256": "8caa2e41d8d2cb80c9e6d364ce301c11f7c50efe4d7e4a2ebdcae922efd0ac02",
+  "sheet": "Blad1",
+  "changes": [
+    {
+      "offerId": "record-variant-5da88c63fc37de270f",
+      "row": 5,
+      "priceCell": "G5",
+      "price": 49.5,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-3ea032e4eb19073a7a",
+      "row": 61,
+      "priceCell": "G61",
+      "price": 68.75,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-6129c3a16d8c399761",
+      "row": 6,
+      "priceCell": "G6",
+      "price": 104.5,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-f5fbf1382587a0bab5",
+      "row": 62,
+      "priceCell": "G62",
+      "price": 170.5,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-3879a6ae1bc7a3ca67",
+      "row": 8,
+      "priceCell": "G8",
+      "price": 42.9,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-040f9dfa72c064a2eb",
+      "row": 65,
+      "priceCell": "G65",
+      "price": 170.5,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-ad06b914514a474b9c",
+      "row": 9,
+      "priceCell": "G9",
+      "price": 46.75,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-ea3ea52ddebbdccee8",
+      "row": 66,
+      "priceCell": "G66",
+      "price": 82.5,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-dfd17d73e6d09536bd",
+      "row": 11,
+      "priceCell": "G11",
+      "price": 42.9,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-f16c80db83a8ac9d32",
+      "row": 68,
+      "priceCell": "G68",
+      "price": 126.5,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-3b28b8a08fb1e9f9b7",
+      "row": 12,
+      "priceCell": "G12",
+      "price": 49.5,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-cc720293cec9413966",
+      "row": 69,
+      "priceCell": "G69",
+      "price": 68.75,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-98dcfa263939f6f11e",
+      "row": 14,
+      "priceCell": "G14",
+      "price": 49.5,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-545bc2003d8e8fcffe",
+      "row": 71,
+      "priceCell": "G71",
+      "price": 71.5,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-2e09f5fffee77565ec",
+      "row": 19,
+      "priceCell": "G19",
+      "price": 38.5,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-3e4d882bef83654ba6",
+      "row": 76,
+      "priceCell": "G76",
+      "price": 126.5,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-049545e7eba94bc6da",
+      "row": 116,
+      "priceCell": "G116",
+      "price": 269.5,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-dbfd31aba0a76ec91a",
+      "row": 27,
+      "priceCell": "G27",
+      "price": 52.25,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-2dfb95c6c90b021732",
+      "row": 84,
+      "priceCell": "G84",
+      "price": 203.5,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-d603727f85614afe68",
+      "row": 29,
+      "priceCell": "G29",
+      "price": 87.45,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-7383d54a45e265d29a",
+      "row": 86,
+      "priceCell": "G86",
+      "price": 137.5,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-1837aeb308fb189a00",
+      "row": 30,
+      "priceCell": "G30",
+      "price": 53.9,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-4a176f572701323509",
+      "row": 87,
+      "priceCell": "G87",
+      "price": 258.5,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-ea8792fdda856d2aab",
+      "row": 35,
+      "priceCell": "G35",
+      "price": 49.5,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-3cf3109e7ab06460d9",
+      "row": 91,
+      "priceCell": "G91",
+      "price": 137.5,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-dd23cd8631be1bcd9e",
+      "row": 38,
+      "priceCell": "G38",
+      "price": 93.5,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-12ffbf2b8a9335430a",
+      "row": 94,
+      "priceCell": "G94",
+      "price": 104.5,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-aaf739351bdda7f603",
+      "row": 42,
+      "priceCell": "G42",
+      "price": 27.5,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-e7d598776681263584",
+      "row": 98,
+      "priceCell": "G98",
+      "price": 49.5,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-0428e086b946d91adf",
+      "row": 43,
+      "priceCell": "G43",
+      "price": 35.2,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-21d4f222a52430056f",
+      "row": 99,
+      "priceCell": "G99",
+      "price": 63.25,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-59b995d4a51d4a5923",
+      "row": 44,
+      "priceCell": "G44",
+      "price": 38.5,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-937abd1ac16d882369",
+      "row": 100,
+      "priceCell": "G100",
+      "price": 82.5,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-ab9e8812d79c3cd7e2",
+      "row": 49,
+      "priceCell": "G49",
+      "price": 49.5,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-a7e1ea9eca5ad19303",
+      "row": 105,
+      "priceCell": "G105",
+      "price": 74.25,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-10efd91054419aa7e4",
+      "row": 56,
+      "priceCell": "G56",
+      "price": 44.0,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-5d292158aa049414a4",
+      "row": 112,
+      "priceCell": "G112",
+      "price": 76.45,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-a3eb5dd8b168558467",
+      "row": 58,
+      "priceCell": "G58",
+      "price": 98.45,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-6e7619a503ba2651e7",
+      "row": 114,
+      "priceCell": "G114",
+      "price": 115.5,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-f36e3572ca2022f044",
+      "row": 120,
+      "priceCell": "G120",
+      "price": 87.45,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-variant-2f97c4d92925a09215",
+      "row": 132,
+      "priceCell": "G132",
+      "price": 121.0,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-source-9f5cc33aae60c1be9b",
+      "row": 25,
+      "priceCell": "G25",
+      "price": 43.45,
+      "currency": "EUR"
+    },
+    {
+      "offerId": "record-source-c85191f417a67aff95",
+      "row": 53,
+      "priceCell": "G53",
+      "price": 42.9,
+      "currency": "EUR"
+    }
+  ],
+  "skippedAmendments": [
+    {
+      "offerId": "record-f7cc2669a9ad8c",
+      "row": 28,
+      "comment": "Raywood"
+    },
+    {
+      "offerId": "record-e07a136a110829",
+      "row": 85,
+      "comment": "Raywood"
+    },
+    {
+      "offerId": "record-50a626f8138bb6",
+      "row": 117,
+      "comment": "Raywood"
+    },
+    {
+      "offerId": "record-c861d567788534",
+      "row": 82,
+      "comment": "monogyna"
+    },
+    {
+      "offerId": "record-947da6b299b3c5",
+      "row": 119,
+      "comment": "concolor"
+    },
+    {
+      "offerId": "record-a1d014d9d8891e",
+      "row": 131,
+      "comment": "concolor"
+    },
+    {
+      "offerId": "record-8e299ade803b6d",
+      "row": 123,
+      "comment": "columnaris"
+    },
+    {
+      "offerId": "record-aa577082c91555",
+      "row": 126,
+      "comment": "Cedrus glauca Pendula"
+    },
+    {
+      "offerId": "record-50c23d5e483782",
+      "row": 138,
+      "comment": "Cedrus glauca Pendula"
+    },
+    {
+      "offerId": "record-4f69ed0a40f247",
+      "row": 130,
+      "comment": "Brabant"
+    },
+    {
+      "offerId": "record-ca96b03bd9e107",
+      "row": 142,
+      "comment": "Brabant"
+    },
+    {
+      "offerId": "record-source-9868853dfae265f8c4",
+      "row": 17,
+      "comment": "180cm stem"
+    },
+    {
+      "offerId": "record-source-62d101b7bf36b54803",
+      "row": 74,
+      "comment": "225cm"
+    },
+    {
+      "offerId": "record-source-e23c911c0149c0f491",
+      "row": 24,
+      "comment": "Paul’s Scarlet"
+    },
+    {
+      "offerId": "record-source-219ea3553d58739d26",
+      "row": 81,
+      "comment": "Paul’s Scarlet"
+    },
+    {
+      "offerId": "record-source-395c5b76631cb16447",
+      "row": 82,
+      "comment": "monogyna"
+    },
+    {
+      "offerId": "record-source-0d40f45206337b5bd9",
+      "row": 39,
+      "comment": "225cm"
+    },
+    {
+      "offerId": "record-source-f55e0f4980c691ebbe",
+      "row": 95,
+      "comment": "225cm"
+    },
+    {
+      "offerId": "record-source-52d200174778a3d4d5",
+      "row": 48,
+      "comment": "180cm"
+    },
+    {
+      "offerId": "record-source-ea6d383da02c18d927",
+      "row": 104,
+      "comment": "200cm"
+    },
+    {
+      "offerId": "record-source-1a696598157147c198",
+      "row": 109,
+      "comment": "180cm"
+    },
+    {
+      "offerId": "record-source-8c2b7448fef8ff2737",
+      "row": 119,
+      "comment": "concolor"
+    },
+    {
+      "offerId": "record-source-56931d3149493425cb",
+      "row": 131,
+      "comment": "concolor"
+    },
+    {
+      "offerId": "record-source-ed8b156c25c0724557",
+      "row": 123,
+      "comment": "columnaris"
+    },
+    {
+      "offerId": "record-source-c1071e0166aaab3399",
+      "row": 135,
+      "comment": "Columnare"
+    },
+    {
+      "offerId": "record-source-456feeac8b499a5d1e",
+      "row": 124,
+      "comment": "columnaris"
+    },
+    {
+      "offerId": "record-source-de3e93ced2e87e6902",
+      "row": 136,
+      "comment": "Columnare"
+    },
+    {
+      "offerId": "record-source-4173b672a603f02593",
+      "row": 126,
+      "comment": "Cedrus glauca Pendula"
+    },
+    {
+      "offerId": "record-source-e0be4d0fd9ef31e008",
+      "row": 138,
+      "comment": "Cedrus glauca Pendula"
+    },
+    {
+      "offerId": "record-source-556c111fa68cc673c6",
+      "row": 130,
+      "comment": "Brabant"
+    },
+    {
+      "offerId": "record-source-30c821eb9c4bb2265e",
+      "row": 142,
+      "comment": "Brabant"
+    }
+  ],
+  "conflicts": [],
+  "recoveredPrices": 43
+}

@@ -1,59 +1,65 @@
-# Podaci iz ponuda u glavnom panelu — 9. novembar 2026.
+# Ispravno raspoređivanje mera — 9. novembar 2026.
 
-## Ispravljen uzrok
+## Konkretan primer: 100–150 WRB
 
-Prethodna provera potvrđivala je prikaz već popunjenih polja JSON-a. Nije otkrivala poznate podatke koji su ostali samo u specifikaciji. Ekstrakcija sada obrađuje dodatne dobavljačke oznake, a provera sadrži nezavisne primere iz originalnih redova.
+U originalnoj Volentis ponudi 75953, za četinarske sadnice, `100-150 WRB` znači visinsku klasu 100–150 i isporuku sa busenom u žičanoj korpi. Jedinica koja nije upisana u izvoru nije naknadno dodata.
 
-Svaka aktivna varijanta koristi glavni panel sa poljima **Tip sadnice, Obim sadnice, Visina sadnice, Širina krošnje, Veličina busena, Veličina saksije, Način isporuke i Broj presađivanja.** U istom panelu prikazuju se dodatne karakteristike i cela **Specifikacija iz ponude**. Footer čuva izvor, datum i objašnjenje tačnosti.
-
-## Primer iz prijave
-
-Izvor: `Rasadnici ponude.zip`, `special stocklist Demetra.xlsx`, list `Voorraad 9460`, red 5. C5 sadrži `14-16 Ho 3xv` za Acer Norwegian Sunset.
-
-| Polje glavnog panela | Vrednost |
+| Glavno polje | Vrednost |
 | --- | --- |
-| Tip sadnice | Standard |
-| Obim sadnice | 14–16 |
-| Broj presađivanja | 3 (3xv) |
-| Specifikacija iz ponude | Acer Norwegian Sunset; Izvorna oznaka: 14-16 Ho 3xv |
+| Visina sadnice | 100–150 |
+| Način isporuke | Busen u žičanoj korpi (WRB) |
 
-U tom fajlu nema kolone cene ni pakovanja. Visina i veličina busena ne izvode se iz obima. Jedinica koja nije upisana uz meru u konkretnom izvoru nije dopisana.
+Vrednost se više ne ponavlja pod „Dimenzija iz ponude“. Sirova „Specifikacija iz ponude“ uklonjena je iz prikaza, a sačuvana u JSON-u kao dokaz izvora. Isto pravilo važi za sve kartice. Broj presađivanja i stvarne dodatne karakteristike ostaju u svom polju.
 
-## Globalna primena
+## Obuhvat ispravke
 
 | Stavka | Broj |
 | --- | ---: |
-| Postojeće biljke | 619 |
-| Arhivski zapisi | 3.035 |
-| Provereni aktivni paneli | 2.927 |
-| Zapisi sa dopunjenim ili normalizovanim glavnim poljima | 807 |
-| Dopunjeni tipovi | 253 |
-| Dopunjeni obimi | 279 |
-| Dopunjene visine | 133 |
-| Dopune i normalizacije načina isporuke | 467 |
-| Dopunjene širine krošnje | 6 |
-| Dopunjene saksije | 1 |
-| Dodatne karakteristike u panelima | 1.797 |
-| Sačuvani iznosi iz arhive | 2.351 |
+| Biljke, bez proširenja spiska | 619 |
+| Rasadnici | 24 |
+| Aktivne varijante | 2.948 |
+| Ukupni zapisi, sa istorijskim zamenjenim zapisima | 3.079 |
+| Zapisi sa dopunjenim glavnim poljima u ovom prolazu | 556 |
+| Dopunjene visine | 522 |
+| Dopunjeni obimi | 37 |
+| Dopunjeni načini isporuke | 37 |
+| Dopunjene saksije | 9 |
+| Dopunjene veličine busena | 2 |
+| Razrešeni zbirni zapisi | 19 |
+| Preostali aktivni zbirni zapisi | 0 |
 
-Svaka aktivna varijanta prikazuje svoju izvornu specifikaciju u glavnom panelu. Neodređena mera dobija polje **Dimenzija iz ponude** sa izvornom vrednošću. Različite veličine i ponuđene alternative zadržavaju sopstveni izvor. Podaci drugog reda ne prepisuju se ovoj sadnici.
+Brojevi dopuna polja mogu biti veći od broja izmenjenih zapisa. Ovo su nove dopune preko prethodno prenetih podataka.
 
-## Tumačenje oznaka
+Pravila su proverena kroz originalne oznake i dobavljački kontekst. Visina, obim, prečnik busena, prečnik saksije i visina čistog debla nisu međusobno zamenjivani. Gola veličina bez potvrđene ose, naročito oblikovana krošnja ili fotografija sa dve dimenzije u nazivu, ne pretvara se proizvoljno u visinu. Takvi izvorni podaci ostaju posebno označeni.
 
-Ho/HS/HST čitaju se kao standard u odgovarajućem holandskom kontekstu; pripadajući raspon je obim. MS/MSTEM i jasne multistem oznake čuvaju svoj tip i meru. Lorberg H, Sol Baum, mDb, br i StU imaju posebna pravila. H uz 3xv nije visina 3; mDb označava pakovanje. Običan SOL ili STR ne proglašava se standardom.
+## Razdvojene varijante i odgovori rasadnika
 
-STD/RB, CLT, C, CS/P, CG, DRKL, KL, WOODBOX i AIRPOT čitaju se u dobavljačkom kontekstu. Visina čistog debla, oblikovana krošnja, forma, broj etaža i broj grana imaju svoja polja. Broj presađivanja zadržava izvorni kod i eventualni raspon.
+Originalna Mauritz tabela `ponuda Marina Dorćol.ods`, list `Blad1`, redovi 119 i 131, sadrži zasebne zahteve za Abies concolor 'Glauca', sa visinama 100–150 i 150–200. Sada postoje dve odvojene varijante sa svojim visinama i RB pakovanjem.
 
-Proverene zamke: `1/2 STD` nije obim 1–2; `STEM220C130L` razdvaja čisto deblo i saksiju; Ball u nazivu kultivara nije automatski forma. Obim, visina i veličina busena ne menjaju značenje prema tipu sadnice.
+U odgovoru rasadnik navodi zamenu „concolor“. Cene 87,45 EUR i 121 EUR zato su povezane sa zasebnim ponuđenim varijantama **Abies concolor**, a nisu pripisane traženom kultivaru 'Glauca'. Status kartice razlikuje specifikaciju upita i arhiviranu ponudu. Veze između odgovarajućih izvora i varijanti sačuvane su u podacima.
 
-Numeričke vrednosti potiču isključivo iz arhive. Za značenje kodova korišćena su objašnjenja rasadnika: [Lorberg](https://www.lorberg.com/en-gb/list-of-abbreviations), [Bogaert](https://www.boomkwekerij-bogaert.be/malus-toringo-brouwers-beauty-10-12-hoogstam-wortelgoed), [Wykeham](https://www.wykehammatureplants.co.uk/help-advice/caring-for-your-plants/root-condition-explained/). Sa interneta nisu preuzimane cene, botaničke visine ili dimenzije za kartice.
+Svih 19 preostalih zbirnih zapisa je razrešeno. Jednake ponuđene varijante iz dva reda nisu predstavljene kao dve identične kartice: njihovi dodatni izvorni dokazi su sačuvani zajedno. Dve nejasne oznake „Columnare“ sačuvane su za proveru identiteta, umesto da budu objavljene kao potvrđeni kultivar „Columnaris“.
 
-## Provera pre objave
+## Cene iz originalne arhive
 
-Postojeći deploy poziva `scripts/check-catalog.mjs`. Provera sada obuhvata sva glavna polja, presađivanje, dodatne karakteristike i punu specifikaciju. Pet nezavisnih redova iz arhive zaustavlja objavu ako poznat podatak nedostaje: Mauritz Ho/3xv, Arbor STD/RB, Arbor MULTISTEM/C230L, Volentis MS/DRKL i Lorberg H/3xv/mDb.
+Ponovljena provera originalnih ODS ćelija vratila je još **54 iznosa**: 43 cene neposredno odgovarajućih redova i 11 cena jasno razdvojenih ponuđenih alternativa. Prethodnih **2.351** iznosa je sačuvano bez promene. Ukupno sada postoji **2.405** zapisa sa iznosom.
 
-Prošlo je 132 Python testa, test prikaza i provera svih 2.927 aktivnih panela. Dodatno je provereno 108 neaktivnih istorijskih zapisa. Ponovna migracija daje identične podatke. HTML i CSS pre skripta identični su prethodnom paketu, pa su heder, izgled, fontovi i animacije sačuvani. Provera je izvršavala stvarni HTML renderer; vizuelni browser pregled nije izvršen.
+Svaka nova cena ima originalni red, ćeliju, SHA-256 datoteke i dokaz valute. To su arhivirane cene, a ne potvrda današnje cene ili lagera. Internet automatizacija i dalje menja samo fotografije.
 
-## Prenos
+## Provere pre objave
 
-Raspakujte paket, prenesite sadržaj u koren postojećeg repozitorijuma i uradite **Commit changes** na `main`. Postojeći GitHub Actions automatski objavljuje izmenu. Uputstvo je u `POCNI-OVDE.txt`. Aktuelni izveštaj je `docs/all-fields-migration-report.json`; raniji izveštaji su istorijski. Online se i dalje osvežavaju samo fotografije.
+`node scripts/check-catalog.mjs` izvršava stvarni renderer svih 2.948 aktivnih panela i proverava još 131 neaktivan zapis. Provera obuhvata 5.945 popunjenih parametara, 129 eksplicitnih izvornih kolona, šest fiksnih primera iz ponuda i dva zasebna Abies Glauca reda. Objava se prekida ako se poznata visina ponovo izgubi u tekstu, ako se aktivne varijante spoje ili ako se ista izvorna specifikacija vrati kao duplikat.
+
+Prolazi 194 Python testa. Nove provere obuhvataju razdvajanje zahteva i ponuđene zamene, tačnost izbora cenovnog reda, prirodne i oblikovane forme, fotografije i zabranu internet promene nefoto podataka.
+
+Izgled stranice, heder, fontovi i animacije zadržani su. Ispravka menja raspored i sadržaj podataka u karticama i podršku za fotografije.
+
+## Datoteke za proveru
+
+- `docs/semantic-panels-migration-report.json`: svaka dopuna polja i njen izvor.
+- `docs/source-row-materialization-report.json`: razdvojeni redovi i provereni izvorni fajlovi.
+- `docs/ods-price-recovery-report.json`: 43 neposredno obnovljene ODS cene; 11 ponuđenih alternativa ima dokaz u samom zapisu.
+- `docs/photo-coverage.json`: aktuelna pokrivenost fotografijama i preostali red za obradu.
+- `docs/PHOTO-UPDATES.md`: automatsko dopunjavanje fotografija.
+
+Paket je namenjen dopuni postojećeg repozitorijuma. Koraci su u `POCNI-OVDE.txt`.

@@ -1,0 +1,1252 @@
+{
+  "schemaVersion": 1,
+  "cursor": 7,
+  "entries": {
+    "plant-abies-concolor": {
+      "status": "verified",
+      "attemptedAt": "2026-11-09T14:50:07Z",
+      "nextCheckAt": "2026-12-09T14:50:07Z",
+      "taxon": "Abies concolor"
+    },
+    "plant-9bfd779b012c0c": {
+      "status": "verified",
+      "attemptedAt": "2026-11-09T14:50:41Z",
+      "nextCheckAt": "2026-12-09T14:50:41Z",
+      "taxon": "Abies concolor"
+    },
+    "plant-107e4b1a9a5cc6": {
+      "status": "verified",
+      "attemptedAt": "2026-11-09T14:50:55Z",
+      "nextCheckAt": "2026-12-09T14:50:55Z",
+      "taxon": "Acanthus mollis"
+    },
+    "plant-ee364e988134ba": {
+      "status": "pending",
+      "reason": "taxon_not_specific",
+      "attemptedAt": "2026-11-09T14:51:17Z",
+      "nextCheckAt": "2026-11-16T14:51:17Z"
+    },
+    "plant-eceb6507153902": {
+      "status": "pending",
+      "reason": "taxon_not_specific",
+      "attemptedAt": "2026-11-09T15:12:45Z",
+      "nextCheckAt": "2026-11-16T15:12:45Z"
+    },
+    "plant-acer-campestre": {
+      "status": "pending",
+      "reason": "api_error",
+      "attemptedAt": "2026-11-09T15:12:45Z",
+      "nextCheckAt": "2026-11-16T15:12:45Z"
+    }
+  },
+  "cache": {
+    "https://www.wikidata.org/w/api.php?format=json&formatversion=2&action=wbsearchentities&search=Abies+concolor&language=en&type=item&limit=5": {
+      "expiresAt": "2026-11-16T14:50:07Z",
+      "data": {
+        "searchinfo": {
+          "search": "Abies concolor"
+        },
+        "search": [
+          {
+            "id": "Q145939",
+            "title": "Q145939",
+            "pageid": 147542,
+            "concepturi": "http://www.wikidata.org/entity/Q145939",
+            "repository": "wikidata",
+            "url": "//www.wikidata.org/wiki/Q145939",
+            "display": {
+              "label": {
+                "value": "Abies concolor",
+                "language": "en"
+              },
+              "description": {
+                "value": "species of fir tree, native to mountains of western North America",
+                "language": "en"
+              }
+            },
+            "label": "Abies concolor",
+            "description": "species of fir tree, native to mountains of western North America",
+            "match": {
+              "type": "label",
+              "language": "en",
+              "text": "Abies concolor"
+            }
+          },
+          {
+            "id": "Q107171805",
+            "title": "Q107171805",
+            "pageid": 102417389,
+            "concepturi": "http://www.wikidata.org/entity/Q107171805",
+            "repository": "wikidata",
+            "url": "//www.wikidata.org/wiki/Q107171805",
+            "display": {
+              "label": {
+                "value": "Abies concolor var. concolor",
+                "language": "en"
+              },
+              "description": {
+                "value": "variety of white fir, Abies concolor",
+                "language": "en"
+              }
+            },
+            "label": "Abies concolor var. concolor",
+            "description": "variety of white fir, Abies concolor",
+            "match": {
+              "type": "label",
+              "language": "en",
+              "text": "Abies concolor var. concolor"
+            }
+          },
+          {
+            "id": "Q106234336",
+            "title": "Q106234336",
+            "pageid": 101532569,
+            "concepturi": "http://www.wikidata.org/entity/Q106234336",
+            "repository": "wikidata",
+            "url": "//www.wikidata.org/wiki/Q106234336",
+            "display": {
+              "label": {
+                "value": "Abies concolor × grandis",
+                "language": "en"
+              },
+              "description": {
+                "value": "hybrid between Abies concolor and Abies grandis",
+                "language": "en"
+              }
+            },
+            "label": "Abies concolor × grandis",
+            "description": "hybrid between Abies concolor and Abies grandis",
+            "match": {
+              "type": "label",
+              "language": "en",
+              "text": "Abies concolor × grandis"
+            }
+          },
+          {
+            "id": "Q21381908",
+            "title": "Q21381908",
+            "pageid": 23428121,
+            "concepturi": "http://www.wikidata.org/entity/Q21381908",
+            "repository": "wikidata",
+            "url": "//www.wikidata.org/wiki/Q21381908",
+            "display": {
+              "label": {
+                "value": "Abies concolor subsp. concolor",
+                "language": "en"
+              },
+              "description": {
+                "value": "subspecies of fir tree, native to mountains of western North America",
+                "language": "en"
+              }
+            },
+            "label": "Abies concolor subsp. concolor",
+            "description": "subspecies of fir tree, native to mountains of western North America",
+            "match": {
+              "type": "label",
+              "language": "en",
+              "text": "Abies concolor subsp. concolor"
+            }
+          },
+          {
+            "id": "Q92770039",
+            "title": "Q92770039",
+            "pageid": 91933490,
+            "concepturi": "http://www.wikidata.org/entity/Q92770039",
+            "repository": "wikidata",
+            "url": "//www.wikidata.org/wiki/Q92770039",
+            "display": {
+              "label": {
+                "value": "Abies concolor subsp. baja-californica",
+                "language": "en"
+              }
+            },
+            "label": "Abies concolor subsp. baja-californica",
+            "match": {
+              "type": "label",
+              "language": "en",
+              "text": "Abies concolor subsp. baja-californica"
+            }
+          }
+        ],
+        "search-continue": 5,
+        "success": 1
+      }
+    },
+    "https://www.wikidata.org/w/api.php?format=json&formatversion=2&action=wbgetentities&ids=Q145939%7CQ107171805%7CQ106234336%7CQ21381908%7CQ92770039&props=claims": {
+      "expiresAt": "2026-11-16T14:50:07Z",
+      "data": {
+        "entities": {
+          "Q145939": {
+            "id": "Q145939",
+            "claims": {
+              "P225": [
+                {
+                  "mainsnak": {
+                    "snaktype": "value",
+                    "property": "P225",
+                    "hash": "c9a9ef88c7f7548b3b52a20f81dbefb47b71c178",
+                    "datavalue": {
+                      "value": "Abies concolor",
+                      "type": "string"
+                    },
+                    "datatype": "string"
+                  },
+                  "type": "statement",
+                  "qualifiers": {
+                    "P697": [
+                      {
+                        "snaktype": "value",
+                        "property": "P697",
+                        "hash": "cf782a02956e2c686e603faaf0baf8bc5ed6f875",
+                        "datavalue": {
+                          "value": {
+                            "entity-type": "item",
+                            "numeric-id": 378629,
+                            "id": "Q378629"
+                          },
+                          "type": "wikibase-entityid"
+                        },
+                        "datatype": "wikibase-item"
+                      }
+                    ],
+                    "P405": [
+                      {
+                        "snaktype": "value",
+                        "property": "P405",
+                        "hash": "e779027de7a99f6da1c7d9f86b40395e2741a94a",
+                        "datavalue": {
+                          "value": {
+                            "entity-type": "item",
+                            "numeric-id": 96766,
+                            "id": "Q96766"
+                          },
+                          "type": "wikibase-entityid"
+                        },
+                        "datatype": "wikibase-item"
+                      }
+                    ],
+                    "P574": [
+                      {
+                        "snaktype": "value",
+                        "property": "P574",
+                        "hash": "7d574ff79e0b935a60f2a5879b47531a02d24704",
+                        "datavalue": {
+                          "value": {
+                            "time": "+1861-00-00T00:00:00Z",
+                            "timezone": 0,
+                            "before": 0,
+                            "after": 0,
+                            "precision": 9,
+                            "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                          },
+                          "type": "time"
+                        },
+                        "datatype": "time"
+                      }
+                    ]
+                  },
+                  "qualifiers-order": [
+                    "P697",
+                    "P405",
+                    "P574"
+                  ],
+                  "id": "q145939$FF7418A3-F0BA-4059-8C8B-758D1715DD65",
+                  "rank": "normal"
+                }
+              ],
+              "P18": [
+                {
+                  "mainsnak": {
+                    "snaktype": "value",
+                    "property": "P18",
+                    "hash": "32ec7947b64ebb98f89ece6c85988627c78192cb",
+                    "datavalue": {
+                      "value": "Abies concolor subsp. concolor crown.jpg",
+                      "type": "string"
+                    },
+                    "datatype": "commonsMedia"
+                  },
+                  "type": "statement",
+                  "qualifiers": {
+                    "P180": [
+                      {
+                        "snaktype": "value",
+                        "property": "P180",
+                        "hash": "a5bf4b3773d54641c49e2829f6bdd2c99a6a3f14",
+                        "datavalue": {
+                          "value": {
+                            "entity-type": "item",
+                            "numeric-id": 21381908,
+                            "id": "Q21381908"
+                          },
+                          "type": "wikibase-entityid"
+                        },
+                        "datatype": "wikibase-item"
+                      }
+                    ]
+                  },
+                  "qualifiers-order": [
+                    "P180"
+                  ],
+                  "id": "q145939$B885C8D8-7AC9-4004-AC55-9FD6451BCA4A",
+                  "rank": "normal"
+                },
+                {
+                  "mainsnak": {
+                    "snaktype": "value",
+                    "property": "P18",
+                    "hash": "e190a35735e508cce6790613d30c0247270cecfa",
+                    "datavalue": {
+                      "value": "Abies concolor Yosemite NP.jpg",
+                      "type": "string"
+                    },
+                    "datatype": "commonsMedia"
+                  },
+                  "type": "statement",
+                  "qualifiers": {
+                    "P2096": [
+                      {
+                        "snaktype": "value",
+                        "property": "P2096",
+                        "hash": "4848c69cd8ab8b2ef121f30ec3999e637634126d",
+                        "datavalue": {
+                          "value": {
+                            "text": "Abies concolor subsp. lowiana",
+                            "language": "mul"
+                          },
+                          "type": "monolingualtext"
+                        },
+                        "datatype": "monolingualtext"
+                      }
+                    ]
+                  },
+                  "qualifiers-order": [
+                    "P2096"
+                  ],
+                  "id": "Q145939$5041AAA6-89E4-4A08-95F3-7387E5CB33F9",
+                  "rank": "normal"
+                }
+              ]
+            }
+          },
+          "Q107171805": {
+            "id": "Q107171805",
+            "claims": {
+              "P225": [
+                {
+                  "mainsnak": {
+                    "snaktype": "value",
+                    "property": "P225",
+                    "hash": "6411ea2670b3b43b9dcc7cb886f75060283e8142",
+                    "datavalue": {
+                      "value": "Abies concolor var. concolor",
+                      "type": "string"
+                    },
+                    "datatype": "string"
+                  },
+                  "type": "statement",
+                  "id": "Q107171805$ba20dd16-4214-ad4d-8786-58640aaadbe0",
+                  "rank": "normal"
+                }
+              ],
+              "P18": []
+            }
+          },
+          "Q106234336": {
+            "id": "Q106234336",
+            "claims": {
+              "P225": [
+                {
+                  "mainsnak": {
+                    "snaktype": "value",
+                    "property": "P225",
+                    "hash": "f6c86a6171d55c4fcbcd8e61fee3ce30127d07d6",
+                    "datavalue": {
+                      "value": "Abies concolor × grandis",
+                      "type": "string"
+                    },
+                    "datatype": "string"
+                  },
+                  "type": "statement",
+                  "id": "Q106234336$35fd5683-45f1-cbbc-b0b8-f86fcfece889",
+                  "rank": "normal"
+                }
+              ],
+              "P18": []
+            }
+          },
+          "Q21381908": {
+            "id": "Q21381908",
+            "claims": {
+              "P225": [
+                {
+                  "mainsnak": {
+                    "snaktype": "value",
+                    "property": "P225",
+                    "hash": "67630e5eb6e09c5094e1c3d12284740ebaea4473",
+                    "datavalue": {
+                      "value": "Abies concolor subsp. concolor",
+                      "type": "string"
+                    },
+                    "datatype": "string"
+                  },
+                  "type": "statement",
+                  "id": "Q21381908$6c3aad78-f1a2-4e25-b394-043602151c53",
+                  "rank": "normal"
+                }
+              ],
+              "P18": [
+                {
+                  "mainsnak": {
+                    "snaktype": "value",
+                    "property": "P18",
+                    "hash": "a9c741241e6952a83bbd27248f822535dc788bda",
+                    "datavalue": {
+                      "value": "Abies concolor Vista Encantada.jpg",
+                      "type": "string"
+                    },
+                    "datatype": "commonsMedia"
+                  },
+                  "type": "statement",
+                  "id": "Q21381908$49f531ac-4b43-4c37-823b-308e1438404c",
+                  "rank": "normal"
+                }
+              ]
+            }
+          },
+          "Q92770039": {
+            "id": "Q92770039",
+            "claims": {
+              "P225": [
+                {
+                  "mainsnak": {
+                    "snaktype": "value",
+                    "property": "P225",
+                    "hash": "1a3f0fc4a478b0ae29332efad00b13562de4ea69",
+                    "datavalue": {
+                      "value": "Abies concolor subsp. baja-californica",
+                      "type": "string"
+                    },
+                    "datatype": "string"
+                  },
+                  "type": "statement",
+                  "qualifiers": {
+                    "P405": [
+                      {
+                        "snaktype": "value",
+                        "property": "P405",
+                        "hash": "498a45f19d9569975e828716f7065557d21fff7f",
+                        "datavalue": {
+                          "value": {
+                            "entity-type": "item",
+                            "numeric-id": 5933595,
+                            "id": "Q5933595"
+                          },
+                          "type": "wikibase-entityid"
+                        },
+                        "datatype": "wikibase-item"
+                      }
+                    ],
+                    "P574": [
+                      {
+                        "snaktype": "value",
+                        "property": "P574",
+                        "hash": "b931c032ed59210c266a624facd4bafb0642ba6f",
+                        "datavalue": {
+                          "value": {
+                            "time": "+2008-00-00T00:00:00Z",
+                            "timezone": 0,
+                            "before": 0,
+                            "after": 0,
+                            "precision": 9,
+                            "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                          },
+                          "type": "time"
+                        },
+                        "datatype": "time"
+                      }
+                    ]
+                  },
+                  "qualifiers-order": [
+                    "P405",
+                    "P574"
+                  ],
+                  "id": "Q92770039$88D96AC4-10C3-4B15-BBCE-D8075A1B2CFE",
+                  "rank": "normal"
+                }
+              ],
+              "P18": []
+            }
+          }
+        }
+      }
+    },
+    "https://commons.wikimedia.org/w/api.php?format=json&formatversion=2&action=query&prop=imageinfo&titles=File%3AAbies+concolor+subsp.+concolor+crown.jpg&iiprop=url%7Csize%7Cmime%7Cmediatype%7Cextmetadata&iiurlwidth=1200": {
+      "expiresAt": "2026-11-16T14:50:07Z",
+      "data": {
+        "batchcomplete": true,
+        "query": {
+          "pages": [
+            {
+              "pageid": 40949444,
+              "ns": 6,
+              "title": "File:Abies concolor subsp. concolor crown.jpg",
+              "imagerepository": "local",
+              "imageinfo": [
+                {
+                  "size": 5186424,
+                  "width": 3168,
+                  "height": 4752,
+                  "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Abies_concolor_subsp._concolor_crown.jpg/1280px-Abies_concolor_subsp._concolor_crown.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+                  "thumbwidth": 1200,
+                  "thumbheight": 1800,
+                  "responsiveUrls": {
+                    "2": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Abies_concolor_subsp._concolor_crown.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+                  },
+                  "thumbattribs": {
+                    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Abies_concolor_subsp._concolor_crown.jpg/1280px-Abies_concolor_subsp._concolor_crown.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+                    "decoding": "async",
+                    "loading": "lazy",
+                    "width": 1200,
+                    "height": 1800,
+                    "srcset": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Abies_concolor_subsp._concolor_crown.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled 2x"
+                  },
+                  "url": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Abies_concolor_subsp._concolor_crown.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                  "descriptionurl": "https://commons.wikimedia.org/wiki/File:Abies_concolor_subsp._concolor_crown.jpg",
+                  "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=40949444",
+                  "extmetadata": {
+                    "DateTime": {
+                      "value": "2015-06-13 20:45:38",
+                      "source": "mediawiki-metadata",
+                      "hidden": ""
+                    },
+                    "ObjectName": {
+                      "value": "Abies concolor subsp. concolor crown",
+                      "source": "mediawiki-metadata"
+                    },
+                    "CommonsMetadataExtension": {
+                      "value": 1.2,
+                      "source": "extension",
+                      "hidden": ""
+                    },
+                    "Categories": {
+                      "value": "Abies concolor subsp. concolor|Big Cottonwood Canyon|Flickr images reviewed by FlickreviewR|Files with coordinates missing SDC location of creation|Photographs by Andrey Zharkikh",
+                      "source": "commons-categories",
+                      "hidden": ""
+                    },
+                    "Assessments": {
+                      "value": "",
+                      "source": "commons-categories",
+                      "hidden": ""
+                    },
+                    "GPSLatitude": {
+                      "value": "40.653370",
+                      "source": "commons-desc-page"
+                    },
+                    "GPSLongitude": {
+                      "value": "-111.674090",
+                      "source": "commons-desc-page"
+                    },
+                    "GPSMapDatum": {
+                      "value": "WGS-84",
+                      "source": "commons-desc-page",
+                      "hidden": ""
+                    },
+                    "ImageDescription": {
+                      "value": "<a href=\"https://en.wikipedia.org/wiki/Abies_concolor\" class=\"extiw\" title=\"w:Abies concolor\">Abies concolor subsp. concolor</a>, <a href=\"https://en.wikipedia.org/wiki/Big_Cottonwood_Canyon\" class=\"extiw\" title=\"w:Big Cottonwood Canyon\">Big Cottonwood Canyon</a>, Utah",
+                      "source": "commons-desc-page"
+                    },
+                    "DateTimeOriginal": {
+                      "value": "2009-08-22 10:09:45",
+                      "source": "commons-desc-page"
+                    },
+                    "Credit": {
+                      "value": "<a rel=\"nofollow\" class=\"external free\" href=\"https://www.flickr.com/photos/zharkikh/6425653801/\">https://www.flickr.com/photos/zharkikh/6425653801/</a>",
+                      "source": "commons-desc-page"
+                    },
+                    "Artist": {
+                      "value": "Andrey Zharkikh",
+                      "source": "commons-desc-page"
+                    },
+                    "LicenseShortName": {
+                      "value": "CC BY 2.0",
+                      "source": "commons-desc-page",
+                      "hidden": ""
+                    },
+                    "UsageTerms": {
+                      "value": "Creative Commons Attribution 2.0",
+                      "source": "commons-desc-page"
+                    },
+                    "AttributionRequired": {
+                      "value": "true",
+                      "source": "commons-desc-page",
+                      "hidden": ""
+                    },
+                    "LicenseUrl": {
+                      "value": "https://creativecommons.org/licenses/by/2.0",
+                      "source": "commons-desc-page"
+                    },
+                    "Copyrighted": {
+                      "value": "True",
+                      "source": "commons-desc-page",
+                      "hidden": ""
+                    },
+                    "Restrictions": {
+                      "value": "",
+                      "source": "commons-desc-page",
+                      "hidden": ""
+                    },
+                    "License": {
+                      "value": "cc-by-2.0",
+                      "source": "commons-templates",
+                      "hidden": ""
+                    }
+                  },
+                  "mime": "image/jpeg",
+                  "mediatype": "BITMAP"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "https://commons.wikimedia.org/w/api.php?format=json&formatversion=2&action=query&prop=imageinfo&titles=File%3AAbies+concolor+Yosemite+NP.jpg&iiprop=url%7Csize%7Cmime%7Cmediatype%7Cextmetadata&iiurlwidth=1200": {
+      "expiresAt": "2026-11-16T14:50:07Z",
+      "data": {
+        "batchcomplete": true,
+        "query": {
+          "pages": [
+            {
+              "pageid": 5567354,
+              "ns": 6,
+              "title": "File:Abies concolor Yosemite NP.jpg",
+              "imagerepository": "local",
+              "imageinfo": [
+                {
+                  "size": 256804,
+                  "width": 680,
+                  "height": 1260,
+                  "thumburl": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Abies_concolor_Yosemite_NP.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+                  "thumbwidth": 1200,
+                  "thumbheight": 2224,
+                  "thumbattribs": {
+                    "src": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Abies_concolor_Yosemite_NP.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+                    "decoding": "async",
+                    "loading": "lazy",
+                    "width": 1200,
+                    "height": 2224
+                  },
+                  "url": "https://upload.wikimedia.org/wikipedia/commons/2/2a/Abies_concolor_Yosemite_NP.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                  "descriptionurl": "https://commons.wikimedia.org/wiki/File:Abies_concolor_Yosemite_NP.jpg",
+                  "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=5567354",
+                  "extmetadata": {
+                    "DateTime": {
+                      "value": "2008-12-25 07:29:47",
+                      "source": "mediawiki-metadata",
+                      "hidden": ""
+                    },
+                    "ObjectName": {
+                      "value": "Abies concolor Yosemite NP",
+                      "source": "mediawiki-metadata"
+                    },
+                    "CommonsMetadataExtension": {
+                      "value": 1.2,
+                      "source": "extension",
+                      "hidden": ""
+                    },
+                    "Categories": {
+                      "value": "Abies concolor subsp. lowiana|GFDL|CC-BY-SA-2.5,2.0,1.0|License migration redundant|Flora of the Sierra Nevada (United States)|Self-published work|Trees in Yosemite National Park",
+                      "source": "commons-categories",
+                      "hidden": ""
+                    },
+                    "Assessments": {
+                      "value": "",
+                      "source": "commons-categories",
+                      "hidden": ""
+                    },
+                    "ImageDescription": {
+                      "value": "<i><a href=\"//commons.wikimedia.org/wiki/Abies_concolor\" title=\"Abies concolor\">Abies concolor</a></i> — White Fir.\n<dl><dd><ul><li>In <a href=\"//commons.wikimedia.org/wiki/Yosemite_National_Park\" title=\"Yosemite National Park\">Yosemite National Park</a>.</li></ul></dd></dl>",
+                      "source": "commons-desc-page"
+                    },
+                    "Credit": {
+                      "value": "<a class=\"external free\" data-mw-original-href=\"http://en.wikipedia.org/wiki/Image:Spruce_in_Yosemite_NP-680px.jpg\" href=\"https://en.wikipedia.org/wiki/Image:Spruce_in_Yosemite_NP-680px.jpg\">http://en.wikipedia.org/wiki/Image:Spruce_in_Yosemite_NP-680px.jpg</a>",
+                      "source": "commons-desc-page"
+                    },
+                    "Artist": {
+                      "value": "<a href=\"//commons.wikimedia.org/w/index.php?title=User:Puncsos&amp;action=edit&amp;redlink=1\" class=\"new\" title=\"User:Puncsos (page does not exist)\">Puncsos</a>",
+                      "source": "commons-desc-page"
+                    },
+                    "LicenseShortName": {
+                      "value": "CC BY-SA 3.0",
+                      "source": "commons-desc-page",
+                      "hidden": ""
+                    },
+                    "UsageTerms": {
+                      "value": "Creative Commons Attribution-Share Alike 3.0",
+                      "source": "commons-desc-page"
+                    },
+                    "AttributionRequired": {
+                      "value": "true",
+                      "source": "commons-desc-page",
+                      "hidden": ""
+                    },
+                    "LicenseUrl": {
+                      "value": "http://creativecommons.org/licenses/by-sa/3.0/",
+                      "source": "commons-desc-page"
+                    },
+                    "Copyrighted": {
+                      "value": "True",
+                      "source": "commons-desc-page",
+                      "hidden": ""
+                    },
+                    "Restrictions": {
+                      "value": "",
+                      "source": "commons-desc-page",
+                      "hidden": ""
+                    },
+                    "License": {
+                      "value": "cc-by-sa-3.0",
+                      "source": "commons-templates",
+                      "hidden": ""
+                    }
+                  },
+                  "mime": "image/jpeg",
+                  "mediatype": "BITMAP"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "https://www.wikidata.org/w/api.php?format=json&formatversion=2&action=wbsearchentities&search=Abies+concolor+%27Glauca%27&language=en&type=item&limit=5": {
+      "expiresAt": "2026-11-16T14:50:41Z",
+      "data": {
+        "searchinfo": {
+          "search": "Abies concolor 'Glauca'"
+        },
+        "search": [],
+        "success": 1
+      }
+    },
+    "https://commons.wikimedia.org/w/api.php?format=json&formatversion=2&action=query&titles=Category%3AAbies+concolor+%27Glauca%27&prop=categoryinfo": {
+      "expiresAt": "2026-11-16T14:50:41Z",
+      "data": {
+        "batchcomplete": true,
+        "query": {
+          "pages": [
+            {
+              "ns": 14,
+              "title": "Category:Abies concolor 'Glauca'",
+              "missing": true
+            }
+          ]
+        }
+      }
+    },
+    "https://www.wikidata.org/w/api.php?format=json&formatversion=2&action=wbsearchentities&search=Acanthus+mollis&language=en&type=item&limit=5": {
+      "expiresAt": "2026-11-16T14:50:55Z",
+      "data": {
+        "searchinfo": {
+          "search": "Acanthus mollis"
+        },
+        "search": [
+          {
+            "id": "Q136648",
+            "title": "Q136648",
+            "pageid": 138398,
+            "concepturi": "http://www.wikidata.org/entity/Q136648",
+            "repository": "wikidata",
+            "url": "//www.wikidata.org/wiki/Q136648",
+            "display": {
+              "label": {
+                "value": "Acanthus mollis",
+                "language": "en"
+              },
+              "description": {
+                "value": "herbaceous perennial plant with an underground rhizome in the genus Acanthus",
+                "language": "en"
+              }
+            },
+            "label": "Acanthus mollis",
+            "description": "herbaceous perennial plant with an underground rhizome in the genus Acanthus",
+            "match": {
+              "type": "label",
+              "language": "en",
+              "text": "Acanthus mollis"
+            }
+          },
+          {
+            "id": "Q28797862",
+            "title": "Q28797862",
+            "pageid": 30456527,
+            "concepturi": "http://www.wikidata.org/entity/Q28797862",
+            "repository": "wikidata",
+            "url": "//www.wikidata.org/wiki/Q28797862",
+            "display": {
+              "label": {
+                "value": "Acanthus mollis",
+                "language": "en"
+              },
+              "description": {
+                "value": "botanical drawing by Hans Simon Holtzbecker in the Gottorfer Codex",
+                "language": "en"
+              }
+            },
+            "label": "Acanthus mollis",
+            "description": "botanical drawing by Hans Simon Holtzbecker in the Gottorfer Codex",
+            "match": {
+              "type": "label",
+              "language": "en",
+              "text": "Acanthus mollis"
+            }
+          },
+          {
+            "id": "Q52557321",
+            "title": "Q52557321",
+            "pageid": 53389125,
+            "concepturi": "http://www.wikidata.org/entity/Q52557321",
+            "repository": "wikidata",
+            "url": "//www.wikidata.org/wiki/Q52557321",
+            "display": {
+              "label": {
+                "value": "Acanthus mollis",
+                "language": "en"
+              },
+              "description": {
+                "value": "botanical watercolour drawing by Ferdinand Bauer",
+                "language": "en"
+              }
+            },
+            "label": "Acanthus mollis",
+            "description": "botanical watercolour drawing by Ferdinand Bauer",
+            "match": {
+              "type": "label",
+              "language": "en",
+              "text": "Acanthus mollis"
+            }
+          },
+          {
+            "id": "Q56660760",
+            "title": "Q56660760",
+            "pageid": 56601809,
+            "concepturi": "http://www.wikidata.org/entity/Q56660760",
+            "repository": "wikidata",
+            "url": "//www.wikidata.org/wiki/Q56660760",
+            "display": {
+              "label": {
+                "value": "Acanthus mollis",
+                "language": "en"
+              },
+              "description": {
+                "value": "botanical illustration by Ferdinand Bauer",
+                "language": "en"
+              }
+            },
+            "label": "Acanthus mollis",
+            "description": "botanical illustration by Ferdinand Bauer",
+            "match": {
+              "type": "label",
+              "language": "en",
+              "text": "Acanthus mollis"
+            }
+          },
+          {
+            "id": "Q140229103",
+            "title": "Q140229103",
+            "pageid": 133666559,
+            "concepturi": "http://www.wikidata.org/entity/Q140229103",
+            "repository": "wikidata",
+            "url": "//www.wikidata.org/wiki/Q140229103",
+            "display": {
+              "label": {
+                "value": "Acanthus mollis",
+                "language": "en"
+              },
+              "description": {
+                "value": "By Karl Blossfeldt ((German, 1865–1932)); 1898–1928; Gelatin silver print; 11 3/4 × 9 3/8\" (29.8 × 23.8 cm)",
+                "language": "en"
+              }
+            },
+            "label": "Acanthus mollis",
+            "description": "By Karl Blossfeldt ((German, 1865–1932)); 1898–1928; Gelatin silver print; 11 3/4 × 9 3/8\" (29.8 × 23.8 cm)",
+            "match": {
+              "type": "label",
+              "language": "en",
+              "text": "Acanthus mollis"
+            }
+          }
+        ],
+        "search-continue": 5,
+        "success": 1
+      }
+    },
+    "https://www.wikidata.org/w/api.php?format=json&formatversion=2&action=wbgetentities&ids=Q136648%7CQ28797862%7CQ52557321%7CQ56660760%7CQ140229103&props=claims": {
+      "expiresAt": "2026-11-16T14:50:55Z",
+      "data": {
+        "entities": {
+          "Q136648": {
+            "id": "Q136648",
+            "claims": {
+              "P225": [
+                {
+                  "mainsnak": {
+                    "snaktype": "value",
+                    "property": "P225",
+                    "hash": "49a681db624648f861ad70fc60a79baf7211e9ce",
+                    "datavalue": {
+                      "value": "Acanthus mollis",
+                      "type": "string"
+                    },
+                    "datatype": "string"
+                  },
+                  "type": "statement",
+                  "qualifiers": {
+                    "P405": [
+                      {
+                        "snaktype": "value",
+                        "property": "P405",
+                        "hash": "a817d3670bc2f9a3586b6377a65d54fff72ef888",
+                        "datavalue": {
+                          "value": {
+                            "entity-type": "item",
+                            "numeric-id": 1043,
+                            "id": "Q1043"
+                          },
+                          "type": "wikibase-entityid"
+                        },
+                        "datatype": "wikibase-item"
+                      }
+                    ],
+                    "P574": [
+                      {
+                        "snaktype": "value",
+                        "property": "P574",
+                        "hash": "45e5b04c2f47c968d719101fed54a982f5fde7cf",
+                        "datavalue": {
+                          "value": {
+                            "time": "+1753-01-01T00:00:00Z",
+                            "timezone": 0,
+                            "before": 0,
+                            "after": 0,
+                            "precision": 9,
+                            "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                          },
+                          "type": "time"
+                        },
+                        "datatype": "time"
+                      }
+                    ]
+                  },
+                  "qualifiers-order": [
+                    "P405",
+                    "P574"
+                  ],
+                  "id": "q136648$1038CF02-8090-4E3B-9C32-FCCD049FACE9",
+                  "rank": "normal",
+                  "references": [
+                    {
+                      "hash": "cff1adf0a019db3a1340f3a8f1b318ad6a38f5c6",
+                      "snaks": {
+                        "P248": [
+                          {
+                            "snaktype": "value",
+                            "property": "P248",
+                            "hash": "93f7eb93ff98c12fa0a2453ad0bba348f5659eca",
+                            "datavalue": {
+                              "value": {
+                                "entity-type": "item",
+                                "numeric-id": 21856107,
+                                "id": "Q21856107"
+                              },
+                              "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                          }
+                        ],
+                        "P304": [
+                          {
+                            "snaktype": "value",
+                            "property": "P304",
+                            "hash": "d0a13b137c2397191f5377f922bd1c0d0dfb4cf3",
+                            "datavalue": {
+                              "value": "639",
+                              "type": "string"
+                            },
+                            "datatype": "string"
+                          }
+                        ],
+                        "P687": [
+                          {
+                            "snaktype": "value",
+                            "property": "P687",
+                            "hash": "18dca9862a7655b92344ccf303cc849059ba9199",
+                            "datavalue": {
+                              "value": "358660",
+                              "type": "string"
+                            },
+                            "datatype": "external-id"
+                          }
+                        ],
+                        "P6184": [
+                          {
+                            "snaktype": "value",
+                            "property": "P6184",
+                            "hash": "22dc5f6f7242fa18eb7ab32a61ed2d86dc18adac",
+                            "datavalue": {
+                              "value": {
+                                "entity-type": "item",
+                                "numeric-id": 1361864,
+                                "id": "Q1361864"
+                              },
+                              "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                          }
+                        ]
+                      },
+                      "snaks-order": [
+                        "P248",
+                        "P304",
+                        "P687",
+                        "P6184"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "P18": [
+                {
+                  "mainsnak": {
+                    "snaktype": "value",
+                    "property": "P18",
+                    "hash": "200548c691e053af7f4f3b9f7191c413c4c0df25",
+                    "datavalue": {
+                      "value": "Acanthaceae - Acanthus mollis (2).JPG",
+                      "type": "string"
+                    },
+                    "datatype": "commonsMedia"
+                  },
+                  "type": "statement",
+                  "id": "q136648$1C0F8D20-4DD7-4616-B007-ADF6C9FA1E39",
+                  "rank": "normal"
+                },
+                {
+                  "mainsnak": {
+                    "snaktype": "value",
+                    "property": "P18",
+                    "hash": "93cf684e6228c64bfd3fab2fbacd9b00d58a9466",
+                    "datavalue": {
+                      "value": "Mecha-stupka02.JPG",
+                      "type": "string"
+                    },
+                    "datatype": "commonsMedia"
+                  },
+                  "type": "statement",
+                  "id": "Q136648$3AE16396-F7BB-4DEE-9CE6-3EFCCB19B9CF",
+                  "rank": "normal"
+                }
+              ]
+            }
+          },
+          "Q28797862": {
+            "id": "Q28797862",
+            "claims": {
+              "P225": [],
+              "P18": [
+                {
+                  "mainsnak": {
+                    "snaktype": "value",
+                    "property": "P18",
+                    "hash": "df9e16d564fcb93cac4e5e32626b7277a313a958",
+                    "datavalue": {
+                      "value": "Hans Simon Holtzbecker - Acanthus mollis - Google Art Project.jpg",
+                      "type": "string"
+                    },
+                    "datatype": "commonsMedia"
+                  },
+                  "type": "statement",
+                  "id": "Q28797862$CA7B36EC-252C-402D-953C-75854B65B466",
+                  "rank": "normal",
+                  "references": [
+                    {
+                      "hash": "e71a7903858496c67eea189a7084d5559f788edb",
+                      "snaks": {
+                        "P143": [
+                          {
+                            "snaktype": "value",
+                            "property": "P143",
+                            "hash": "5d3b16d350189b0a81818758208505444c86c127",
+                            "datavalue": {
+                              "value": {
+                                "entity-type": "item",
+                                "numeric-id": 565,
+                                "id": "Q565"
+                              },
+                              "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                          }
+                        ]
+                      },
+                      "snaks-order": [
+                        "P143"
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          },
+          "Q52557321": {
+            "id": "Q52557321",
+            "claims": {
+              "P225": [],
+              "P18": []
+            }
+          },
+          "Q56660760": {
+            "id": "Q56660760",
+            "claims": {
+              "P225": [],
+              "P18": []
+            }
+          },
+          "Q140229103": {
+            "id": "Q140229103",
+            "claims": {
+              "P225": [],
+              "P18": []
+            }
+          }
+        }
+      }
+    },
+    "https://commons.wikimedia.org/w/api.php?format=json&formatversion=2&action=query&prop=imageinfo&titles=File%3AAcanthaceae+-+Acanthus+mollis+%282%29.JPG&iiprop=url%7Csize%7Cmime%7Cmediatype%7Cextmetadata&iiurlwidth=1200": {
+      "expiresAt": "2026-11-16T14:50:55Z",
+      "data": {
+        "batchcomplete": true,
+        "query": {
+          "pages": [
+            {
+              "pageid": 15808127,
+              "ns": 6,
+              "title": "File:Acanthaceae - Acanthus mollis (2).JPG",
+              "imagerepository": "local",
+              "imageinfo": [
+                {
+                  "size": 250549,
+                  "width": 681,
+                  "height": 1024,
+                  "thumburl": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Acanthaceae_-_Acanthus_mollis_%282%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+                  "thumbwidth": 1200,
+                  "thumbheight": 1804,
+                  "thumbattribs": {
+                    "src": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Acanthaceae_-_Acanthus_mollis_%282%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+                    "decoding": "async",
+                    "loading": "lazy",
+                    "width": 1200,
+                    "height": 1804
+                  },
+                  "url": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Acanthaceae_-_Acanthus_mollis_%282%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                  "descriptionurl": "https://commons.wikimedia.org/wiki/File:Acanthaceae_-_Acanthus_mollis_(2).JPG",
+                  "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=15808127",
+                  "extmetadata": {
+                    "DateTime": {
+                      "value": "2011-07-16 09:37:37",
+                      "source": "mediawiki-metadata",
+                      "hidden": ""
+                    },
+                    "ObjectName": {
+                      "value": "Acanthaceae - Acanthus mollis (2)",
+                      "source": "mediawiki-metadata"
+                    },
+                    "CommonsMetadataExtension": {
+                      "value": 1.2,
+                      "source": "extension",
+                      "hidden": ""
+                    },
+                    "Categories": {
+                      "value": "GFDL|Taken with Nikon D50|License migration redundant|Self-published work|Acanthus mollis (flowers)",
+                      "source": "commons-categories",
+                      "hidden": ""
+                    },
+                    "Assessments": {
+                      "value": "",
+                      "source": "commons-categories",
+                      "hidden": ""
+                    },
+                    "ImageDescription": {
+                      "value": "Acanthus mollis - S. Bernardo, Genova, Italy",
+                      "source": "commons-desc-page"
+                    },
+                    "DateTimeOriginal": {
+                      "value": "2007-05-15",
+                      "source": "commons-desc-page"
+                    },
+                    "Credit": {
+                      "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+                      "source": "commons-desc-page"
+                    },
+                    "Artist": {
+                      "value": "<a href=\"//commons.wikimedia.org/wiki/User:Hectonichus\" title=\"User:Hectonichus\">Hectonichus</a>",
+                      "source": "commons-desc-page"
+                    },
+                    "LicenseShortName": {
+                      "value": "CC BY-SA 3.0",
+                      "source": "commons-desc-page",
+                      "hidden": ""
+                    },
+                    "UsageTerms": {
+                      "value": "Creative Commons Attribution-Share Alike 3.0",
+                      "source": "commons-desc-page"
+                    },
+                    "AttributionRequired": {
+                      "value": "true",
+                      "source": "commons-desc-page",
+                      "hidden": ""
+                    },
+                    "LicenseUrl": {
+                      "value": "https://creativecommons.org/licenses/by-sa/3.0",
+                      "source": "commons-desc-page"
+                    },
+                    "Copyrighted": {
+                      "value": "True",
+                      "source": "commons-desc-page",
+                      "hidden": ""
+                    },
+                    "Restrictions": {
+                      "value": "",
+                      "source": "commons-desc-page",
+                      "hidden": ""
+                    },
+                    "License": {
+                      "value": "cc-by-sa-3.0",
+                      "source": "commons-templates",
+                      "hidden": ""
+                    }
+                  },
+                  "mime": "image/jpeg",
+                  "mediatype": "BITMAP"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "assets": {
+    "https://upload.wikimedia.org/wikipedia/commons/2/2a/Abies_concolor_Yosemite_NP.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled": {
+      "image": "assets/biljke/reference-dede061c188d792b56ff9b2f.jpg",
+      "sha256": "dede061c188d792b56ff9b2f80f5e34550d2729595d64d24aa65b32530828811",
+      "expiresAt": "2026-11-16T14:50:07Z"
+    },
+    "https://upload.wikimedia.org/wikipedia/commons/8/8b/Acanthaceae_-_Acanthus_mollis_%282%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled": {
+      "image": "assets/biljke/reference-767a641401a926b3d8a8c6c3.jpg",
+      "sha256": "767a641401a926b3d8a8c6c3eada50d6fb2ab73a90dca95306029473675bab14",
+      "expiresAt": "2026-11-16T14:50:55Z"
+    }
+  }
+}
