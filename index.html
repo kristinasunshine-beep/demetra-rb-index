@@ -1407,24 +1407,77 @@ function updateSearch() {
   setStatus('Prikazano ' + state.suggestions.length + ' od ' + state.matches.length + ' rezultata. Strelicama izaberite biljku, a tasterom Enter otvorite zapis.');
 }
 
+const DIMENSION_PARAMETER_LABELS = new Set([
+  'Dimenzija iz ponude', 'Nerazvrstana mera iz ponude', 'Visina čistog debla',
+  'Dimenzija oblikovane forme', 'Dimenzije oblikovane forme', 'Dimenzije oblikovane krošnje',
+  'Obim / visina iz ponude', 'Dimenzije sadnice iz ponude', 'Visina / prečnik iz ponude',
+  'Ponuđena veličina (izvorna oznaka)'
+]);
+
+function normalizedParameterValue(value) {
+  return String(value || '').toLowerCase().replace(/\s+/g, '')
+    .replace(/(?<=\d),(?=\d)/g, '.').replace(/[-–—/]/g, '–').replace(/×/g, 'x');
+}
+
+function sameMeasurement(left, right) {
+  const a = normalizedParameterValue(left);
+  const b = normalizedParameterValue(right);
+  if (!a || !b || !/\d/.test(a)) return false;
+  if (a === b) return true;
+  const pattern = /^(\d+(?:\.\d+)?(?:–\d+(?:\.\d+)?)?\+?)(cm|mm|m)?$/;
+  const first = a.match(pattern), second = b.match(pattern);
+  return !!(first && second && first[1] === second[1] &&
+    (!first[2] || !second[2] || first[2] === second[2]));
+}
+
 function visibleAdditionalParameters(offer) {
-  const measure = value => {
-    const text = String(value || '').toLowerCase().replace(/\s+/g, '')
-      .replace(/(?<=\d),(?=\d)/g, '.').replace(/[-–—/]/g, '–');
-    const match = text.match(/^([\d.]+(?:–[\d.]+)?\+?)(cm|mm|m)?$/);
-    return match ? { number: match[1], unit: match[2] || '' } : null;
-  };
-  const known = [offer.circumference, offer.height, offer.crownWidth, offer.rootBall]
-    .map(measure).filter(Boolean);
+  const generic = label => ['Dimenzija iz ponude', 'Nerazvrstana mera iz ponude'].includes(label);
+  const named = (offer.additionalParameters || []).filter(parameter =>
+    DIMENSION_PARAMETER_LABELS.has(parameter.label) && !generic(parameter.label));
+  const known = [offer.circumference, offer.height, offer.crownWidth, offer.rootBall,
+    ...named.flatMap(parameter => parameter.value.split(/[;·]/))].filter(Boolean);
   return (offer.additionalParameters || []).flatMap(parameter => {
-    if (!['Dimenzija iz ponude', 'Nerazvrstana mera iz ponude'].includes(parameter.label)) return [parameter];
-    const remaining = parameter.value.split(/[;·]/).map(value => value.trim()).filter(Boolean).filter(value => {
-      const parsed = measure(value);
-      return !parsed || !known.some(item => item.number === parsed.number &&
-        (!item.unit || !parsed.unit || item.unit === parsed.unit));
-    });
+    if (!generic(parameter.label)) return [parameter];
+    const remaining = parameter.value.split(/[;·]/).map(value => value.trim()).filter(Boolean)
+      .filter(value => !known.some(item => sameMeasurement(value, item)));
     return remaining.length ? [{ ...parameter, value: remaining.join(' · ') }] : [];
   });
+}
+
+function visibleDataNotes(offer) {
+  const dimensions = [offer.circumference, offer.height, offer.crownWidth, offer.rootBall,
+    ...visibleAdditionalParameters(offer).filter(parameter => DIMENSION_PARAMETER_LABELS.has(parameter.label))
+      .flatMap(parameter => parameter.value.split(/[;·]/))].filter(Boolean);
+  const displayed = value => dimensions.some(item => sameMeasurement(value, item));
+  const potMatches = value => !!offer.potSize &&
+    normalizedParameterValue(value) === normalizedParameterValue(offer.potSize);
+  const fields = { 'Obim sadnice': offer.circumference, 'Visina sadnice': offer.height,
+    'Širina krošnje': offer.crownWidth, 'Veličina busena': offer.rootBall, 'Veličina saksije': offer.potSize };
+  // Only rewrite known redundant clauses after matching their own displayed value.
+  // Source conflicts, requested alternatives, prices and dates remain intact; raw notes stay in the data.
+  return [...new Set([offer.dataAccuracyNote, offer.measurementNote].filter(Boolean).map(original => {
+    let note = original.replace(/(Obim sadnice|Visina sadnice|Širina krošnje|Veličina busena|Veličina saksije) u ponudi:\s*(.+?)(?:\.(?=\s|$)|$)/g,
+      (text, label, value) => sameMeasurement(value, fields[label]) ? '' : text);
+    note = note.replace(/(?:Doslovna neklasifikovana|Neoznačena) mera iz izvora: (.+?)\.(?=\s|$)/g,
+      (text, value) => displayed(value) ? 'Vrsta ove mere nije navedena u izvoru.' : text);
+    note = note.replace(/Dimenzije su sačuvane doslovno iz specifikacije: ([^;]+);/g,
+      (text, value) => displayed(value) ? 'Dimenzije su prenete bez promene;' : text);
+    note = note.replace(/Ponuđeno (\d+(?:[.,]\d+)?\s*[-–—/]\s*\d+(?:[.,]\d+)?(?:\s*(?:cm|mm|m))?) je iz ([A-Z]+\d+);/g,
+      (text, value, cell) => displayed(value) ? 'Ponuđena mera je iz ' + cell + ';' : text);
+    note = note.replace(/Ponuđen obim\s*(.+?) iz ([A-Z]+\d+);/g,
+      (text, value, cell) => sameMeasurement(value, offer.circumference) ? 'Obim je prenet iz ' + cell + ';' : text);
+    note = note.replace(/^(.+?) je neoznačena mera u koloni ([^;]+?) i nije pretvorena u visinu ili obim\./,
+      (text, value, column) => displayed(value) ? 'Mera iz kolone ' + column +
+        ' nema označen tip; nije protumačena kao visina ili obim.' : text);
+    note = note.replace(/(\S+) je doslovno preneta oznaka kontejnera\./g,
+      (text, value) => potMatches(value) ? 'Oznaka kontejnera je doslovno preneta iz ponude.' : text);
+    note = note.replace(/Mere i oznaka (.+?) preneti su iz odštampanog reda upita\./g,
+      (text, value) => potMatches(value) ? 'Mere i oznaka kontejnera preneti su iz odštampanog reda upita.' : text);
+    note = note.replace(/Ponuđena je sorta ([^;]+?) sa oznakom veličine ([^;]+?) iz ([A-Z]+\d+);/g,
+      (text, cultivar, value, cell) => displayed(value) ? 'Ponuđena je sorta ' + cultivar +
+        '; veličina je preneta iz ' + cell + ';' : text);
+    return note.replace(/\s+/g, ' ').trim();
+  }).filter(Boolean))];
 }
 
 function renderOffer(offer, plant, nursery) {
@@ -1446,7 +1499,7 @@ function renderOffer(offer, plant, nursery) {
     ['Broj presađivanja', transplantValue],
     ...visibleAdditionalParameters(offer).map(({ label, value }) => [label, value])
   ];
-  const dataNotes = [...new Set([offer.dataAccuracyNote, offer.measurementNote].filter(Boolean))];
+  const dataNotes = visibleDataNotes(offer);
   const hasPrice = offer.price !== null && offer.price !== undefined && offer.price !== '';
   const priceLabel = offer.priceKind === 'historical' ? 'Cena iz arhivirane ponude' : 'Nabavna cena iz ponude';
   const sourceLabel = escapeHTML(offer.source || 'Izvor nije naveden');
