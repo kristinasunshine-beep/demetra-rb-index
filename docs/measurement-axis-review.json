@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-11-10T09:17:18.451963+00:00",
+  "baselineCommit": "008d2b46e934138ec9901180d2a7d9db16e31fe0",
+  "baselineCatalogueSha256": "5ae521caf273edf9b16bd16d1e6803e194b01fbe3596de1cddd944bb48657213",
+  "resultCatalogueSha256": "826bfc0f2cea9e5dc2f2e4402e6a27933df3d84f5bc2713436fca0a1832f9dc9",
+  "catalogueBytes": 16655064,
+  "summary": {
+    "baselineCommit": "008d2b46e934138ec9901180d2a7d9db16e31fe0",
+    "baselineSha256": "5ae521caf273edf9b16bd16d1e6803e194b01fbe3596de1cddd944bb48657213",
+    "records": 3079,
+    "activeRecords": 2948,
+    "genericRecordsAudited": 670,
+    "reviewedRegistryRecords": 597,
+    "approvedUpdates": 597,
+    "remainingGenericRecords": 74,
+    "unresolvedReviewedRecords": 75,
+    "correctedAndPartlyUnresolvedRecords": 1,
+    "changedFields": {
+      "panelParameterEvidence": 597,
+      "additionalParameters": 597,
+      "measurementNote": 532,
+      "height": 299,
+      "circumference": 260,
+      "dataAccuracyNote": 14,
+      "crownWidth": 20,
+      "potSize": 5
+    },
+    "protectedDataUnchanged": true,
+    "allApprovedFieldsApplied": true,
+    "allRetiredGenericValuesRemoved": true,
+    "idempotent": true,
+    "mandatoryAesculusCaseVerified": true,
+    "allRequiredAccuracyNotesPresent": true
+  },
+  "changedFields": {
+    "additionalParameters": 597,
+    "circumference": 260,
+    "crownWidth": 20,
+    "dataAccuracyNote": 14,
+    "height": 299,
+    "measurementNote": 532,
+    "panelParameterEvidence": 597,
+    "potSize": 5
+  },
+  "guards": {
+    "allSourceAndPreviousValueGuardsPassed": true,
+    "matchesReviewedCandidate": true,
+    "recordIdsAndOrderPreserved": true,
+    "allNonapprovedFieldsUnchanged": true,
+    "allPricesCurrencyAndTaxFieldsPreserved": true,
+    "allPhotoFieldsAndAssetsPreserved": true,
+    "plantAndNurseryRegistriesPreserved": true,
+    "cssAndPageMarkupBeforeScriptsPreserved": true,
+    "workflowsUnchanged": true,
+    "allRequiredAccuracyNotesPresent": true
+  },
+  "checks": {
+    "pythonUnitTests": {
+      "command": "python -m unittest discover -s scripts/tests -p 'test_*.py'",
+      "passed": 212
+    },
+    "catalogueAndPanelCheck": {
+      "command": "node scripts/check-catalog.mjs",
+      "status": "passed",
+      "plants": 619,
+      "activeCards": 2948,
+      "hiddenCards": 131,
+      "knownParameters": 6524
+    },
+    "rendererTests": {
+      "command": "node scripts/tests/test_card_render.mjs",
+      "status": "passed"
+    },
+    "localBrowserPreview": {
+      "status": "unavailable",
+      "reason": "Cloud browser could not connect to the local HTTP preview; DOM rendering was verified by the Node catalogue and renderer checks."
+    }
+  },
+  "photoSnapshot": {
+    "checkedAt": "2026-11-10T08:16:25Z",
+    "plants": 619,
+    "plantsWithPhoto": 82,
+    "activeOffers": 2948,
+    "nurseryPhotos": 283,
+    "referencePhotos": 12,
+    "remainingOffers": 2653
+  },
+  "publication": {
+    "status": "not_published_by_assistant",
+    "reason": "GitHub device approval completed, but the runtime blocked GitHub API access and automatic approval review rejected expanded network access.",
+    "observedRemotePagesDeployment": "failed_timeout",
+    "observedRun": "https://github.com/kristinasunshine-beep/demetra-rb-index/actions/runs/42780427187"
+  }
+}

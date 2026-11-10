@@ -1,0 +1,1528 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-11-10",
+  "unresolved": [
+    {
+      "id": "record-ce6e360f23b4b2",
+      "source": {
+        "sourceFile": "Kopie van Offer inquiry 110925.xlsx",
+        "sourceSha256": "190f24c3c78351bb8831e59d901585135583c3d87cb1890d6599f4dd575f1635",
+        "sheet": "Landscape",
+        "row": 20
+      },
+      "specification": "Prunus laurocerasus 100/125 1000mm c7,5",
+      "reason": "two_source_sizes_without_explicit_request_offer_role",
+      "details": "Izvorni red i raspoloživi kontekst ne potvrđuju osu ove oblikovane/široke forme ili ne razlikuju traženu i ponuđenu veličinu; vrednost ostaje sačuvana."
+    },
+    {
+      "id": "record-b90395314e0cd8",
+      "source": {
+        "sourceFile": "Offer for Inquiry 3 jobs - Perrenials  85181.xlsx",
+        "sourceSha256": "1884da361741a809df86a02f2200c7b627a41dd936db0b11a08746018d761a37",
+        "sheet": "Sheet 1",
+        "row": 12
+      },
+      "specification": "20-30 C2 · Napomena iz ponude: variety -- harlequin / emerald n ga. eg",
+      "reason": "shaped_or_spreading_plant_size_axis_not_explicit",
+      "details": "Izvorni red i raspoloživi kontekst ne potvrđuju osu ove oblikovane/široke forme ili ne razlikuju traženu i ponuđenu veličinu; vrednost ostaje sačuvana."
+    },
+    {
+      "id": "record-903dfb59efd3b0",
+      "source": {
+        "sourceFile": "Offer for Inquiry 3 jobs - Perrenials  85181.xlsx",
+        "sourceSha256": "1884da361741a809df86a02f2200c7b627a41dd936db0b11a08746018d761a37",
+        "sheet": "Sheet 1",
+        "row": 12
+      },
+      "specification": "Euonymus fortunei; 20-30 C2; variety -- harlequin / emerald n ga. eg",
+      "reason": "shaped_or_spreading_plant_size_axis_not_explicit",
+      "details": "Izvorni red i raspoloživi kontekst ne potvrđuju osu ove oblikovane/široke forme ili ne razlikuju traženu i ponuđenu veličinu; vrednost ostaje sačuvana."
+    },
+    {
+      "id": "record-2ab6fa6468c10e",
+      "source": {
+        "sourceFile": "upit demetra dejana.pdf",
+        "sourceSha256": "88d52aa2d9d768c2bff881669a9bf673b76c33ed10209d417175114a59f716d5",
+        "row": "10",
+        "page": 1
+      },
+      "specification": "Thuja orientalis Aurea nana; rukom 30/50",
+      "reason": "shaped_or_spreading_plant_size_axis_not_explicit",
+      "details": "Izvorni red i raspoloživi kontekst ne potvrđuju osu ove oblikovane/široke forme ili ne razlikuju traženu i ponuđenu veličinu; vrednost ostaje sačuvana."
+    },
+    {
+      "id": "record-1c221a58a0e478",
+      "source": {
+        "sourceFile": "upit demetra dejana.pdf",
+        "sourceSha256": "88d52aa2d9d768c2bff881669a9bf673b76c33ed10209d417175114a59f716d5",
+        "row": "11",
+        "page": 1
+      },
+      "specification": "Thuja occidentalis Danica; rukom 30/50",
+      "reason": "shaped_or_spreading_plant_size_axis_not_explicit",
+      "details": "Izvorni red i raspoloživi kontekst ne potvrđuju osu ove oblikovane/široke forme ili ne razlikuju traženu i ponuđenu veličinu; vrednost ostaje sačuvana."
+    },
+    {
+      "id": "offer-pdf-a0292f1d96f495c5a03f",
+      "source": {
+        "sourceFile": "20250303175246.pdf",
+        "sourceSha256": "0671bada8ee892ae90df45988fe0a1bd976e2fb5733f64841cbae507ca8f0165",
+        "row": "offer 1",
+        "page": 1
+      },
+      "specification": "Pinus sylvestris; rukom GLAUCA 3/3,50 ART.62; bonsai form",
+      "reason": "shaped_or_spreading_plant_size_axis_not_explicit",
+      "details": "Izvorni red i raspoloživi kontekst ne potvrđuju osu ove oblikovane/široke forme ili ne razlikuju traženu i ponuđenu veličinu; vrednost ostaje sačuvana."
+    },
+    {
+      "id": "offer-pdf-2d56f4abbbe6d962c108",
+      "source": {
+        "sourceFile": "ORDER CONFIRMATION.pdf",
+        "sourceSha256": "44a803dfdd1c948bb29715d7d0dc60d178e1fe5661eae5138388ce0fe1677e58",
+        "row": "1",
+        "page": 1
+      },
+      "specification": "PHOTINIA X FRASERI RED ROBIN CLT35-50 100-125 UMBRELLA SHAPE",
+      "reason": "shaped_or_spreading_plant_size_axis_not_explicit",
+      "details": "Izvorni red i raspoloživi kontekst ne potvrđuju osu ove oblikovane/široke forme ili ne razlikuju traženu i ponuđenu veličinu; vrednost ostaje sačuvana."
+    },
+    {
+      "id": "offer-pdf-f6b641306e075eb1874f",
+      "source": {
+        "sourceFile": "ORDER CONFIRMATION.pdf",
+        "sourceSha256": "44a803dfdd1c948bb29715d7d0dc60d178e1fe5661eae5138388ce0fe1677e58",
+        "row": "2",
+        "page": 1
+      },
+      "specification": "PHOTINIA X FRASERI RED ROBIN CLT230 250-300 UMBRELLA SHAPE",
+      "reason": "shaped_or_spreading_plant_size_axis_not_explicit",
+      "details": "Izvorni red i raspoloživi kontekst ne potvrđuju osu ove oblikovane/široke forme ili ne razlikuju traženu i ponuđenu veličinu; vrednost ostaje sačuvana."
+    },
+    {
+      "id": "record-6ee701c239b4d7",
+      "reason": "The roof-form tree 4/5m has no height-versus-crown-span axis label; supplier D17 says only fresh 385.00.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "MAURITZ .xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/MAURITZ .xlsx",
+        "sourceSha256": "043b68f24157e87371f70ad3c75b49a9933e1c36e2a445628a66160386eef110",
+        "sheet": "Sheet1",
+        "row": 17,
+        "specification": "Platanus acerifolia 'Roof form' 4/5m; PONUĐENO: fresh 385,00",
+        "genericValues": [
+          "4/5m"
+        ],
+        "sourceCells": [
+          "A17",
+          "D17"
+        ],
+        "sourceValues": {
+          "A17": "Platanus acerifolia 'Roof form' 4/5m",
+          "D17": "fresh 385,00"
+        }
+      }
+    },
+    {
+      "id": "record-b8bef7cb197a5a",
+      "reason": "The source header is only Size in a mixed shrub/groundcover/shaped-plant sheet. It does not establish height versus width for this reviewed record; the supplied numeric range alone is insufficient.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Shrubs perrenials.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx",
+        "sourceSha256": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+        "sheet": "All plants",
+        "row": 11,
+        "specification": "Chamaecyparis obtusa ‘Nana Gracilis’; Size: 30/40",
+        "genericValues": [
+          "30/40"
+        ],
+        "sourceCells": [
+          "B11",
+          "C11"
+        ],
+        "sourceValues": {
+          "B11": "Chamaecyparis obtusa ‘Nana Gracilis’",
+          "C11": "30/40"
+        },
+        "headerCells": {
+          "B3": "SOLITAIRE SHURBS - SZOLITER CSERJÉK",
+          "C3": "Size"
+        }
+      }
+    },
+    {
+      "id": "record-49f7e3bbb295a1",
+      "reason": "The source header is only Size in a mixed shrub/groundcover/shaped-plant sheet. It does not establish height versus width for this reviewed record; the supplied numeric range alone is insufficient.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Shrubs perrenials.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx",
+        "sourceSha256": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+        "sheet": "All plants",
+        "row": 17,
+        "specification": "Corylus maxima 'Purpurea'; Size: 30/40",
+        "genericValues": [
+          "30/40"
+        ],
+        "sourceCells": [
+          "B17",
+          "C17"
+        ],
+        "sourceValues": {
+          "B17": "Corylus maxima 'Purpurea'",
+          "C17": "30/40"
+        },
+        "headerCells": {
+          "B3": "SOLITAIRE SHURBS - SZOLITER CSERJÉK",
+          "C3": "Size"
+        }
+      }
+    },
+    {
+      "id": "record-6afb453e1c97f5",
+      "reason": "The source header is only Size in a mixed shrub/groundcover/shaped-plant sheet. It does not establish height versus width for this reviewed record; the supplied numeric range alone is insufficient.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Shrubs perrenials.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx",
+        "sourceSha256": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+        "sheet": "All plants",
+        "row": 28,
+        "specification": "Pinus nigra 'Brepo'; Size: 40/60",
+        "genericValues": [
+          "40/60"
+        ],
+        "sourceCells": [
+          "B28",
+          "C28"
+        ],
+        "sourceValues": {
+          "B28": "Pinus nigra 'Brepo'",
+          "C28": "40/60"
+        },
+        "headerCells": {
+          "B3": "SOLITAIRE SHURBS - SZOLITER CSERJÉK",
+          "C3": "Size"
+        }
+      }
+    },
+    {
+      "id": "record-1fe7070ca32f5e",
+      "reason": "The source header is only Size in a mixed shrub/groundcover/shaped-plant sheet. It does not establish height versus width for this reviewed record; the supplied numeric range alone is insufficient.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Shrubs perrenials.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx",
+        "sourceSha256": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+        "sheet": "All plants",
+        "row": 29,
+        "specification": "Rhododendron japonica 'Maruschka'; Size: 30/40",
+        "genericValues": [
+          "30/40"
+        ],
+        "sourceCells": [
+          "B29",
+          "C29"
+        ],
+        "sourceValues": {
+          "B29": "Rhododendron japonica 'Maruschka'",
+          "C29": "30/40"
+        },
+        "headerCells": {
+          "B3": "SOLITAIRE SHURBS - SZOLITER CSERJÉK",
+          "C3": "Size"
+        }
+      }
+    },
+    {
+      "id": "record-3eca72f4f4825f",
+      "reason": "The source header is only Size in a mixed shrub/groundcover/shaped-plant sheet. It does not establish height versus width for this reviewed record; the supplied numeric range alone is insufficient.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Shrubs perrenials.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx",
+        "sourceSha256": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+        "sheet": "All plants",
+        "row": 30,
+        "specification": "Salix purpurea 'Nana'; Size: 30/40",
+        "genericValues": [
+          "30/40"
+        ],
+        "sourceCells": [
+          "B30",
+          "C30"
+        ],
+        "sourceValues": {
+          "B30": "Salix purpurea 'Nana'",
+          "C30": "30/40"
+        },
+        "headerCells": {
+          "B3": "SOLITAIRE SHURBS - SZOLITER CSERJÉK",
+          "C3": "Size"
+        }
+      }
+    },
+    {
+      "id": "record-c4db09fad1ba6e",
+      "reason": "The source header is only Size in a mixed shrub/groundcover/shaped-plant sheet. It does not establish height versus width for this reviewed record; the supplied numeric range alone is insufficient.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Shrubs perrenials.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx",
+        "sourceSha256": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+        "sheet": "All plants",
+        "row": 33,
+        "specification": "Taxus baccata gömb; Size: 40/60",
+        "genericValues": [
+          "40/60"
+        ],
+        "sourceCells": [
+          "B33",
+          "C33"
+        ],
+        "sourceValues": {
+          "B33": "Taxus baccata gömb",
+          "C33": "40/60"
+        },
+        "headerCells": {
+          "B3": "SOLITAIRE SHURBS - SZOLITER CSERJÉK",
+          "C3": "Size"
+        }
+      }
+    },
+    {
+      "id": "record-4a5b4b21dda43e",
+      "reason": "The source header is only Size in a mixed shrub/groundcover/shaped-plant sheet. It does not establish height versus width for this reviewed record; the supplied numeric range alone is insufficient.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Shrubs perrenials.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx",
+        "sourceSha256": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+        "sheet": "All plants",
+        "row": 35,
+        "specification": "Teucrium fruticans globe shape; Size: 40/60",
+        "genericValues": [
+          "40/60"
+        ],
+        "sourceCells": [
+          "B35",
+          "C35"
+        ],
+        "sourceValues": {
+          "B35": "Teucrium fruticans globe shape",
+          "C35": "40/60"
+        },
+        "headerCells": {
+          "B3": "SOLITAIRE SHURBS - SZOLITER CSERJÉK",
+          "C3": "Size"
+        }
+      }
+    },
+    {
+      "id": "record-8e62cfdca3fc03",
+      "reason": "The source header is only Size in a mixed shrub/groundcover/shaped-plant sheet. It does not establish height versus width for this reviewed record; the supplied numeric range alone is insufficient.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Shrubs perrenials.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx",
+        "sourceSha256": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+        "sheet": "All plants",
+        "row": 36,
+        "specification": "Thuja occidentalis 'Golden Globe'; Size: 40/60",
+        "genericValues": [
+          "40/60"
+        ],
+        "sourceCells": [
+          "B36",
+          "C36"
+        ],
+        "sourceValues": {
+          "B36": "Thuja occidentalis 'Golden Globe'",
+          "C36": "40/60"
+        },
+        "headerCells": {
+          "B3": "SOLITAIRE SHURBS - SZOLITER CSERJÉK",
+          "C3": "Size"
+        }
+      }
+    },
+    {
+      "id": "record-97702112b18878",
+      "reason": "The source header is only Size in a mixed shrub/groundcover/shaped-plant sheet. It does not establish height versus width for this reviewed record; the supplied numeric range alone is insufficient.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Shrubs perrenials.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx",
+        "sourceSha256": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+        "sheet": "All plants",
+        "row": 47,
+        "specification": "Kolkwitzia amabilis 'Pink Cloud'; Size: 40/60",
+        "genericValues": [
+          "40/60"
+        ],
+        "sourceCells": [
+          "B47",
+          "C47"
+        ],
+        "sourceValues": {
+          "B47": "Kolkwitzia amabilis 'Pink Cloud'",
+          "C47": "40/60"
+        },
+        "headerCells": {
+          "B3": "SOLITAIRE SHURBS - SZOLITER CSERJÉK",
+          "C3": "Size"
+        }
+      }
+    },
+    {
+      "id": "record-e44c797b032696",
+      "reason": "The source header is only Size in a mixed shrub/groundcover/shaped-plant sheet. It does not establish height versus width for this reviewed record; the supplied numeric range alone is insufficient.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Shrubs perrenials.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx",
+        "sourceSha256": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+        "sheet": "All plants",
+        "row": 60,
+        "specification": "Buddleia davidii 'White Ball'; Size: 40/60",
+        "genericValues": [
+          "40/60"
+        ],
+        "sourceCells": [
+          "B60",
+          "C60"
+        ],
+        "sourceValues": {
+          "B60": "Buddleia davidii 'White Ball'",
+          "C60": "40/60"
+        },
+        "headerCells": {
+          "B3": "SOLITAIRE SHURBS - SZOLITER CSERJÉK",
+          "C3": "Size"
+        }
+      }
+    },
+    {
+      "id": "record-4a1d5b0efa1a69",
+      "reason": "The source header is only Size in a mixed shrub/groundcover/shaped-plant sheet. It does not establish height versus width for this reviewed record; the supplied numeric range alone is insufficient.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Shrubs perrenials.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx",
+        "sourceSha256": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+        "sheet": "All plants",
+        "row": 66,
+        "specification": "Ceanothus thyrsiflorus var. Repens; Size: 40/60",
+        "genericValues": [
+          "40/60"
+        ],
+        "sourceCells": [
+          "B66",
+          "C66"
+        ],
+        "sourceValues": {
+          "B66": "Ceanothus thyrsiflorus var. Repens",
+          "C66": "40/60"
+        },
+        "headerCells": {
+          "B3": "SOLITAIRE SHURBS - SZOLITER CSERJÉK",
+          "C3": "Size"
+        }
+      }
+    },
+    {
+      "id": "record-7f475ad10e81b8",
+      "reason": "The source header is only Size in a mixed shrub/groundcover/shaped-plant sheet. It does not establish height versus width for this reviewed record; the supplied numeric range alone is insufficient.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Shrubs perrenials.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx",
+        "sourceSha256": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+        "sheet": "All plants",
+        "row": 68,
+        "specification": "Cornus 'Kelsey'; Size: 30/40",
+        "genericValues": [
+          "30/40"
+        ],
+        "sourceCells": [
+          "B68",
+          "C68"
+        ],
+        "sourceValues": {
+          "B68": "Cornus 'Kelsey'",
+          "C68": "30/40"
+        },
+        "headerCells": {
+          "B3": "SOLITAIRE SHURBS - SZOLITER CSERJÉK",
+          "C3": "Size"
+        }
+      }
+    },
+    {
+      "id": "record-23479d41db7909",
+      "reason": "The source header is only Size in a mixed shrub/groundcover/shaped-plant sheet. It does not establish height versus width for this reviewed record; the supplied numeric range alone is insufficient.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Shrubs perrenials.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx",
+        "sourceSha256": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+        "sheet": "All plants",
+        "row": 69,
+        "specification": "Cotoneaster 'Coral Beauty'; Size: 30/40",
+        "genericValues": [
+          "30/40"
+        ],
+        "sourceCells": [
+          "B69",
+          "C69"
+        ],
+        "sourceValues": {
+          "B69": "Cotoneaster 'Coral Beauty'",
+          "C69": "30/40"
+        },
+        "headerCells": {
+          "B3": "SOLITAIRE SHURBS - SZOLITER CSERJÉK",
+          "C3": "Size"
+        }
+      }
+    },
+    {
+      "id": "record-af9c015aef8d99",
+      "reason": "The source header is only Size in a mixed shrub/groundcover/shaped-plant sheet. It does not establish height versus width for this reviewed record; the supplied numeric range alone is insufficient.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Shrubs perrenials.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx",
+        "sourceSha256": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+        "sheet": "All plants",
+        "row": 70,
+        "specification": "Cotoneaster dammerii 'Eichholz'; Size: 30/40",
+        "genericValues": [
+          "30/40"
+        ],
+        "sourceCells": [
+          "B70",
+          "C70"
+        ],
+        "sourceValues": {
+          "B70": "Cotoneaster dammerii 'Eichholz'",
+          "C70": "30/40"
+        },
+        "headerCells": {
+          "B3": "SOLITAIRE SHURBS - SZOLITER CSERJÉK",
+          "C3": "Size"
+        }
+      }
+    },
+    {
+      "id": "record-a8f18b301b6383",
+      "reason": "The source header is only Size in a mixed shrub/groundcover/shaped-plant sheet. It does not establish height versus width for this reviewed record; the supplied numeric range alone is insufficient.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Shrubs perrenials.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx",
+        "sourceSha256": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+        "sheet": "All plants",
+        "row": 71,
+        "specification": "Cotoneaster dammerii 'Skogholm'; Size: 30/40",
+        "genericValues": [
+          "30/40"
+        ],
+        "sourceCells": [
+          "B71",
+          "C71"
+        ],
+        "sourceValues": {
+          "B71": "Cotoneaster dammerii 'Skogholm'",
+          "C71": "30/40"
+        },
+        "headerCells": {
+          "B3": "SOLITAIRE SHURBS - SZOLITER CSERJÉK",
+          "C3": "Size"
+        }
+      }
+    },
+    {
+      "id": "record-d0bb7174caf76c",
+      "reason": "The source header is only Size in a mixed shrub/groundcover/shaped-plant sheet. It does not establish height versus width for this reviewed record; the supplied numeric range alone is insufficient.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Shrubs perrenials.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx",
+        "sourceSha256": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+        "sheet": "All plants",
+        "row": 72,
+        "specification": "Cotoneaster horizontalis; Size: 30/40",
+        "genericValues": [
+          "30/40"
+        ],
+        "sourceCells": [
+          "B72",
+          "C72"
+        ],
+        "sourceValues": {
+          "B72": "Cotoneaster horizontalis",
+          "C72": "30/40"
+        },
+        "headerCells": {
+          "B3": "SOLITAIRE SHURBS - SZOLITER CSERJÉK",
+          "C3": "Size"
+        }
+      }
+    },
+    {
+      "id": "record-5546c43107b502",
+      "reason": "The source header is only Size in a mixed shrub/groundcover/shaped-plant sheet. It does not establish height versus width for this reviewed record; the supplied numeric range alone is insufficient.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Shrubs perrenials.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx",
+        "sourceSha256": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+        "sheet": "All plants",
+        "row": 73,
+        "specification": "Cotoneaster salicifolius ‘Parkteppich’; Size: 30/40",
+        "genericValues": [
+          "30/40"
+        ],
+        "sourceCells": [
+          "B73",
+          "C73"
+        ],
+        "sourceValues": {
+          "B73": "Cotoneaster salicifolius ‘Parkteppich’ ",
+          "C73": "30/40"
+        },
+        "headerCells": {
+          "B3": "SOLITAIRE SHURBS - SZOLITER CSERJÉK",
+          "C3": "Size"
+        }
+      }
+    },
+    {
+      "id": "record-4c85461dfeda98",
+      "reason": "The source header is only Size in a mixed shrub/groundcover/shaped-plant sheet. It does not establish height versus width for this reviewed record; the supplied numeric range alone is insufficient.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Shrubs perrenials.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx",
+        "sourceSha256": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+        "sheet": "All plants",
+        "row": 74,
+        "specification": "Deutzia gracilis 'Nikko'; Size: 30/40",
+        "genericValues": [
+          "30/40"
+        ],
+        "sourceCells": [
+          "B74",
+          "C74"
+        ],
+        "sourceValues": {
+          "B74": "Deutzia gracilis 'Nikko'",
+          "C74": "30/40"
+        },
+        "headerCells": {
+          "B3": "SOLITAIRE SHURBS - SZOLITER CSERJÉK",
+          "C3": "Size"
+        }
+      }
+    },
+    {
+      "id": "record-39913fb906b24c",
+      "reason": "The source header is only Size in a mixed shrub/groundcover/shaped-plant sheet. It does not establish height versus width for this reviewed record; the supplied numeric range alone is insufficient.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Shrubs perrenials.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx",
+        "sourceSha256": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+        "sheet": "All plants",
+        "row": 77,
+        "specification": "Euonymus fortunei 'Coloratus'; Size: 30/40",
+        "genericValues": [
+          "30/40"
+        ],
+        "sourceCells": [
+          "B77",
+          "C77"
+        ],
+        "sourceValues": {
+          "B77": "Euonymus fortunei 'Coloratus'",
+          "C77": "30/40"
+        },
+        "headerCells": {
+          "B3": "SOLITAIRE SHURBS - SZOLITER CSERJÉK",
+          "C3": "Size"
+        }
+      }
+    },
+    {
+      "id": "record-b15f9e21bab9db",
+      "reason": "The source header is only Size in a mixed shrub/groundcover/shaped-plant sheet. It does not establish height versus width for this reviewed record; the supplied numeric range alone is insufficient.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Shrubs perrenials.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx",
+        "sourceSha256": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+        "sheet": "All plants",
+        "row": 78,
+        "specification": "Euonymus fortunei 'Harlequin'; Size: 30/40",
+        "genericValues": [
+          "30/40"
+        ],
+        "sourceCells": [
+          "B78",
+          "C78"
+        ],
+        "sourceValues": {
+          "B78": "Euonymus fortunei 'Harlequin'",
+          "C78": "30/40"
+        },
+        "headerCells": {
+          "B3": "SOLITAIRE SHURBS - SZOLITER CSERJÉK",
+          "C3": "Size"
+        }
+      }
+    },
+    {
+      "id": "record-2e04e801fadd27",
+      "reason": "The source header is only Size in a mixed shrub/groundcover/shaped-plant sheet. It does not establish height versus width for this reviewed record; the supplied numeric range alone is insufficient.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Shrubs perrenials.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx",
+        "sourceSha256": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+        "sheet": "All plants",
+        "row": 81,
+        "specification": "Hedera helix 'Erecta'; Size: 30/40",
+        "genericValues": [
+          "30/40"
+        ],
+        "sourceCells": [
+          "B81",
+          "C81"
+        ],
+        "sourceValues": {
+          "B81": "Hedera helix 'Erecta'",
+          "C81": "30/40"
+        },
+        "headerCells": {
+          "B3": "SOLITAIRE SHURBS - SZOLITER CSERJÉK",
+          "C3": "Size"
+        }
+      }
+    },
+    {
+      "id": "record-e26e0a52294e18",
+      "reason": "The source header is only Size in a mixed shrub/groundcover/shaped-plant sheet. It does not establish height versus width for this reviewed record; the supplied numeric range alone is insufficient.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Shrubs perrenials.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx",
+        "sourceSha256": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+        "sheet": "All plants",
+        "row": 88,
+        "specification": "Juniperus sabina; Size: 40/60",
+        "genericValues": [
+          "40/60"
+        ],
+        "sourceCells": [
+          "B88",
+          "C88"
+        ],
+        "sourceValues": {
+          "B88": "Juniperus sabina",
+          "C88": "40/60"
+        },
+        "headerCells": {
+          "B3": "SOLITAIRE SHURBS - SZOLITER CSERJÉK",
+          "C3": "Size"
+        }
+      }
+    },
+    {
+      "id": "record-cea0983fb56ea2",
+      "reason": "The source header is only Size in a mixed shrub/groundcover/shaped-plant sheet. It does not establish height versus width for this reviewed record; the supplied numeric range alone is insufficient.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Shrubs perrenials.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx",
+        "sourceSha256": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+        "sheet": "All plants",
+        "row": 89,
+        "specification": "Laurus nobilis; Size: 40/60",
+        "genericValues": [
+          "40/60"
+        ],
+        "sourceCells": [
+          "B89",
+          "C89"
+        ],
+        "sourceValues": {
+          "B89": "Laurus nobilis",
+          "C89": "40/60"
+        },
+        "headerCells": {
+          "B3": "SOLITAIRE SHURBS - SZOLITER CSERJÉK",
+          "C3": "Size"
+        }
+      }
+    },
+    {
+      "id": "record-e9486b5016c448",
+      "reason": "The source header is only Size in a mixed shrub/groundcover/shaped-plant sheet. It does not establish height versus width for this reviewed record; the supplied numeric range alone is insufficient.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Shrubs perrenials.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx",
+        "sourceSha256": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+        "sheet": "All plants",
+        "row": 90,
+        "specification": "Lonicera nitida trimmed to cloud shape; Size: 40/60",
+        "genericValues": [
+          "40/60"
+        ],
+        "sourceCells": [
+          "B90",
+          "C90"
+        ],
+        "sourceValues": {
+          "B90": "Lonicera nitida trimmed to cloud shape",
+          "C90": "40/60"
+        },
+        "headerCells": {
+          "B3": "SOLITAIRE SHURBS - SZOLITER CSERJÉK",
+          "C3": "Size"
+        }
+      }
+    },
+    {
+      "id": "record-2ae14e485d3778",
+      "reason": "The source header is only Size in a mixed shrub/groundcover/shaped-plant sheet. It does not establish height versus width for this reviewed record; the supplied numeric range alone is insufficient.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Shrubs perrenials.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx",
+        "sourceSha256": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+        "sheet": "All plants",
+        "row": 91,
+        "specification": "Lonicera nitida 'Maigrün'; Size: 40/60",
+        "genericValues": [
+          "40/60"
+        ],
+        "sourceCells": [
+          "B91",
+          "C91"
+        ],
+        "sourceValues": {
+          "B91": "Lonicera nitida 'Maigrün'",
+          "C91": "40/60"
+        },
+        "headerCells": {
+          "B3": "SOLITAIRE SHURBS - SZOLITER CSERJÉK",
+          "C3": "Size"
+        }
+      }
+    },
+    {
+      "id": "record-df79c1a2945bd1",
+      "reason": "The source header is only Size in a mixed shrub/groundcover/shaped-plant sheet. It does not establish height versus width for this reviewed record; the supplied numeric range alone is insufficient.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Shrubs perrenials.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx",
+        "sourceSha256": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+        "sheet": "All plants",
+        "row": 103,
+        "specification": "Spirea japonica 'Little Princess'; Size: 60/80",
+        "genericValues": [
+          "60/80"
+        ],
+        "sourceCells": [
+          "B103",
+          "C103"
+        ],
+        "sourceValues": {
+          "B103": "Spirea japonica 'Little Princess'",
+          "C103": "60/80"
+        },
+        "headerCells": {
+          "B3": "SOLITAIRE SHURBS - SZOLITER CSERJÉK",
+          "C3": "Size"
+        }
+      }
+    },
+    {
+      "id": "record-97759829f652d3",
+      "reason": "The source header is only Size in a mixed shrub/groundcover/shaped-plant sheet. It does not establish height versus width for this reviewed record; the supplied numeric range alone is insufficient.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Shrubs perrenials.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx",
+        "sourceSha256": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+        "sheet": "All plants",
+        "row": 108,
+        "specification": "Viburnum opulus 'Compactum'; Size: 60/80",
+        "genericValues": [
+          "60/80"
+        ],
+        "sourceCells": [
+          "B108",
+          "C108"
+        ],
+        "sourceValues": {
+          "B108": "Viburnum opulus 'Compactum'",
+          "C108": "60/80"
+        },
+        "headerCells": {
+          "B3": "SOLITAIRE SHURBS - SZOLITER CSERJÉK",
+          "C3": "Size"
+        }
+      }
+    },
+    {
+      "id": "record-c5855b1e0e5357",
+      "reason": "The source header is only Size in a mixed shrub/groundcover/shaped-plant sheet. It does not establish height versus width for this reviewed record; the supplied numeric range alone is insufficient.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Shrubs perrenials.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx",
+        "sourceSha256": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+        "sheet": "All plants",
+        "row": 235,
+        "specification": "Sasa veitchii; Size: 30/40",
+        "genericValues": [
+          "30/40"
+        ],
+        "sourceCells": [
+          "B235",
+          "C235"
+        ],
+        "sourceValues": {
+          "B235": "Sasa veitchii",
+          "C235": "30/40"
+        },
+        "headerCells": {
+          "B3": "SOLITAIRE SHURBS - SZOLITER CSERJÉK",
+          "C3": "Size"
+        }
+      }
+    },
+    {
+      "id": "record-5c4b5b26e7c29d",
+      "reason": "Suggested size is untyped for this explicitly mixed feathered/multistem or bonsai form; neither total height nor crown span/girth is explicitly identified.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Trees (002).xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Trees (002).xlsx",
+        "sourceSha256": "5072a2df19377687044059cbe42c6ec2f21a7cfdebf13c205b1781929a79052c",
+        "sheet": "Trees",
+        "row": 27,
+        "specification": "Parrotia persica feathured /multisteam; Suggested size: 25/30",
+        "genericValues": [
+          "25/30"
+        ],
+        "sourceCells": [
+          "B27",
+          "C27",
+          "F27"
+        ],
+        "sourceValues": {
+          "B27": "Parrotia persica feathured /multisteam",
+          "C27": "25/30",
+          "F27": "350-400"
+        }
+      }
+    },
+    {
+      "id": "record-c19803fe285fa0",
+      "reason": "Suggested size is untyped for this explicitly mixed feathered/multistem or bonsai form; neither total height nor crown span/girth is explicitly identified.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Trees (002).xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Trees (002).xlsx",
+        "sourceSha256": "5072a2df19377687044059cbe42c6ec2f21a7cfdebf13c205b1781929a79052c",
+        "sheet": "Trees",
+        "row": 28,
+        "specification": "Pinus sylvestris 'Niwaki' bonsai form; Suggested size: 200/250",
+        "genericValues": [
+          "200/250"
+        ],
+        "sourceCells": [
+          "B28",
+          "C28"
+        ],
+        "sourceValues": {
+          "B28": "Pinus sylvestris 'Niwaki' bonsai form",
+          "C28": "200/250"
+        }
+      }
+    },
+    {
+      "id": "record-c3cc6053b9f5b6",
+      "reason": "Suggested size is untyped for this explicitly mixed feathered/multistem or bonsai form; neither total height nor crown span/girth is explicitly identified.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Trees (002).xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Trees (002).xlsx",
+        "sourceSha256": "5072a2df19377687044059cbe42c6ec2f21a7cfdebf13c205b1781929a79052c",
+        "sheet": "Trees",
+        "row": 29,
+        "specification": "Pinus sylvestris 'Watereri' bonsai form; Suggested size: 300/350",
+        "genericValues": [
+          "300/350"
+        ],
+        "sourceCells": [
+          "B29",
+          "C29"
+        ],
+        "sourceValues": {
+          "B29": "Pinus sylvestris 'Watereri' bonsai form",
+          "C29": "300/350"
+        }
+      }
+    },
+    {
+      "id": "record-42f770e397706b",
+      "reason": "The source header is only Size in a mixed shrub/groundcover/shaped-plant sheet. It does not establish height versus width for this reviewed record; the supplied numeric range alone is insufficient.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Shrubs perrenials.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx",
+        "sourceSha256": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+        "sheet": "All plants",
+        "row": 9,
+        "specification": "Summer Sorbet 40-60",
+        "genericValues": [
+          "40-60"
+        ],
+        "sourceCells": [
+          "F9"
+        ],
+        "sourceValues": {
+          "F9": "Summer Sorbet 40-60"
+        },
+        "headerCells": {
+          "B3": "SOLITAIRE SHURBS - SZOLITER CSERJÉK",
+          "C3": "Size"
+        }
+      }
+    },
+    {
+      "id": "record-8ad18aaa7ee08a",
+      "reason": "Mecsek 225cm does not identify total height versus graft/clear-stem height. Same archive explicitly labels other 225/220cm-like values as stem heights, so assigning total height would be unsafe.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Tender 1_Demetra RB.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Tenderi ponude/Tender 1_Demetra RB.xlsx",
+        "sourceSha256": "41b96356e5b5667191fcda18af2837c888b9aa02db0615f0dd33b451562fb4d1",
+        "sheet": "Sheet1",
+        "row": 38,
+        "specification": "PONUĐENO: rb; Mecsek 225cm",
+        "genericValues": [
+          "225cm"
+        ],
+        "sourceCells": [
+          "H38",
+          "H40"
+        ],
+        "sourceValues": {
+          "H38": "rb",
+          "H40": "Mecsek 225cm"
+        }
+      }
+    },
+    {
+      "id": "record-variant-9325318f68d4559a30",
+      "reason": "The source header is only Size in a mixed shrub/groundcover/shaped-plant sheet. It does not establish height versus width for this reviewed record; the supplied numeric range alone is insufficient.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Shrubs perrenials.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx",
+        "sourceSha256": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+        "sheet": "All plants",
+        "row": 22,
+        "specification": "Elaeagnus ebbingei 'Compactum'; Size: 100/120",
+        "genericValues": [
+          "100/120"
+        ],
+        "sourceCells": [
+          "B22",
+          "C22"
+        ],
+        "sourceValues": {
+          "B22": "Elaeagnus ebbingei 'Compactum'",
+          "C22": "100/120"
+        },
+        "headerCells": {
+          "B3": "SOLITAIRE SHURBS - SZOLITER CSERJÉK",
+          "C3": "Size"
+        }
+      }
+    },
+    {
+      "id": "record-variant-017f3960731c22475f",
+      "reason": "The source header is only Size in a mixed shrub/groundcover/shaped-plant sheet. It does not establish height versus width for this reviewed record; the supplied numeric range alone is insufficient.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Shrubs perrenials.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx",
+        "sourceSha256": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+        "sheet": "All plants",
+        "row": 45,
+        "specification": "Elaeagnus ebbingei 'Compactum'; Size: 60/80",
+        "genericValues": [
+          "60/80"
+        ],
+        "sourceCells": [
+          "B45",
+          "C45"
+        ],
+        "sourceValues": {
+          "B45": "Elaeagnus ebbingei 'Compactum'",
+          "C45": "60/80"
+        },
+        "headerCells": {
+          "B3": "SOLITAIRE SHURBS - SZOLITER CSERJÉK",
+          "C3": "Size"
+        }
+      }
+    },
+    {
+      "id": "record-variant-c510c4e79dcdcabf75",
+      "reason": "The source header is only Size in a mixed shrub/groundcover/shaped-plant sheet. It does not establish height versus width for this reviewed record; the supplied numeric range alone is insufficient.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Shrubs perrenials.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx",
+        "sourceSha256": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+        "sheet": "All plants",
+        "row": 24,
+        "specification": "Euonymus alatus 'Compactus'; Size: 80/100",
+        "genericValues": [
+          "80/100"
+        ],
+        "sourceCells": [
+          "B24",
+          "C24"
+        ],
+        "sourceValues": {
+          "B24": "Euonymus alatus 'Compactus'",
+          "C24": "80/100"
+        },
+        "headerCells": {
+          "B3": "SOLITAIRE SHURBS - SZOLITER CSERJÉK",
+          "C3": "Size"
+        }
+      }
+    },
+    {
+      "id": "record-variant-af7908d6c89d3d300d",
+      "reason": "The source header is only Size in a mixed shrub/groundcover/shaped-plant sheet. It does not establish height versus width for this reviewed record; the supplied numeric range alone is insufficient.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Shrubs perrenials.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx",
+        "sourceSha256": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+        "sheet": "All plants",
+        "row": 75,
+        "specification": "Euonymus alatus 'Compactus'; Size: 30/40",
+        "genericValues": [
+          "30/40"
+        ],
+        "sourceCells": [
+          "B75",
+          "C75"
+        ],
+        "sourceValues": {
+          "B75": "Euonymus alatus 'Compactus'",
+          "C75": "30/40"
+        },
+        "headerCells": {
+          "B3": "SOLITAIRE SHURBS - SZOLITER CSERJÉK",
+          "C3": "Size"
+        }
+      }
+    },
+    {
+      "id": "record-variant-4bba9681d1b1b66c31",
+      "reason": "The source header is only Size in a mixed shrub/groundcover/shaped-plant sheet. It does not establish height versus width for this reviewed record; the supplied numeric range alone is insufficient.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Shrubs perrenials.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx",
+        "sourceSha256": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+        "sheet": "All plants",
+        "row": 27,
+        "specification": "Pinus mugo 'Mops'; Size: 40/60",
+        "genericValues": [
+          "40/60"
+        ],
+        "sourceCells": [
+          "B27",
+          "C27"
+        ],
+        "sourceValues": {
+          "B27": "Pinus mugo 'Mops'",
+          "C27": "40/60"
+        },
+        "headerCells": {
+          "B3": "SOLITAIRE SHURBS - SZOLITER CSERJÉK",
+          "C3": "Size"
+        }
+      }
+    },
+    {
+      "id": "record-variant-57a8d0e868f43541a4",
+      "reason": "The source header is only Size in a mixed shrub/groundcover/shaped-plant sheet. It does not establish height versus width for this reviewed record; the supplied numeric range alone is insufficient.",
+      "details": {
+        "action": "retain_untyped_source_value",
+        "sourceFile": "Kopie van Shrubs perrenials.xlsx",
+        "archivePath": "Rasadnici ponude/Holandija/Combinatie Mauritz/Vila Palić/Kopie van Shrubs perrenials.xlsx",
+        "sourceSha256": "710186032e837aaf35864a4149e998a43b3d44b96230652089c59fa4feac1124",
+        "sheet": "All plants",
+        "row": 97,
+        "specification": "Pinus mugo 'Mops'; Size: 30/40",
+        "genericValues": [
+          "30/40"
+        ],
+        "sourceCells": [
+          "B97",
+          "C97"
+        ],
+        "sourceValues": {
+          "B97": "Pinus mugo 'Mops'",
+          "C97": "30/40"
+        },
+        "headerCells": {
+          "B3": "SOLITAIRE SHURBS - SZOLITER CSERJÉK",
+          "C3": "Size"
+        }
+      }
+    },
+    {
+      "id": "record-73693ecea56a33",
+      "reason": "spreading_ceanothus_grade_lacks_axis",
+      "details": "Ceanothus thyrsiflorus var.Repens40-60 is spreading; Product does not distinguish height from spread.",
+      "sourceFile": "ARBOR_2025_11_27_CONTAINERSTOCK_SALESBOOK.xlsx",
+      "row": 856,
+      "page": null,
+      "specification": "Ceanothus thyrsiflorus var. Repens 40-60 C7.5L",
+      "retainedGenericValues": [
+        "40-60"
+      ]
+    },
+    {
+      "id": "record-61fa0b3aed4b08",
+      "reason": "dwarf_or_spreading_grade_lacks_axis",
+      "details": "The stock grade may be height or spread/diameter for this dwarf or spreading cultivar. Product and workbook headers do not label the axis or a standard/topiary form.",
+      "sourceFile": "Copy of ARBOR_2026_04_15_CONTAINERSTOCK_SALESBOOK.xlsx",
+      "row": 976,
+      "page": null,
+      "specification": "Product: Chamaecyparis obtusa Nana Gracilis 180+ C290L",
+      "retainedGenericValues": [
+        "180+"
+      ]
+    },
+    {
+      "id": "record-a29c8447c64a22",
+      "reason": "dwarf_or_spreading_grade_lacks_axis",
+      "details": "The stock grade may be height or spread/diameter for this dwarf or spreading cultivar. Product and workbook headers do not label the axis or a standard/topiary form.",
+      "sourceFile": "Copy of ARBOR_2026_04_15_CONTAINERSTOCK_SALESBOOK.xlsx",
+      "row": 977,
+      "page": null,
+      "specification": "Product: Chamaecyparis obtusa Nana Gracilis 20-25 C12L",
+      "retainedGenericValues": [
+        "20-25"
+      ]
+    },
+    {
+      "id": "record-da70d62613ee38",
+      "reason": "dwarf_or_spreading_grade_lacks_axis",
+      "details": "The stock grade may be height or spread/diameter for this dwarf or spreading cultivar. Product and workbook headers do not label the axis or a standard/topiary form.",
+      "sourceFile": "Copy of ARBOR_2026_04_15_CONTAINERSTOCK_SALESBOOK.xlsx",
+      "row": 978,
+      "page": null,
+      "specification": "Product: Chamaecyparis obtusa Nana Gracilis 25+ C12L",
+      "retainedGenericValues": [
+        "25+"
+      ]
+    },
+    {
+      "id": "record-641c7893d2632d",
+      "reason": "dwarf_or_spreading_grade_lacks_axis",
+      "details": "The stock grade may be height or spread/diameter for this dwarf or spreading cultivar. Product and workbook headers do not label the axis or a standard/topiary form.",
+      "sourceFile": "Copy of ARBOR_2026_04_15_CONTAINERSTOCK_SALESBOOK.xlsx",
+      "row": 979,
+      "page": null,
+      "specification": "Product: Chamaecyparis obtusa Nana Gracilis 35-40 C12L",
+      "retainedGenericValues": [
+        "35-40"
+      ]
+    },
+    {
+      "id": "record-fe49cc3a3471a1",
+      "reason": "dwarf_or_spreading_grade_lacks_axis",
+      "details": "The stock grade may be height or spread/diameter for this dwarf or spreading cultivar. Product and workbook headers do not label the axis or a standard/topiary form.",
+      "sourceFile": "Copy of ARBOR_2026_04_15_CONTAINERSTOCK_SALESBOOK.xlsx",
+      "row": 1327,
+      "page": null,
+      "specification": "Product: Euonymus alatus Compactus 60+ C35L",
+      "retainedGenericValues": [
+        "60+"
+      ]
+    },
+    {
+      "id": "record-b933c63839c7f4",
+      "reason": "total_vs_clear_stem_height_not_labelled",
+      "details": "Correct girth to20-25; retain150+ separately without guessing total versus clear-stem height.",
+      "sourceFile": "Copy of ARBOR_2026_04_15_CONTAINERSTOCK_SALESBOOK.xlsx",
+      "row": 1507,
+      "page": null,
+      "specification": "Product: Ginkgo biloba Globus 20-25 150+ STD C130L",
+      "retainedGenericValues": [
+        "20-25"
+      ]
+    },
+    {
+      "id": "record-ffbd215c2aa967",
+      "reason": "dwarf_or_spreading_grade_lacks_axis",
+      "details": "The stock grade may be height or spread/diameter for this dwarf or spreading cultivar. Product and workbook headers do not label the axis or a standard/topiary form.",
+      "sourceFile": "Copy of ARBOR_2026_04_15_CONTAINERSTOCK_SALESBOOK.xlsx",
+      "row": 1837,
+      "page": null,
+      "specification": "Product: Juniperus communis Green Carpet 40-60 C12L",
+      "retainedGenericValues": [
+        "40-60"
+      ]
+    },
+    {
+      "id": "record-5bc3ecadb19f59",
+      "reason": "dwarf_or_spreading_grade_lacks_axis",
+      "details": "The stock grade may be height or spread/diameter for this dwarf or spreading cultivar. Product and workbook headers do not label the axis or a standard/topiary form.",
+      "sourceFile": "Copy of ARBOR_2026_04_15_CONTAINERSTOCK_SALESBOOK.xlsx",
+      "row": 1838,
+      "page": null,
+      "specification": "Product: Juniperus communis Green Carpet 60-80 C35L",
+      "retainedGenericValues": [
+        "60-80"
+      ]
+    },
+    {
+      "id": "record-788204638dc2f3",
+      "reason": "dwarf_or_spreading_grade_lacks_axis",
+      "details": "The stock grade may be height or spread/diameter for this dwarf or spreading cultivar. Product and workbook headers do not label the axis or a standard/topiary form.",
+      "sourceFile": "Copy of ARBOR_2026_04_15_CONTAINERSTOCK_SALESBOOK.xlsx",
+      "row": 2035,
+      "page": null,
+      "specification": "Product: Lonicera nitida Maigrun 40-60 C5L",
+      "retainedGenericValues": [
+        "40-60"
+      ]
+    },
+    {
+      "id": "record-d66988380d7961",
+      "reason": "arbor_unlabelled_compound_axes",
+      "details": "Product gives multiple dimensions without H/W order. Do not apply Lorberg width×height ordering to Arbor; preserve every source number, including14-18 where present.",
+      "sourceFile": "Copy of ARBOR_2026_04_15_CONTAINERSTOCK_SALESBOOK.xlsx",
+      "row": 2349,
+      "page": null,
+      "specification": "Product: Malus Evereste MULTISTEM 14-18 300X350 C130L",
+      "retainedGenericValues": [
+        "14-18"
+      ]
+    },
+    {
+      "id": "record-afa93c23d2ab50",
+      "reason": "arbor_unlabelled_compound_axes",
+      "details": "Product gives multiple dimensions without H/W order. Do not apply Lorberg width×height ordering to Arbor; preserve every source number, including14-18 where present.",
+      "sourceFile": "Copy of ARBOR_2026_04_15_CONTAINERSTOCK_SALESBOOK.xlsx",
+      "row": 2352,
+      "page": null,
+      "specification": "Product: Malus Evereste MULTISTEM 300-400 X300 WOODBOX",
+      "retainedGenericValues": [
+        "300-400"
+      ]
+    },
+    {
+      "id": "record-aad04c3981d80b",
+      "reason": "arbor_unlabelled_compound_axes",
+      "details": "Product gives multiple dimensions without H/W order. Do not apply Lorberg width×height ordering to Arbor; preserve every source number, including14-18 where present.",
+      "sourceFile": "Copy of ARBOR_2026_04_15_CONTAINERSTOCK_SALESBOOK.xlsx",
+      "row": 2585,
+      "page": null,
+      "specification": "Product: Parrotia persica 500-600X400-500 WOODBOX",
+      "retainedGenericValues": [
+        "500-600X400-500"
+      ]
+    },
+    {
+      "id": "record-3e435816530b81",
+      "reason": "arbor_unlabelled_compound_axes",
+      "details": "Product gives multiple dimensions without H/W order. Do not apply Lorberg width×height ordering to Arbor; preserve every source number, including14-18 where present.",
+      "sourceFile": "Copy of ARBOR_2026_04_15_CONTAINERSTOCK_SALESBOOK.xlsx",
+      "row": 2587,
+      "page": null,
+      "specification": "Product: Parrotia persica 900-1000 X600 C2000L",
+      "retainedGenericValues": [
+        "900-1000"
+      ]
+    },
+    {
+      "id": "record-72206b04c0fcc5",
+      "reason": "dwarf_or_spreading_grade_lacks_axis",
+      "details": "The stock grade may be height or spread/diameter for this dwarf or spreading cultivar. Product and workbook headers do not label the axis or a standard/topiary form.",
+      "sourceFile": "Copy of ARBOR_2026_04_15_CONTAINERSTOCK_SALESBOOK.xlsx",
+      "row": 2867,
+      "page": null,
+      "specification": "Product: Pinus sylvestris Watereri 150-175 C130L",
+      "retainedGenericValues": [
+        "150-175"
+      ]
+    },
+    {
+      "id": "record-a9bf4ae9946d88",
+      "reason": "dwarf_or_spreading_grade_lacks_axis",
+      "details": "The stock grade may be height or spread/diameter for this dwarf or spreading cultivar. Product and workbook headers do not label the axis or a standard/topiary form.",
+      "sourceFile": "Copy of ARBOR_2026_04_15_CONTAINERSTOCK_SALESBOOK.xlsx",
+      "row": 2868,
+      "page": null,
+      "specification": "Product: Pinus sylvestris Watereri 175-200 C110L",
+      "retainedGenericValues": [
+        "175-200"
+      ]
+    },
+    {
+      "id": "record-e092be7a55262e",
+      "reason": "dwarf_or_spreading_grade_lacks_axis",
+      "details": "The stock grade may be height or spread/diameter for this dwarf or spreading cultivar. Product and workbook headers do not label the axis or a standard/topiary form.",
+      "sourceFile": "Copy of ARBOR_2026_04_15_CONTAINERSTOCK_SALESBOOK.xlsx",
+      "row": 2869,
+      "page": null,
+      "specification": "Product: Pinus sylvestris Watereri 175-200 C130L",
+      "retainedGenericValues": [
+        "175-200"
+      ]
+    },
+    {
+      "id": "record-be1af225b0a3a8",
+      "reason": "dwarf_or_spreading_grade_lacks_axis",
+      "details": "The stock grade may be height or spread/diameter for this dwarf or spreading cultivar. Product and workbook headers do not label the axis or a standard/topiary form.",
+      "sourceFile": "Copy of ARBOR_2026_04_15_CONTAINERSTOCK_SALESBOOK.xlsx",
+      "row": 3782,
+      "page": null,
+      "specification": "Product: Salix purpurea Nana 40-60 C10L",
+      "retainedGenericValues": [
+        "40-60"
+      ]
+    },
+    {
+      "id": "record-643e078413ae0a",
+      "reason": "dwarf_or_spreading_grade_lacks_axis",
+      "details": "The stock grade may be height or spread/diameter for this dwarf or spreading cultivar. Product and workbook headers do not label the axis or a standard/topiary form.",
+      "sourceFile": "Copy of ARBOR_2026_04_15_CONTAINERSTOCK_SALESBOOK.xlsx",
+      "row": 3783,
+      "page": null,
+      "specification": "Product: Salix purpurea Nana 40-60 C4L",
+      "retainedGenericValues": [
+        "40-60"
+      ]
+    },
+    {
+      "id": "record-bbc8eaffe68214",
+      "reason": "dwarf_or_spreading_grade_lacks_axis",
+      "details": "The stock grade may be height or spread/diameter for this dwarf or spreading cultivar. Product and workbook headers do not label the axis or a standard/topiary form.",
+      "sourceFile": "Copy of ARBOR_2026_04_15_CONTAINERSTOCK_SALESBOOK.xlsx",
+      "row": 4188,
+      "page": null,
+      "specification": "Product: Thuja occidentalis Golden Globe 30-40 C10L",
+      "retainedGenericValues": [
+        "30-40"
+      ]
+    },
+    {
+      "id": "record-90855b07ccec5a",
+      "reason": "dwarf_or_spreading_grade_lacks_axis",
+      "details": "The stock grade may be height or spread/diameter for this dwarf or spreading cultivar. Product and workbook headers do not label the axis or a standard/topiary form.",
+      "sourceFile": "Copy of ARBOR_2026_04_15_CONTAINERSTOCK_SALESBOOK.xlsx",
+      "row": 4189,
+      "page": null,
+      "specification": "Product: Thuja occidentalis Golden Globe 60+ C35L",
+      "retainedGenericValues": [
+        "60+"
+      ]
+    },
+    {
+      "id": "record-65b7735b440345",
+      "reason": "dwarf_or_spreading_grade_lacks_axis",
+      "details": "The stock grade may be height or spread/diameter for this dwarf or spreading cultivar. Product and workbook headers do not label the axis or a standard/topiary form.",
+      "sourceFile": "Copy of ARBOR_2026_04_15_CONTAINERSTOCK_SALESBOOK.xlsx",
+      "row": 4215,
+      "page": null,
+      "specification": "Product: Thuja orientalis Aurea Nana 50+ C35L",
+      "retainedGenericValues": [
+        "50+"
+      ]
+    },
+    {
+      "id": "record-3b09e99c8377e8",
+      "reason": "dwarf_or_spreading_grade_lacks_axis",
+      "details": "The stock grade may be height or spread/diameter for this dwarf or spreading cultivar. Product and workbook headers do not label the axis or a standard/topiary form.",
+      "sourceFile": "Copy of ARBOR_2026_04_15_CONTAINERSTOCK_SALESBOOK.xlsx",
+      "row": 4216,
+      "page": null,
+      "specification": "Product: Thuja orientalis Aurea Nana 60-70 C35L",
+      "retainedGenericValues": [
+        "60-70"
+      ]
+    },
+    {
+      "id": "record-22ec185f514860",
+      "reason": "dwarf_or_spreading_grade_lacks_axis",
+      "details": "The stock grade may be height or spread/diameter for this dwarf or spreading cultivar. Product and workbook headers do not label the axis or a standard/topiary form.",
+      "sourceFile": "Copy of ARBOR_2026_04_15_CONTAINERSTOCK_SALESBOOK.xlsx",
+      "row": 4419,
+      "page": null,
+      "specification": "Product: Viburnum opulus Compactum 60-80 C35L",
+      "retainedGenericValues": [
+        "60-80"
+      ]
+    },
+    {
+      "id": "record-d345a4e0adabb3",
+      "reason": "lorberg_dwarf_or_topiary_grade_lacks_form",
+      "details": "DIMENZIJE gives no form or axis for Pinus Watereri/Taxus grades50-60 or80-90. Height versus crown diameter cannot be established.",
+      "sourceFile": "CENOVNIK-LORBERG.xlsx",
+      "row": 62,
+      "page": null,
+      "specification": "Pinus sylvestris 'Watereri'; DIMENZIJE: 50-60",
+      "retainedGenericValues": [
+        "50-60"
+      ]
+    },
+    {
+      "id": "record-f1336cb9b5c59d",
+      "reason": "lorberg_dwarf_or_topiary_grade_lacks_form",
+      "details": "DIMENZIJE gives no form or axis for Pinus Watereri/Taxus grades50-60 or80-90. Height versus crown diameter cannot be established.",
+      "sourceFile": "CENOVNIK-LORBERG.xlsx",
+      "row": 73,
+      "page": null,
+      "specification": "Taxus baccata; DIMENZIJE: 50-60",
+      "retainedGenericValues": [
+        "50-60"
+      ]
+    },
+    {
+      "id": "record-6b8c29f92da6e6",
+      "reason": "lorberg_dwarf_or_topiary_grade_lacks_form",
+      "details": "DIMENZIJE gives no form or axis for Pinus Watereri/Taxus grades50-60 or80-90. Height versus crown diameter cannot be established.",
+      "sourceFile": "CENOVNIK-LORBERG.xlsx",
+      "row": 73,
+      "page": null,
+      "specification": "Taxus baccata; DIMENZIJE: 80-90",
+      "retainedGenericValues": [
+        "80-90"
+      ]
+    }
+  ],
+  "explanation": "Ovi izvorni redovi su pregledani. Preostala mera nema dovoljno jasan dokaz da li predstavlja visinu, obim, širinu, geometriju ili traženu naspram ponuđene veličine. Nije proizvoljno raspoređena u pogrešno polje.",
+  "correctedEvidenceRegistry": "scripts/archive-measurement-axes.json"
+}
