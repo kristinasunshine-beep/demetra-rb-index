@@ -36,20 +36,20 @@ Osam biljnih kartica nema pouzdanu aktivnu ponudu: sada prikazuju razlog u odelj
 
 Ovo je paket izmena za postojeći repozitorijum. Foto dopuna uključuje nove fotografije, povezane foto podatke, evidenciju nastavka i novi sadržaj postojećeg `.github/workflows/update-photos.yml`. Prenesite ih zajedno, uz očuvane putanje.
 
-Za prenos preko browsera pogledajte `POCNI-OVDE.txt`. Novi foto workflow treba zameniti direktno u postojećem `.github/workflows`, bez dodatnog ugnježdenog foldera. Podešavanje **Settings → Pages → Source → GitHub Actions** ostaje isto.
+Za prenos preko browsera pratite uputstvo uz konkretan ZIP. Fotografije pripadaju neposredno u `assets/biljke/`. Sa početne strane repozitorijuma prenesite pripremljeni folder `assets`; ako ste već unutar `assets/biljke/`, prenesite samo same fotografije. Novi foto workflow pripada direktno u `.github/workflows`. Podešavanje **Settings → Pages → Source → GitHub Actions** ostaje isto.
 
 ## Automatizacija
 
 - `deploy.yml`: proverava povezane podatke i objavljuje sajt posle push-a na `main`.
-- `update-photos.yml`: **Pronadji i osvezi fotografije** pokreće se posle push-a relevantnih podataka/foto fajlova na `main`, svakog dana u **04:23 UTC**, ili ručno kroz **Actions → Pronadji i osvezi fotografije → Run workflow**. Pronalaženje, preuzimanje, osvežavanje i naknadna objava rade automatski. Okidači važe kada novi fajl stigne na `main`.
+- `update-photos.yml`: **Fotografije za sve biljke** pokreće se posle push-a relevantnih podataka/foto fajlova na `main`, svakog dana u **04:23 UTC**, ili ručno kroz **Actions → Fotografije za sve biljke → Run workflow**. Pronalaženje, preuzimanje, provera i naknadna objava rade automatski. Okidači važe kada novi fajl stigne na `main`.
 - `update-prices.yml`: nema raspored ni preuzimanje podataka; ručno prikazuje da je osvežavanje cena isključeno. Svi važeći workflow fajlovi nalaze se neposredno u `.github/workflows`.
 - Zaštita u starim skriptama za cene i parametre vraća `disabled_by_source_policy` bez mrežnih zahteva i bez izmene kataloga.
 
-Foto pipeline prvo proverava fotografije tačne kombinacije biljke i rasadnika, zatim pronalazi nove izvore preko javnih stranica i sitemap dokumenata. Kada nema potvrđene slike rasadnika, može prikazati **posebno označenu referentnu fotografiju** sa potvrdom taksona, izvorom, autorom i licencom. Referenca vrste za kultivar izričito je označena i ne predstavlja potvrđenu fotografiju tog kultivara ili ponuđene sadnice. Fotografije ne potvrđuju cenu, lager ili dimenziju.
+Foto pipeline proverava svih 619 biljaka. Prednost imaju fotografije odgovarajućeg rasadnika, zatim potvrđene fotografije tačne biljke iz drugih rasadnika, a zatim odgovarajući otvoreni izvori. Fotografija vrste ne zamenjuje kultivar. Javne kartice ne prikazuju tehničke foto metapodatke; u podatku biljke ostaju putanja slike i source URL, a evidencija je odvojena u `docs/`. Fotografije ne potvrđuju cenu, lager ili dimenziju.
 
-Redovi za nastavak čuvaju se u `docs/photo-refresh-state.json`, `docs/photo-discovery-state.json` i `docs/reference-photo-state.json`. Posao traje najviše 30 minuta, uz ograničene zahteve; sledeći prolaz nastavlja preostali posao. Neuspešan izvor čuva prethodnu sliku, a praznine ostaju evidentirane. Nema obećanja 100% pokrivenosti dok svi potrebni izvori i identiteti nisu stvarno potvrđeni.
+Nastavak pretrage čuva se u `docs/full-photo-state.json` i `docs/photo-discovery-state.json`, a potvrda slika u `docs/full-photo-manifest.json`. Posao traje najviše 35 minuta, uz ograničene zahteve; sledeći prolaz nastavlja preostali posao. Nepotvrđeni identitet ne dobija zamensku sliku. Na početku se ispravlja poznati slučaj pogrešnog foldera `assets/biljke/biljke/`: samo datoteke sa unapred potvrđenim sadržajem premeštaju se na ispravnu putanju. Kada se ta ispravka primeni, objavljuje se posle provera, a dalja pretraga nastavlja se narednim pokretanjem.
 
-Početni snimak foto dopune od **9. 11. 2026.**: **65 od 619 biljaka** ima fotografiju; **242 aktivne ponude** imaju sliku rasadnika, **12** označenu referencu, a **2.694** čekaju dopunu. Pokrivenost ponuda je **8,62%**. Aktuelni brojevi posle svake obrade nalaze se u `docs/photo-coverage.json`; detalji faza su u `docs/photo-pipeline-report.json`. Nova obrada uključila je 23 stvarno preuzete Lorberg fotografije. Lokalna obrada paketa ne znači da je nova verzija već objavljena na GitHub-u.
+Aktuelni brojevi posle obrade nalaze se u `docs/photo-coverage.json`, a detalji u `docs/photo-pipeline-report.json`. Pripremljeni paket od **10. 11. 2026.** ima fotografije za **456 od 619 biljaka**. Preostalih 163 još nema potvrđenu sliku. Lokalna obrada ne potvrđuje da je ista verzija već objavljena; objavu potvrđuje uspešan GitHub Pages workflow.
 
 Sve fotografije, veze, konfiguracije i izveštaji ostaju u postojećem repozitorijumu. Rešenje koristi GitHub Pages i standardni Actions runner za javni repozitorijum, bez dodatnog plaćenog servisa; uslovi privatnih repozitorijuma razlikuju se. Postupak prenosa, automatizacija i zvanični GitHub uslovi opisani su u `docs/PHOTO-UPDATES.md`.
 
@@ -57,7 +57,7 @@ Nova ponuda se obrađuje iz novog dokumenta, sa svojim datumom i redom; ne prepi
 
 ## Provera i evidencija
 
-Prolaze 194 Python testa, provera kataloga, regresiona provera prikaza i izvršavanje stvarnog renderer-a za svih 619 kartica. CSS, heder, fontovi i animacije imaju isti izvorni kod kao prethodno postavljena verzija; dopunjen je sadržaj kartica.
+Provere obuhvataju Python testove, integritet kataloga i fotografija, regresionu proveru prikaza i izvršavanje stvarnog renderer-a za svih 619 kartica. CSS, heder, fontovi i animacije imaju isti izvorni kod kao prethodno postavljena verzija; dopunjen je sadržaj kartica.
 
 Za lokalni pregled pokrenite `python3 -m http.server 8000` iz repozitorijuma i otvorite `http://localhost:8000/`. Proveru podataka pokreće `node scripts/check-catalog.mjs`.
 
