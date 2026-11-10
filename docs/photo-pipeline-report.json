@@ -1,21 +1,21 @@
 {
   "schemaVersion": 1,
-  "startedAt": "2026-11-10T08:09:49Z",
+  "startedAt": "2026-11-10T09:24:50Z",
   "status": "partial_failure",
   "dryRun": false,
   "stages": {
     "refresh": {
       "status": "partial_failure",
-      "startedAt": "2026-11-10T08:09:50Z",
+      "startedAt": "2026-11-10T09:24:51Z",
       "dryRun": false,
-      "requests": 93,
-      "checked": 63,
+      "requests": 142,
+      "checked": 97,
       "updated": 0,
       "added": 0,
-      "verifiedUnchanged": 63,
-      "failed": 14,
-      "skipped": 3002,
-      "pageResolved": 59,
+      "verifiedUnchanged": 97,
+      "failed": 21,
+      "skipped": 2961,
+      "pageResolved": 93,
       "directChecks": 4,
       "dataChanged": false,
       "manifestChanged": false,
@@ -46,6 +46,18 @@
           "sha256": "c2dec611cecc3b5f1929f2ec9887e168152cfb310d580996a6bccb74bd1228cf"
         },
         {
+          "offerId": "record-b1798a4399c53c",
+          "plantId": "plant-acer-pseudoplatanus",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/725/acer-pseudoplatanus",
+          "mode": "product_page",
+          "method": "product_jsonld",
+          "imageUrl": "https://www.lorberg.com/content/files/5198/Acer-pseudoplatanus-1200x630-proportionalbiggest.webp",
+          "status": "verified_unchanged",
+          "localPath": "assets/biljke/photo-d92eb15b233b9d916089a741.jpg",
+          "sha256": "8069d0b3e548946f90cb9a81015a187d76b429025c44f0a03c73f1f6f7e1e899"
+        },
+        {
           "offerId": "record-6f3cfe5311e49f",
           "plantId": "plant-38ed2c84f780a6",
           "nurseryId": "lorberg",
@@ -56,6 +68,30 @@
           "status": "verified_unchanged",
           "localPath": "assets/biljke/photo-1f81f6e6d97159e953b8f5b6.jpg",
           "sha256": "abf985d5f08a7f11e39790f2ca4eee33c6de3d7ff704dd5ec87eec8ad6e93e5d"
+        },
+        {
+          "offerId": "record-3be276eddddef8",
+          "plantId": "plant-celtis-australis",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/603/celtis-australis",
+          "mode": "product_page",
+          "method": "product_jsonld",
+          "imageUrl": "https://www.lorberg.com/content/files/14143/Celtis-australis-Schirm-300-400-x-500-600-1-r1-1200x630-proportionalbiggest.webp",
+          "status": "verified_unchanged",
+          "localPath": "assets/biljke/photo-1a30704deb361a26b1bc2562.jpg",
+          "sha256": "9bef4bb3e4e2315844427a34ca2262428b8ad8e45cebd75d312eadebcdc5f22e"
+        },
+        {
+          "offerId": "record-a25c8fb9a16423",
+          "plantId": "plant-f528ac363e5c66",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/762/cornus-sanguinea-midwinter-fire",
+          "mode": "product_page",
+          "method": "product_jsonld",
+          "imageUrl": "https://www.lorberg.com/content/files/5297/Cornus-sanguinea-Midwinter-Fire-1200x630-proportionalbiggest.webp",
+          "status": "verified_unchanged",
+          "localPath": "assets/biljke/photo-f7b1a052915774836a1ed221.jpg",
+          "sha256": "fb97d89990d8f5871d88079d1d7948b0b8978a08a7f653e2f96fc45c342eccf7"
         },
         {
           "offerId": "record-fb5847c8cbf671",
@@ -80,6 +116,16 @@
           "status": "verified_unchanged",
           "localPath": "assets/biljke/photo-074cb656a289b79165429ffa.jpg",
           "sha256": "77964fd133962a8f6f561d375316a3d90833b2f5a32dc3a0ea98be60a822adc6"
+        },
+        {
+          "offerId": "record-ffd4e14d4de057",
+          "plantId": "plant-d32b3f49740cc5",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/1243/magnolia-soulangeana",
+          "status": "failed",
+          "reason": "plant_identity_mismatch",
+          "detail": "Product heading does not exactly match genus, species and cultivar.",
+          "photoPreserved": true
         },
         {
           "offerId": "record-6077de9a6624da",
@@ -130,6 +176,66 @@
           "sha256": "a123fff6488eba0b2875d406f71352ac68abaac1006c00a1c3a373674fbe831f"
         },
         {
+          "offerId": "record-95ba8c2c84e3ee",
+          "plantId": "plant-c76014c0be2fb8",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/2228/pyrus-calleryana-chanticleer",
+          "mode": "product_page",
+          "method": "product_jsonld",
+          "imageUrl": "https://www.lorberg.com/content/files/8953/Pyrus-calleryana-Chanticleer-1200x630-proportionalbiggest.webp",
+          "status": "verified_unchanged",
+          "localPath": "assets/biljke/photo-61d7a99399e73c5f83d5a95b.jpg",
+          "sha256": "5237398d752aae8df8f81e717353cfed1f8d4d8674f5c193c99fc00e627a352d"
+        },
+        {
+          "offerId": "record-7b13af1a7f1b42",
+          "plantId": "plant-ae4e248ab385a3",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/2436/quercus-cerris",
+          "mode": "product_page",
+          "method": "product_jsonld",
+          "imageUrl": "https://www.lorberg.com/content/files/9576/Quercus-cerris-1200x630-proportionalbiggest.webp",
+          "status": "verified_unchanged",
+          "localPath": "assets/biljke/photo-ff91144428a798cbfc54ca70.jpg",
+          "sha256": "dae2de7928f1459f553d33fe68c642e0c9a8279c0a6af1aac2e715b33dfa0752"
+        },
+        {
+          "offerId": "record-e2f0ce915a2dba",
+          "plantId": "plant-ffdbfd76e4d96d",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/2472/quercus-palustris",
+          "mode": "product_page",
+          "method": "product_jsonld",
+          "imageUrl": "https://www.lorberg.com/content/files/16791/Quercus-palustris-60-70-80-90-1-r1-1200x630-proportionalbiggest.webp",
+          "status": "verified_unchanged",
+          "localPath": "assets/biljke/photo-5dc11e351ee27016b078d1b9.jpg",
+          "sha256": "798dc7d910fda72d9b18bb8504a6a16e9a92c56c58673a6d878b0efae235b549"
+        },
+        {
+          "offerId": "record-172c0692f16e39",
+          "plantId": "plant-quercus-rubra",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/1340/quercus-rubra",
+          "mode": "product_page",
+          "method": "product_jsonld",
+          "imageUrl": "https://www.lorberg.com/content/files/7044/Quercus-rubra-1200x630-proportionalbiggest.webp",
+          "status": "verified_unchanged",
+          "localPath": "assets/biljke/photo-21eb22e00ae84fd5a2bf742d.jpg",
+          "sha256": "604c2c0b0b55af6a6fc17d1396f1ff15347bb1fac67dd3a59ab77980ab19befb"
+        },
+        {
+          "offerId": "record-c4d8f0629501c3",
+          "plantId": "plant-quercus-robur",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/1248/quercus-robur",
+          "mode": "product_page",
+          "method": "product_jsonld",
+          "imageUrl": "https://www.lorberg.com/content/files/6806/Quercus-robur-f-1200x630-proportionalbiggest.webp",
+          "status": "verified_unchanged",
+          "localPath": "assets/biljke/photo-6081a7480057a0e4cf4cedab.jpg",
+          "sha256": "6c28472f1fed0911501802a3a8e24cc80492e61f9343fe28de2e80f9fb64e297"
+        },
+        {
           "offerId": "record-ad11b2dd3b5d99",
           "plantId": "plant-3790186abdcdff",
           "nurseryId": "lorberg",
@@ -140,6 +246,30 @@
           "status": "verified_unchanged",
           "localPath": "assets/biljke/photo-f3aeeffb9e465d62bbe88f52.jpg",
           "sha256": "f8422adc84336b7322e01d3b5b76bea87240182f66e88ac2077f4d98c95ee0ee"
+        },
+        {
+          "offerId": "record-f8d32240673819",
+          "plantId": "plant-tilia-cordata",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/2628/tilia-cordata",
+          "mode": "product_page",
+          "method": "product_jsonld",
+          "imageUrl": "https://www.lorberg.com/content/files/10246/Tilia-cordata-Winter-Orange-1200x630-proportionalbiggest.webp",
+          "status": "verified_unchanged",
+          "localPath": "assets/biljke/photo-8a81d774cbc8286782810785.jpg",
+          "sha256": "1c8cd83918d98afee5b20ae6dcd79a5582d006e27487ac77b76f2eeba46686ce"
+        },
+        {
+          "offerId": "record-57063fc712f04f",
+          "plantId": "plant-lavandula-angustifolia",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/1164/lavandula-angustifolia",
+          "mode": "product_page",
+          "method": "product_jsonld",
+          "imageUrl": "https://www.lorberg.com/content/files/6527/Lavandula-angustifolia-1200x630-proportionalbiggest.webp",
+          "status": "verified_unchanged",
+          "localPath": "assets/biljke/photo-60e02a1d6fe84d5e8add90ae.jpg",
+          "sha256": "0f26155044cd143f28c664d8216e4a281b0a376667897fcc55c8bcf39888a99a"
         },
         {
           "offerId": "record-17aaf12f91bf1d",
@@ -166,6 +296,74 @@
           "sha256": "4a6f15c9434cb51f854d068b8f0c8c161926117b5052a84d06624f8161a0395f"
         },
         {
+          "offerId": "record-a83823ca933f31",
+          "plantId": "plant-acer-platanoides",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/513/acer-platanoides",
+          "mode": "product_page",
+          "method": "product_jsonld",
+          "imageUrl": "https://www.lorberg.com/content/files/4560/Acer-platanoides-1200x630-proportionalbiggest.webp",
+          "status": "verified_unchanged",
+          "localPath": "assets/biljke/photo-a50c88cd7b5299311b1b14aa.jpg",
+          "sha256": "6b8c491aae2753765c93a6cdfc578d6272223b6e25f5bbc3d57274522ecbfa89"
+        },
+        {
+          "offerId": "record-49e9cc37338587",
+          "plantId": "plant-acer-platanoides",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/513/acer-platanoides",
+          "mode": "product_page",
+          "method": "product_jsonld",
+          "imageUrl": "https://www.lorberg.com/content/files/4560/Acer-platanoides-1200x630-proportionalbiggest.webp",
+          "status": "verified_unchanged",
+          "localPath": "assets/biljke/photo-a50c88cd7b5299311b1b14aa.jpg",
+          "sha256": "6b8c491aae2753765c93a6cdfc578d6272223b6e25f5bbc3d57274522ecbfa89"
+        },
+        {
+          "offerId": "record-7736f3d554fd50",
+          "plantId": "plant-acer-palmatum",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/386/acer-palmatum",
+          "mode": "product_page",
+          "method": "product_jsonld",
+          "imageUrl": "https://www.lorberg.com/content/files/4114/Acer-palmatum-Koriba-1200x630-proportionalbiggest.webp",
+          "status": "verified_unchanged",
+          "localPath": "assets/biljke/photo-7fa0349e73466d519a198187.jpg",
+          "sha256": "ebacbf6c936125dbcb4ca3462377f4534f10468e5b1a3120f9b5feeee6392fd1"
+        },
+        {
+          "offerId": "record-e9a656960584ba",
+          "plantId": "plant-acer-palmatum",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/386/acer-palmatum",
+          "mode": "product_page",
+          "method": "product_jsonld",
+          "imageUrl": "https://www.lorberg.com/content/files/4114/Acer-palmatum-Koriba-1200x630-proportionalbiggest.webp",
+          "status": "verified_unchanged",
+          "localPath": "assets/biljke/photo-7fa0349e73466d519a198187.jpg",
+          "sha256": "ebacbf6c936125dbcb4ca3462377f4534f10468e5b1a3120f9b5feeee6392fd1"
+        },
+        {
+          "offerId": "record-4f8367bcba3efb",
+          "plantId": "plant-cd7931ce209e95",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/295/acer-freemanii-autumn-blaze",
+          "status": "failed",
+          "reason": "plant_identity_mismatch",
+          "detail": "Product heading does not exactly match genus, species and cultivar.",
+          "photoPreserved": true
+        },
+        {
+          "offerId": "record-6d543b33979c80",
+          "plantId": "plant-cd7931ce209e95",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/295/acer-freemanii-autumn-blaze",
+          "status": "failed",
+          "reason": "plant_identity_mismatch",
+          "detail": "Product heading does not exactly match genus, species and cultivar.",
+          "photoPreserved": true
+        },
+        {
           "offerId": "record-e5095c7c66be99",
           "plantId": "plant-1050d874688cb0",
           "nurseryId": "lorberg",
@@ -190,6 +388,54 @@
           "sha256": "cb6eb9883b36fcb10b0d5440343eb4e442650c8334f336b917972b0c64881b7f"
         },
         {
+          "offerId": "record-07aa644b380529",
+          "plantId": "plant-betula-pendula",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/1158/betula-pendula",
+          "mode": "product_page",
+          "method": "product_jsonld",
+          "imageUrl": "https://www.lorberg.com/content/files/6507/Betula-pendula-1200x630-proportionalbiggest.webp",
+          "status": "verified_unchanged",
+          "localPath": "assets/biljke/photo-40fb40c66a0043ce08da628b.jpg",
+          "sha256": "1fd4e0cf0bcc6cd1b8a61b1b34267561e99494bc2f3c1c33ce4185a7bbf3180c"
+        },
+        {
+          "offerId": "record-ceb19c12a442ac",
+          "plantId": "plant-betula-pendula",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/1158/betula-pendula",
+          "mode": "product_page",
+          "method": "product_jsonld",
+          "imageUrl": "https://www.lorberg.com/content/files/6507/Betula-pendula-1200x630-proportionalbiggest.webp",
+          "status": "verified_unchanged",
+          "localPath": "assets/biljke/photo-40fb40c66a0043ce08da628b.jpg",
+          "sha256": "1fd4e0cf0bcc6cd1b8a61b1b34267561e99494bc2f3c1c33ce4185a7bbf3180c"
+        },
+        {
+          "offerId": "record-3cfe76bed03d19",
+          "plantId": "plant-betula-pendula",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/1158/betula-pendula",
+          "mode": "product_page",
+          "method": "product_jsonld",
+          "imageUrl": "https://www.lorberg.com/content/files/6507/Betula-pendula-1200x630-proportionalbiggest.webp",
+          "status": "verified_unchanged",
+          "localPath": "assets/biljke/photo-40fb40c66a0043ce08da628b.jpg",
+          "sha256": "1fd4e0cf0bcc6cd1b8a61b1b34267561e99494bc2f3c1c33ce4185a7bbf3180c"
+        },
+        {
+          "offerId": "record-32a7329ee4531c",
+          "plantId": "plant-betula-pendula",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/1158/betula-pendula",
+          "mode": "product_page",
+          "method": "product_jsonld",
+          "imageUrl": "https://www.lorberg.com/content/files/6507/Betula-pendula-1200x630-proportionalbiggest.webp",
+          "status": "verified_unchanged",
+          "localPath": "assets/biljke/photo-40fb40c66a0043ce08da628b.jpg",
+          "sha256": "1fd4e0cf0bcc6cd1b8a61b1b34267561e99494bc2f3c1c33ce4185a7bbf3180c"
+        },
+        {
           "offerId": "record-fcbc4cbd88fda9",
           "plantId": "plant-03be2c36cba9f4",
           "nurseryId": "lorberg",
@@ -212,6 +458,30 @@
           "status": "verified_unchanged",
           "localPath": "assets/biljke/photo-bb443377ac220aea3829dc13.jpg",
           "sha256": "b11e4bdfae4d4618e3ccd799ddbd84b2c8c264f55669424484fd8fea71e1f391"
+        },
+        {
+          "offerId": "record-124388f5ea95f6",
+          "plantId": "plant-carpinus-betulus",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/317/carpinus-betulus",
+          "mode": "product_page",
+          "method": "product_jsonld",
+          "imageUrl": "https://www.lorberg.com/content/files/3926/Carpinus-betulus-1200x630-proportionalbiggest.webp",
+          "status": "verified_unchanged",
+          "localPath": "assets/biljke/photo-c32ce063e39551b7b896b7e7.jpg",
+          "sha256": "ec07eb4bee55b62396fab126c8b99ab0b8635a277a89fb51e5f04c3865146ff6"
+        },
+        {
+          "offerId": "record-bc77acf36bf2e0",
+          "plantId": "plant-carpinus-betulus",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/317/carpinus-betulus",
+          "mode": "product_page",
+          "method": "product_jsonld",
+          "imageUrl": "https://www.lorberg.com/content/files/3926/Carpinus-betulus-1200x630-proportionalbiggest.webp",
+          "status": "verified_unchanged",
+          "localPath": "assets/biljke/photo-c32ce063e39551b7b896b7e7.jpg",
+          "sha256": "ec07eb4bee55b62396fab126c8b99ab0b8635a277a89fb51e5f04c3865146ff6"
         },
         {
           "offerId": "record-a2180d0791c78e",
@@ -274,6 +544,30 @@
           "sha256": "d859ef14f06fab75e9df88530e3480bed59f05cc055a57a43e861d3cc79ecb2f"
         },
         {
+          "offerId": "record-b2ac6f0d4206bf",
+          "plantId": "plant-ginkgo-biloba",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/159/ginkgo-biloba",
+          "mode": "product_page",
+          "method": "product_jsonld",
+          "imageUrl": "https://www.lorberg.com/content/files/3482/Ginkgo-biloba-1200x630-proportionalbiggest.webp",
+          "status": "verified_unchanged",
+          "localPath": "assets/biljke/photo-c0bf5d57c00dda6472357b60.jpg",
+          "sha256": "0c15799fa7de78100199fd1c815a6c471b99a9e0a5fb976b8ff12f0de768a99b"
+        },
+        {
+          "offerId": "record-07b2c0e81e1be4",
+          "plantId": "plant-ginkgo-biloba",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/159/ginkgo-biloba",
+          "mode": "product_page",
+          "method": "product_jsonld",
+          "imageUrl": "https://www.lorberg.com/content/files/3482/Ginkgo-biloba-1200x630-proportionalbiggest.webp",
+          "status": "verified_unchanged",
+          "localPath": "assets/biljke/photo-c0bf5d57c00dda6472357b60.jpg",
+          "sha256": "0c15799fa7de78100199fd1c815a6c471b99a9e0a5fb976b8ff12f0de768a99b"
+        },
+        {
           "offerId": "record-b9155790aeb96d",
           "plantId": "plant-388d067861908f",
           "nurseryId": "lorberg",
@@ -296,6 +590,30 @@
           "status": "verified_unchanged",
           "localPath": "assets/biljke/photo-321bd86e7b25424973312f3e.jpg",
           "sha256": "ab66ab7bf12c72ed22b39848639cab6113c0baf295b0a0e148e7f42e783b1b48"
+        },
+        {
+          "offerId": "record-25c08d56afbfa0",
+          "plantId": "plant-liquidambar-styraciflua",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/1601/liquidambar-styraciflua",
+          "mode": "product_page",
+          "method": "product_jsonld",
+          "imageUrl": "https://www.lorberg.com/content/files/7559/Liquidambar-styraciflua-1200x630-proportionalbiggest.webp",
+          "status": "verified_unchanged",
+          "localPath": "assets/biljke/photo-1b32049a85407070cfb96c29.jpg",
+          "sha256": "f7474e0f8f8245f66f5c6555d4f1ec86cddbb98c8be855153533abf3d84d8666"
+        },
+        {
+          "offerId": "record-5ef94a83d011cd",
+          "plantId": "plant-liquidambar-styraciflua",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/1601/liquidambar-styraciflua",
+          "mode": "product_page",
+          "method": "product_jsonld",
+          "imageUrl": "https://www.lorberg.com/content/files/7559/Liquidambar-styraciflua-1200x630-proportionalbiggest.webp",
+          "status": "verified_unchanged",
+          "localPath": "assets/biljke/photo-1b32049a85407070cfb96c29.jpg",
+          "sha256": "f7474e0f8f8245f66f5c6555d4f1ec86cddbb98c8be855153533abf3d84d8666"
         },
         {
           "offerId": "record-00a6384bfe838f",
@@ -392,6 +710,42 @@
           "status": "verified_unchanged",
           "localPath": "assets/biljke/photo-1372de781d049147eef1f0c0.jpg",
           "sha256": "65c4ef18961114fbc51efdb9b7c3d3ad41b47f4fc1d1b40e97170c05b20d0599"
+        },
+        {
+          "offerId": "record-65b3c6be6306fa",
+          "plantId": "plant-da13581afa3d46",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/2534/taxus-baccata",
+          "mode": "product_page",
+          "method": "product_jsonld",
+          "imageUrl": "https://www.lorberg.com/content/files/9863/Taxus-baccata-Aureomarginata-1200x630-proportionalbiggest.webp",
+          "status": "verified_unchanged",
+          "localPath": "assets/biljke/photo-fedb1cd4c0c0238cf0319d93.jpg",
+          "sha256": "72120922a2fc4378831e925664dea98b9b44de80029991c98c88eb3646191308"
+        },
+        {
+          "offerId": "record-f1336cb9b5c59d",
+          "plantId": "plant-da13581afa3d46",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/2534/taxus-baccata",
+          "mode": "product_page",
+          "method": "product_jsonld",
+          "imageUrl": "https://www.lorberg.com/content/files/9863/Taxus-baccata-Aureomarginata-1200x630-proportionalbiggest.webp",
+          "status": "verified_unchanged",
+          "localPath": "assets/biljke/photo-fedb1cd4c0c0238cf0319d93.jpg",
+          "sha256": "72120922a2fc4378831e925664dea98b9b44de80029991c98c88eb3646191308"
+        },
+        {
+          "offerId": "record-6b8c29f92da6e6",
+          "plantId": "plant-da13581afa3d46",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/2534/taxus-baccata",
+          "mode": "product_page",
+          "method": "product_jsonld",
+          "imageUrl": "https://www.lorberg.com/content/files/9863/Taxus-baccata-Aureomarginata-1200x630-proportionalbiggest.webp",
+          "status": "verified_unchanged",
+          "localPath": "assets/biljke/photo-fedb1cd4c0c0238cf0319d93.jpg",
+          "sha256": "72120922a2fc4378831e925664dea98b9b44de80029991c98c88eb3646191308"
         },
         {
           "offerId": "record-9499372ec6045f",
@@ -658,6 +1012,18 @@
           "sha256": "1754b1df9368f3645f665d0e44423b40e193d63e41bb34e0a6d34f26f8ccd13a"
         },
         {
+          "offerId": "offer-pdf-c08a8d7071192d851a54",
+          "plantId": "plant-9e3b5ad9f052fd",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/542/acer-platanoides-cleveland",
+          "mode": "product_page",
+          "method": "product_jsonld",
+          "imageUrl": "https://www.lorberg.com/content/files/4560/Acer-platanoides-1200x630-proportionalbiggest.webp",
+          "status": "verified_unchanged",
+          "localPath": "assets/biljke/photo-1be973bbb55a399bd70bb9f9.jpg",
+          "sha256": "6b8c491aae2753765c93a6cdfc578d6272223b6e25f5bbc3d57274522ecbfa89"
+        },
+        {
           "offerId": "offer-pdf-6319ab1e07e9bc67617e",
           "plantId": "plant-2b5ca69a45dcf3",
           "nurseryId": "lorberg",
@@ -706,6 +1072,30 @@
           "sha256": "95b0be05f7c008ea5c11d0f56a6a25e11c776e8527c35c234303d0c20e030809"
         },
         {
+          "offerId": "offer-pdf-6be4124d624030c66287",
+          "plantId": "plant-e31efad7c4f189",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/420/alnus-spaethii",
+          "mode": "product_page",
+          "method": "product_jsonld",
+          "imageUrl": "https://www.lorberg.com/content/files/15246/Alnus-spaethii-20-25-5-r1-1200x630-proportionalbiggest.webp",
+          "status": "verified_unchanged",
+          "localPath": "assets/biljke/photo-142c6405aa6d9c923fbe54e8.jpg",
+          "sha256": "f85eedbf35558d37042e177274d1ea118e5c9dc60380ea39078bca13fe3d1a27"
+        },
+        {
+          "offerId": "offer-pdf-fa5f5d28792aa88fcbe1",
+          "plantId": "plant-dff75bb196d8f1",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/2367/magnolia-kobus",
+          "mode": "product_page",
+          "method": "product_jsonld",
+          "imageUrl": "https://www.lorberg.com/content/files/9323/Magnolia-kobus-1200x630-proportionalbiggest.webp",
+          "status": "verified_unchanged",
+          "localPath": "assets/biljke/photo-4fbc46e55cb961ce6f0d0390.jpg",
+          "sha256": "20ca7c00146e2790a934f7932cd47d00ea3208d821591134d59268dd32aaea0d"
+        },
+        {
           "offerId": "offer-pdf-de273ce3d23e923dce1c",
           "plantId": "plant-37d70ea5aaf3d4",
           "nurseryId": "lorberg",
@@ -740,6 +1130,18 @@
           "status": "verified_unchanged",
           "localPath": "assets/biljke/photo-bc3fa278183d5f42814bc673.jpg",
           "sha256": "a2cbd012b4168b884198e6f736a379259b982af6a89029e49c8c766e05e6802b"
+        },
+        {
+          "offerId": "offer-pdf-4c81862a2e085a3490c4",
+          "plantId": "plant-dc277e6125caf5",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/2440/prunus-cerasifera-nigra",
+          "mode": "product_page",
+          "method": "product_jsonld",
+          "imageUrl": "https://www.lorberg.com/content/files/9607/Prunus-cerasifera-Nigra-1200x630-proportionalbiggest.webp",
+          "status": "verified_unchanged",
+          "localPath": "assets/biljke/photo-2d9e83588c2c1e13d93a88f1.jpg",
+          "sha256": "92857bdf6f14b8880bf24503a36a089b35d733cda361954bca7098f3de3ecca0"
         },
         {
           "offerId": "offer-pdf-cf31ae5e997105694927",
@@ -894,6 +1296,46 @@
           "photoPreserved": true
         },
         {
+          "offerId": "offer-pdf-7d5fbd533ef3c08889d1",
+          "plantId": "plant-b1fc7ebad5242f",
+          "nurseryId": "smits-boomkwekerij",
+          "sourcePage": "https://smitsbv.nl/producten/osmanthus-burkwoodii/",
+          "status": "failed",
+          "reason": "plant_identity_mismatch",
+          "detail": "Product heading does not exactly match genus, species and cultivar.",
+          "photoPreserved": true
+        },
+        {
+          "offerId": "offer-pdf-f0325055115eb43afff7",
+          "plantId": "plant-b1fc7ebad5242f",
+          "nurseryId": "smits-boomkwekerij",
+          "sourcePage": "https://smitsbv.nl/producten/osmanthus-burkwoodii/",
+          "status": "failed",
+          "reason": "plant_identity_mismatch",
+          "detail": "Product heading does not exactly match genus, species and cultivar.",
+          "photoPreserved": true
+        },
+        {
+          "offerId": "offer-pdf-52b0ef44ef6cd1d45ad8",
+          "plantId": "plant-b1fc7ebad5242f",
+          "nurseryId": "smits-boomkwekerij",
+          "sourcePage": "https://smitsbv.nl/producten/osmanthus-burkwoodii/",
+          "status": "failed",
+          "reason": "plant_identity_mismatch",
+          "detail": "Product heading does not exactly match genus, species and cultivar.",
+          "photoPreserved": true
+        },
+        {
+          "offerId": "offer-pdf-e9e926a0ce62df0ee5c8",
+          "plantId": "plant-b1fc7ebad5242f",
+          "nurseryId": "smits-boomkwekerij",
+          "sourcePage": "https://smitsbv.nl/producten/osmanthus-burkwoodii/",
+          "status": "failed",
+          "reason": "plant_identity_mismatch",
+          "detail": "Product heading does not exactly match genus, species and cultivar.",
+          "photoPreserved": true
+        },
+        {
           "offerId": "record-variant-ca9686452c9388a882",
           "plantId": "plant-5322c7cf067d03",
           "nurseryId": "combinatie-mauritz",
@@ -916,6 +1358,42 @@
           "status": "verified_unchanged",
           "localPath": "assets/biljke/photo-dd4797d56dd525c6ad03dd4a.jpg",
           "sha256": "ca8d91ddcd884336490c6699d361514d7b704cce91f5b6ce1ca93019d099d9d7"
+        },
+        {
+          "offerId": "record-b4a0a12eb8d5dd",
+          "plantId": "plant-9a6f4720f6fd87",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/510/amelanchier-lamarckii",
+          "mode": "product_page",
+          "method": "product_jsonld",
+          "imageUrl": "https://www.lorberg.com/content/files/4538/Amelanchier-lamarckii-1200x630-proportionalbiggest.webp",
+          "status": "verified_unchanged",
+          "localPath": "assets/biljke/photo-2e08379fcd33389a37667c8d.jpg",
+          "sha256": "dfc1f95fa88dfb01436f24cc53c9ca85cfb974cce802162bfbf53695fd805d7f"
+        },
+        {
+          "offerId": "record-b407389c470611",
+          "plantId": "plant-dc12c2322be581",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/155/albizia-julibrissin",
+          "mode": "product_page",
+          "method": "product_jsonld",
+          "imageUrl": "https://www.lorberg.com/content/files/3469/Albizia-julibrissin-1200x630-proportionalbiggest.webp",
+          "status": "verified_unchanged",
+          "localPath": "assets/biljke/photo-f18982a50a70b70dbcebb518.jpg",
+          "sha256": "8da432c976f3554048ff2317ebbcc0820b113ff00264458f771ee249ebacc54d"
+        },
+        {
+          "offerId": "record-b23ff11ed8bc83",
+          "plantId": "plant-9e3b5ad9f052fd",
+          "nurseryId": "lorberg",
+          "sourcePage": "https://www.lorberg.com/en-gb/article/542/acer-platanoides-cleveland",
+          "mode": "product_page",
+          "method": "product_jsonld",
+          "imageUrl": "https://www.lorberg.com/content/files/4560/Acer-platanoides-1200x630-proportionalbiggest.webp",
+          "status": "verified_unchanged",
+          "localPath": "assets/biljke/photo-1be973bbb55a399bd70bb9f9.jpg",
+          "sha256": "6b8c491aae2753765c93a6cdfc578d6272223b6e25f5bbc3d57274522ecbfa89"
         },
         {
           "offerId": "record-9ae469de8f37f4",
@@ -15758,36 +16236,8 @@
           "reason": "no_reviewed_online_photo_or_supported_product_page"
         },
         {
-          "offerId": "record-b4a0a12eb8d5dd",
-          "plantId": "plant-9a6f4720f6fd87",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "record-b407389c470611",
-          "plantId": "plant-dc12c2322be581",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "record-b23ff11ed8bc83",
-          "plantId": "plant-9e3b5ad9f052fd",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
           "offerId": "record-437cf957b3fee9",
           "plantId": "plant-b35f577a88766f",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "record-b1798a4399c53c",
-          "plantId": "plant-acer-pseudoplatanus",
           "nurseryId": "lorberg",
           "status": "skipped",
           "reason": "no_reviewed_online_photo_or_supported_product_page"
@@ -15807,20 +16257,6 @@
           "reason": "no_reviewed_online_photo_or_supported_product_page"
         },
         {
-          "offerId": "record-3be276eddddef8",
-          "plantId": "plant-celtis-australis",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "record-a25c8fb9a16423",
-          "plantId": "plant-f528ac363e5c66",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
           "offerId": "record-65c23786261bea",
           "plantId": "plant-435ab7e4419c14",
           "nurseryId": "lorberg",
@@ -15830,13 +16266,6 @@
         {
           "offerId": "record-01435f5e6e7040",
           "plantId": "plant-531d204e47ccbb",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "record-ffd4e14d4de057",
-          "plantId": "plant-d32b3f49740cc5",
           "nurseryId": "lorberg",
           "status": "skipped",
           "reason": "no_reviewed_online_photo_or_supported_product_page"
@@ -15856,48 +16285,6 @@
           "reason": "no_reviewed_online_photo_or_supported_product_page"
         },
         {
-          "offerId": "record-95ba8c2c84e3ee",
-          "plantId": "plant-c76014c0be2fb8",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "record-7b13af1a7f1b42",
-          "plantId": "plant-ae4e248ab385a3",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "record-e2f0ce915a2dba",
-          "plantId": "plant-ffdbfd76e4d96d",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "record-172c0692f16e39",
-          "plantId": "plant-quercus-rubra",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "record-c4d8f0629501c3",
-          "plantId": "plant-quercus-robur",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "record-f8d32240673819",
-          "plantId": "plant-tilia-cordata",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
           "offerId": "record-5fc8a94b182033",
           "plantId": "plant-2d6ea78c9fc019",
           "nurseryId": "lorberg",
@@ -15907,13 +16294,6 @@
         {
           "offerId": "record-b0981be1dd76f8",
           "plantId": "plant-5c2da33cccb7f8",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "record-57063fc712f04f",
-          "plantId": "plant-lavandula-angustifolia",
           "nurseryId": "lorberg",
           "status": "skipped",
           "reason": "no_reviewed_online_photo_or_supported_product_page"
@@ -18327,118 +18707,6 @@
           "reason": "no_reviewed_online_photo_or_supported_product_page"
         },
         {
-          "offerId": "record-a83823ca933f31",
-          "plantId": "plant-acer-platanoides",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "record-49e9cc37338587",
-          "plantId": "plant-acer-platanoides",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "record-7736f3d554fd50",
-          "plantId": "plant-acer-palmatum",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "record-e9a656960584ba",
-          "plantId": "plant-acer-palmatum",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "record-4f8367bcba3efb",
-          "plantId": "plant-cd7931ce209e95",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "record-6d543b33979c80",
-          "plantId": "plant-cd7931ce209e95",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "record-07aa644b380529",
-          "plantId": "plant-betula-pendula",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "record-ceb19c12a442ac",
-          "plantId": "plant-betula-pendula",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "record-3cfe76bed03d19",
-          "plantId": "plant-betula-pendula",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "record-32a7329ee4531c",
-          "plantId": "plant-betula-pendula",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "record-124388f5ea95f6",
-          "plantId": "plant-carpinus-betulus",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "record-bc77acf36bf2e0",
-          "plantId": "plant-carpinus-betulus",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "record-b2ac6f0d4206bf",
-          "plantId": "plant-ginkgo-biloba",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "record-07b2c0e81e1be4",
-          "plantId": "plant-ginkgo-biloba",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "record-25c08d56afbfa0",
-          "plantId": "plant-liquidambar-styraciflua",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "record-5ef94a83d011cd",
-          "plantId": "plant-liquidambar-styraciflua",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
           "offerId": "record-357bab534136d4",
           "plantId": "plant-8c2ae8ac7ff3af",
           "nurseryId": "lorberg",
@@ -18448,27 +18716,6 @@
         {
           "offerId": "record-6aa0fc3628ea29",
           "plantId": "plant-8c2ae8ac7ff3af",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "record-65b3c6be6306fa",
-          "plantId": "plant-da13581afa3d46",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "record-f1336cb9b5c59d",
-          "plantId": "plant-da13581afa3d46",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "record-6b8c29f92da6e6",
-          "plantId": "plant-da13581afa3d46",
           "nurseryId": "lorberg",
           "status": "skipped",
           "reason": "no_reviewed_online_photo_or_supported_product_page"
@@ -18670,48 +18917,6 @@
           "reason": "no_reviewed_online_photo_or_supported_product_page"
         },
         {
-          "offerId": "offer-pdf-c08a8d7071192d851a54",
-          "plantId": "plant-9e3b5ad9f052fd",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "offer-pdf-6be4124d624030c66287",
-          "plantId": "plant-e31efad7c4f189",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "offer-pdf-fa5f5d28792aa88fcbe1",
-          "plantId": "plant-dff75bb196d8f1",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "offer-pdf-4c81862a2e085a3490c4",
-          "plantId": "plant-dc277e6125caf5",
-          "nurseryId": "lorberg",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "offer-pdf-7d5fbd533ef3c08889d1",
-          "plantId": "plant-b1fc7ebad5242f",
-          "nurseryId": "smits-boomkwekerij",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "offer-pdf-f0325055115eb43afff7",
-          "plantId": "plant-b1fc7ebad5242f",
-          "nurseryId": "smits-boomkwekerij",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
           "offerId": "offer-pdf-d2a56efe208fbe6c7c43",
           "plantId": "plant-eb4e2ea4455224",
           "nurseryId": "smits-boomkwekerij",
@@ -18721,20 +18926,6 @@
         {
           "offerId": "offer-pdf-fed4d900c97a995816bb",
           "plantId": "plant-eb4e2ea4455224",
-          "nurseryId": "smits-boomkwekerij",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "offer-pdf-52b0ef44ef6cd1d45ad8",
-          "plantId": "plant-b1fc7ebad5242f",
-          "nurseryId": "smits-boomkwekerij",
-          "status": "skipped",
-          "reason": "no_reviewed_online_photo_or_supported_product_page"
-        },
-        {
-          "offerId": "offer-pdf-e9e926a0ce62df0ee5c8",
-          "plantId": "plant-b1fc7ebad5242f",
           "nurseryId": "smits-boomkwekerij",
           "status": "skipped",
           "reason": "no_reviewed_online_photo_or_supported_product_page"
@@ -21015,819 +21206,23 @@
           "reason": "no_reviewed_online_photo_or_supported_product_page"
         }
       ],
-      "eligible": 77,
-      "batchSize": 77,
+      "eligible": 118,
+      "batchSize": 118,
       "nextOfferId": "record-c52de57af2bdb4",
-      "durationSeconds": 231.54
+      "durationSeconds": 208.26
     },
     "samePair": {
       "status": "completed",
       "added": 0,
       "changes": [],
-      "durationSeconds": 0.59
+      "durationSeconds": 0.68
     },
     "discovery": {
       "status": "incomplete_sources",
-      "startedAt": "2026-11-10T08:13:42Z",
-      "requests": 40,
+      "startedAt": "2026-11-10T09:28:19Z",
+      "requests": 0,
       "budget": 120,
-      "bindings": [
-        {
-          "plantId": "plant-9a6f4720f6fd87",
-          "nurseryId": "lorberg",
-          "offerIds": [
-            "record-b4a0a12eb8d5dd"
-          ],
-          "pageUrl": "https://www.lorberg.com/en-gb/article/510/amelanchier-lamarckii",
-          "imageUrl": "https://www.lorberg.com/content/files/4538/Amelanchier-lamarckii-1200x630-proportionalbiggest.webp",
-          "matchedName": "Amelanchier lamarckii",
-          "canonicalName": "Amelanchier lamarckii",
-          "policy": {
-            "nurseryId": "lorberg",
-            "resolver": "product",
-            "fillMissing": true,
-            "pageHosts": [
-              "www.lorberg.com"
-            ],
-            "imageHosts": [
-              "www.lorberg.com"
-            ],
-            "pagePathPattern": "/en\\-gb/article/510/amelanchier\\-lamarckii"
-          },
-          "verifiedAt": "2026-11-10T08:13:42Z",
-          "evidence": {
-            "method": "product_jsonld",
-            "discoveredUrl": "https://www.lorberg.com/en-gb/article/510/amelanchier-lamarckii",
-            "discovery": "nursery_sitemap_or_observed_link",
-            "identity": "exact_full_botanical_name"
-          }
-        },
-        {
-          "plantId": "plant-9e3b5ad9f052fd",
-          "nurseryId": "lorberg",
-          "offerIds": [
-            "record-b23ff11ed8bc83",
-            "offer-pdf-c08a8d7071192d851a54"
-          ],
-          "pageUrl": "https://www.lorberg.com/en-gb/article/542/acer-platanoides-cleveland",
-          "imageUrl": "https://www.lorberg.com/content/files/4560/Acer-platanoides-1200x630-proportionalbiggest.webp",
-          "matchedName": "Acer platanoides 'Cleveland'",
-          "canonicalName": "Acer platanoides 'Cleveland'",
-          "policy": {
-            "nurseryId": "lorberg",
-            "resolver": "product",
-            "fillMissing": true,
-            "pageHosts": [
-              "www.lorberg.com"
-            ],
-            "imageHosts": [
-              "www.lorberg.com"
-            ],
-            "pagePathPattern": "/en\\-gb/article/542/acer\\-platanoides\\-cleveland"
-          },
-          "verifiedAt": "2026-11-10T08:13:42Z",
-          "evidence": {
-            "method": "product_jsonld",
-            "discoveredUrl": "https://www.lorberg.com/en-gb/article/542/acer-platanoides-cleveland",
-            "discovery": "nursery_sitemap_or_observed_link",
-            "identity": "exact_full_botanical_name"
-          }
-        },
-        {
-          "plantId": "plant-acer-palmatum",
-          "nurseryId": "lorberg",
-          "offerIds": [
-            "record-7736f3d554fd50",
-            "record-e9a656960584ba"
-          ],
-          "pageUrl": "https://www.lorberg.com/en-gb/article/386/acer-palmatum",
-          "imageUrl": "https://www.lorberg.com/content/files/4114/Acer-palmatum-Koriba-1200x630-proportionalbiggest.webp",
-          "matchedName": "Acer palmatum",
-          "canonicalName": "Acer palmatum",
-          "policy": {
-            "nurseryId": "lorberg",
-            "resolver": "product",
-            "fillMissing": true,
-            "pageHosts": [
-              "www.lorberg.com"
-            ],
-            "imageHosts": [
-              "www.lorberg.com"
-            ],
-            "pagePathPattern": "/en\\-gb/article/386/acer\\-palmatum"
-          },
-          "verifiedAt": "2026-11-10T08:13:42Z",
-          "evidence": {
-            "method": "product_jsonld",
-            "discoveredUrl": "https://www.lorberg.com/en-gb/article/386/acer-palmatum",
-            "discovery": "nursery_sitemap_or_observed_link",
-            "identity": "exact_full_botanical_name"
-          }
-        },
-        {
-          "plantId": "plant-acer-platanoides",
-          "nurseryId": "lorberg",
-          "offerIds": [
-            "record-a83823ca933f31",
-            "record-49e9cc37338587"
-          ],
-          "pageUrl": "https://www.lorberg.com/en-gb/article/513/acer-platanoides",
-          "imageUrl": "https://www.lorberg.com/content/files/4560/Acer-platanoides-1200x630-proportionalbiggest.webp",
-          "matchedName": "Acer platanoides",
-          "canonicalName": "Acer platanoides",
-          "policy": {
-            "nurseryId": "lorberg",
-            "resolver": "product",
-            "fillMissing": true,
-            "pageHosts": [
-              "www.lorberg.com"
-            ],
-            "imageHosts": [
-              "www.lorberg.com"
-            ],
-            "pagePathPattern": "/en\\-gb/article/513/acer\\-platanoides"
-          },
-          "verifiedAt": "2026-11-10T08:13:42Z",
-          "evidence": {
-            "method": "product_jsonld",
-            "discoveredUrl": "https://www.lorberg.com/en-gb/article/513/acer-platanoides",
-            "discovery": "nursery_sitemap_or_observed_link",
-            "identity": "exact_full_botanical_name"
-          }
-        },
-        {
-          "plantId": "plant-acer-pseudoplatanus",
-          "nurseryId": "lorberg",
-          "offerIds": [
-            "record-b1798a4399c53c"
-          ],
-          "pageUrl": "https://www.lorberg.com/en-gb/article/725/acer-pseudoplatanus",
-          "imageUrl": "https://www.lorberg.com/content/files/5198/Acer-pseudoplatanus-1200x630-proportionalbiggest.webp",
-          "matchedName": "Acer pseudoplatanus",
-          "canonicalName": "Acer pseudoplatanus",
-          "policy": {
-            "nurseryId": "lorberg",
-            "resolver": "product",
-            "fillMissing": true,
-            "pageHosts": [
-              "www.lorberg.com"
-            ],
-            "imageHosts": [
-              "www.lorberg.com"
-            ],
-            "pagePathPattern": "/en\\-gb/article/725/acer\\-pseudoplatanus"
-          },
-          "verifiedAt": "2026-11-10T08:13:42Z",
-          "evidence": {
-            "method": "product_jsonld",
-            "discoveredUrl": "https://www.lorberg.com/en-gb/article/725/acer-pseudoplatanus",
-            "discovery": "nursery_sitemap_or_observed_link",
-            "identity": "exact_full_botanical_name"
-          }
-        },
-        {
-          "plantId": "plant-ae4e248ab385a3",
-          "nurseryId": "lorberg",
-          "offerIds": [
-            "record-7b13af1a7f1b42"
-          ],
-          "pageUrl": "https://www.lorberg.com/en-gb/article/2436/quercus-cerris",
-          "imageUrl": "https://www.lorberg.com/content/files/9576/Quercus-cerris-1200x630-proportionalbiggest.webp",
-          "matchedName": "Quercus cerris",
-          "canonicalName": "Quercus cerris",
-          "policy": {
-            "nurseryId": "lorberg",
-            "resolver": "product",
-            "fillMissing": true,
-            "pageHosts": [
-              "www.lorberg.com"
-            ],
-            "imageHosts": [
-              "www.lorberg.com"
-            ],
-            "pagePathPattern": "/en\\-gb/article/2436/quercus\\-cerris"
-          },
-          "verifiedAt": "2026-11-10T08:13:42Z",
-          "evidence": {
-            "method": "product_jsonld",
-            "discoveredUrl": "https://www.lorberg.com/en-gb/article/2436/quercus-cerris",
-            "discovery": "nursery_sitemap_or_observed_link",
-            "identity": "exact_full_botanical_name"
-          }
-        },
-        {
-          "plantId": "plant-betula-pendula",
-          "nurseryId": "lorberg",
-          "offerIds": [
-            "record-07aa644b380529",
-            "record-ceb19c12a442ac",
-            "record-3cfe76bed03d19",
-            "record-32a7329ee4531c"
-          ],
-          "pageUrl": "https://www.lorberg.com/en-gb/article/1158/betula-pendula",
-          "imageUrl": "https://www.lorberg.com/content/files/6507/Betula-pendula-1200x630-proportionalbiggest.webp",
-          "matchedName": "Betula pendula",
-          "canonicalName": "Betula pendula",
-          "policy": {
-            "nurseryId": "lorberg",
-            "resolver": "product",
-            "fillMissing": true,
-            "pageHosts": [
-              "www.lorberg.com"
-            ],
-            "imageHosts": [
-              "www.lorberg.com"
-            ],
-            "pagePathPattern": "/en\\-gb/article/1158/betula\\-pendula"
-          },
-          "verifiedAt": "2026-11-10T08:13:42Z",
-          "evidence": {
-            "method": "product_jsonld",
-            "discoveredUrl": "https://www.lorberg.com/en-gb/article/1158/betula-pendula",
-            "discovery": "nursery_sitemap_or_observed_link",
-            "identity": "exact_full_botanical_name"
-          }
-        },
-        {
-          "plantId": "plant-c76014c0be2fb8",
-          "nurseryId": "lorberg",
-          "offerIds": [
-            "record-95ba8c2c84e3ee"
-          ],
-          "pageUrl": "https://www.lorberg.com/en-gb/article/2228/pyrus-calleryana-chanticleer",
-          "imageUrl": "https://www.lorberg.com/content/files/8953/Pyrus-calleryana-Chanticleer-1200x630-proportionalbiggest.webp",
-          "matchedName": "Pyrus calleryana 'Chanticleer'",
-          "canonicalName": "Pyrus calleryana 'Chanticleer'",
-          "policy": {
-            "nurseryId": "lorberg",
-            "resolver": "product",
-            "fillMissing": true,
-            "pageHosts": [
-              "www.lorberg.com"
-            ],
-            "imageHosts": [
-              "www.lorberg.com"
-            ],
-            "pagePathPattern": "/en\\-gb/article/2228/pyrus\\-calleryana\\-chanticleer"
-          },
-          "verifiedAt": "2026-11-10T08:13:42Z",
-          "evidence": {
-            "method": "product_jsonld",
-            "discoveredUrl": "https://www.lorberg.com/en-gb/article/2228/pyrus-calleryana-chanticleer",
-            "discovery": "nursery_sitemap_or_observed_link",
-            "identity": "exact_full_botanical_name"
-          }
-        },
-        {
-          "plantId": "plant-carpinus-betulus",
-          "nurseryId": "lorberg",
-          "offerIds": [
-            "record-124388f5ea95f6",
-            "record-bc77acf36bf2e0"
-          ],
-          "pageUrl": "https://www.lorberg.com/en-gb/article/317/carpinus-betulus",
-          "imageUrl": "https://www.lorberg.com/content/files/3926/Carpinus-betulus-1200x630-proportionalbiggest.webp",
-          "matchedName": "Carpinus betulus",
-          "canonicalName": "Carpinus betulus",
-          "policy": {
-            "nurseryId": "lorberg",
-            "resolver": "product",
-            "fillMissing": true,
-            "pageHosts": [
-              "www.lorberg.com"
-            ],
-            "imageHosts": [
-              "www.lorberg.com"
-            ],
-            "pagePathPattern": "/en\\-gb/article/317/carpinus\\-betulus"
-          },
-          "verifiedAt": "2026-11-10T08:13:42Z",
-          "evidence": {
-            "method": "product_jsonld",
-            "discoveredUrl": "https://www.lorberg.com/en-gb/article/317/carpinus-betulus",
-            "discovery": "nursery_sitemap_or_observed_link",
-            "identity": "exact_full_botanical_name"
-          }
-        },
-        {
-          "plantId": "plant-cd7931ce209e95",
-          "nurseryId": "lorberg",
-          "offerIds": [
-            "record-4f8367bcba3efb",
-            "record-6d543b33979c80"
-          ],
-          "pageUrl": "https://www.lorberg.com/en-gb/article/295/acer-freemanii-autumn-blaze",
-          "imageUrl": "https://www.lorberg.com/content/files/3844/Acer-freemanii-Autumn-Blaze-1200x630-proportionalbiggest.webp",
-          "matchedName": "Acer freemanii 'Autumn Blaze'",
-          "canonicalName": "Acer x freemanii 'Autumn Blaze'",
-          "policy": {
-            "nurseryId": "lorberg",
-            "resolver": "product",
-            "fillMissing": true,
-            "pageHosts": [
-              "www.lorberg.com"
-            ],
-            "imageHosts": [
-              "www.lorberg.com"
-            ],
-            "pagePathPattern": "/en\\-gb/article/295/acer\\-freemanii\\-autumn\\-blaze"
-          },
-          "verifiedAt": "2026-11-10T08:13:42Z",
-          "evidence": {
-            "method": "product_jsonld",
-            "discoveredUrl": "https://www.lorberg.com/en-gb/article/295/acer-freemanii-autumn-blaze",
-            "discovery": "nursery_sitemap_or_observed_link",
-            "identity": "exact_full_botanical_name"
-          }
-        },
-        {
-          "plantId": "plant-celtis-australis",
-          "nurseryId": "lorberg",
-          "offerIds": [
-            "record-3be276eddddef8"
-          ],
-          "pageUrl": "https://www.lorberg.com/en-gb/article/603/celtis-australis",
-          "imageUrl": "https://www.lorberg.com/content/files/14143/Celtis-australis-Schirm-300-400-x-500-600-1-r1-1200x630-proportionalbiggest.webp",
-          "matchedName": "Celtis australis",
-          "canonicalName": "Celtis australis",
-          "policy": {
-            "nurseryId": "lorberg",
-            "resolver": "product",
-            "fillMissing": true,
-            "pageHosts": [
-              "www.lorberg.com"
-            ],
-            "imageHosts": [
-              "www.lorberg.com"
-            ],
-            "pagePathPattern": "/en\\-gb/article/603/celtis\\-australis"
-          },
-          "verifiedAt": "2026-11-10T08:13:42Z",
-          "evidence": {
-            "method": "product_jsonld",
-            "discoveredUrl": "https://www.lorberg.com/en-gb/article/603/celtis-australis",
-            "discovery": "nursery_sitemap_or_observed_link",
-            "identity": "exact_full_botanical_name"
-          }
-        },
-        {
-          "plantId": "plant-d32b3f49740cc5",
-          "nurseryId": "lorberg",
-          "offerIds": [
-            "record-ffd4e14d4de057"
-          ],
-          "pageUrl": "https://www.lorberg.com/en-gb/article/1243/magnolia-soulangeana",
-          "imageUrl": "https://www.lorberg.com/content/files/17239/Magnolia-soulangeana-18-20-3-r1-1200x630-proportionalbiggest.webp",
-          "matchedName": "Magnolia soulangeana",
-          "canonicalName": "Magnolia x soulangeana",
-          "policy": {
-            "nurseryId": "lorberg",
-            "resolver": "product",
-            "fillMissing": true,
-            "pageHosts": [
-              "www.lorberg.com"
-            ],
-            "imageHosts": [
-              "www.lorberg.com"
-            ],
-            "pagePathPattern": "/en\\-gb/article/1243/magnolia\\-soulangeana"
-          },
-          "verifiedAt": "2026-11-10T08:13:42Z",
-          "evidence": {
-            "method": "product_jsonld",
-            "discoveredUrl": "https://www.lorberg.com/en-gb/article/1243/magnolia-soulangeana",
-            "discovery": "nursery_sitemap_or_observed_link",
-            "identity": "exact_full_botanical_name"
-          }
-        },
-        {
-          "plantId": "plant-da13581afa3d46",
-          "nurseryId": "lorberg",
-          "offerIds": [
-            "record-65b3c6be6306fa",
-            "record-f1336cb9b5c59d",
-            "record-6b8c29f92da6e6"
-          ],
-          "pageUrl": "https://www.lorberg.com/en-gb/article/2534/taxus-baccata",
-          "imageUrl": "https://www.lorberg.com/content/files/9863/Taxus-baccata-Aureomarginata-1200x630-proportionalbiggest.webp",
-          "matchedName": "Taxus baccata",
-          "canonicalName": "Taxus baccata",
-          "policy": {
-            "nurseryId": "lorberg",
-            "resolver": "product",
-            "fillMissing": true,
-            "pageHosts": [
-              "www.lorberg.com"
-            ],
-            "imageHosts": [
-              "www.lorberg.com"
-            ],
-            "pagePathPattern": "/en\\-gb/article/2534/taxus\\-baccata"
-          },
-          "verifiedAt": "2026-11-10T08:13:42Z",
-          "evidence": {
-            "method": "product_jsonld",
-            "discoveredUrl": "https://www.lorberg.com/en-gb/article/2534/taxus-baccata",
-            "discovery": "nursery_sitemap_or_observed_link",
-            "identity": "exact_full_botanical_name"
-          }
-        },
-        {
-          "plantId": "plant-dc12c2322be581",
-          "nurseryId": "lorberg",
-          "offerIds": [
-            "record-b407389c470611"
-          ],
-          "pageUrl": "https://www.lorberg.com/en-gb/article/155/albizia-julibrissin",
-          "imageUrl": "https://www.lorberg.com/content/files/3469/Albizia-julibrissin-1200x630-proportionalbiggest.webp",
-          "matchedName": "Albizia julibrissin",
-          "canonicalName": "Albizia julibrissin",
-          "policy": {
-            "nurseryId": "lorberg",
-            "resolver": "product",
-            "fillMissing": true,
-            "pageHosts": [
-              "www.lorberg.com"
-            ],
-            "imageHosts": [
-              "www.lorberg.com"
-            ],
-            "pagePathPattern": "/en\\-gb/article/155/albizia\\-julibrissin"
-          },
-          "verifiedAt": "2026-11-10T08:13:42Z",
-          "evidence": {
-            "method": "product_jsonld",
-            "discoveredUrl": "https://www.lorberg.com/en-gb/article/155/albizia-julibrissin",
-            "discovery": "nursery_sitemap_or_observed_link",
-            "identity": "exact_full_botanical_name"
-          }
-        },
-        {
-          "plantId": "plant-dc277e6125caf5",
-          "nurseryId": "lorberg",
-          "offerIds": [
-            "offer-pdf-4c81862a2e085a3490c4"
-          ],
-          "pageUrl": "https://www.lorberg.com/en-gb/article/2440/prunus-cerasifera-nigra",
-          "imageUrl": "https://www.lorberg.com/content/files/9607/Prunus-cerasifera-Nigra-1200x630-proportionalbiggest.webp",
-          "matchedName": "Prunus cerasifera nigra",
-          "canonicalName": "Prunus cerasifera nigra",
-          "policy": {
-            "nurseryId": "lorberg",
-            "resolver": "product",
-            "fillMissing": true,
-            "pageHosts": [
-              "www.lorberg.com"
-            ],
-            "imageHosts": [
-              "www.lorberg.com"
-            ],
-            "pagePathPattern": "/en\\-gb/article/2440/prunus\\-cerasifera\\-nigra"
-          },
-          "verifiedAt": "2026-11-10T08:13:42Z",
-          "evidence": {
-            "method": "product_jsonld",
-            "discoveredUrl": "https://www.lorberg.com/en-gb/article/2440/prunus-cerasifera-nigra",
-            "discovery": "nursery_sitemap_or_observed_link",
-            "identity": "exact_full_botanical_name"
-          }
-        },
-        {
-          "plantId": "plant-dff75bb196d8f1",
-          "nurseryId": "lorberg",
-          "offerIds": [
-            "offer-pdf-fa5f5d28792aa88fcbe1"
-          ],
-          "pageUrl": "https://www.lorberg.com/en-gb/article/2367/magnolia-kobus",
-          "imageUrl": "https://www.lorberg.com/content/files/9323/Magnolia-kobus-1200x630-proportionalbiggest.webp",
-          "matchedName": "Magnolia kobus",
-          "canonicalName": "Magnolia kobus",
-          "policy": {
-            "nurseryId": "lorberg",
-            "resolver": "product",
-            "fillMissing": true,
-            "pageHosts": [
-              "www.lorberg.com"
-            ],
-            "imageHosts": [
-              "www.lorberg.com"
-            ],
-            "pagePathPattern": "/en\\-gb/article/2367/magnolia\\-kobus"
-          },
-          "verifiedAt": "2026-11-10T08:13:42Z",
-          "evidence": {
-            "method": "product_jsonld",
-            "discoveredUrl": "https://www.lorberg.com/en-gb/article/2367/magnolia-kobus",
-            "discovery": "nursery_sitemap_or_observed_link",
-            "identity": "exact_full_botanical_name"
-          }
-        },
-        {
-          "plantId": "plant-e31efad7c4f189",
-          "nurseryId": "lorberg",
-          "offerIds": [
-            "offer-pdf-6be4124d624030c66287"
-          ],
-          "pageUrl": "https://www.lorberg.com/en-gb/article/420/alnus-spaethii",
-          "imageUrl": "https://www.lorberg.com/content/files/15246/Alnus-spaethii-20-25-5-r1-1200x630-proportionalbiggest.webp",
-          "matchedName": "Alnus spaethii",
-          "canonicalName": "Alnus spaethii",
-          "policy": {
-            "nurseryId": "lorberg",
-            "resolver": "product",
-            "fillMissing": true,
-            "pageHosts": [
-              "www.lorberg.com"
-            ],
-            "imageHosts": [
-              "www.lorberg.com"
-            ],
-            "pagePathPattern": "/en\\-gb/article/420/alnus\\-spaethii"
-          },
-          "verifiedAt": "2026-11-10T08:13:42Z",
-          "evidence": {
-            "method": "product_jsonld",
-            "discoveredUrl": "https://www.lorberg.com/en-gb/article/420/alnus-spaethii",
-            "discovery": "nursery_sitemap_or_observed_link",
-            "identity": "exact_full_botanical_name"
-          }
-        },
-        {
-          "plantId": "plant-f528ac363e5c66",
-          "nurseryId": "lorberg",
-          "offerIds": [
-            "record-a25c8fb9a16423"
-          ],
-          "pageUrl": "https://www.lorberg.com/en-gb/article/762/cornus-sanguinea-midwinter-fire",
-          "imageUrl": "https://www.lorberg.com/content/files/5297/Cornus-sanguinea-Midwinter-Fire-1200x630-proportionalbiggest.webp",
-          "matchedName": "Cornus sanguinea 'Midwinter Fire'",
-          "canonicalName": "Cornus sanguinea 'Midwinter Fire'",
-          "policy": {
-            "nurseryId": "lorberg",
-            "resolver": "product",
-            "fillMissing": true,
-            "pageHosts": [
-              "www.lorberg.com"
-            ],
-            "imageHosts": [
-              "www.lorberg.com"
-            ],
-            "pagePathPattern": "/en\\-gb/article/762/cornus\\-sanguinea\\-midwinter\\-fire"
-          },
-          "verifiedAt": "2026-11-10T08:13:42Z",
-          "evidence": {
-            "method": "product_jsonld",
-            "discoveredUrl": "https://www.lorberg.com/en-gb/article/762/cornus-sanguinea-midwinter-fire",
-            "discovery": "nursery_sitemap_or_observed_link",
-            "identity": "exact_full_botanical_name"
-          }
-        },
-        {
-          "plantId": "plant-ffdbfd76e4d96d",
-          "nurseryId": "lorberg",
-          "offerIds": [
-            "record-e2f0ce915a2dba"
-          ],
-          "pageUrl": "https://www.lorberg.com/en-gb/article/2472/quercus-palustris",
-          "imageUrl": "https://www.lorberg.com/content/files/16791/Quercus-palustris-60-70-80-90-1-r1-1200x630-proportionalbiggest.webp",
-          "matchedName": "Quercus palustris",
-          "canonicalName": "Quercus palustris",
-          "policy": {
-            "nurseryId": "lorberg",
-            "resolver": "product",
-            "fillMissing": true,
-            "pageHosts": [
-              "www.lorberg.com"
-            ],
-            "imageHosts": [
-              "www.lorberg.com"
-            ],
-            "pagePathPattern": "/en\\-gb/article/2472/quercus\\-palustris"
-          },
-          "verifiedAt": "2026-11-10T08:13:42Z",
-          "evidence": {
-            "method": "product_jsonld",
-            "discoveredUrl": "https://www.lorberg.com/en-gb/article/2472/quercus-palustris",
-            "discovery": "nursery_sitemap_or_observed_link",
-            "identity": "exact_full_botanical_name"
-          }
-        },
-        {
-          "plantId": "plant-ginkgo-biloba",
-          "nurseryId": "lorberg",
-          "offerIds": [
-            "record-b2ac6f0d4206bf",
-            "record-07b2c0e81e1be4"
-          ],
-          "pageUrl": "https://www.lorberg.com/en-gb/article/159/ginkgo-biloba",
-          "imageUrl": "https://www.lorberg.com/content/files/3482/Ginkgo-biloba-1200x630-proportionalbiggest.webp",
-          "matchedName": "Ginkgo biloba",
-          "canonicalName": "Ginkgo biloba",
-          "policy": {
-            "nurseryId": "lorberg",
-            "resolver": "product",
-            "fillMissing": true,
-            "pageHosts": [
-              "www.lorberg.com"
-            ],
-            "imageHosts": [
-              "www.lorberg.com"
-            ],
-            "pagePathPattern": "/en\\-gb/article/159/ginkgo\\-biloba"
-          },
-          "verifiedAt": "2026-11-10T08:13:42Z",
-          "evidence": {
-            "method": "product_jsonld",
-            "discoveredUrl": "https://www.lorberg.com/en-gb/article/159/ginkgo-biloba",
-            "discovery": "nursery_sitemap_or_observed_link",
-            "identity": "exact_full_botanical_name"
-          }
-        },
-        {
-          "plantId": "plant-lavandula-angustifolia",
-          "nurseryId": "lorberg",
-          "offerIds": [
-            "record-57063fc712f04f"
-          ],
-          "pageUrl": "https://www.lorberg.com/en-gb/article/1164/lavandula-angustifolia",
-          "imageUrl": "https://www.lorberg.com/content/files/6527/Lavandula-angustifolia-1200x630-proportionalbiggest.webp",
-          "matchedName": "Lavandula angustifolia",
-          "canonicalName": "Lavandula angustifolia",
-          "policy": {
-            "nurseryId": "lorberg",
-            "resolver": "product",
-            "fillMissing": true,
-            "pageHosts": [
-              "www.lorberg.com"
-            ],
-            "imageHosts": [
-              "www.lorberg.com"
-            ],
-            "pagePathPattern": "/en\\-gb/article/1164/lavandula\\-angustifolia"
-          },
-          "verifiedAt": "2026-11-10T08:13:42Z",
-          "evidence": {
-            "method": "product_jsonld",
-            "discoveredUrl": "https://www.lorberg.com/en-gb/article/1164/lavandula-angustifolia",
-            "discovery": "nursery_sitemap_or_observed_link",
-            "identity": "exact_full_botanical_name"
-          }
-        },
-        {
-          "plantId": "plant-liquidambar-styraciflua",
-          "nurseryId": "lorberg",
-          "offerIds": [
-            "record-25c08d56afbfa0",
-            "record-5ef94a83d011cd"
-          ],
-          "pageUrl": "https://www.lorberg.com/en-gb/article/1601/liquidambar-styraciflua",
-          "imageUrl": "https://www.lorberg.com/content/files/7559/Liquidambar-styraciflua-1200x630-proportionalbiggest.webp",
-          "matchedName": "Liquidambar styraciflua",
-          "canonicalName": "Liquidambar styraciflua",
-          "policy": {
-            "nurseryId": "lorberg",
-            "resolver": "product",
-            "fillMissing": true,
-            "pageHosts": [
-              "www.lorberg.com"
-            ],
-            "imageHosts": [
-              "www.lorberg.com"
-            ],
-            "pagePathPattern": "/en\\-gb/article/1601/liquidambar\\-styraciflua"
-          },
-          "verifiedAt": "2026-11-10T08:13:42Z",
-          "evidence": {
-            "method": "product_jsonld",
-            "discoveredUrl": "https://www.lorberg.com/en-gb/article/1601/liquidambar-styraciflua",
-            "discovery": "nursery_sitemap_or_observed_link",
-            "identity": "exact_full_botanical_name"
-          }
-        },
-        {
-          "plantId": "plant-quercus-robur",
-          "nurseryId": "lorberg",
-          "offerIds": [
-            "record-c4d8f0629501c3"
-          ],
-          "pageUrl": "https://www.lorberg.com/en-gb/article/1248/quercus-robur",
-          "imageUrl": "https://www.lorberg.com/content/files/6806/Quercus-robur-f-1200x630-proportionalbiggest.webp",
-          "matchedName": "Quercus robur",
-          "canonicalName": "Quercus robur",
-          "policy": {
-            "nurseryId": "lorberg",
-            "resolver": "product",
-            "fillMissing": true,
-            "pageHosts": [
-              "www.lorberg.com"
-            ],
-            "imageHosts": [
-              "www.lorberg.com"
-            ],
-            "pagePathPattern": "/en\\-gb/article/1248/quercus\\-robur"
-          },
-          "verifiedAt": "2026-11-10T08:13:42Z",
-          "evidence": {
-            "method": "product_jsonld",
-            "discoveredUrl": "https://www.lorberg.com/en-gb/article/1248/quercus-robur",
-            "discovery": "nursery_sitemap_or_observed_link",
-            "identity": "exact_full_botanical_name"
-          }
-        },
-        {
-          "plantId": "plant-quercus-rubra",
-          "nurseryId": "lorberg",
-          "offerIds": [
-            "record-172c0692f16e39"
-          ],
-          "pageUrl": "https://www.lorberg.com/en-gb/article/1340/quercus-rubra",
-          "imageUrl": "https://www.lorberg.com/content/files/7044/Quercus-rubra-1200x630-proportionalbiggest.webp",
-          "matchedName": "Quercus rubra",
-          "canonicalName": "Quercus rubra",
-          "policy": {
-            "nurseryId": "lorberg",
-            "resolver": "product",
-            "fillMissing": true,
-            "pageHosts": [
-              "www.lorberg.com"
-            ],
-            "imageHosts": [
-              "www.lorberg.com"
-            ],
-            "pagePathPattern": "/en\\-gb/article/1340/quercus\\-rubra"
-          },
-          "verifiedAt": "2026-11-10T08:13:42Z",
-          "evidence": {
-            "method": "product_jsonld",
-            "discoveredUrl": "https://www.lorberg.com/en-gb/article/1340/quercus-rubra",
-            "discovery": "nursery_sitemap_or_observed_link",
-            "identity": "exact_full_botanical_name"
-          }
-        },
-        {
-          "plantId": "plant-tilia-cordata",
-          "nurseryId": "lorberg",
-          "offerIds": [
-            "record-f8d32240673819"
-          ],
-          "pageUrl": "https://www.lorberg.com/en-gb/article/2628/tilia-cordata",
-          "imageUrl": "https://www.lorberg.com/content/files/10246/Tilia-cordata-Winter-Orange-1200x630-proportionalbiggest.webp",
-          "matchedName": "Tilia cordata",
-          "canonicalName": "Tilia cordata",
-          "policy": {
-            "nurseryId": "lorberg",
-            "resolver": "product",
-            "fillMissing": true,
-            "pageHosts": [
-              "www.lorberg.com"
-            ],
-            "imageHosts": [
-              "www.lorberg.com"
-            ],
-            "pagePathPattern": "/en\\-gb/article/2628/tilia\\-cordata"
-          },
-          "verifiedAt": "2026-11-10T08:13:42Z",
-          "evidence": {
-            "method": "product_jsonld",
-            "discoveredUrl": "https://www.lorberg.com/en-gb/article/2628/tilia-cordata",
-            "discovery": "nursery_sitemap_or_observed_link",
-            "identity": "exact_full_botanical_name"
-          }
-        },
-        {
-          "plantId": "plant-b1fc7ebad5242f",
-          "nurseryId": "smits-boomkwekerij",
-          "offerIds": [
-            "offer-pdf-7d5fbd533ef3c08889d1",
-            "offer-pdf-f0325055115eb43afff7",
-            "offer-pdf-52b0ef44ef6cd1d45ad8",
-            "offer-pdf-e9e926a0ce62df0ee5c8"
-          ],
-          "pageUrl": "https://smitsbv.nl/producten/osmanthus-burkwoodii/",
-          "imageUrl": "https://smitsbv.nl/wp-content/uploads/2026/03/89378.jpg",
-          "matchedName": "Osmanthus burkwoodii",
-          "canonicalName": "Osmanthus x burkwoodii",
-          "policy": {
-            "nurseryId": "smits-boomkwekerij",
-            "resolver": "product",
-            "fillMissing": true,
-            "pageHosts": [
-              "smitsbv.nl"
-            ],
-            "imageHosts": [
-              "smitsbv.nl"
-            ],
-            "pagePathPattern": "/producten/osmanthus\\-burkwoodii/"
-          },
-          "verifiedAt": "2026-11-10T08:13:42Z",
-          "evidence": {
-            "method": "page_primary_image",
-            "discoveredUrl": "https://smitsbv.nl/producten/osmanthus-burkwoodii/",
-            "discovery": "nursery_sitemap_or_observed_link",
-            "identity": "exact_full_botanical_name"
-          }
-        }
-      ],
+      "bindings": [],
       "pending": [
         {
           "plantId": "plant-531d204e47ccbb",
@@ -21887,88 +21282,12 @@
           "reason": "exact_product_page_not_found"
         },
         {
-          "plantId": "plant-52f7978caf4634",
-          "nurseryId": "vannucci-piante",
-          "offerIds": [
-            "record-ed9881232c1635"
-          ],
-          "reason": "candidate_not_confirmed",
-          "candidates": [
-            {
-              "url": "https://webshop.vannuccipiante.it/product/panicum-virgatum-heavy-metal/",
-              "reason": "plant_identity_mismatch"
-            },
-            {
-              "url": "https://webshop.vannuccipiante.it/product/panicum-virgatum-northwind/",
-              "reason": "plant_identity_mismatch"
-            },
-            {
-              "url": "https://webshop.vannuccipiante.it/product/panicum-virgatum-prairie-sky/",
-              "reason": "plant_identity_mismatch"
-            }
-          ]
-        },
-        {
-          "plantId": "plant-8c2ae8ac7ff3af",
-          "nurseryId": "vannucci-piante",
-          "offerIds": [
-            "record-e283bd93655b2f"
-          ],
-          "reason": "candidate_not_confirmed",
-          "candidates": [
-            {
-              "url": "https://webshop.vannuccipiante.it/product/platanus-x-acerifolia-el-gordo-p-x-hispanica-el-gordo/",
-              "reason": "plant_identity_mismatch"
-            },
-            {
-              "url": "https://webshop.vannuccipiante.it/product/platanus-x-acerifolia-p-x-hispanica-p-x-hybrida/",
-              "reason": "plant_identity_mismatch"
-            }
-          ]
-        },
-        {
-          "plantId": "plant-f15e3e2208445c",
-          "nurseryId": "vannucci-piante",
-          "offerIds": [
-            "record-bd95163436d8e7"
-          ],
-          "reason": "candidate_not_confirmed",
-          "candidates": [
-            {
-              "url": "https://webshop.vannuccipiante.it/product/liriope-muscari-monroe-white/",
-              "reason": "plant_identity_mismatch"
-            },
-            {
-              "url": "https://webshop.vannuccipiante.it/product/liriope-muscari-royal-purple/",
-              "reason": "plant_identity_mismatch"
-            }
-          ]
-        },
-        {
           "plantId": "plant-fc32b5b27e23f7",
           "nurseryId": "vannucci-piante",
           "offerIds": [
             "record-60ccf81ce9b865"
           ],
           "reason": "exact_product_page_not_found"
-        },
-        {
-          "plantId": "plant-lavandula-angustifolia",
-          "nurseryId": "vannucci-piante",
-          "offerIds": [
-            "record-600cb3ae1161cf"
-          ],
-          "reason": "candidate_not_confirmed",
-          "candidates": [
-            {
-              "url": "https://webshop.vannuccipiante.it/product/lavandula-angustifolia-edelweiss-l-x-intermedia-edelweiss/",
-              "reason": "plant_identity_mismatch"
-            },
-            {
-              "url": "https://webshop.vannuccipiante.it/product/lavandula-angustifolia-hidcote/",
-              "reason": "plant_identity_mismatch"
-            }
-          ]
         },
         {
           "plantId": "plant-384cc15e70c86c",
@@ -24702,22 +24021,6 @@
             "record-variant-f5fbf1382587a0bab5"
           ],
           "reason": "exact_product_page_not_found"
-        },
-        {
-          "plantId": "plant-acer-platanoides",
-          "nurseryId": "combinatie-mauritz",
-          "offerIds": [
-            "record-e9078274545d15",
-            "record-6bcd2403cee362",
-            "record-f2cc2bb7f96575"
-          ],
-          "reason": "candidate_not_confirmed",
-          "candidates": [
-            {
-              "url": "https://combinatiemauritz.com/laanbomen-en/acer-platanoides-mauritz-upright-zuilvormige-noorse-esdoorn-2/",
-              "reason": "plant_identity_mismatch"
-            }
-          ]
         },
         {
           "plantId": "plant-acer-platanoides-globosum",
@@ -31832,216 +31135,71 @@
           ],
           "reason": "candidate_not_confirmed",
           "checkedAt": "2026-11-09T14:52:25Z"
+        },
+        {
+          "plantId": "plant-52f7978caf4634",
+          "nurseryId": "vannucci-piante",
+          "offerIds": [
+            "record-ed9881232c1635"
+          ],
+          "reason": "candidate_not_confirmed",
+          "checkedAt": "2026-11-10T08:13:42Z"
+        },
+        {
+          "plantId": "plant-8c2ae8ac7ff3af",
+          "nurseryId": "vannucci-piante",
+          "offerIds": [
+            "record-e283bd93655b2f"
+          ],
+          "reason": "candidate_not_confirmed",
+          "checkedAt": "2026-11-10T08:13:42Z"
+        },
+        {
+          "plantId": "plant-f15e3e2208445c",
+          "nurseryId": "vannucci-piante",
+          "offerIds": [
+            "record-bd95163436d8e7"
+          ],
+          "reason": "candidate_not_confirmed",
+          "checkedAt": "2026-11-10T08:13:42Z"
+        },
+        {
+          "plantId": "plant-lavandula-angustifolia",
+          "nurseryId": "vannucci-piante",
+          "offerIds": [
+            "record-600cb3ae1161cf"
+          ],
+          "reason": "candidate_not_confirmed",
+          "checkedAt": "2026-11-10T08:13:42Z"
+        },
+        {
+          "plantId": "plant-acer-platanoides",
+          "nurseryId": "combinatie-mauritz",
+          "offerIds": [
+            "record-e9078274545d15",
+            "record-6bcd2403cee362",
+            "record-f2cc2bb7f96575"
+          ],
+          "reason": "candidate_not_confirmed",
+          "checkedAt": "2026-11-10T08:13:42Z"
         }
       ],
       "errors": [],
-      "missingPairs": 1067,
+      "missingPairs": 1041,
       "statePath": "docs/photo-discovery-state.json",
       "dryRun": false,
       "timeBudgetReached": false,
-      "confirmedPairs": 26,
+      "confirmedPairs": 0,
       "pendingPairs": 1041,
       "coverageComplete": false,
       "indexedPages": 13043,
       "queuedResources": 0,
-      "stateChanged": true,
-      "durationSeconds": 138.39
-    },
-    "download": {
-      "status": "completed",
-      "added": 41,
-      "failed": 0,
-      "requests": 26,
-      "pending": 0,
-      "sources": [
-        {
-          "plantId": "plant-9a6f4720f6fd87",
-          "nurseryId": "lorberg",
-          "status": "saved",
-          "offers": 1,
-          "localPath": "assets/biljke/photo-2e08379fcd33389a37667c8d.jpg"
-        },
-        {
-          "plantId": "plant-9e3b5ad9f052fd",
-          "nurseryId": "lorberg",
-          "status": "saved",
-          "offers": 2,
-          "localPath": "assets/biljke/photo-1be973bbb55a399bd70bb9f9.jpg"
-        },
-        {
-          "plantId": "plant-acer-palmatum",
-          "nurseryId": "lorberg",
-          "status": "saved",
-          "offers": 2,
-          "localPath": "assets/biljke/photo-7fa0349e73466d519a198187.jpg"
-        },
-        {
-          "plantId": "plant-acer-platanoides",
-          "nurseryId": "lorberg",
-          "status": "saved",
-          "offers": 2,
-          "localPath": "assets/biljke/photo-a50c88cd7b5299311b1b14aa.jpg"
-        },
-        {
-          "plantId": "plant-acer-pseudoplatanus",
-          "nurseryId": "lorberg",
-          "status": "saved",
-          "offers": 1,
-          "localPath": "assets/biljke/photo-d92eb15b233b9d916089a741.jpg"
-        },
-        {
-          "plantId": "plant-ae4e248ab385a3",
-          "nurseryId": "lorberg",
-          "status": "saved",
-          "offers": 1,
-          "localPath": "assets/biljke/photo-ff91144428a798cbfc54ca70.jpg"
-        },
-        {
-          "plantId": "plant-betula-pendula",
-          "nurseryId": "lorberg",
-          "status": "saved",
-          "offers": 4,
-          "localPath": "assets/biljke/photo-40fb40c66a0043ce08da628b.jpg"
-        },
-        {
-          "plantId": "plant-c76014c0be2fb8",
-          "nurseryId": "lorberg",
-          "status": "saved",
-          "offers": 1,
-          "localPath": "assets/biljke/photo-61d7a99399e73c5f83d5a95b.jpg"
-        },
-        {
-          "plantId": "plant-carpinus-betulus",
-          "nurseryId": "lorberg",
-          "status": "saved",
-          "offers": 2,
-          "localPath": "assets/biljke/photo-c32ce063e39551b7b896b7e7.jpg"
-        },
-        {
-          "plantId": "plant-cd7931ce209e95",
-          "nurseryId": "lorberg",
-          "status": "saved",
-          "offers": 2,
-          "localPath": "assets/biljke/photo-0bfb9a4b5392aed846f0745f.jpg"
-        },
-        {
-          "plantId": "plant-celtis-australis",
-          "nurseryId": "lorberg",
-          "status": "saved",
-          "offers": 1,
-          "localPath": "assets/biljke/photo-1a30704deb361a26b1bc2562.jpg"
-        },
-        {
-          "plantId": "plant-d32b3f49740cc5",
-          "nurseryId": "lorberg",
-          "status": "saved",
-          "offers": 1,
-          "localPath": "assets/biljke/photo-760e83b6d2aac037b04636a5.jpg"
-        },
-        {
-          "plantId": "plant-da13581afa3d46",
-          "nurseryId": "lorberg",
-          "status": "saved",
-          "offers": 3,
-          "localPath": "assets/biljke/photo-fedb1cd4c0c0238cf0319d93.jpg"
-        },
-        {
-          "plantId": "plant-dc12c2322be581",
-          "nurseryId": "lorberg",
-          "status": "saved",
-          "offers": 1,
-          "localPath": "assets/biljke/photo-f18982a50a70b70dbcebb518.jpg"
-        },
-        {
-          "plantId": "plant-dc277e6125caf5",
-          "nurseryId": "lorberg",
-          "status": "saved",
-          "offers": 1,
-          "localPath": "assets/biljke/photo-2d9e83588c2c1e13d93a88f1.jpg"
-        },
-        {
-          "plantId": "plant-dff75bb196d8f1",
-          "nurseryId": "lorberg",
-          "status": "saved",
-          "offers": 1,
-          "localPath": "assets/biljke/photo-4fbc46e55cb961ce6f0d0390.jpg"
-        },
-        {
-          "plantId": "plant-e31efad7c4f189",
-          "nurseryId": "lorberg",
-          "status": "saved",
-          "offers": 1,
-          "localPath": "assets/biljke/photo-142c6405aa6d9c923fbe54e8.jpg"
-        },
-        {
-          "plantId": "plant-f528ac363e5c66",
-          "nurseryId": "lorberg",
-          "status": "saved",
-          "offers": 1,
-          "localPath": "assets/biljke/photo-f7b1a052915774836a1ed221.jpg"
-        },
-        {
-          "plantId": "plant-ffdbfd76e4d96d",
-          "nurseryId": "lorberg",
-          "status": "saved",
-          "offers": 1,
-          "localPath": "assets/biljke/photo-5dc11e351ee27016b078d1b9.jpg"
-        },
-        {
-          "plantId": "plant-ginkgo-biloba",
-          "nurseryId": "lorberg",
-          "status": "saved",
-          "offers": 2,
-          "localPath": "assets/biljke/photo-c0bf5d57c00dda6472357b60.jpg"
-        },
-        {
-          "plantId": "plant-lavandula-angustifolia",
-          "nurseryId": "lorberg",
-          "status": "saved",
-          "offers": 1,
-          "localPath": "assets/biljke/photo-60e02a1d6fe84d5e8add90ae.jpg"
-        },
-        {
-          "plantId": "plant-liquidambar-styraciflua",
-          "nurseryId": "lorberg",
-          "status": "saved",
-          "offers": 2,
-          "localPath": "assets/biljke/photo-1b32049a85407070cfb96c29.jpg"
-        },
-        {
-          "plantId": "plant-quercus-robur",
-          "nurseryId": "lorberg",
-          "status": "saved",
-          "offers": 1,
-          "localPath": "assets/biljke/photo-6081a7480057a0e4cf4cedab.jpg"
-        },
-        {
-          "plantId": "plant-quercus-rubra",
-          "nurseryId": "lorberg",
-          "status": "saved",
-          "offers": 1,
-          "localPath": "assets/biljke/photo-21eb22e00ae84fd5a2bf742d.jpg"
-        },
-        {
-          "plantId": "plant-tilia-cordata",
-          "nurseryId": "lorberg",
-          "status": "saved",
-          "offers": 1,
-          "localPath": "assets/biljke/photo-8a81d774cbc8286782810785.jpg"
-        },
-        {
-          "plantId": "plant-b1fc7ebad5242f",
-          "nurseryId": "smits-boomkwekerij",
-          "status": "saved",
-          "offers": 4,
-          "localPath": "assets/biljke/photo-bb6eba28810f8121dac74182.jpg"
-        }
-      ],
-      "durationSeconds": 23.27
+      "stateChanged": false,
+      "durationSeconds": 0.64
     },
     "references": {
       "status": "partial",
-      "startedAt": "2026-11-10T08:16:24Z",
+      "startedAt": "2026-11-10T09:28:20Z",
       "dryRun": false,
       "requests": 1,
       "checked": 0,
@@ -32053,8 +31211,8 @@
       "skipped": 0,
       "sources": [
         {
-          "plantId": "plant-2b5ca69a45dcf3",
-          "latinName": "Acer campestre 'Elsrijk'",
+          "plantId": "plant-6891eb612d224c",
+          "latinName": "Acer campestre Elegant",
           "status": "pending",
           "reason": "api_error",
           "detail": "The public image API returned an error.",
@@ -32068,8 +31226,8 @@
       "cacheHits": 0,
       "verifiedPlants": 3,
       "remainingPlants": 616,
-      "finishedAt": "2026-11-10T08:16:24Z",
-      "durationSeconds": 0.62
+      "finishedAt": "2026-11-10T09:28:20Z",
+      "durationSeconds": 0.69
     }
   },
   "errors": [],
@@ -32077,7 +31235,7 @@
   "committed": true,
   "coverage": {
     "schemaVersion": 1,
-    "checkedAt": "2026-11-10T08:16:25Z",
+    "checkedAt": "2026-11-10T09:28:21Z",
     "status": "partial",
     "plants": 619,
     "plantsWithPhoto": 82,
@@ -44135,42 +43293,12 @@
     "refresh",
     "references"
   ],
-  "finishedAt": "2026-11-10T08:16:25Z",
+  "finishedAt": "2026-11-10T09:28:21Z",
   "timeBudgetReached": false,
   "changedFiles": [
-    "data/kataloske-stavke.json",
-    "scripts/photo-sources.json",
-    "docs/fotografije.json",
-    "docs/photo-discovery-state.json",
     "docs/reference-photo-state.json",
     "docs/photo-refresh-state.json",
     "docs/photo-coverage.json",
-    "docs/photo-pipeline-report.json",
-    "assets/biljke/photo-1a30704deb361a26b1bc2562.jpg",
-    "assets/biljke/photo-ff91144428a798cbfc54ca70.jpg",
-    "assets/biljke/photo-f7b1a052915774836a1ed221.jpg",
-    "assets/biljke/photo-f18982a50a70b70dbcebb518.jpg",
-    "assets/biljke/photo-4fbc46e55cb961ce6f0d0390.jpg",
-    "assets/biljke/photo-0bfb9a4b5392aed846f0745f.jpg",
-    "assets/biljke/photo-1b32049a85407070cfb96c29.jpg",
-    "assets/biljke/photo-5dc11e351ee27016b078d1b9.jpg",
-    "assets/biljke/photo-142c6405aa6d9c923fbe54e8.jpg",
-    "assets/biljke/photo-d92eb15b233b9d916089a741.jpg",
-    "assets/biljke/photo-bb6eba28810f8121dac74182.jpg",
-    "assets/biljke/photo-760e83b6d2aac037b04636a5.jpg",
-    "assets/biljke/photo-40fb40c66a0043ce08da628b.jpg",
-    "assets/biljke/photo-8a81d774cbc8286782810785.jpg",
-    "assets/biljke/photo-2d9e83588c2c1e13d93a88f1.jpg",
-    "assets/biljke/photo-a50c88cd7b5299311b1b14aa.jpg",
-    "assets/biljke/photo-60e02a1d6fe84d5e8add90ae.jpg",
-    "assets/biljke/photo-c0bf5d57c00dda6472357b60.jpg",
-    "assets/biljke/photo-1be973bbb55a399bd70bb9f9.jpg",
-    "assets/biljke/photo-6081a7480057a0e4cf4cedab.jpg",
-    "assets/biljke/photo-fedb1cd4c0c0238cf0319d93.jpg",
-    "assets/biljke/photo-21eb22e00ae84fd5a2bf742d.jpg",
-    "assets/biljke/photo-2e08379fcd33389a37667c8d.jpg",
-    "assets/biljke/photo-c32ce063e39551b7b896b7e7.jpg",
-    "assets/biljke/photo-61d7a99399e73c5f83d5a95b.jpg",
-    "assets/biljke/photo-7fa0349e73466d519a198187.jpg"
+    "docs/photo-pipeline-report.json"
   ]
 }
