@@ -344,7 +344,11 @@
         "Acer palmatum Seiryu",
         "Seiryu"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-80b4ff9117d73b62b0b1b4e9.jpg",
+        "sourceUrl": "https://majestictrees.co.uk/products/acer-palmatum-seiryu"
+      }
     },
     {
       "id": "plant-acer-platanoides",
@@ -993,7 +997,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-5493f09b4a0e2cf6c5152d2b.jpg",
+        "sourceUrl": "https://olddairynursery.com/products/aster-amellus-rudolf-goethe"
+      }
     },
     {
       "id": "plant-7678bcfc643713",
@@ -1203,7 +1211,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-f0daa827e18d05879cc99b8f.jpg",
+        "sourceUrl": "https://majestictrees.co.uk/products/betula-ermanii-holland"
+      }
     },
     {
       "id": "plant-208f42284d47c4",
@@ -3644,7 +3656,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-faff6434a519a739adab486f.jpg",
+        "sourceUrl": "https://majestictrees.co.uk/products/gleditsia-triacanthos-spectrum"
+      }
     },
     {
       "id": "plant-388d067861908f",
@@ -4134,7 +4150,11 @@
         "Hydrangea 'Little Lime'",
         "Hydrangea paniculata Little Lime"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-8a8011d9fd70acf18bad4f03.jpg",
+        "sourceUrl": "https://secretgardengrowers.com/products/hydrangea-paniculata-little-lime"
+      }
     },
     {
       "id": "plant-4a0054b3f08374",
@@ -5337,7 +5357,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-490fa8e0b423e405b8922de7.jpg",
+        "sourceUrl": "https://olddairynursery.com/products/ophiopogon-planiscapus-nigrescens"
+      }
     },
     {
       "id": "plant-2529f7d2d6db2b",
@@ -5382,7 +5406,11 @@
         "Osmanthus burkwoodii BALL",
         "Osmanthus burkwoodii UMBRELLA"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-dc8710a4cce2979f627ddcc2.jpg",
+        "sourceUrl": "https://majestictrees.co.uk/products/osmanthus-x-burkwoodii"
+      }
     },
     {
       "id": "plant-fb195caca9a6f0",
@@ -5558,7 +5586,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-26a3c11e09845c14b0561125.jpg",
+        "sourceUrl": "https://secretgardengrowers.com/products/pennisetum-orientale"
+      }
     },
     {
       "id": "plant-af43a57be76efb",
@@ -5648,7 +5680,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-1bdf2f22d40f15fe05d6bd70.jpg",
+        "sourceUrl": "https://olddairynursery.com/products/persicaria-bistorta"
+      }
     },
     {
       "id": "plant-8dfcdbd9a06e2e",
@@ -6332,7 +6368,11 @@
         "Prunus cerasifera 'Pissardi'",
         "Prunus pissardii"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-82e39fbc9547215610ebc63a.jpg",
+        "sourceUrl": "https://majestictrees.co.uk/products/prunus-cerasifera-pissardii"
+      }
     },
     {
       "id": "plant-512dcc509b276f",

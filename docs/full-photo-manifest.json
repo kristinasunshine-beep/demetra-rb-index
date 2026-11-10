@@ -1439,12 +1439,12 @@
       ],
       "imagePathPrefixes": null,
       "license": "existing_catalogue_source_policy",
+      "taxonKey": "cotoneaster x suecicus coral beauty",
       "latinName": "Cotoneaster x suecicus 'Coral Beauty'",
       "image": "assets/biljke/reference-00c3461d712e824d5b955f9e.jpg",
       "sha256": "00c3461d712e824d5b955f9e98278488c065441008be4c10fee7590a131579be",
-      "checkedAt": "2026-11-10T10:03:40Z",
-      "matchLevel": "exact",
-      "taxonKey": "cotoneaster x suecicus coral beauty"
+      "checkedAt": "2026-11-10T14:43:41Z",
+      "matchLevel": "exact"
     },
     "plant-30e1ad5d1f2fc3": {
       "provider": "other_catalogue_nursery",
@@ -4456,25 +4456,25 @@
     },
     "plant-955c2408fc889c": {
       "provider": "other_catalogue_nursery",
-      "nurseryId": "innocenti-mangoni",
-      "imageUrl": "https://innocentiemangonipiante.it/wp-content/uploads/2023/10/1610699208.jpg",
-      "sourceUrl": "https://innocentiemangonipiante.it/en/gleditsia-triacanthos-spectrum/",
+      "nurseryId": "photo-majestictrees-co-uk",
+      "imageUrl": "https://majestictrees.co.uk/cdn/shop/files/11833-gleditsia-triacanthos-spectrum-mainim-600x600.jpg?v=1753343965&width=1920",
+      "sourceUrl": "https://majestictrees.co.uk/products/gleditsia-triacanthos-spectrum",
       "matchedName": "Gleditsia triacanthos 'Spectrum'",
       "identityEvidence": {
         "method": "product_jsonld",
         "canonicalName": "Gleditsia triacanthos 'Spectrum'"
       },
       "imageHosts": [
-        "innocentiemangonipiante.it"
+        "majestictrees.co.uk"
       ],
       "imagePathPrefixes": null,
       "license": "existing_catalogue_source_policy",
+      "taxonKey": "gleditsia triacanthos spectrum",
       "latinName": "Gleditsia triacanthos 'Spectrum'",
-      "image": "assets/biljke/reference-e8393acc79b9753eaa56589b.jpg",
-      "sha256": "e8393acc79b9753eaa56589b9afb709d943263038654d77624e801416a7f265f",
-      "checkedAt": "2026-11-10T10:11:54Z",
-      "matchLevel": "exact",
-      "taxonKey": "gleditsia triacanthos spectrum"
+      "image": "assets/biljke/reference-faff6434a519a739adab486f.jpg",
+      "sha256": "faff6434a519a739adab486f99110d707b709915ee80bca7ed67f479721d4d2a",
+      "checkedAt": "2026-11-10T14:44:02Z",
+      "matchLevel": "exact"
     },
     "plant-9579a4e5d17e48": {
       "provider": "reviewed_primary_nursery",
@@ -10378,6 +10378,204 @@
       "image": "assets/biljke/reference-df693df20b9b28de7cb6fef7.jpg",
       "sha256": "df693df20b9b28de7cb6fef7a9ca3e67c18ae6b0abefbb2c3bc3554085c6708b",
       "checkedAt": "2026-11-10T11:35:25Z",
+      "matchLevel": "exact"
+    },
+    "plant-a2a94fa0e6b6b7": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "photo-olddairynursery-com",
+      "imageUrl": "https://olddairynursery.com/cdn/shop/files/Asteramellus_RudolfGoethe__latesummerblooms_OldDairyNursery_DSCF3992.jpg?v=1787859562",
+      "sourceUrl": "https://olddairynursery.com/products/aster-amellus-rudolf-goethe",
+      "matchedName": "Aster amellus 'Rudolf Goethe'",
+      "identityEvidence": {
+        "method": "product_og_image",
+        "canonicalName": "Aster amellus 'Rudolf Goethe'"
+      },
+      "imageHosts": [
+        "olddairynursery.com"
+      ],
+      "imagePathPrefixes": null,
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "aster amellus rudolf goethe",
+      "latinName": "Aster amellus 'Rudolf Goethe'",
+      "image": "assets/biljke/reference-5493f09b4a0e2cf6c5152d2b.jpg",
+      "sha256": "5493f09b4a0e2cf6c5152d2bd1bc7bf4dc7a720e827eb59251878f07535c572c",
+      "checkedAt": "2026-11-10T14:43:16Z",
+      "matchLevel": "exact"
+    },
+    "plant-cc21d9ee76f153": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "photo-majestictrees-co-uk",
+      "imageUrl": "https://majestictrees.co.uk/cdn/shop/files/10044-acer-palm-seiryu-mainim-600x600.jpg?v=1694165784&width=1920",
+      "sourceUrl": "https://majestictrees.co.uk/products/acer-palmatum-seiryu",
+      "matchedName": "Acer palmatum 'Seiryu'",
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Acer palmatum 'Seiryu'"
+      },
+      "imageHosts": [
+        "majestictrees.co.uk"
+      ],
+      "imagePathPrefixes": null,
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "acer palmatum seiryu",
+      "latinName": "Acer palmatum 'Seiryu'",
+      "image": "assets/biljke/reference-80b4ff9117d73b62b0b1b4e9.jpg",
+      "sha256": "80b4ff9117d73b62b0b1b4e997685508fc0bbd668933d9c39e1d35058101b2f9",
+      "checkedAt": "2026-11-10T14:43:16Z",
+      "matchLevel": "exact"
+    },
+    "plant-12d4512c15f964": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "photo-majestictrees-co-uk",
+      "imageUrl": "https://majestictrees.co.uk/cdn/shop/files/10089-betula-ermanii-holland-othr01-600x600.jpg?v=1716453360&width=1920",
+      "sourceUrl": "https://majestictrees.co.uk/products/betula-ermanii-holland",
+      "matchedName": "Betula ermanii 'Holland'",
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Betula ermanii 'Holland'"
+      },
+      "imageHosts": [
+        "majestictrees.co.uk"
+      ],
+      "imagePathPrefixes": null,
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "betula ermanii holland",
+      "latinName": "Betula ermanii 'Holland'",
+      "image": "assets/biljke/reference-f0daa827e18d05879cc99b8f.jpg",
+      "sha256": "f0daa827e18d05879cc99b8fe0df1bc5139636250ed77237d49772f3cad6aa69",
+      "checkedAt": "2026-11-10T14:43:23Z",
+      "matchLevel": "exact"
+    },
+    "plant-8ff82317ab73d4": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "photo-secretgardengrowers-com",
+      "imageUrl": "https://secretgardengrowers.com/cdn/shop/products/HydrangeapaniculataLittleLime.jpg?v=1676083973&width=178",
+      "sourceUrl": "https://secretgardengrowers.com/products/hydrangea-paniculata-little-lime",
+      "matchedName": "Hydrangea paniculata 'Little Lime'",
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Hydrangea paniculata 'Little Lime'"
+      },
+      "imageHosts": [
+        "secretgardengrowers.com"
+      ],
+      "imagePathPrefixes": null,
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "hydrangea paniculata little lime",
+      "latinName": "Hydrangea paniculata 'Little Lime'",
+      "image": "assets/biljke/reference-8a8011d9fd70acf18bad4f03.jpg",
+      "sha256": "8a8011d9fd70acf18bad4f03d0560e496d6ef2bd320c226806dce881bf22710c",
+      "checkedAt": "2026-11-10T14:44:05Z",
+      "matchLevel": "exact"
+    },
+    "plant-98da30d6cdab1b": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "photo-olddairynursery-com",
+      "imageUrl": "https://olddairynursery.com/cdn/shop/files/798px-Ophiopogon_planiscapus__Nigrescens__kz01.jpg?v=1724101612",
+      "sourceUrl": "https://olddairynursery.com/products/ophiopogon-planiscapus-nigrescens",
+      "matchedName": "Ophiopogon planiscapus 'Nigrescens'",
+      "identityEvidence": {
+        "method": "product_og_image",
+        "canonicalName": "Ophiopogon planiscapus 'Nigrescens'"
+      },
+      "imageHosts": [
+        "olddairynursery.com"
+      ],
+      "imagePathPrefixes": null,
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "ophiopogon planiscapus nigrescens",
+      "latinName": "Ophiopogon planiscapus 'Nigrescens'",
+      "image": "assets/biljke/reference-490fa8e0b423e405b8922de7.jpg",
+      "sha256": "490fa8e0b423e405b8922de7ec19e38e99e06ce9e0ecc63ad3e8f051fbe5e36e",
+      "checkedAt": "2026-11-10T14:44:18Z",
+      "matchLevel": "exact"
+    },
+    "plant-b4ef8b5da580a2": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "photo-secretgardengrowers-com",
+      "imageUrl": "https://secretgardengrowers.com/cdn/shop/files/PXL-20240731_003037618.jpg?v=1722455433&width=3072",
+      "sourceUrl": "https://secretgardengrowers.com/products/pennisetum-orientale",
+      "matchedName": "Pennisetum orientale",
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Pennisetum orientale"
+      },
+      "imageHosts": [
+        "secretgardengrowers.com"
+      ],
+      "imagePathPrefixes": null,
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "cenchrus orientalis",
+      "latinName": "Pennisetum orientale",
+      "image": "assets/biljke/reference-26a3c11e09845c14b0561125.jpg",
+      "sha256": "26a3c11e09845c14b056112589a7115ed89fb0d63ae1a2684b8b92e8e9f0c346",
+      "checkedAt": "2026-11-10T14:44:19Z",
+      "matchLevel": "exact"
+    },
+    "plant-a673ae8c07c8a4": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "photo-olddairynursery-com",
+      "imageUrl": "https://olddairynursery.com/cdn/shop/files/Schlangen-Knoterich__Bistorta_officinalis.jpg?v=1733673180",
+      "sourceUrl": "https://olddairynursery.com/products/persicaria-bistorta",
+      "matchedName": "Persicaria bistorta",
+      "identityEvidence": {
+        "method": "product_og_image",
+        "canonicalName": "Persicaria bistorta"
+      },
+      "imageHosts": [
+        "olddairynursery.com"
+      ],
+      "imagePathPrefixes": null,
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "persicaria bistorta",
+      "latinName": "Persicaria bistorta",
+      "image": "assets/biljke/reference-1bdf2f22d40f15fe05d6bd70.jpg",
+      "sha256": "1bdf2f22d40f15fe05d6bd703826ffd2c698bd485b78c91d46473b876d681329",
+      "checkedAt": "2026-11-10T14:44:20Z",
+      "matchLevel": "exact"
+    },
+    "plant-b1fc7ebad5242f": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "photo-majestictrees-co-uk",
+      "imageUrl": "https://majestictrees.co.uk/cdn/shop/files/10990-osmanthus-burkwoodii-mainim-600x600.jpg?v=1693761710&width=1920",
+      "sourceUrl": "https://majestictrees.co.uk/products/osmanthus-x-burkwoodii",
+      "matchedName": "Osmanthus x burkwoodii",
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Osmanthus x burkwoodii"
+      },
+      "imageHosts": [
+        "majestictrees.co.uk"
+      ],
+      "imagePathPrefixes": null,
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "osmanthus x burkwoodii",
+      "latinName": "Osmanthus x burkwoodii",
+      "image": "assets/biljke/reference-dc8710a4cce2979f627ddcc2.jpg",
+      "sha256": "dc8710a4cce2979f627ddcc2cabe71b0f745fab14e03a939a45183dbadb10fda",
+      "checkedAt": "2026-11-10T14:44:22Z",
+      "matchLevel": "exact"
+    },
+    "plant-ce3fc8d22cadc1": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "photo-majestictrees-co-uk",
+      "imageUrl": "https://majestictrees.co.uk/cdn/shop/files/10393-prunus-cerasifera-pissardii-mainim-600x600.jpg?v=1782393870&width=1920",
+      "sourceUrl": "https://majestictrees.co.uk/products/prunus-cerasifera-pissardii",
+      "matchedName": "Prunus cerasifera 'Pissardii'",
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Prunus cerasifera 'Pissardii'"
+      },
+      "imageHosts": [
+        "majestictrees.co.uk"
+      ],
+      "imagePathPrefixes": null,
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "prunus cerasifera pissardii",
+      "latinName": "Prunus cerasifera 'Pissardii'",
+      "image": "assets/biljke/reference-82e39fbc9547215610ebc63a.jpg",
+      "sha256": "82e39fbc9547215610ebc63a9330343212c055e26b5301a1bc00ed73ffc30bb5",
+      "checkedAt": "2026-11-10T14:44:37Z",
       "matchLevel": "exact"
     }
   },

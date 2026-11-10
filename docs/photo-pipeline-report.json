@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "status": "partial",
-  "requests": 188,
+  "requests": 646,
   "workers": 8,
   "events": [
     {
@@ -12,11 +12,11 @@
   ],
   "coverage": {
     "schemaVersion": 2,
-    "checkedAt": "2026-11-10T11:35:34Z",
+    "checkedAt": "2026-11-10T14:45:17Z",
     "status": "partial",
     "plants": 619,
     "plantsInventoried": 619,
-    "plantsWithPhoto": 456,
+    "plantsWithPhoto": 463,
     "plantsWithoutPhoto": [
       {
         "plantId": "plant-ee364e988134ba",
@@ -33,10 +33,6 @@
       {
         "plantId": "plant-eac4a83d81ce66",
         "latinName": "Acer palmatum 'Disectum'"
-      },
-      {
-        "plantId": "plant-cc21d9ee76f153",
-        "latinName": "Acer palmatum 'Seiryu'"
       },
       {
         "plantId": "plant-ea9d1ba6a468c5",
@@ -57,10 +53,6 @@
       {
         "plantId": "plant-631cbe20406538",
         "latinName": "Anemone hupehensis 'Praecox'"
-      },
-      {
-        "plantId": "plant-a2a94fa0e6b6b7",
-        "latinName": "Aster amellus 'Rudolf Goethe'"
       },
       {
         "plantId": "plant-7678bcfc643713",
@@ -319,10 +311,6 @@
         "latinName": "Ginkgo biloba 'Ohatsuki'"
       },
       {
-        "plantId": "plant-955c2408fc889c",
-        "latinName": "Gleditsia triacanthos 'Spectrum'"
-      },
-      {
         "plantId": "plant-d1062b9945f832",
         "latinName": "Hedera helix 'Erecta'"
       },
@@ -361,10 +349,6 @@
       {
         "plantId": "plant-73234c6f4f2e5d",
         "latinName": "Hosta sieboldiana 'Elegance'"
-      },
-      {
-        "plantId": "plant-8ff82317ab73d4",
-        "latinName": "Hydrangea paniculata 'Little Lime'"
       },
       {
         "plantId": "plant-4ae8a353cc72d2",
@@ -443,10 +427,6 @@
         "latinName": "Nepeta fastigiata"
       },
       {
-        "plantId": "plant-98da30d6cdab1b",
-        "latinName": "Ophiopogon planiscapus 'Nigrescens'"
-      },
-      {
         "plantId": "plant-6114660f69e4aa",
         "latinName": "Pennisetum alopecuroides 'Litttle Bunny'"
       },
@@ -455,20 +435,12 @@
         "latinName": "Pennisetum alopecuroides 'Redhead'"
       },
       {
-        "plantId": "plant-b4ef8b5da580a2",
-        "latinName": "Pennisetum orientale"
-      },
-      {
         "plantId": "plant-af43a57be76efb",
         "latinName": "Pennisetum orientale 'Tall Tails'"
       },
       {
         "plantId": "plant-7b646392cc2b04",
         "latinName": "Persicaria amplexicaulis 'Summer Dance'"
-      },
-      {
-        "plantId": "plant-a673ae8c07c8a4",
-        "latinName": "Persicaria bistorta"
       },
       {
         "plantId": "plant-d5b3484c0630a1",
@@ -671,9 +643,9 @@
         "latinName": "Vinca minor ralph shugert"
       }
     ],
-    "coveragePercent": 73.67,
+    "coveragePercent": 74.8,
     "activeOffers": 2948,
-    "remainingOffers": 277
+    "remainingOffers": 236
   },
   "nonPhotoDataUnchanged": true
 }
