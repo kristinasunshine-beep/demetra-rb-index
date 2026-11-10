@@ -57,6 +57,29 @@ UNKNOWN_CODES = re.compile(r'(?<![A-Za-z])(?:CG|KL|DRKL|mDb|w\.b\.)(?![A-Za-z])'
 LORBERG_LEGEND = 'https://www.lorberg.com/en-gb/list-of-abbreviations'
 DUTCH_LEGEND = 'https://www.boomkwekerij-bogaert.be/malus-toringo-brouwers-beauty-10-12-hoogstam-wortelgoed'
 CONTAINER_LEGEND = 'https://www.wykehammatureplants.co.uk/help-advice/caring-for-your-plants/root-condition-explained/'
+ARBOR_LEGEND = 'https://www.arbor.be/faq'
+TREE_SIZE_LEGEND = 'https://www.boomkwekerij-debruyn.com/en/advies/boomvormen/'
+# These taxonomic groups are used only together with a verified nursery row,
+# a single size expression and the supplier's plant-form/packing grammar.
+# Spreading/topiary/grafted forms are excluded below: their size can mean
+# crown width or clear-stem height instead of the whole plant's height.
+UPRIGHT_CONIFER_GENERA = {'abies', 'cedrus', 'chamaecyparis', 'cryptomeria',
+    'cupressus', 'cupressocyparis', 'larix', 'metasequoia', 'picea', 'pinus',
+    'pseudotsuga', 'sequoiadendron', 'taxodium', 'taxus', 'thuja'}
+SHRUB_GENERA = {'abelia', 'berberis', 'buddleia', 'buddleja', 'callicarpa',
+    'caryopteris', 'chimonanthus', 'cotinus', 'deutzia', 'elaeagnus', 'fargesia',
+    'hamamelis', 'hammamelis', 'heptacodium', 'hibiscus', 'hydrangea', 'hypericum',
+    'kolkwitzia', 'lavandula', 'ligustrum', 'lonicera', 'osmanthus', 'perovskia',
+    'philadelphus', 'phyllostachys', 'photinia', 'physocarpus', 'pleioblastus',
+    'potentilla', 'punica', 'ribes', 'sarcococca', 'spiraea', 'syringa', 'viburnum',
+    'weigela'}
+SPECIAL_FORM = re.compile(r'\b(?:STD|HO|HS|HST|standard|hoogstam|STEM|STH|STAM|'
+    r'BALL|PALLA|GLOBE|GÖMB|CUBE|BOX|CONE|SPIRAL|PYRAMID|BEEHIVE|BONSAI|BONZAI|'
+    r'NIWAKI|UMBRELLA|SCHIRM|NATURSCHIRM|ROOF|PLEACHED|SCREEN|ARCH|CLOUD|'
+    r'diameter|prečnik|precnik|StU|STAMMUMFANG)(?=\b|\d)', FLAGS)
+SPREADING_TAXON = re.compile(r'\b(?:mugo|watereri|brepo|breppo|nana|danica|'
+    r'globosa|globe|horizontalis|repens|prostrata|kelsey|nikko|maigrün|maigrun|'
+    r'compacta|compactum|compactus|coral beauty|parkteppich|eichholz|skogholm)\b', FLAGS)
 # These rules interpret the markings in the archived row. They do not fetch
 # dimensions, approximate sizes, current availability or prices from the web.
 SUPPLIER_ROOT_CODES = {
@@ -138,13 +161,25 @@ def guard_reason(offer, text):
         return 'record_not_active', 'Zapis zahteva proveru ili je zamenjen preciznijim zapisom.'
     if src.get('multipleVariants') or ' | ' in text:
         return 'multiple_variants', 'Parametri više varijanti ne prenose se u jedan zajednički panel.'
-    if any(s.get('recordRole') == 'requested_with_supplier_note' for s in specs if isinstance(s, dict)):
-        return 'requested_with_supplier_alternative', 'Mere tražene biljke nisu potvrđene za ponuđenu alternativu.'
-    if src.get('recordRole') in ('requested_replaced', 'unresolved_taxon_mapping', 'ambiguous_replacement'):
-        return 'unresolved_source_role', 'Opis sadrži zamenu ili nepotvrđenu vezu vrste.'
     price_ev = offer.get('priceEvidence') or {}
+    # The migration can explicitly keep a request as its own unpriced row.
+    # It must match the archived request exactly; this never lends requested
+    # measurements to a priced supplier alternative.
+    sole_spec = specs[0] if len(specs) == 1 and isinstance(specs[0], dict) else {}
+    requested_description = clean(price_ev.get('requestedDescription') or
+                                  src.get('requestedDescription') or sole_spec.get('requestedDescription'))
+    requested_only = (src.get('parameterRole') == 'requested' and
+                      src.get('archiveVerified') is True and len(specs) <= 1 and
+                      offer.get('price') is None and
+                      bool(requested_description) and text == requested_description)
+    if requested_only and re.search(r'\bAcer\s+\w+.*\bAcer\s+\w+', text, FLAGS):
+        return 'unresolved_source_role', 'Izvorni zahtev sadrži dva naziva Acer; mere nisu dodeljene jednoj biljci bez potvrde zamene.'
+    if not requested_only and any(s.get('recordRole') == 'requested_with_supplier_note' for s in specs if isinstance(s, dict)):
+        return 'requested_with_supplier_alternative', 'Mere tražene biljke nisu potvrđene za ponuđenu alternativu.'
+    if not requested_only and src.get('recordRole') in ('requested_replaced', 'unresolved_taxon_mapping', 'ambiguous_replacement'):
+        return 'unresolved_source_role', 'Opis sadrži zamenu ili nepotvrđenu vezu vrste.'
     supplier_note = clean(price_ev.get('supplierNotes') or price_ev.get('supplierNote'))
-    if supplier_note and price_ev.get('requestedDescription') and not price_ev.get('replacementApplied'):
+    if not requested_only and supplier_note and price_ev.get('requestedDescription') and not price_ev.get('replacementApplied'):
         # A packaging-only reply applies to the named row. A new numeric size,
         # stem dimension, name, or alternative does not confirm requested sizes.
         if not re.fullmatch(r'(?:RB|WRB|BR|CLT|CONT|CG|KL|mDb|w\.b\.)[ .]*', supplier_note, FLAGS):
@@ -184,6 +219,119 @@ def root_equivalent(a, b):
     return category(a) == category(b)
 
 
+def archived_taxon(offer, text):
+    """Prefer a taxon actually printed in this source, never a search alias."""
+    src, price = offer.get('sourceEvidence') or {}, offer.get('priceEvidence') or {}
+    for value in (offer.get('sourceLatinName'), price.get('offeredName'),
+                  src.get('sourceLatinName'), price.get('rawName'), src.get('rawName'),
+                  text):
+        value = clean(value)
+        value = re.sub(r'^(?:Product|PONUĐENO|Requested|Offered)\s*:\s*', '', value, flags=FLAGS)
+        if re.match(r'^[A-Za-zÀ-ž]+\s+[A-Za-zÀ-ž\'"‘’]', value):
+            return re.split(r';|\b(?:Size|Height|Circums)\s*:', value, maxsplit=1, flags=FLAGS)[0].strip()
+    return ''
+
+
+def semantic_dimensions(offer, text, candidate, candidates, additional):
+    """Map single nursery size classes with form/taxon/source evidence.
+
+    A plain range in an unknown supplier remains unclassified. Each rule
+    below combines the verified archived row with a particular supplier's
+    size-column/product grammar. Numeric size alone never selects an axis.
+    """
+    nursery = offer.get('nurseryId', '')
+    source = source_reference(offer)
+    filename = source.get('sourceFile', '')
+    taxon = archived_taxon(offer, text)
+    genus = taxon.split()[0].casefold() if taxon else ''
+    range_only = rf'{NUMBER}\s*[-–—/]\s*{NUMBER}'
+    expression = rf'(?:{range_only}\s*\+?|{NUMBER}\s*\+|{NUMBER}\s*(?:mm|cm|m))(?:\s*(?:mm|cm|m))?'
+    found = list(re.finditer(rf'(?<![\w.,])(?P<size>{expression})(?![\w])', text, FLAGS))
+    known = [normalized_measure(v['value']) for vs in candidates.values() for v in vs]
+    known += [normalized_measure(offer.get(f)) for f in FIELDS if not is_blank(offer.get(f))]
+    known += [normalized_measure(v['value']) for v in additional]
+    remaining = [m for m in found if not any(normalized_measure(m['size']) in v for v in known)]
+    # Requested-and-offered text is handled by the source-role migration.
+    # Merely recognizing a form in its reply must not promote the request's
+    # old size to a parameter of the supplier's replacement.
+    if re.search(r';\s*PONUĐENO\s*:', text, FLAGS):
+        return
+    has_multiple_axes = bool(re.search(r'\d\s*[x×]\s*\d', text, FLAGS))
+
+    def add(field, match, rule, why, legend=TREE_SIZE_LEGEND, value=None):
+        value = format_size(value if value is not None else match['size'])
+        candidate(field, value, match.group(), rule,
+                  unitStatus='stated' if re.search(r'(?:mm|cm|m)$', value, FLAGS) else 'not_stated',
+                  interpretation=why, interpretationSource=legend,
+                  sourceTaxon=taxon, sourceGrammar=filename)
+
+    # The Serbian tender prints the tree's girth first, then Hxxx and/or
+    # "standard". The source scan was checked; a slash is not a height/width
+    # separator in these rows. Girth remains independent of overall height.
+    if nursery == 'rasadnik-zica' and filename == 'Demetra za tender cene.pdf':
+        if len(remaining) == 1 and (re.search(r'\bstandard\b', text, FLAGS) or candidates['height']):
+            m = remaining[0]
+            if re.fullmatch(range_only + r'(?:\s*cm)?', m['size'], FLAGS):
+                add('circumference', m, 'zica_tender_girth_before_height_or_standard',
+                    'Obim je prva mera u izvornom opisu standardnog stabla; ukupna visina je zasebno označena sa H.')
+        return
+
+    # Directly labelled plant forms determine the axis, without a numeric
+    # threshold. Only one otherwise unclaimed size can be promoted this way.
+    if len(remaining) == 1 and nursery in ('arbor', 'combinatie-mauritz', 'volentis',
+                                          'lorberg', 'innocenti-mangoni'):
+        m = remaining[0]
+        form_text = re.sub(r"'[^']*'|\"[^\"]*\"", '', text)
+        form = re.search(r'\b(?:MULTI[ -]*ST(?:EM|EAM)(?:MED)?|MSTEM|MEERSTAMMIG|BUSH|STR|SPECIMEN|SOLITAIRE|SOLITAIR)\b', form_text, FLAGS)
+        if form and not SPECIAL_FORM.search(form_text) and not has_multiple_axes:
+            if not candidates['height'] and is_blank(offer.get('height')):
+                add('height', m, 'single_size_of_explicit_shrub_multistem_or_specimen',
+                    'Jedina neoznačena veličina pripada izričito navedenoj žbunastoj, višestablastoj ili soliternoj formi.')
+                return
+
+    # Exclude crown shapes, clear stem dimensions, spread-prone taxa and
+    # multi-axis descriptions before interpreting a natural plant's size.
+    if (not taxon or len(remaining) != 1 or SPECIAL_FORM.search(text) or
+            SPREADING_TAXON.search(taxon) or re.search(r'\b(?:FTHD?|feathered|Bev\.?)\b', text, FLAGS) or
+            has_multiple_axes):
+        return
+    m = remaining[0]
+    if candidates['height'] or not is_blank(offer.get('height')):
+        return
+    is_conifer = genus in UPRIGHT_CONIFER_GENERA
+    is_shrub = (genus in SHRUB_GENERA or
+                bool(re.match(r'(?:Cornus\s+(?:alba|sanguinea|stolonifera|kousa|florida)|'
+                              r'Euonymus\s+(?:alatus|japonicus)|Prunus\s+(?:laurocerasus|lusitanica)|'
+                              r'Acer\s+(?:palmatum|japonicum))\b', taxon, FLAGS)))
+    packing = bool(re.search(r'\b(?:WRB|RB|BR|KL|DRKL|CG|CONT|WOODBOX|AIRPOT|'
+                             r'(?:CLT\s*\.?|C|P)\s*\d+(?:[.,]\d+)?L?)\b', text, FLAGS))
+    if nursery == 'volentis' and (is_conifer or is_shrub) and packing:
+        # Volentis's PDF Size column distinguishes HS/FTH tree grades from
+        # the natural shrub/conifer height followed by its root condition.
+        add('height', m, 'volentis_natural_conifer_or_shrub_size_column',
+            'Izvorna Volentis Size kolona za prirodnu formu četinara/žbuna daje visinsku klasu uz pakovanje; HS/FTH i oblikovane forme su isključene.', DUTCH_LEGEND)
+    elif nursery == 'arbor' and (is_conifer or is_shrub) and packing:
+        add('height', m, 'arbor_natural_conifer_or_shrub_before_packaging',
+            'Jedina mera prirodne forme četinara/žbuna u Arbor Product redu je visinska klasa; saksija je zasebno kodirana, bez STD i oblikovane forme.', ARBOR_LEGEND)
+    elif nursery == 'combinatie-mauritz' and (is_conifer or is_shrub):
+        source_context = filename in ('1. Offer for trees.xlsx', 'Kopie van Shrubs perrenials.xlsx',
+                                     'special stocklist Demetra.xlsx')
+        source_context |= bool(re.search(r'(?:Izvorna oznaka|Suggested size|Size)\s*:', text, FLAGS))
+        if source_context or packing:
+            add('height', m, 'mauritz_natural_conifer_or_shrub_size_column',
+                'Veličina prirodnog četinara/žbuna izdvojena je iz Size/specifikacije arhivskog reda; poseban obim i oblikovane forme nisu pretpostavljeni.', DUTCH_LEGEND)
+    elif nursery == 'lorberg' and is_shrub and filename == 'CENOVNIK-LORBERG.xlsx':
+        add('height', m, 'lorberg_natural_shrub_single_dimension',
+            'Jednostruka veličina prirodnog žbuna/četinara u koloni DIMENZIJE tumači se po Lorberg visinskoj klasi; složene i oblikovane dimenzije su isključene.', LORBERG_LEGEND)
+    elif nursery in ('innocenti-mangoni', 'vannucci-piante') and is_shrub and packing:
+        add('height', m, 'italian_natural_shrub_size_with_container',
+            'Jedina mera prirodnog žbuna u arhivskoj ponudi stoji uz odvojenu oznaku kontejnera/busena; oblikovane forme su isključene.')
+    elif nursery == 'willaert' and filename == 'Kopie van Offer inquiry 110925.xlsx':
+        if re.search(r'\d\s*(?:L|GAL)\s+' + re.escape(m.group()) + r'\s*$', text, FLAGS) and re.search(r'mm$', m['size'], FLAGS):
+            add('height', m, 'willaert_project_plant_size_after_container_volume',
+                'U izvornom projektnom redu Willaert posle zasebne zapremine saksije sledi visina sadnice izražena u mm; izvorna jedinica ostaje ista.')
+
+
 def supplier_parameters(offer, text, candidate, additional, unresolved):
     """Read supplier grammar and retain dimensions of specialised forms.
 
@@ -209,7 +357,7 @@ def supplier_parameters(offer, text, candidate, additional, unresolved):
 
     # Dutch form markers identify the measurement, including glued 25-30HS.
     if nursery in ('combinatie-mauritz', 'volentis'):
-        for m in re.finditer(rf'(?<![\w])(?P<size>{range_only})\s*(?:HO|HS|HST|hoogstam)(?![A-Za-z])', text, FLAGS):
+        for m in re.finditer(rf'(?<![\w])(?P<size>{range_only})\s*(?:HO|HS|HST|STD|standard|hoogstam)(?![A-Za-z])', text, FLAGS):
             add('circumference', m['size'], m.group(), 'dutch_standard_girth_class', DUTCH_LEGEND)
         for m in re.finditer(rf'(?<!\w)(?:MULTI[ -]*STEM(?:MED)?|MSTEM|MS|MEERSTAMMIG)\s+(?P<size>{measure})(?:\s*(?P<unit>cm|m))?(?![\w])', text, FLAGS):
             add('height', m['size'] + (' ' + m['unit'] if m['unit'] else ''), m.group(), 'dutch_multistem_height_class', DUTCH_LEGEND)
@@ -246,12 +394,24 @@ def supplier_parameters(offer, text, candidate, additional, unresolved):
             if m:
                 before = text[:m.start()]
                 if not re.search(r'(?:br\.?|Sth\.?|KA|[x×])\s*$', before, FLAGS):
-                    add('height', m['size'], m.group(), 'lorberg_solitary_final_height', LORBERG_LEGEND)
+                    src = offer.get('sourceEvidence') or {}
+                    photo_attachment = (src.get('extraction') == 'archive_filename' or
+                                        src.get('recordRole') == 'photo_attachment_description' or
+                                        bool(re.search(r'\.(?:jpe?g|png|webp|tiff?)$', source.get('sourceFile', ''), FLAGS)))
+                    if photo_attachment and re.search(r'\b(?:Schirm|Naturschirm)\b', text, FLAGS):
+                        # A photo filename gives the canopy form, but does
+                        # not establish whether its bare size is height or
+                        # width. Explicit H/height labels are parsed above.
+                        if not any(pattern.search(text) for _, pattern in PATTERNS['height']):
+                            extra('Dimenzije oblikovane forme', format_size(m['size']), m.group(),
+                                  'lorberg_shaped_photo_size_without_axis')
+                    else:
+                        add('height', m['size'], m.group(), 'lorberg_solitary_final_height', LORBERG_LEGEND)
 
     # Arbor's explicit STD and MULTISTEM grammar; special topiary dimensions
     # are not mislabelled as the whole plant's height.
     if nursery == 'arbor':
-        for m in re.finditer(rf'(?<![\w])(?P<size>{range_only})\s+(?:1/2\s+)?STD\b', text, FLAGS):
+        for m in re.finditer(rf'(?<![\w])(?P<size>{measure})\s+(?:1/2\s+)?STD\b', text, FLAGS):
             if not re.fullmatch(r'1\s*/\s*2', m['size']):
                 add('circumference', m['size'], m.group(), 'arbor_STD_girth_class')
         for m in re.finditer(r'\b1/2\s+STD\b', text, FLAGS):
@@ -342,8 +502,19 @@ def extract_offer_parameters(offer):
     source = source_reference(offer)
     candidates = {field: [] for field in FIELDS}
     claimed_spans = []
+    # This archive's Trees/Suggested size column mixes bare tree-grade
+    # numbers with height classes. A shrub genus or multistem word does not
+    # establish that its unlabelled 25/30 is height.
+    ambiguous_suggested_size = None
+    if (source.get('sourceFile') == 'Kopie van Trees (002).xlsx' and
+            source.get('sheet') == 'Trees'):
+        ambiguous_suggested_size = re.search(
+            r'\bSuggested size\s*:\s*(?P<size>\d{1,2}\s*[-–—/]\s*\d{1,2}(?:\s*cm)?)(?![\w.,])', text, FLAGS)
 
     def candidate(field, value, raw, rule, **details):
+        if (field == 'height' and ambiguous_suggested_size and not rule.startswith('explicit_') and
+                normalized_measure(value) == normalized_measure(ambiguous_suggested_size['size'])):
+            return
         candidates[field].append({'value': value, 'raw': raw, 'rule': rule,
                                   'source': source, **details})
 
@@ -472,6 +643,7 @@ def extract_offer_parameters(offer):
         candidate('rootType', 'Busen', 'busen / rootball', 'explicit_packaging_words')
 
     supplier_parameters(offer, scan, candidate, result['additionalParameters'], result['unresolved'])
+    semantic_dimensions(offer, scan, candidate, candidates, result['additionalParameters'])
 
     for field, values in candidates.items():
         if not values:
@@ -540,6 +712,8 @@ def extract_offer_parameters(offer):
     unclassified = []
     unclassified_pattern = rf'(?<![\w.])(?:{NUMBER}\s*[-–—/]\s*{NUMBER}(?:\s*[x×]\s*{NUMBER}\s*[-–—/]\s*{NUMBER})?(?:\s*\+)?(?:\s*(?:cm|mm|m))?|{NUMBER}\s*\+(?:\s*(?:cm|mm|m))?|{NUMBER}\s*(?:cm|mm|m))(?![\w])'
     for m in re.finditer(unclassified_pattern, scan, FLAGS):
+        if re.fullmatch(r'1\s*/\s*2', m.group()) and re.match(r'\s*STD\b', scan[m.end():], FLAGS):
+            continue  # 1/2 STD is a form, never an unclassified 1–2 size.
         value = normalized_measure(m.group())
         if any(value and value in known for known in known_values):
             continue
@@ -580,8 +754,8 @@ def build_patch(document):
             'createdAt': datetime.now(timezone.utc).isoformat(timespec='seconds').replace('+00:00', 'Z'),
             'summary': dict(counts), 'updates': updates, 'unresolved': unresolved,
             'rules': ['Original archive must be verified.',
-                      'Only explicit labels and established packaging/pot codes are read.',
-                      'No bare numeric range becomes height or circumference.',
+                      'Explicit labels and documented supplier/form/taxon size grammar are read.',
+                      'A bare numeric range without verified source and semantic context never selects height or circumference.',
                       'RB describes a root ball, not its dimension.',
                       'Aggregates, unresolved alternatives and review rows are not merged.',
                       'Different existing values, price, currency, photograph and plant type are preserved.']}

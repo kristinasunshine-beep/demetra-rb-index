@@ -36,6 +36,19 @@ try{
     if(plant.demo)fail('Demo biljke nisu dozvoljene.');
   }
   const localImage=/^assets\/biljke\/[a-zA-Z0-9_-]+\.(?:jpg|jpeg|png|webp)$/i;
+  const referenceImages=new Set();
+  for(const plant of catalog.plants){
+    if(!plant.photo)continue;
+    // validateImport above checks identity, provenance, license and status.
+    // Every reference is stored locally, separately from the nursery's photo.
+    if(!/^assets\/biljke\/reference-[a-f0-9]{16,64}\.jpg$/i.test(plant.photo.image)){
+      fail('Referentna fotografija mora biti lokalni JPEG: '+plant.id);
+    }
+    referenceImages.add(plant.photo.image);
+  }
+  for(const path of referenceImages){
+    if(!(await stat(join(root,path))).isFile())fail('Nedostaje referentna fotografija: '+path);
+  }
   for(const offer of catalog.offers){
     if(offer.demo)fail('Demo zapis nije dozvoljen: '+offer.id);
     if(offer.dataOrigin!=='rasadnici-ponude-zip')fail('Podaci nisu vezani za ZIP ponude: '+offer.id);
@@ -60,5 +73,5 @@ try{
   if(sample.length>5)fail('Pretraga vraća više od pet predloga.');
   const {verifyPanels}=await import('./check-panels.mjs');
   const panels=await verifyPanels(root);
-  console.log(JSON.stringify({ok:true,plants:catalog.plants.length,nurseries:catalog.nurseries.length,records:catalog.offers.length,nonPhotoSource:catalog.sourcePolicy.nonPhoto,onlineUpdates:catalog.sourcePolicy.onlineUpdates,priceSources:config.sources.filter(s=>s.enabled).length,localPhotos:new Set(catalog.offers.map(o=>o.image).filter(Boolean)).size,panels},null,2));
+  console.log(JSON.stringify({ok:true,plants:catalog.plants.length,nurseries:catalog.nurseries.length,records:catalog.offers.length,nonPhotoSource:catalog.sourcePolicy.nonPhoto,onlineUpdates:catalog.sourcePolicy.onlineUpdates,priceSources:config.sources.filter(s=>s.enabled).length,localPhotos:new Set(catalog.offers.map(o=>o.image).filter(Boolean)).size,referencePhotos:catalog.plants.filter(p=>p.photo).length,referenceImageFiles:referenceImages.size,panels},null,2));
 }catch(error){console.error('Provera nije prošla: '+error.message);process.exitCode=1;}

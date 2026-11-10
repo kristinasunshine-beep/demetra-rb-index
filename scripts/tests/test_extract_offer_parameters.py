@@ -276,6 +276,143 @@ class ExtractOfferParametersTests(unittest.TestCase):
         self.assertEqual(r['expected']['plantId'], 'test-plant')
         self.assertEqual(r['set']['rootType'], 'Busen (RB)')
 
+    def test_volentis_original_conifer_size_column_populates_height_for_all_11_rows(self):
+        # Paired archive: Volentis 75953, XLSX Sheet 1 rows 59–70,
+        # PDF pp. 3–4. These are natural conifer rows, separate from HS.
+        taxa = ["Abies concolor 'Glauca'", 'Abies nordmanniana', 'Cedrus deodara',
+                'Chamaecyparis lawsoniana', "Chamaecyparis lawsoniana 'Alumii'",
+                'Picea omorika', "Picea pungens 'Glauca Pendula'", 'Pinus strobus',
+                'Pinus sylvestris', 'Pseudotsuga menziesii', 'Thuja occidentalis']
+        for taxon in taxa:
+            for size in ['100-150', '150-200']:
+                with self.subTest(taxon=taxon, size=size):
+                    r = extract_offer_parameters(offer(size+' WRB', nurseryId='volentis',
+                        price=None, priceKind='unpublished',
+                        priceEvidence={'offeredName': taxon, 'pdfSize': size+' WRB'}))
+                    self.assertEqual(r['set']['height'], size.replace('-', '–'))
+                    self.assertEqual(r['set']['rootType'], 'Busen u žičanoj korpi (WRB)')
+                    self.assertNotIn('circumference', r['set'])
+                    self.assertNotIn('rootBall', r['set'])
+                    self.assertFalse(any(x['label']=='Dimenzija iz ponude' for x in r['additionalParameters']))
+                    self.assertEqual(r['evidence']['height']['sourceTaxon'], taxon)
+                    self.assertEqual(r['evidence']['height']['unitStatus'], 'not_stated')
+
+    def test_natural_conifer_rule_requires_archive_taxon_and_supplier_context(self):
+        for nursery, taxon, text in [('unknown', 'Abies concolor', '100-150 WRB'),
+                                     ('volentis', '', '100-150 WRB'),
+                                     ('volentis', 'Acer campestre', '100-150 WRB'),
+                                     ('volentis', 'Pinus mugo', '100-150 WRB'),
+                                     ('volentis', "Pinus sylvestris 'Watereri'", '100-150 WRB'),
+                                     ('volentis', 'Abies concolor', '100-150 STEM200 WRB'),
+                                     ('volentis', 'Abies concolor', '100-150 FTH WRB')]:
+            with self.subTest(nursery=nursery,taxon=taxon,text=text):
+                r = extract_offer_parameters(offer(text,nurseryId=nursery,priceEvidence={'offeredName':taxon}))
+                self.assertNotIn('height',r['set'])
+
+    def test_zica_source_panel_keeps_girth_and_explicit_height_independent(self):
+        for text in ["Acer platanoides; 12/14; H300–350 cm; standard",
+                     "Carpinus betulus 'Fastigiata'; 12/14; H300–400 cm"]:
+            row = offer(text,nurseryId='rasadnik-zica')
+            row['sourceEvidence']['sourceFile']='Demetra za tender cene.pdf'
+            r=extract_offer_parameters(row)
+            self.assertEqual(r['set']['circumference'],'12–14')
+            self.assertTrue(r['set']['height'].startswith('300–'))
+            self.assertEqual(r['evidence']['circumference']['source']['sourceFile'],'Demetra za tender cene.pdf')
+        r=extract_offer_parameters(offer('Plant; 12/14; H300 cm',nurseryId='unknown'))
+        self.assertNotIn('circumference',r['set'])
+
+    def test_natural_shrub_and_form_ranges_leave_pot_and_girth_separate(self):
+        cases=[('arbor','Product: Berberis thunbergii Atropurpurea 30-40 C2L','30–40'),
+               ('arbor','Product: Acer campestre BUSH 200-250 C110L','200–250'),
+               ('arbor','Product: Acer freemanii Autumn Blaze MULTISTEM 300-350 C','300–350'),
+               ('innocenti-mangoni','PHOTINIA X FRASERI RED ROBIN CLT 3 040-050','040–050')]
+        for nursery,text,height in cases:
+            with self.subTest(text=text):
+                r=extract_offer_parameters(offer(text,nurseryId=nursery))
+                self.assertEqual(r['set']['height'],height)
+                self.assertNotIn('circumference',r['set'])
+
+    def test_glued_clear_stem_and_compound_axes_never_become_total_height(self):
+        for text in ['Product: Photinia fraseri Red Robin 14-16 STEM150 C65L',
+                     'Product: Pinus sylvestris 20-25 STEM120 C180L',
+                     'Product: Malus Evereste MULTISTEM 14-18 300X350 C130L']:
+            with self.subTest(text=text):
+                self.assertNotIn('height',extract_offer_parameters(offer(text))['set'])
+        for text in ['Pinus sylvestris; DIMENZIJE: 18-20',
+                     'Sequoiadendron giganteum; DIMENZIJE: 20-25']:
+            row=offer(text,nurseryId='lorberg')
+            row['sourceEvidence']['sourceFile']='CENOVNIK-LORBERG.xlsx'
+            self.assertNotIn('height',extract_offer_parameters(row)['set'])
+
+    def test_verified_requested_only_row_has_narrow_explicit_exception(self):
+        text='Acer campestre; Height: 300-350; Circumference: 16-18; RB'
+        row=offer(text,price=None,priceEvidence={'requestedDescription':text,'supplierNotes':'20-25 RB'})
+        row['sourceEvidence'].update(parameterRole='requested',recordRole='requested_replaced',
+                                    sourceSpecifications=[{'recordRole':'requested_with_supplier_note'}])
+        r=extract_offer_parameters(row)
+        self.assertEqual(r['set']['height'],'300–350')
+        self.assertEqual(r['set']['circumference'],'16–18')
+        for change in ['priced','different_text','aggregate','unverified','not_requested']:
+            invalid=copy.deepcopy(row)
+            if change=='priced':invalid['price']=250
+            if change=='different_text':invalid['specification']+='; other'
+            if change=='aggregate':invalid['sourceEvidence']['sourceSpecifications']*=2
+            if change=='unverified':invalid['sourceEvidence']['archiveVerified']=False
+            if change=='not_requested':invalid['sourceEvidence'].pop('parameterRole')
+            with self.subTest(change=change):self.assertEqual(extract_offer_parameters(invalid)['set'],{})
+
+    def test_half_standard_does_not_leave_fake_unclassified_dimension(self):
+        r=extract_offer_parameters(offer('Acer palmatum 1/2 STD C110L'))
+        self.assertFalse(any(x['label']=='Dimenzija iz ponude' for x in r['additionalParameters']))
+        r=extract_offer_parameters(offer('Photinia fraseri Red Robin 25+ STD C230L'))
+        self.assertEqual(r['set']['circumference'],'25+')
+
+    def test_requested_description_in_sole_archive_specification_is_supported(self):
+        text="Gleditschia triacanthos 'Skyline' 35-40 Std RB"
+        row=offer(text,nurseryId='combinatie-mauritz',price=None,priceEvidence=None)
+        row['sourceEvidence'].update(parameterRole='requested',sourceSpecifications=[{
+            'requestedDescription':text,'recordRole':'requested_with_supplier_note','supplierNote':'20-25'}])
+        r=extract_offer_parameters(row)
+        self.assertEqual(r['set']['circumference'],'35–40')
+        self.assertEqual(r['set']['rootType'],'Busen (RB)')
+        self.assertNotIn('height',r['set'])
+        row['specification']='Acer dasycarpum 20-25 Acer Negl Annea'
+        row['sourceEvidence']['sourceSpecifications'][0]['requestedDescription']=row['specification']
+        r=extract_offer_parameters(row)
+        self.assertEqual(r['set'],{})
+        self.assertEqual(r['unresolved'][0]['reason'],'unresolved_source_role')
+
+    def test_lorberg_schirm_photo_filename_does_not_imply_height(self):
+        # Original photo-only source: record-source-dcd5b0a4b3fa95c213.
+        for form in ['Schirm', 'Naturschirm']:
+            text='Parrotia persica '+form+' 500-600'
+            row=offer(text,nurseryId='lorberg')
+            row['sourceEvidence'].update(sourceFile=text+'.jpg',extraction='archive_filename',
+                                         recordRole='photo_attachment_description')
+            r=extract_offer_parameters(row)
+            self.assertNotIn('height',r['set'])
+            self.assertNotIn('crownWidth',r['set'])
+            self.assertTrue(any(x['label']=='Dimenzije oblikovane forme' and x['value']=='500–600'
+                                for x in r['additionalParameters']))
+            self.assertFalse(any(x['label']=='Dimenzija iz ponude' for x in r['additionalParameters']))
+        row['specification']='Parrotia persica Naturschirm height 500-600'
+        r=extract_offer_parameters(row)
+        self.assertEqual(r['set']['height'],'500–600')
+        self.assertFalse(any(x['label']=='Dimenzije oblikovane forme' for x in r['additionalParameters']))
+
+    def test_mauritz_trees_suggested_grade_is_not_height_from_genus_or_form(self):
+        for taxon in ['Cornus florida f.rubra', 'Hammamelis x intermedia',
+                      'Parrotia persica feathured /multisteam', 'Parrotia persica multistem']:
+            row=offer(taxon+'; Suggested size: 25/30',nurseryId='combinatie-mauritz')
+            row['sourceEvidence'].update(sourceFile='Kopie van Trees (002).xlsx',sheet='Trees')
+            r=extract_offer_parameters(row)
+            self.assertNotIn('height',r['set'])
+            self.assertNotIn('circumference',r['set'])
+            self.assertTrue(any(x['label']=='Dimenzija iz ponude' and '25/30' in x['value']
+                                for x in r['additionalParameters']))
+        row['specification']='Parrotia persica; Suggested size: 25/30; height 350-400 cm'
+        self.assertEqual(extract_offer_parameters(row)['set']['height'],'350–400 cm')
+
 
 if __name__ == '__main__':
     unittest.main()

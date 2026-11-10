@@ -50,12 +50,38 @@ export async function verifyPanels(root) {
     ['Veličina saksije', 'potSize'], ['Način isporuke', 'rootType']
   ];
   let knownParameters = 0;
-  let sourceSpecificationsInMainPanel = 0;
+  let sourceSpecificationsPreservedInData = 0;
   let transplantValuesInMainPanel = 0;
   let additionalParametersInMainPanel = 0;
+  let genericDimensionDuplicatesRemoved = 0;
+  function expectedExtraFields(original) {
+    const parts = value => {
+      const compact = String(value || '').toLowerCase().replace(/\s+/g, '')
+        .replace(/(?<=\d),(?=\d)/g, '.').replace(/[-–—/]/g, '–');
+      const result = /^([\d.]+(?:–[\d.]+)?\+?)(cm|mm|m)?$/.exec(compact);
+      return result && { range: result[1], unit: result[2] || '' };
+    };
+    const typed = ['circumference', 'height', 'crownWidth', 'rootBall'].map(key => parts(original[key])).filter(Boolean);
+    return (original.additionalParameters || []).flatMap(parameter => {
+      if (!['Dimenzija iz ponude', 'Nerazvrstana mera iz ponude'].includes(parameter.label)) return [parameter];
+      const originalValues = parameter.value.split(/[;·]/).map(value => value.trim()).filter(Boolean);
+      const remaining = originalValues.filter(value => {
+        const candidate = parts(value);
+        return !candidate || !typed.some(known => known.range === candidate.range &&
+          (!known.unit || !candidate.unit || known.unit === candidate.unit));
+      });
+      genericDimensionDuplicatesRemoved += originalValues.length - remaining.length;
+      return remaining.length ? [{ ...parameter, value: remaining.join(' · ') }] : [];
+    });
+  }
   // Independent regressions from the actual archived offer rows. These cannot
   // pass merely because both JSON and UI contain the same empty field.
   const sourceRegressions = new Map([
+    ['record-d291e70b52ac19', {
+      source: '100-150 WRB',
+      sourceFile: 'Offer for Inquiry Request 2 - Trees for spring 2025 75953.xlsx',
+      fields: { 'Visina sadnice': '100–150', 'Način isporuke': 'Busen u žičanoj korpi (WRB)' }
+    }],
     ['record-variant-bbe9089a200cd082db', {
       source: 'Acer Norwegian Sunset; Izvorna oznaka: 14-16 Ho 3xv',
       sourceFile: 'special stocklist Demetra.xlsx',
@@ -83,6 +109,33 @@ export async function verifyPanels(root) {
         'Način isporuke': 'Busen u žičanoj korpi (mDb)', 'Broj presađivanja': '3 (3xv)' }
     }]
   ]);
+  // Check the original, explicit column labels independently from the
+  // extractor. An empty JSON field must not be allowed to validate an empty UI.
+  let explicitSourceColumnsChecked = 0;
+  const normalizedMeasure = value => String(value || '').trim().replace(/\s*[-–—/]\s*/g, '–');
+  for (const original of offers.offers.filter(offer => !hiddenStatuses.has(offer.recordStatus))) {
+    assert(!original.sourceEvidence?.multipleVariants &&
+      (original.sourceEvidence?.sourceSpecifications || []).length <= 1,
+      original.id + ': više izvornih varijanti mora biti razdvojeno pre prikaza.');
+    for (const [field, label] of [['height', 'Height'], ['circumference', 'Circums\\.']]) {
+      const match = new RegExp('(?:^|;\\s*)' + label + ':\\s*([0-9]+(?:[.,][0-9]+)?(?:[-–—/][0-9]+(?:[.,][0-9]+)?)?(?:\\s*(?:cm|mm|m))?)(?=;|$)', 'i')
+        .exec(original.specification || '');
+      if (!match) continue;
+      assert.equal(normalizedMeasure(original[field]), normalizedMeasure(match[1]),
+        original.id + ': izričita kolona ' + label + ' mora popuniti polje ' + field + '.');
+      explicitSourceColumnsChecked++;
+    }
+  }
+  const odsSHA = '8caa2e41d8d2cb80c9e6d364ce301c11f7c50efe4d7e4a2ebdcae922efd0ac02';
+  for (const [row, height] of [[119, '100–150'], [131, '150–200']]) {
+    const matches = offers.offers.filter(offer => !hiddenStatuses.has(offer.recordStatus) &&
+      offer.plantId === 'plant-9bfd779b012c0c' && offer.nurseryId === 'combinatie-mauritz' &&
+      offer.sourceEvidence?.sourceSha256 === odsSHA && offer.sourceEvidence?.row === row);
+    assert.equal(matches.length, 1, 'Abies Glauca ODS red ' + row + ': očekuje se tačno jedna odvojena varijanta.');
+    assert.equal(matches[0].height, height, 'Abies Glauca: izvorna Height kolona mora biti u visini.');
+    assert.equal(matches[0].rootType, 'Busen (RB)', 'Abies Glauca: rb je način isporuke.');
+    assert.equal(matches[0].price, null, 'Cena ponuđenog concolor ne pripada traženom Glauca kultivaru.');
+  }
   const checkedSourceRegressions = new Set();
   function checkPanel(markup, offer) {
     const label = offer.id + ': ';
@@ -90,11 +143,10 @@ export async function verifyPanels(root) {
     const panel = markup.match(/<dl class="measurements">([\s\S]*?)<\/dl>/)?.[1];
     assert(panel, label + 'nedostaje glavni panel parametara.');
     const entries = [...panel.matchAll(/<dt>([^<]+)<\/dt><dd(?: class="missing")?>([\s\S]*?)<\/dd>/g)];
-    const extra = original.additionalParameters || [];
+    const extra = expectedExtraFields(original);
     assert.deepEqual(entries.map(entry => entry[1]), ['Tip sadnice', ...fields.map(([name]) => name),
-      'Broj presađivanja', ...extra.map(parameter => esc(parameter.label)),
-      ...(original.specification ? ['Specifikacija iz ponude'] : [])],
-      label + 'svi parametri i izvorna specifikacija moraju biti u glavnom panelu, nezavisno od tipa sadnice.');
+      'Broj presađivanja', ...extra.map(parameter => esc(parameter.label))],
+      label + 'glavni panel mora imati parametre bez duplirane sirove specifikacije ili već raspoređene mere.');
     const values = new Map(entries.map(entry => [entry[1], entry[2]]));
     const type = offer.seedlingType === 'standard' ? 'Standard' :
       offer.seedlingType === 'multistem' ? 'Multistem' : 'Nije navedeno u ponudi';
@@ -104,12 +156,13 @@ export async function verifyPanels(root) {
         label + name + ' mora prikazati sopstvenu izvornu vrednost u glavnom panelu.');
       if (offer[field] && !/nije|nepoznat/i.test(offer[field])) knownParameters++;
     }
-    // The source text is checked against the original JSON, independently of
-    // the import normalizer. Empty parsed fields must never hide source data.
+    // Raw source evidence is preserved for verification, not printed as a
+    // duplicate of the structured fields in the user-facing card.
+    assert(!values.has('Specifikacija iz ponude'), label + 'sirova specifikacija ne sme duplirati parametre.');
     if (original.specification) {
-      assert.equal(values.get('Specifikacija iz ponude'), esc(original.specification),
-        label + 'celokupna izvorna specifikacija mora biti vidljiva u glavnom panelu.');
-      sourceSpecificationsInMainPanel++;
+      assert.equal(offer.specification, original.specification.trim(),
+        label + 'izvorna specifikacija mora ostati sačuvana u podacima.');
+      sourceSpecificationsPreservedInData++;
     }
     const rawTransplants = original.traitsEvidence?.transplants;
     const count = original.transplantCount ?? (rawTransplants?.status === 'exact' ? rawTransplants.count : null);
@@ -178,8 +231,9 @@ export async function verifyPanels(root) {
   assert.deepEqual([...checkedSourceRegressions].sort(), [...sourceRegressions.keys()].sort(),
     'Poznati ponudni redovi moraju proći nezavisne provere izvor → glavni panel.');
   return { plants: data.plants.length, records: data.offers.length, activePanels: active.length,
-    hiddenPanelsChecked: hidden.length, knownParameters, sourceSpecificationsInMainPanel,
-    transplantValuesInMainPanel, additionalParametersInMainPanel,
+    hiddenPanelsChecked: hidden.length, knownParameters, sourceSpecificationsPreservedInData,
+    transplantValuesInMainPanel, additionalParametersInMainPanel, genericDimensionDuplicatesRemoved,
     sourceDerivedRegressions: checkedSourceRegressions.size,
-    allFieldsInMainPanel: true, originalSourceTextInMainPanel: true, pricesInPricePanel: true };
+    explicitSourceColumnsChecked,
+    allFieldsInMainPanel: true, rawSourcePreservedOnlyInData: true, pricesInPricePanel: true };
 }

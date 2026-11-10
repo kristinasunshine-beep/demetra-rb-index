@@ -77,6 +77,42 @@ def merge_parameters(existing, extracted):
     return result
 
 
+def remove_mapped_generic_dimensions(parameters, offer):
+    """Retire the old fallback after its source value has a proper field.
+
+    This changes the data too, so downstream exports do not carry the same
+    size twice. Distinct units and genuinely unclassified values are retained.
+    """
+    def measure(value):
+        value = re.sub(r'\s+', '', str(value or '').lower())
+        value = re.sub(r'(?<=\d),(?=\d)', '.', value)
+        value = re.sub(r'[-–—/]', '–', value)
+        match = re.fullmatch(r'(\d+(?:\.\d+)?(?:–\d+(?:\.\d+)?)?\+?)(mm|cm|m)?', value)
+        return (match[1], match[2] or '') if match else None
+
+    typed = [measure(offer.get(field)) for field in
+             ('circumference', 'height', 'crownWidth', 'rootBall')]
+    typed = [value for value in typed if value]
+    output = []
+    for parameter in parameters:
+        if parameter['label'] not in ('Dimenzija iz ponude', 'Nerazvrstana mera iz ponude'):
+            output.append(parameter)
+            continue
+        remaining = []
+        for part in re.split(r'[;·]', parameter['value']):
+            part = part.strip()
+            candidate = measure(part)
+            if candidate and any(candidate[0] == known[0] and
+                                 (not candidate[1] or not known[1] or candidate[1] == known[1])
+                                 for known in typed):
+                continue
+            if part and part not in remaining:
+                remaining.append(part)
+        if remaining:
+            output.append({**parameter, 'value': '; '.join(remaining)})
+    return output
+
+
 def migrate(document):
     assert document.get('sourcePolicy') == {'nonPhoto': 'rasadnici-ponude-zip', 'onlineUpdates': ['photos']}
     result = copy.deepcopy(document)
@@ -90,9 +126,12 @@ def migrate(document):
         assert set(parsed['set']) <= set(FIELDS) - {'seedlingType'}
         offer.update(parsed['set'])
         previous_parameters = offer.get('additionalParameters', [])
-        additional = merge_parameters(previous_parameters, parsed.get('additionalParameters', []))
+        additional = remove_mapped_generic_dimensions(
+            merge_parameters(previous_parameters, parsed.get('additionalParameters', [])), offer)
         if additional:
             offer['additionalParameters'] = additional
+        else:
+            offer.pop('additionalParameters', None)
         source = offer.get('sourceEvidence', {})
         if source.get('note'):
             cleaned = clean_note(source['note'])
@@ -138,7 +177,8 @@ def migrate(document):
         'additionalParameters': sum(len(o.get('additionalParameters', [])) for o in active),
         'recordsWithAdditionalParameters': sum(bool(o.get('additionalParameters')) for o in active),
         'transplantsInMainPanel': sum(bool(o.get('transplantNote')) for o in active),
-        'sourceSpecificationsInMainPanel': sum(bool(o.get('specification')) for o in active),
+        'sourceSpecificationsPreservedInData': sum(bool(o.get('specification')) for o in active),
+        'rawSpecificationsShownInPanel': False,
         'pricesPreserved': sum(o.get('price') is not None for o in result['offers']),
         'existingPricesPhotosAndSpeciesUnchanged': True,
         'onlinePriceOrParameterRequests': 0,

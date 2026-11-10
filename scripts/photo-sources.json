@@ -58,14 +58,40 @@
     },
     {
       "nurseryId": "lorberg",
-      "resolver": "direct",
-      "fillMissing": false,
+      "resolver": "product",
+      "fillMissing": true,
       "pageHosts": [
         "www.lorberg.com"
       ],
       "imageHosts": [
         "www.lorberg.com"
-      ]
+      ],
+      "discoveredPagePatterns": [
+        "/en\\-gb/article/1303/pinus\\-sylvestris",
+        "/en\\-gb/article/2951/betula\\-utilis\\-doorenbos",
+        "/en\\-gb/article/1126/betula\\-nigra",
+        "/en\\-gb/article/1519/malus\\-evereste",
+        "/en\\-gb/article/2505/syringa\\-vulgaris",
+        "/en\\-gb/article/411/acer\\-palmatum\\-bloodgood",
+        "/en\\-gb/article/1702/populus\\-nigra\\-italica",
+        "/en\\-gb/article/162/acer\\-campestre\\-elsrijk",
+        "/en\\-gb/article/1920/sophora\\-japonica",
+        "/en\\-gb/article/2085/parrotia\\-persica",
+        "/en\\-gb/article/262/gleditsia\\-triacanthos\\-sunburst",
+        "/en\\-gb/article/850/berberis\\-thunbergii\\-atropurpurea",
+        "/en\\-gb/article/1666/prunus\\-serrulata\\-amanogawa",
+        "/en\\-gb/article/1028/lagerstroemia\\-indica",
+        "/en\\-gb/article/1821/sequoiadendron\\-giganteum",
+        "/en\\-gb/article/235/gleditsia\\-triacanthos\\-skyline",
+        "/en\\-gb/article/339/carpinus\\-betulus\\-fastigiata",
+        "/en\\-gb/article/1693/prunus\\-serrulata\\-kanzan",
+        "/en\\-gb/article/1354/pinus\\-sylvestris\\-watereri",
+        "/en\\-gb/article/1879/prunus\\-subhirtella\\-accolade",
+        "/en\\-gb/article/182/crataegus\\-monogyna",
+        "/en\\-gb/article/2971/platanus\\-x\\-hispanica",
+        "/en\\-gb/article/2323/prunus\\-avium\\-plena"
+      ],
+      "pagePathPattern": "(?:(?:/en\\-gb/article/1303/pinus\\-sylvestris)|(?:/en\\-gb/article/2951/betula\\-utilis\\-doorenbos)|(?:/en\\-gb/article/1126/betula\\-nigra)|(?:/en\\-gb/article/1519/malus\\-evereste)|(?:/en\\-gb/article/2505/syringa\\-vulgaris)|(?:/en\\-gb/article/411/acer\\-palmatum\\-bloodgood)|(?:/en\\-gb/article/1702/populus\\-nigra\\-italica)|(?:/en\\-gb/article/162/acer\\-campestre\\-elsrijk)|(?:/en\\-gb/article/1920/sophora\\-japonica)|(?:/en\\-gb/article/2085/parrotia\\-persica)|(?:/en\\-gb/article/262/gleditsia\\-triacanthos\\-sunburst)|(?:/en\\-gb/article/850/berberis\\-thunbergii\\-atropurpurea)|(?:/en\\-gb/article/1666/prunus\\-serrulata\\-amanogawa)|(?:/en\\-gb/article/1028/lagerstroemia\\-indica)|(?:/en\\-gb/article/1821/sequoiadendron\\-giganteum)|(?:/en\\-gb/article/235/gleditsia\\-triacanthos\\-skyline)|(?:/en\\-gb/article/339/carpinus\\-betulus\\-fastigiata)|(?:/en\\-gb/article/1693/prunus\\-serrulata\\-kanzan)|(?:/en\\-gb/article/1354/pinus\\-sylvestris\\-watereri)|(?:/en\\-gb/article/1879/prunus\\-subhirtella\\-accolade)|(?:/en\\-gb/article/182/crataegus\\-monogyna)|(?:/en\\-gb/article/2971/platanus\\-x\\-hispanica)|(?:/en\\-gb/article/2323/prunus\\-avium\\-plena))"
     },
     {
       "nurseryId": "rasadnik-gold",

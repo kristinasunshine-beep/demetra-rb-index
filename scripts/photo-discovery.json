@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "notes": "Only exact botanical identities on verified nursery hosts. URL candidates must come from robots, sitemap documents or observed page links. No guessed product URLs or arbitrary CDN trust.",
+  "limits": {
+    "timeout": 20,
+    "maxBytes": 3000000,
+    "maxSitemapBytes": 20000000,
+    "maxUrlsPerNursery": 40000,
+    "maxCandidatesPerPair": 3,
+    "retryDays": 7,
+    "refreshIndexDays": 30,
+    "maxResourcesPerNurseryPerRun": 8
+  },
+  "sources": []
+}

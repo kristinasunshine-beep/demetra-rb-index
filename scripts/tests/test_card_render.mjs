@@ -86,8 +86,7 @@ for (const seedlingType of ['standard', 'multistem', '']) {
       `Tip ${seedlingType || 'nepoznat'} mora prikazati ${parameterLabels[field]} u glavnom panelu.`);
   }
 }
-// The reported regression: the original Ho/3xv source must be visible in the
-// main panel, as well as its independently extracted circumference and form.
+// Ho/3xv becomes structured panel fields; the full source stays in JSON.
 const mauritzSpec = 'Acer Norwegian Sunset; Izvorna oznaka: 14-16 Ho 3xv';
 const mauritz = render({ circumference: '14–16', seedlingTypeCode: 'Ho',
   specification: mauritzSpec, transplantCount: null,
@@ -96,17 +95,32 @@ const mauritz = render({ circumference: '14–16', seedlingTypeCode: 'Ho',
 const mauritzPanel = mauritz.match(/<dl class="measurements">([\s\S]*?)<\/dl>/)[1];
 assert(mauritzPanel.includes('<dt>Obim sadnice</dt><dd>14–16</dd>'));
 assert(mauritzPanel.includes('<dt>Broj presađivanja</dt><dd>3 (3xv)</dd>'));
-assert(mauritzPanel.includes('<dt>Specifikacija iz ponude</dt><dd>' + mauritzSpec + '</dd>'));
+assert(!mauritz.includes('Specifikacija iz ponude'));
+assert(!mauritz.includes(mauritzSpec));
+assert.equal(run('state.catalog.offers[0].specification'), mauritzSpec);
 assert(!mauritz.split('<div class="offer-footer">')[1].includes(mauritzSpec));
 const rangeNote = 'Broj presađivanja: 3–4 (oznaka u ponudi: III–IV).';
 const ranged = render({ transplantNote: rangeNote,
   traitsEvidence: { transplants: { status: 'range', count: null, raw: ['III–IV'] } } });
 assert(ranged.includes('<dt>Broj presađivanja</dt><dd>' + rangeNote + '</dd>'));
 const unclassified = render({ seedlingType: '', circumference: '', height: '',
-  specification: 'Acer test; mera iz ponude: 125/150; oznaka XY' });
+  specification: 'Acer test; mera iz ponude: 125/150; oznaka XY',
+  additionalParameters: [{ label: 'Dimenzija iz ponude', value: '125/150' }] });
 assert(unclassified.match(/<dl class="measurements">([\s\S]*?)<\/dl>/)[1]
-  .includes('Acer test; mera iz ponude: 125/150; oznaka XY'));
+  .includes('<dt>Dimenzija iz ponude</dt><dd>125/150</dd>'));
+assert(!unclassified.includes('Acer test; mera iz ponude: 125/150; oznaka XY'));
 assert(unclassified.includes('<dt>Visina sadnice</dt><dd class="missing">Nije navedeno</dd>'));
+const duplicateDimension = render({ height: '100–150 cm', specification: 'Acer test 100-150 WRB',
+  additionalParameters: [{ label: 'Dimenzija iz ponude', value: '100-150' }] });
+assert(duplicateDimension.includes('<dt>Visina sadnice</dt><dd>100–150 cm</dd>'));
+assert(!duplicateDimension.includes('Dimenzija iz ponude'));
+assert(!duplicateDimension.includes('Acer test 100-150 WRB'));
+const partialDuplicate = render({ height: '100–150 cm',
+  additionalParameters: [{ label: 'Dimenzija iz ponude', value: '100-150 · 200-250' }] });
+assert(partialDuplicate.includes('<dt>Dimenzija iz ponude</dt><dd>200-250</dd>'));
+const differentUnit = render({ height: '100–150 mm',
+  additionalParameters: [{ label: 'Dimenzija iz ponude', value: '100-150 cm' }] });
+assert(differentUnit.includes('<dt>Dimenzija iz ponude</dt><dd>100-150 cm</dd>'));
 const additional = render({ additionalParameters: [
   { label: 'Visina čistog debla', value: '220 cm' },
   { label: 'Dimenzije panela', value: '150 × 180 cm' },
@@ -138,6 +152,7 @@ rejects({ additionalParameters: [{ label: 'Visina čistog debla', value: '' }] }
 rejects({}, { sourcePolicy: { nonPhoto: 'rasadnici-ponude-zip', onlineUpdates: ['photos', 'prices'] } }, /online se ažuriraju samo fotografije/);
 console.log(JSON.stringify({ ok: true, allKnownParametersInMainPanelForEveryType: true,
   girthAndHeightRemainSeparate: true, noGeneratedDimensionFootnote: true, unknownTypeExplicit: true,
-  transplantsAndSourceSpecificationInMainPanel: true, additionalSourceParametersInMainPanel: true,
+  transplantsInMainPanel: true, rawSpecificationPreservedOnlyInData: true,
+  duplicateGenericDimensionsRemoved: true, additionalSourceParametersInMainPanel: true,
   sourcePolicyEnforced: true, notesEscaped: true,
   reviewExplainedWithoutUnconfirmedOffer: true }, null, 2));

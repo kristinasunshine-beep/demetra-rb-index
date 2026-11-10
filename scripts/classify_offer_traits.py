@@ -176,6 +176,22 @@ def classify_offer(offer, source=None):
         isinstance(row, dict) and row.get('recordRole') == 'requested_with_supplier_note'
         for row in source_evidence.get('sourceSpecifications', [])
     )
+    source_rows = source_evidence.get('sourceSpecifications') or []
+    # A separately materialized, unpriced request can show its own explicit
+    # parameters. The supplier's alternative is a different record; its text
+    # must never enter this classification.
+    isolated_request = (
+        source_evidence.get('parameterRole') == 'requested'
+        and source_evidence.get('archiveVerified') is True
+        and bool(re.fullmatch(r'[0-9a-f]{64}', source_evidence.get('sourceSha256', '')))
+        and not multiple_variants and len(source_rows) == 1
+        and source_rows[0].get('recordRole') == 'requested_with_supplier_note'
+        and source_rows[0].get('row') is not None
+        and source_rows[0].get('sheet')
+        and offer.get('price') is None
+        and clean(source_rows[0].get('requestedDescription')) == text
+        and bool(text)
+    )
     if multiple_variants:
         # A legacy aggregate can contain STD beside an unmarked form, not just
         # both explicit types.  Never silently assign one row's type to all.
@@ -184,13 +200,15 @@ def classify_offer(offer, source=None):
             transplant = {**transplant, 'status': 'by_variant', 'count': None}
             transplant_note = ('Broj presađivanja je naveden po varijantama; izvorne oznake: '
                                + ', '.join(transplant['raw']) + '. Jedan broj nije dodeljen zbirnom zapisu.')
-    elif requested_with_alternative:
+    elif requested_with_alternative and not isolated_request:
         # A combined request/supplier annotation can name a different taxon or
         # size.  Retain its text but do not turn alternative marks into traits.
         form, reason = '', 'requested_with_supplier_alternative'
         transplant_note = ''
         transplant = {**transplant, 'status': 'unresolved_source_role', 'count': None}
     notes = []
+    if isolated_request:
+        notes.append('Prikazane mere i oznake pripadaju zahtevanom redu ponude. Odgovor rasadnika prikazan je posebno; cena i mere zamene nisu pripisane traženoj biljci.')
     if reason == 'multiple_source_variants':
         notes.append('Zapis objedinjuje više izvornih varijanti; jedan tip i jedan skup mera nisu izabrani proizvoljno.')
     elif reason == 'requested_with_supplier_alternative':
