@@ -1,0 +1,903 @@
+{
+  "schemaVersion": 1,
+  "scope": "all_catalog_plants",
+  "expectedInitialPlants": 619,
+  "sourceOrder": [
+    "supplying_nursery",
+    "other_catalogue_nursery",
+    "commons",
+    "gbif"
+  ],
+  "allowSpeciesFallback": false,
+  "publicPhotoFields": [
+    "image",
+    "sourceUrl"
+  ],
+  "openPhotoLicenses": [
+    "CC0",
+    "Public domain"
+  ],
+  "retryDays": 1,
+  "maxNurseryCandidates": 12,
+  "minImageSide": 128,
+  "indexBudget": 300,
+  "excludedImageUrls": [
+    "https://api.gbif.org/v1/image/cache/1200x/occurrence/6451823846/media/85a08eb7f0d6cc440e066a7a8a230b8e",
+    "https://innocentiemangonipiante.it/wp-content/uploads/2023/10/1642755966-scaled.jpg",
+    "https://innocentiemangonipiante.it/wp-content/uploads/2023/11/1697015648.jpg",
+    "https://smitsbv.nl/wp-content/uploads/2026/01/1200x630px-sociaal-delen-website.jpg",
+    "https://upload.wikimedia.org/wikipedia/commons/3/3e/EB1911_-_Branchlet_of_Larch_%28Larix_europaea%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "https://www.lorberg.com/content/files/12313/Liriope-muscari-Royal-Purple-1200x630-proportionalbiggest.webp",
+    "https://www.lorberg.com/content/files/4560/Acer-platanoides-1200x630-proportionalbiggest.webp"
+  ],
+  "excludedImageHashes": [
+    "025fd0a8c72d28992d92e8edccafd10e7dd37d8dbb65453c43b2b7ff99c19b0c",
+    "036edb598df522dc58c1629d35d8406524c0316a6923d35e801cadbfe577e57f",
+    "17a0ead2ea587bb361b06395e068d06bc059c3b4081da00b075b0a9e910598d3",
+    "433cfda1660b8abb16382287119ce611e3f8091b54844278988ee02fb883a11f",
+    "6b8c491aae2753765c93a6cdfc578d6272223b6e25f5bbc3d57274522ecbfa89",
+    "e7f60f00ea6dbff2201d792ceb7f61f703e1bd1531f505e7a1ca6077cdf0cc2d",
+    "f9e15c42a054e3cdae830394fb68172ce1b3509a92fa031e5c7878c13f9ecd08"
+  ],
+  "additionalNurseries": [
+    {
+      "id": "van-den-berk",
+      "website": "https://www.vdberk.com/",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "photo-knollgardens-co-uk",
+      "website": "https://www.knollgardens.co.uk/",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "photo-provendernurseries-co-uk",
+      "website": "https://www.provendernurseries.co.uk/",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "photo-olddairynursery-com",
+      "website": "https://olddairynursery.com/",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "photo-bluebellnursery-com",
+      "website": "https://www.bluebellnursery.com/",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "photo-ashwoodnurseries-com",
+      "website": "https://www.ashwoodnurseries.com/",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "photo-hoffmannursery-com",
+      "website": "https://hoffmannursery.com/",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "photo-monrovia-com",
+      "website": "https://www.monrovia.com/",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "photo-odonals-com",
+      "website": "https://odonals.com/",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "photo-unitychurchhillnursery-com",
+      "website": "https://unitychurchhillnursery.com/",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "photo-bigplantnursery-co-uk",
+      "website": "https://www.bigplantnursery.co.uk/",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "photo-duchyofcornwallnursery-co-uk",
+      "website": "https://www.duchyofcornwallnursery.co.uk/",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "photo-bowdensnursery-com",
+      "website": "https://www.bowdensnursery.com/",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "photo-frankpmatthews-com",
+      "website": "https://www.frankpmatthews.com/",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "photo-pepinierelemaire-be",
+      "website": "https://www.pepinierelemaire.be/",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "photo-majestictrees-co-uk",
+      "website": "https://majestictrees.co.uk/",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "photo-junker-co-uk",
+      "website": "https://www.junker.co.uk/",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "photo-botanic-cam-ac-uk",
+      "website": "https://www.botanic.cam.ac.uk/",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "photo-specialitytrees-com-au",
+      "website": "https://www.specialitytrees.com.au/",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "photo-kwekerijvlastuin-nl",
+      "website": "https://www.kwekerijvlastuin.nl/",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "photo-secretgardengrowers-com",
+      "website": "https://secretgardengrowers.com/",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "photo-petalfaire-co-za",
+      "website": "https://www.petalfaire.co.za/",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "photo-plant-werk-nl",
+      "website": "https://plant-werk.nl/",
+      "verificationStatus": "verified"
+    },
+    {
+      "id": "photo-sterkebollen-nl",
+      "website": "https://www.sterkebollen.nl/",
+      "verificationStatus": "verified"
+    }
+  ],
+  "additionalSourcePolicies": [
+    {
+      "nurseryId": "van-den-berk",
+      "pageHosts": [
+        "www.vdberk.com",
+        "www.vdberk.co.uk",
+        "www.vdberk.de",
+        "www.vdberk.nl"
+      ],
+      "imageHosts": [
+        "www.vdberk.com",
+        "www.vdberk.co.uk",
+        "www.vdberk.de",
+        "www.vdberk.nl"
+      ]
+    }
+  ],
+  "observedPages": [
+    {
+      "nurseryId": "van-den-berk",
+      "pageUrl": "https://www.vdberk.co.uk/trees/cedrus-deodara-karl-fuchs/"
+    },
+    {
+      "nurseryId": "van-den-berk",
+      "pageUrl": "https://www.vdberk.de/baume/betula-pendula-tristis/"
+    },
+    {
+      "nurseryId": "van-den-berk",
+      "pageUrl": "https://www.vdberk.co.uk/trees/tilia-tomentosa-szeleste/"
+    },
+    {
+      "nurseryId": "van-den-berk",
+      "pageUrl": "https://www.vdberk.com/trees/aesculus-indica/"
+    },
+    {
+      "nurseryId": "van-den-berk",
+      "pageUrl": "https://www.vdberk.co.uk/trees/larix-decidua/"
+    },
+    {
+      "nurseryId": "ebben",
+      "pageUrl": "https://www.ebben.nl/en/treeebb/titszele-tilia-tomentosa-szeleste/"
+    },
+    {
+      "nurseryId": "ebben",
+      "pageUrl": "https://www.ebben.nl/en/treeebb/litaureo-liriodendron-tulipifera-aureomarginatum/"
+    },
+    {
+      "nurseryId": "ebben",
+      "pageUrl": "https://www.ebben.nl/en/treeebb/piomorik-picea-omorika/"
+    },
+    {
+      "nurseryId": "ebben",
+      "pageUrl": "https://www.ebben.nl/nl/treeebb/pinigra-pinus-nigra/"
+    },
+    {
+      "nurseryId": "ebben",
+      "pageUrl": "https://www.ebben.nl/en/treeebb/fasriver-fagus-sylvatica-riversii/"
+    },
+    {
+      "nurseryId": "ebben",
+      "pageUrl": "https://www.ebben.nl/en/treeebb/preumbra-prunus-x-eminens-umbraculifera/"
+    },
+    {
+      "nurseryId": "van-den-berk",
+      "pageUrl": "https://www.vdberk.co.uk/trees/liriodendron-tulipifera-aureomarginatum/"
+    },
+    {
+      "nurseryId": "van-den-berk",
+      "pageUrl": "https://www.vdberk.co.uk/trees/fagus-sylvatica-riversii/"
+    },
+    {
+      "nurseryId": "van-den-berk",
+      "pageUrl": "https://www.vdberk.co.uk/trees/prunus-eminens-umbraculifera/"
+    },
+    {
+      "nurseryId": "innocenti-mangoni",
+      "pageUrl": "https://innocentiemangonipiante.it/de/acer-palmatum-seiryu/"
+    },
+    {
+      "nurseryId": "photo-knollgardens-co-uk",
+      "pageUrl": "https://www.knollgardens.co.uk/product/calamagrostis-brachytricha/"
+    },
+    {
+      "nurseryId": "photo-provendernurseries-co-uk",
+      "pageUrl": "https://www.provendernurseries.co.uk/product/calamagrostis-brachytricha"
+    },
+    {
+      "nurseryId": "photo-olddairynursery-com",
+      "pageUrl": "https://olddairynursery.com/products/calamagrostis-brachytricha"
+    },
+    {
+      "nurseryId": "photo-bluebellnursery-com",
+      "pageUrl": "https://www.bluebellnursery.com/Euonymus/6633954-3664-Euonymus-fortunei-Harlequin.html"
+    },
+    {
+      "nurseryId": "photo-ashwoodnurseries-com",
+      "pageUrl": "https://www.ashwoodnurseries.com/product/euonymus-fortunei-harlequin/"
+    },
+    {
+      "nurseryId": "photo-hoffmannursery-com",
+      "pageUrl": "https://hoffmannursery.com/plants/details/carex-divulsa"
+    },
+    {
+      "nurseryId": "photo-hoffmannursery-com",
+      "pageUrl": "https://hoffmannursery.com/blog/article/carex-divulsa-workhorse-sedge-with-style"
+    },
+    {
+      "nurseryId": "photo-knollgardens-co-uk",
+      "pageUrl": "https://www.knollgardens.co.uk/product/sporobolus-heterolepis/"
+    },
+    {
+      "nurseryId": "photo-hoffmannursery-com",
+      "pageUrl": "https://hoffmannursery.com/plants/details/sporobolus-heterolepis"
+    },
+    {
+      "nurseryId": "photo-monrovia-com",
+      "pageUrl": "https://www.monrovia.com/big-blue-lilyturf.html"
+    },
+    {
+      "nurseryId": "photo-odonals-com",
+      "pageUrl": "https://odonals.com/product/deutzia-gracilis-nikko/"
+    },
+    {
+      "nurseryId": "photo-unitychurchhillnursery-com",
+      "pageUrl": "https://unitychurchhillnursery.com/collections/all-plants/products/deutzia-gracillis-nikko-dwarf-slender-deutzia"
+    },
+    {
+      "nurseryId": "photo-provendernurseries-co-uk",
+      "pageUrl": "https://www.provendernurseries.co.uk/product/hedera-helix-erecta-df"
+    },
+    {
+      "nurseryId": "photo-bigplantnursery-co-uk",
+      "pageUrl": "https://www.bigplantnursery.co.uk/shop/plants/bamboo/fargeisa/fargesia-robusta-campbell/"
+    },
+    {
+      "nurseryId": "photo-duchyofcornwallnursery-co-uk",
+      "pageUrl": "https://www.duchyofcornwallnursery.co.uk/plants/fargesia-robusta-campbell"
+    },
+    {
+      "nurseryId": "photo-bowdensnursery-com",
+      "pageUrl": "https://www.bowdensnursery.com/product/Bamboo-Fargesia-robusta-Campbell"
+    },
+    {
+      "nurseryId": "van-den-berk",
+      "pageUrl": "https://www.vdberk.co.uk/trees/chamaecyparis-lawsoniana-columnaris/"
+    },
+    {
+      "nurseryId": "ebben",
+      "pageUrl": "https://www.ebben.nl/en/treeebb/chlcolum-chamaecyparis-lawsoniana-columnaris/"
+    },
+    {
+      "nurseryId": "photo-frankpmatthews-com",
+      "pageUrl": "https://www.frankpmatthews.com/catalogue/ornamental-trees/betula/betula-golden-cloud/"
+    },
+    {
+      "nurseryId": "photo-pepinierelemaire-be",
+      "pageUrl": "https://www.pepinierelemaire.be/catalogue/betula-pendula-golden-cloud"
+    },
+    {
+      "nurseryId": "ebben",
+      "pageUrl": "https://www.ebben.nl/nl/treeebb/haidiane-hamamelis-x-intermedia-diane/"
+    },
+    {
+      "nurseryId": "photo-majestictrees-co-uk",
+      "pageUrl": "https://majestictrees.co.uk/products/acer-pacific-sunset"
+    },
+    {
+      "nurseryId": "van-den-berk",
+      "pageUrl": "https://www.vdberk.co.uk/trees/acer-freemanii-celebration-celzam/"
+    },
+    {
+      "nurseryId": "photo-majestictrees-co-uk",
+      "pageUrl": "https://majestictrees.co.uk/products/acer-freemanii-celebration"
+    },
+    {
+      "nurseryId": "van-den-berk",
+      "pageUrl": "https://www.vdberk.co.uk/trees/acer-platanoides-norwegian-sunset/"
+    },
+    {
+      "nurseryId": "photo-junker-co-uk",
+      "pageUrl": "https://www.junker.co.uk/magnolia%201.htm"
+    },
+    {
+      "nurseryId": "photo-botanic-cam-ac-uk",
+      "pageUrl": "https://www.botanic.cam.ac.uk/the-garden/plant-list/dipteronia-sinensis/"
+    },
+    {
+      "nurseryId": "photo-specialitytrees-com-au",
+      "pageUrl": "https://www.specialitytrees.com.au/trees/aesculus-indica-wsy7v"
+    },
+    {
+      "nurseryId": "ebben",
+      "pageUrl": "https://www.ebben.nl/en/treeebb/ladecidu-larix-decidua/"
+    },
+    {
+      "nurseryId": "ebben",
+      "pageUrl": "https://www.ebben.nl/en/treeebb/sttenuis-stipa-tenuissima/"
+    },
+    {
+      "nurseryId": "photo-kwekerijvlastuin-nl",
+      "pageUrl": "https://www.kwekerijvlastuin.nl/stipa-tenuissima-pony-tails-vedergras-zeer-fijntjes.html"
+    },
+    {
+      "nurseryId": "photo-secretgardengrowers-com",
+      "pageUrl": "https://secretgardengrowers.com/products/hosta-plantaginea"
+    },
+    {
+      "nurseryId": "photo-petalfaire-co-za",
+      "pageUrl": "https://www.petalfaire.co.za/index.php?content=plants&id=1462&submenu=131"
+    },
+    {
+      "nurseryId": "photo-plant-werk-nl",
+      "pageUrl": "https://plant-werk.nl/product/liriope-muscari-big-blue/"
+    },
+    {
+      "nurseryId": "photo-sterkebollen-nl",
+      "pageUrl": "https://www.sterkebollen.nl/liriope-muscari-big-blue.html"
+    }
+  ],
+  "exactNameAliases": {
+    "plant-f6d69bad2051c1": [
+      {
+        "name": "Larix decidua",
+        "evidenceUrls": [
+          "https://www.vdberk.co.uk/trees/larix-decidua/",
+          "https://powo.science.kew.org/taxon/urn%3Alsid%3Aipni.org%3Anames%3A262422-1"
+        ]
+      }
+    ],
+    "plant-d686f09be0b9bd": [
+      {
+        "name": "Sporobolus heterolepis",
+        "evidenceUrls": [
+          "https://www.knollgardens.co.uk/product/sporobolus-heterolepis/",
+          "https://hoffmannursery.com/plants/details/sporobolus-heterolepis"
+        ]
+      }
+    ],
+    "plant-42b6be0f9e8daf": [
+      {
+        "name": "Acer saccharinum",
+        "evidenceUrls": [
+          "https://www.nordic-baltic-genebanks.org/gringlobal/taxon/taxonomydetail?id=424405"
+        ],
+        "targetPlantId": "plant-9e26fac40b589f"
+      }
+    ],
+    "plant-449b4a7757cfcb": [
+      {
+        "name": "Betula pendula",
+        "evidenceUrls": [
+          "https://powo.science.kew.org/taxon/urn%3Alsid%3Aipni.org%3Anames%3A295230-1"
+        ],
+        "targetPlantId": "plant-betula-pendula"
+      }
+    ],
+    "plant-3af4f8935b363e": [
+      {
+        "name": "Acer x freemanii 'Autumn Blaze'",
+        "evidenceUrls": [
+          "https://plantfinder.mobot.org/PlantFinderDetails.aspx?taxonid=255063"
+        ],
+        "targetPlantId": "plant-cd7931ce209e95"
+      }
+    ],
+    "plant-d267c555326f7d": [
+      {
+        "name": "Betula utilis 'Jacquemontii'",
+        "evidenceUrls": [
+          "https://www.rhs.org.uk/plants/203972/betula-utilis-var-jaquemontii/details"
+        ],
+        "targetPlantId": "plant-16bee078ca7050"
+      }
+    ],
+    "plant-c025339a5938e8": [
+      {
+        "name": "Picea pungens 'Glauca'",
+        "evidenceUrls": [
+          "https://www.rhs.org.uk/plants/224541/picea-pungens-glauca/details"
+        ],
+        "targetPlantId": "plant-04dbe62d941796"
+      }
+    ],
+    "plant-f00c55bd78dd3e": [
+      {
+        "name": "Quercus rubra",
+        "evidenceUrls": [
+          "https://powo.science.kew.org/taxon/urn%3Alsid%3Aipni.org%3Anames%3A295863-1"
+        ],
+        "targetPlantId": "plant-quercus-rubra"
+      }
+    ],
+    "plant-068e30358a9671": [
+      {
+        "name": "Photinia x fraseri 'Red Robin'",
+        "evidenceUrls": [
+          "https://www.rhs.org.uk/plants/photinia?type=0"
+        ],
+        "targetPlantId": "plant-3a1aeb3df1ce96"
+      }
+    ],
+    "plant-6571823f601469": [
+      {
+        "name": "Photinia x fraseri 'Red Robin'",
+        "evidenceUrls": [
+          "https://www.rhs.org.uk/plants/photinia?type=0"
+        ],
+        "targetPlantId": "plant-3a1aeb3df1ce96"
+      }
+    ],
+    "plant-c4098de94f77ea": [
+      {
+        "name": "Acer palmatum 'Atropurpureum'",
+        "evidenceUrls": [
+          "https://caraghnurseries.ie/product/acer-palmatum-atropurpureum-2/"
+        ],
+        "targetPlantId": "plant-4eb881f57af1da"
+      }
+    ],
+    "plant-778120af9b631f": [
+      {
+        "name": "Koelreuteria paniculata",
+        "evidenceUrls": [
+          "https://www.vdberk.com/trees/koelreuteria-paniculata/"
+        ],
+        "targetPlantId": "plant-7e5fc654273568"
+      }
+    ],
+    "plant-bd91b93fd2d499": [
+      {
+        "name": "Lagerstroemia indica",
+        "evidenceUrls": [
+          "https://powo.science.kew.org/taxon/urn%3Alsid%3Aipni.org%3Anames%3A553576-1"
+        ],
+        "targetPlantId": "plant-3f70a4b46ba024"
+      }
+    ],
+    "plant-65238cc4c86bd4": [
+      {
+        "name": "Liquidambar styraciflua 'Worplesdon'",
+        "evidenceUrls": [
+          "https://www.vdberk.com/trees/liquidambar-styraciflua-worplesdon/"
+        ],
+        "targetPlantId": "plant-7a7935c8dc087f"
+      }
+    ],
+    "plant-cd48a494b63f41": [
+      {
+        "name": "Ginkgo biloba 'Epiphylla'",
+        "evidenceUrls": [
+          "https://www.chicagobotanic.org/plant-information/plant-finder/ginkgo-biloba-epiphylla-epiphylla-ginkgo"
+        ]
+      }
+    ],
+    "plant-eceb6507153902": [
+      {
+        "name": "Acer truncatum x platanoides 'Warrenred'",
+        "evidenceUrls": [
+          "https://landscapeplants.oregonstate.edu/plants/acer-pacific-sunset"
+        ]
+      }
+    ],
+    "plant-ee364e988134ba": [
+      {
+        "name": "Acer truncatum x platanoides 'Keithsform'",
+        "evidenceUrls": [
+          "https://jfschmidt.com/wp-content/uploads/2023/01/norwegiansunsetmaple.pdf"
+        ]
+      }
+    ],
+    "plant-f816663b421aad": [
+      {
+        "name": "Deutzia nakaiana 'Nikko'",
+        "evidenceUrls": [
+          "https://www.usna.usda.gov/assets/images/as_pdf_image/Deutzia_gracilis_Nikko.pdf"
+        ]
+      }
+    ],
+    "plant-1b51cad9a929f8": [
+      {
+        "name": "Larix decidua",
+        "evidenceUrls": [
+          "https://www.vdberk.co.uk/trees/larix-decidua/"
+        ],
+        "targetPlantId": "plant-f6d69bad2051c1",
+        "review": "scoped spelling correction; full cultivar retained"
+      }
+    ],
+    "plant-85cf9a9e00e2bc": [
+      {
+        "name": "Muhlenbergia capillaris",
+        "evidenceUrls": [
+          "https://innocentiemangonipiante.it/en/muhlenbergia-capillaris/"
+        ],
+        "targetPlantId": "plant-e04a8258fa76d7",
+        "review": "scoped spelling correction; full cultivar retained"
+      }
+    ],
+    "plant-b8d96ee6a098c5": [
+      {
+        "name": "Prunus serrulata 'Kanzan'",
+        "evidenceUrls": [
+          "https://innocentiemangonipiante.it/en/prunus-serrulata-kanzan/"
+        ],
+        "targetPlantId": "plant-65d6c4007d282d",
+        "review": "scoped spelling correction; full cultivar retained"
+      }
+    ],
+    "plant-483b4280162863": [
+      {
+        "name": "Salix babylonica",
+        "evidenceUrls": [
+          "https://innocentiemangonipiante.it/en/salix-babylonica/"
+        ],
+        "targetPlantId": "plant-d27ee8a805459f",
+        "review": "scoped spelling correction; full cultivar retained"
+      }
+    ],
+    "plant-5396374d374aca": [
+      {
+        "name": "Stipa tenuissima",
+        "evidenceUrls": [
+          "https://www.rhs.org.uk/plants/58857/stipa-tenuissima/details"
+        ],
+        "targetPlantId": "plant-072321aa05ca04",
+        "review": "scoped spelling correction; full cultivar retained"
+      }
+    ],
+    "plant-274066fb782dbf": [
+      {
+        "name": "Acer freemanii",
+        "evidenceUrls": [
+          "https://api.gbif.org/v1/species/match?name=Acer+x+freemanii&kingdom=Plantae&strict=true",
+          "https://www.gbif.org/species/7379930"
+        ],
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+      }
+    ],
+    "plant-631cbe20406538": [
+      {
+        "name": "Eriocapitella hupehensis 'Praecox'",
+        "evidenceUrls": [
+          "https://api.gbif.org/v1/species/match?name=Anemone+hupehensis&kingdom=Plantae&strict=true",
+          "https://www.gbif.org/species/9677963"
+        ],
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+      }
+    ],
+    "plant-94a1fb03291b87": [
+      {
+        "name": "Berberis thunbergii 'Golden Carpet'",
+        "evidenceUrls": [
+          "https://api.gbif.org/v1/species/match?name=Berberis+thunbergi&kingdom=Plantae&strict=true",
+          "https://www.gbif.org/species/3033896"
+        ],
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+      }
+    ],
+    "plant-7b567e281367e3": [
+      {
+        "name": "Betula alleghaniensis",
+        "evidenceUrls": [
+          "https://api.gbif.org/v1/species/match?name=Betula+lutea&kingdom=Plantae&strict=true",
+          "https://www.gbif.org/species/5331779"
+        ],
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+      }
+    ],
+    "plant-742c2f18d43871": [
+      {
+        "name": "Caryopteris clandonensis 'Kew Blue'",
+        "evidenceUrls": [
+          "https://api.gbif.org/v1/species/match?name=Caryopteris+x+clandonensis&kingdom=Plantae&strict=true",
+          "https://www.gbif.org/species/8654143"
+        ],
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+      }
+    ],
+    "plant-b20f33d07166cb": [
+      {
+        "name": "Caryopteris clandonensis 'Summer Sorbet'",
+        "evidenceUrls": [
+          "https://api.gbif.org/v1/species/match?name=Caryopteris+x+clandonensis&kingdom=Plantae&strict=true",
+          "https://www.gbif.org/species/8654143"
+        ],
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+      }
+    ],
+    "plant-b13d7ac3d86694": [
+      {
+        "name": "Cotoneaster dammeri 'Eichholz'",
+        "evidenceUrls": [
+          "https://api.gbif.org/v1/species/match?name=Cotoneaster+dammerii&kingdom=Plantae&strict=true",
+          "https://www.gbif.org/species/3026049"
+        ],
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+      }
+    ],
+    "plant-02e2d7be8908da": [
+      {
+        "name": "Cotoneaster dammeri 'Skogholm'",
+        "evidenceUrls": [
+          "https://api.gbif.org/v1/species/match?name=Cotoneaster+dammerii&kingdom=Plantae&strict=true",
+          "https://www.gbif.org/species/3026049"
+        ],
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+      }
+    ],
+    "plant-ad6ac6900a7429": [
+      {
+        "name": "Crataegus media 'Paul's Scarlet'",
+        "evidenceUrls": [
+          "https://api.gbif.org/v1/species/match?name=Crataegus+x+media&kingdom=Plantae&strict=true",
+          "https://www.gbif.org/species/3013800"
+        ],
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+      }
+    ],
+    "plant-123479a69dd64f": [
+      {
+        "name": "Crataegus persimilis 'Splendens'",
+        "evidenceUrls": [
+          "https://api.gbif.org/v1/species/match?name=Crataegus+x+persimilis&kingdom=Plantae&strict=true",
+          "https://www.gbif.org/species/3015457"
+        ],
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+      }
+    ],
+    "plant-849f15111e5047": [
+      {
+        "name": "Eutrochium maculatum 'Atropurpurea'",
+        "evidenceUrls": [
+          "https://api.gbif.org/v1/species/match?name=Eupatorium+maculatum&kingdom=Plantae&strict=true",
+          "https://www.gbif.org/species/3138195"
+        ],
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+      }
+    ],
+    "plant-a9d6a182a4e421": [
+      {
+        "name": "Oenothera lindheimeri 'Whirling Butterfly'",
+        "evidenceUrls": [
+          "https://api.gbif.org/v1/species/match?name=Gaura+lindheimeri&kingdom=Plantae&strict=true",
+          "https://www.gbif.org/species/3664589"
+        ],
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+      }
+    ],
+    "plant-42ed463c83d4dc": [
+      {
+        "name": "Hamamelis intermedia",
+        "evidenceUrls": [
+          "https://api.gbif.org/v1/species/match?name=Hamamelis+x+intermedia&kingdom=Plantae&strict=true",
+          "https://www.gbif.org/species/3702531"
+        ],
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+      }
+    ],
+    "plant-c1ccee0a920085": [
+      {
+        "name": "Hamamelis intermedia 'Diane'",
+        "evidenceUrls": [
+          "https://api.gbif.org/v1/species/match?name=Hamamelis+x+intermedia&kingdom=Plantae&strict=true",
+          "https://www.gbif.org/species/3702531"
+        ],
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+      }
+    ],
+    "plant-b4ef8b5da580a2": [
+      {
+        "name": "Cenchrus orientalis",
+        "evidenceUrls": [
+          "https://api.gbif.org/v1/species/match?name=Pennisetum+orientale&kingdom=Plantae&strict=true",
+          "https://www.gbif.org/species/8124374"
+        ],
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+      }
+    ],
+    "plant-af43a57be76efb": [
+      {
+        "name": "Cenchrus orientalis 'Tall Tails'",
+        "evidenceUrls": [
+          "https://api.gbif.org/v1/species/match?name=Pennisetum+orientale&kingdom=Plantae&strict=true",
+          "https://www.gbif.org/species/8124374"
+        ],
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+      }
+    ],
+    "plant-7b646392cc2b04": [
+      {
+        "name": "Bistorta amplexicaulis 'Summer Dance'",
+        "evidenceUrls": [
+          "https://api.gbif.org/v1/species/match?name=Persicaria+amplexicaulis&kingdom=Plantae&strict=true",
+          "https://www.gbif.org/species/7291264"
+        ],
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+      }
+    ],
+    "plant-1b32527d81ccd6": [
+      {
+        "name": "Photinia fraseri 'Little Red Robin'",
+        "evidenceUrls": [
+          "https://api.gbif.org/v1/species/match?name=Photinia+x+fraseri&kingdom=Plantae&strict=true",
+          "https://www.gbif.org/species/5363854"
+        ],
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+      }
+    ],
+    "plant-a4bd3ecf55aa55": [
+      {
+        "name": "Platanus hispanica 'Roof form'",
+        "evidenceUrls": [
+          "https://api.gbif.org/v1/species/match?name=Platanus+acerifolia&kingdom=Plantae&strict=true",
+          "https://www.gbif.org/species/7400250"
+        ],
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+      }
+    ],
+    "plant-2c93a3023c8235": [
+      {
+        "name": "Prunus cerasifera 'Atropurpurea'",
+        "evidenceUrls": [
+          "https://api.gbif.org/v1/species/match?name=Prunus+pissardii&kingdom=Plantae&strict=true",
+          "https://www.gbif.org/species/3021730"
+        ],
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+      }
+    ],
+    "plant-76a27aa2433b7d": [
+      {
+        "name": "Prunus eminens 'Umbraculifera'",
+        "evidenceUrls": [
+          "https://api.gbif.org/v1/species/match?name=Prunus+x+eminens&kingdom=Plantae&strict=true",
+          "https://www.gbif.org/species/3021135"
+        ],
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+      }
+    ],
+    "plant-49e30437b17525": [
+      {
+        "name": "Prunus subhirtella 'Autumnalis Rosea'",
+        "evidenceUrls": [
+          "https://api.gbif.org/v1/species/match?name=Prunus+x+subhirtella&kingdom=Plantae&strict=true",
+          "https://www.gbif.org/species/3021229"
+        ],
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+      }
+    ],
+    "plant-1a416ae9d7ca7a": [
+      {
+        "name": "Quercus bimundorum 'Crimson Spire'",
+        "evidenceUrls": [
+          "https://api.gbif.org/v1/species/match?name=Quercus+x+bimundorum&kingdom=Plantae&strict=true",
+          "https://www.gbif.org/species/2879770"
+        ],
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+      }
+    ],
+    "plant-9354d6bf7371b0": [
+      {
+        "name": "Quercus warei 'Regal Prince'",
+        "evidenceUrls": [
+          "https://api.gbif.org/v1/species/match?name=Quercus+x+warei&kingdom=Plantae&strict=true",
+          "https://www.gbif.org/species/3906564"
+        ],
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+      }
+    ],
+    "plant-c01671d345f47b": [
+      {
+        "name": "Sagina subulata 'Aurea'",
+        "evidenceUrls": [
+          "https://api.gbif.org/v1/species/match?name=Sagina+subullata&kingdom=Plantae&strict=true",
+          "https://www.gbif.org/species/8197537"
+        ],
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+      }
+    ],
+    "plant-f7f490785ef2e3": [
+      {
+        "name": "Salvia sylvestris 'Mainacht'",
+        "evidenceUrls": [
+          "https://api.gbif.org/v1/species/match?name=Salvia+x+sylvestris&kingdom=Plantae&strict=true",
+          "https://www.gbif.org/species/2926990"
+        ],
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+      }
+    ],
+    "plant-43201d5e8991bc": [
+      {
+        "name": "Stachys byzantina",
+        "evidenceUrls": [
+          "https://api.gbif.org/v1/species/match?name=Stachys+byzanthina&kingdom=Plantae&strict=true",
+          "https://www.gbif.org/species/2927230"
+        ],
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+      }
+    ],
+    "plant-15bedd2521f54a": [
+      {
+        "name": "Platycladus orientalis 'Aurea'",
+        "evidenceUrls": [
+          "https://api.gbif.org/v1/species/match?name=Thuja+orientalis&kingdom=Plantae&strict=true",
+          "https://www.gbif.org/species/2684855"
+        ],
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+      }
+    ],
+    "plant-f909981347d7d7": [
+      {
+        "name": "Tilia europaea 'Euchlora'",
+        "evidenceUrls": [
+          "https://api.gbif.org/v1/species/match?name=Tilia+x+europaea&kingdom=Plantae&strict=true",
+          "https://www.gbif.org/species/3152046"
+        ],
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+      }
+    ],
+    "plant-f7f4e4fe59b035": [
+      {
+        "name": "Ulmus glabra 'Pyramidalis'",
+        "evidenceUrls": [
+          "https://api.gbif.org/v1/species/match?name=Ulmus+montana&kingdom=Plantae&strict=true",
+          "https://www.gbif.org/species/5361866"
+        ],
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+      }
+    ],
+    "plant-a14f511a15098e": [
+      {
+        "name": "Viburnum rhytidophyllum",
+        "evidenceUrls": [
+          "https://api.gbif.org/v1/species/match?name=Viburnum+rhytidophillum&kingdom=Plantae&strict=true",
+          "https://www.gbif.org/species/2888625"
+        ],
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+      }
+    ]
+  }
+}

@@ -39,7 +39,8 @@ try{
   const referenceImages=new Set();
   for(const plant of catalog.plants){
     if(!plant.photo)continue;
-    // validateImport above checks identity, provenance, license and status.
+    // validateImport checks compact image/source records and legacy metadata.
+    // Workflow identity and rights evidence is retained separately in docs/.
     // Every reference is stored locally, separately from the nursery's photo.
     if(!/^assets\/biljke\/reference-[a-f0-9]{16,64}\.jpg$/i.test(plant.photo.image)){
       fail('Referentna fotografija mora biti lokalni JPEG: '+plant.id);

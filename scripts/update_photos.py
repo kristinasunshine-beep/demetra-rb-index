@@ -36,7 +36,7 @@ from PIL import Image, ImageOps, UnidentifiedImageError
 PHOTO_FIELDS = frozenset({"image", "imageKind", "imageSourceUrl"})
 VOID = frozenset("area base br col embed hr img input link meta param source track wbr".split())
 BLOCKED_CONTEXT = re.compile(r"(?:^|[\s_-])(?:related|upsells?|cross-sells?|recommendations?|logo|footer|header)(?:$|[\s_-])", re.I)
-BLOCKED_IMAGE = re.compile(r"(?:^|[/_\s.-])(?:logos?|favicon|gravatar|avatar|placeholder|no[-_ ]?image|no[-_ ]?photo|default[-_ ]?(?:image|social)|social[-_ ]?(?:default|share))(?:$|[/_\s.-])", re.I)
+BLOCKED_IMAGE = re.compile(r"(?:^|[/_\s.-])(?:logos?|favicon|gravatar|avatar|placeholder|no[-_ ]?image|no[-_ ]?photo|default[-_ ]?(?:image|social)|social[-_ ]?(?:default|share)|sociaal[-_ ]?delen)(?:$|[/_\s.-])", re.I)
 LOCAL_JPEG = re.compile(r"assets/biljke/(?:[A-Za-z0-9_-]+/)*[A-Za-z0-9_-]+\.jpe?g\Z", re.I)
 DEFAULT_LIMITS = {"timeout": 20, "maxPageBytes": 3_000_000, "maxImageBytes": 10_485_760,
                   "maxPixels": 20_000_000, "maxSide": 1200, "jpegQuality": 82}
@@ -77,7 +77,8 @@ def identity_matches(value, latin_name, *, title=False):
     expected = identity_forms(latin_name)
     if not any(len(x) >= 2 and x[1] not in {"sp", "spp"} for x in expected):
         return False
-    return bool(identity_forms(value) & expected)
+    actual=identity_forms(value)
+    return bool(actual & expected) or any(a == e*2 for a in actual for e in expected)
 
 
 def url_key(url):
@@ -123,8 +124,10 @@ def fetch_resource(url, *, hosts, max_bytes, timeout, kind, path_prefixes=None):
     check = lambda value: check_url(value, hosts, path_prefixes)
     check(url)
     request = Request(url, headers={
-        "User-Agent": "DemetraCataloguePhotos/1.0",
-        "Accept": "text/html,application/xhtml+xml" if kind == "page" else "image/jpeg,image/png,image/webp,image/avif,image/gif",
+        "User-Agent": "DemetraPhotoBot/1.0 (https://github.com/kristinasunshine-beep/demetra-rb-index)",
+        "Accept": ("application/json" if kind == "api" else
+                   "text/html,application/xhtml+xml" if kind == "page" else
+                   "image/jpeg,image/png,image/webp,image/avif,image/gif"),
         "Accept-Encoding": "identity",
     })
     try:
@@ -292,7 +295,7 @@ def resolve_product_image(source, page_url, latin_name, policy):
                 identity_matches(x.get("name", ""), latin_name) and
                 (not x.get("url") or url_key(urljoin(page_url, x["url"])) == url_key(page_url))]
     if h1s:
-        require(all(identity_matches(t, latin_name) for t in h1s),
+        require(all(identity_matches(t, latin_name, title=True) for t in h1s),
                 "plant_identity_mismatch", "Product heading does not exactly match genus, species and cultivar.")
     elif not products:
         titles = [n.text() for n in doc.nodes if n.tag == "title"]
@@ -326,6 +329,14 @@ def resolve_product_image(source, page_url, latin_name, policy):
                 continue
             result = candidate(node.attrs.get("data-large_image") or node.attrs.get("data-src") or
                                node.attrs.get("src"), "featured_product_image")
+            if result:
+                return result
+    # Some botanical catalogues have no Product JSON-LD. Require BOTH the
+    # exact product identity checked above and an image's own full-name alt.
+    for node in doc.nodes:
+        if node.tag == "img" and not node.excluded() and identity_matches(node.attrs.get("alt", ""), latin_name, title=True):
+            result = candidate(node.attrs.get("data-large_image") or node.attrs.get("data-src") or
+                               node.attrs.get("data-original") or node.attrs.get("src"), "exact_product_image_alt")
             if result:
                 return result
     og_names = metas.get("og:title", []) + metas.get("og:image:alt", [])

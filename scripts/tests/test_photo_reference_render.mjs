@@ -21,7 +21,10 @@ const run = code => new Script(code).runInContext(context, { timeout: 5000 });
 run(core + '\n' + ui);
 const photo = {
   image: 'assets/biljke/reference-0123456789abcdef.jpg',
-  sourceUrl: 'https://commons.wikimedia.org/wiki/File:Acer_campestre.jpg',
+  sourceUrl: 'https://commons.wikimedia.org/wiki/File:Acer_campestre_Elsrijk.jpg'
+};
+const legacyPhoto = {
+  ...photo,
   imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/0/00/Acer_campestre.jpg',
   taxon: 'Acer campestre', matchLevel: 'species_reference', origin: 'wikimedia',
   author: 'Primer autora', license: 'CC BY-SA 4.0',
@@ -57,62 +60,74 @@ function rejects(options, message) {
 
 const reference = render();
 assert(reference.includes('src="https://example.test/demetra-rb-index/assets/biljke/reference-0123456789abcdef.jpg"'));
-assert(reference.includes('Referentna fotografija vrste: Acer campestre'));
-assert(reference.includes('Autor: Primer autora'));
-assert(reference.includes('href="https://commons.wikimedia.org/wiki/File:Acer_campestre.jpg"'));
-assert(reference.includes('Licenca: <a href="https://creativecommons.org/licenses/by-sa/4.0/"'));
-assert(reference.includes('CC BY-SA 4.0'));
+assert(!reference.includes('Referentna fotografija'));
+assert(!reference.includes('Autor:'));
+assert(!reference.includes('commons.wikimedia.org'));
+assert(!reference.includes('Licenca:'));
+assert(!reference.includes('CC BY-SA'));
 assert(!reference.includes('<img src="https://upload.wikimedia.org'));
 assert(!reference.includes('Izvor kataloške fotografije ↗'));
 assert(reference.includes('<dt>Obim sadnice</dt><dd>14–16</dd>'));
+assert(render({ photoChanges: { status: 'verified' } }).includes('reference-0123456789abcdef.jpg'));
+assert(render({ photoChanges: { sourceUrl: 'https://www.gbif.org/occurrence/12345' } }).includes('reference-0123456789abcdef.jpg'));
+assert(render({ photoChanges: { sourceUrl: 'https://example.org/nursery/acer' } }).includes('reference-0123456789abcdef.jpg'));
 
 const supplier = render({ offerChanges: { image: 'assets/biljke/supplier.jpg',
   imageSourceUrl: 'https://example.org/nursery/acer', imageKind: 'Kataloška fotografija rasadnika' } });
 assert(supplier.includes('assets/biljke/supplier.jpg'));
-assert(supplier.includes('Kataloška fotografija rasadnika'));
+assert(!supplier.includes('Kataloška fotografija rasadnika'));
 assert(!supplier.includes('reference-0123456789abcdef.jpg'));
 assert(!supplier.includes('Referentna fotografija'));
-assert(supplier.includes('Izvor kataloške fotografije ↗'));
+assert(!supplier.includes('Izvor kataloške fotografije ↗'));
+assert(!supplier.includes('https://example.org/nursery/acer'));
 
-const exact = render({ plantChanges: { latinName: 'Acer campestre' }, photoChanges: { matchLevel: 'exact' } });
-assert(exact.includes('Referentna fotografija biljke'));
-assert(!exact.includes('Referentna fotografija vrste:'));
+const exact = render({ plantChanges: { latinName: 'Acer campestre', photo: {
+  ...legacyPhoto, matchLevel: 'exact', license: 'CC0 1.0',
+  licenseUrl: 'https://creativecommons.org/publicdomain/zero/1.0/' } } });
+assert(exact.includes('reference-0123456789abcdef.jpg'));
+assert(!exact.includes('Referentna fotografija') && !exact.includes('Autor:'));
 const synonym = render({ plantChanges: { latinName: 'Styphnolobium japonicum', synonyms: ['Sophora japonica'] },
-  photoChanges: { taxon: 'Sophora japonica', matchLevel: 'exact' } });
-assert(synonym.includes('Referentna fotografija biljke'));
+  photoChanges: { ...legacyPhoto, taxon: 'Sophora japonica', matchLevel: 'exact', license: 'Public domain' } });
+assert(synonym.includes('reference-0123456789abcdef.jpg'));
+const hiddenSpecies = render({ plantChanges: { photo: { ...legacyPhoto, license: 'CC0' } } });
+assert(!hiddenSpecies.includes('reference-0123456789abcdef.jpg'));
+const hiddenAttribution = render({ plantChanges: { latinName: 'Acer campestre',
+  photo: { ...legacyPhoto, matchLevel: 'exact' } } });
+assert(!hiddenAttribution.includes('reference-0123456789abcdef.jpg'));
 
 const empty = render({ offers: [] });
 assert(empty.includes('Ponude rasadnika za ovu biljku još nisu unete.'));
-assert(empty.includes('Referentna fotografija vrste: Acer campestre'));
+assert(empty.includes('reference-0123456789abcdef.jpg'));
 const review = render({ offerChanges: { recordStatus: 'needs_review' } });
-assert(review.includes('Tačnost podataka') && review.includes('Referentna fotografija vrste:'));
+assert(review.includes('Tačnost podataka') && review.includes('reference-0123456789abcdef.jpg'));
 const missing = render({ plantChanges: { photo: null } });
 assert(missing.includes('Fotografija nije dostupna u obrađenom izvoru'));
 assert(!missing.includes('Wikimedia Commons'));
 
-const escaped = render({ photoChanges: { author: '<img src=x onerror=alert(1)>',
+const escaped = render({ photoChanges: { ...legacyPhoto, author: '<img src=x onerror=alert(1)>',
   license: '<script>alert(1)</script>' } });
-assert(escaped.includes('&lt;img src=x onerror=alert(1)&gt;'));
-assert(escaped.includes('&lt;script&gt;alert(1)&lt;/script&gt;'));
 assert(!escaped.includes('<img src=x') && !escaped.includes('<script>alert(1)</script>'));
 
-rejects({ photoChanges: { matchLevel: 'exact' } }, /takson/);
-rejects({ plantChanges: { synonyms: ['Acer campestre'] }, photoChanges: { matchLevel: 'exact' } }, /takson/);
-rejects({ photoChanges: { taxon: 'Quercus robur' } }, /takson/);
-rejects({ plantChanges: { searchAliases: ['Quercus robur'] }, photoChanges: { taxon: 'Quercus robur', matchLevel: 'exact' } }, /takson/);
+rejects({ photoChanges: { ...legacyPhoto, matchLevel: 'exact' } }, /takson/);
+rejects({ plantChanges: { synonyms: ['Acer campestre'] }, photoChanges: { ...legacyPhoto, matchLevel: 'exact' } }, /takson/);
+rejects({ photoChanges: { ...legacyPhoto, taxon: 'Quercus robur' } }, /takson/);
+rejects({ plantChanges: { searchAliases: ['Quercus robur'] }, photoChanges: { ...legacyPhoto, taxon: 'Quercus robur', matchLevel: 'exact' } }, /takson/);
 rejects({ photoChanges: { image: 'https://upload.wikimedia.org/image.jpg' } }, /lokalni JPEG/);
 rejects({ photoChanges: { image: 'assets/biljke/../../reference-0123456789abcdef.jpg' } }, /lokalni JPEG/);
 rejects({ photoChanges: { image: 'assets/biljke/reference-0123456789abcdef.svg' } }, /lokalni JPEG/);
 rejects({ photoChanges: { sourceUrl: 'javascript:alert(1)' } }, /HTTP/);
-rejects({ photoChanges: { sourceUrl: 'https://example.com/fake-commons' } }, /Wikimedia/);
-rejects({ photoChanges: { licenseUrl: 'javascript:alert(1)' } }, /HTTP/);
-rejects({ photoChanges: { status: 'pending' } }, /potvrđen Wikimedia/);
-rejects({ photoChanges: { origin: 'supplier' } }, /potvrđen Wikimedia/);
-rejects({ photoChanges: { author: '' } }, /obavezno polje/);
-rejects({ photoChanges: { license: '' } }, /obavezno polje/);
-rejects({ photoChanges: { checkedAt: '2026-02-30' } }, /datum/);
+rejects({ photoChanges: { sourceUrl: 'http://example.org/photo' } }, /HTTPS/);
+rejects({ photoChanges: { sourceUrl: '' } }, /HTTPS/);
+rejects({ photoChanges: { ...legacyPhoto, sourceUrl: 'https://example.com/fake-commons' } }, /Wikimedia/);
+rejects({ photoChanges: { ...legacyPhoto, licenseUrl: 'javascript:alert(1)' } }, /HTTP/);
+rejects({ photoChanges: { status: 'pending' } }, /potvrđena/);
+rejects({ photoChanges: { ...legacyPhoto, origin: 'supplier' } }, /potvrđen Wikimedia/);
+rejects({ photoChanges: { ...legacyPhoto, author: '' } }, /obavezno polje/);
+rejects({ photoChanges: { ...legacyPhoto, license: '' } }, /obavezno polje/);
+rejects({ photoChanges: { ...legacyPhoto, checkedAt: '2026-02-30' } }, /datum/);
 
 console.log(JSON.stringify({ ok: true, nurseryPhotoHasPriority: true,
-  verifiedSpeciesReferenceClearlyLabelled: true, attributionAndLicenseVisible: true,
+  compactPhotoRecordsSupported: true, publicPhotoMetadataHidden: true,
+  unsafeLegacyReferencesHidden: true,
   referenceIsLocal: true, emptyRecordsShowReference: true,
   unsafeMetadataRejectedOrEscaped: true, colloquialAliasesNotUsedForIdentity: true }, null, 2));
