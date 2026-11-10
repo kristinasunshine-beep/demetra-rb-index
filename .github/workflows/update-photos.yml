@@ -1,13 +1,29 @@
-name: Osvezi kataloske fotografije
+name: Pronadji i osvezi fotografije
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/update-photos.yml'
+      - 'data/biljke.json'
+      - 'data/rasadnici.json'
+      - 'data/kataloske-stavke.json'
+      - 'assets/biljke/**'
+      - 'scripts/*photos*.py'
+      - 'scripts/catalog_photo_pipeline.py'
+      - 'scripts/photo-*.json'
+      - 'scripts/tests/test_*photo*.py'
+      - 'docs/fotografije.json'
+      - 'docs/photo-discovery-state.json'
+      - 'docs/reference-photo-state.json'
+      - 'docs/photo-refresh-state.json'
   schedule:
-    - cron: '47 4 * * 1'
+    - cron: '23 4 * * *'
   workflow_dispatch:
 
 permissions: {}
 
-# Ista grupa cuva kompatibilnost sa ranijim poslovima osvezavanja.
+# Serijalizovano sa ranijim poslovima da ne prepisuju isti katalog.
 concurrency:
   group: demetra-price-update-${{ github.repository }}
   cancel-in-progress: false
@@ -16,7 +32,7 @@ jobs:
   update:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 30
 
     permissions:
       contents: write
@@ -39,7 +55,7 @@ jobs:
         with:
           python-version: '3.13'
 
-      - name: Instaliraj proverenu verziju biblioteke za slike
+      - name: Instaliraj biblioteku za proveru i cuvanje fotografija
         run: |
           python -m pip install --disable-pip-version-check --only-binary=:all: 'Pillow==13.0.0'
 
@@ -52,19 +68,24 @@ jobs:
       - name: Proveri polazni katalog
         run: node scripts/check-catalog.mjs
 
-      - name: Proveri logiku osvezavanja fotografija
+      - name: Proveri identitet, izvore i zastitu podataka
         shell: bash
         run: |
           set -euo pipefail
-          test -f scripts/tests/test_update_photos.py
-          python -m unittest discover -s scripts/tests -p 'test_update_photos.py'
+          python -m unittest discover -s scripts/tests -p 'test_*photo*.py'
           python -m unittest discover -s scripts/tests -p 'test_source_policy.py'
 
-      - name: Osvezi fotografije iz potvrdjenih izvora
+      - name: Pronadji izvore, dopuni i osvezi fotografije
         id: refresh
-        run: python scripts/update_photos.py --report "$RUNNER_TEMP/photo-update.json"
+        run: >-
+          python scripts/catalog_photo_pipeline.py
+          --discovery-budget 120
+          --reference-budget 180
+          --refresh-limit 120
+          --max-seconds 1500
+          --report "$RUNNER_TEMP/photo-pipeline.json"
 
-      - name: Prikazi rezultat provere fotografija
+      - name: Prikazi pokrivenost i preostali posao
         if: always() && steps.refresh.outcome != 'skipped'
         shell: bash
         run: |
@@ -73,94 +94,90 @@ jobs:
           import os
           from pathlib import Path
 
-          path = Path(os.environ['RUNNER_TEMP']) / 'photo-update.json'
-          lines = ['## Kataloske fotografije', '']
-
+          path = Path(os.environ['RUNNER_TEMP']) / 'photo-pipeline.json'
+          lines = ['## Fotografije kataloga', '']
           if not path.is_file():
-              lines.append('Izvestaj nije napravljen; proverite prethodni korak.')
+              lines.append('Izvestaj nije napravljen; pogledajte prethodni korak.')
           else:
               report = json.loads(path.read_text(encoding='utf-8'))
-              labels = {
-                  'completed': 'Zavrseno',
-                  'partial_failure': 'Delimicno uspesno',
-                  'failed': 'Provera izvora nije uspela',
-                  'configuration_or_data_error': 'Greska konfiguracije ili podataka'
-              }
-              lines += [
-                  '**Status: ' + labels.get(report.get('status'), 'Nepoznat status') + '**',
-                  '',
-                  '| Rezultat | Broj |',
-                  '| --- | ---: |'
-              ]
-              for label, key in [
-                  ('URL zahtevi', 'requests'),
-                  ('Uspesne provere', 'checked'),
-                  ('Osvezene fotografije', 'updated'),
-                  ('Dodate fotografije', 'added'),
-                  ('Potvrdjeno nepromenjene', 'verifiedUnchanged'),
-                  ('Neuspele provere', 'failed'),
-                  ('Preskoceno', 'skipped')
-              ]:
-                  count = report.get(key)
-                  value = str(count) if type(count) is int and count >= 0 else 'Nije navedeno'
-                  lines.append('| ' + label + ' | ' + value + ' |')
-              lines += [
-                  '',
-                  'Neuspesne provere cuvaju prethodnu fotografiju i podatke. '
-                  'Ova provera ne potvrdjuje lager, cenu ni dimenzije sadnice.',
-                  ''
-              ]
-              if report.get('status') in ('partial_failure', 'failed', 'configuration_or_data_error'):
-                  print('::warning::Neki izvori nisu uspesno provereni; pogledajte Summary.')
-
+              coverage = report.get('coverage', {})
+              labels = {'complete': 'Puna pokrivenost potvrdena', 'partial': 'Dopunjeno; red za nastavak ostaje',
+                        'partial_failure': 'Delimicno; pojedini izvori nisu obradeni', 'failed': 'Zaustavljeno zbog greske'}
+              lines += ['**' + labels.get(report.get('status'), report.get('status', 'Nepoznat status')) + '**', '',
+                        '| Rezultat | Broj |', '| --- | ---: |']
+              for label, key in [('Biljke sa fotografijom', 'plantsWithPhoto'),
+                                 ('Ukupno biljaka', 'plants'),
+                                 ('Ponude sa fotografijom svog rasadnika', 'nurseryPhotos'),
+                                 ('Ponude sa oznacenom referentnom fotografijom', 'referencePhotos'),
+                                 ('Ponude koje jos cekaju fotografiju', 'remainingOffers'),
+                                 ('Pokrivenost ponuda (%)', 'coveragePercent')]:
+                  lines.append('| ' + label + ' | ' + str(coverage.get(key, '—')) + ' |')
+              lines += ['', '| Faza | Status |', '| --- | --- |']
+              for name, stage in report.get('stages', {}).items():
+                  lines.append('| ' + name + ' | ' + stage.get('status', 'completed') + ' |')
+              if report.get('fatal'):
+                  lines += ['', 'Podaci nisu upisani: ' + report.get('reason', 'pipeline_error') + '.']
+              lines += ['', 'Preostale stavke i red za nastavak su u docs/photo-coverage.json, '
+                        'docs/photo-discovery-state.json i docs/reference-photo-state.json.',
+                        'Referentna fotografija je posebno oznacena; ona ne potvrduje lager, cenu, dimenzije '
+                        'ni izgled primerka konkretnog rasadnika. Cene i mere ostaju iz arhivskih ponuda.']
+              if report.get('status') != 'complete':
+                  print('::notice::Pokrivenost jos nije potpuna; sacuvani red nastavlja sledecu dnevnu obradu.')
           with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as summary:
               summary.write('\n'.join(lines) + '\n')
           PY
 
-      - name: Proveri osvezen katalog
+      - name: Proveri dopunjen katalog
         run: node scripts/check-catalog.mjs
 
-      - name: Sacuvaj fotografije i evidenciju
+      - name: Sacuvaj fotografije, izvore i nastavak obrade
         id: commit
         shell: bash
         run: |
           set -euo pipefail
 
-          git add -- data/kataloske-stavke.json docs/fotografije.json
-          if [[ -d assets/biljke ]]; then
-            git add -- assets/biljke
-          fi
+          for path in \
+            data/biljke.json \
+            data/kataloske-stavke.json \
+            scripts/photo-sources.json \
+            scripts/photo-discovery.json \
+            docs/fotografije.json \
+            docs/photo-discovery-state.json \
+            docs/reference-photo-state.json \
+            docs/photo-refresh-state.json \
+            docs/photo-coverage.json \
+            docs/photo-pipeline-report.json \
+            assets/biljke; do
+            if [[ -e "$path" ]]; then
+              git add -- "$path"
+            fi
+          done
 
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "Fotografije i evidencija su nepromenjene; novi commit nije potreban."
+            echo "Fotografije i evidencija su nepromenjene."
             exit 0
           fi
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "data: osvezi kataloske fotografije"
+          git commit -m "data: dopuni fotografije i sacuvaj red za nastavak"
 
           for attempt in 1 2 3; do
             git fetch origin main
-
             if ! git rebase origin/main; then
               git rebase --abort
-              echo "::error::Paralelna izmena je u konfliktu. Main nije prepisan; ponovite proveru posle razresenja."
+              echo "::error::Paralelna izmena je u konfliktu. Main nije prepisan; obrada moze da se ponovi kada se konflikt razresi."
               exit 1
             fi
-
             node scripts/check-catalog.mjs
-
             if git push origin HEAD:main; then
               echo "changed=true" >> "$GITHUB_OUTPUT"
               exit 0
             fi
-
-            echo "::warning::Push nije uspeo (pokusaj $attempt/3); proveravam novo stanje main."
+            echo "::warning::Push nije uspeo (pokusaj $attempt/3); proveravam najnoviji main."
           done
-
-          echo "::error::Fotografije nisu upisane posle tri pokusaja. Proverite Actions dozvole, zastitu main i paralelne izmene."
+          echo "::error::Nije uspelo cuvanje. Proverite Actions dozvole i zastitu grane main."
           exit 1
 
   publish:
@@ -172,4 +189,6 @@ jobs:
       pages: write
       id-token: write
 
+    # Bot commit ne okida drugi workflow. Poziv zato eksplicitno objavljuje
+    # najnoviji main, ukljucujuci upravo sacuvane fotografije i podatke.
     uses: ./.github/workflows/deploy.yml
