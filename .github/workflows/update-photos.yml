@@ -56,13 +56,18 @@ jobs:
           python-version: '3.13'
 
       - name: Instaliraj proveru fotografija
-        run: python -m pip install --disable-pip-version-check --only-binary=:all: 'Pillow==13.0.0'
+        run: >-
+          python -m pip install --disable-pip-version-check --only-binary=:all: 'Pillow==13.0.0'
 
       - name: Pripremi Node
         uses: actions/setup-node@v7.1.0
         with:
           node-version: '24'
           package-manager-cache: false
+
+      - name: Ispravi poznati pogresan folder fotografija
+        id: repair
+        run: python scripts/repair_photo_asset_paths.py --github-output "$GITHUB_OUTPUT"
 
       - name: Proveri katalog, kultivare i javne kartice
         shell: bash
@@ -74,10 +79,12 @@ jobs:
           node scripts/tests/test_photo_reference_render.mjs
 
       - name: Osvezi indeks izvora
+        if: steps.repair.outputs.changed != 'true'
         run: python scripts/full_photo_coverage.py --index-only --request-budget 300 --max-seconds 180
 
       - name: Obradi sve biljke i nastavi sacuvani red pretrage
         id: refresh
+        if: steps.repair.outputs.changed != 'true'
         run: >-
           python scripts/parallel_photo_coverage.py
           --workers 8

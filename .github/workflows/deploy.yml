@@ -40,6 +40,14 @@ jobs:
           node-version: '24'
           package-manager-cache: false
 
+      - name: Pripremi Python za oporavak fotografija
+        uses: actions/setup-python@v7.0.0
+        with:
+          python-version: '3.13'
+
+      - name: Vrati proverene fotografije pre objave
+        run: python scripts/repair_photo_asset_paths.py
+
       - name: Proveri katalog i povezane fajlove
         run: node scripts/check-catalog.mjs
 
