@@ -416,9 +416,12 @@ def discover(root, *, budget=120, fetcher=fetch_resource, now=None, dry_run=Fals
         genus = next(iter(identity_forms(names[0])))[0]
         candidates = [(candidate_rank(url, names), url) for url in genus_urls.get(pair['nurseryId'], {}).get(genus, [])]
         candidates = [url for score, url in sorted(candidates, key=lambda x: (-x[0], x[1])) if score]
-        candidates = candidates[:limits['maxCandidatesPerPair']]
         fingerprint = hashlib.sha256('\n'.join(candidates).encode()).hexdigest()
-        if record.get('candidateFingerprint') == fingerprint and not due(record.get('checkedAt'), now, limits['retryDays']):
+        same_candidates = record.get('candidateFingerprint') == fingerprint
+        next_candidate = record.get('nextCandidateIndex')
+        resuming = (same_candidates and type(next_candidate) is int and
+                    0 <= next_candidate < len(candidates))
+        if same_candidates and not resuming and not due(record.get('checkedAt'), now, limits['retryDays']):
             report['pending'].append({**pair, 'reason': record.get('reason', 'waiting_for_retry'),
                                       'checkedAt': record.get('checkedAt')})
             continue
@@ -431,11 +434,16 @@ def discover(root, *, budget=120, fetcher=fetch_resource, now=None, dry_run=Fals
             continue
         found = None
         failures = []
-        complete = True
-        for url in candidates:
+        # Bound each batch, not the complete search. A fourth observed URL
+        # must remain reachable when the first three pages cannot be verified.
+        next_candidate = next_candidate if resuming else 0
+        batch_end = min(len(candidates), next_candidate + limits['maxCandidatesPerPair'])
+        for candidate_index in range(next_candidate, batch_end):
+            url = candidates[candidate_index]
             robots = RobotFileParser(); robots.parse(ns['robots'].get(urlsplit(url).hostname, []))
             if ns['robots'].get(urlsplit(url).hostname) and not robots.can_fetch(USER_AGENT, url):
                 failures.append({'url': url, 'reason': 'robots_disallowed'})
+                next_candidate = candidate_index + 1
                 continue
             try:
                 response = get(url, policy)
@@ -461,23 +469,26 @@ def discover(root, *, budget=120, fetcher=fetch_resource, now=None, dry_run=Fals
                     break
                 raise errors[-1]
             except BudgetReached:
-                complete = False
                 break
             except (PhotoError, OSError, ValueError) as exc:
                 if getattr(exc, 'code', '') in {'site_blocked', 'host_blocked_for_run'}:
                     ns['blockedHosts'][urlsplit(url).hostname] = now
                 failures.append({'url': url, 'reason': getattr(exc, 'code', 'fetch_error')})
+            next_candidate = candidate_index + 1
         if found:
             report['bindings'].append(found)
             state['pairs'][key] = {'binding': found, 'checkedAt': now, 'candidateFingerprint': fingerprint}
         else:
+            complete = next_candidate >= len(candidates)
             reason = 'candidate_not_confirmed' if complete else 'request_budget_remaining_work'
             report['pending'].append({**pair, 'reason': reason, 'candidates': failures})
-            if complete:
-                state['pairs'][key] = {'checkedAt': now, 'reason': reason,
-                                       'candidateFingerprint': fingerprint, 'failures': failures}
+            state['pairs'][key] = {'checkedAt': now, 'reason': reason,
+                                   'candidateFingerprint': fingerprint, 'failures': failures}
+            if not complete:
+                state['pairs'][key]['nextCandidateIndex'] = next_candidate
     report['timeBudgetReached'] = time.monotonic() >= deadline
-    if (report['requests'] >= budget or report['timeBudgetReached']) and report['pending']:
+    if report['pending'] and (report['requests'] >= budget or report['timeBudgetReached'] or
+                              any(p['reason'] == 'request_budget_remaining_work' for p in report['pending'])):
         report['status'] = 'partial_budget'
     elif report['errors']:
         report['status'] = 'partial_failure'

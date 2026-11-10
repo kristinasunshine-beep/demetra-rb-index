@@ -121,6 +121,68 @@ assert(partialDuplicate.includes('<dt>Dimenzija iz ponude</dt><dd>200-250</dd>')
 const differentUnit = render({ height: '100–150 mm',
   additionalParameters: [{ label: 'Dimenzija iz ponude', value: '100-150 cm' }] });
 assert(differentUnit.includes('<dt>Dimenzija iz ponude</dt><dd>100-150 cm</dd>'));
+const offeredSizeNote = 'Tip sadnice nije izričito označen u ovom redu ponude; nije pretpostavljen. Ponuđena je sorta Globosa sa oznakom veličine 30-40 iz F10; tražena sorta Silver Globus i veličina 40/60 nisu preneti na ovu alternativu. Vrsta mere i njena jedinica nisu navedene.';
+const offeredSize = render({ circumference: '', dataAccuracyNote: offeredSizeNote,
+  additionalParameters: [{ label: 'Ponuđena veličina (izvorna oznaka)', value: '30–40' },
+    { label: 'Dimenzija iz ponude', value: '30-40' }] });
+assert(offeredSize.includes('<dt>Ponuđena veličina (izvorna oznaka)</dt><dd>30–40</dd>'));
+assert(!offeredSize.includes('<dt>Dimenzija iz ponude</dt>'));
+assert.equal([...offeredSize.matchAll(/30[–-]40/g)].length, 1);
+assert(offeredSize.includes('Ponuđena je sorta Globosa; veličina je preneta iz F10;'));
+assert(offeredSize.includes('tražena sorta Silver Globus i veličina 40/60 nisu preneti na ovu alternativu.'));
+assert(offeredSize.includes('Vrsta mere i njena jedinica nisu navedene.'));
+assert.equal(run('state.catalog.offers[0].dataAccuracyNote'), offeredSizeNote);
+const countIsNotDimension = render({ circumference: '',
+  additionalParameters: [{ label: 'Broj etaža', value: '3' }, { label: 'Dimenzija iz ponude', value: '3' }] });
+assert(countIsNotDimension.includes('<dt>Broj etaža</dt><dd>3</dd>'));
+assert(countIsNotDimension.includes('<dt>Dimenzija iz ponude</dt><dd>3</dd>'));
+const namedDifferentUnit = render({ circumference: '',
+  additionalParameters: [{ label: 'Ponuđena veličina (izvorna oznaka)', value: '30–40 mm' },
+    { label: 'Dimenzija iz ponude', value: '30-40 cm' }] });
+assert(namedDifferentUnit.includes('<dt>Dimenzija iz ponude</dt><dd>30-40 cm</dd>'));
+
+// The original notes remain in the data. Only their already displayed values
+// are omitted; source cells, uncertainty and requested alternatives still show.
+const noteCases = [
+  { fields: { circumference: '20–25' }, note: 'Ponuđeno 20/25 je iz D16; tražena visina 4/5m nije potvrđena za ovu varijantu.',
+    absent: /20[–/-]25/, retained: 'Ponuđena mera je iz D16; tražena visina 4/5m nije potvrđena za ovu varijantu.' },
+  { fields: { circumference: '20–25' }, note: 'Ponuđen obim20-25 iz H44; ostale tražene mere nisu potvrđene za izmenjenu varijantu.',
+    absent: /20[–/-]25/, retained: 'Obim je prenet iz H44; ostale tražene mere nisu potvrđene za izmenjenu varijantu.' },
+  { fields: { circumference: '', potSize: 'C2', additionalParameters: [{ label: 'Dimenzija iz ponude', value: '20-30' }] },
+    note: '20-30 je neoznačena mera u koloni Size i nije pretvorena u visinu ili obim. C2 je doslovno preneta oznaka kontejnera.',
+    absent: /20[–/-]30|C2/, retained: 'Mera iz kolone Size nema označen tip; nije protumačena kao visina ili obim. Oznaka kontejnera je doslovno preneta iz ponude.' },
+  { fields: { circumference: '', additionalParameters: [{ label: 'Dimenzija iz ponude', value: '18 cm' }] },
+    note: 'Doslovna neklasifikovana mera iz izvora: 18 cm.', absent: /18 cm/,
+    retained: 'Vrsta ove mere nije navedena u izvoru.' },
+  { fields: { circumference: '', additionalParameters: [{ label: 'Dimenzija iz ponude', value: '17 cm' }] },
+    note: 'Neoznačena mera iz izvora: 17 cm.', absent: /17 cm/,
+    retained: 'Vrsta ove mere nije navedena u izvoru.' },
+  { fields: { circumference: '', additionalParameters: [{ label: 'Dimenzija iz ponude', value: '200-300 x 400-500' }] },
+    note: 'Dimenzije su sačuvane doslovno iz specifikacije: 200-300 x 400-500; WRB je izvorni kod pakovanja.',
+    absent: /200-300|400-500/, retained: 'Dimenzije su prenete bez promene; WRB je izvorni kod pakovanja.' },
+  { fields: { circumference: '20–25' }, note: 'Obim sadnice u ponudi: 20/25. Jedinica nije navedena.',
+    absent: /20[–/-]25/, retained: 'Jedinica nije navedena.' }
+];
+for (const example of noteCases) {
+  const markup = render({ ...example.fields, measurementNote: example.note });
+  const footer = markup.split('<div class="offer-footer">')[1];
+  assert(!example.absent.test(footer), 'Ponovljena mera je ostala u fusnoti: ' + example.note);
+  assert(footer.includes(example.retained), 'Izgubljeno je objašnjenje izvora: ' + example.note);
+  assert.equal(run('state.catalog.offers[0].measurementNote'), example.note);
+}
+const containerNote = 'Mere i oznaka clt3 preneti su iz odštampanog reda upita. Ćelija jedinične cene je prazna; nula u koloni Ukupno nije jedinična cena. Ponuđena raspoloživost ove stavke nije potvrđena.';
+const container = render({ potSize: 'clt3', dataAccuracyNote: containerNote });
+assert.equal([...container.matchAll(/clt3/g)].length, 1);
+assert(container.includes('Mere i oznaka kontejnera preneti su iz odštampanog reda upita.'));
+assert(container.includes('Ćelija jedinične cene je prazna; nula u koloni Ukupno nije jedinična cena.'));
+assert(container.includes('Ponuđena raspoloživost ove stavke nije potvrđena.'));
+assert.equal(run('state.catalog.offers[0].dataAccuracyNote'), containerNote);
+const conflictNote = 'Fascikla nosi oznaku 30-35, dok naziv same fotografije glasi 25-30HO DRKL; razlika nije prećutno usklađena.';
+assert(render({ circumference: '25–30', dataAccuracyNote: conflictNote }).includes(conflictNote));
+const undisplayedNote = 'Doslovna neklasifikovana mera iz izvora: 18 cm.';
+assert(render({ circumference: '', height: '18 mm', measurementNote: undisplayedNote }).includes(undisplayedNote));
+const unrelatedNumbers = 'Ponuđeno 20 je iz D16; cena je 20 EUR, provera je 20. 2. 2026.';
+assert(render({ circumference: '20', measurementNote: unrelatedNumbers }).includes(unrelatedNumbers));
 const additional = render({ additionalParameters: [
   { label: 'Visina čistog debla', value: '220 cm' },
   { label: 'Dimenzije panela', value: '150 × 180 cm' },
@@ -153,6 +215,7 @@ rejects({}, { sourcePolicy: { nonPhoto: 'rasadnici-ponude-zip', onlineUpdates: [
 console.log(JSON.stringify({ ok: true, allKnownParametersInMainPanelForEveryType: true,
   girthAndHeightRemainSeparate: true, noGeneratedDimensionFootnote: true, unknownTypeExplicit: true,
   transplantsInMainPanel: true, rawSpecificationPreservedOnlyInData: true,
-  duplicateGenericDimensionsRemoved: true, additionalSourceParametersInMainPanel: true,
+  duplicateGenericDimensionsRemoved: true, duplicateMeasurementNotesRemoved: true,
+  sourceContextAndOriginalNotesPreserved: true, additionalSourceParametersInMainPanel: true,
   sourcePolicyEnforced: true, notesEscaped: true,
   reviewExplainedWithoutUnconfirmedOffer: true }, null, 2));

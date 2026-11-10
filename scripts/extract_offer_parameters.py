@@ -11,6 +11,7 @@ from __future__ import annotations
 import argparse
 from collections import Counter
 from datetime import datetime, timezone
+from functools import lru_cache
 import hashlib
 import json
 from pathlib import Path
@@ -90,6 +91,7 @@ SUPPLIER_ROOT_CODES = {
     'innocenti-mangoni': {'W.B.': 'Busen u žičanoj korpi (w.b.)'},
     'arbor': {'WOODBOX': 'Drvena kutija (WOODBOX)', 'AIRPOT': 'Air-Pot kontejner (AIRPOT)'},
 }
+REVIEWED_AXES_PATH = Path(__file__).with_name('archive-measurement-axes.json')
 
 
 def clean(value):
@@ -98,6 +100,15 @@ def clean(value):
 
 def is_blank(value):
     return clean(value).casefold().strip(' .') in MISSING
+
+
+def reviewed_accuracy_note(offer, value):
+    """The required accuracy field stays truthful after obsolete prose retires."""
+    if clean(value):
+        return clean(value)
+    if is_blank(offer.get('seedlingType')):
+        return 'Tip sadnice nije izričito označen u ovom redu ponude; nije pretpostavljen.'
+    return 'Podaci se odnose na ovu izvornu varijantu ponude.'
 
 
 def normalized_measure(value):
@@ -147,6 +158,42 @@ def source_reference(offer):
                         result[key] = src[name]
                         break
     return result
+
+
+@lru_cache(maxsize=1)
+def reviewed_axis_records():
+    """Read reviewed archive rows, never a global numeric-size heuristic.
+
+    The registry records the original source hash, exact row specification,
+    identity, and reviewed old field values. It never updates prices or photos.
+    """
+    document = json.loads(REVIEWED_AXES_PATH.read_text(encoding='utf-8'))
+    if document.get('schemaVersion') != 1:
+        raise ValueError('Unsupported reviewed measurement-axis registry.')
+    records = document['records']
+    if len({item['id'] for item in records}) != len(records):
+        raise ValueError('Duplicate reviewed measurement-axis record.')
+    for item in records:
+        if set(item.get('fields', {})) - set(FIELDS):
+            raise ValueError('Reviewed measurements may only change card parameter fields.')
+    return {item['id']: item for item in records}
+
+
+def reviewed_axis_record(offer):
+    """An archive review is valid only for that exact source row and plant."""
+    item = reviewed_axis_records().get(offer.get('id'))
+    if not item:
+        return None
+    src = offer.get('sourceEvidence') or {}
+    if not src.get('archiveVerified') or offer.get('recordStatus') in ('needs_review', 'superseded'):
+        return None
+    expected = item['expected']
+    if any(offer.get(key) != expected[key] for key in ('plantId', 'nurseryId', 'specification')):
+        return None
+    actual_source = source_reference(offer)
+    if any(actual_source.get(key) != value for key, value in expected['source'].items()):
+        return None
+    return item
 
 
 def guard_reason(offer, text):
@@ -495,6 +542,15 @@ def extract_offer_parameters(offer):
         raise ValueError('Expected one offer object.')
     result = {'set': {}, 'evidence': {}, 'unresolved': [], 'additionalParameters': []}
     text = offered_text(offer)
+    reviewed = reviewed_axis_record(offer)
+    if reviewed:
+        # These exact old fallback values may have come from a request column,
+        # a form code, or a now-identified axis. Keep the source specification.
+        if not reviewed.get('fields'):
+            result['retireGenericDimensions'] = reviewed.get('retireGenericDimensions', [])
+            result['retireParameters'] = reviewed.get('retireParameters', [])
+            result['displayNoteCorrections'] = reviewed.get('displayNoteCorrections', {})
+        result['additionalParameters'].extend(reviewed.get('additionalParameters', []))
     reason = guard_reason(offer, text)
     if reason:
         result['unresolved'].append({'reason': reason[0], 'message': reason[1]})
@@ -645,6 +701,19 @@ def extract_offer_parameters(offer):
     supplier_parameters(offer, scan, candidate, result['additionalParameters'], result['unresolved'])
     semantic_dimensions(offer, scan, candidate, candidates, result['additionalParameters'])
 
+    if reviewed:
+        # A reviewed source row can resolve an axis the general grammar could
+        # not establish, including a documented earlier axis misassignment.
+        # Other current values still produce a conflict instead of overwrite.
+        for field, correction in reviewed.get('fields', {}).items():
+            evidence = correction['evidence']
+            candidates[field] = [{**evidence, 'value': correction['value'],
+                                  'raw': evidence.get('raw', text), 'source': source,
+                                  'unitStatus': evidence.get('unitStatus', 'stated' if re.search(
+                                      r'\b(?:mm|cm|m)\b', correction['value'], FLAGS) else 'not_stated'),
+                                  'reviewedExpectedValue': correction['expectedValue'],
+                                  'sourceReview': 'archive-measurement-axes.json'}]
+
     for field, values in candidates.items():
         if not values:
             continue
@@ -675,6 +744,10 @@ def extract_offer_parameters(offer):
         if is_blank(current):
             result['set'][field] = evidence['value']
             evidence = {**evidence, 'operation': 'fill_blank'}
+        elif ('reviewedExpectedValue' in evidence and current == evidence['reviewedExpectedValue']
+              and not parameter_equivalent(field, current, evidence['value'])):
+            result['set'][field] = evidence['value']
+            evidence = {**evidence, 'previousValue': current, 'operation': 'correct_reviewed_source_axis'}
         elif field == 'rootType' and root_equivalent(current, evidence['value']) and clean(current) != evidence['value']:
             normalized = evidence['value']
             result['set'][field] = normalized
@@ -689,6 +762,14 @@ def extract_offer_parameters(offer):
                                          'existingValue': current, 'sourceValue': evidence['value'], 'raw': evidence['raw'],
                                          'message': 'Postojeća vrednost je sačuvana; razlikuje se od izdvojene izvorne oznake i zahteva proveru.'})
         result['evidence'][field] = evidence
+
+    if reviewed and reviewed.get('fields'):
+        confirmed = all(parameter_equivalent(field, result['set'].get(field, offer.get(field)), correction['value'])
+                        for field, correction in reviewed['fields'].items())
+        if confirmed:
+            result['retireGenericDimensions'] = reviewed.get('retireGenericDimensions', [])
+            result['retireParameters'] = reviewed.get('retireParameters', [])
+            result['displayNoteCorrections'] = reviewed.get('displayNoteCorrections', {})
 
     # Existing raw packaging codes can be normalized even if a shortened
     # specification omitted the code. The existing source is still verified.
@@ -709,6 +790,7 @@ def extract_offer_parameters(offer):
     known_values = [normalized_measure(x.get('value')) for values in candidates.values() for x in values]
     known_values += [normalized_measure(offer.get(field)) for field in FIELDS if not is_blank(offer.get(field))]
     known_values += [normalized_measure(x['value']) for x in result['additionalParameters']]
+    known_values += [normalized_measure(value) for value in result.get('retireGenericDimensions', [])]
     unclassified = []
     unclassified_pattern = rf'(?<![\w.])(?:{NUMBER}\s*[-–—/]\s*{NUMBER}(?:\s*[x×]\s*{NUMBER}\s*[-–—/]\s*{NUMBER})?(?:\s*\+)?(?:\s*(?:cm|mm|m))?|{NUMBER}\s*\+(?:\s*(?:cm|mm|m))?|{NUMBER}\s*(?:cm|mm|m))(?![\w])'
     for m in re.finditer(unclassified_pattern, scan, FLAGS):
@@ -737,11 +819,14 @@ def build_patch(document):
     for offer in document['offers']:
         parsed = extract_offer_parameters(offer)
         counts['recordsExamined'] += 1
-        if parsed['set'] or parsed['additionalParameters']:
+        if (parsed['set'] or parsed['additionalParameters'] or parsed.get('retireGenericDimensions')
+                or parsed.get('retireParameters') or parsed.get('displayNoteCorrections')):
             updates.append({'id': offer['id'], 'expected': {'plantId': offer['plantId'], 'nurseryId': offer['nurseryId'],
                             **{k: offer.get(k, '') for k in parsed['set']}},
                             'set': parsed['set'], 'evidence': parsed['evidence'],
-                            'additionalParameters': parsed['additionalParameters']})
+                            'additionalParameters': parsed['additionalParameters'],
+                            **{key: parsed[key] for key in ('retireGenericDimensions', 'retireParameters',
+                                                            'displayNoteCorrections') if parsed.get(key)}})
             counts['recordsUpdated'] += 1
             for field in parsed['set']:
                 counts['field_' + field] += 1

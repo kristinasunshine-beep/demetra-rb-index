@@ -152,6 +152,64 @@ class ReferencePhotoTests(unittest.TestCase):
         self.assertEqual(photo['identityEvidence']['category'], 'Category:Abies concolor')
         self.assertEqual(result['added'], 1)
 
+    def test_wikidata_failure_uses_commons_without_retrying_failed_host(self):
+        self.plants['plants'].append({'id': 'glauca', 'latinName': "Abies concolor 'Glauca'"})
+        self.write()
+        source = Sources(no_entity=True, category='Abies concolor')
+        calls = []
+        def fetch(url, **kwargs):
+            calls.append(url)
+            if urlsplit(url).hostname == 'www.wikidata.org':
+                error = {'error': {'code': 'maxlag', 'info': '<b>Lagged provider</b> ' + 'detail ' * 1000}}
+                return FetchResult(json.dumps(error).encode(), url, 'application/json')
+            return source(url, **kwargs)
+        result = self.run_update(fetch, budget=8)
+        photos = [plant['photo'] for plant in self.loaded()['plants']]
+        self.assertEqual(result['added'], 2)
+        self.assertEqual([photo['matchLevel'] for photo in photos], ['exact', 'species_reference'])
+        self.assertTrue(all(photo['identityEvidence']['method'] == 'exact_commons_taxon_category'
+                            for photo in photos))
+        self.assertEqual(sum(urlsplit(url).hostname == 'www.wikidata.org' for url in calls), 1)
+        self.assertFalse(result.get('providerPaused', False))
+        self.assertEqual(result['status'], 'partial_failure')
+        self.assertEqual(result['errors'][0]['provider'], 'www.wikidata.org')
+        self.assertIn('maxlag: Lagged provider', result['errors'][0]['detail'])
+        self.assertLessEqual(len(result['errors'][0]['detail']), 500)
+        self.assertNotIn('<b>', result['errors'][0]['detail'])
+
+    def test_commons_failure_pauses_references_without_querying_later_plants(self):
+        self.plants['plants'].append({'id': 'acer', 'latinName': 'Acer campestre'})
+        self.write()
+        source = Sources(no_entity=True)
+        calls = []
+        def fetch(url, **kwargs):
+            calls.append(urlsplit(url).hostname)
+            if calls[-1] == 'commons.wikimedia.org':
+                raise PhotoError('http_error', 'Source returned HTTP 429.')
+            return source(url, **kwargs)
+        result = self.run_update(fetch, budget=8)
+        self.assertEqual(calls, ['www.wikidata.org', 'commons.wikimedia.org'])
+        self.assertEqual(result['requests'], 2)
+        self.assertEqual(result['failed'], 1)
+        self.assertTrue(result['providerPaused'])
+        self.assertTrue(all('photo' not in plant for plant in self.loaded()['plants']))
+
+    def test_commons_fallback_respects_budget_and_resumes_cached_work(self):
+        source = Sources(no_entity=True, category='Abies concolor')
+        def fetch(url, **kwargs):
+            if urlsplit(url).hostname == 'www.wikidata.org':
+                raise PhotoError('http_error', 'Source returned HTTP 503.')
+            return source(url, **kwargs)
+        first = self.run_update(fetch, budget=2)
+        self.assertEqual(first['requests'], 2)
+        self.assertEqual(first['sources'][0]['reason'], 'budget_exhausted')
+        self.assertNotIn('photo', self.loaded()['plants'][0])
+        second = self.run_update(fetch, budget=3)
+        self.assertEqual(second['requests'], 3)
+        self.assertEqual(second['added'], 1)
+        self.assertEqual(self.loaded()['plants'][0]['photo']['identityEvidence']['method'],
+                         'exact_commons_taxon_category')
+
     def test_license_and_author_are_required_for_every_file(self):
         for field, value in [('LicenseShortName', 'CC BY-NC 4.0'), ('LicenseShortName', 'All rights reserved'),
                              ('Artist', ''), ('LicenseUrl', 'https://untrusted.example/license')]:
@@ -206,7 +264,9 @@ class ReferencePhotoTests(unittest.TestCase):
         before = (self.root / 'data/biljke.json').read_bytes()
         source = Sources(fail=PhotoError('http_error', 'Source returned HTTP 429.'))
         result = ref.run_reference_update(self.root, fetcher=source, now='2026-12-10T15:00:00Z')
-        self.assertEqual(result['requests'], 1)
+        self.assertEqual(result['requests'], 2)
+        self.assertEqual([urlsplit(url).hostname for url, _ in source.calls],
+                         ['www.wikidata.org', 'commons.wikimedia.org'])
         self.assertTrue(result['providerPaused'])
         self.assertEqual((self.root / 'data/biljke.json').read_bytes(), before)
 

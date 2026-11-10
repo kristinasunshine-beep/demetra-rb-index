@@ -34,6 +34,7 @@ PHOTO_KEYS = {'image', 'sourceUrl', 'imageUrl', 'taxon', 'matchLevel', 'origin',
 NOT_PHOTO = re.compile(r'\b(?:illustration|drawing|drawings|diagram|diagrams|map|maps|'
                        r'herbarium|herbar|painting|paintings|engraving|logo|icon|stamp|'
                        r'woodcut|botanical art|distribution)\b', re.I)
+PROVIDER_ERRORS = {'http_error', 'api_error', 'download_failed', 'invalid_api_response'}
 
 
 def plain(value):
@@ -120,22 +121,31 @@ class ReferenceSession:
         self.requests, self.cached = 0, 0
         self.start = time.monotonic()
         self.pending = {}
+        self.provider_errors = {}
 
     def request(self, url, *, image=False):
         if self.requests >= self.budget or time.monotonic() - self.start >= self.max_seconds:
             raise RequestBudget('budget_exhausted', 'The run will continue from its saved cursor next time.')
+        host = urlsplit(url).hostname
+        if host in self.provider_errors:
+            raise self.provider_errors[host]
         self.requests += 1
         hosts = IMAGE_HOSTS if image else API_HOSTS
-        result = self.fetcher(url, hosts=list(hosts), max_bytes=DEFAULT_LIMITS['maxImageBytes'] if image else 3_000_000,
-                              timeout=15, kind='image' if image else 'page')
-        parsed = urlsplit(result.url)
-        require(parsed.scheme == 'https' and parsed.hostname in hosts and not parsed.username and not parsed.password,
-                'unapproved_url', 'Reference response left the approved Wikimedia host.')
-        require(len(result.body) <= (DEFAULT_LIMITS['maxImageBytes'] if image else 3_000_000),
-                'response_too_large', 'Reference response exceeded the size limit.')
-        if image:
-            require(result.content_type in ('image/jpeg', 'image/png', 'image/webp', 'image/avif'),
-                    'not_photograph', 'Reference image is not a supported photographic bitmap.')
+        try:
+            result = self.fetcher(url, hosts=list(hosts), max_bytes=DEFAULT_LIMITS['maxImageBytes'] if image else 3_000_000,
+                                  timeout=15, kind='image' if image else 'page')
+            parsed = urlsplit(result.url)
+            require(parsed.scheme == 'https' and parsed.hostname in hosts and not parsed.username and not parsed.password,
+                    'unapproved_url', 'Reference response left the approved Wikimedia host.')
+            require(len(result.body) <= (DEFAULT_LIMITS['maxImageBytes'] if image else 3_000_000),
+                    'response_too_large', 'Reference response exceeded the size limit.')
+            if image:
+                require(result.content_type in ('image/jpeg', 'image/png', 'image/webp', 'image/avif'),
+                        'not_photograph', 'Reference image is not a supported photographic bitmap.')
+        except PhotoError as exc:
+            if exc.code in PROVIDER_ERRORS:
+                self.provider_errors[host] = exc
+            raise
         return result
 
     def api(self, endpoint, params):
@@ -146,11 +156,26 @@ class ReferenceSession:
             self.cached += 1
             return copy.deepcopy(cached['data'])
         raw = self.request(url)
+        host = urlsplit(endpoint).hostname
         try:
             data = json.loads(raw.body)
         except (ValueError, UnicodeDecodeError) as exc:
-            raise PhotoError('invalid_api_response', 'Wikimedia did not return JSON.') from exc
-        require(isinstance(data, dict) and 'error' not in data, 'api_error', 'The public image API returned an error.')
+            error = PhotoError('invalid_api_response', 'Wikimedia did not return JSON.')
+            self.provider_errors[host] = error
+            raise error from exc
+        if not isinstance(data, dict):
+            error = PhotoError('invalid_api_response', 'Wikimedia did not return a JSON object.')
+            self.provider_errors[host] = error
+            raise error
+        if 'error' in data:
+            detail = 'The public image API returned an error.'
+            if isinstance(data['error'], dict):
+                code = plain(data['error'].get('code'))[:80] or 'unknown'
+                info = plain(data['error'].get('info'))[:320]
+                detail = 'The public image API returned ' + code + (': ' + info if info else '.')
+            error = PhotoError('api_error', detail)
+            self.provider_errors[host] = error
+            raise error
         data = compact_api(data)
         self.state['cache'][url] = {'expiresAt': later(self.now, days=7), 'data': copy.deepcopy(data)}
         return data
@@ -207,28 +232,36 @@ class ReferenceSession:
                 'identityEvidence': proof}
 
     def lookup(self, taxon, match_level):
-        search = self.api(WD, {'action': 'wbsearchentities', 'search': taxon,
-                               'language': 'en', 'type': 'item', 'limit': 5})
-        ids = [x.get('id') for x in search.get('search', []) if re.fullmatch(r'Q\d+', x.get('id', ''))]
         reasons = []
-        if ids:
-            entities = self.api(WD, {'action': 'wbgetentities', 'ids': '|'.join(ids), 'props': 'claims'}).get('entities', {})
-            for qid in ids:
-                entity = entities.get(qid, {})
-                names = claim_values(entity, 'P225')
-                if not any(identity(name) == identity(taxon) for name in names):
-                    continue
-                for file_name in claim_values(entity, 'P18')[:2]:
-                    response = self.metadata(file_name)
-                    for page in response.get('query', {}).get('pages', []):
-                        try:
-                            return self.selected_image(page, taxon, match_level,
-                                {'method': 'wikidata_P225_P18', 'entity': qid,
-                                 'scientificName': taxon, 'fileTitle': 'File:' + file_name})
-                        except RequestBudget:
-                            raise
-                        except PhotoError as exc:
-                            reasons.append(exc.code)
+        try:
+            search = self.api(WD, {'action': 'wbsearchentities', 'search': taxon,
+                                   'language': 'en', 'type': 'item', 'limit': 5})
+            ids = [x.get('id') for x in search.get('search', []) if re.fullmatch(r'Q\d+', x.get('id', ''))]
+            if ids:
+                entities = self.api(WD, {'action': 'wbgetentities', 'ids': '|'.join(ids), 'props': 'claims'}).get('entities', {})
+                for qid in ids:
+                    entity = entities.get(qid, {})
+                    names = claim_values(entity, 'P225')
+                    if not any(identity(name) == identity(taxon) for name in names):
+                        continue
+                    for file_name in claim_values(entity, 'P18')[:2]:
+                        response = self.metadata(file_name)
+                        for page in response.get('query', {}).get('pages', []):
+                            try:
+                                return self.selected_image(page, taxon, match_level,
+                                    {'method': 'wikidata_P225_P18', 'entity': qid,
+                                     'scientificName': taxon, 'fileTitle': 'File:' + file_name})
+                            except RequestBudget:
+                                raise
+                            except PhotoError as exc:
+                                if exc.code in PROVIDER_ERRORS:
+                                    raise
+                                reasons.append(exc.code)
+        except PhotoError as exc:
+            if exc.code not in PROVIDER_ERRORS:
+                raise
+            # A failed Wikidata request pauses that host, not the independent
+            # exact-category route on Commons. Cached responses remain usable.
         # Exact category membership is additional primary identity evidence.
         # No recursive category traversal or loosely related search-result images.
         category = 'Category:' + taxon
@@ -250,6 +283,8 @@ class ReferenceSession:
                 except RequestBudget:
                     raise
                 except PhotoError as exc:
+                    if exc.code in PROVIDER_ERRORS:
+                        raise
                     reasons.append(exc.code)
         raise PhotoError('no_verified_reference', 'No attributed photographic reference for this exact taxon. '
                          + ('Rejected candidates: ' + ', '.join(sorted(set(reasons))) if reasons else ''))
@@ -350,7 +385,7 @@ def run_reference_update(root, *, budget=60, fetcher=fetch_resource, dry_run=Fal
         state['cursor'] = (keys.index(pid) + 1) % max(len(keys), 1)
         if progress:
             progress({**source, 'requests': session.requests})
-        if error and error.code in ('http_error', 'api_error', 'download_failed', 'invalid_api_response'):
+        if error and error.code in PROVIDER_ERRORS:
             report['status'] = 'partial'
             report['providerPaused'] = True
             break
@@ -358,6 +393,11 @@ def run_reference_update(root, *, budget=60, fetcher=fetch_resource, dry_run=Fal
             report['status'] = 'partial'
             break
     report['requests'], report['cacheHits'] = session.requests, session.cached
+    if session.provider_errors:
+        report['errors'] = [{'provider': host, 'reason': error.code, 'detail': str(error)}
+                            for host, error in session.provider_errors.items()]
+        if report['status'] == 'completed':
+            report['status'] = 'partial_failure'
     # Every public image is explicitly qualified. No price, offer or botanical
     # field can be changed by this worker, including catalogue scope metadata.
     require({k: v for k, v in document.items() if k != 'plants'} == {k: v for k, v in original.items() if k != 'plants'},

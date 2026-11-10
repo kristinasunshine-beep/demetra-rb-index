@@ -153,6 +153,57 @@ class DiscoveryTests(unittest.TestCase):
         self.assertEqual(r['confirmedPairs'], 1)
         self.assertEqual(self.calls, [self.product])
 
+    def test_later_candidate_resumes_next_run_without_retrying_first_three(self):
+        urls = ['https://nursery.test/' + prefix + '-acer-palmatum-red-dragon'
+                for prefix in ('a', 'b', 'c', 'd')]
+        self.routes['https://nursery.test/map.xml'] = ('application/xml', self.sitemap(urls))
+        for url in urls[:3]:
+            self.routes[url] = ('text/html', self.html("Acer palmatum 'Bloodgood'"))
+        self.routes[urls[3]] = ('text/html', self.html(self.plant['latinName']))
+        first = self.run_discovery(budget=20)
+        self.assertEqual(first['confirmedPairs'], 0)
+        self.assertEqual(first['status'], 'partial_budget')
+        self.assertNotIn(urls[3], self.calls)
+        self.calls.clear()
+        second = self.run_discovery(budget=20)
+        self.assertEqual(second['confirmedPairs'], 1)
+        self.assertEqual(self.calls, [urls[3]])
+        self.assertEqual(second['bindings'][0]['matchedName'], self.plant['latinName'])
+
+    def test_candidate_cursor_resumes_after_global_request_budget(self):
+        urls = ['https://nursery.test/' + prefix + '-acer-palmatum-red-dragon'
+                for prefix in ('a', 'b', 'c', 'd')]
+        self.routes['https://nursery.test/map.xml'] = ('application/xml', self.sitemap(urls))
+        for url in urls[:3]:
+            self.routes[url] = ('text/html', self.html("Acer palmatum 'Bloodgood'"))
+        self.routes[urls[3]] = ('text/html', self.html(self.plant['latinName']))
+        first = self.run_discovery(budget=4)
+        self.assertEqual(first['requests'], 4)
+        self.assertEqual([url for url in self.calls if url in urls], urls[:2])
+        self.calls.clear()
+        second = self.run_discovery(budget=4)
+        self.assertLessEqual(second['requests'], 4)
+        self.assertEqual(second['confirmedPairs'], 1)
+        self.assertEqual([url for url in self.calls if url in urls], urls[2:])
+
+    def test_new_candidate_beyond_failed_batch_invalidates_retry_fingerprint(self):
+        urls = ['https://nursery.test/' + prefix + '-acer-palmatum-red-dragon'
+                for prefix in ('a', 'b', 'c', 'd')]
+        self.routes['https://nursery.test/map.xml'] = ('application/xml', self.sitemap(urls[:3]))
+        for url in urls[:3]:
+            self.routes[url] = ('text/html', self.html("Acer palmatum 'Bloodgood'"))
+        self.routes[urls[3]] = ('text/html', self.html(self.plant['latinName']))
+        first = self.run_discovery(budget=20)
+        self.assertEqual(first['pending'][0]['reason'], 'candidate_not_confirmed')
+        state = json.loads((self.root / STATE_PATH).read_text())
+        state['nurseries']['n1']['pages'].append(urls[3])
+        self.write(STATE_PATH, state)
+        self.calls.clear()
+        self.run_discovery(budget=20)
+        final = self.run_discovery(budget=20)
+        self.assertEqual(final['confirmedPairs'], 1)
+        self.assertEqual(self.calls, urls)
+
     def test_product_sitemap_precedes_taxonomies_with_small_budget(self):
         root_map = '<sitemapindex>' + ''.join('<sitemap><loc>https://nursery.test/' + u + '</loc></sitemap>'
             for u in ['author-sitemap.xml', 'category-sitemap.xml', 'product-sitemap.xml']) + '</sitemapindex>'

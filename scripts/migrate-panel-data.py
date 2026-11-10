@@ -14,7 +14,7 @@ from pathlib import Path
 import re
 
 from classify_offer_traits import classify_offer
-from extract_offer_parameters import extract_offer_parameters
+from extract_offer_parameters import extract_offer_parameters, reviewed_accuracy_note
 
 FIELDS = ('seedlingType', 'circumference', 'height', 'crownWidth',
           'rootBall', 'potSize', 'rootType')
@@ -77,7 +77,24 @@ def merge_parameters(existing, extracted):
     return result
 
 
-def remove_mapped_generic_dimensions(parameters, offer):
+def remove_reviewed_parameters(parameters, retired):
+    """Retire only reviewed label/value pairs, preserving other source facts."""
+    def key(value):
+        return re.sub(r'\s+', '', str(value or '')).casefold().replace('–', '-').replace('—', '-')
+
+    output = []
+    for parameter in parameters:
+        values = {key(item['value']) for item in retired if item['label'] == parameter['label']}
+        if key(parameter['value']) in values:
+            continue
+        parts = [part.strip() for part in re.split(r';\s+', parameter['value'])
+                 if key(part) not in values]
+        if parts:
+            output.append({**parameter, 'value': '; '.join(parts)})
+    return output
+
+
+def remove_mapped_generic_dimensions(parameters, offer, retired=()):
     """Retire the old fallback after its source value has a proper field.
 
     This changes the data too, so downstream exports do not carry the same
@@ -93,14 +110,21 @@ def remove_mapped_generic_dimensions(parameters, offer):
     typed = [measure(offer.get(field)) for field in
              ('circumference', 'height', 'crownWidth', 'rootBall')]
     typed = [value for value in typed if value]
+    def retired_key(value):
+        return re.sub(r'\s+', '', str(value or '')).casefold().replace('–', '-').replace('—', '-')
+    retired_keys = {retired_key(value) for value in retired}
     output = []
     for parameter in parameters:
         if parameter['label'] not in ('Dimenzija iz ponude', 'Nerazvrstana mera iz ponude'):
             output.append(parameter)
             continue
+        if retired_key(parameter['value']) in retired_keys:
+            continue
         remaining = []
         for part in re.split(r'[;·]', parameter['value']):
             part = part.strip()
+            if retired_key(part) in retired_keys:
+                continue
             candidate = measure(part)
             if candidate and any(candidate[0] == known[0] and
                                  (not candidate[1] or not known[1] or candidate[1] == known[1])
@@ -127,7 +151,10 @@ def migrate(document):
         offer.update(parsed['set'])
         previous_parameters = offer.get('additionalParameters', [])
         additional = remove_mapped_generic_dimensions(
-            merge_parameters(previous_parameters, parsed.get('additionalParameters', [])), offer)
+            remove_reviewed_parameters(
+                merge_parameters(previous_parameters, parsed.get('additionalParameters', [])),
+                parsed.get('retireParameters', [])),
+            offer, parsed.get('retireGenericDimensions', []))
         if additional:
             offer['additionalParameters'] = additional
         else:
@@ -147,8 +174,17 @@ def migrate(document):
             note = 'Jedinica dužine nije navedena uz ovu meru u izvoru.'
             if note not in offer.get('measurementNote', ''):
                 offer['measurementNote'] = (offer.get('measurementNote', '') + ' ' + note).strip()
+        for field, correction in parsed.get('displayNoteCorrections', {}).items():
+            if before.get(field, '') in (correction['expectedValue'], correction['value']):
+                value = (reviewed_accuracy_note(offer, correction['value'])
+                         if field == 'dataAccuracyNote' else correction['value'])
+                if value:
+                    offer[field] = value
+                else:
+                    offer.pop(field, None)
         assert len(offer.get('measurementNote', '')) <= 300, offer['id']
-        assert len(offer['dataAccuracyNote']) <= 1600, offer['id']
+        assert offer.get('dataAccuracyNote'), offer['id']
+        assert len(offer.get('dataAccuracyNote', '')) <= 1600, offer['id']
         changes = {field: {'from': before.get(field, ''), 'to': offer.get(field, '')}
                    for field in FIELDS if before.get(field, '') != offer.get(field, '')}
         if changes:
