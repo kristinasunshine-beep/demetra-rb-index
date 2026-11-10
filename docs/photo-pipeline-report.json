@@ -1,12 +1,12 @@
 {
   "schemaVersion": 1,
-  "startedAt": "2026-11-10T09:24:50Z",
+  "startedAt": "2026-11-10T09:29:26Z",
   "status": "partial_failure",
   "dryRun": false,
   "stages": {
     "refresh": {
       "status": "partial_failure",
-      "startedAt": "2026-11-10T09:24:51Z",
+      "startedAt": "2026-11-10T09:29:27Z",
       "dryRun": false,
       "requests": 142,
       "checked": 97,
@@ -21209,18 +21209,18 @@
       "eligible": 118,
       "batchSize": 118,
       "nextOfferId": "record-c52de57af2bdb4",
-      "durationSeconds": 208.26
+      "durationSeconds": 202.12
     },
     "samePair": {
       "status": "completed",
       "added": 0,
       "changes": [],
-      "durationSeconds": 0.68
+      "durationSeconds": 0.66
     },
     "discovery": {
-      "status": "incomplete_sources",
-      "startedAt": "2026-11-10T09:28:19Z",
-      "requests": 0,
+      "status": "partial_budget",
+      "startedAt": "2026-11-10T09:32:49Z",
+      "requests": 6,
       "budget": 120,
       "bindings": [],
       "pending": [
@@ -31133,8 +31133,21 @@
           "offerIds": [
             "record-f6e0fe4ea4fc56"
           ],
-          "reason": "candidate_not_confirmed",
-          "checkedAt": "2026-11-09T14:52:25Z"
+          "reason": "request_budget_remaining_work",
+          "candidates": [
+            {
+              "url": "https://www.lorberg.com/en-gb/article/1666/prunus-serrulata-amanogawa",
+              "reason": "plant_identity_mismatch"
+            },
+            {
+              "url": "https://www.lorberg.com/en-gb/article/1693/prunus-serrulata-kanzan",
+              "reason": "plant_identity_mismatch"
+            },
+            {
+              "url": "https://www.lorberg.com/en-gb/article/1711/prunus-serrulata-kiku-shidare-zakura",
+              "reason": "plant_identity_mismatch"
+            }
+          ]
         },
         {
           "plantId": "plant-52f7978caf4634",
@@ -31142,8 +31155,21 @@
           "offerIds": [
             "record-ed9881232c1635"
           ],
-          "reason": "candidate_not_confirmed",
-          "checkedAt": "2026-11-10T08:13:42Z"
+          "reason": "request_budget_remaining_work",
+          "candidates": [
+            {
+              "url": "https://webshop.vannuccipiante.it/product/panicum-virgatum-heavy-metal/",
+              "reason": "plant_identity_mismatch"
+            },
+            {
+              "url": "https://webshop.vannuccipiante.it/product/panicum-virgatum-northwind/",
+              "reason": "plant_identity_mismatch"
+            },
+            {
+              "url": "https://webshop.vannuccipiante.it/product/panicum-virgatum-prairie-sky/",
+              "reason": "plant_identity_mismatch"
+            }
+          ]
         },
         {
           "plantId": "plant-8c2ae8ac7ff3af",
@@ -31194,28 +31220,36 @@
       "coverageComplete": false,
       "indexedPages": 13043,
       "queuedResources": 0,
-      "stateChanged": false,
-      "durationSeconds": 0.64
+      "stateChanged": true,
+      "durationSeconds": 17.47
     },
     "references": {
       "status": "partial",
-      "startedAt": "2026-11-10T09:28:20Z",
+      "startedAt": "2026-11-10T09:33:07Z",
       "dryRun": false,
-      "requests": 1,
+      "requests": 9,
       "checked": 0,
       "added": 0,
       "updated": 0,
       "verifiedUnchanged": 0,
-      "pending": 1,
+      "pending": 2,
       "failed": 1,
       "skipped": 0,
       "sources": [
         {
-          "plantId": "plant-6891eb612d224c",
-          "latinName": "Acer campestre Elegant",
+          "plantId": "plant-42b6be0f9e8daf",
+          "latinName": "Acer dasycarpum",
           "status": "pending",
-          "reason": "api_error",
-          "detail": "The public image API returned an error.",
+          "reason": "no_verified_reference",
+          "detail": "No attributed photographic reference for this exact taxon. ",
+          "photoPreserved": true
+        },
+        {
+          "plantId": "plant-5b42929f0f6d8b",
+          "latinName": "Acer davidii",
+          "status": "pending",
+          "reason": "http_error",
+          "detail": "Source returned HTTP 429.",
           "photoPreserved": true
         }
       ],
@@ -31224,10 +31258,17 @@
       "stateChanged": true,
       "providerPaused": true,
       "cacheHits": 0,
+      "errors": [
+        {
+          "provider": "upload.wikimedia.org",
+          "reason": "http_error",
+          "detail": "Source returned HTTP 429."
+        }
+      ],
       "verifiedPlants": 3,
       "remainingPlants": 616,
-      "finishedAt": "2026-11-10T09:28:20Z",
-      "durationSeconds": 0.69
+      "finishedAt": "2026-11-10T09:33:08Z",
+      "durationSeconds": 1.52
     }
   },
   "errors": [],
@@ -31235,7 +31276,7 @@
   "committed": true,
   "coverage": {
     "schemaVersion": 1,
-    "checkedAt": "2026-11-10T09:28:21Z",
+    "checkedAt": "2026-11-10T09:33:09Z",
     "status": "partial",
     "plants": 619,
     "plantsWithPhoto": 82,
@@ -43293,9 +43334,10 @@
     "refresh",
     "references"
   ],
-  "finishedAt": "2026-11-10T09:28:21Z",
+  "finishedAt": "2026-11-10T09:33:09Z",
   "timeBudgetReached": false,
   "changedFiles": [
+    "docs/photo-discovery-state.json",
     "docs/reference-photo-state.json",
     "docs/photo-refresh-state.json",
     "docs/photo-coverage.json",

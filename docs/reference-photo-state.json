@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "cursor": 9,
+  "cursor": 11,
   "entries": {
     "plant-abies-concolor": {
       "status": "verified",
@@ -49,6 +49,18 @@
       "reason": "api_error",
       "attemptedAt": "2026-11-10T09:28:20Z",
       "nextCheckAt": "2026-11-17T09:28:20Z"
+    },
+    "plant-42b6be0f9e8daf": {
+      "status": "pending",
+      "reason": "no_verified_reference",
+      "attemptedAt": "2026-11-10T09:33:07Z",
+      "nextCheckAt": "2026-11-17T09:33:07Z"
+    },
+    "plant-5b42929f0f6d8b": {
+      "status": "pending",
+      "reason": "http_error",
+      "attemptedAt": "2026-11-10T09:33:07Z",
+      "nextCheckAt": "2026-11-17T09:33:07Z"
     }
   },
   "cache": {
@@ -1235,6 +1247,1238 @@
                     },
                     "License": {
                       "value": "cc-by-sa-3.0",
+                      "source": "commons-templates",
+                      "hidden": ""
+                    }
+                  },
+                  "mime": "image/jpeg",
+                  "mediatype": "BITMAP"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "https://www.wikidata.org/w/api.php?format=json&formatversion=2&maxlag=5&action=wbsearchentities&search=Acer+dasycarpum&language=en&type=item&limit=5": {
+      "expiresAt": "2026-11-17T09:33:07Z",
+      "data": {
+        "searchinfo": {
+          "search": "Acer dasycarpum"
+        },
+        "search": [
+          {
+            "id": "Q15287422",
+            "title": "Q15287422",
+            "pageid": 16935221,
+            "concepturi": "http://www.wikidata.org/entity/Q15287422",
+            "repository": "wikidata",
+            "url": "//www.wikidata.org/wiki/Q15287422",
+            "display": {
+              "label": {
+                "value": "Acer dasycarpum",
+                "language": "en"
+              },
+              "description": {
+                "value": "species of plant",
+                "language": "en"
+              }
+            },
+            "label": "Acer dasycarpum",
+            "description": "species of plant",
+            "match": {
+              "type": "label",
+              "language": "en",
+              "text": "Acer dasycarpum"
+            }
+          },
+          {
+            "id": "Q9577174",
+            "title": "Q9577174",
+            "pageid": 9728853,
+            "concepturi": "http://www.wikidata.org/entity/Q9577174",
+            "repository": "wikidata",
+            "url": "//www.wikidata.org/wiki/Q9577174",
+            "display": {
+              "label": {
+                "value": "Acer dasycarpum subsp. normale",
+                "language": "en"
+              },
+              "description": {
+                "value": "subspecies of plant",
+                "language": "en"
+              }
+            },
+            "label": "Acer dasycarpum subsp. normale",
+            "description": "subspecies of plant",
+            "match": {
+              "type": "label",
+              "language": "en",
+              "text": "Acer dasycarpum subsp. normale"
+            }
+          },
+          {
+            "id": "Q158301",
+            "title": "Q158301",
+            "pageid": 159304,
+            "concepturi": "http://www.wikidata.org/entity/Q158301",
+            "repository": "wikidata",
+            "url": "//www.wikidata.org/wiki/Q158301",
+            "display": {
+              "label": {
+                "value": "Acer saccharinum",
+                "language": "mul"
+              },
+              "description": {
+                "value": "species of plant",
+                "language": "en"
+              }
+            },
+            "label": "Acer saccharinum",
+            "description": "species of plant",
+            "match": {
+              "type": "alias",
+              "language": "nl",
+              "text": "Acer dasycarpum"
+            },
+            "aliases": [
+              "Acer dasycarpum"
+            ]
+          }
+        ],
+        "success": 1
+      }
+    },
+    "https://www.wikidata.org/w/api.php?format=json&formatversion=2&maxlag=5&action=wbgetentities&ids=Q15287422%7CQ9577174%7CQ158301&props=claims": {
+      "expiresAt": "2026-11-17T09:33:07Z",
+      "data": {
+        "entities": {
+          "Q15287422": {
+            "id": "Q15287422",
+            "claims": {
+              "P225": [
+                {
+                  "mainsnak": {
+                    "snaktype": "value",
+                    "property": "P225",
+                    "hash": "64c343be88e8210ab710392a5fd0155376a5717d",
+                    "datavalue": {
+                      "value": "Acer dasycarpum",
+                      "type": "string"
+                    },
+                    "datatype": "string"
+                  },
+                  "type": "statement",
+                  "qualifiers": {
+                    "P405": [
+                      {
+                        "snaktype": "value",
+                        "property": "P405",
+                        "hash": "beebe67530c21a84e9db35280c5d283cf7623e57",
+                        "datavalue": {
+                          "value": {
+                            "entity-type": "item",
+                            "numeric-id": 123996,
+                            "id": "Q123996"
+                          },
+                          "type": "wikibase-entityid"
+                        },
+                        "datatype": "wikibase-item"
+                      }
+                    ],
+                    "P574": [
+                      {
+                        "snaktype": "value",
+                        "property": "P574",
+                        "hash": "dc78e1423aad629935080e6036b2a9abd54f5aea",
+                        "datavalue": {
+                          "value": {
+                            "time": "+1789-00-00T00:00:00Z",
+                            "timezone": 0,
+                            "before": 0,
+                            "after": 0,
+                            "precision": 9,
+                            "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                          },
+                          "type": "time"
+                        },
+                        "datatype": "time"
+                      }
+                    ]
+                  },
+                  "qualifiers-order": [
+                    "P405",
+                    "P574"
+                  ],
+                  "id": "Q15287422$4DD8CECA-FC53-4F41-BEBE-5F96A0F4DEE1",
+                  "rank": "normal"
+                }
+              ],
+              "P18": []
+            }
+          },
+          "Q9577174": {
+            "id": "Q9577174",
+            "claims": {
+              "P225": [
+                {
+                  "mainsnak": {
+                    "snaktype": "value",
+                    "property": "P225",
+                    "hash": "cbefbecaabd313df02e84a7a5f0feeccaa7b9a75",
+                    "datavalue": {
+                      "value": "Acer dasycarpum subsp. normale",
+                      "type": "string"
+                    },
+                    "datatype": "string"
+                  },
+                  "type": "statement",
+                  "qualifiers": {
+                    "P405": [
+                      {
+                        "snaktype": "value",
+                        "property": "P405",
+                        "hash": "f92c0ff334bf32d0ae542adfb71b76739d3b3572",
+                        "datavalue": {
+                          "value": {
+                            "entity-type": "item",
+                            "numeric-id": 64244,
+                            "id": "Q64244"
+                          },
+                          "type": "wikibase-entityid"
+                        },
+                        "datatype": "wikibase-item"
+                      }
+                    ],
+                    "P574": [
+                      {
+                        "snaktype": "value",
+                        "property": "P574",
+                        "hash": "0c17a249045e9901cc3e194b2234668b3637628c",
+                        "datavalue": {
+                          "value": {
+                            "time": "+1885-00-00T00:00:00Z",
+                            "timezone": 0,
+                            "before": 0,
+                            "after": 0,
+                            "precision": 9,
+                            "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                          },
+                          "type": "time"
+                        },
+                        "datatype": "time"
+                      }
+                    ]
+                  },
+                  "qualifiers-order": [
+                    "P405",
+                    "P574"
+                  ],
+                  "id": "Q9577174$0537EC38-E760-4775-9809-A2C5F3CA889F",
+                  "rank": "normal"
+                }
+              ],
+              "P18": []
+            }
+          },
+          "Q158301": {
+            "id": "Q158301",
+            "claims": {
+              "P225": [
+                {
+                  "mainsnak": {
+                    "snaktype": "value",
+                    "property": "P225",
+                    "hash": "83877c22eaf6a8adf83a4d010941c94f4c7eb35b",
+                    "datavalue": {
+                      "value": "Acer saccharinum",
+                      "type": "string"
+                    },
+                    "datatype": "string"
+                  },
+                  "type": "statement",
+                  "qualifiers": {
+                    "P405": [
+                      {
+                        "snaktype": "value",
+                        "property": "P405",
+                        "hash": "a817d3670bc2f9a3586b6377a65d54fff72ef888",
+                        "datavalue": {
+                          "value": {
+                            "entity-type": "item",
+                            "numeric-id": 1043,
+                            "id": "Q1043"
+                          },
+                          "type": "wikibase-entityid"
+                        },
+                        "datatype": "wikibase-item"
+                      }
+                    ],
+                    "P574": [
+                      {
+                        "snaktype": "value",
+                        "property": "P574",
+                        "hash": "45e5b04c2f47c968d719101fed54a982f5fde7cf",
+                        "datavalue": {
+                          "value": {
+                            "time": "+1753-01-01T00:00:00Z",
+                            "timezone": 0,
+                            "before": 0,
+                            "after": 0,
+                            "precision": 9,
+                            "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                          },
+                          "type": "time"
+                        },
+                        "datatype": "time"
+                      }
+                    ]
+                  },
+                  "qualifiers-order": [
+                    "P405",
+                    "P574"
+                  ],
+                  "id": "q158301$A3B2386C-D841-4785-A760-886249DF1807",
+                  "rank": "normal",
+                  "references": [
+                    {
+                      "hash": "77102f6f77926daecee717529c0ae48e379727f1",
+                      "snaks": {
+                        "P248": [
+                          {
+                            "snaktype": "value",
+                            "property": "P248",
+                            "hash": "93f7eb93ff98c12fa0a2453ad0bba348f5659eca",
+                            "datavalue": {
+                              "value": {
+                                "entity-type": "item",
+                                "numeric-id": 21856107,
+                                "id": "Q21856107"
+                              },
+                              "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                          }
+                        ],
+                        "P304": [
+                          {
+                            "snaktype": "value",
+                            "property": "P304",
+                            "hash": "98fff4005cc978933123e4b1753e0180142bec80",
+                            "datavalue": {
+                              "value": "1055",
+                              "type": "string"
+                            },
+                            "datatype": "string"
+                          }
+                        ],
+                        "P687": [
+                          {
+                            "snaktype": "value",
+                            "property": "P687",
+                            "hash": "52bdadacb20b663fb313d842e88a967e679b40d5",
+                            "datavalue": {
+                              "value": "359076",
+                              "type": "string"
+                            },
+                            "datatype": "external-id"
+                          }
+                        ],
+                        "P6184": [
+                          {
+                            "snaktype": "value",
+                            "property": "P6184",
+                            "hash": "22dc5f6f7242fa18eb7ab32a61ed2d86dc18adac",
+                            "datavalue": {
+                              "value": {
+                                "entity-type": "item",
+                                "numeric-id": 1361864,
+                                "id": "Q1361864"
+                              },
+                              "type": "wikibase-entityid"
+                            },
+                            "datatype": "wikibase-item"
+                          }
+                        ]
+                      },
+                      "snaks-order": [
+                        "P248",
+                        "P304",
+                        "P687",
+                        "P6184"
+                      ]
+                    }
+                  ]
+                }
+              ],
+              "P18": [
+                {
+                  "mainsnak": {
+                    "snaktype": "value",
+                    "property": "P18",
+                    "hash": "19c26ab26408b2c932dc62e5d0facf9952994490",
+                    "datavalue": {
+                      "value": "Acer saccharinum Grimes Farm 1.jpg",
+                      "type": "string"
+                    },
+                    "datatype": "commonsMedia"
+                  },
+                  "type": "statement",
+                  "id": "q158301$1EFAA960-AAD9-40E7-B371-82F24552D0E7",
+                  "rank": "normal"
+                },
+                {
+                  "mainsnak": {
+                    "snaktype": "value",
+                    "property": "P18",
+                    "hash": "4063e7664c90b78020cba6c65343f615a1051999",
+                    "datavalue": {
+                      "value": "Silver maple flowers (Canal Dr).JPG",
+                      "type": "string"
+                    },
+                    "datatype": "commonsMedia"
+                  },
+                  "type": "statement",
+                  "id": "Q158301$99a2f041-4cdc-f62d-2666-755d102d93b0",
+                  "rank": "normal"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "https://commons.wikimedia.org/w/api.php?format=json&formatversion=2&maxlag=5&action=query&titles=Category%3AAcer+dasycarpum&prop=categoryinfo": {
+      "expiresAt": "2026-11-17T09:33:07Z",
+      "data": {
+        "batchcomplete": true,
+        "query": {
+          "pages": [
+            {
+              "ns": 14,
+              "title": "Category:Acer dasycarpum",
+              "missing": true
+            }
+          ]
+        }
+      }
+    },
+    "https://www.wikidata.org/w/api.php?format=json&formatversion=2&maxlag=5&action=wbsearchentities&search=Acer+davidii&language=en&type=item&limit=5": {
+      "expiresAt": "2026-11-17T09:33:07Z",
+      "data": {
+        "searchinfo": {
+          "search": "Acer davidii"
+        },
+        "search": [
+          {
+            "id": "Q657935",
+            "title": "Q657935",
+            "pageid": 619262,
+            "concepturi": "http://www.wikidata.org/entity/Q657935",
+            "repository": "wikidata",
+            "url": "//www.wikidata.org/wiki/Q657935",
+            "display": {
+              "label": {
+                "value": "Acer davidii",
+                "language": "en"
+              },
+              "description": {
+                "value": "species of plant",
+                "language": "en"
+              }
+            },
+            "label": "Acer davidii",
+            "description": "species of plant",
+            "match": {
+              "type": "label",
+              "language": "en",
+              "text": "Acer davidii"
+            }
+          },
+          {
+            "id": "Q15635133",
+            "title": "Q15635133",
+            "pageid": 17270950,
+            "concepturi": "http://www.wikidata.org/entity/Q15635133",
+            "repository": "wikidata",
+            "url": "//www.wikidata.org/wiki/Q15635133",
+            "display": {
+              "label": {
+                "value": "Acer davidii subsp. grosseri",
+                "language": "en"
+              },
+              "description": {
+                "value": "subspecies of plant",
+                "language": "en"
+              }
+            },
+            "label": "Acer davidii subsp. grosseri",
+            "description": "subspecies of plant",
+            "match": {
+              "type": "label",
+              "language": "en",
+              "text": "Acer davidii subsp. grosseri"
+            }
+          },
+          {
+            "id": "Q24871909",
+            "title": "Q24871909",
+            "pageid": 26832721,
+            "concepturi": "http://www.wikidata.org/entity/Q24871909",
+            "repository": "wikidata",
+            "url": "//www.wikidata.org/wiki/Q24871909",
+            "display": {
+              "label": {
+                "value": "Acer davidii subsp. davidii",
+                "language": "en"
+              },
+              "description": {
+                "value": "subspecies of plant",
+                "language": "en"
+              }
+            },
+            "label": "Acer davidii subsp. davidii",
+            "description": "subspecies of plant",
+            "match": {
+              "type": "label",
+              "language": "en",
+              "text": "Acer davidii subsp. davidii"
+            }
+          },
+          {
+            "id": "Q15634317",
+            "title": "Q15634317",
+            "pageid": 17270188,
+            "concepturi": "http://www.wikidata.org/entity/Q15634317",
+            "repository": "wikidata",
+            "url": "//www.wikidata.org/wiki/Q15634317",
+            "display": {
+              "label": {
+                "value": "Acer davidii var. horizontalis",
+                "language": "en"
+              },
+              "description": {
+                "value": "variety of plants",
+                "language": "en"
+              }
+            },
+            "label": "Acer davidii var. horizontalis",
+            "description": "variety of plants",
+            "match": {
+              "type": "label",
+              "language": "en",
+              "text": "Acer davidii var. horizontalis"
+            }
+          },
+          {
+            "id": "Q80723004",
+            "title": "Q80723004",
+            "pageid": 80098319,
+            "concepturi": "http://www.wikidata.org/entity/Q80723004",
+            "repository": "wikidata",
+            "url": "//www.wikidata.org/wiki/Q80723004",
+            "display": {
+              "label": {
+                "value": "Acer davidii var. davidii",
+                "language": "en"
+              }
+            },
+            "label": "Acer davidii var. davidii",
+            "match": {
+              "type": "label",
+              "language": "en",
+              "text": "Acer davidii var. davidii"
+            }
+          }
+        ],
+        "search-continue": 5,
+        "success": 1
+      }
+    },
+    "https://www.wikidata.org/w/api.php?format=json&formatversion=2&maxlag=5&action=wbgetentities&ids=Q657935%7CQ15635133%7CQ24871909%7CQ15634317%7CQ80723004&props=claims": {
+      "expiresAt": "2026-11-17T09:33:07Z",
+      "data": {
+        "entities": {
+          "Q657935": {
+            "id": "Q657935",
+            "claims": {
+              "P225": [
+                {
+                  "mainsnak": {
+                    "snaktype": "value",
+                    "property": "P225",
+                    "hash": "018e78e842c5486390077a10980a859b51f3c8a5",
+                    "datavalue": {
+                      "value": "Acer davidii",
+                      "type": "string"
+                    },
+                    "datatype": "string"
+                  },
+                  "type": "statement",
+                  "qualifiers": {
+                    "P405": [
+                      {
+                        "snaktype": "value",
+                        "property": "P405",
+                        "hash": "8a15cd12b7a0e423685f32b30f1ff26795be8991",
+                        "datavalue": {
+                          "value": {
+                            "entity-type": "item",
+                            "numeric-id": 377208,
+                            "id": "Q377208"
+                          },
+                          "type": "wikibase-entityid"
+                        },
+                        "datatype": "wikibase-item"
+                      }
+                    ],
+                    "P574": [
+                      {
+                        "snaktype": "value",
+                        "property": "P574",
+                        "hash": "38e8c583f0ea2c0d070cafe0c53f7ed18fbadd08",
+                        "datavalue": {
+                          "value": {
+                            "time": "+1886-00-00T00:00:00Z",
+                            "timezone": 0,
+                            "before": 0,
+                            "after": 0,
+                            "precision": 9,
+                            "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                          },
+                          "type": "time"
+                        },
+                        "datatype": "time"
+                      }
+                    ]
+                  },
+                  "qualifiers-order": [
+                    "P405",
+                    "P574"
+                  ],
+                  "id": "q657935$0405FD7B-B6BA-4E16-AC59-B4E18E365D39",
+                  "rank": "normal"
+                }
+              ],
+              "P18": [
+                {
+                  "mainsnak": {
+                    "snaktype": "value",
+                    "property": "P18",
+                    "hash": "54405eac0944d68a6968153cb6b8faf3376f0a87",
+                    "datavalue": {
+                      "value": "Acer davidii leaves.JPG",
+                      "type": "string"
+                    },
+                    "datatype": "commonsMedia"
+                  },
+                  "type": "statement",
+                  "id": "q657935$662FE265-BCAC-418E-B318-9FB219876203",
+                  "rank": "normal"
+                }
+              ]
+            }
+          },
+          "Q15635133": {
+            "id": "Q15635133",
+            "claims": {
+              "P225": [
+                {
+                  "mainsnak": {
+                    "snaktype": "value",
+                    "property": "P225",
+                    "hash": "41225567d3b0fafdfab0df1eb4bf687e727096da",
+                    "datavalue": {
+                      "value": "Acer davidii subsp. grosseri",
+                      "type": "string"
+                    },
+                    "datatype": "string"
+                  },
+                  "type": "statement",
+                  "qualifiers": {
+                    "P405": [
+                      {
+                        "snaktype": "value",
+                        "property": "P405",
+                        "hash": "d218ae11b47edd81c663215674b6f8314d8c4424",
+                        "datavalue": {
+                          "value": {
+                            "entity-type": "item",
+                            "numeric-id": 6055255,
+                            "id": "Q6055255"
+                          },
+                          "type": "wikibase-entityid"
+                        },
+                        "datatype": "wikibase-item"
+                      }
+                    ],
+                    "P574": [
+                      {
+                        "snaktype": "value",
+                        "property": "P574",
+                        "hash": "5e0b46c3aae6b1cb4892502ee0b798ea4fae0d59",
+                        "datavalue": {
+                          "value": {
+                            "time": "+1994-00-00T00:00:00Z",
+                            "timezone": 0,
+                            "before": 0,
+                            "after": 0,
+                            "precision": 9,
+                            "calendarmodel": "http://www.wikidata.org/entity/Q1985727"
+                          },
+                          "type": "time"
+                        },
+                        "datatype": "time"
+                      }
+                    ]
+                  },
+                  "qualifiers-order": [
+                    "P405",
+                    "P574"
+                  ],
+                  "id": "Q15635133$8a5a1147-444f-3e27-8625-e030f674235b",
+                  "rank": "normal"
+                }
+              ],
+              "P18": [
+                {
+                  "mainsnak": {
+                    "snaktype": "value",
+                    "property": "P18",
+                    "hash": "544626669ea7a31d1ecaf527de65a73706042922",
+                    "datavalue": {
+                      "value": "Acer davidii ssp. grosseri in Christchurch Botanic Gardens 02.jpg",
+                      "type": "string"
+                    },
+                    "datatype": "commonsMedia"
+                  },
+                  "type": "statement",
+                  "id": "Q15635133$5275c716-4915-ddde-4f3d-459bd4b19306",
+                  "rank": "normal"
+                }
+              ]
+            }
+          },
+          "Q24871909": {
+            "id": "Q24871909",
+            "claims": {
+              "P225": [
+                {
+                  "mainsnak": {
+                    "snaktype": "value",
+                    "property": "P225",
+                    "hash": "0822a35bca851be478375a1559b4755944d5ea82",
+                    "datavalue": {
+                      "value": "Acer davidii subsp. davidii",
+                      "type": "string"
+                    },
+                    "datatype": "string"
+                  },
+                  "type": "statement",
+                  "id": "Q24871909$74BCF904-B57C-4F28-9305-F77F8B5D22FA",
+                  "rank": "normal"
+                }
+              ],
+              "P18": []
+            }
+          },
+          "Q15634317": {
+            "id": "Q15634317",
+            "claims": {
+              "P225": [
+                {
+                  "mainsnak": {
+                    "snaktype": "value",
+                    "property": "P225",
+                    "hash": "9919f2cdc2ee038054678f5400aea86bbd150d18",
+                    "datavalue": {
+                      "value": "Acer davidii var. horizontalis",
+                      "type": "string"
+                    },
+                    "datatype": "string"
+                  },
+                  "type": "statement",
+                  "id": "Q15634317$4efa03f1-4426-38bc-0d9f-23bbdb1de9c5",
+                  "rank": "normal"
+                }
+              ],
+              "P18": []
+            }
+          },
+          "Q80723004": {
+            "id": "Q80723004",
+            "claims": {
+              "P225": [
+                {
+                  "mainsnak": {
+                    "snaktype": "value",
+                    "property": "P225",
+                    "hash": "4e575fe3e4eccc16cf5f4e6cbc3891fc2134d95f",
+                    "datavalue": {
+                      "value": "Acer davidii var. davidii",
+                      "type": "string"
+                    },
+                    "datatype": "string"
+                  },
+                  "type": "statement",
+                  "id": "Q80723004$4AB08346-C39A-41FB-9EF1-4BF0188BFF15",
+                  "rank": "normal"
+                }
+              ],
+              "P18": []
+            }
+          }
+        }
+      }
+    },
+    "https://commons.wikimedia.org/w/api.php?format=json&formatversion=2&maxlag=5&action=query&prop=imageinfo&titles=File%3AAcer+davidii+leaves.JPG&iiprop=url%7Csize%7Cmime%7Cmediatype%7Cextmetadata&iiurlwidth=1200": {
+      "expiresAt": "2026-11-17T09:33:07Z",
+      "data": {
+        "continue": {
+          "iistart": "2006-01-24T22:54:05Z",
+          "continue": "||"
+        },
+        "query": {
+          "pages": [
+            {
+              "pageid": 533558,
+              "ns": 6,
+              "title": "File:Acer davidii leaves.JPG",
+              "imagerepository": "local",
+              "imageinfo": [
+                {
+                  "size": 136166,
+                  "width": 768,
+                  "height": 1024,
+                  "thumburl": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Acer_davidii_leaves.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+                  "thumbwidth": 1200,
+                  "thumbheight": 1600,
+                  "thumbattribs": {
+                    "src": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Acer_davidii_leaves.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+                    "decoding": "async",
+                    "loading": "lazy",
+                    "width": 1200,
+                    "height": 1600
+                  },
+                  "url": "https://upload.wikimedia.org/wikipedia/commons/f/f2/Acer_davidii_leaves.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                  "descriptionurl": "https://commons.wikimedia.org/wiki/File:Acer_davidii_leaves.JPG",
+                  "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=533558",
+                  "extmetadata": {
+                    "DateTime": {
+                      "value": "2006-06-08 07:33:52",
+                      "source": "mediawiki-metadata",
+                      "hidden": ""
+                    },
+                    "ObjectName": {
+                      "value": "Acer davidii leaves",
+                      "source": "mediawiki-metadata"
+                    },
+                    "CommonsMetadataExtension": {
+                      "value": 1.2,
+                      "source": "extension",
+                      "hidden": ""
+                    },
+                    "Categories": {
+                      "value": "Acer davidii|Taken with Nikon Coolpix 4500|Self-published work|Photographs taken on 2005-05-29",
+                      "source": "commons-categories",
+                      "hidden": ""
+                    },
+                    "Assessments": {
+                      "value": "",
+                      "source": "commons-categories",
+                      "hidden": ""
+                    },
+                    "ImageDescription": {
+                      "value": "Feuilles d'<i><a href=\"//commons.wikimedia.org/wiki/Acer_davidii\" title=\"Acer davidii\">Acer davidii</a></i>.",
+                      "source": "commons-desc-page"
+                    },
+                    "DateTimeOriginal": {
+                      "value": "29 May 2005 (according to <span lang=\"en\" dir=\"ltr\"><a href=\"https://en.wikipedia.org/wiki/Exif\" class=\"extiw\" title=\"en:Exif\">Exif</a></span> data)",
+                      "source": "commons-desc-page"
+                    },
+                    "Credit": {
+                      "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+                      "source": "commons-desc-page"
+                    },
+                    "Artist": {
+                      "value": "<a href=\"//commons.wikimedia.org/wiki/User:Abrahami\" title=\"User:Abrahami\">Abrahami</a>",
+                      "source": "commons-desc-page"
+                    },
+                    "LicenseShortName": {
+                      "value": "CC BY-SA 2.5",
+                      "source": "commons-desc-page",
+                      "hidden": ""
+                    },
+                    "UsageTerms": {
+                      "value": "Creative Commons Attribution-Share Alike 2.5",
+                      "source": "commons-desc-page"
+                    },
+                    "AttributionRequired": {
+                      "value": "true",
+                      "source": "commons-desc-page",
+                      "hidden": ""
+                    },
+                    "LicenseUrl": {
+                      "value": "https://creativecommons.org/licenses/by-sa/2.5",
+                      "source": "commons-desc-page"
+                    },
+                    "Copyrighted": {
+                      "value": "True",
+                      "source": "commons-desc-page",
+                      "hidden": ""
+                    },
+                    "Restrictions": {
+                      "value": "",
+                      "source": "commons-desc-page",
+                      "hidden": ""
+                    },
+                    "License": {
+                      "value": "cc-by-sa-2.5",
+                      "source": "commons-templates",
+                      "hidden": ""
+                    }
+                  },
+                  "mime": "image/jpeg",
+                  "mediatype": "BITMAP"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "https://commons.wikimedia.org/w/api.php?format=json&formatversion=2&maxlag=5&action=query&titles=Category%3AAcer+davidii&prop=categoryinfo": {
+      "expiresAt": "2026-11-17T09:33:07Z",
+      "data": {
+        "batchcomplete": true,
+        "query": {
+          "pages": [
+            {
+              "pageid": 1308575,
+              "ns": 14,
+              "title": "Category:Acer davidii",
+              "categoryinfo": {
+                "size": 43,
+                "pages": 1,
+                "files": 40,
+                "subcats": 2,
+                "hidden": false
+              }
+            }
+          ]
+        }
+      }
+    },
+    "https://commons.wikimedia.org/w/api.php?format=json&formatversion=2&maxlag=5&action=query&generator=categorymembers&gcmtitle=Category%3AAcer+davidii&gcmnamespace=6&gcmlimit=6&prop=imageinfo&iiprop=url%7Csize%7Cmime%7Cmediatype%7Cextmetadata&iiurlwidth=1200": {
+      "expiresAt": "2026-11-17T09:33:07Z",
+      "data": {
+        "batchcomplete": true,
+        "continue": {
+          "gcmcontinue": "file|414345522044415649444949202745524e4553542057494c534f4e27203032204259204c494e45312e4a5047|1979225",
+          "continue": "gcmcontinue||"
+        },
+        "query": {
+          "pages": [
+            {
+              "pageid": 1979221,
+              "ns": 6,
+              "title": "File:Acer davidii 'Ernest Wilson' 01 by Line1.jpg",
+              "imagerepository": "local",
+              "imageinfo": [
+                {
+                  "size": 792945,
+                  "width": 1690,
+                  "height": 2253,
+                  "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ac/Acer_davidii_%27Ernest_Wilson%27_01_by_Line1.jpg/1280px-Acer_davidii_%27Ernest_Wilson%27_01_by_Line1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+                  "thumbwidth": 1200,
+                  "thumbheight": 1600,
+                  "responsiveUrls": {
+                    "2": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Acer_davidii_%27Ernest_Wilson%27_01_by_Line1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+                  },
+                  "thumbattribs": {
+                    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ac/Acer_davidii_%27Ernest_Wilson%27_01_by_Line1.jpg/1280px-Acer_davidii_%27Ernest_Wilson%27_01_by_Line1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+                    "decoding": "async",
+                    "loading": "lazy",
+                    "width": 1200,
+                    "height": 1600,
+                    "srcset": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Acer_davidii_%27Ernest_Wilson%27_01_by_Line1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled 2x"
+                  },
+                  "url": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Acer_davidii_%27Ernest_Wilson%27_01_by_Line1.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                  "descriptionurl": "https://commons.wikimedia.org/wiki/File:Acer_davidii_%27Ernest_Wilson%27_01_by_Line1.jpg",
+                  "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=1979221",
+                  "extmetadata": {
+                    "DateTime": {
+                      "value": "2007-04-21 14:19:44",
+                      "source": "mediawiki-metadata",
+                      "hidden": ""
+                    },
+                    "ObjectName": {
+                      "value": "Acer davidii 'Ernest Wilson' 01 by Line1",
+                      "source": "mediawiki-metadata"
+                    },
+                    "CommonsMetadataExtension": {
+                      "value": 1.2,
+                      "source": "extension",
+                      "hidden": ""
+                    },
+                    "Categories": {
+                      "value": "Acer davidii|GFDL|CC-BY-SA-2.5,2.0,1.0|Arboretum de la Vallée-aux-Loups|License migration redundant|Self-published work|Uploaded by Liné1",
+                      "source": "commons-categories",
+                      "hidden": ""
+                    },
+                    "Assessments": {
+                      "value": "",
+                      "source": "commons-categories",
+                      "hidden": ""
+                    },
+                    "ImageDescription": {
+                      "value": "<p><i><a href=\"//commons.wikimedia.org/wiki/Acer_davidii\" title=\"Acer davidii\">Acer davidii</a> 'Ernest Wilson' </i> Franch. (fr:Erable du Père David (cultivar)) in <a href=\"//commons.wikimedia.org/wiki/Category:Arboretum_de_la_Vall%C3%A9e-aux-Loups\" title=\"Category:Arboretum de la Vallée-aux-Loups\">Arboretum de la Vallée-aux-Loups</a>\n</p>\n<div id=\"coordinates\"><p class=\"coordinates\">Map: <a class=\"external text\" href=\"https://geohack.toolforge.org/geohack.php?pagename=File:Acer_davidii_%27Ernest_Wilson%27_01_by_Line1.jpg&amp;params=48_46_22_N_2_16_5_E\">48° 46' 22\" N 2° 16' 5\" E</a></p></div>",
+                      "source": "commons-desc-page"
+                    },
+                    "DateTimeOriginal": {
+                      "value": "2007-04-14",
+                      "source": "commons-desc-page"
+                    },
+                    "Credit": {
+                      "value": "Personal picture taken with my IXUS 800 IS",
+                      "source": "commons-desc-page"
+                    },
+                    "Artist": {
+                      "value": "<a href=\"//commons.wikimedia.org/wiki/User:Lin%C3%A91\" title=\"User:Liné1\">Liné1</a>",
+                      "source": "commons-desc-page"
+                    },
+                    "LicenseShortName": {
+                      "value": "CC BY-SA 3.0",
+                      "source": "commons-desc-page",
+                      "hidden": ""
+                    },
+                    "UsageTerms": {
+                      "value": "Creative Commons Attribution-Share Alike 3.0",
+                      "source": "commons-desc-page"
+                    },
+                    "AttributionRequired": {
+                      "value": "true",
+                      "source": "commons-desc-page",
+                      "hidden": ""
+                    },
+                    "LicenseUrl": {
+                      "value": "http://creativecommons.org/licenses/by-sa/3.0/",
+                      "source": "commons-desc-page"
+                    },
+                    "Copyrighted": {
+                      "value": "True",
+                      "source": "commons-desc-page",
+                      "hidden": ""
+                    },
+                    "Restrictions": {
+                      "value": "",
+                      "source": "commons-desc-page",
+                      "hidden": ""
+                    },
+                    "License": {
+                      "value": "cc-by-sa-3.0",
+                      "source": "commons-templates",
+                      "hidden": ""
+                    }
+                  },
+                  "mime": "image/jpeg",
+                  "mediatype": "BITMAP"
+                }
+              ]
+            },
+            {
+              "pageid": 9582180,
+              "ns": 6,
+              "title": "File:Acer 00001.jpg",
+              "imagerepository": "local",
+              "imageinfo": [
+                {
+                  "size": 88397,
+                  "width": 468,
+                  "height": 730,
+                  "thumburl": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Acer_00001.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+                  "thumbwidth": 1200,
+                  "thumbheight": 1872,
+                  "thumbattribs": {
+                    "src": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Acer_00001.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+                    "decoding": "async",
+                    "loading": "lazy",
+                    "width": 1200,
+                    "height": 1872
+                  },
+                  "url": "https://upload.wikimedia.org/wikipedia/commons/b/b1/Acer_00001.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                  "descriptionurl": "https://commons.wikimedia.org/wiki/File:Acer_00001.jpg",
+                  "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=9582180",
+                  "extmetadata": {
+                    "DateTime": {
+                      "value": "2010-02-27 13:52:34",
+                      "source": "mediawiki-metadata",
+                      "hidden": ""
+                    },
+                    "ObjectName": {
+                      "value": "Acer 00001",
+                      "source": "mediawiki-metadata"
+                    },
+                    "CommonsMetadataExtension": {
+                      "value": 1.2,
+                      "source": "extension",
+                      "hidden": ""
+                    },
+                    "Categories": {
+                      "value": "Acer davidii|Self-published work|PD-self|Zámecký park (Lednice)",
+                      "source": "commons-categories",
+                      "hidden": ""
+                    },
+                    "Assessments": {
+                      "value": "",
+                      "source": "commons-categories",
+                      "hidden": ""
+                    },
+                    "ImageDescription": {
+                      "value": "javor Acer davidii , parku Lednice",
+                      "source": "commons-desc-page"
+                    },
+                    "Credit": {
+                      "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+                      "source": "commons-desc-page"
+                    },
+                    "Artist": {
+                      "value": "<a href=\"//commons.wikimedia.org/wiki/User:I.S%C3%A1%C4%8Dek,_senior\" title=\"User:I.Sáček, senior\">I.Sáček, senior</a>",
+                      "source": "commons-desc-page"
+                    },
+                    "LicenseShortName": {
+                      "value": "Public domain",
+                      "source": "commons-desc-page",
+                      "hidden": ""
+                    },
+                    "UsageTerms": {
+                      "value": "Public domain",
+                      "source": "commons-desc-page"
+                    },
+                    "AttributionRequired": {
+                      "value": "false",
+                      "source": "commons-desc-page",
+                      "hidden": ""
+                    },
+                    "Copyrighted": {
+                      "value": "False",
+                      "source": "commons-desc-page",
+                      "hidden": ""
+                    },
+                    "Restrictions": {
+                      "value": "",
+                      "source": "commons-desc-page",
+                      "hidden": ""
+                    },
+                    "License": {
+                      "value": "pd",
+                      "source": "commons-templates",
+                      "hidden": ""
+                    }
+                  },
+                  "mime": "image/jpeg",
+                  "mediatype": "BITMAP"
+                }
+              ]
+            },
+            {
+              "pageid": 10569341,
+              "ns": 6,
+              "title": "File:Acer david bark kz.jpg",
+              "imagerepository": "local",
+              "imageinfo": [
+                {
+                  "size": 2883895,
+                  "width": 3056,
+                  "height": 4592,
+                  "thumburl": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Acer_david_bark_kz.jpg/1280px-Acer_david_bark_kz.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+                  "thumbwidth": 1200,
+                  "thumbheight": 1803,
+                  "responsiveUrls": {
+                    "2": "https://upload.wikimedia.org/wikipedia/commons/9/98/Acer_david_bark_kz.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled"
+                  },
+                  "thumbattribs": {
+                    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/Acer_david_bark_kz.jpg/1280px-Acer_david_bark_kz.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+                    "decoding": "async",
+                    "loading": "lazy",
+                    "width": 1200,
+                    "height": 1803,
+                    "srcset": "https://upload.wikimedia.org/wikipedia/commons/9/98/Acer_david_bark_kz.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled 2x"
+                  },
+                  "url": "https://upload.wikimedia.org/wikipedia/commons/9/98/Acer_david_bark_kz.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=original",
+                  "descriptionurl": "https://commons.wikimedia.org/wiki/File:Acer_david_bark_kz.jpg",
+                  "descriptionshorturl": "https://commons.wikimedia.org/w/index.php?curid=10569341",
+                  "extmetadata": {
+                    "DateTime": {
+                      "value": "2010-06-06 21:26:18",
+                      "source": "mediawiki-metadata",
+                      "hidden": ""
+                    },
+                    "ObjectName": {
+                      "value": "Acer david bark kz",
+                      "source": "mediawiki-metadata"
+                    },
+                    "CommonsMetadataExtension": {
+                      "value": 1.2,
+                      "source": "extension",
+                      "hidden": ""
+                    },
+                    "Categories": {
+                      "value": "Acer davidii|GFDL|License migration redundant|CC-BY-SA-4.0,3.0,2.5,2.0,1.0|Self-published work|Acer (bark)|Plants of arboretum in Glinna",
+                      "source": "commons-categories",
+                      "hidden": ""
+                    },
+                    "Assessments": {
+                      "value": "",
+                      "source": "commons-categories",
+                      "hidden": ""
+                    },
+                    "ImageDescription": {
+                      "value": "Acer davidii subsp. grosseri, bark. Glinna Arboretum near Szczecin (NW Poland)",
+                      "source": "commons-desc-page"
+                    },
+                    "DateTimeOriginal": {
+                      "value": "2010-06-06",
+                      "source": "commons-desc-page"
+                    },
+                    "Credit": {
+                      "value": "<span class=\"int-own-work\" lang=\"en\">Own work</span>",
+                      "source": "commons-desc-page"
+                    },
+                    "Artist": {
+                      "value": "<a href=\"//commons.wikimedia.org/wiki/User:Kenraiz\" title=\"User:Kenraiz\">Kenraiz</a>, Krzysztof Ziarnek",
+                      "source": "commons-desc-page"
+                    },
+                    "LicenseShortName": {
+                      "value": "CC BY-SA 4.0",
+                      "source": "commons-desc-page",
+                      "hidden": ""
+                    },
+                    "UsageTerms": {
+                      "value": "Creative Commons Attribution-Share Alike 4.0",
+                      "source": "commons-desc-page"
+                    },
+                    "AttributionRequired": {
+                      "value": "true",
+                      "source": "commons-desc-page",
+                      "hidden": ""
+                    },
+                    "LicenseUrl": {
+                      "value": "https://creativecommons.org/licenses/by-sa/4.0",
+                      "source": "commons-desc-page"
+                    },
+                    "Copyrighted": {
+                      "value": "True",
+                      "source": "commons-desc-page",
+                      "hidden": ""
+                    },
+                    "Restrictions": {
+                      "value": "",
+                      "source": "commons-desc-page",
+                      "hidden": ""
+                    },
+                    "License": {
+                      "value": "cc-by-sa-4.0",
                       "source": "commons-templates",
                       "hidden": ""
                     }

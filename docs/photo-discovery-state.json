@@ -14307,9 +14307,9 @@
       "candidateFingerprint": "a56913edc1f6d2fcd6c45b2572c3f8575925d7405191550b2e5985d96a44685a"
     },
     "lorberg::plant-50ae05a518834d": {
-      "checkedAt": "2026-11-09T14:52:25Z",
-      "reason": "candidate_not_confirmed",
-      "candidateFingerprint": "c579b4b777e59f6468ac2f8f2650e4e4cd13a9ec43c156399e5f6d15e5aff8b7",
+      "checkedAt": "2026-11-10T09:32:49Z",
+      "reason": "request_budget_remaining_work",
+      "candidateFingerprint": "bb3b6a7ac352343ae7e3bb9067b4b8cea07b1a7af474b099b85ecc0a4d81a2db",
       "failures": [
         {
           "url": "https://www.lorberg.com/en-gb/article/1666/prunus-serrulata-amanogawa",
@@ -14323,7 +14323,8 @@
           "url": "https://www.lorberg.com/en-gb/article/1711/prunus-serrulata-kiku-shidare-zakura",
           "reason": "plant_identity_mismatch"
         }
-      ]
+      ],
+      "nextCandidateIndex": 3
     },
     "lorberg::plant-65d6c4007d282d": {
       "binding": {
@@ -15393,9 +15394,9 @@
       "candidateFingerprint": "ed50478744a02fb68bfdb444922b6d9a9dc1320013d0df6986c24f6f3c6b175c"
     },
     "vannucci-piante::plant-52f7978caf4634": {
-      "checkedAt": "2026-11-10T08:13:42Z",
-      "reason": "candidate_not_confirmed",
-      "candidateFingerprint": "a9b82bff0823ca6af2fc97ff8f4922395ab4111e8fa866116213c21897b8b16c",
+      "checkedAt": "2026-11-10T09:32:49Z",
+      "reason": "request_budget_remaining_work",
+      "candidateFingerprint": "6416cd1649e51021f3a0f1665ac79d069da7e2cd857fe9f0dfd1da6244be130d",
       "failures": [
         {
           "url": "https://webshop.vannuccipiante.it/product/panicum-virgatum-heavy-metal/",
@@ -15409,7 +15410,8 @@
           "url": "https://webshop.vannuccipiante.it/product/panicum-virgatum-prairie-sky/",
           "reason": "plant_identity_mismatch"
         }
-      ]
+      ],
+      "nextCandidateIndex": 3
     },
     "vannucci-piante::plant-8c2ae8ac7ff3af": {
       "checkedAt": "2026-11-10T08:13:42Z",
@@ -15505,5 +15507,5 @@
       "candidateFingerprint": "0cda679f9177065e72479b5f40af0a10f02377844ec755ba12ff5b4ce0c79959"
     }
   },
-  "updatedAt": "2026-11-10T08:13:42Z"
+  "updatedAt": "2026-11-10T09:32:49Z"
 }
