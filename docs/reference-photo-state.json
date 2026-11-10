@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "cursor": 7,
+  "cursor": 8,
   "entries": {
     "plant-abies-concolor": {
       "status": "verified",
@@ -37,6 +37,12 @@
       "reason": "api_error",
       "attemptedAt": "2026-11-09T15:12:45Z",
       "nextCheckAt": "2026-11-16T15:12:45Z"
+    },
+    "plant-2b5ca69a45dcf3": {
+      "status": "pending",
+      "reason": "api_error",
+      "attemptedAt": "2026-11-10T08:16:24Z",
+      "nextCheckAt": "2026-11-17T08:16:24Z"
     }
   },
   "cache": {

@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "checkedAt": "2026-11-09T15:15:50Z",
+  "checkedAt": "2026-11-10T08:16:25Z",
   "status": "partial",
   "plants": 619,
-  "plantsWithPhoto": 65,
+  "plantsWithPhoto": 82,
   "activeOffers": 2948,
-  "nurseryPhotos": 242,
+  "nurseryPhotos": 283,
   "referencePhotos": 12,
-  "remainingOffers": 2694,
-  "coveragePercent": 8.62,
+  "remainingOffers": 2653,
+  "coveragePercent": 10.01,
   "pendingPairs": [
     {
       "plantId": "plant-9e3b5ad9f052fd",
@@ -7739,31 +7739,6 @@
       ]
     },
     {
-      "plantId": "plant-9a6f4720f6fd87",
-      "nurseryId": "lorberg",
-      "latinName": "Amelanchier lamarckii",
-      "offerIds": [
-        "record-b4a0a12eb8d5dd"
-      ]
-    },
-    {
-      "plantId": "plant-dc12c2322be581",
-      "nurseryId": "lorberg",
-      "latinName": "Albizia julibrissin",
-      "offerIds": [
-        "record-b407389c470611"
-      ]
-    },
-    {
-      "plantId": "plant-9e3b5ad9f052fd",
-      "nurseryId": "lorberg",
-      "latinName": "Acer platanoides 'Cleveland'",
-      "offerIds": [
-        "record-b23ff11ed8bc83",
-        "offer-pdf-c08a8d7071192d851a54"
-      ]
-    },
-    {
       "plantId": "plant-b35f577a88766f",
       "nurseryId": "lorberg",
       "latinName": "Acer platanoides 'Crimson King'",
@@ -7772,43 +7747,11 @@
       ]
     },
     {
-      "plantId": "plant-acer-pseudoplatanus",
-      "nurseryId": "lorberg",
-      "latinName": "Acer pseudoplatanus",
-      "offerIds": [
-        "record-b1798a4399c53c"
-      ]
-    },
-    {
-      "plantId": "plant-celtis-australis",
-      "nurseryId": "lorberg",
-      "latinName": "Celtis australis",
-      "offerIds": [
-        "record-3be276eddddef8"
-      ]
-    },
-    {
-      "plantId": "plant-f528ac363e5c66",
-      "nurseryId": "lorberg",
-      "latinName": "Cornus sanguinea 'Midwinter Fire'",
-      "offerIds": [
-        "record-a25c8fb9a16423"
-      ]
-    },
-    {
       "plantId": "plant-531d204e47ccbb",
       "nurseryId": "lorberg",
       "latinName": "Hamamelis x intermedia 'Arnold Promise'",
       "offerIds": [
         "record-01435f5e6e7040"
-      ]
-    },
-    {
-      "plantId": "plant-d32b3f49740cc5",
-      "nurseryId": "lorberg",
-      "latinName": "Magnolia x soulangeana",
-      "offerIds": [
-        "record-ffd4e14d4de057"
       ]
     },
     {
@@ -7828,54 +7771,6 @@
       ]
     },
     {
-      "plantId": "plant-c76014c0be2fb8",
-      "nurseryId": "lorberg",
-      "latinName": "Pyrus calleryana 'Chanticleer'",
-      "offerIds": [
-        "record-95ba8c2c84e3ee"
-      ]
-    },
-    {
-      "plantId": "plant-ae4e248ab385a3",
-      "nurseryId": "lorberg",
-      "latinName": "Quercus cerris",
-      "offerIds": [
-        "record-7b13af1a7f1b42"
-      ]
-    },
-    {
-      "plantId": "plant-ffdbfd76e4d96d",
-      "nurseryId": "lorberg",
-      "latinName": "Quercus palustris",
-      "offerIds": [
-        "record-e2f0ce915a2dba"
-      ]
-    },
-    {
-      "plantId": "plant-quercus-rubra",
-      "nurseryId": "lorberg",
-      "latinName": "Quercus rubra",
-      "offerIds": [
-        "record-172c0692f16e39"
-      ]
-    },
-    {
-      "plantId": "plant-quercus-robur",
-      "nurseryId": "lorberg",
-      "latinName": "Quercus robur",
-      "offerIds": [
-        "record-c4d8f0629501c3"
-      ]
-    },
-    {
-      "plantId": "plant-tilia-cordata",
-      "nurseryId": "lorberg",
-      "latinName": "Tilia cordata",
-      "offerIds": [
-        "record-f8d32240673819"
-      ]
-    },
-    {
       "plantId": "plant-2d6ea78c9fc019",
       "nurseryId": "lorberg",
       "latinName": "Ulmus 'New Horizon'",
@@ -7889,14 +7784,6 @@
       "latinName": "Helichrysum italicum",
       "offerIds": [
         "record-b0981be1dd76f8"
-      ]
-    },
-    {
-      "plantId": "plant-lavandula-angustifolia",
-      "nurseryId": "lorberg",
-      "latinName": "Lavandula angustifolia",
-      "offerIds": [
-        "record-57063fc712f04f"
       ]
     },
     {
@@ -9218,87 +9105,12 @@
       ]
     },
     {
-      "plantId": "plant-acer-platanoides",
-      "nurseryId": "lorberg",
-      "latinName": "Acer platanoides",
-      "offerIds": [
-        "record-a83823ca933f31",
-        "record-49e9cc37338587"
-      ]
-    },
-    {
-      "plantId": "plant-acer-palmatum",
-      "nurseryId": "lorberg",
-      "latinName": "Acer palmatum",
-      "offerIds": [
-        "record-7736f3d554fd50",
-        "record-e9a656960584ba"
-      ]
-    },
-    {
-      "plantId": "plant-cd7931ce209e95",
-      "nurseryId": "lorberg",
-      "latinName": "Acer x freemanii 'Autumn Blaze'",
-      "offerIds": [
-        "record-4f8367bcba3efb",
-        "record-6d543b33979c80"
-      ]
-    },
-    {
-      "plantId": "plant-betula-pendula",
-      "nurseryId": "lorberg",
-      "latinName": "Betula pendula",
-      "offerIds": [
-        "record-07aa644b380529",
-        "record-ceb19c12a442ac",
-        "record-3cfe76bed03d19",
-        "record-32a7329ee4531c"
-      ]
-    },
-    {
-      "plantId": "plant-carpinus-betulus",
-      "nurseryId": "lorberg",
-      "latinName": "Carpinus betulus",
-      "offerIds": [
-        "record-124388f5ea95f6",
-        "record-bc77acf36bf2e0"
-      ]
-    },
-    {
-      "plantId": "plant-ginkgo-biloba",
-      "nurseryId": "lorberg",
-      "latinName": "Ginkgo biloba",
-      "offerIds": [
-        "record-b2ac6f0d4206bf",
-        "record-07b2c0e81e1be4"
-      ]
-    },
-    {
-      "plantId": "plant-liquidambar-styraciflua",
-      "nurseryId": "lorberg",
-      "latinName": "Liquidambar styraciflua",
-      "offerIds": [
-        "record-25c08d56afbfa0",
-        "record-5ef94a83d011cd"
-      ]
-    },
-    {
       "plantId": "plant-8c2ae8ac7ff3af",
       "nurseryId": "lorberg",
       "latinName": "Platanus x acerifolia",
       "offerIds": [
         "record-357bab534136d4",
         "record-6aa0fc3628ea29"
-      ]
-    },
-    {
-      "plantId": "plant-da13581afa3d46",
-      "nurseryId": "lorberg",
-      "latinName": "Taxus baccata",
-      "offerIds": [
-        "record-65b3c6be6306fa",
-        "record-f1336cb9b5c59d",
-        "record-6b8c29f92da6e6"
       ]
     },
     {
@@ -9389,41 +9201,6 @@
       "offerIds": [
         "record-951fd82cbfad06",
         "record-d294ff0970b9c4"
-      ]
-    },
-    {
-      "plantId": "plant-e31efad7c4f189",
-      "nurseryId": "lorberg",
-      "latinName": "Alnus spaethii",
-      "offerIds": [
-        "offer-pdf-6be4124d624030c66287"
-      ]
-    },
-    {
-      "plantId": "plant-dff75bb196d8f1",
-      "nurseryId": "lorberg",
-      "latinName": "Magnolia kobus",
-      "offerIds": [
-        "offer-pdf-fa5f5d28792aa88fcbe1"
-      ]
-    },
-    {
-      "plantId": "plant-dc277e6125caf5",
-      "nurseryId": "lorberg",
-      "latinName": "Prunus cerasifera nigra",
-      "offerIds": [
-        "offer-pdf-4c81862a2e085a3490c4"
-      ]
-    },
-    {
-      "plantId": "plant-b1fc7ebad5242f",
-      "nurseryId": "smits-boomkwekerij",
-      "latinName": "Osmanthus x burkwoodii",
-      "offerIds": [
-        "offer-pdf-7d5fbd533ef3c08889d1",
-        "offer-pdf-f0325055115eb43afff7",
-        "offer-pdf-52b0ef44ef6cd1d45ad8",
-        "offer-pdf-e9e926a0ce62df0ee5c8"
       ]
     },
     {
@@ -10175,10 +9952,6 @@
       "latinName": "Acer monspessulanum"
     },
     {
-      "plantId": "plant-acer-palmatum",
-      "latinName": "Acer palmatum"
-    },
-    {
       "plantId": "plant-c4098de94f77ea",
       "latinName": "Acer palmatum 'Atropurpurea'"
     },
@@ -10199,16 +9972,8 @@
       "latinName": "Acer palmatum 'Seiryu'"
     },
     {
-      "plantId": "plant-acer-platanoides",
-      "latinName": "Acer platanoides"
-    },
-    {
       "plantId": "plant-47815681828268",
       "latinName": "Acer platanoides 'Autumn Blaze'"
-    },
-    {
-      "plantId": "plant-9e3b5ad9f052fd",
-      "latinName": "Acer platanoides 'Cleveland'"
     },
     {
       "plantId": "plant-b35f577a88766f",
@@ -10221,10 +9986,6 @@
     {
       "plantId": "plant-acer-platanoides-globosum",
       "latinName": "Acer platanoides 'Globosum'"
-    },
-    {
-      "plantId": "plant-acer-pseudoplatanus",
-      "latinName": "Acer pseudoplatanus"
     },
     {
       "plantId": "plant-927d4bd96193ce",
@@ -10317,10 +10078,6 @@
     {
       "plantId": "plant-43a8171726fcdd",
       "latinName": "Ajuga reptans 'Catlins Giant'"
-    },
-    {
-      "plantId": "plant-dc12c2322be581",
-      "latinName": "Albizia julibrissin"
     },
     {
       "plantId": "plant-a856d27df45b46",
@@ -10425,10 +10182,6 @@
     {
       "plantId": "plant-45f9cecaa5f3e5",
       "latinName": "Betula maximowicziana"
-    },
-    {
-      "plantId": "plant-betula-pendula",
-      "latinName": "Betula pendula"
     },
     {
       "plantId": "plant-a61d5a8e74adf3",
@@ -10611,10 +10364,6 @@
       "latinName": "Cedrus libani 'Glauca Pendula'"
     },
     {
-      "plantId": "plant-celtis-australis",
-      "latinName": "Celtis australis"
-    },
-    {
       "plantId": "plant-9123c0b4481cff",
       "latinName": "Celtis occidentalis"
     },
@@ -10689,10 +10438,6 @@
     {
       "plantId": "plant-5f4b7f388898d8",
       "latinName": "Cornus mas"
-    },
-    {
-      "plantId": "plant-f528ac363e5c66",
-      "latinName": "Cornus sanguinea 'Midwinter Fire'"
     },
     {
       "plantId": "plant-49e4ccbed46794",
@@ -11311,10 +11056,6 @@
       "latinName": "Laurus nobilis"
     },
     {
-      "plantId": "plant-lavandula-angustifolia",
-      "latinName": "Lavandula angustifolia"
-    },
-    {
       "plantId": "plant-166ddeecd217ea",
       "latinName": "Lavandula angustifolia 'Munstead'"
     },
@@ -11521,10 +11262,6 @@
     {
       "plantId": "plant-2529f7d2d6db2b",
       "latinName": "Origanum vulgare"
-    },
-    {
-      "plantId": "plant-b1fc7ebad5242f",
-      "latinName": "Osmanthus x burkwoodii"
     },
     {
       "plantId": "plant-fb195caca9a6f0",
@@ -11871,10 +11608,6 @@
       "latinName": "Punica granatum"
     },
     {
-      "plantId": "plant-c76014c0be2fb8",
-      "latinName": "Pyrus calleryana 'Chanticleer'"
-    },
-    {
       "plantId": "plant-0745a6109ba8ea",
       "latinName": "Pyrus communis (Williams) körte"
     },
@@ -11885,10 +11618,6 @@
     {
       "plantId": "plant-f00c55bd78dd3e",
       "latinName": "Quercus borealis"
-    },
-    {
-      "plantId": "plant-ae4e248ab385a3",
-      "latinName": "Quercus cerris"
     },
     {
       "plantId": "plant-b00cd90a5cdfdb",
@@ -11903,20 +11632,8 @@
       "latinName": "Quercus nigra"
     },
     {
-      "plantId": "plant-ffdbfd76e4d96d",
-      "latinName": "Quercus palustris"
-    },
-    {
-      "plantId": "plant-quercus-robur",
-      "latinName": "Quercus robur"
-    },
-    {
       "plantId": "plant-4af5b01980e01c",
       "latinName": "Quercus robur 'Fastigiata'"
-    },
-    {
-      "plantId": "plant-quercus-rubra",
-      "latinName": "Quercus rubra"
     },
     {
       "plantId": "plant-1a416ae9d7ca7a",
@@ -12123,10 +11840,6 @@
       "latinName": "Taxodium distichum"
     },
     {
-      "plantId": "plant-da13581afa3d46",
-      "latinName": "Taxus baccata"
-    },
-    {
       "plantId": "plant-57c8f17c2654e0",
       "latinName": "Taxus baccata 'Fastigiata Aurea'"
     },
@@ -12197,10 +11910,6 @@
     {
       "plantId": "plant-0ec567cfdd440e",
       "latinName": "Tiarella wherryi"
-    },
-    {
-      "plantId": "plant-tilia-cordata",
-      "latinName": "Tilia cordata"
     },
     {
       "plantId": "plant-750e769b7f58ae",

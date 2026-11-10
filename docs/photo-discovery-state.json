@@ -12666,12 +12666,7 @@
       "lastCheckedAt": "2026-11-09T15:07:19Z"
     },
     "smits-boomkwekerij": {
-      "frontier": [
-        "https://smitsbv.nl/producten-sitemap.xml",
-        "https://smitsbv.nl/soorten-sitemap.xml",
-        "https://smitsbv.nl/vacatures-sitemap.xml",
-        "https://smitsbv.nl/"
-      ],
+      "frontier": [],
       "visited": [
         "https://smitsbv.nl/robots.txt",
         "https://smitsbv.nl/sitemap_index.xml",
@@ -12679,7 +12674,11 @@
         "https://smitsbv.nl/bomen-sitemap.xml",
         "https://smitsbv.nl/boomkwekerij-sitemap.xml",
         "https://smitsbv.nl/oplossingen-sitemap.xml",
-        "https://smitsbv.nl/page-sitemap.xml"
+        "https://smitsbv.nl/page-sitemap.xml",
+        "https://smitsbv.nl/producten-sitemap.xml",
+        "https://smitsbv.nl/soorten-sitemap.xml",
+        "https://smitsbv.nl/vacatures-sitemap.xml",
+        "https://smitsbv.nl/"
       ],
       "pages": [
         "https://smitsbv.nl/blog/",
@@ -12762,7 +12761,660 @@
         "https://smitsbv.nl/oplossingen/bomen-als-erfafscheiding/",
         "https://smitsbv.nl/oplossingen/privacy-tuin/",
         "https://smitsbv.nl/oplossingen/wolkenhaag/",
-        "https://smitsbv.nl/oplossingen/bomen-voor-privacy/"
+        "https://smitsbv.nl/oplossingen/bomen-voor-privacy/",
+        "https://smitsbv.nl/producten/",
+        "https://smitsbv.nl/producten/tilia-cordata-rancho/",
+        "https://smitsbv.nl/producten/tilia-cordata-winter-orange/",
+        "https://smitsbv.nl/producten/tilia-cordata/",
+        "https://smitsbv.nl/producten/tilia-mongolica/",
+        "https://smitsbv.nl/producten/tilia-cordata-greenspire/",
+        "https://smitsbv.nl/producten/tilia-peteolaris/",
+        "https://smitsbv.nl/producten/tilia-euchlora/",
+        "https://smitsbv.nl/producten/tilia-platyphyllos/",
+        "https://smitsbv.nl/producten/tilia-europaea-pallida/",
+        "https://smitsbv.nl/producten/tilia-tomentosa/",
+        "https://smitsbv.nl/producten/tilia-henryana/",
+        "https://smitsbv.nl/producten/tilia-tomentosa-brabant/",
+        "https://smitsbv.nl/producten/tilia-europaea/",
+        "https://smitsbv.nl/producten/thuja-occ-brabant/",
+        "https://smitsbv.nl/producten/thuja-occidentalis-smaragd/",
+        "https://smitsbv.nl/producten/thuja-plicata/",
+        "https://smitsbv.nl/producten/thuja-plicata-excelsa/",
+        "https://smitsbv.nl/producten/taxus-media-farmen/",
+        "https://smitsbv.nl/producten/taxus-media-groenland/",
+        "https://smitsbv.nl/producten/taxus-baccata-3/",
+        "https://smitsbv.nl/producten/taxus-media-hicksii/",
+        "https://smitsbv.nl/producten/taxus-baccata-fastigiata-robusta/",
+        "https://smitsbv.nl/producten/taxus-media-hillii/",
+        "https://smitsbv.nl/producten/taxus-b-dovastoniana/",
+        "https://smitsbv.nl/producten/taxus-baccata-fastigiata/",
+        "https://smitsbv.nl/producten/taxus-baccata-aurea/",
+        "https://smitsbv.nl/producten/taxus-cuspidata/",
+        "https://smitsbv.nl/producten/rhododendron-roseum-elegans/",
+        "https://smitsbv.nl/producten/rhododendron-catharine-van-tol/",
+        "https://smitsbv.nl/producten/rhododendron-ponticum/",
+        "https://smitsbv.nl/producten/rhododendron-constanze/",
+        "https://smitsbv.nl/producten/rhododendron-simona/",
+        "https://smitsbv.nl/producten/rhododendron-aj-aladdin-scout/",
+        "https://smitsbv.nl/producten/rhododendron-aj-purple-splendor/",
+        "https://smitsbv.nl/producten/rhododendron-ap-pallas/",
+        "https://smitsbv.nl/producten/rhododendron-y-kalinka/",
+        "https://smitsbv.nl/producten/rhododendron-catawbiense-grandiflorum/",
+        "https://smitsbv.nl/producten/rhododendron-luteum/",
+        "https://smitsbv.nl/producten/rhododendron-cunninghams-white/",
+        "https://smitsbv.nl/producten/rhododendron-molle/",
+        "https://smitsbv.nl/producten/quercus-robur/",
+        "https://smitsbv.nl/producten/quercus-turneri-pseudoturneri/",
+        "https://smitsbv.nl/producten/quercus-pubescens/",
+        "https://smitsbv.nl/producten/quercus-rysophylla-maya/",
+        "https://smitsbv.nl/producten/quercus-suber/",
+        "https://smitsbv.nl/producten/quercus-ilex/",
+        "https://smitsbv.nl/producten/quercus-coccinea/",
+        "https://smitsbv.nl/producten/quercus-frainetto/",
+        "https://smitsbv.nl/producten/quercus-dent-carl-ferris-miller/",
+        "https://smitsbv.nl/producten/quercus-nigra/",
+        "https://smitsbv.nl/producten/quercus-imbricaria/",
+        "https://smitsbv.nl/producten/quercus-palustris/",
+        "https://smitsbv.nl/producten/quercus-myrsinifolia/",
+        "https://smitsbv.nl/producten/quercus-rubra/",
+        "https://smitsbv.nl/producten/quercus-petraea/",
+        "https://smitsbv.nl/producten/quercus-phellos/",
+        "https://smitsbv.nl/producten/quercus-pontica/",
+        "https://smitsbv.nl/producten/prunus-yedoensis/",
+        "https://smitsbv.nl/producten/prunus-umineko/",
+        "https://smitsbv.nl/producten/prunus-subhirtella-pendula/",
+        "https://smitsbv.nl/producten/prunus-subhirtella-autumnalis-rosea/",
+        "https://smitsbv.nl/producten/prunus-subhirtella-autumnalis/",
+        "https://smitsbv.nl/producten/prunus-spinosa/",
+        "https://smitsbv.nl/producten/prunus-serrulata-tai-haku/",
+        "https://smitsbv.nl/producten/prunus-serrulata-sunset-boulevard/",
+        "https://smitsbv.nl/producten/prunus-serrulata-shirotae/",
+        "https://smitsbv.nl/producten/prunus-serrulata-shiro-fugen/",
+        "https://smitsbv.nl/producten/prunus-serrulata-royal-burgundy/",
+        "https://smitsbv.nl/producten/prunus-serrulata-pink-perfection/",
+        "https://smitsbv.nl/producten/prunus-serrulata-kanzan/",
+        "https://smitsbv.nl/producten/prunus-serrulata-amanogawa/",
+        "https://smitsbv.nl/producten/prunus-serrula/",
+        "https://smitsbv.nl/producten/prunus-schmittii/",
+        "https://smitsbv.nl/producten/prunus-sargentii-rancho/",
+        "https://smitsbv.nl/producten/prunus-sargentii/",
+        "https://smitsbv.nl/producten/prunus-pandora/",
+        "https://smitsbv.nl/producten/prunus-padus/",
+        "https://smitsbv.nl/producten/prunus-maackii-amber-beauty/",
+        "https://smitsbv.nl/producten/prunus-lusitanica-angustifolia/",
+        "https://smitsbv.nl/producten/prunus-lusitanica/",
+        "https://smitsbv.nl/producten/prunus-laurocerasus-rotundifolia/",
+        "https://smitsbv.nl/producten/prunus-laurocerasus-novita/",
+        "https://smitsbv.nl/producten/prunus-laurocerasus-caucasica/",
+        "https://smitsbv.nl/producten/prunus-laurocerasus/",
+        "https://smitsbv.nl/producten/prunus-l-genolia/",
+        "https://smitsbv.nl/producten/prunus-l-elly/",
+        "https://smitsbv.nl/producten/prunus-dulcis/",
+        "https://smitsbv.nl/producten/prunus-domestica/",
+        "https://smitsbv.nl/producten/prunus-cerasifera-nigra/",
+        "https://smitsbv.nl/producten/prunus-avium-plena/",
+        "https://smitsbv.nl/producten/prunus-avium/",
+        "https://smitsbv.nl/producten/prunus-armeniaca/",
+        "https://smitsbv.nl/producten/prunus-ar-rouge-du-roussillon/",
+        "https://smitsbv.nl/producten/prunus-accolade/",
+        "https://smitsbv.nl/producten/pinus-wallichiana/",
+        "https://smitsbv.nl/producten/pinus-sylvestris-watereri/",
+        "https://smitsbv.nl/producten/pinus-sylvestris-2/",
+        "https://smitsbv.nl/producten/pinus-sylv-norska/",
+        "https://smitsbv.nl/producten/pinus-pinea/",
+        "https://smitsbv.nl/producten/pinus-parv-tempelhof/",
+        "https://smitsbv.nl/producten/pinus-nigra-nigra/",
+        "https://smitsbv.nl/producten/pinus-nigra-austriaca/",
+        "https://smitsbv.nl/producten/pinus-mugo-uncinata/",
+        "https://smitsbv.nl/producten/pinus-mugo-rostrata/",
+        "https://smitsbv.nl/producten/pinus-mugo-pumilio/",
+        "https://smitsbv.nl/producten/pinus-mugo-mughus/",
+        "https://smitsbv.nl/producten/pinus-mugo-laurin/",
+        "https://smitsbv.nl/producten/pinus-mugo-gnom/",
+        "https://smitsbv.nl/producten/pinus-mugo-mops/",
+        "https://smitsbv.nl/producten/pinus-mugo/",
+        "https://smitsbv.nl/producten/pinus-maritima/",
+        "https://smitsbv.nl/producten/pinus-contorta/",
+        "https://smitsbv.nl/producten/pinus-cembra/",
+        "https://smitsbv.nl/producten/pinus-bungeana/",
+        "https://smitsbv.nl/producten/pinus-banksiana/",
+        "https://smitsbv.nl/producten/phillyrea-latifolia/",
+        "https://smitsbv.nl/producten/phillyrea-angustifolia/",
+        "https://smitsbv.nl/producten/parrotia-persica-vanessa/",
+        "https://smitsbv.nl/producten/parrotia-persica-bella/",
+        "https://smitsbv.nl/producten/parrotia-persica/",
+        "https://smitsbv.nl/producten/osmanthus-heterophyllus/",
+        "https://smitsbv.nl/producten/osmanthus-burkwoodii/",
+        "https://smitsbv.nl/producten/osmanthus-armatus/",
+        "https://smitsbv.nl/producten/osmanthus-aquifolium/",
+        "https://smitsbv.nl/producten/magnolia-loebneri-leonard-messel/",
+        "https://smitsbv.nl/producten/magnolia-loebneri-merrill/",
+        "https://smitsbv.nl/producten/magnolia-soulangiana/",
+        "https://smitsbv.nl/producten/magnolia-soulangiana-alba-superba/",
+        "https://smitsbv.nl/producten/magnolia-stellata/",
+        "https://smitsbv.nl/producten/magnolia-stellata-royal-star/",
+        "https://smitsbv.nl/producten/magnolia-susan/",
+        "https://smitsbv.nl/producten/magnolia-tripetala/",
+        "https://smitsbv.nl/producten/magnolia-loebneri/",
+        "https://smitsbv.nl/producten/magnolia-liliiflora/",
+        "https://smitsbv.nl/producten/magnolia-l-nigra/",
+        "https://smitsbv.nl/producten/magnolia-kobus/",
+        "https://smitsbv.nl/producten/magnolia-heaven-scent/",
+        "https://smitsbv.nl/producten/magnolia-grandiflora/",
+        "https://smitsbv.nl/producten/magnolia-grand-galissonniere/",
+        "https://smitsbv.nl/producten/magnolia-grand-exmouth/",
+        "https://smitsbv.nl/producten/magnolia-galaxy/",
+        "https://smitsbv.nl/producten/magnolia-chameleon/",
+        "https://smitsbv.nl/producten/magnolia-betty/",
+        "https://smitsbv.nl/producten/magnolia-spectrum/",
+        "https://smitsbv.nl/producten/magnolia-goldstar/",
+        "https://smitsbv.nl/producten/magnolia-genie/",
+        "https://smitsbv.nl/producten/magnolia-big-dude/",
+        "https://smitsbv.nl/producten/ligustrum-vulgare/",
+        "https://smitsbv.nl/producten/ligustrum-quihoui/",
+        "https://smitsbv.nl/producten/ligustrum-japonicum/",
+        "https://smitsbv.nl/producten/ilex-verticillata/",
+        "https://smitsbv.nl/producten/ilex-nellie-stevens/",
+        "https://smitsbv.nl/producten/ilex-meserveae-blue-prince/",
+        "https://smitsbv.nl/producten/ilex-meserveae/",
+        "https://smitsbv.nl/producten/ilex-meserv-heckenstar/",
+        "https://smitsbv.nl/producten/ilex-meserv-heckenpracht/",
+        "https://smitsbv.nl/producten/ilex-maximowicziana-kanehirae/",
+        "https://smitsbv.nl/producten/ilex-crenata-glory-gem/",
+        "https://smitsbv.nl/producten/ilex-crenata/",
+        "https://smitsbv.nl/producten/ilex-castaneifolia/",
+        "https://smitsbv.nl/producten/ilex-attenuata-foster-no-2/",
+        "https://smitsbv.nl/producten/ilex-aquifolium-2/",
+        "https://smitsbv.nl/producten/ilex-aq-j-c-van-tol/",
+        "https://smitsbv.nl/producten/ilex-aq-bacciflava/",
+        "https://smitsbv.nl/producten/ilex-aq-alaska/",
+        "https://smitsbv.nl/producten/hydrangea-quercifolia/",
+        "https://smitsbv.nl/producten/hydrangea-petiolaris/",
+        "https://smitsbv.nl/producten/hydrangea-pan-pinky-winky/",
+        "https://smitsbv.nl/producten/hydrangea-pan-limelight/",
+        "https://smitsbv.nl/producten/hydrangea-macrophylla/",
+        "https://smitsbv.nl/producten/heptacodium-miconioides/",
+        "https://smitsbv.nl/producten/hamamelis-mollis/",
+        "https://smitsbv.nl/producten/hamamelis-intermedia-westerstede/",
+        "https://smitsbv.nl/producten/hamamelis-intermedia-pallida/",
+        "https://smitsbv.nl/producten/hamamelis-intermedia-feuerzauber/",
+        "https://smitsbv.nl/producten/hamamelis-intermedia-arnold-promise/",
+        "https://smitsbv.nl/producten/hamamelis-intermedia-sunburst/",
+        "https://smitsbv.nl/producten/hamamelis-int-jelena/",
+        "https://smitsbv.nl/producten/hamamelis-int-diane/",
+        "https://smitsbv.nl/producten/hamamelis-int-aphrodite/",
+        "https://smitsbv.nl/producten/gleditsia-triacanthos-sunburst/",
+        "https://smitsbv.nl/producten/gleditsia-triacanthos-skyline/",
+        "https://smitsbv.nl/producten/gleditsia-triacanthos-inermis/",
+        "https://smitsbv.nl/producten/gleditsia-triacanthos/",
+        "https://smitsbv.nl/producten/gleditsia-triac-green-glory/",
+        "https://smitsbv.nl/producten/fagus-sylvatica-purpurea-pendula/",
+        "https://smitsbv.nl/producten/fagus-sylvatica-dawyck-purple/",
+        "https://smitsbv.nl/producten/fagus-sylvatica-dawyck-gold/",
+        "https://smitsbv.nl/producten/fagus-sylvatica-atropunicea/",
+        "https://smitsbv.nl/producten/fagus-sylvatica-asplenifolia/",
+        "https://smitsbv.nl/producten/fagus-sylvatica-2/",
+        "https://smitsbv.nl/producten/fagus-syl-purple-fountain/",
+        "https://smitsbv.nl/producten/fagus-syl-eugen/",
+        "https://smitsbv.nl/producten/euonymus-wilsonii/",
+        "https://smitsbv.nl/producten/euonymus-phellomanus/",
+        "https://smitsbv.nl/producten/euonymus-europaeus/",
+        "https://smitsbv.nl/producten/euonymus-alatus-compactus/",
+        "https://smitsbv.nl/producten/euonymus-alatus/",
+        "https://smitsbv.nl/producten/crataegus-prunifolia-splendens/",
+        "https://smitsbv.nl/producten/crataegus-prunifolia/",
+        "https://smitsbv.nl/producten/crataegus-persimilis-splendens/",
+        "https://smitsbv.nl/producten/crataegus-persimilis/",
+        "https://smitsbv.nl/producten/crataegus-monogyna/",
+        "https://smitsbv.nl/producten/crataegus-media-pauls-scarlet/",
+        "https://smitsbv.nl/producten/crataegus-lavallei-carrierei/",
+        "https://smitsbv.nl/producten/crataegus-coccinea/",
+        "https://smitsbv.nl/producten/cornus-k-roberts-selectie/",
+        "https://smitsbv.nl/producten/cornus-k-satomi/",
+        "https://smitsbv.nl/producten/cornus-k-schmetterling/",
+        "https://smitsbv.nl/producten/cornus-k-weisse-fontaine/",
+        "https://smitsbv.nl/producten/cornus-kousa/",
+        "https://smitsbv.nl/producten/cornus-kousa-chinensis/",
+        "https://smitsbv.nl/producten/cornus-kousa-milky-way/",
+        "https://smitsbv.nl/producten/cornus-kousa-national/",
+        "https://smitsbv.nl/producten/cornus-mas/",
+        "https://smitsbv.nl/producten/cornus-nuttallii/",
+        "https://smitsbv.nl/producten/cornus-officinalis/",
+        "https://smitsbv.nl/producten/cornus-sanguinea/",
+        "https://smitsbv.nl/producten/cornus-sericea-flaviramea/",
+        "https://smitsbv.nl/producten/cornus-stellar-pink/",
+        "https://smitsbv.nl/producten/cornus-venus/",
+        "https://smitsbv.nl/producten/cornus-k-china-girl/",
+        "https://smitsbv.nl/producten/cornus-florida-rubra/",
+        "https://smitsbv.nl/producten/cornus-florida/",
+        "https://smitsbv.nl/producten/cornus-controversa-variegata/",
+        "https://smitsbv.nl/producten/cornus-controversa/",
+        "https://smitsbv.nl/producten/cornus-capitata-mountain-moon/",
+        "https://smitsbv.nl/producten/cornus-alternifolia/",
+        "https://smitsbv.nl/producten/carpinus-japonica/",
+        "https://smitsbv.nl/producten/carpinus-coreana/",
+        "https://smitsbv.nl/producten/carpinus-caroliniana/",
+        "https://smitsbv.nl/producten/carpinus-betulus-monumentalis/",
+        "https://smitsbv.nl/producten/carpinus-betulus-frans-fontaine/",
+        "https://smitsbv.nl/producten/carpinus-betulus-fastigiata/",
+        "https://smitsbv.nl/producten/carpinus-betulus/",
+        "https://smitsbv.nl/producten/carpinus-bet-pendula/",
+        "https://smitsbv.nl/producten/carpinus-bet-incisa/",
+        "https://smitsbv.nl/producten/betula-utilis-jacquemontii/",
+        "https://smitsbv.nl/producten/betula-utilis-doorenbos/",
+        "https://smitsbv.nl/producten/betula-pubescens/",
+        "https://smitsbv.nl/producten/betula-pendula-youngii/",
+        "https://smitsbv.nl/producten/betula-pendula-dalecarlica/",
+        "https://smitsbv.nl/producten/betula-pendula/",
+        "https://smitsbv.nl/producten/betula-papyrifera/",
+        "https://smitsbv.nl/producten/betula-nigra-heritage/",
+        "https://smitsbv.nl/producten/betula-nigra/",
+        "https://smitsbv.nl/producten/betula-maximowicziana/",
+        "https://smitsbv.nl/producten/betula-ermanii/",
+        "https://smitsbv.nl/producten/betula-albosinensis/",
+        "https://smitsbv.nl/producten/betula-albo-sinensis-fascination/",
+        "https://smitsbv.nl/producten/amelanchier-grandiflora-ballerina/",
+        "https://smitsbv.nl/producten/amelanchier-grandiflora-robin-hill/",
+        "https://smitsbv.nl/producten/amelanchier-lamarckii/",
+        "https://smitsbv.nl/producten/amelanchier-alnifolia-obelisk/",
+        "https://smitsbv.nl/producten/acer-campestre/",
+        "https://smitsbv.nl/producten/acer-campestre-annys-globe/",
+        "https://smitsbv.nl/producten/acer-campestre-elegant/",
+        "https://smitsbv.nl/producten/acer-campestre-elsrijk/",
+        "https://smitsbv.nl/producten/acer-campestre-fastigiata/",
+        "https://smitsbv.nl/producten/acer-campestre-queen-elizabeth/",
+        "https://smitsbv.nl/producten/acer-campestre-red-shine/",
+        "https://smitsbv.nl/producten/acer-capillipes/",
+        "https://smitsbv.nl/producten/acer-cappadocicum-rubrum/",
+        "https://smitsbv.nl/producten/acer-circinatum/",
+        "https://smitsbv.nl/producten/acer-cissifolium/",
+        "https://smitsbv.nl/producten/acer-davidii/",
+        "https://smitsbv.nl/producten/acer-freemanii-autumn-blaze/",
+        "https://smitsbv.nl/producten/acer-ginnala/",
+        "https://smitsbv.nl/producten/acer-griseum/",
+        "https://smitsbv.nl/producten/acer-jap-aco-maiku-jaku/",
+        "https://smitsbv.nl/producten/acer-japonicum/",
+        "https://smitsbv.nl/producten/acer-japonicum-aconitifolium/",
+        "https://smitsbv.nl/producten/acer-monspessulanum/",
+        "https://smitsbv.nl/producten/acer-neglectum-annae/",
+        "https://smitsbv.nl/producten/acer-negundo-flamingo/",
+        "https://smitsbv.nl/producten/acer-opalus/",
+        "https://smitsbv.nl/producten/acer-p-arakawa/",
+        "https://smitsbv.nl/producten/acer-p-butterfly/",
+        "https://smitsbv.nl/producten/acer-p-deshojo/",
+        "https://smitsbv.nl/producten/acer-p-dissectum-nigrum/",
+        "https://smitsbv.nl/producten/acer-p-dissectum/",
+        "https://smitsbv.nl/producten/acer-p-garnet/",
+        "https://smitsbv.nl/producten/acer-p-green-globe/",
+        "https://smitsbv.nl/producten/acer-p-hoshi-kuzu/",
+        "https://smitsbv.nl/producten/acer-p-lionheart/",
+        "https://smitsbv.nl/producten/acer-p-osakazuki/",
+        "https://smitsbv.nl/producten/acer-p-red-emperor/",
+        "https://smitsbv.nl/producten/acer-p-scolopendriifolium/",
+        "https://smitsbv.nl/producten/acer-p-seiryu/",
+        "https://smitsbv.nl/producten/acer-p-shigitatsu-sawa/",
+        "https://smitsbv.nl/producten/acer-palmatum/",
+        "https://smitsbv.nl/producten/acer-palmatum-atropurpureum/",
+        "https://smitsbv.nl/producten/acer-palmatum-bloodgood/",
+        "https://smitsbv.nl/producten/acer-palmatum-dissectum-garnet/",
+        "https://smitsbv.nl/producten/acer-palmatum-dissectum-inaba-shidare/",
+        "https://smitsbv.nl/producten/acer-palmatum-dissectum-viridis/",
+        "https://smitsbv.nl/producten/acer-palmatum-fireglow/",
+        "https://smitsbv.nl/producten/acer-palmatum-sangokaku/",
+        "https://smitsbv.nl/producten/acer-pensylvanicum/",
+        "https://smitsbv.nl/producten/acer-platanoides/",
+        "https://smitsbv.nl/producten/acer-platanoides-columnare/",
+        "https://smitsbv.nl/producten/acer-platanoides-crimson-sentry/",
+        "https://smitsbv.nl/producten/acer-platanoides-drummondii/",
+        "https://smitsbv.nl/producten/acer-platanoides-emerald-queen/",
+        "https://smitsbv.nl/producten/acer-platanoides-globosum/",
+        "https://smitsbv.nl/producten/acer-platanoides-princeton-gold/",
+        "https://smitsbv.nl/producten/acer-platanoides-royal-red/",
+        "https://smitsbv.nl/producten/acer-pseudoplatanus/",
+        "https://smitsbv.nl/producten/acer-pseudoplatanus-spaethii/",
+        "https://smitsbv.nl/producten/acer-rubrum/",
+        "https://smitsbv.nl/producten/acer-rubrum-summer-red/",
+        "https://smitsbv.nl/producten/acer-rubrum-october-glory/",
+        "https://smitsbv.nl/producten/acer-rubrum-red-sunset/",
+        "https://smitsbv.nl/producten/acer-rufinerve/",
+        "https://smitsbv.nl/producten/acer-saccharinum/",
+        "https://smitsbv.nl/producten/acer-saccharinum-laciniatum/",
+        "https://smitsbv.nl/producten/acer-saccharinum-pyramidale/",
+        "https://smitsbv.nl/producten/acer-saccharum/",
+        "https://smitsbv.nl/producten/acer-shiras-aureum/",
+        "https://smitsbv.nl/producten/acer-tataricum-ginnala/",
+        "https://smitsbv.nl/producten/acer-triflorum/",
+        "https://smitsbv.nl/producten/acer-buergerianum/",
+        "https://smitsbv.nl/producten/abies-concolor/",
+        "https://smitsbv.nl/producten/abies-nordmanniana/",
+        "https://smitsbv.nl/producten/abies-koreana/",
+        "https://smitsbv.nl/producten/elaeagnus-ebbingei/",
+        "https://smitsbv.nl/producten/taxodium-distichum/",
+        "https://smitsbv.nl/producten/sorbus-intermedia/",
+        "https://smitsbv.nl/producten/halesia-carolina/",
+        "https://smitsbv.nl/producten/diospyros-lotus/",
+        "https://smitsbv.nl/producten/cercis-canadensis/",
+        "https://smitsbv.nl/producten/albizia-julibrissin/",
+        "https://smitsbv.nl/producten/wisteria-sinensis-amethyst/",
+        "https://smitsbv.nl/producten/viburnum-pragense/",
+        "https://smitsbv.nl/producten/viburnum-burkwoodii/",
+        "https://smitsbv.nl/producten/viburnum-plicatum/",
+        "https://smitsbv.nl/producten/viburnum-opulus/",
+        "https://smitsbv.nl/producten/viburnum-bodnantense-dawn/",
+        "https://smitsbv.nl/producten/ulmus-hollandica-dodoens/",
+        "https://smitsbv.nl/producten/ulmus-columella/",
+        "https://smitsbv.nl/producten/tetradium-danielli/",
+        "https://smitsbv.nl/producten/tamarix-ramosissima-hulsdonk-white/",
+        "https://smitsbv.nl/producten/syringa-vulgaris-nadezhda/",
+        "https://smitsbv.nl/producten/syringa-vulgaris-sensation/",
+        "https://smitsbv.nl/producten/syringa-vulgaris-schone-von-moskau/",
+        "https://smitsbv.nl/producten/syringa-vulgaris-primrose/",
+        "https://smitsbv.nl/producten/syringa-vulgaris-kindy-rose/",
+        "https://smitsbv.nl/producten/syringa-vulgaris-katherine-havemeyer/",
+        "https://smitsbv.nl/producten/syringa-vulgaris-andenken-an-ludwig-spaeth/",
+        "https://smitsbv.nl/producten/syringa-vulgaris/",
+        "https://smitsbv.nl/producten/styphonolobium-japonicum-pendula/",
+        "https://smitsbv.nl/producten/sorbus-intermedia-brouwers/",
+        "https://smitsbv.nl/producten/sorbus-incana/",
+        "https://smitsbv.nl/producten/sorbus-commixta-dodong/",
+        "https://smitsbv.nl/producten/sorbus-aucuparia-sheerwater-seedling/",
+        "https://smitsbv.nl/producten/sorbus-aucuparia-joseph-rock/",
+        "https://smitsbv.nl/producten/sorbus-aria-majestica/",
+        "https://smitsbv.nl/producten/sorbus-aria-magnifica/",
+        "https://smitsbv.nl/producten/sorbus-aria-lutescens/",
+        "https://smitsbv.nl/producten/sambucus-nigra-black-lace/",
+        "https://smitsbv.nl/producten/sambucus-nigra/",
+        "https://smitsbv.nl/producten/salix-fragilis/",
+        "https://smitsbv.nl/producten/salix-caprea/",
+        "https://smitsbv.nl/producten/salix-alba-tristis/",
+        "https://smitsbv.nl/producten/salix-alba-liempde/",
+        "https://smitsbv.nl/producten/salix-alba-chermesina/",
+        "https://smitsbv.nl/producten/pyrus-salicifolia-pendula/",
+        "https://smitsbv.nl/producten/pyrus-communis-belle-hardy/",
+        "https://smitsbv.nl/producten/pyrus-calleryana-redspire/",
+        "https://smitsbv.nl/producten/pyrus-calleryana-chanticleer/",
+        "https://smitsbv.nl/producten/pterocarya-fraxinifolia/",
+        "https://smitsbv.nl/producten/populus-tremula/",
+        "https://smitsbv.nl/producten/platanus-orientalis-minaret/",
+        "https://smitsbv.nl/producten/platanus-acerifolia/",
+        "https://smitsbv.nl/producten/pittosporum-tobira-nanum/",
+        "https://smitsbv.nl/producten/picea-abies/",
+        "https://smitsbv.nl/producten/photinia-red-robin/",
+        "https://smitsbv.nl/producten/paulownia-tomentosa/",
+        "https://smitsbv.nl/producten/metasequoia-glyptostroboides/",
+        "https://smitsbv.nl/producten/mespilus-germanica/",
+        "https://smitsbv.nl/producten/malus-wintergold/",
+        "https://smitsbv.nl/producten/malus-sylvestris/",
+        "https://smitsbv.nl/producten/malus-rudolf/",
+        "https://smitsbv.nl/producten/malus-red-sentinel/",
+        "https://smitsbv.nl/producten/malus-red-jewel/",
+        "https://smitsbv.nl/producten/malus-mokum/",
+        "https://smitsbv.nl/producten/malus-hupehensis/",
+        "https://smitsbv.nl/producten/malus-floribunda/",
+        "https://smitsbv.nl/producten/malus-domestica-james-grieve/",
+        "https://smitsbv.nl/producten/malus-domestica-jakob-lebel/",
+        "https://smitsbv.nl/producten/malus-domestica-elstar/",
+        "https://smitsbv.nl/producten/liriodendron-tulipifera-fastigiata/",
+        "https://smitsbv.nl/producten/liriodendron-tulipifera-aureomarginata/",
+        "https://smitsbv.nl/producten/liriodendron-tulipifera/",
+        "https://smitsbv.nl/producten/liquidamber-styraciflua-worplesdon/",
+        "https://smitsbv.nl/producten/larix-decidua/",
+        "https://smitsbv.nl/producten/laburnum-anagyroides/",
+        "https://smitsbv.nl/producten/juniperus-virginiana-hetzii/",
+        "https://smitsbv.nl/producten/ginkgo-biloba-fastigiata/",
+        "https://smitsbv.nl/producten/ginkgo-biloba-autumn-gold/",
+        "https://smitsbv.nl/producten/hippophae-rhamnoides/",
+        "https://smitsbv.nl/producten/halesia-monticola/",
+        "https://smitsbv.nl/producten/ficus-carica/",
+        "https://smitsbv.nl/producten/fagus-sylvatica-dawyck/",
+        "https://smitsbv.nl/producten/elaeagnus-multiflora/",
+        "https://smitsbv.nl/producten/decaisnea-fargesii/",
+        "https://smitsbv.nl/producten/cydonia-oblonga-leskovacz/",
+        "https://smitsbv.nl/producten/cupressus-sempervirens-pyramidalis/",
+        "https://smitsbv.nl/producten/cotoneaster-cornubia/",
+        "https://smitsbv.nl/producten/corylus-maxima-purpurea/",
+        "https://smitsbv.nl/producten/corylus-colurna/",
+        "https://smitsbv.nl/producten/corylus-avellana-geant-de-halle/",
+        "https://smitsbv.nl/producten/corylus-avellana-contorta/",
+        "https://smitsbv.nl/producten/corylus-avellana/",
+        "https://smitsbv.nl/producten/corylopsis-pauciflora/",
+        "https://smitsbv.nl/producten/castanea-sativa/",
+        "https://smitsbv.nl/producten/clerodendrum-trichotomum/",
+        "https://smitsbv.nl/producten/chionanthus-retusus/",
+        "https://smitsbv.nl/producten/celtis-australis/",
+        "https://smitsbv.nl/producten/cedrus-deodora/",
+        "https://smitsbv.nl/producten/cedrus-atlantica-glauca/",
+        "https://smitsbv.nl/producten/catalpa-bignonioides-nana/",
+        "https://smitsbv.nl/producten/calycanthus-floridus/",
+        "https://smitsbv.nl/producten/calocedrus-decurrens/",
+        "https://smitsbv.nl/producten/buxus-sempervirens/",
+        "https://smitsbv.nl/producten/aronia-melanocarpa/",
+        "https://smitsbv.nl/producten/aralia-elata/",
+        "https://smitsbv.nl/producten/alnus-incana-laciniata/",
+        "https://smitsbv.nl/producten/alnus-incana/",
+        "https://smitsbv.nl/producten/alnus-glutinosa-laciniata/",
+        "https://smitsbv.nl/producten/alnus-glutinosa/",
+        "https://smitsbv.nl/producten/alnus-cordata/",
+        "https://smitsbv.nl/producten/ailanthis-altissima/",
+        "https://smitsbv.nl/producten/aesculus-pavia-koehnei/",
+        "https://smitsbv.nl/producten/aesculus-pavia-atrosanguinea/",
+        "https://smitsbv.nl/producten/aesculus-hippocastanum-baumanii/",
+        "https://smitsbv.nl/producten/aesculus-hippocastanum/",
+        "https://smitsbv.nl/producten/aesculus-flava/",
+        "https://smitsbv.nl/producten/aesculus-carnea-briotii/",
+        "https://smitsbv.nl/producten/zelkova-serrata-goblin/",
+        "https://smitsbv.nl/producten/ziziphus-jujuba/",
+        "https://smitsbv.nl/producten/zelkova-serrata/",
+        "https://smitsbv.nl/producten/wisteria-sinensis/",
+        "https://smitsbv.nl/producten/zelkova-carpinifolia/",
+        "https://smitsbv.nl/producten/vitis-vinifera/",
+        "https://smitsbv.nl/producten/wisteria-brach-shiro-kapitan/",
+        "https://smitsbv.nl/producten/wisteria-flor-shiro-noda/",
+        "https://smitsbv.nl/producten/wisteria-floribunda-macrobotrys/",
+        "https://smitsbv.nl/producten/viburnum-propinquum/",
+        "https://smitsbv.nl/producten/vitex-agnus-castus/",
+        "https://smitsbv.nl/producten/viburnum-plicatum-mariesii/",
+        "https://smitsbv.nl/producten/viburnum-rhytidophyllum/",
+        "https://smitsbv.nl/producten/viburnum-plic-st-keverne/",
+        "https://smitsbv.nl/producten/viburnum-plic-kilimandjaro/",
+        "https://smitsbv.nl/producten/viburnum-plic-lanarth/",
+        "https://smitsbv.nl/producten/ulmus-parvifolia/",
+        "https://smitsbv.nl/producten/ulmus-minor-jacqueline-hillier/",
+        "https://smitsbv.nl/producten/tsuga-canadensis-2/",
+        "https://smitsbv.nl/producten/taxodium-distichum-cascade-falls/",
+        "https://smitsbv.nl/producten/tamarix-tetrandra/",
+        "https://smitsbv.nl/producten/syringa-vulgaris-michael-buchner/",
+        "https://smitsbv.nl/producten/syringa-vulgaris-mme-lemoine/",
+        "https://smitsbv.nl/producten/syringa-vulgaris-charles-joly/",
+        "https://smitsbv.nl/producten/sycoparrotia-semidecidua/",
+        "https://smitsbv.nl/producten/syringa-chinensis-saugeana/",
+        "https://smitsbv.nl/producten/syringa-p-china-snow/",
+        "https://smitsbv.nl/producten/syringa-pekinensis/",
+        "https://smitsbv.nl/producten/styrax-japonica/",
+        "https://smitsbv.nl/producten/stewartia-pseudocamellia/",
+        "https://smitsbv.nl/producten/styphnolobium-japonicum/",
+        "https://smitsbv.nl/producten/sorbus-aucuparia/",
+        "https://smitsbv.nl/producten/sorbus-alnifolia-submollis/",
+        "https://smitsbv.nl/producten/sequoiadendron-giganteum/",
+        "https://smitsbv.nl/producten/sorbus-dodong/",
+        "https://smitsbv.nl/producten/sassafras-albidum/",
+        "https://smitsbv.nl/producten/salix-sepulcralis-chrysocoma/",
+        "https://smitsbv.nl/producten/rhus-typhina-dissecta/",
+        "https://smitsbv.nl/producten/robinia-pseudoacacia/",
+        "https://smitsbv.nl/producten/salix-alba/",
+        "https://smitsbv.nl/producten/robinia-viscosa/",
+        "https://smitsbv.nl/producten/salix-erythroflexuosa/",
+        "https://smitsbv.nl/producten/rhus-typhina/",
+        "https://smitsbv.nl/producten/quillaja-saponaria/",
+        "https://smitsbv.nl/producten/rhamnus-cathartica/",
+        "https://smitsbv.nl/producten/pyrus-communis-doyenne-du-comice/",
+        "https://smitsbv.nl/producten/pyrus-communis-conference/",
+        "https://smitsbv.nl/producten/punica-granatum/",
+        "https://smitsbv.nl/producten/pyrus-communis/",
+        "https://smitsbv.nl/producten/pyrus-c-gieser-wildeman/",
+        "https://smitsbv.nl/producten/pyrus-c-saint-remy/",
+        "https://smitsbv.nl/producten/pseudocydonia-sinensis/",
+        "https://smitsbv.nl/producten/ptelea-trifoliata/",
+        "https://smitsbv.nl/producten/pittosporum-tobira/",
+        "https://smitsbv.nl/producten/platanus-hispanica/",
+        "https://smitsbv.nl/producten/physocarpus-op-diable-dor/",
+        "https://smitsbv.nl/producten/pieris-japonica/",
+        "https://smitsbv.nl/producten/picea-omorika/",
+        "https://smitsbv.nl/producten/physocarpus-op-angel-gold/",
+        "https://smitsbv.nl/producten/photinia-davidiana/",
+        "https://smitsbv.nl/producten/physocarpus-op-amber-jubilee/",
+        "https://smitsbv.nl/producten/phellodendron-amurense/",
+        "https://smitsbv.nl/producten/ostrya-carpinifolia/",
+        "https://smitsbv.nl/producten/oxydendrum-arboreum/",
+        "https://smitsbv.nl/producten/nothofagus-antarctica/",
+        "https://smitsbv.nl/producten/nyssa-sylvatica/",
+        "https://smitsbv.nl/producten/morus-nigra/",
+        "https://smitsbv.nl/producten/morus-alba-fruitless/",
+        "https://smitsbv.nl/producten/morus-alba/",
+        "https://smitsbv.nl/producten/mespilus-g-westerveld/",
+        "https://smitsbv.nl/producten/millettia-japonica/",
+        "https://smitsbv.nl/producten/mixed-hedging/",
+        "https://smitsbv.nl/producten/malus-toringo-sargentii/",
+        "https://smitsbv.nl/producten/malus-evereste/",
+        "https://smitsbv.nl/producten/malus-john-downie/",
+        "https://smitsbv.nl/producten/malus-toringo/",
+        "https://smitsbv.nl/producten/malus-toringo-brouwers-beauty/",
+        "https://smitsbv.nl/producten/malus-d-collina/",
+        "https://smitsbv.nl/producten/malus-domestica/",
+        "https://smitsbv.nl/producten/malus-domestica-roter-boskoop/",
+        "https://smitsbv.nl/producten/malus-purple-prince/",
+        "https://smitsbv.nl/producten/malus-baccata-street-parade/",
+        "https://smitsbv.nl/producten/malus-butterball/",
+        "https://smitsbv.nl/producten/malus-profusion/",
+        "https://smitsbv.nl/producten/loropetalum-chinense/",
+        "https://smitsbv.nl/producten/maclura-pomifera/",
+        "https://smitsbv.nl/producten/liquidambar-styraciflua-slender-silhouette/",
+        "https://smitsbv.nl/producten/loropetalum-c-fire-dance/",
+        "https://smitsbv.nl/producten/liquidambar-styraciflua/",
+        "https://smitsbv.nl/producten/lagerstroemia-indica/",
+        "https://smitsbv.nl/producten/larix-kaempferi/",
+        "https://smitsbv.nl/producten/lagerstroemia-i-nivea/",
+        "https://smitsbv.nl/producten/lagerstroemia-ind-dynamite/",
+        "https://smitsbv.nl/producten/koelreuteria-paniculata/",
+        "https://smitsbv.nl/producten/juniperus-chinensis/",
+        "https://smitsbv.nl/producten/juniperus-pf-pfitzeriana-aurea/",
+        "https://smitsbv.nl/producten/juniperus-pfitzeriana/",
+        "https://smitsbv.nl/producten/juglans-regia/",
+        "https://smitsbv.nl/producten/juglans-nigra/",
+        "https://smitsbv.nl/producten/gymnocladus-dioica/",
+        "https://smitsbv.nl/producten/ginkgo-biloba/",
+        "https://smitsbv.nl/producten/ginkgo-bil-jeosaphat/",
+        "https://smitsbv.nl/producten/ficus-car-goutte-dor/",
+        "https://smitsbv.nl/producten/frangula-alnus-aspleniifolia/",
+        "https://smitsbv.nl/producten/ginkgo-bil-blagon/",
+        "https://smitsbv.nl/producten/ginkgo-bil-golden-globe/",
+        "https://smitsbv.nl/producten/ginkgo-bil-horizontalis/",
+        "https://smitsbv.nl/producten/exochorda-the-bride/",
+        "https://smitsbv.nl/producten/enkianthus-campanulatus/",
+        "https://smitsbv.nl/producten/elaeagnus-umbellata/",
+        "https://smitsbv.nl/producten/elaeagnus-quicksilver/",
+        "https://smitsbv.nl/producten/cydonia-oblonga/",
+        "https://smitsbv.nl/producten/davidia-involucrata/",
+        "https://smitsbv.nl/producten/cryptomeria-japonica/",
+        "https://smitsbv.nl/producten/cupressocyparis-l-tweeduizendeen/",
+        "https://smitsbv.nl/producten/cupressus-leylandii/",
+        "https://smitsbv.nl/producten/cotinus-coggygria-royal-purple/",
+        "https://smitsbv.nl/producten/corylus-a-pendula/",
+        "https://smitsbv.nl/producten/cotinus-coggygria/",
+        "https://smitsbv.nl/producten/chimonanthus-praecox/",
+        "https://smitsbv.nl/producten/chamaecyparis-o-nana-gracilis/",
+        "https://smitsbv.nl/producten/cladrastis-kentukea/",
+        "https://smitsbv.nl/producten/cercis-canadensis-forest-pansy/",
+        "https://smitsbv.nl/producten/cercis-siliquastrum/",
+        "https://smitsbv.nl/producten/cercis-chinensis-avondale/",
+        "https://smitsbv.nl/producten/cercis-can-royal-white/",
+        "https://smitsbv.nl/producten/cercidiphyllum-japonicum/",
+        "https://smitsbv.nl/producten/cedrus-libanii/",
+        "https://smitsbv.nl/producten/catalpa-erubescens-purpurea/",
+        "https://smitsbv.nl/producten/catalpa-speciosa-pulverulenta/",
+        "https://smitsbv.nl/producten/cedrus-deod-pendula/",
+        "https://smitsbv.nl/producten/cedrus-l-glauca/",
+        "https://smitsbv.nl/producten/cedrus-l-sargentii/",
+        "https://smitsbv.nl/producten/celtis-occidentalis/",
+        "https://smitsbv.nl/producten/catalpa-bignonioides-aurea/",
+        "https://smitsbv.nl/producten/catalpa-bignonioides/",
+        "https://smitsbv.nl/producten/camellia-sasanqua/",
+        "https://smitsbv.nl/producten/buxus-sempervirens-rotundifolia/",
+        "https://smitsbv.nl/producten/callicarpa-b-profusion/",
+        "https://smitsbv.nl/producten/asimina-triloba/",
+        "https://smitsbv.nl/producten/arbutus-unedo-atlantic/",
+        "https://smitsbv.nl/producten/arbutus-unedo/",
+        "https://smitsbv.nl/producten/albizia-julibr-summer-chocolate/",
+        "https://smitsbv.nl/producten/aesculus-parviflora/",
+        "https://smitsbv.nl/producten/aesculus-mutabilis-induta/",
+        "https://smitsbv.nl/producten/aesculus-indica/",
+        "https://smitsbv.nl/producten/sorbus-aria/",
+        "https://smitsbv.nl/producten/robinia-ps-bessoniana/",
+        "https://smitsbv.nl/producten/pistacia-lentiscus/",
+        "https://smitsbv.nl/producten/laburnum-wateri-vossii/",
+        "https://smitsbv.nl/producten/alnus-spaethii/",
+        "https://smitsbv.nl/soorten/",
+        "https://smitsbv.nl/soorten/cornus-kwekerij/",
+        "https://smitsbv.nl/soorten/cornus-kopen/",
+        "https://smitsbv.nl/soorten/haagplanten-kwekerij/",
+        "https://smitsbv.nl/soorten/coniferen-kwekerij/",
+        "https://smitsbv.nl/vacatures/",
+        "https://smitsbv.nl/vacatures/kraanmachinist/",
+        "https://smitsbv.nl/vacatures/medewerker-boomkwekerij/",
+        "https://smitsbv.nl/vacatures/medewerker-containerveld/",
+        "https://smitsbv.nl/vacatures/hovenier/",
+        "https://smitsbv.nl/",
+        "https://smitsbv.nl/feed/",
+        "https://smitsbv.nl/comments/feed/",
+        "https://smitsbv.nl/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsmitsbv.nl%2F",
+        "https://smitsbv.nl/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fsmitsbv.nl%2F&format=xml",
+        "https://smitsbv.nl/wp-json/",
+        "https://smitsbv.nl/wp-json/wp/v2/pages/93",
+        "https://smitsbv.nl/xmlrpc.php?rsd",
+        "https://smitsbv.nl/en/",
+        "https://smitsbv.nl/de/",
+        "https://smitsbv.nl/fr/",
+        "https://smitsbv.nl/be-nl/",
+        "https://smitsbv.nl/be-fr/",
+        "https://smitsbv.nl/blog",
+        "https://smitsbv.nl/vacatures",
+        "https://smitsbv.nl/nieuwsbrief/",
+        "https://smitsbv.nl/brochure/",
+        "https://smitsbv.nl/contact/",
+        "https://smitsbv.nl/home/",
+        "https://smitsbv.nl/haagelementen/",
+        "https://smitsbv.nl/haagplanten/",
+        "https://smitsbv.nl/coniferen/",
+        "https://smitsbv.nl/pinus-bomen/",
+        "https://smitsbv.nl/meerstammige-bomen/",
+        "https://smitsbv.nl/solitaire-bomen/",
+        "https://smitsbv.nl/topiary/",
+        "https://smitsbv.nl/lei-en-vormbomen/",
+        "https://smitsbv.nl/wolkenhagen/",
+        "https://smitsbv.nl/tuinaanleggers-en-hoveniers/",
+        "https://smitsbv.nl/tuinontwerpers-en-tuinarchitecten/",
+        "https://smitsbv.nl/groenaannemers/",
+        "https://smitsbv.nl/particulieren/",
+        "https://smitsbv.nl/groothandels/",
+        "https://smitsbv.nl/over-smits/",
+        "https://smitsbv.nl/team/",
+        "https://smitsbv.nl/geschiedenis/",
+        "https://smitsbv.nl/duurzaamheid/",
+        "https://smitsbv.nl/inspiratie/",
+        "https://smitsbv.nl/projecten/",
+        "https://smitsbv.nl/team",
+        "https://smitsbv.nl/projecten",
+        "https://smitsbv.nl/offerte/",
+        "https://smitsbv.nl/deepdale-trees/",
+        "https://smitsbv.nl/producten-categorie/haagplanten/",
+        "https://smitsbv.nl/producten-categorie/leibomen-en-vormbomen/",
+        "https://smitsbv.nl/producten-categorie/meerstammig/",
+        "https://smitsbv.nl/producten-categorie/solitaire-boom/",
+        "https://smitsbv.nl/producten-categorie/topiary/",
+        "https://smitsbv.nl/producten-categorie/conifeer/",
+        "https://smitsbv.nl/producten-categorie/pinus/",
+        "https://smitsbv.nl/cdn-cgi/l/email-protection",
+        "https://smitsbv.nl/privacyverklaring/"
       ],
       "robots": {
         "smitsbv.nl": [
@@ -12936,7 +13588,7 @@
       },
       "blockedHosts": {},
       "indexedAt": "2026-11-09T15:07:19Z",
-      "lastCheckedAt": "2026-11-09T15:07:19Z",
+      "lastCheckedAt": "2026-11-10T08:13:42Z",
       "lastError": {
         "url": "https://smitsbv.nl/page-sitemap.xml",
         "reason": "download_failed",
@@ -13877,7 +14529,981 @@
       },
       "checkedAt": "2026-11-09T14:52:25Z",
       "candidateFingerprint": "c6e6e7633cc0341e094ac19216e42c8e18222da88e3ebe5366d5c1944546518e"
+    },
+    "lorberg::plant-9a6f4720f6fd87": {
+      "binding": {
+        "plantId": "plant-9a6f4720f6fd87",
+        "nurseryId": "lorberg",
+        "offerIds": [
+          "record-b4a0a12eb8d5dd"
+        ],
+        "pageUrl": "https://www.lorberg.com/en-gb/article/510/amelanchier-lamarckii",
+        "imageUrl": "https://www.lorberg.com/content/files/4538/Amelanchier-lamarckii-1200x630-proportionalbiggest.webp",
+        "matchedName": "Amelanchier lamarckii",
+        "canonicalName": "Amelanchier lamarckii",
+        "policy": {
+          "nurseryId": "lorberg",
+          "resolver": "product",
+          "fillMissing": true,
+          "pageHosts": [
+            "www.lorberg.com"
+          ],
+          "imageHosts": [
+            "www.lorberg.com"
+          ],
+          "pagePathPattern": "/en\\-gb/article/510/amelanchier\\-lamarckii"
+        },
+        "verifiedAt": "2026-11-10T08:13:42Z",
+        "evidence": {
+          "method": "product_jsonld",
+          "discoveredUrl": "https://www.lorberg.com/en-gb/article/510/amelanchier-lamarckii",
+          "discovery": "nursery_sitemap_or_observed_link",
+          "identity": "exact_full_botanical_name"
+        }
+      },
+      "checkedAt": "2026-11-10T08:13:42Z",
+      "candidateFingerprint": "73b2bce9b961b798879ba9b32508723432075b769d850b259175f57b031363af"
+    },
+    "lorberg::plant-9e3b5ad9f052fd": {
+      "binding": {
+        "plantId": "plant-9e3b5ad9f052fd",
+        "nurseryId": "lorberg",
+        "offerIds": [
+          "record-b23ff11ed8bc83",
+          "offer-pdf-c08a8d7071192d851a54"
+        ],
+        "pageUrl": "https://www.lorberg.com/en-gb/article/542/acer-platanoides-cleveland",
+        "imageUrl": "https://www.lorberg.com/content/files/4560/Acer-platanoides-1200x630-proportionalbiggest.webp",
+        "matchedName": "Acer platanoides 'Cleveland'",
+        "canonicalName": "Acer platanoides 'Cleveland'",
+        "policy": {
+          "nurseryId": "lorberg",
+          "resolver": "product",
+          "fillMissing": true,
+          "pageHosts": [
+            "www.lorberg.com"
+          ],
+          "imageHosts": [
+            "www.lorberg.com"
+          ],
+          "pagePathPattern": "/en\\-gb/article/542/acer\\-platanoides\\-cleveland"
+        },
+        "verifiedAt": "2026-11-10T08:13:42Z",
+        "evidence": {
+          "method": "product_jsonld",
+          "discoveredUrl": "https://www.lorberg.com/en-gb/article/542/acer-platanoides-cleveland",
+          "discovery": "nursery_sitemap_or_observed_link",
+          "identity": "exact_full_botanical_name"
+        }
+      },
+      "checkedAt": "2026-11-10T08:13:42Z",
+      "candidateFingerprint": "3e2f8eb502c91b60aab501023acfe2b654665de915b7cd1ccedbef30659d9873"
+    },
+    "lorberg::plant-acer-palmatum": {
+      "binding": {
+        "plantId": "plant-acer-palmatum",
+        "nurseryId": "lorberg",
+        "offerIds": [
+          "record-7736f3d554fd50",
+          "record-e9a656960584ba"
+        ],
+        "pageUrl": "https://www.lorberg.com/en-gb/article/386/acer-palmatum",
+        "imageUrl": "https://www.lorberg.com/content/files/4114/Acer-palmatum-Koriba-1200x630-proportionalbiggest.webp",
+        "matchedName": "Acer palmatum",
+        "canonicalName": "Acer palmatum",
+        "policy": {
+          "nurseryId": "lorberg",
+          "resolver": "product",
+          "fillMissing": true,
+          "pageHosts": [
+            "www.lorberg.com"
+          ],
+          "imageHosts": [
+            "www.lorberg.com"
+          ],
+          "pagePathPattern": "/en\\-gb/article/386/acer\\-palmatum"
+        },
+        "verifiedAt": "2026-11-10T08:13:42Z",
+        "evidence": {
+          "method": "product_jsonld",
+          "discoveredUrl": "https://www.lorberg.com/en-gb/article/386/acer-palmatum",
+          "discovery": "nursery_sitemap_or_observed_link",
+          "identity": "exact_full_botanical_name"
+        }
+      },
+      "checkedAt": "2026-11-10T08:13:42Z",
+      "candidateFingerprint": "18d2cb61c588d30a2e9db6f0be8a6e7d99df789fe381c27cccf386b73aaf5c16"
+    },
+    "lorberg::plant-acer-platanoides": {
+      "binding": {
+        "plantId": "plant-acer-platanoides",
+        "nurseryId": "lorberg",
+        "offerIds": [
+          "record-a83823ca933f31",
+          "record-49e9cc37338587"
+        ],
+        "pageUrl": "https://www.lorberg.com/en-gb/article/513/acer-platanoides",
+        "imageUrl": "https://www.lorberg.com/content/files/4560/Acer-platanoides-1200x630-proportionalbiggest.webp",
+        "matchedName": "Acer platanoides",
+        "canonicalName": "Acer platanoides",
+        "policy": {
+          "nurseryId": "lorberg",
+          "resolver": "product",
+          "fillMissing": true,
+          "pageHosts": [
+            "www.lorberg.com"
+          ],
+          "imageHosts": [
+            "www.lorberg.com"
+          ],
+          "pagePathPattern": "/en\\-gb/article/513/acer\\-platanoides"
+        },
+        "verifiedAt": "2026-11-10T08:13:42Z",
+        "evidence": {
+          "method": "product_jsonld",
+          "discoveredUrl": "https://www.lorberg.com/en-gb/article/513/acer-platanoides",
+          "discovery": "nursery_sitemap_or_observed_link",
+          "identity": "exact_full_botanical_name"
+        }
+      },
+      "checkedAt": "2026-11-10T08:13:42Z",
+      "candidateFingerprint": "4a40e1cb481ee3f477bdb5e09a4a268a1df11f96c53206528a0de199f208051f"
+    },
+    "lorberg::plant-acer-pseudoplatanus": {
+      "binding": {
+        "plantId": "plant-acer-pseudoplatanus",
+        "nurseryId": "lorberg",
+        "offerIds": [
+          "record-b1798a4399c53c"
+        ],
+        "pageUrl": "https://www.lorberg.com/en-gb/article/725/acer-pseudoplatanus",
+        "imageUrl": "https://www.lorberg.com/content/files/5198/Acer-pseudoplatanus-1200x630-proportionalbiggest.webp",
+        "matchedName": "Acer pseudoplatanus",
+        "canonicalName": "Acer pseudoplatanus",
+        "policy": {
+          "nurseryId": "lorberg",
+          "resolver": "product",
+          "fillMissing": true,
+          "pageHosts": [
+            "www.lorberg.com"
+          ],
+          "imageHosts": [
+            "www.lorberg.com"
+          ],
+          "pagePathPattern": "/en\\-gb/article/725/acer\\-pseudoplatanus"
+        },
+        "verifiedAt": "2026-11-10T08:13:42Z",
+        "evidence": {
+          "method": "product_jsonld",
+          "discoveredUrl": "https://www.lorberg.com/en-gb/article/725/acer-pseudoplatanus",
+          "discovery": "nursery_sitemap_or_observed_link",
+          "identity": "exact_full_botanical_name"
+        }
+      },
+      "checkedAt": "2026-11-10T08:13:42Z",
+      "candidateFingerprint": "51085b34d603229687d78395f56f0e72610e53f105090c66c696c3d0c9520036"
+    },
+    "lorberg::plant-ae4e248ab385a3": {
+      "binding": {
+        "plantId": "plant-ae4e248ab385a3",
+        "nurseryId": "lorberg",
+        "offerIds": [
+          "record-7b13af1a7f1b42"
+        ],
+        "pageUrl": "https://www.lorberg.com/en-gb/article/2436/quercus-cerris",
+        "imageUrl": "https://www.lorberg.com/content/files/9576/Quercus-cerris-1200x630-proportionalbiggest.webp",
+        "matchedName": "Quercus cerris",
+        "canonicalName": "Quercus cerris",
+        "policy": {
+          "nurseryId": "lorberg",
+          "resolver": "product",
+          "fillMissing": true,
+          "pageHosts": [
+            "www.lorberg.com"
+          ],
+          "imageHosts": [
+            "www.lorberg.com"
+          ],
+          "pagePathPattern": "/en\\-gb/article/2436/quercus\\-cerris"
+        },
+        "verifiedAt": "2026-11-10T08:13:42Z",
+        "evidence": {
+          "method": "product_jsonld",
+          "discoveredUrl": "https://www.lorberg.com/en-gb/article/2436/quercus-cerris",
+          "discovery": "nursery_sitemap_or_observed_link",
+          "identity": "exact_full_botanical_name"
+        }
+      },
+      "checkedAt": "2026-11-10T08:13:42Z",
+      "candidateFingerprint": "63aec81543a2cb8cd6cf307bb5452acd94bdfa6fcc5b75cba6f467b9e5052b22"
+    },
+    "lorberg::plant-betula-pendula": {
+      "binding": {
+        "plantId": "plant-betula-pendula",
+        "nurseryId": "lorberg",
+        "offerIds": [
+          "record-07aa644b380529",
+          "record-ceb19c12a442ac",
+          "record-3cfe76bed03d19",
+          "record-32a7329ee4531c"
+        ],
+        "pageUrl": "https://www.lorberg.com/en-gb/article/1158/betula-pendula",
+        "imageUrl": "https://www.lorberg.com/content/files/6507/Betula-pendula-1200x630-proportionalbiggest.webp",
+        "matchedName": "Betula pendula",
+        "canonicalName": "Betula pendula",
+        "policy": {
+          "nurseryId": "lorberg",
+          "resolver": "product",
+          "fillMissing": true,
+          "pageHosts": [
+            "www.lorberg.com"
+          ],
+          "imageHosts": [
+            "www.lorberg.com"
+          ],
+          "pagePathPattern": "/en\\-gb/article/1158/betula\\-pendula"
+        },
+        "verifiedAt": "2026-11-10T08:13:42Z",
+        "evidence": {
+          "method": "product_jsonld",
+          "discoveredUrl": "https://www.lorberg.com/en-gb/article/1158/betula-pendula",
+          "discovery": "nursery_sitemap_or_observed_link",
+          "identity": "exact_full_botanical_name"
+        }
+      },
+      "checkedAt": "2026-11-10T08:13:42Z",
+      "candidateFingerprint": "ada7ad52179a5de7e6d4181994e14ca742d468bf244bcfe44c7928c4d19cf689"
+    },
+    "lorberg::plant-c76014c0be2fb8": {
+      "binding": {
+        "plantId": "plant-c76014c0be2fb8",
+        "nurseryId": "lorberg",
+        "offerIds": [
+          "record-95ba8c2c84e3ee"
+        ],
+        "pageUrl": "https://www.lorberg.com/en-gb/article/2228/pyrus-calleryana-chanticleer",
+        "imageUrl": "https://www.lorberg.com/content/files/8953/Pyrus-calleryana-Chanticleer-1200x630-proportionalbiggest.webp",
+        "matchedName": "Pyrus calleryana 'Chanticleer'",
+        "canonicalName": "Pyrus calleryana 'Chanticleer'",
+        "policy": {
+          "nurseryId": "lorberg",
+          "resolver": "product",
+          "fillMissing": true,
+          "pageHosts": [
+            "www.lorberg.com"
+          ],
+          "imageHosts": [
+            "www.lorberg.com"
+          ],
+          "pagePathPattern": "/en\\-gb/article/2228/pyrus\\-calleryana\\-chanticleer"
+        },
+        "verifiedAt": "2026-11-10T08:13:42Z",
+        "evidence": {
+          "method": "product_jsonld",
+          "discoveredUrl": "https://www.lorberg.com/en-gb/article/2228/pyrus-calleryana-chanticleer",
+          "discovery": "nursery_sitemap_or_observed_link",
+          "identity": "exact_full_botanical_name"
+        }
+      },
+      "checkedAt": "2026-11-10T08:13:42Z",
+      "candidateFingerprint": "dc1570c2a25383a57e7de6688221be5b37a9b32976ad911b860e982d37a9d4bc"
+    },
+    "lorberg::plant-carpinus-betulus": {
+      "binding": {
+        "plantId": "plant-carpinus-betulus",
+        "nurseryId": "lorberg",
+        "offerIds": [
+          "record-124388f5ea95f6",
+          "record-bc77acf36bf2e0"
+        ],
+        "pageUrl": "https://www.lorberg.com/en-gb/article/317/carpinus-betulus",
+        "imageUrl": "https://www.lorberg.com/content/files/3926/Carpinus-betulus-1200x630-proportionalbiggest.webp",
+        "matchedName": "Carpinus betulus",
+        "canonicalName": "Carpinus betulus",
+        "policy": {
+          "nurseryId": "lorberg",
+          "resolver": "product",
+          "fillMissing": true,
+          "pageHosts": [
+            "www.lorberg.com"
+          ],
+          "imageHosts": [
+            "www.lorberg.com"
+          ],
+          "pagePathPattern": "/en\\-gb/article/317/carpinus\\-betulus"
+        },
+        "verifiedAt": "2026-11-10T08:13:42Z",
+        "evidence": {
+          "method": "product_jsonld",
+          "discoveredUrl": "https://www.lorberg.com/en-gb/article/317/carpinus-betulus",
+          "discovery": "nursery_sitemap_or_observed_link",
+          "identity": "exact_full_botanical_name"
+        }
+      },
+      "checkedAt": "2026-11-10T08:13:42Z",
+      "candidateFingerprint": "1f16227dc27f2141f231f5dd463d2f5b7ee41f62d3d8a06074f41737266afede"
+    },
+    "lorberg::plant-cd7931ce209e95": {
+      "binding": {
+        "plantId": "plant-cd7931ce209e95",
+        "nurseryId": "lorberg",
+        "offerIds": [
+          "record-4f8367bcba3efb",
+          "record-6d543b33979c80"
+        ],
+        "pageUrl": "https://www.lorberg.com/en-gb/article/295/acer-freemanii-autumn-blaze",
+        "imageUrl": "https://www.lorberg.com/content/files/3844/Acer-freemanii-Autumn-Blaze-1200x630-proportionalbiggest.webp",
+        "matchedName": "Acer freemanii 'Autumn Blaze'",
+        "canonicalName": "Acer x freemanii 'Autumn Blaze'",
+        "policy": {
+          "nurseryId": "lorberg",
+          "resolver": "product",
+          "fillMissing": true,
+          "pageHosts": [
+            "www.lorberg.com"
+          ],
+          "imageHosts": [
+            "www.lorberg.com"
+          ],
+          "pagePathPattern": "/en\\-gb/article/295/acer\\-freemanii\\-autumn\\-blaze"
+        },
+        "verifiedAt": "2026-11-10T08:13:42Z",
+        "evidence": {
+          "method": "product_jsonld",
+          "discoveredUrl": "https://www.lorberg.com/en-gb/article/295/acer-freemanii-autumn-blaze",
+          "discovery": "nursery_sitemap_or_observed_link",
+          "identity": "exact_full_botanical_name"
+        }
+      },
+      "checkedAt": "2026-11-10T08:13:42Z",
+      "candidateFingerprint": "9d48ee74dacfce14f58f0c0760a4cd7c27941761f360c9d8f27a9988f2dd16b0"
+    },
+    "lorberg::plant-celtis-australis": {
+      "binding": {
+        "plantId": "plant-celtis-australis",
+        "nurseryId": "lorberg",
+        "offerIds": [
+          "record-3be276eddddef8"
+        ],
+        "pageUrl": "https://www.lorberg.com/en-gb/article/603/celtis-australis",
+        "imageUrl": "https://www.lorberg.com/content/files/14143/Celtis-australis-Schirm-300-400-x-500-600-1-r1-1200x630-proportionalbiggest.webp",
+        "matchedName": "Celtis australis",
+        "canonicalName": "Celtis australis",
+        "policy": {
+          "nurseryId": "lorberg",
+          "resolver": "product",
+          "fillMissing": true,
+          "pageHosts": [
+            "www.lorberg.com"
+          ],
+          "imageHosts": [
+            "www.lorberg.com"
+          ],
+          "pagePathPattern": "/en\\-gb/article/603/celtis\\-australis"
+        },
+        "verifiedAt": "2026-11-10T08:13:42Z",
+        "evidence": {
+          "method": "product_jsonld",
+          "discoveredUrl": "https://www.lorberg.com/en-gb/article/603/celtis-australis",
+          "discovery": "nursery_sitemap_or_observed_link",
+          "identity": "exact_full_botanical_name"
+        }
+      },
+      "checkedAt": "2026-11-10T08:13:42Z",
+      "candidateFingerprint": "6aea2a2d782f1ab47603524fbe5092a8e8df9d0f3361c4e732b8680b0be4e831"
+    },
+    "lorberg::plant-d32b3f49740cc5": {
+      "binding": {
+        "plantId": "plant-d32b3f49740cc5",
+        "nurseryId": "lorberg",
+        "offerIds": [
+          "record-ffd4e14d4de057"
+        ],
+        "pageUrl": "https://www.lorberg.com/en-gb/article/1243/magnolia-soulangeana",
+        "imageUrl": "https://www.lorberg.com/content/files/17239/Magnolia-soulangeana-18-20-3-r1-1200x630-proportionalbiggest.webp",
+        "matchedName": "Magnolia soulangeana",
+        "canonicalName": "Magnolia x soulangeana",
+        "policy": {
+          "nurseryId": "lorberg",
+          "resolver": "product",
+          "fillMissing": true,
+          "pageHosts": [
+            "www.lorberg.com"
+          ],
+          "imageHosts": [
+            "www.lorberg.com"
+          ],
+          "pagePathPattern": "/en\\-gb/article/1243/magnolia\\-soulangeana"
+        },
+        "verifiedAt": "2026-11-10T08:13:42Z",
+        "evidence": {
+          "method": "product_jsonld",
+          "discoveredUrl": "https://www.lorberg.com/en-gb/article/1243/magnolia-soulangeana",
+          "discovery": "nursery_sitemap_or_observed_link",
+          "identity": "exact_full_botanical_name"
+        }
+      },
+      "checkedAt": "2026-11-10T08:13:42Z",
+      "candidateFingerprint": "806edcf333c76cd0c0bc99e4183e9db531fe94fdb052a427aa6a5873d0171bbe"
+    },
+    "lorberg::plant-da13581afa3d46": {
+      "binding": {
+        "plantId": "plant-da13581afa3d46",
+        "nurseryId": "lorberg",
+        "offerIds": [
+          "record-65b3c6be6306fa",
+          "record-f1336cb9b5c59d",
+          "record-6b8c29f92da6e6"
+        ],
+        "pageUrl": "https://www.lorberg.com/en-gb/article/2534/taxus-baccata",
+        "imageUrl": "https://www.lorberg.com/content/files/9863/Taxus-baccata-Aureomarginata-1200x630-proportionalbiggest.webp",
+        "matchedName": "Taxus baccata",
+        "canonicalName": "Taxus baccata",
+        "policy": {
+          "nurseryId": "lorberg",
+          "resolver": "product",
+          "fillMissing": true,
+          "pageHosts": [
+            "www.lorberg.com"
+          ],
+          "imageHosts": [
+            "www.lorberg.com"
+          ],
+          "pagePathPattern": "/en\\-gb/article/2534/taxus\\-baccata"
+        },
+        "verifiedAt": "2026-11-10T08:13:42Z",
+        "evidence": {
+          "method": "product_jsonld",
+          "discoveredUrl": "https://www.lorberg.com/en-gb/article/2534/taxus-baccata",
+          "discovery": "nursery_sitemap_or_observed_link",
+          "identity": "exact_full_botanical_name"
+        }
+      },
+      "checkedAt": "2026-11-10T08:13:42Z",
+      "candidateFingerprint": "738ebc648b695770832d254266cbc7eac06a8f990533fa09cb4ff6d02120bb0d"
+    },
+    "lorberg::plant-dc12c2322be581": {
+      "binding": {
+        "plantId": "plant-dc12c2322be581",
+        "nurseryId": "lorberg",
+        "offerIds": [
+          "record-b407389c470611"
+        ],
+        "pageUrl": "https://www.lorberg.com/en-gb/article/155/albizia-julibrissin",
+        "imageUrl": "https://www.lorberg.com/content/files/3469/Albizia-julibrissin-1200x630-proportionalbiggest.webp",
+        "matchedName": "Albizia julibrissin",
+        "canonicalName": "Albizia julibrissin",
+        "policy": {
+          "nurseryId": "lorberg",
+          "resolver": "product",
+          "fillMissing": true,
+          "pageHosts": [
+            "www.lorberg.com"
+          ],
+          "imageHosts": [
+            "www.lorberg.com"
+          ],
+          "pagePathPattern": "/en\\-gb/article/155/albizia\\-julibrissin"
+        },
+        "verifiedAt": "2026-11-10T08:13:42Z",
+        "evidence": {
+          "method": "product_jsonld",
+          "discoveredUrl": "https://www.lorberg.com/en-gb/article/155/albizia-julibrissin",
+          "discovery": "nursery_sitemap_or_observed_link",
+          "identity": "exact_full_botanical_name"
+        }
+      },
+      "checkedAt": "2026-11-10T08:13:42Z",
+      "candidateFingerprint": "9827b44a673508bb4183fb04fcf45ea33be479ea921d6f16204b5237d6fa3481"
+    },
+    "lorberg::plant-dc277e6125caf5": {
+      "binding": {
+        "plantId": "plant-dc277e6125caf5",
+        "nurseryId": "lorberg",
+        "offerIds": [
+          "offer-pdf-4c81862a2e085a3490c4"
+        ],
+        "pageUrl": "https://www.lorberg.com/en-gb/article/2440/prunus-cerasifera-nigra",
+        "imageUrl": "https://www.lorberg.com/content/files/9607/Prunus-cerasifera-Nigra-1200x630-proportionalbiggest.webp",
+        "matchedName": "Prunus cerasifera nigra",
+        "canonicalName": "Prunus cerasifera nigra",
+        "policy": {
+          "nurseryId": "lorberg",
+          "resolver": "product",
+          "fillMissing": true,
+          "pageHosts": [
+            "www.lorberg.com"
+          ],
+          "imageHosts": [
+            "www.lorberg.com"
+          ],
+          "pagePathPattern": "/en\\-gb/article/2440/prunus\\-cerasifera\\-nigra"
+        },
+        "verifiedAt": "2026-11-10T08:13:42Z",
+        "evidence": {
+          "method": "product_jsonld",
+          "discoveredUrl": "https://www.lorberg.com/en-gb/article/2440/prunus-cerasifera-nigra",
+          "discovery": "nursery_sitemap_or_observed_link",
+          "identity": "exact_full_botanical_name"
+        }
+      },
+      "checkedAt": "2026-11-10T08:13:42Z",
+      "candidateFingerprint": "da2a22f8d27633b1ac221aed04c8166d2a52236a2d31cf9c64ea5355340ba0db"
+    },
+    "lorberg::plant-dff75bb196d8f1": {
+      "binding": {
+        "plantId": "plant-dff75bb196d8f1",
+        "nurseryId": "lorberg",
+        "offerIds": [
+          "offer-pdf-fa5f5d28792aa88fcbe1"
+        ],
+        "pageUrl": "https://www.lorberg.com/en-gb/article/2367/magnolia-kobus",
+        "imageUrl": "https://www.lorberg.com/content/files/9323/Magnolia-kobus-1200x630-proportionalbiggest.webp",
+        "matchedName": "Magnolia kobus",
+        "canonicalName": "Magnolia kobus",
+        "policy": {
+          "nurseryId": "lorberg",
+          "resolver": "product",
+          "fillMissing": true,
+          "pageHosts": [
+            "www.lorberg.com"
+          ],
+          "imageHosts": [
+            "www.lorberg.com"
+          ],
+          "pagePathPattern": "/en\\-gb/article/2367/magnolia\\-kobus"
+        },
+        "verifiedAt": "2026-11-10T08:13:42Z",
+        "evidence": {
+          "method": "product_jsonld",
+          "discoveredUrl": "https://www.lorberg.com/en-gb/article/2367/magnolia-kobus",
+          "discovery": "nursery_sitemap_or_observed_link",
+          "identity": "exact_full_botanical_name"
+        }
+      },
+      "checkedAt": "2026-11-10T08:13:42Z",
+      "candidateFingerprint": "8fdd706eed28b70a27d443b439dfbe4ce664e9805c54ccc28e68d4980c2628a2"
+    },
+    "lorberg::plant-e31efad7c4f189": {
+      "binding": {
+        "plantId": "plant-e31efad7c4f189",
+        "nurseryId": "lorberg",
+        "offerIds": [
+          "offer-pdf-6be4124d624030c66287"
+        ],
+        "pageUrl": "https://www.lorberg.com/en-gb/article/420/alnus-spaethii",
+        "imageUrl": "https://www.lorberg.com/content/files/15246/Alnus-spaethii-20-25-5-r1-1200x630-proportionalbiggest.webp",
+        "matchedName": "Alnus spaethii",
+        "canonicalName": "Alnus spaethii",
+        "policy": {
+          "nurseryId": "lorberg",
+          "resolver": "product",
+          "fillMissing": true,
+          "pageHosts": [
+            "www.lorberg.com"
+          ],
+          "imageHosts": [
+            "www.lorberg.com"
+          ],
+          "pagePathPattern": "/en\\-gb/article/420/alnus\\-spaethii"
+        },
+        "verifiedAt": "2026-11-10T08:13:42Z",
+        "evidence": {
+          "method": "product_jsonld",
+          "discoveredUrl": "https://www.lorberg.com/en-gb/article/420/alnus-spaethii",
+          "discovery": "nursery_sitemap_or_observed_link",
+          "identity": "exact_full_botanical_name"
+        }
+      },
+      "checkedAt": "2026-11-10T08:13:42Z",
+      "candidateFingerprint": "c9900d488c27be2c862936ec9af1fe9438abeb5be2afbd17728642500d733eb3"
+    },
+    "lorberg::plant-f528ac363e5c66": {
+      "binding": {
+        "plantId": "plant-f528ac363e5c66",
+        "nurseryId": "lorberg",
+        "offerIds": [
+          "record-a25c8fb9a16423"
+        ],
+        "pageUrl": "https://www.lorberg.com/en-gb/article/762/cornus-sanguinea-midwinter-fire",
+        "imageUrl": "https://www.lorberg.com/content/files/5297/Cornus-sanguinea-Midwinter-Fire-1200x630-proportionalbiggest.webp",
+        "matchedName": "Cornus sanguinea 'Midwinter Fire'",
+        "canonicalName": "Cornus sanguinea 'Midwinter Fire'",
+        "policy": {
+          "nurseryId": "lorberg",
+          "resolver": "product",
+          "fillMissing": true,
+          "pageHosts": [
+            "www.lorberg.com"
+          ],
+          "imageHosts": [
+            "www.lorberg.com"
+          ],
+          "pagePathPattern": "/en\\-gb/article/762/cornus\\-sanguinea\\-midwinter\\-fire"
+        },
+        "verifiedAt": "2026-11-10T08:13:42Z",
+        "evidence": {
+          "method": "product_jsonld",
+          "discoveredUrl": "https://www.lorberg.com/en-gb/article/762/cornus-sanguinea-midwinter-fire",
+          "discovery": "nursery_sitemap_or_observed_link",
+          "identity": "exact_full_botanical_name"
+        }
+      },
+      "checkedAt": "2026-11-10T08:13:42Z",
+      "candidateFingerprint": "c329edaefc7cab6efedbdea6e12de09e60d0718433e060ed886151fdc2658d5f"
+    },
+    "lorberg::plant-ffdbfd76e4d96d": {
+      "binding": {
+        "plantId": "plant-ffdbfd76e4d96d",
+        "nurseryId": "lorberg",
+        "offerIds": [
+          "record-e2f0ce915a2dba"
+        ],
+        "pageUrl": "https://www.lorberg.com/en-gb/article/2472/quercus-palustris",
+        "imageUrl": "https://www.lorberg.com/content/files/16791/Quercus-palustris-60-70-80-90-1-r1-1200x630-proportionalbiggest.webp",
+        "matchedName": "Quercus palustris",
+        "canonicalName": "Quercus palustris",
+        "policy": {
+          "nurseryId": "lorberg",
+          "resolver": "product",
+          "fillMissing": true,
+          "pageHosts": [
+            "www.lorberg.com"
+          ],
+          "imageHosts": [
+            "www.lorberg.com"
+          ],
+          "pagePathPattern": "/en\\-gb/article/2472/quercus\\-palustris"
+        },
+        "verifiedAt": "2026-11-10T08:13:42Z",
+        "evidence": {
+          "method": "product_jsonld",
+          "discoveredUrl": "https://www.lorberg.com/en-gb/article/2472/quercus-palustris",
+          "discovery": "nursery_sitemap_or_observed_link",
+          "identity": "exact_full_botanical_name"
+        }
+      },
+      "checkedAt": "2026-11-10T08:13:42Z",
+      "candidateFingerprint": "593376cb43208caae86f799ae1d752e15837feee0c91eb42d615fc1ac62fb9db"
+    },
+    "lorberg::plant-ginkgo-biloba": {
+      "binding": {
+        "plantId": "plant-ginkgo-biloba",
+        "nurseryId": "lorberg",
+        "offerIds": [
+          "record-b2ac6f0d4206bf",
+          "record-07b2c0e81e1be4"
+        ],
+        "pageUrl": "https://www.lorberg.com/en-gb/article/159/ginkgo-biloba",
+        "imageUrl": "https://www.lorberg.com/content/files/3482/Ginkgo-biloba-1200x630-proportionalbiggest.webp",
+        "matchedName": "Ginkgo biloba",
+        "canonicalName": "Ginkgo biloba",
+        "policy": {
+          "nurseryId": "lorberg",
+          "resolver": "product",
+          "fillMissing": true,
+          "pageHosts": [
+            "www.lorberg.com"
+          ],
+          "imageHosts": [
+            "www.lorberg.com"
+          ],
+          "pagePathPattern": "/en\\-gb/article/159/ginkgo\\-biloba"
+        },
+        "verifiedAt": "2026-11-10T08:13:42Z",
+        "evidence": {
+          "method": "product_jsonld",
+          "discoveredUrl": "https://www.lorberg.com/en-gb/article/159/ginkgo-biloba",
+          "discovery": "nursery_sitemap_or_observed_link",
+          "identity": "exact_full_botanical_name"
+        }
+      },
+      "checkedAt": "2026-11-10T08:13:42Z",
+      "candidateFingerprint": "d78aebd2b970597e87884f6148099a8d82e82eb75cbeb729878b3587612d98e6"
+    },
+    "lorberg::plant-lavandula-angustifolia": {
+      "binding": {
+        "plantId": "plant-lavandula-angustifolia",
+        "nurseryId": "lorberg",
+        "offerIds": [
+          "record-57063fc712f04f"
+        ],
+        "pageUrl": "https://www.lorberg.com/en-gb/article/1164/lavandula-angustifolia",
+        "imageUrl": "https://www.lorberg.com/content/files/6527/Lavandula-angustifolia-1200x630-proportionalbiggest.webp",
+        "matchedName": "Lavandula angustifolia",
+        "canonicalName": "Lavandula angustifolia",
+        "policy": {
+          "nurseryId": "lorberg",
+          "resolver": "product",
+          "fillMissing": true,
+          "pageHosts": [
+            "www.lorberg.com"
+          ],
+          "imageHosts": [
+            "www.lorberg.com"
+          ],
+          "pagePathPattern": "/en\\-gb/article/1164/lavandula\\-angustifolia"
+        },
+        "verifiedAt": "2026-11-10T08:13:42Z",
+        "evidence": {
+          "method": "product_jsonld",
+          "discoveredUrl": "https://www.lorberg.com/en-gb/article/1164/lavandula-angustifolia",
+          "discovery": "nursery_sitemap_or_observed_link",
+          "identity": "exact_full_botanical_name"
+        }
+      },
+      "checkedAt": "2026-11-10T08:13:42Z",
+      "candidateFingerprint": "4b3bd162fa6116b27c6851a8a74f8e64280a089a028c0c54bacf688f98be0cc3"
+    },
+    "lorberg::plant-liquidambar-styraciflua": {
+      "binding": {
+        "plantId": "plant-liquidambar-styraciflua",
+        "nurseryId": "lorberg",
+        "offerIds": [
+          "record-25c08d56afbfa0",
+          "record-5ef94a83d011cd"
+        ],
+        "pageUrl": "https://www.lorberg.com/en-gb/article/1601/liquidambar-styraciflua",
+        "imageUrl": "https://www.lorberg.com/content/files/7559/Liquidambar-styraciflua-1200x630-proportionalbiggest.webp",
+        "matchedName": "Liquidambar styraciflua",
+        "canonicalName": "Liquidambar styraciflua",
+        "policy": {
+          "nurseryId": "lorberg",
+          "resolver": "product",
+          "fillMissing": true,
+          "pageHosts": [
+            "www.lorberg.com"
+          ],
+          "imageHosts": [
+            "www.lorberg.com"
+          ],
+          "pagePathPattern": "/en\\-gb/article/1601/liquidambar\\-styraciflua"
+        },
+        "verifiedAt": "2026-11-10T08:13:42Z",
+        "evidence": {
+          "method": "product_jsonld",
+          "discoveredUrl": "https://www.lorberg.com/en-gb/article/1601/liquidambar-styraciflua",
+          "discovery": "nursery_sitemap_or_observed_link",
+          "identity": "exact_full_botanical_name"
+        }
+      },
+      "checkedAt": "2026-11-10T08:13:42Z",
+      "candidateFingerprint": "a43fb2406059dbd1c91918c5d5de310ed0f07c358db7adbbc9ea0f312e875683"
+    },
+    "lorberg::plant-quercus-robur": {
+      "binding": {
+        "plantId": "plant-quercus-robur",
+        "nurseryId": "lorberg",
+        "offerIds": [
+          "record-c4d8f0629501c3"
+        ],
+        "pageUrl": "https://www.lorberg.com/en-gb/article/1248/quercus-robur",
+        "imageUrl": "https://www.lorberg.com/content/files/6806/Quercus-robur-f-1200x630-proportionalbiggest.webp",
+        "matchedName": "Quercus robur",
+        "canonicalName": "Quercus robur",
+        "policy": {
+          "nurseryId": "lorberg",
+          "resolver": "product",
+          "fillMissing": true,
+          "pageHosts": [
+            "www.lorberg.com"
+          ],
+          "imageHosts": [
+            "www.lorberg.com"
+          ],
+          "pagePathPattern": "/en\\-gb/article/1248/quercus\\-robur"
+        },
+        "verifiedAt": "2026-11-10T08:13:42Z",
+        "evidence": {
+          "method": "product_jsonld",
+          "discoveredUrl": "https://www.lorberg.com/en-gb/article/1248/quercus-robur",
+          "discovery": "nursery_sitemap_or_observed_link",
+          "identity": "exact_full_botanical_name"
+        }
+      },
+      "checkedAt": "2026-11-10T08:13:42Z",
+      "candidateFingerprint": "32af26e457164853758a5373608f32a704aa204e876f2d6430ae5ede0839dbb2"
+    },
+    "lorberg::plant-quercus-rubra": {
+      "binding": {
+        "plantId": "plant-quercus-rubra",
+        "nurseryId": "lorberg",
+        "offerIds": [
+          "record-172c0692f16e39"
+        ],
+        "pageUrl": "https://www.lorberg.com/en-gb/article/1340/quercus-rubra",
+        "imageUrl": "https://www.lorberg.com/content/files/7044/Quercus-rubra-1200x630-proportionalbiggest.webp",
+        "matchedName": "Quercus rubra",
+        "canonicalName": "Quercus rubra",
+        "policy": {
+          "nurseryId": "lorberg",
+          "resolver": "product",
+          "fillMissing": true,
+          "pageHosts": [
+            "www.lorberg.com"
+          ],
+          "imageHosts": [
+            "www.lorberg.com"
+          ],
+          "pagePathPattern": "/en\\-gb/article/1340/quercus\\-rubra"
+        },
+        "verifiedAt": "2026-11-10T08:13:42Z",
+        "evidence": {
+          "method": "product_jsonld",
+          "discoveredUrl": "https://www.lorberg.com/en-gb/article/1340/quercus-rubra",
+          "discovery": "nursery_sitemap_or_observed_link",
+          "identity": "exact_full_botanical_name"
+        }
+      },
+      "checkedAt": "2026-11-10T08:13:42Z",
+      "candidateFingerprint": "4bc2a826691d7e37e06f0a85469cb7fe99bce135fb2cfb98c0214773d9b822b4"
+    },
+    "lorberg::plant-tilia-cordata": {
+      "binding": {
+        "plantId": "plant-tilia-cordata",
+        "nurseryId": "lorberg",
+        "offerIds": [
+          "record-f8d32240673819"
+        ],
+        "pageUrl": "https://www.lorberg.com/en-gb/article/2628/tilia-cordata",
+        "imageUrl": "https://www.lorberg.com/content/files/10246/Tilia-cordata-Winter-Orange-1200x630-proportionalbiggest.webp",
+        "matchedName": "Tilia cordata",
+        "canonicalName": "Tilia cordata",
+        "policy": {
+          "nurseryId": "lorberg",
+          "resolver": "product",
+          "fillMissing": true,
+          "pageHosts": [
+            "www.lorberg.com"
+          ],
+          "imageHosts": [
+            "www.lorberg.com"
+          ],
+          "pagePathPattern": "/en\\-gb/article/2628/tilia\\-cordata"
+        },
+        "verifiedAt": "2026-11-10T08:13:42Z",
+        "evidence": {
+          "method": "product_jsonld",
+          "discoveredUrl": "https://www.lorberg.com/en-gb/article/2628/tilia-cordata",
+          "discovery": "nursery_sitemap_or_observed_link",
+          "identity": "exact_full_botanical_name"
+        }
+      },
+      "checkedAt": "2026-11-10T08:13:42Z",
+      "candidateFingerprint": "ed50478744a02fb68bfdb444922b6d9a9dc1320013d0df6986c24f6f3c6b175c"
+    },
+    "vannucci-piante::plant-52f7978caf4634": {
+      "checkedAt": "2026-11-10T08:13:42Z",
+      "reason": "candidate_not_confirmed",
+      "candidateFingerprint": "a9b82bff0823ca6af2fc97ff8f4922395ab4111e8fa866116213c21897b8b16c",
+      "failures": [
+        {
+          "url": "https://webshop.vannuccipiante.it/product/panicum-virgatum-heavy-metal/",
+          "reason": "plant_identity_mismatch"
+        },
+        {
+          "url": "https://webshop.vannuccipiante.it/product/panicum-virgatum-northwind/",
+          "reason": "plant_identity_mismatch"
+        },
+        {
+          "url": "https://webshop.vannuccipiante.it/product/panicum-virgatum-prairie-sky/",
+          "reason": "plant_identity_mismatch"
+        }
+      ]
+    },
+    "vannucci-piante::plant-8c2ae8ac7ff3af": {
+      "checkedAt": "2026-11-10T08:13:42Z",
+      "reason": "candidate_not_confirmed",
+      "candidateFingerprint": "37481f97ec135a48930d7bc91e5bec4a8da05e0f60c11cf1a6a95431a55c7ed4",
+      "failures": [
+        {
+          "url": "https://webshop.vannuccipiante.it/product/platanus-x-acerifolia-el-gordo-p-x-hispanica-el-gordo/",
+          "reason": "plant_identity_mismatch"
+        },
+        {
+          "url": "https://webshop.vannuccipiante.it/product/platanus-x-acerifolia-p-x-hispanica-p-x-hybrida/",
+          "reason": "plant_identity_mismatch"
+        }
+      ]
+    },
+    "vannucci-piante::plant-f15e3e2208445c": {
+      "checkedAt": "2026-11-10T08:13:42Z",
+      "reason": "candidate_not_confirmed",
+      "candidateFingerprint": "897cd7553c13c10732c71aec8e42d16dac314619c1248bc996e87d221be1e5c8",
+      "failures": [
+        {
+          "url": "https://webshop.vannuccipiante.it/product/liriope-muscari-monroe-white/",
+          "reason": "plant_identity_mismatch"
+        },
+        {
+          "url": "https://webshop.vannuccipiante.it/product/liriope-muscari-royal-purple/",
+          "reason": "plant_identity_mismatch"
+        }
+      ]
+    },
+    "vannucci-piante::plant-lavandula-angustifolia": {
+      "checkedAt": "2026-11-10T08:13:42Z",
+      "reason": "candidate_not_confirmed",
+      "candidateFingerprint": "88193d25945a07b7c213d9077573167f6e19cea75a0ebae5d994fc36484570aa",
+      "failures": [
+        {
+          "url": "https://webshop.vannuccipiante.it/product/lavandula-angustifolia-edelweiss-l-x-intermedia-edelweiss/",
+          "reason": "plant_identity_mismatch"
+        },
+        {
+          "url": "https://webshop.vannuccipiante.it/product/lavandula-angustifolia-hidcote/",
+          "reason": "plant_identity_mismatch"
+        }
+      ]
+    },
+    "combinatie-mauritz::plant-acer-platanoides": {
+      "checkedAt": "2026-11-10T08:13:42Z",
+      "reason": "candidate_not_confirmed",
+      "candidateFingerprint": "cf1b40eaf56ecb0c0173e71eced108f7ffe14970a1027068c158cce9b3eebfbe",
+      "failures": [
+        {
+          "url": "https://combinatiemauritz.com/laanbomen-en/acer-platanoides-mauritz-upright-zuilvormige-noorse-esdoorn-2/",
+          "reason": "plant_identity_mismatch"
+        }
+      ]
+    },
+    "smits-boomkwekerij::plant-b1fc7ebad5242f": {
+      "binding": {
+        "plantId": "plant-b1fc7ebad5242f",
+        "nurseryId": "smits-boomkwekerij",
+        "offerIds": [
+          "offer-pdf-7d5fbd533ef3c08889d1",
+          "offer-pdf-f0325055115eb43afff7",
+          "offer-pdf-52b0ef44ef6cd1d45ad8",
+          "offer-pdf-e9e926a0ce62df0ee5c8"
+        ],
+        "pageUrl": "https://smitsbv.nl/producten/osmanthus-burkwoodii/",
+        "imageUrl": "https://smitsbv.nl/wp-content/uploads/2026/03/89378.jpg",
+        "matchedName": "Osmanthus burkwoodii",
+        "canonicalName": "Osmanthus x burkwoodii",
+        "policy": {
+          "nurseryId": "smits-boomkwekerij",
+          "resolver": "product",
+          "fillMissing": true,
+          "pageHosts": [
+            "smitsbv.nl"
+          ],
+          "imageHosts": [
+            "smitsbv.nl"
+          ],
+          "pagePathPattern": "/producten/osmanthus\\-burkwoodii/"
+        },
+        "verifiedAt": "2026-11-10T08:13:42Z",
+        "evidence": {
+          "method": "page_primary_image",
+          "discoveredUrl": "https://smitsbv.nl/producten/osmanthus-burkwoodii/",
+          "discovery": "nursery_sitemap_or_observed_link",
+          "identity": "exact_full_botanical_name"
+        }
+      },
+      "checkedAt": "2026-11-10T08:13:42Z",
+      "candidateFingerprint": "0cda679f9177065e72479b5f40af0a10f02377844ec755ba12ff5b4ce0c79959"
     }
   },
-  "updatedAt": "2026-11-09T15:07:19Z"
+  "updatedAt": "2026-11-10T08:13:42Z"
 }
