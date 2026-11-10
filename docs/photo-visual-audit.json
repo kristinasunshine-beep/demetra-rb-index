@@ -1,0 +1,117 @@
+[
+  {
+    "qaNumber": 16,
+    "plantId": "plant-acer-platanoides",
+    "latinName": "Acer platanoides",
+    "image": "assets/biljke/reference-6b8c491aae2753765c93a6cd.jpg",
+    "imageUrl": "https://www.lorberg.com/content/files/4560/Acer-platanoides-1200x630-proportionalbiggest.webp",
+    "sourceUrl": "https://www.lorberg.com/en-gb/article/513/acer-platanoides",
+    "sha256": "6b8c491aae2753765c93a6cdfc578d6272223b6e25f5bbc3d57274522ecbfa89",
+    "recommendation": "duplicate_review",
+    "reason": "Exact photo reused for base species and Cleveland; root auditing cross-taxon duplicates.",
+    "evidenceUrls": []
+  },
+  {
+    "qaNumber": 18,
+    "plantId": "plant-9e3b5ad9f052fd",
+    "latinName": "Acer platanoides 'Cleveland'",
+    "image": "assets/biljke/reference-6b8c491aae2753765c93a6cd.jpg",
+    "imageUrl": "https://www.lorberg.com/content/files/4560/Acer-platanoides-1200x630-proportionalbiggest.webp",
+    "sourceUrl": "https://www.lorberg.com/en-gb/article/542/acer-platanoides-cleveland",
+    "sha256": "6b8c491aae2753765c93a6cdfc578d6272223b6e25f5bbc3d57274522ecbfa89",
+    "recommendation": "duplicate_review",
+    "reason": "Exact photo reused for base species and Cleveland; root auditing cross-taxon duplicates.",
+    "evidenceUrls": []
+  },
+  {
+    "qaNumber": 38,
+    "plantId": "plant-55f453754f82bd",
+    "latinName": "Aesculus indica",
+    "image": "assets/biljke/reference-17a0ead2ea587bb361b06395.jpg",
+    "imageUrl": "https://smitsbv.nl/wp-content/uploads/2026/01/1200x630px-sociaal-delen-website.jpg",
+    "sourceUrl": "https://smitsbv.nl/producten/aesculus-indica/",
+    "sha256": "17a0ead2ea587bb361b06395e068d06bc059c3b4081da00b075b0a9e910598d3",
+    "recommendation": "reject",
+    "reason": "Generic Smits promotional logo/social-sharing banner; not a photograph of the plant.",
+    "evidenceUrls": []
+  },
+  {
+    "qaNumber": 167,
+    "plantId": "plant-9579a4e5d17e48",
+    "latinName": "Hosta plantaginea",
+    "image": "assets/biljke/reference-433cfda1660b8abb16382287.jpg",
+    "imageUrl": "https://api.gbif.org/v1/image/cache/1200x/occurrence/6451823846/media/85a08eb7f0d6cc440e066a7a8a230b8e",
+    "sourceUrl": "https://www.gbif.org/occurrence/6451823846",
+    "sha256": "433cfda1660b8abb16382287119ce611e3f8091b54844278988ee02fb883a11f",
+    "recommendation": "quarantine",
+    "reason": "Lavender flowers and dull glaucous leaves conflict with Hosta plantaginea white flowers and glossy green foliage. Source occurrence can be misidentified.",
+    "evidenceUrls": [
+      "https://www.rhs.org.uk/plants/8821/hosta-plantaginea/details",
+      "https://www.worldfloraonline.org/taxon/wfo-0000663320"
+    ]
+  },
+  {
+    "qaNumber": 187,
+    "plantId": "plant-f6d69bad2051c1",
+    "latinName": "Larix europaea",
+    "image": "assets/biljke/reference-036edb598df522dc58c1629d.jpg",
+    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3e/EB1911_-_Branchlet_of_Larch_%28Larix_europaea%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:EB1911_-_Branchlet_of_Larch_(Larix_europaea).jpg",
+    "sha256": "036edb598df522dc58c1629d35d8406524c0316a6923d35e801cadbfe577e57f",
+    "recommendation": "reject",
+    "reason": "Black-and-white botanical illustration from Encyclopaedia Britannica 1911; not a photograph.",
+    "evidenceUrls": []
+  },
+  {
+    "qaNumber": 199,
+    "plantId": "plant-f15e3e2208445c",
+    "latinName": "Liriope muscari",
+    "image": "assets/biljke/reference-e7f60f00ea6dbff2201d792c.jpg",
+    "imageUrl": "https://www.lorberg.com/content/files/12313/Liriope-muscari-Royal-Purple-1200x630-proportionalbiggest.webp",
+    "sourceUrl": "https://www.lorberg.com/en-gb/article/2790/liriope-muscari",
+    "sha256": "e7f60f00ea6dbff2201d792ceb7f61f703e1bd1531f505e7a1ca6077cdf0cc2d",
+    "recommendation": "duplicate_review",
+    "reason": "Photo duplicated for species and Big Blue; original image filename explicitly identifies Royal Purple.",
+    "evidenceUrls": []
+  },
+  {
+    "qaNumber": 200,
+    "plantId": "plant-66b798eaf0e1c0",
+    "latinName": "Liriope muscari 'Big Blue'",
+    "image": "assets/biljke/reference-e7f60f00ea6dbff2201d792c.jpg",
+    "imageUrl": "https://www.lorberg.com/content/files/12313/Liriope-muscari-Royal-Purple-1200x630-proportionalbiggest.webp",
+    "sourceUrl": "https://www.lorberg.com/en-gb/article/2801/liriope-muscari-big-blue",
+    "sha256": "e7f60f00ea6dbff2201d792ceb7f61f703e1bd1531f505e7a1ca6077cdf0cc2d",
+    "recommendation": "reject",
+    "reason": "Big Blue uses image file explicitly named Liriope-muscari-Royal-Purple; also duplicated with base species.",
+    "evidenceUrls": []
+  },
+  {
+    "qaNumber": 331,
+    "plantId": "plant-072321aa05ca04",
+    "latinName": "Stipa tenuissima",
+    "image": "assets/biljke/reference-f9e15c42a054e3cdae830394.jpg",
+    "imageUrl": "https://innocentiemangonipiante.it/wp-content/uploads/2023/10/1642755966-scaled.jpg",
+    "sourceUrl": "https://innocentiemangonipiante.it/en/stipa-tenuissima/",
+    "sha256": "f9e15c42a054e3cdae830394fb68172ce1b3509a92fa031e5c7878c13f9ecd08",
+    "recommendation": "quarantine",
+    "reason": "Photo has cylindrical bottlebrush flower spikes characteristic of fountain grasses, inconsistent with fine airy Stipa tenuissima panicles.",
+    "evidenceUrls": [
+      "https://www.rhs.org.uk/plants/58857/stipa-tenuissima/details"
+    ]
+  },
+  {
+    "qaNumber": 332,
+    "plantId": "plant-55e98a21d054d2",
+    "latinName": "Stipa tenuissima 'Pony Tails'",
+    "image": "assets/biljke/reference-025fd0a8c72d28992d92e8ed.jpg",
+    "imageUrl": "https://innocentiemangonipiante.it/wp-content/uploads/2023/11/1697015648.jpg",
+    "sourceUrl": "https://innocentiemangonipiante.it/en/stipa-tenuissima-pony-tails/",
+    "sha256": "025fd0a8c72d28992d92e8edccafd10e7dd37d8dbb65453c43b2b7ff99c19b0c",
+    "recommendation": "quarantine",
+    "reason": "Purple fountain-grass foliage with cylindrical bottlebrush spikes, inconsistent with Stipa tenuissima / Pony Tails.",
+    "evidenceUrls": [
+      "https://www.rhs.org.uk/plants/58857/stipa-tenuissima/details"
+    ]
+  }
+]

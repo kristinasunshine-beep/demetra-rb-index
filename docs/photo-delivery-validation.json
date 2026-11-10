@@ -1,0 +1,15 @@
+{
+  "baseCommit": "cfbd3d9528cdeed40d7d1a40f7273b7f32eee0cf",
+  "date": "2026-11-10",
+  "plants": 619,
+  "plantsWithPhoto": 456,
+  "pythonTestsPassed": 280,
+  "catalogueValidation": "passed",
+  "photoManifestValidation": "passed",
+  "cardRenderingTests": "passed",
+  "nonPhotoDataUnchanged": true,
+  "siteStylesUnchanged": true,
+  "originalAssetsUnchanged": true,
+  "packageType": "full_repository_without_git_history",
+  "note": "All plants are in workflow scope. Image coverage is reported separately; no unverified cultivar substitution."
+}
