@@ -89,7 +89,7 @@
       el('quote-clear').hidden = !quote.items.length;
       el('quote-summary-status').textContent = !dateValid ? 'Unesi datum ponude u zaglavlju.' : summary.invalidCount ?
         `Dopuni količinu ili cenu pre preuzimanja. Stavke za dopunu: ${summary.invalidCount}.` : !summary.safe ? 'Ukupan iznos je prevelik za izvoz.' :
-        quote.items.length ? 'Excel sadrži ponudu i sve parametre odabranih biljaka.' : '';
+        quote.items.length ? 'Excel sadrži jedan list „Moja ponuda“, sa stavkama i parametrima sadnica.' : '';
       const rows = root.querySelectorAll('[data-quote-row]');
       rows.forEach((row, index) => {
         const result = summary.rows[index]; if (!result) return;
@@ -120,7 +120,7 @@
       exporting = true; updateTotals(); el('quote-export-status').textContent = 'Pripremam Excel ponudu…';
       const downloadQuote = Core.parseQuote(JSON.stringify(quote));
       try {
-        const [Zip,response] = await Promise.all([loadZip(), fetch(asset('moja-ponuda-template.xlsx'))]);
+        const [Zip,response] = await Promise.all([loadZip(), fetch(asset('moja-ponuda-template.xlsx'), {cache:'no-store'})]);
         if (!response.ok) throw new Error('Obrazac ponude nije dostupan. Pokušaj ponovo.');
         const bytes = await Core.buildXlsx(await response.arrayBuffer(), downloadQuote, Zip);
         const url = URL.createObjectURL(new Blob([bytes],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}));

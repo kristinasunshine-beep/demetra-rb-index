@@ -122,35 +122,11 @@
     const tax = item.details.find(([label])=>label==='PDV')?.[1] || 'Nije navedeno u izvornoj ponudi';
     const available = item.parameters.filter(([, value]) => value !== '' && value !== null &&
       !/^nije navedeno|^nepoznat/i.test(String(value)));
-    if (!available.length) return 'Parametri nisu navedeni u katalogu.\nPDV: ' + tax;
-    const lines = []; let size = 0;
-    for (const [label, value] of available) {
-      const line = `${label}: ${value}`;
-      if (size + line.length > 1000) { lines.push('Svi parametri: list Parametri.'); break; }
-      lines.push(line); size += line.length;
-    }
-    return lines.join('\n') + '\nPDV: ' + tax;
-  }
-  function detailRows(quote) {
-    const rows = [];
-    quote.items.forEach((item, index) => {
-      const data = [
-        ['Rasadnik', item.nursery], ['Zemlja rasadnika', item.country],
-        ['Domaći naziv', item.commonName], ...item.parameters, ...item.details,
-        ['Jedinica mere', item.unit], ['Cena iz kataloga (' + item.currency + ')', item.sourcePrice === null ? 'Nije navedena' : item.sourcePrice],
-        ['Napomena korisnika', item.note]
-      ];
-      for (const [label, value] of data) {
-        if (value === '' || value === null || value === undefined) continue;
-        if (typeof value === 'number') { rows.push([index + 1, item.latinName, label, value]); continue; }
-        const content = String(value);
-        // Keep very long source notes readable without dropping any content.
-        for (let start = 0; start < content.length; start += 1200) {
-          rows.push([index + 1, item.latinName, label + (start ? ' (nastavak)' : ''), content.slice(start, start + 1200)]);
-        }
-      }
-    });
-    return rows;
+    const lines = available.length ? available.map(([label,value]) => `${label}: ${value}`) :
+      ['Parametri nisu navedeni u katalogu.'];
+    lines.push('PDV: ' + tax);
+    if (item.note) lines.push('Napomena: ' + item.note);
+    return lines.join('\n');
   }
   const xmlEscape = value => String(value ?? '').replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/g, '').replace(/[&<>"']/g,
     ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&apos;' }[ch]));
@@ -207,7 +183,6 @@
     if (!total.ready) throw new Error('Popunite ispravnu količinu i cenu za svaku stavku pre preuzimanja.');
     const zip = await Zip.loadAsync(template, { checkCRC32: true });
     let main = spreadsheetXml(await zip.file('xl/worksheets/sheet1.xml').async('string'));
-    let details = spreadsheetXml(await zip.file('xl/worksheets/sheet2.xml').async('string'));
     const meta = quote.meta;
     const date = Math.round((Date.parse(meta.date + 'T00:00:00Z') - Date.UTC(1899, 11, 30)) / 86400000);
     const fields = {
@@ -244,16 +219,7 @@
     });
     main = replaceRows(main, 23, rows, 'I', lastRow);
     main = main.replace(/sqref="F23"/g, `sqref="F23:F${lastData}"`).replace(/sqref="G23"/g, `sqref="G23:G${lastData}"`);
-    const parameterRows = detailRows(quote), detailStyles = rowStyles(details, 4, ['A', 'B', 'C', 'D']);
-    let dataRows = '';
-    parameterRows.forEach((values, index) => {
-      const number = index + 4;
-      dataRows += `<row r="${number}" ht="${lineHeight(values, [8, 32, 30, 90])}" customHeight="1">` +
-        values.map((value, column) => cell(['A','B','C','D'][column] + number, value, detailStyles[column])).join('') + '</row>';
-    });
-    details = replaceRows(details, 4, dataRows, 'D', parameterRows.length + 3);
     zip.file('xl/worksheets/sheet1.xml', main);
-    zip.file('xl/worksheets/sheet2.xml', details);
     let workbook = spreadsheetXml(await zip.file('xl/workbook.xml').async('string'));
     const calc = '<calcPr calcId="191029" fullCalcOnLoad="1" forceFullCalc="1" calcMode="auto"/>';
     workbook = /<calcPr\b/.test(workbook) ? workbook.replace(/<calcPr\b[^>]*\/>/, calc) : workbook.replace('</workbook>', calc + '</workbook>');
@@ -268,5 +234,5 @@
   }
   return { VERSION, STORAGE_KEY, COMPANY, MAX_ITEMS, localDate, validDate, defaultMeta, normalizeMeta,
     emptyQuote, parseQuote, normalizeItem, addItem, parseDecimal, lineResult, summarize, money,
-    compactParameters, detailRows, buildXlsx, filename, xmlEscape };
+    compactParameters, buildXlsx, filename, xmlEscape };
 });
