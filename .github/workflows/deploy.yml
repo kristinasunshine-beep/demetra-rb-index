@@ -51,6 +51,7 @@ jobs:
       - name: Proveri katalog i povezane fajlove
         run: |
           node scripts/check-catalog.mjs
+          node --test scripts/tests/test_my_quote.mjs
           python scripts/photo_source_policy.py
 
       - name: Pripremi GitHub Pages
