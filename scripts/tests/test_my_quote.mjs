@@ -65,17 +65,24 @@ const template=await readFile(root+'/assets/moja-ponuda-template.xlsx');
 const bytes=await Core.buildXlsx(template,quote,Zip);
 const zip=await Zip.loadAsync(bytes,{checkCRC32:true});
 const sheet=await zip.file('xl/worksheets/sheet1.xml').async('string');
-const details=await zip.file('xl/worksheets/sheet2.xml').async('string');
+const workbook=await zip.file('xl/workbook.xml').async('string');
+assert.equal((workbook.match(/<(?:x:)?sheet\b/g)||[]).length,1,'Excel must contain only one worksheet.');
+assert(workbook.includes('name="Moja ponuda"')&&!workbook.includes('name="Parametri"'));
+assert.equal(zip.file('xl/worksheets/sheet2.xml'),null,'Removed worksheet must not remain in the file.');
 assert(sheet.includes('<f>ROUND(F23*G23,2)</f><v>37.5</v>'));
 assert(sheet.includes('<f>ROUND(F24*G24,2)</f><v>40</v>'));
 assert(sheet.includes('<f>SUM(H23:H24)</f><v>77.5</v>'));
 assert(sheet.includes('001234567')&&sheet.includes('00123456'));
 for(const label of ['Ime i prezime / naziv firme','Adresa','Grad i poštanski broj','Telefon','Ponuda biljaka i sadnog materijala','R.br.'])assert(sheet.includes(label),'Header label disappeared: '+label);
-assert(details.includes('HYPERLINK')&&!details.includes('<f>HYPERLINK'));
-assert(details.includes(Core.xmlEscape(first.offerId))===false,'Technical offer IDs are not public workbook fields.');
+assert(sheet.includes('HYPERLINK')&&!sheet.includes('<f>HYPERLINK'));
+assert(sheet.includes(Core.xmlEscape(first.offerId))===false,'Technical offer IDs are not public workbook fields.');
 for(const item of quote.items)for(const [label,value] of item.parameters){
-  if(value!==''&&value!==null)assert(details.includes(Core.xmlEscape(String(value))),label+' must survive export');
+  if(value!==''&&value!==null&&!/^nije navedeno|^nepoznat/i.test(String(value)))
+    assert(sheet.includes(Core.xmlEscape(String(value))),label+' must survive in the main worksheet');
 }
+const longParameter='Dodatni podatak '.repeat(80)+'KRAJ';
+assert(Core.compactParameters({...first,parameters:[['Opis',longParameter]]}).includes(longParameter));
+assert(!sheet.includes('list Parametri'),'Export must not refer to the removed worksheet.');
 const digest=data=>createHash('sha256').update(data).digest('hex');
 const expectedImages=await Promise.all(['demetra-memorandum-logo.png','demetra-memorandum-standardi.jpg'].map(async name=>digest(await readFile(root+'/assets/'+name))));
 const exportedImages=await Promise.all(Object.keys(zip.files).filter(name=>name.startsWith('xl/media/')&&!zip.files[name].dir).map(async name=>digest(await zip.file(name).async('uint8array'))));
@@ -94,4 +101,4 @@ if(testDir){await mkdir(testDir,{recursive:true});await writeFile(resolve(testDi
 console.log(JSON.stringify({ok:true,selectableVariants:snapshots.length,hiddenOffersRejected:offers.offers.length-valid.length,
  exactVariantIdentity:true,allParametersPreserved:true,duplicateSelectionPrevented:true,overridesAndPersistence:true,
  decimalCommaAndZero:true,missingPriceBlocksExport:true,formulaInjectionPrevented:true,
- originalHeaderImagesUnchanged:true,excelLineFormulas:true,total:77.5},null,2));
+ originalHeaderImagesUnchanged:true,excelLineFormulas:true,worksheetCount:1,parametersInMainSheet:true,total:77.5},null,2));
