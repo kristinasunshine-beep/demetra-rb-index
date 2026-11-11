@@ -86,11 +86,7 @@
         "Acer Pacific Sunset",
         "Pacific Sunset"
       ],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-10107ee4ff0adc8ef73c3bdf.jpg",
-        "sourceUrl": "https://majestictrees.co.uk/products/acer-pacific-sunset"
-      }
+      "demo": false
     },
     {
       "id": "plant-acer-campestre",
@@ -327,11 +323,7 @@
         "Acer palmatum 'Sango kaku'",
         "Acer palmatum Sangokaku"
       ],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-edcfb913b9dc3b9f549d1161.jpg",
-        "sourceUrl": "https://biojela.rs/product/acer-palmatum-sangokaku/"
-      }
+      "demo": false
     },
     {
       "id": "plant-cc21d9ee76f153",
@@ -344,11 +336,7 @@
         "Acer palmatum Seiryu",
         "Seiryu"
       ],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-80b4ff9117d73b62b0b1b4e9.jpg",
-        "sourceUrl": "https://majestictrees.co.uk/products/acer-palmatum-seiryu"
-      }
+      "demo": false
     },
     {
       "id": "plant-acer-platanoides",
@@ -512,11 +500,7 @@
       "searchAliases": [
         "Acer ps.pl. 'Worley'"
       ],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-7b0b0e26f33deed3f5b4a3f4.jpg",
-        "sourceUrl": "https://www.vdberk.co.uk/trees/acer-pseudoplatanus-worley/"
-      }
+      "demo": false
     },
     {
       "id": "plant-940f0506bc8700",
@@ -613,11 +597,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-e02753a905fc8685fbadcd60.jpg",
-        "sourceUrl": "https://www.vdberk.co.uk/trees/acer-saccharinum-asplenifolium/"
-      }
+      "demo": false
     },
     {
       "id": "plant-d75931aa1e87b7",
@@ -659,11 +639,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-a3e0f3192f3fc593adb9b457.jpg",
-        "sourceUrl": "https://www.gbif.org/occurrence/6236179192"
-      }
+      "demo": false
     },
     {
       "id": "plant-6b59a6dd768183",
@@ -689,11 +665,7 @@
       "searchAliases": [
         "Acer freemanii"
       ],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-df693df20b9b28de7cb6fef7.jpg",
-        "sourceUrl": "https://www.gbif.org/occurrence/6498147350"
-      }
+      "demo": false
     },
     {
       "id": "plant-960523df19e42d",
@@ -747,11 +719,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-5803616b1e558669c4d088fb.jpg",
-        "sourceUrl": "https://plant-werk.nl/product/achillea-filipendulina-parkers-variety/"
-      }
+      "demo": false
     },
     {
       "id": "plant-028aa17dda3cd5",
@@ -799,11 +767,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-09f08c60714f09eec81c8eb2.jpg",
-        "sourceUrl": "https://www.vdberk.com/trees/aesculus-indica/"
-      }
+      "demo": false
     },
     {
       "id": "plant-f36276709be0c4",
@@ -829,11 +793,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-e5fb21c479ce476a8bce28d1.jpg",
-        "sourceUrl": "https://plant-werk.nl/product/ajuga-reptans-catlins-giant/"
-      }
+      "demo": false
     },
     {
       "id": "plant-dc12c2322be581",
@@ -997,11 +957,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-5493f09b4a0e2cf6c5152d2b.jpg",
-        "sourceUrl": "https://olddairynursery.com/products/aster-amellus-rudolf-goethe"
-      }
+      "demo": false
     },
     {
       "id": "plant-7678bcfc643713",
@@ -1021,11 +977,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-556bd467374e3ca79f0ee4fd.jpg",
-        "sourceUrl": "https://plant-werk.nl/product/aster-novi-belgii-marie-ballard/"
-      }
+      "demo": false
     },
     {
       "id": "plant-d9153e5bc9deca",
@@ -1101,11 +1053,7 @@
       "searchAliases": [
         "Berberis thunbergii Erecta"
       ],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-7d247d626860d60b92e28e79.jpg",
-        "sourceUrl": "https://biojela.rs/product/berberis-thunbergii-erecta-2/"
-      }
+      "demo": false
     },
     {
       "id": "plant-43738cf1c33f97",
@@ -1183,11 +1131,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-c2492947e6b25fe7a89c4571.jpg",
-        "sourceUrl": "https://www.vdberk.co.uk/trees/betula-alleghaniensis/"
-      }
+      "demo": false
     },
     {
       "id": "plant-7458dadf44d17a",
@@ -1211,11 +1155,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-f0daa827e18d05879cc99b8f.jpg",
-        "sourceUrl": "https://majestictrees.co.uk/products/betula-ermanii-holland"
-      }
+      "demo": false
     },
     {
       "id": "plant-208f42284d47c4",
@@ -1239,11 +1179,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-c2492947e6b25fe7a89c4571.jpg",
-        "sourceUrl": "https://www.vdberk.co.uk/trees/betula-alleghaniensis/"
-      }
+      "demo": false
     },
     {
       "id": "plant-45f9cecaa5f3e5",
@@ -1327,11 +1263,7 @@
       "searchAliases": [
         "Betula pend. 'Tristis'"
       ],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-c43922363160644d36322971.jpg",
-        "sourceUrl": "https://www.frankpmatthews.com/catalogue/ornamental-trees/betula/betula-pendula-tristis/"
-      }
+      "demo": false
     },
     {
       "id": "plant-0dbd46667617fb",
@@ -1357,11 +1289,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-c509ca0f9060eab992133b5c.jpg",
-        "sourceUrl": "https://www.gbif.org/occurrence/5177124925"
-      }
+      "demo": false
     },
     {
       "id": "plant-03be2c36cba9f4",
@@ -1518,11 +1446,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-5c8cf5bcc9d45d60e66f0b53.jpg",
-        "sourceUrl": "https://www.knollgardens.co.uk/product/calamagrostis-brachytricha/"
-      }
+      "demo": false
     },
     {
       "id": "plant-c1682a0147cdbb",
@@ -1604,11 +1528,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-b42badae90ee9a30cf3ad1b1.jpg",
-        "sourceUrl": "https://www.knollgardens.co.uk/product/carex-divulsa/"
-      }
+      "demo": false
     },
     {
       "id": "plant-68087a490ecfa8",
@@ -1618,11 +1538,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-52382d6627d9b2cfca767dc4.jpg",
-        "sourceUrl": "https://plant-werk.nl/product/carex-flagellifera-kiwi/"
-      }
+      "demo": false
     },
     {
       "id": "plant-7e4d9af7322a93",
@@ -1668,11 +1584,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-60793b5cffe55f2ba55a1cc5.jpg",
-        "sourceUrl": "https://www.bigplantnursery.co.uk/shop/plants/flowers-and-grasses/carex-testacea-prairie-fire/"
-      }
+      "demo": false
     },
     {
       "id": "plant-carpinus-betulus",
@@ -1965,11 +1877,7 @@
       "searchAliases": [
         "Karl Fuchs"
       ],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-fbad9146995e8699ebc2dd04.jpg",
-        "sourceUrl": "https://www.vdberk.co.uk/trees/cedrus-deodara-karl-fuchs/"
-      }
+      "demo": false
     },
     {
       "id": "plant-03332cc004a85e",
@@ -1982,11 +1890,7 @@
         "Cedrus glauca Pendula",
         "Cedrus libani Glauca Pendula"
       ],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-5dbaacb633368463c6d10430.jpg",
-        "sourceUrl": "https://www.vdberk.co.uk/trees/cedrus-libani-glauca-pendula/"
-      }
+      "demo": false
     },
     {
       "id": "plant-celtis-australis",
@@ -2068,11 +1972,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-3910eaeb879acf4dd881097c.jpg",
-        "sourceUrl": "https://www.gbif.org/occurrence/6133063675"
-      }
+      "demo": false
     },
     {
       "id": "plant-2ebeb0e8ff455f",
@@ -2096,11 +1996,7 @@
         "Columnare",
         "Columnaris"
       ],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-08505b5350f1a40a0d678154.jpg",
-        "sourceUrl": "https://www.vdberk.co.uk/trees/chamaecyparis-lawsoniana-columnaris/"
-      }
+      "demo": false
     },
     {
       "id": "plant-f3c06d6a9c2baf",
@@ -2231,11 +2127,7 @@
       "searchAliases": [
         "Cornus florida f.rubra"
       ],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-a14ead775eb7042a9e1a5207.jpg",
-        "sourceUrl": "https://www.vdberk.co.uk/trees/cornus-florida-f-rubra/"
-      }
+      "demo": false
     },
     {
       "id": "plant-95fc3ec4ba0ae9",
@@ -2479,11 +2371,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-9beb73613a21419a6693a658.jpg",
-        "sourceUrl": "https://www.gbif.org/occurrence/6130557971"
-      }
+      "demo": false
     },
     {
       "id": "plant-b13d7ac3d86694",
@@ -2644,11 +2532,7 @@
         "Crataegus persimilis 'Splendens'",
         "Crataegus persimilis Splendens"
       ],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-95e3729311ee5e409715699c.jpg",
-        "sourceUrl": "https://www.vdberk.co.uk/trees/crataegus-persimilis-splendens/"
-      }
+      "demo": false
     },
     {
       "id": "plant-c049b88381debf",
@@ -2685,11 +2569,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-142818d1fe3e57e0c1486a52.jpg",
-        "sourceUrl": "https://www.gbif.org/occurrence/5938071226"
-      }
+      "demo": false
     },
     {
       "id": "plant-293f26f1672c4f",
@@ -2699,11 +2579,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-173aaa1fe98d4664416f3469.jpg",
-        "sourceUrl": "https://www.gbif.org/occurrence/6163101701"
-      }
+      "demo": false
     },
     {
       "id": "plant-11060d9ab7a41d",
@@ -2727,11 +2603,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-3493461d6bb1688354e53b5a.jpg",
-        "sourceUrl": "https://plant-werk.nl/product/deschampsia-cespitosa-palava/"
-      }
+      "demo": false
     },
     {
       "id": "plant-2ab84b946b895e",
@@ -2751,11 +2623,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-96a2c9462626dea2ff0184ff.jpg",
-        "sourceUrl": "https://odonals.com/product/deutzia-gracilis-nikko/"
-      }
+      "demo": false
     },
     {
       "id": "plant-b3ec587a9a14bd",
@@ -2847,11 +2715,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-54872a52d29bf7128b1647a1.jpg",
-        "sourceUrl": "https://plant-werk.nl/product/echinops-bannaticus-blue-glow/"
-      }
+      "demo": false
     },
     {
       "id": "plant-9e29aabd847d02",
@@ -2997,11 +2861,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-7d98d17d1264dac40046103f.jpg",
-        "sourceUrl": "https://www.gbif.org/occurrence/6129851284"
-      }
+      "demo": false
     },
     {
       "id": "plant-6e6c028f6b641b",
@@ -3301,11 +3161,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-374f721510f375e11d4b1ecb.jpg",
-        "sourceUrl": "https://www.vdberk.co.uk/trees/fagus-sylvatica-riversii/"
-      }
+      "demo": false
     },
     {
       "id": "plant-f45db48e72b497",
@@ -3318,11 +3174,7 @@
         "Fargesia nitida 'Black pearl'",
         "Fargesia nitida Black Pearl"
       ],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-0f3c48b6d27551aba79c7a7b.jpg",
-        "sourceUrl": "https://www.bigplantnursery.co.uk/shop/plants/bamboo/fargeisa/fargesia-nitida-black-pearl/"
-      }
+      "demo": false
     },
     {
       "id": "plant-8033602353d119",
@@ -3334,11 +3186,7 @@
       "searchAliases": [
         "Fargesia robusta Campbell"
       ],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-f7658dfe85b94d565abdbbbd.jpg",
-        "sourceUrl": "https://www.bigplantnursery.co.uk/shop/plants/bamboo/fargeisa/fargesia-robusta-campbell/"
-      }
+      "demo": false
     },
     {
       "id": "plant-4e7ed2976c3e5e",
@@ -3656,11 +3504,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-faff6434a519a739adab486f.jpg",
-        "sourceUrl": "https://majestictrees.co.uk/products/gleditsia-triacanthos-spectrum"
-      }
+      "demo": false
     },
     {
       "id": "plant-388d067861908f",
@@ -3747,11 +3591,7 @@
       "searchAliases": [
         "Hammamelis x intermedia"
       ],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-5872eb2f2f39e905c817626e.jpg",
-        "sourceUrl": "https://www.vdberk.co.uk/trees/hamamelis-intermedia/"
-      }
+      "demo": false
     },
     {
       "id": "plant-531d204e47ccbb",
@@ -3780,11 +3620,7 @@
         "Hamamelis intermedia 'Diane'",
         "Hamamelis intermedia Diane"
       ],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-c78e7eea602c851846babf93.jpg",
-        "sourceUrl": "https://www.provendernurseries.co.uk/factsheets/hamamelis-x-intermedia-diane"
-      }
+      "demo": false
     },
     {
       "id": "plant-b50f4e6010238c",
@@ -3818,11 +3654,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-d81352566bfb72627dc7ecfb.jpg",
-        "sourceUrl": "https://www.gbif.org/occurrence/6252983021"
-      }
+      "demo": false
     },
     {
       "id": "plant-d69ba2c451ed76",
@@ -3960,11 +3792,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-c24fd8e3d1733b0d02d1ef80.jpg",
-        "sourceUrl": "https://www.gbif.org/occurrence/6398676048"
-      }
+      "demo": false
     },
     {
       "id": "plant-eb65fbb228d141",
@@ -3976,8 +3804,8 @@
       "searchAliases": [],
       "demo": false,
       "photo": {
-        "image": "assets/biljke/reference-4ecb2ebd1efa6b4fb9179b25.jpg",
-        "sourceUrl": "https://www.viversplanas.com/en/products/hibiscus-syriacus/"
+        "image": "assets/biljke/reference-94baf70bea1145b17030d24c.jpg",
+        "sourceUrl": "https://webshop.vannuccipiante.it/product/hibiscus-syriacus/"
       }
     },
     {
@@ -4018,11 +3846,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-b5f56d8c3a84bdab77e47c43.jpg",
-        "sourceUrl": "https://secretgardengrowers.com/products/hosta-plantaginea"
-      }
+      "demo": false
     },
     {
       "id": "plant-a3569ab7034ab7",
@@ -4052,11 +3876,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-cf21b469b2aacd81cef62ada.jpg",
-        "sourceUrl": "https://plant-werk.nl/product/hosta-tardiana-halcyon/"
-      }
+      "demo": false
     },
     {
       "id": "plant-2b953880fcfed5",
@@ -4066,11 +3886,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-22cdeeae9310d68aa4e13289.jpg",
-        "sourceUrl": "https://www.ashwoodnurseries.com/product/hydrangea-arborescens-sweet-annabelle/"
-      }
+      "demo": false
     },
     {
       "id": "plant-cfbe4fb8f690dc",
@@ -4150,11 +3966,7 @@
         "Hydrangea 'Little Lime'",
         "Hydrangea paniculata Little Lime"
       ],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-8a8011d9fd70acf18bad4f03.jpg",
-        "sourceUrl": "https://secretgardengrowers.com/products/hydrangea-paniculata-little-lime"
-      }
+      "demo": false
     },
     {
       "id": "plant-4a0054b3f08374",
@@ -4601,11 +4413,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-f9eb6b52e9b3c8d703d340ac.jpg",
-        "sourceUrl": "https://www.gbif.org/occurrence/6147576131"
-      }
+      "demo": false
     },
     {
       "id": "plant-2c7f9070c4620c",
@@ -4747,11 +4555,7 @@
         "Liliodendron tulipifera 'Aureomarginatum'",
         "Liriodendron tulipifera Aureomarginatum"
       ],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-927f418fe5171bcfd4a67057.jpg",
-        "sourceUrl": "https://www.vdberk.co.uk/trees/liriodendron-tulipifera-aureomarginatum/"
-      }
+      "demo": false
     },
     {
       "id": "plant-f15e3e2208445c",
@@ -4761,11 +4565,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-ba463d0d72ed167792cb7950.jpg",
-        "sourceUrl": "https://www.gbif.org/occurrence/6188243368"
-      }
+      "demo": false
     },
     {
       "id": "plant-66b798eaf0e1c0",
@@ -5177,11 +4977,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-24f511f9a2a160f8e442c0c7.jpg",
-        "sourceUrl": "https://plant-werk.nl/product/miscanthus-sinensis-yaku-jima/"
-      }
+      "demo": false
     },
     {
       "id": "plant-c5bfa414e6300e",
@@ -5222,11 +5018,7 @@
         "Morus alba Fruitless",
         "Morus alba Fruitless ROOF"
       ],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-738b9348b3366022726cb3fa.jpg",
-        "sourceUrl": "https://www.viversplanas.com/en/products/morus-alba-fruitless/"
-      }
+      "demo": false
     },
     {
       "id": "plant-30e1ad5d1f2fc3",
@@ -5343,11 +5135,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-726477187283570f8eaf1b71.jpg",
-        "sourceUrl": "https://www.gbif.org/occurrence/6252498376"
-      }
+      "demo": false
     },
     {
       "id": "plant-98da30d6cdab1b",
@@ -5357,11 +5145,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-490fa8e0b423e405b8922de7.jpg",
-        "sourceUrl": "https://olddairynursery.com/products/ophiopogon-planiscapus-nigrescens"
-      }
+      "demo": false
     },
     {
       "id": "plant-2529f7d2d6db2b",
@@ -5406,11 +5190,7 @@
         "Osmanthus burkwoodii BALL",
         "Osmanthus burkwoodii UMBRELLA"
       ],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-dc8710a4cce2979f627ddcc2.jpg",
-        "sourceUrl": "https://majestictrees.co.uk/products/osmanthus-x-burkwoodii"
-      }
+      "demo": false
     },
     {
       "id": "plant-fb195caca9a6f0",
@@ -5465,11 +5245,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-4eb6b6aad58eb1765f9d0ee5.jpg",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Panicum_virgatum.jpg"
-      }
+      "demo": false
     },
     {
       "id": "plant-37d70ea5aaf3d4",
@@ -5586,11 +5362,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-26a3c11e09845c14b0561125.jpg",
-        "sourceUrl": "https://secretgardengrowers.com/products/pennisetum-orientale"
-      }
+      "demo": false
     },
     {
       "id": "plant-af43a57be76efb",
@@ -5656,11 +5428,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-40d7d3e4b8531629e559cdea.jpg",
-        "sourceUrl": "https://plant-werk.nl/product/persicaria-amplexicaulis-dark-red/"
-      }
+      "demo": false
     },
     {
       "id": "plant-7b646392cc2b04",
@@ -5680,11 +5448,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-1bdf2f22d40f15fe05d6bd70.jpg",
-        "sourceUrl": "https://olddairynursery.com/products/persicaria-bistorta"
-      }
+      "demo": false
     },
     {
       "id": "plant-8dfcdbd9a06e2e",
@@ -5749,11 +5513,7 @@
         "Photinia × fraseri 'Little Red Robin'",
         "photiniu little red robin"
       ],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-08f404d43209b223eff8c9e2.jpg",
-        "sourceUrl": "https://www.provendernurseries.co.uk/factsheets/photinia-x-fraseri-little-red-robin"
-      }
+      "demo": false
     },
     {
       "id": "plant-3a1aeb3df1ce96",
@@ -6208,11 +5968,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-a7bf5ac1f31548837a624540.jpg",
-        "sourceUrl": "https://www.gbif.org/occurrence/5938131257"
-      }
+      "demo": false
     },
     {
       "id": "plant-23e4f18822f860",
@@ -6293,11 +6049,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-e38e63c1f84ca48e2cef92f5.jpg",
-        "sourceUrl": "https://www.frankpmatthews.com/catalogue/ornamental-trees/prunus/prunus-kiku-shidare-zakura/"
-      }
+      "demo": false
     },
     {
       "id": "plant-76ea6b5f8f59d4",
@@ -6368,11 +6120,7 @@
         "Prunus cerasifera 'Pissardi'",
         "Prunus pissardii"
       ],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-82e39fbc9547215610ebc63a.jpg",
-        "sourceUrl": "https://majestictrees.co.uk/products/prunus-cerasifera-pissardii"
-      }
+      "demo": false
     },
     {
       "id": "plant-512dcc509b276f",
@@ -6796,11 +6544,7 @@
         "Prunus eminens 'Umbraculifera'",
         "Prunus eminens Umbraculifera"
       ],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-3f7760260a6b5e1968b38979.jpg",
-        "sourceUrl": "https://www.vdberk.co.uk/trees/prunus-eminens-umbraculifera/"
-      }
+      "demo": false
     },
     {
       "id": "plant-49e30437b17525",
@@ -6844,11 +6588,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-860b613b4b9a4b612c48cb18.jpg",
-        "sourceUrl": "https://www.gbif.org/occurrence/5938350921"
-      }
+      "demo": false
     },
     {
       "id": "plant-2523c81f647623",
@@ -6914,11 +6654,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-a0f273145c941b24c7ccbed3.jpg",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pyrusnivalis.jpg"
-      }
+      "demo": false
     },
     {
       "id": "plant-f00c55bd78dd3e",
@@ -7195,11 +6931,7 @@
       "searchAliases": [
         "Robinia pseud. 'Pyramidalis'"
       ],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-29d78ad9cad9a0d982be0cf5.jpg",
-        "sourceUrl": "https://www.vdberk.co.uk/trees/robinia-pseudoacacia-pyramidalis/"
-      }
+      "demo": false
     },
     {
       "id": "plant-ba23bb5bf35b89",
@@ -7239,11 +6971,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-8992bfa8b58d712b12c8b4c1.jpg",
-        "sourceUrl": "https://plant-werk.nl/product/rudbeckia-fulgida-goldsturm/"
-      }
+      "demo": false
     },
     {
       "id": "plant-c01671d345f47b",
@@ -7419,11 +7147,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-c9a01076b266d0eafebac3bc.jpg",
-        "sourceUrl": "https://www.gbif.org/occurrence/6162807633"
-      }
+      "demo": false
     },
     {
       "id": "plant-f7f490785ef2e3",
@@ -7433,11 +7157,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-23ab9ae28a824b93ba904cf8.jpg",
-        "sourceUrl": "https://www.provendernurseries.co.uk/product/salvia-x-sylvestris-mainacht"
-      }
+      "demo": false
     },
     {
       "id": "plant-ac61a7840ed626",
@@ -7475,11 +7195,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-5a5bc8c3a4d9240f1465e9f0.jpg",
-        "sourceUrl": "https://www.gbif.org/occurrence/6179000576"
-      }
+      "demo": false
     },
     {
       "id": "plant-3915d73e34b3bc",
@@ -7499,11 +7215,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-e845b1af723ab8aba9c62d9b.jpg",
-        "sourceUrl": "https://www.knollgardens.co.uk/product/sedum-herbstfreude-autumn-joy/"
-      }
+      "demo": false
     },
     {
       "id": "plant-70f7966491cea4",
@@ -7513,11 +7225,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-32fcef135e7d45045ec7743c.jpg",
-        "sourceUrl": "https://www.knollgardens.co.uk/product/sedum-matrona/"
-      }
+      "demo": false
     },
     {
       "id": "plant-22701ebacaa7bc",
@@ -7527,11 +7235,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-30e09522737eb6fd6f072f86.jpg",
-        "sourceUrl": "https://plant-werk.nl/product/sedum-purple-emperor/"
-      }
+      "demo": false
     },
     {
       "id": "plant-9c6500500727f1",
@@ -7569,11 +7273,7 @@
       "searchAliases": [
         "Sequoiadendron giganteum Glaucum"
       ],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-1814bbedca429f7e482469cf.jpg",
-        "sourceUrl": "https://www.vdberk.co.uk/trees/sequoiadendron-giganteum-glaucum/"
-      }
+      "demo": false
     },
     {
       "id": "plant-3790186abdcdff",
@@ -7667,11 +7367,7 @@
       "searchAliases": [
         "Spirea japonica"
       ],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-9334737fedc17bf526546584.jpg",
-        "sourceUrl": "https://www.gbif.org/occurrence/6470306802"
-      }
+      "demo": false
     },
     {
       "id": "plant-c18a6ed6995adb",
@@ -7744,11 +7440,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-080736ff8bc2a129157c7c19.jpg",
-        "sourceUrl": "https://www.gbif.org/occurrence/6452256318"
-      }
+      "demo": false
     },
     {
       "id": "plant-072321aa05ca04",
@@ -7957,11 +7649,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-d9100cb6b670897f371534e5.jpg",
-        "sourceUrl": "https://www.gbif.org/occurrence/5938398685"
-      }
+      "demo": false
     },
     {
       "id": "plant-e4fc9e40988f75",
@@ -8193,11 +7881,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-485f33e9bc1f1b804c30a607.jpg",
-        "sourceUrl": "https://www.vdberk.co.uk/trees/tilia-monticola/"
-      }
+      "demo": false
     },
     {
       "id": "plant-fb17183cc97f0d",
@@ -8270,11 +7954,7 @@
       "searchAliases": [
         "Tilia tomentosa Szeleste"
       ],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-bad80d653b5c34335fab8014.jpg",
-        "sourceUrl": "https://www.vdberk.co.uk/trees/tilia-tomentosa-szeleste/"
-      }
+      "demo": false
     },
     {
       "id": "plant-f909981347d7d7",
@@ -8288,11 +7968,7 @@
         "Tilia europaea 'Euchlora'",
         "Tilia europaea Euchlora"
       ],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-7bb4a437522f372d688fb372.jpg",
-        "sourceUrl": "https://www.vdberk.co.uk/trees/tilia-europaea-euchlora/"
-      }
+      "demo": false
     },
     {
       "id": "plant-44efd7cccf671a",
@@ -8339,11 +8015,7 @@
       "searchAliases": [
         "Ulmus New Horizon"
       ],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-0c9c270bae6ea0bdf3ea035c.jpg",
-        "sourceUrl": "https://commons.wikimedia.org/wiki/File:New_HorizonGFF.jpg"
-      }
+      "demo": false
     },
     {
       "id": "plant-0162fff99b173d",
@@ -8621,11 +8293,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-66694157bc68f91096930cb8.jpg",
-        "sourceUrl": "https://plant-werk.nl/product/vinca-minor-atropurpurea/"
-      }
+      "demo": false
     },
     {
       "id": "plant-1b5175e2a2f097",
@@ -8645,11 +8313,7 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-c7f16b5782fbb627f35e56c3.jpg",
-        "sourceUrl": "https://www.gbif.org/occurrence/6178320781"
-      }
+      "demo": false
     },
     {
       "id": "plant-eb1645a2cef42c",
