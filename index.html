@@ -786,22 +786,56 @@ body[data-view="search"] .search-field:focus-within .search-icon { color:var(--a
 }
 #plant-dialog { border:0; }
 
-/* One light pulse follows the crown, trunk and base, then returns to the crown. */
-.specimen-pulse use {
-  stroke-dasharray:3.5 96.5;
-  stroke-dashoffset:100;
-  animation:specimen-light-pulse 7s linear infinite;
+/* Approved circular Demetra mark with a pulse through trunk and base. */
+.dm2-wood { fill:none; stroke:var(--dm-ink,#243e2c); stroke-linecap:round; stroke-linejoin:round; }
+    .dm2-leaf { fill:var(--dm-leaf,#9eb76b); }
+    .dm2-leaf-dark { fill:var(--dm-ink,#243e2c); }
+    .dm2-pulse use { fill:none; stroke-linecap:round; stroke-dasharray:4.2 95.8; stroke-dashoffset:100; animation:demetra-signal-two 7s linear infinite; animation-play-state:var(--dm-play,running); }
+    .dm2-halo { stroke:var(--dm-glow,#d7f269); opacity:.85; }
+    .dm2-core { stroke:var(--dm-light,#fbffe9); }
+    @keyframes demetra-signal-two { from { stroke-dashoffset:100; } to { stroke-dashoffset:0; } }
+    @media(prefers-reduced-motion:reduce) { .dm2-pulse { display:none; } }
+    @media print { .dm2-pulse { display:none; } }
+
+/* One shared photograph belongs to the plant, outside supplier offers. */
+.detail-hero.with-photo { display:grid; grid-template-columns:minmax(0,1fr) 240px; align-items:center; gap:32px; }
+.detail-hero-copy { min-width:0; }
+.plant-photo { position:relative; width:100%; height:240px; overflow:hidden; border-radius:1px; background:#eef1e7; }
+.plant-photo img { display:block; width:100%; height:100%; object-fit:contain; }
+.plant-photo .empty-image { min-height:240px; padding:20px; text-align:center; }
+.offer-card-body.without-photo { grid-template-columns:minmax(0,1fr); }
+@media (max-width:700px) {
+  .detail-hero.with-photo { grid-template-columns:minmax(0,1fr); gap:22px; }
 }
-.specimen-pulse-halo { opacity:.85; }
-@keyframes specimen-light-pulse {
-  from { stroke-dashoffset:100; }
-  to { stroke-dashoffset:0; }
-}
-@media(prefers-reduced-motion:reduce) {
-  .specimen-pulse { display:none; }
+    
+/* Data-led cards: no image space exists until a photograph is present. */
+.detail-hero.without-photo { padding-top:38px; padding-bottom:35px; }
+.detail-hero.without-photo .detail-hero-copy { max-width:850px; }
+.detail-hero.without-photo .category-label { display:flex; align-items:center; gap:12px; }
+.detail-hero.without-photo .category-label::before { content:""; width:30px; height:2px; background:var(--accent); }
+.detail-hero.without-photo .detail-meta { display:inline-flex; margin-top:20px; padding:9px 13px; border:1px solid #ffffff30; color:#dce7d2; }
+.offer-card-body.without-photo { padding:25px; }
+.offer-card-body.without-photo .offer-details { display:grid; grid-template-columns:minmax(0,1fr) minmax(165px,23%); gap:14px 28px; align-items:start; }
+.offer-card-body.without-photo .offer-topline { grid-column:1 / -1; margin-bottom:0; }
+.offer-card-body.without-photo .measurements { grid-column:1; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0 24px; }
+.offer-card-body.without-photo .measurement { padding:12px 0; }
+.offer-card-body.without-photo .measurement dd:not(.missing) { font-size:16px; font-weight:500; }
+.offer-card-body.without-photo .offer-pricing { grid-column:2; grid-row:2; padding:19px 17px; background:#eef1e7; border-top:3px solid #a8bd79; overflow-wrap:anywhere; }
+.offer-card-body.without-photo .offer-price { display:block; }
+.offer-card-body.without-photo .offer-price strong { display:block; line-height:1.25; margin:8px 0; }
+.offer-card-body.without-photo .offer-price small { display:block; line-height:1.6; }
+.offer-card-body.without-photo .price-caption { line-height:1.5; }
+.offer-card-body.without-photo .offer-pricing .image-kind { margin-bottom:0; line-height:1.6; }
+@media (max-width:700px) {
+  .detail-hero.without-photo { padding:29px 22px; }
+  .offer-card-body.without-photo { padding:18px; }
+  .offer-card-body.without-photo .offer-details { grid-template-columns:minmax(0,1fr); gap:17px; }
+  .offer-card-body.without-photo .offer-pricing { grid-column:1; grid-row:auto; padding:15px 17px; }
+  .offer-card-body.without-photo .measurements { gap:0 16px; }
+  .offer-card-body.without-photo .measurement dd:not(.missing) { font-size:14px; }
 }
 
-    </style>
+</style>
   </head>
   <body data-view="search">
     <a class="skip-link" href="#main">Pređi na sadržaj</a>
@@ -822,26 +856,24 @@ body[data-view="search"] .search-field:focus-within .search-icon { color:var(--a
           <p class="search-lead">Fotografije, dimenzije i nabavne cene u digitalnoj kartici biljke.</p>
         </div>
         <figure class="specimen-study" aria-hidden="true">
-          <svg viewBox="0 0 340 310" fill="none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="demetra-mark" viewBox="0 0 340 310" role="img" aria-labelledby="dm2-title dm2-desc">
+            <title id="dm2-title">Demetra — kružni znak</title>
+            <desc id="dm2-desc">Kružna krošnja obuhvata mladu biljku sa dva lista. Impuls se kreće centralnim stablom i vodoravnom bazom.</desc>
             <defs>
-              <path id="specimen-pulse-track" d="M171 37V268H132H210H171V37" pathLength="100"/>
-              <filter id="specimen-pulse-glow" x="110" y="15" width="122" height="275" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                <feGaussianBlur stdDeviation="3"/>
+              <path id="dm2-flow" d="M170 66V241Q170 267 143 267H115H225H170V66" pathLength="100"/>
+              <filter id="dm2-glow" x="100" y="50" width="140" height="234" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                <feGaussianBlur stdDeviation="2.2"/>
               </filter>
             </defs>
-            <path d="M32 272H310M171 21V287" stroke="#aeb8a2" stroke-width="1"/>
-            <circle cx="171" cy="136" r="99" fill="#d7f269"/>
-            <path d="M171 37a99 99 0 0 0 0 198Z" fill="#243a2a"/>
-            <path d="M171 136v136" stroke="#17281d" stroke-width="13"/>
-            <path d="m171 207 59-58" stroke="#000000" stroke-width="6"/>
-            <path d="M171 179l-54-54" stroke="#f4f4ed" stroke-width="2"/>
-            <rect x="128" y="264" width="86" height="8" fill="#17281d"/>
-            <g class="specimen-pulse" fill="none" stroke-linecap="round" pointer-events="none">
-              <use href="#specimen-pulse-track" class="specimen-pulse-halo" stroke="#edffb7" stroke-width="12" filter="url(#specimen-pulse-glow)"/>
-              <use href="#specimen-pulse-track" class="specimen-pulse-core" stroke="#fcfff1" stroke-width="4"/>
+            <path class="dm2-wood" d="M136 207.34A90 90 0 1 1 170 214" stroke-width="9"/>
+            <path class="dm2-leaf-dark" d="M173 128C175 102 195 85 223 85C218 111 201 130 173 128Z"/>
+            <path class="dm2-leaf" d="M168 159C143 164 121 148 114 122C141 119 162 134 168 159Z"/>
+            <path class="dm2-wood" d="M170 66V267" stroke-width="13"/>
+            <path class="dm2-wood" d="M170 241Q170 267 143 267H115M170 241Q170 267 197 267H225M115 267H225" stroke-width="13"/>
+            <g class="dm2-pulse" pointer-events="none" aria-hidden="true">
+              <use href="#dm2-flow" class="dm2-halo" stroke-width="11" filter="url(#dm2-glow)"/>
+              <use href="#dm2-flow" class="dm2-core" stroke-width="3.4"/>
             </g>
-            <path d="M32 29h23M43.5 17.5v23" stroke="#263b2c"/>
-            <text x="60" y="302" fill="#64705d" font-size="10" letter-spacing="2" font-family="Arial,sans-serif">PRIRODA × STRUKTURA</text>
           </svg>
         </figure>
       </section>
@@ -1306,8 +1338,7 @@ function imageURL(value) {
 
 function imageMarkup(value, alt) {
   const src = imageURL(value);
-  return (src ? '<img src="' + escapeHTML(src) + '" alt="' + escapeHTML(alt) + '" loading="lazy" data-catalog-image>' : '') +
-    '<span class="empty-image"' + (src ? ' hidden' : '') + '><span>Fotografija nije dostupna u obrađenom izvoru</span></span>';
+  return src ? '<img src="' + escapeHTML(src) + '" alt="' + escapeHTML(alt) + '" loading="lazy" data-catalog-image>' : '';
 }
 
 function referencePhotoMarkup(plant) {
@@ -1315,9 +1346,8 @@ function referencePhotoMarkup(plant) {
   if (!photo || !imageURL(photo.image)) return '';
   // Legacy references that need attribution or show only a cultivar's parent
   // species cannot be displayed as an unlabelled exact photograph.
-  if (photo.matchLevel && (photo.matchLevel !== 'exact' || photo.status !== 'verified' ||
-      !/^(?:public domain|cc0(?: 1\.0)?|cc-zero)$/i.test(photo.license || ''))) return '';
-  return '<div class="offer-photo">' + imageMarkup(photo.image, plant.latinName) + '</div>';
+  if (photo.matchLevel || /(?:commons\.wikimedia\.org|(?:^|\/)www\.gbif\.org)/i.test(photo.sourceUrl || '')) return '';
+  return '<div class="plant-photo">' + imageMarkup(photo.image, plant.latinName) + '</div>';
 }
 
 function formattedDate(value) {
@@ -1330,14 +1360,20 @@ function formattedPrice(offer) {
   if (offer.price === null || offer.price === undefined || offer.price === '') return 'Cena nije navedena';
   const amount = Number(offer.price);
   if (!Number.isFinite(amount)) return 'Cena nije navedena';
-  if (!offer.currency) {
-    return new Intl.NumberFormat('sr-Latn-RS', { maximumFractionDigits: 2 }).format(amount);
-  }
+  const currency = offer.currency || 'EUR'; // Catalogue owner confirmed unlabelled prices are EUR.
   try {
     return new Intl.NumberFormat('sr-Latn-RS', {
-      style: 'currency', currency: offer.currency, maximumFractionDigits: 2
+      style: 'currency', currency, maximumFractionDigits: 2
     }).format(amount);
-  } catch { return amount.toLocaleString('sr-Latn-RS') + ' ' + (offer.currency || ''); }
+  } catch { return amount.toLocaleString('sr-Latn-RS') + ' ' + currency; }
+}
+
+function visiblePriceNote(offer) {
+  let note = offer.priceNote || '';
+  if (offer.price !== null && offer.price !== undefined && offer.price !== '' && (!offer.currency || offer.currency === 'EUR')) {
+    for (const phrase of ["Valuta nije navedena u izvornom cenovniku; iznos je prenet bez konverzije.", "Valuta nije navedena; iznos nije konvertovan.", "Valuta nije navedena u izvoru."]) note = note.replaceAll(phrase, '');
+  }
+  return note.replace(/\s+/g, ' ').trim();
 }
 
 function closeSuggestions() {
@@ -1515,6 +1551,7 @@ function renderOffer(offer, plant, nursery) {
     ...visibleAdditionalParameters(offer).map(({ label, value }) => [label, value])
   ];
   const dataNotes = visibleDataNotes(offer);
+  const priceNote = visiblePriceNote(offer);
   const hasPrice = offer.price !== null && offer.price !== undefined && offer.price !== '';
   const priceLabel = offer.priceKind === 'historical' ? 'Cena iz arhivirane ponude' : 'Nabavna cena iz ponude';
   const sourceLabel = escapeHTML(offer.source || 'Izvor nije naveden');
@@ -1525,13 +1562,12 @@ function renderOffer(offer, plant, nursery) {
   const supplierPhoto = imageURL(offer.image);
   const photoMarkup = supplierPhoto ?
     '<div class="offer-photo">' + imageMarkup(offer.image, plant.latinName + ' — ' + nursery.name) +
-    '</div>' :
-    referencePhotoMarkup(plant) || '<div class="offer-photo">' +
-      imageMarkup('', plant.latinName + ' — ' + nursery.name) + '</div>';
+    '</div>' : '';
 
   return '<article class="offer-card" data-offer-id="' + escapeHTML(offer.id) + '">' +
-    '<div class="offer-card-body"><div>' + photoMarkup +
-    '</div><div><div class="offer-topline"><span class="availability">' +
+    '<div class="offer-card-body' + (supplierPhoto ? '' : ' without-photo') + '">' +
+    (photoMarkup ? '<div class="offer-visual">' + photoMarkup + '</div>' : '') +
+    '<div class="offer-details"><div class="offer-topline"><span class="availability">' +
     escapeHTML(offer.availability || 'Dostupnost nije navedena') + '</span>' +
     (offer.demo || nursery.demo ? '<span class="demo-badge">Demo ponuda</span>' : '') +
     '</div><dl class="measurements">' +
@@ -1539,12 +1575,11 @@ function renderOffer(offer, plant, nursery) {
       '<div class="measurement"' + (fullWidth ? ' style="grid-column:1 / -1"' : '') + '><dt>' + escapeHTML(label) + '</dt><dd' +
       (!value || /nije|nepoznat/i.test(value) ? ' class="missing"' : '') + '>' +
       escapeHTML(value || 'Nije navedeno') + '</dd></div>'
-    ).join('') + '</dl><div class="price-caption">' + priceLabel + '</div>' +
+    ).join('') + '</dl><div class="offer-pricing"><div class="price-caption">' + priceLabel + '</div>' +
     '<div class="offer-price"><strong>' + escapeHTML(formattedPrice(offer)) +
-    '</strong><small>' + escapeHTML((hasPrice && !offer.currency ? 'Valuta nije navedena · ' : '') +
-      (hasPrice ? '/ ' + (offer.unit || 'kom') + ' · ' : '') +
+    '</strong><small>' + escapeHTML((hasPrice ? '/ ' + (offer.unit || 'kom') + ' · ' : '') +
       (offer.taxStatus || 'PDV nije naveden')) + '</small></div>' +
-    (offer.priceNote ? '<p class="image-kind">' + escapeHTML(offer.priceNote) + '</p>' : '') + '</div></div>' +
+    (priceNote ? '<p class="image-kind">' + escapeHTML(priceNote) + '</p>' : '') + '</div></div></div>' +
     '<div class="offer-footer"><div class="offer-source"><strong>' +
     sourceLink + '</strong><br>' + escapeHTML(sourceTiming) +
     (dataNotes.length ? '<br><strong>Tačnost podataka:</strong> ' + escapeHTML(dataNotes.join(' ')) : '') +
@@ -1566,20 +1601,19 @@ function renderEmptyRecord(plant) {
       });
     });
   }
-  const reference = referencePhotoMarkup(plant);
-  const withReference = content => reference ? '<div class="offer-card-body"><div>' + reference + '</div>' + content + '</div>' : content;
-  if (!notes.length) return withReference('<div class="empty-state detail-empty"><p>Ponude rasadnika za ovu biljku još nisu unete.</p></div>');
-  return withReference('<div class="empty-state detail-empty"><p><strong>Tačnost podataka</strong></p>' +
+  if (!notes.length) return '<div class="empty-state detail-empty"><p>Ponude rasadnika za ovu biljku još nisu unete.</p></div>';
+  return '<div class="empty-state detail-empty"><p><strong>Tačnost podataka</strong></p>' +
     notes.map((offer) => '<p data-review-offer-id="' + escapeHTML(offer.id) + '">' +
       escapeHTML(offer.dataAccuracyNote) +
       (offer.sourceFile ? '<br>Prilog: ' + escapeHTML(offer.sourceFile) : '') + '</p>').join('') +
     (replacementPlants.size ? '<p>Ovaj naziv je povezan sa ispravljenim zapisom biljke: ' +
       [...replacementPlants.values()].map((item) => '<a href="#plant=' + encodeURIComponent(item.id) + '">' +
-        escapeHTML(item.latinName) + '</a>').join(' · ') + '.</p>' : '') + '</div>');
+        escapeHTML(item.latinName) + '</a>').join(' · ') + '.</p>' : '') + '</div>';
 }
 
 function renderRecord(plant) {
   const offers = offersFor(plant.id);
+  const plantPhoto = referencePhotoMarkup(plant);
   const nurseryIds = [...new Set(offers.map((offer) => offer.nurseryId))].sort((left, right) =>
     (nurseryById(left)?.name || '').localeCompare(nurseryById(right)?.name || '')
   );
@@ -1587,14 +1621,14 @@ function renderRecord(plant) {
     '<div class="dialog-topline detail-topline"><span class="dialog-topline-label">Digitalna kartica biljke</span>' +
     '<div class="detail-topline-actions"><button type="button" class="icon-button" data-action="close-record" aria-label="Zatvori zapis i vrati se na pretragu">' +
     closeIcon + '</button></div></div>' +
-    '<div class="detail-hero"><p class="category-label">' +
+    '<div class="detail-hero' + (plantPhoto ? ' with-photo' : ' without-photo') + '"><div class="detail-hero-copy"><p class="category-label">' +
     escapeHTML(plant.category || 'Biljka') + (plant.demo ? ' · DEMO ZAPIS' : '') +
     '</p><h2 id="plant-detail-title">' + escapeHTML(plant.latinName) + '</h2>' +
     (plant.commonName ? '<p class="detail-common">' + escapeHTML(plant.commonName) + '</p>' : '') +
     (plant.description ? '<p class="detail-description">' + escapeHTML(plant.description) + '</p>' : '') +
     (plant.synonyms?.length ? '<p class="detail-synonyms">Drugi nazivi: ' + escapeHTML(plant.synonyms.join(' · ')) + '</p>' : '') +
     '<div class="detail-meta"><span>' + escapeHTML(nurseryCountLabel(nurseryIds.length) + ' · ' + offerCountLabel(offers.length)) +
-    '</span></div></div><div class="detail-body"><h3 class="section-label">Kataloški zapisi rasadnika</h3>' +
+    '</span></div></div>' + plantPhoto + '</div><div class="detail-body"><h3 class="section-label">Kataloški zapisi rasadnika</h3>' +
     (offers.length ? nurseryIds.map((nurseryId) => {
       const nursery = nurseryById(nurseryId) || { id: nurseryId, name: 'Rasadnik nije naveden', country: '' };
       const variants = offers.filter((offer) => offer.nurseryId === nurseryId);
@@ -1720,11 +1754,26 @@ dialog.addEventListener('close', () => {
   document.title = 'demetra rb index';
   history.replaceState(null, '', '#search');
 });
+function hideFailedPhoto(image) {
+  const plantPhoto = image.closest('.plant-photo');
+  if (plantPhoto) {
+    const hero = plantPhoto.closest('.detail-hero');
+    plantPhoto.remove();
+    hero?.classList.remove('with-photo');
+    hero?.classList.add('without-photo');
+    return;
+  }
+  const visual = image.closest('.offer-visual');
+  if (visual) {
+    visual.closest('.offer-card-body')?.classList.add('without-photo');
+    visual.remove();
+  }
+}
+
 dialog.addEventListener('error', (event) => {
   const image = event.target;
   if (image instanceof HTMLImageElement && image.hasAttribute('data-catalog-image')) {
-    image.hidden = true;
-    if (image.nextElementSibling?.classList.contains('empty-image')) image.nextElementSibling.hidden = false;
+    hideFailedPhoto(image);
   }
 }, true);
 window.addEventListener('hashchange', handleRoute);
