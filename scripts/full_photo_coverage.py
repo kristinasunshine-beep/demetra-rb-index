@@ -26,6 +26,8 @@ from update_photos import (DEFAULT_LIMITS, PhotoError, check_url, commit_files,
 from discover_nursery_photos import (build_policies, candidate_rank, discover,
                                     names_for, blocked_html)
 
+from photo_source_policy import allowed_policies, candidate_allowed, offered_nurseries, validate_sources
+
 INACTIVE = {'superseded', 'needs_review'}
 STATE = 'docs/full-photo-state.json'
 MANIFEST = 'docs/full-photo-manifest.json'
@@ -101,6 +103,7 @@ def taxonomy_keys(plants, config):
 
 def validate(root):
     root = Path(root).resolve()
+    validate_sources(root)
     plants = read(root, 'data/biljke.json')['plants']
     manifest = read(root, MANIFEST, {'plants':{}})['plants']
     taxon_keys=taxonomy_keys(plants,read(root,'scripts/full-photo-policy.json',{}))
@@ -219,7 +222,10 @@ def nursery_candidate(plant, item, policy, index, session, names=None):
     raise error
 
 
-def save_candidate(root, plant, candidate, session, pending, manifest):
+def save_candidate(root, plant, candidate, session, pending, manifest, policies=None):
+    policies = policies if policies is not None else allowed_policies(root)
+    if not candidate_allowed(candidate, policies):
+        raise PhotoError('outside_offer_nurseries', 'Only official catalogues of offer nurseries are allowed.')
     if candidate.get('imageUrl') in manifest.get('excludedImageUrls',[]):
         raise PhotoError('reviewed_image_exclusion','Source photo identity was not confirmed during review.')
     response = session.get(candidate['imageUrl'], hosts=candidate['imageHosts'],
@@ -227,10 +233,12 @@ def save_candidate(root, plant, candidate, session, pending, manifest):
     if response.content_type not in ('image/jpeg', 'image/png', 'image/webp', 'image/avif', 'image/gif'):
         raise PhotoError('invalid_image_type', 'Source did not return a raster photo.')
     jpeg = to_jpeg(response.body, DEFAULT_LIMITS)
-    store_jpeg(root, plant, candidate, jpeg, pending, manifest)
+    store_jpeg(root, plant, candidate, jpeg, pending, manifest, policies)
 
 
-def store_jpeg(root, plant, candidate, jpeg, pending, manifest):
+def store_jpeg(root, plant, candidate, jpeg, pending, manifest, policies=None):
+    if not candidate_allowed(candidate, policies if policies is not None else allowed_policies(root)):
+        raise PhotoError('outside_offer_nurseries', 'Photo source is not an official catalogue of an offer nursery.')
     if candidate.get('imageUrl') in manifest.get('excludedImageUrls',[]):
         raise PhotoError('reviewed_image_exclusion','Source photo identity was not confirmed during review.')
     with Image.open(BytesIO(jpeg)) as image:
@@ -287,11 +295,10 @@ def update_index(root, plants, offers, session, budget, seconds, config=None):
                 shutil.copy2(root/name, target/name)
         config = config or {}
         nursery_data = read(root, 'data/rasadnici.json')
-        nurseries = nursery_data['nurseries'] + config.get('additionalNurseries',[])
+        nurseries = offered_nurseries(root)
         nursery_data['nurseries'] = nurseries
         (target/'data/rasadnici.json').write_bytes(encoded(nursery_data))
         discovery_config=read(root,'scripts/photo-discovery.json')
-        discovery_config['sources'] += config.get('additionalSourcePolicies',[])
         (target/'scripts/photo-discovery.json').write_bytes(encoded(discovery_config))
         index=read(root,'docs/photo-discovery-state.json',{'schemaVersion':1,'nurseries':{},'pairs':{}})
         for item in config.get('observedPages',[]):
@@ -337,10 +344,7 @@ def run(root, *, request_budget=1000, max_seconds=1500, audit_only=False, fetche
     manifest = read(root, MANIFEST, {'schemaVersion':1, 'plants':{}, 'retiredReferences':{}})
     pending, events = {}, []
     session = Session(fetcher, request_budget, max_seconds)
-    nursery_list=read(root, 'data/rasadnici.json')['nurseries']+config.get('additionalNurseries',[])
-    discovery_config=read(root,'scripts/photo-discovery.json')
-    discovery_config['sources'] += config.get('additionalSourcePolicies',[])
-    policies = build_policies(nursery_list, read(root, 'scripts/photo-sources.json'), discovery_config)
+    policies = allowed_policies(root)
     index = read(root, 'docs/photo-discovery-state.json', {'schemaVersion':1,'nurseries':{},'pairs':{}})
     for item in config.get('observedPages',[]):
         ns=index['nurseries'].setdefault(item['nurseryId'],{'frontier':[],'visited':[],'pages':[],'robots':{}})
@@ -365,9 +369,11 @@ def run(root, *, request_budget=1000, max_seconds=1500, audit_only=False, fetche
             continue
         if set(photo) <= {'image', 'sourceUrl', 'status'}:
             record = manifest['plants'].get(plant['id'], {})
-            if record.get('imageUrl') not in manifest['excludedImageUrls'] and record.get('sha256') not in ambiguous_hashes and record.get('latinName') == plant['latinName'] and record.get('sourceUrl') == photo.get('sourceUrl') and record.get('image') == photo.get('image') and valid_image(root, photo.get('image'), record.get('sha256')):
+            if candidate_allowed(record, policies) and record.get('imageUrl') not in manifest['excludedImageUrls'] and record.get('sha256') not in ambiguous_hashes and record.get('latinName') == plant['latinName'] and record.get('sourceUrl') == photo.get('sourceUrl') and record.get('image') == photo.get('image') and valid_image(root, photo.get('image'), record.get('sha256')):
                 continue
         manifest.setdefault('retiredReferences', {})[plant['id']] = photo
+        if not candidate_allowed(manifest['plants'].get(plant['id'], {}), policies):
+            manifest.setdefault('sourcePolicyRetirements', {})[plant['id']] = {'photo': photo, 'reason': 'outside_offer_nurseries', 'retiredAt': now}
         plant.pop('photo', None)
     # Earlier catalogue references already carry plant/nursery/image bindings.
     # Reuse only complete, exact-name archive evidence and unambiguous images.
@@ -380,7 +386,7 @@ def run(root, *, request_budget=1000, max_seconds=1500, audit_only=False, fetche
         candidate['taxonKey']=taxon_keys[plant['id']]
         jpeg = candidate.pop('jpeg')
         try:
-            store_jpeg(root,plant,candidate,jpeg,pending,manifest)
+            store_jpeg(root,plant,candidate,jpeg,pending,manifest,policies)
         except PhotoError as exc:
             events.append({'stage':'archive','plantId':plant['id'],'status':'rejected','reason':exc.code})
     donors={taxon_keys[p['id']]:p for p in plants if p.get('photo')}
@@ -401,9 +407,9 @@ def run(root, *, request_budget=1000, max_seconds=1500, audit_only=False, fetche
             events.append({'stage':'nursery_index','status':stage['status'],'indexedPages':stage['indexedPages']})
         except (PhotoError, OSError, ValueError) as exc:
             events.append({'stage':'nursery_index','status':'source_error','reason':getattr(exc,'code','index_error'),'detail':str(exc)})
-    if providers is None and not audit_only:
-        from open_photo_sources import commons_candidates, gbif_candidates
-        providers = (commons_candidates, gbif_candidates)
+    # Optional injected resolvers must pass the same nursery source gate.
+    # Production searches exclusively the configured offer nurseries.
+    providers = providers or ()
     genera = {p['latinName'].split()[0].casefold() for p in plants}
     for item in index.get('nurseries', {}).values():
         item['_genusPages'] = {g:[] for g in genera}
@@ -443,7 +449,7 @@ def run(root, *, request_budget=1000, max_seconds=1500, audit_only=False, fetche
             try:
                 candidate = nursery_candidate(plant,item,policies[item['nurseryId']],index,session,photo_names)
                 candidate['taxonKey']=taxon_keys[plant['id']]
-                save_candidate(root,plant,candidate,session,pending,manifest)
+                save_candidate(root,plant,candidate,session,pending,manifest,policies)
                 done = True; break
             except Exhausted:
                 entry['nextCandidate'] = pos; exhausted = True; break
@@ -465,7 +471,7 @@ def run(root, *, request_budget=1000, max_seconds=1500, audit_only=False, fetche
                     for candidate in provider(plant['latinName'],fetcher=session.get):
                         candidate['taxonKey']=taxon_keys[plant['id']]
                         try:
-                            save_candidate(root,plant,candidate,session,pending,manifest)
+                            save_candidate(root,plant,candidate,session,pending,manifest,policies)
                             done=True; break
                         except Exhausted:
                             raise

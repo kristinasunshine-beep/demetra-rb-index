@@ -34,7 +34,7 @@ class ArchivePhotoRecoveryTests(unittest.TestCase):
         self.plants = [{'id': 'elsrijk', 'latinName': "Acer campestre 'Elsrijk'", 'searchAliases': ['Acer campestre']},
                        {'id': 'red-shine', 'latinName': "Acer campestre 'Red Shine'"}]
         self.write('data/biljke.json', {'plants': self.plants})
-        self.write('data/kataloske-stavke.json', {'offers': []})
+        self.write('data/kataloske-stavke.json', {'offers': [{'id':'archive-offer','plantId':'red-shine','nurseryId':'a-other'}]})
         self.write('data/rasadnici.json', {'nurseries': [
             {'id': nid, 'website': 'https://'+nid+'.example.org', 'verificationStatus': 'verified'}
             for nid in ('a-other', 'z-supplier')]})

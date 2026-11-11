@@ -100,9 +100,8 @@ def recover_candidates(root):
         return {}
     plants = {p['id']: p for p in _read(root, 'data/biljke.json', {}).get('plants', [])}
     offers = _read(root, 'data/kataloske-stavke.json', {}).get('offers', [])
-    policies = build_policies(_read(root, 'data/rasadnici.json', {}).get('nurseries', []),
-                              _read(root, 'scripts/photo-sources.json', {}),
-                              _read(root, 'scripts/photo-discovery.json', {}))
+    from photo_source_policy import allowed_policies
+    policies = allowed_policies(root)
     rejected = rejected_jpeg_hashes(root)
     rejected_urls = rejected_source_urls(root)
     suppliers = defaultdict(set)

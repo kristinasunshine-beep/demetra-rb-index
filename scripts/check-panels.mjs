@@ -288,8 +288,13 @@ export async function verifyPanels(root) {
         label + 'regresioni podatak mora pripadati odgovarajućoj ponudi.');
       if (Object.hasOwn(regression, 'price')) assert.equal(original.price, regression.price,
         label + 'cena iz poznatog izvornog reda mora ostati nepromenjena.');
-      if (Object.hasOwn(regression, 'currency')) assert.equal(original.currency, regression.currency,
-        label + 'valuta iz poznatog izvornog reda mora ostati nepromenjena.');
+      if (Object.hasOwn(regression, 'currency')) {
+        const confirmedEUR = !regression.currency && original.currencyStatus === 'owner_confirmed' &&
+          original.currencyEvidence?.origin === 'catalogue_owner_confirmation' &&
+          original.currencyEvidence?.reference === 'docs/currency-confirmation.json';
+        assert.equal(original.currency, confirmedEUR ? 'EUR' : regression.currency,
+          label + 'valuta mora odgovarati izvoru ili izricitoj potvrdi vlasnice kataloga.');
+      }
       if (Object.hasOwn(regression, 'sourceRow')) assert.equal(original.sourceEvidence?.row, regression.sourceRow,
         label + 'regresioni podatak mora ostati vezan za tačan red izvora.');
       if (regression.requiredNote) assert.equal(offer.dataAccuracyNote, regression.requiredNote,
@@ -326,9 +331,8 @@ export async function verifyPanels(root) {
     }
     const pricePanel = markup.match(/<div class="offer-price"><strong>([\s\S]*?)<\/strong>/)?.[1];
     const expectedPrice = offer.price === null ? 'Cena nije navedena' :
-      new Intl.NumberFormat('sr-Latn-RS', offer.currency ?
-        { style: 'currency', currency: offer.currency, maximumFractionDigits: 2 } :
-        { maximumFractionDigits: 2 }).format(offer.price);
+      new Intl.NumberFormat('sr-Latn-RS',
+        { style: 'currency', currency: offer.currency || 'EUR', maximumFractionDigits: 2 }).format(offer.price);
     assert.equal(pricePanel, esc(expectedPrice), label + 'izvorna cena mora biti u cenovnom panelu.');
   }
 

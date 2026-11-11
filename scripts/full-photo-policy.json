@@ -3,19 +3,14 @@
   "scope": "all_catalog_plants",
   "expectedInitialPlants": 619,
   "sourceOrder": [
+    "supplied_offer",
     "supplying_nursery",
-    "other_catalogue_nursery",
-    "commons",
-    "gbif"
+    "catalogue_of_offer_nursery"
   ],
   "allowSpeciesFallback": false,
   "publicPhotoFields": [
     "image",
     "sourceUrl"
-  ],
-  "openPhotoLicenses": [
-    "CC0",
-    "Public domain"
   ],
   "retryDays": 1,
   "maxNurseryCandidates": 12,
@@ -39,166 +34,9 @@
     "e7f60f00ea6dbff2201d792ceb7f61f703e1bd1531f505e7a1ca6077cdf0cc2d",
     "f9e15c42a054e3cdae830394fb68172ce1b3509a92fa031e5c7878c13f9ecd08"
   ],
-  "additionalNurseries": [
-    {
-      "id": "van-den-berk",
-      "website": "https://www.vdberk.com/",
-      "verificationStatus": "verified"
-    },
-    {
-      "id": "photo-knollgardens-co-uk",
-      "website": "https://www.knollgardens.co.uk/",
-      "verificationStatus": "verified"
-    },
-    {
-      "id": "photo-provendernurseries-co-uk",
-      "website": "https://www.provendernurseries.co.uk/",
-      "verificationStatus": "verified"
-    },
-    {
-      "id": "photo-olddairynursery-com",
-      "website": "https://olddairynursery.com/",
-      "verificationStatus": "verified"
-    },
-    {
-      "id": "photo-bluebellnursery-com",
-      "website": "https://www.bluebellnursery.com/",
-      "verificationStatus": "verified"
-    },
-    {
-      "id": "photo-ashwoodnurseries-com",
-      "website": "https://www.ashwoodnurseries.com/",
-      "verificationStatus": "verified"
-    },
-    {
-      "id": "photo-hoffmannursery-com",
-      "website": "https://hoffmannursery.com/",
-      "verificationStatus": "verified"
-    },
-    {
-      "id": "photo-monrovia-com",
-      "website": "https://www.monrovia.com/",
-      "verificationStatus": "verified"
-    },
-    {
-      "id": "photo-odonals-com",
-      "website": "https://odonals.com/",
-      "verificationStatus": "verified"
-    },
-    {
-      "id": "photo-unitychurchhillnursery-com",
-      "website": "https://unitychurchhillnursery.com/",
-      "verificationStatus": "verified"
-    },
-    {
-      "id": "photo-bigplantnursery-co-uk",
-      "website": "https://www.bigplantnursery.co.uk/",
-      "verificationStatus": "verified"
-    },
-    {
-      "id": "photo-duchyofcornwallnursery-co-uk",
-      "website": "https://www.duchyofcornwallnursery.co.uk/",
-      "verificationStatus": "verified"
-    },
-    {
-      "id": "photo-bowdensnursery-com",
-      "website": "https://www.bowdensnursery.com/",
-      "verificationStatus": "verified"
-    },
-    {
-      "id": "photo-frankpmatthews-com",
-      "website": "https://www.frankpmatthews.com/",
-      "verificationStatus": "verified"
-    },
-    {
-      "id": "photo-pepinierelemaire-be",
-      "website": "https://www.pepinierelemaire.be/",
-      "verificationStatus": "verified"
-    },
-    {
-      "id": "photo-majestictrees-co-uk",
-      "website": "https://majestictrees.co.uk/",
-      "verificationStatus": "verified"
-    },
-    {
-      "id": "photo-junker-co-uk",
-      "website": "https://www.junker.co.uk/",
-      "verificationStatus": "verified"
-    },
-    {
-      "id": "photo-botanic-cam-ac-uk",
-      "website": "https://www.botanic.cam.ac.uk/",
-      "verificationStatus": "verified"
-    },
-    {
-      "id": "photo-specialitytrees-com-au",
-      "website": "https://www.specialitytrees.com.au/",
-      "verificationStatus": "verified"
-    },
-    {
-      "id": "photo-kwekerijvlastuin-nl",
-      "website": "https://www.kwekerijvlastuin.nl/",
-      "verificationStatus": "verified"
-    },
-    {
-      "id": "photo-secretgardengrowers-com",
-      "website": "https://secretgardengrowers.com/",
-      "verificationStatus": "verified"
-    },
-    {
-      "id": "photo-petalfaire-co-za",
-      "website": "https://www.petalfaire.co.za/",
-      "verificationStatus": "verified"
-    },
-    {
-      "id": "photo-plant-werk-nl",
-      "website": "https://plant-werk.nl/",
-      "verificationStatus": "verified"
-    },
-    {
-      "id": "photo-sterkebollen-nl",
-      "website": "https://www.sterkebollen.nl/",
-      "verificationStatus": "verified"
-    }
-  ],
-  "additionalSourcePolicies": [
-    {
-      "nurseryId": "van-den-berk",
-      "pageHosts": [
-        "www.vdberk.com",
-        "www.vdberk.co.uk",
-        "www.vdberk.de",
-        "www.vdberk.nl"
-      ],
-      "imageHosts": [
-        "www.vdberk.com",
-        "www.vdberk.co.uk",
-        "www.vdberk.de",
-        "www.vdberk.nl"
-      ]
-    }
-  ],
+  "additionalNurseries": [],
+  "additionalSourcePolicies": [],
   "observedPages": [
-    {
-      "nurseryId": "van-den-berk",
-      "pageUrl": "https://www.vdberk.co.uk/trees/cedrus-deodara-karl-fuchs/"
-    },
-    {
-      "nurseryId": "van-den-berk",
-      "pageUrl": "https://www.vdberk.de/baume/betula-pendula-tristis/"
-    },
-    {
-      "nurseryId": "van-den-berk",
-      "pageUrl": "https://www.vdberk.co.uk/trees/tilia-tomentosa-szeleste/"
-    },
-    {
-      "nurseryId": "van-den-berk",
-      "pageUrl": "https://www.vdberk.com/trees/aesculus-indica/"
-    },
-    {
-      "nurseryId": "van-den-berk",
-      "pageUrl": "https://www.vdberk.co.uk/trees/larix-decidua/"
-    },
     {
       "nurseryId": "ebben",
       "pageUrl": "https://www.ebben.nl/en/treeebb/titszele-tilia-tomentosa-szeleste/"
@@ -224,132 +62,16 @@
       "pageUrl": "https://www.ebben.nl/en/treeebb/preumbra-prunus-x-eminens-umbraculifera/"
     },
     {
-      "nurseryId": "van-den-berk",
-      "pageUrl": "https://www.vdberk.co.uk/trees/liriodendron-tulipifera-aureomarginatum/"
-    },
-    {
-      "nurseryId": "van-den-berk",
-      "pageUrl": "https://www.vdberk.co.uk/trees/fagus-sylvatica-riversii/"
-    },
-    {
-      "nurseryId": "van-den-berk",
-      "pageUrl": "https://www.vdberk.co.uk/trees/prunus-eminens-umbraculifera/"
-    },
-    {
       "nurseryId": "innocenti-mangoni",
       "pageUrl": "https://innocentiemangonipiante.it/de/acer-palmatum-seiryu/"
-    },
-    {
-      "nurseryId": "photo-knollgardens-co-uk",
-      "pageUrl": "https://www.knollgardens.co.uk/product/calamagrostis-brachytricha/"
-    },
-    {
-      "nurseryId": "photo-provendernurseries-co-uk",
-      "pageUrl": "https://www.provendernurseries.co.uk/product/calamagrostis-brachytricha"
-    },
-    {
-      "nurseryId": "photo-olddairynursery-com",
-      "pageUrl": "https://olddairynursery.com/products/calamagrostis-brachytricha"
-    },
-    {
-      "nurseryId": "photo-bluebellnursery-com",
-      "pageUrl": "https://www.bluebellnursery.com/Euonymus/6633954-3664-Euonymus-fortunei-Harlequin.html"
-    },
-    {
-      "nurseryId": "photo-ashwoodnurseries-com",
-      "pageUrl": "https://www.ashwoodnurseries.com/product/euonymus-fortunei-harlequin/"
-    },
-    {
-      "nurseryId": "photo-hoffmannursery-com",
-      "pageUrl": "https://hoffmannursery.com/plants/details/carex-divulsa"
-    },
-    {
-      "nurseryId": "photo-hoffmannursery-com",
-      "pageUrl": "https://hoffmannursery.com/blog/article/carex-divulsa-workhorse-sedge-with-style"
-    },
-    {
-      "nurseryId": "photo-knollgardens-co-uk",
-      "pageUrl": "https://www.knollgardens.co.uk/product/sporobolus-heterolepis/"
-    },
-    {
-      "nurseryId": "photo-hoffmannursery-com",
-      "pageUrl": "https://hoffmannursery.com/plants/details/sporobolus-heterolepis"
-    },
-    {
-      "nurseryId": "photo-monrovia-com",
-      "pageUrl": "https://www.monrovia.com/big-blue-lilyturf.html"
-    },
-    {
-      "nurseryId": "photo-odonals-com",
-      "pageUrl": "https://odonals.com/product/deutzia-gracilis-nikko/"
-    },
-    {
-      "nurseryId": "photo-unitychurchhillnursery-com",
-      "pageUrl": "https://unitychurchhillnursery.com/collections/all-plants/products/deutzia-gracillis-nikko-dwarf-slender-deutzia"
-    },
-    {
-      "nurseryId": "photo-provendernurseries-co-uk",
-      "pageUrl": "https://www.provendernurseries.co.uk/product/hedera-helix-erecta-df"
-    },
-    {
-      "nurseryId": "photo-bigplantnursery-co-uk",
-      "pageUrl": "https://www.bigplantnursery.co.uk/shop/plants/bamboo/fargeisa/fargesia-robusta-campbell/"
-    },
-    {
-      "nurseryId": "photo-duchyofcornwallnursery-co-uk",
-      "pageUrl": "https://www.duchyofcornwallnursery.co.uk/plants/fargesia-robusta-campbell"
-    },
-    {
-      "nurseryId": "photo-bowdensnursery-com",
-      "pageUrl": "https://www.bowdensnursery.com/product/Bamboo-Fargesia-robusta-Campbell"
-    },
-    {
-      "nurseryId": "van-den-berk",
-      "pageUrl": "https://www.vdberk.co.uk/trees/chamaecyparis-lawsoniana-columnaris/"
     },
     {
       "nurseryId": "ebben",
       "pageUrl": "https://www.ebben.nl/en/treeebb/chlcolum-chamaecyparis-lawsoniana-columnaris/"
     },
     {
-      "nurseryId": "photo-frankpmatthews-com",
-      "pageUrl": "https://www.frankpmatthews.com/catalogue/ornamental-trees/betula/betula-golden-cloud/"
-    },
-    {
-      "nurseryId": "photo-pepinierelemaire-be",
-      "pageUrl": "https://www.pepinierelemaire.be/catalogue/betula-pendula-golden-cloud"
-    },
-    {
       "nurseryId": "ebben",
       "pageUrl": "https://www.ebben.nl/nl/treeebb/haidiane-hamamelis-x-intermedia-diane/"
-    },
-    {
-      "nurseryId": "photo-majestictrees-co-uk",
-      "pageUrl": "https://majestictrees.co.uk/products/acer-pacific-sunset"
-    },
-    {
-      "nurseryId": "van-den-berk",
-      "pageUrl": "https://www.vdberk.co.uk/trees/acer-freemanii-celebration-celzam/"
-    },
-    {
-      "nurseryId": "photo-majestictrees-co-uk",
-      "pageUrl": "https://majestictrees.co.uk/products/acer-freemanii-celebration"
-    },
-    {
-      "nurseryId": "van-den-berk",
-      "pageUrl": "https://www.vdberk.co.uk/trees/acer-platanoides-norwegian-sunset/"
-    },
-    {
-      "nurseryId": "photo-junker-co-uk",
-      "pageUrl": "https://www.junker.co.uk/magnolia%201.htm"
-    },
-    {
-      "nurseryId": "photo-botanic-cam-ac-uk",
-      "pageUrl": "https://www.botanic.cam.ac.uk/the-garden/plant-list/dipteronia-sinensis/"
-    },
-    {
-      "nurseryId": "photo-specialitytrees-com-au",
-      "pageUrl": "https://www.specialitytrees.com.au/trees/aesculus-indica-wsy7v"
     },
     {
       "nurseryId": "ebben",
@@ -358,26 +80,6 @@
     {
       "nurseryId": "ebben",
       "pageUrl": "https://www.ebben.nl/en/treeebb/sttenuis-stipa-tenuissima/"
-    },
-    {
-      "nurseryId": "photo-kwekerijvlastuin-nl",
-      "pageUrl": "https://www.kwekerijvlastuin.nl/stipa-tenuissima-pony-tails-vedergras-zeer-fijntjes.html"
-    },
-    {
-      "nurseryId": "photo-secretgardengrowers-com",
-      "pageUrl": "https://secretgardengrowers.com/products/hosta-plantaginea"
-    },
-    {
-      "nurseryId": "photo-petalfaire-co-za",
-      "pageUrl": "https://www.petalfaire.co.za/index.php?content=plants&id=1462&submenu=131"
-    },
-    {
-      "nurseryId": "photo-plant-werk-nl",
-      "pageUrl": "https://plant-werk.nl/product/liriope-muscari-big-blue/"
-    },
-    {
-      "nurseryId": "photo-sterkebollen-nl",
-      "pageUrl": "https://www.sterkebollen.nl/liriope-muscari-big-blue.html"
     }
   ],
   "exactNameAliases": {
@@ -899,5 +601,8 @@
         "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
       }
     ]
-  }
+  },
+  "sourceRestriction": "offer_nurseries_only",
+  "refreshDays": 30,
+  "refreshPerRun": 20
 }

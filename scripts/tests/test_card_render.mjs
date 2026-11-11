@@ -219,3 +219,14 @@ console.log(JSON.stringify({ ok: true, allKnownParametersInMainPanelForEveryType
   sourceContextAndOriginalNotesPreserved: true, additionalSourceParametersInMainPanel: true,
   sourcePolicyEnforced: true, notesEscaped: true,
   reviewExplainedWithoutUnconfirmedOffer: true }, null, 2));
+
+const confirmedEuro = render({price: 125.5, currency: '', currencyStatus:'not_stated',
+  priceNote:'Valuta nije navedena u izvornom cenovniku; iznos je prenet bez konverzije. Današnja cena i dostupnost nisu potvrđene.'});
+assert(confirmedEuro.includes('125,50') && confirmedEuro.includes('€'));
+assert(!confirmedEuro.includes('Valuta nije navedena'));
+assert(confirmedEuro.includes('Današnja cena i dostupnost nisu potvrđene.'));
+const noPrice = render({price:null,currency:''});
+assert(noPrice.includes('Cena nije navedena'));
+assert(!noPrice.includes('0,00'));
+const statedCurrency = render({price:1000,currency:'RSD'});
+assert(statedCurrency.includes('RSD') && !statedCurrency.includes('€'));

@@ -27,7 +27,7 @@ def bitmap(color=(20, 80, 30)):
 
 
 def candidate(name):
-    return {'provider': 'commons', 'imageUrl': 'https://images.example.org/' + name.replace(' ', '_') + '.png',
+    return {'provider': 'supplying_nursery', 'nurseryId': 'fixture', 'imageUrl': 'https://images.example.org/' + name.replace(' ', '_') + '.png',
             'sourceUrl': 'https://example.org/photo/' + name.replace(' ', '_'),
             'imageHosts': ['images.example.org'], 'license': 'CC0', 'matchedName': name,
             'identityEvidence': {'method': 'exact_name', 'canonicalName': name}}
@@ -42,9 +42,9 @@ class FullCoverageTests(unittest.TestCase):
                        {'id': 'b', 'latinName': 'Quercus robur', 'commonName': 'Oak', 'synonyms': []},
                        {'id': 'c', 'latinName': 'Tilia cordata', 'commonName': 'Lime', 'synonyms': []}]
         self.write('data/biljke.json', {'schemaVersion': 1, 'updatedAt': NOW, 'plants': self.plants})
-        self.write('data/kataloske-stavke.json', {'schemaVersion': 1, 'offers': []})
-        self.write('data/rasadnici.json', {'schemaVersion': 1, 'nurseries': []})
-        self.write('scripts/photo-sources.json', {'schemaVersion': 1, 'sources': []})
+        self.write('data/kataloske-stavke.json', {'schemaVersion': 1, 'offers': [{'id':'fixture-offer','plantId':'a','nurseryId':'fixture'}]})
+        self.write('data/rasadnici.json', {'schemaVersion': 1, 'nurseries': [{'id':'fixture','website':'https://example.org','verificationStatus':'verified'}]})
+        self.write('scripts/photo-sources.json', {'schemaVersion': 1, 'sources': [{'nurseryId':'fixture','pageHosts':['example.org'],'imageHosts':['images.example.org']}]})
         self.write('scripts/photo-discovery.json', {'schemaVersion': 1, 'sources': []})
         self.write('scripts/full-photo-policy.json', {'schemaVersion': 1, 'scope': 'all_catalog_plants',
                    'allowSpeciesFallback': False, 'maxNurseryCandidates': 1, 'retryDays': 7})
@@ -190,15 +190,15 @@ class FullCoverageTests(unittest.TestCase):
 
     def test_failed_first_provider_falls_through_to_next(self):
         called = []
-        def commons(name, **kwargs):
-            called.append(('commons', name))
+        def first_resolver(name, **kwargs):
+            called.append(('first_resolver', name))
             raise PhotoError('download_failed', 'Commons unavailable')
-        def gbif(name, **kwargs):
-            called.append(('gbif', name))
+        def second_resolver(name, **kwargs):
+            called.append(('second_resolver', name))
             yield candidate(name)
-        result = self.run_job(providers=[commons, gbif], fetcher=self.fetch_image)
+        result = self.run_job(providers=[first_resolver, second_resolver], fetcher=self.fetch_image)
         self.assertEqual(result['coverage']['plantsWithPhoto'], 3)
-        self.assertEqual([x[0] for x in called], ['commons', 'gbif']*3)
+        self.assertEqual([x[0] for x in called], ['first_resolver', 'second_resolver']*3)
 
     def test_identical_image_cannot_be_saved_for_different_taxa(self):
         def same_image(url, **kwargs):
@@ -244,24 +244,24 @@ class FullCoverageTests(unittest.TestCase):
         report = coverage.inventory(self.root, plants, offers)
         self.assertEqual(report['remainingOffers'], 1)
 
-    def test_provider_cursor_resumes_at_gbif_after_commons_finishes(self):
+    def test_provider_cursor_resumes_at_second_resolver_after_first_resolver_finishes(self):
         self.write('data/biljke.json', {'schemaVersion': 1, 'updatedAt': NOW, 'plants': self.plants[:1]})
         calls = []
-        def commons(name, *, fetcher):
-            calls.append('commons')
+        def first_resolver(name, *, fetcher):
+            calls.append('first_resolver')
             fetcher('https://images.example.org/search', hosts=['images.example.org'],
                     timeout=5, max_bytes=100000, kind='page')
             return iter(())
-        def gbif(name, **kwargs):
-            calls.append('gbif')
+        def second_resolver(name, **kwargs):
+            calls.append('second_resolver')
             yield candidate(name)
-        first = self.run_job(providers=[commons, gbif], fetcher=self.fetch_image, request_budget=1)
+        first = self.run_job(providers=[first_resolver, second_resolver], fetcher=self.fetch_image, request_budget=1)
         self.assertEqual(first['coverage']['plantsWithPhoto'], 0)
         self.assertEqual(self.read(coverage.STATE)['plants']['a']['nextProvider'], 1)
         calls.clear()
-        second = coverage.run(self.root, refresh_index=False, now=LATER, providers=[commons, gbif],
+        second = coverage.run(self.root, refresh_index=False, now=LATER, providers=[first_resolver, second_resolver],
                               fetcher=self.fetch_image, request_budget=1)
-        self.assertEqual(calls, ['gbif'])
+        self.assertEqual(calls, ['second_resolver'])
         self.assertEqual(second['coverage']['plantsWithPhoto'], 1)
         self.assertNotIn('nextProvider', self.read(coverage.STATE)['plants']['a'])
 
