@@ -1,0 +1,25 @@
+PRAVILA FOTOGRAFIJA I DIGITALNIH KARTICA — 11.11.2026.
+
+Dozvoljeni izvori
+Fotografije iz dostavljenih ponuda i zvaničnih online kataloga rasadnika koji imaju zapise u data/kataloske-stavke.json. U sadašnjoj bazi postoje 24 rasadnika, od kojih 12 ima unete ponude; 10 od tih 12 ima potvrđen online izvor. Rasadnici bez potvrđenog sajta mogu imati fotografije iz potvrđene arhive ponuda. Lista se određuje iz podataka, bez ručnog dodavanja drugih rasadnika radi popunjavanja praznih kartica.
+
+Redosled
+1. Proverena fotografija iz ponude ili postojeće tačno povezane arhive.
+2. Aktuelna stranica iste biljke kod njenog dobavljača iz ponude.
+3. Aktuelna stranica iste biljke kod drugog rasadnika koji takođe ima ponude u projektu.
+Wikimedia, GBIF, generičke fotografije i rasadnici van ponuda nisu dozvoljeni. Stari rezultati i privremeno sačuvane slike podležu istoj proveri.
+
+Identitet
+Mora biti potvrđen pun botanički naziv, uključujući kultivar. Naziv roda ili roditeljske vrste nije dovoljan. Dokumentovani sinonimi čuvaju se u internoj evidenciji. Slika koja je povezana sa različitim taksonima ostaje isključena dok identitet nije potvrđen.
+
+Prikaz
+Kartica bez fotografije nema kontejner ni poruku o nedostajućoj slici. Podaci zauzimaju raspoloživ prostor, a cena je izdvojena. Kada se potvrđena fotografija sačuva i objavi, sledeće učitavanje kartice automatski uključuje sliku. Neuspešno učitavanje slike uklanja njen okvir. Zajednička fotografija biljke prikazuje se jednom uz naslov; ponuda prikazuje samo svoju fotografiju. Izvor i tehnička evidencija fotografije nisu javni panel.
+
+Automatizacija
+Workflow update-photos.yml pokreće se svakog dana u 04:23 UTC, na izmene relevantnih datoteka i ručno. Pregleda svih 619 biljaka, traži nedostajuće fotografije u ograničenim prolazima i čuva poziciju u redu kandidata. Postojeće fotografije iz online kataloga proverava ponovo nakon 30 dana, najviše 20 po prolazu. Privremena nedostupnost izvora ne briše prethodnu proverenu fotografiju. Ne može se obećati fotografija za biljku za koju dozvoljeni izvori nemaju tačno potvrđen snimak.
+
+Datoteke
+Slike ostaju u assets/biljke/. U podacima biljke čuvaju se image i sourceUrl. Dokazi identiteta, izvora i isključenja čuvaju se u docs/. Provera izvora pokreće se i pre objave na GitHub Pages.
+
+Valuta
+Prema izričitoj potvrdi vlasnice kataloga od 11.11.2026, sve ranije neoznačene cene su u EUR. Dopunjeno je 1.798 zapisa. Iznosi nisu preračunati; originalni dokumenti i izvorna evidencija ostali su nepromenjeni. Potvrda i prethodne napomene sačuvane su u docs/currency-confirmation.json. Javne kartice ne prikazuju tehničku evidenciju ove izmene.

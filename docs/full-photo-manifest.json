@@ -1439,12 +1439,12 @@
       ],
       "imagePathPrefixes": null,
       "license": "existing_catalogue_source_policy",
-      "taxonKey": "cotoneaster x suecicus coral beauty",
       "latinName": "Cotoneaster x suecicus 'Coral Beauty'",
       "image": "assets/biljke/reference-00c3461d712e824d5b955f9e.jpg",
       "sha256": "00c3461d712e824d5b955f9e98278488c065441008be4c10fee7590a131579be",
-      "checkedAt": "2026-11-10T14:43:41Z",
-      "matchLevel": "exact"
+      "checkedAt": "2026-11-10T10:03:40Z",
+      "matchLevel": "exact",
+      "taxonKey": "cotoneaster x suecicus coral beauty"
     },
     "plant-30e1ad5d1f2fc3": {
       "provider": "other_catalogue_nursery",
@@ -4456,25 +4456,25 @@
     },
     "plant-955c2408fc889c": {
       "provider": "other_catalogue_nursery",
-      "nurseryId": "photo-majestictrees-co-uk",
-      "imageUrl": "https://majestictrees.co.uk/cdn/shop/files/11833-gleditsia-triacanthos-spectrum-mainim-600x600.jpg?v=1753343965&width=1920",
-      "sourceUrl": "https://majestictrees.co.uk/products/gleditsia-triacanthos-spectrum",
+      "nurseryId": "innocenti-mangoni",
+      "imageUrl": "https://innocentiemangonipiante.it/wp-content/uploads/2023/10/1610699208.jpg",
+      "sourceUrl": "https://innocentiemangonipiante.it/en/gleditsia-triacanthos-spectrum/",
       "matchedName": "Gleditsia triacanthos 'Spectrum'",
       "identityEvidence": {
         "method": "product_jsonld",
         "canonicalName": "Gleditsia triacanthos 'Spectrum'"
       },
       "imageHosts": [
-        "majestictrees.co.uk"
+        "innocentiemangonipiante.it"
       ],
       "imagePathPrefixes": null,
       "license": "existing_catalogue_source_policy",
-      "taxonKey": "gleditsia triacanthos spectrum",
       "latinName": "Gleditsia triacanthos 'Spectrum'",
-      "image": "assets/biljke/reference-faff6434a519a739adab486f.jpg",
-      "sha256": "faff6434a519a739adab486f99110d707b709915ee80bca7ed67f479721d4d2a",
-      "checkedAt": "2026-11-10T14:44:02Z",
-      "matchLevel": "exact"
+      "image": "assets/biljke/reference-e8393acc79b9753eaa56589b.jpg",
+      "sha256": "e8393acc79b9753eaa56589b9afb709d943263038654d77624e801416a7f265f",
+      "checkedAt": "2026-11-10T10:11:54Z",
+      "matchLevel": "exact",
+      "taxonKey": "gleditsia triacanthos spectrum"
     },
     "plant-9579a4e5d17e48": {
       "provider": "reviewed_primary_nursery",
@@ -7427,31 +7427,33 @@
       "taxonKey": "viburnum tinus"
     },
     "plant-eb65fbb228d141": {
-      "provider": "other_catalogue_nursery",
-      "nurseryId": "vivers-planas",
-      "imageUrl": "https://images.hoobaweb.com/1298/imgf-1200-630/hibiscus-syriacus3.jpg",
-      "sourceUrl": "https://www.viversplanas.com/en/products/hibiscus-syriacus/",
+      "provider": "archived_nursery",
+      "sourceUrl": "https://webshop.vannuccipiante.it/product/hibiscus-syriacus/",
+      "imageUrl": "https://webshop.vannuccipiante.it/wp-content/uploads/2026/05/4461___Hibiscus_syriacus___-2.jpg",
       "matchedName": "Hibiscus syriacus",
-      "identityEvidence": {
-        "method": "product_og_image",
-        "canonicalName": "Hibiscus syriacus"
-      },
-      "imageHosts": [
-        "images.hoobaweb.com",
-        "www.viversplanas.com"
-      ],
-      "imagePathPrefixes": {
-        "images.hoobaweb.com": [
-          "/1298/"
-        ]
-      },
+      "nurseryId": "vannucci-piante",
       "license": "existing_catalogue_source_policy",
+      "imageHosts": [
+        "webshop.vannuccipiante.it",
+        "www.vannuccipiante.it"
+      ],
+      "imagePathPrefixes": {},
+      "identityEvidence": {
+        "method": "existing_archive_association_and_exact_canonical_url",
+        "canonicalName": "Hibiscus syriacus",
+        "archiveReferenceId": "web-public-dfa27fa12a7a2b476e",
+        "archiveLocalPath": "assets/biljke/da75b099a1fe13be77db.jpg",
+        "freshRemotePageValidation": false,
+        "rawSha256": "f2dbefebf9e06cedf5d2e9771233cc5150886b62dd20e45e250b684c1e3311a1",
+        "pixelSha256": "b84e04794a84ac20b3d3e1ba71a9028c5d6df71c54712219be1edc0923c83c37",
+        "jpegSha256": "94baf70bea1145b17030d24cdcd3a6fe86e9b287d6977cef6f33234caa7919f9"
+      },
+      "taxonKey": "hibiscus syriacus",
       "latinName": "Hibiscus syriacus",
-      "image": "assets/biljke/reference-4ecb2ebd1efa6b4fb9179b25.jpg",
-      "sha256": "4ecb2ebd1efa6b4fb9179b250e36b6082ae88dcde7b84d935486120ec3814a95",
-      "checkedAt": "2026-11-10T10:18:59Z",
-      "matchLevel": "exact",
-      "taxonKey": "hibiscus syriacus"
+      "image": "assets/biljke/reference-94baf70bea1145b17030d24c.jpg",
+      "sha256": "94baf70bea1145b17030d24cdcd3a6fe86e9b287d6977cef6f33234caa7919f9",
+      "checkedAt": "2026-11-11T07:48:56Z",
+      "matchLevel": "exact"
     },
     "plant-eb681a076c5367": {
       "provider": "other_catalogue_nursery",
@@ -10379,204 +10381,6 @@
       "sha256": "df693df20b9b28de7cb6fef7a9ca3e67c18ae6b0abefbb2c3bc3554085c6708b",
       "checkedAt": "2026-11-10T11:35:25Z",
       "matchLevel": "exact"
-    },
-    "plant-a2a94fa0e6b6b7": {
-      "provider": "other_catalogue_nursery",
-      "nurseryId": "photo-olddairynursery-com",
-      "imageUrl": "https://olddairynursery.com/cdn/shop/files/Asteramellus_RudolfGoethe__latesummerblooms_OldDairyNursery_DSCF3992.jpg?v=1787859562",
-      "sourceUrl": "https://olddairynursery.com/products/aster-amellus-rudolf-goethe",
-      "matchedName": "Aster amellus 'Rudolf Goethe'",
-      "identityEvidence": {
-        "method": "product_og_image",
-        "canonicalName": "Aster amellus 'Rudolf Goethe'"
-      },
-      "imageHosts": [
-        "olddairynursery.com"
-      ],
-      "imagePathPrefixes": null,
-      "license": "existing_catalogue_source_policy",
-      "taxonKey": "aster amellus rudolf goethe",
-      "latinName": "Aster amellus 'Rudolf Goethe'",
-      "image": "assets/biljke/reference-5493f09b4a0e2cf6c5152d2b.jpg",
-      "sha256": "5493f09b4a0e2cf6c5152d2bd1bc7bf4dc7a720e827eb59251878f07535c572c",
-      "checkedAt": "2026-11-10T14:43:16Z",
-      "matchLevel": "exact"
-    },
-    "plant-cc21d9ee76f153": {
-      "provider": "other_catalogue_nursery",
-      "nurseryId": "photo-majestictrees-co-uk",
-      "imageUrl": "https://majestictrees.co.uk/cdn/shop/files/10044-acer-palm-seiryu-mainim-600x600.jpg?v=1694165784&width=1920",
-      "sourceUrl": "https://majestictrees.co.uk/products/acer-palmatum-seiryu",
-      "matchedName": "Acer palmatum 'Seiryu'",
-      "identityEvidence": {
-        "method": "product_jsonld",
-        "canonicalName": "Acer palmatum 'Seiryu'"
-      },
-      "imageHosts": [
-        "majestictrees.co.uk"
-      ],
-      "imagePathPrefixes": null,
-      "license": "existing_catalogue_source_policy",
-      "taxonKey": "acer palmatum seiryu",
-      "latinName": "Acer palmatum 'Seiryu'",
-      "image": "assets/biljke/reference-80b4ff9117d73b62b0b1b4e9.jpg",
-      "sha256": "80b4ff9117d73b62b0b1b4e997685508fc0bbd668933d9c39e1d35058101b2f9",
-      "checkedAt": "2026-11-10T14:43:16Z",
-      "matchLevel": "exact"
-    },
-    "plant-12d4512c15f964": {
-      "provider": "other_catalogue_nursery",
-      "nurseryId": "photo-majestictrees-co-uk",
-      "imageUrl": "https://majestictrees.co.uk/cdn/shop/files/10089-betula-ermanii-holland-othr01-600x600.jpg?v=1716453360&width=1920",
-      "sourceUrl": "https://majestictrees.co.uk/products/betula-ermanii-holland",
-      "matchedName": "Betula ermanii 'Holland'",
-      "identityEvidence": {
-        "method": "product_jsonld",
-        "canonicalName": "Betula ermanii 'Holland'"
-      },
-      "imageHosts": [
-        "majestictrees.co.uk"
-      ],
-      "imagePathPrefixes": null,
-      "license": "existing_catalogue_source_policy",
-      "taxonKey": "betula ermanii holland",
-      "latinName": "Betula ermanii 'Holland'",
-      "image": "assets/biljke/reference-f0daa827e18d05879cc99b8f.jpg",
-      "sha256": "f0daa827e18d05879cc99b8fe0df1bc5139636250ed77237d49772f3cad6aa69",
-      "checkedAt": "2026-11-10T14:43:23Z",
-      "matchLevel": "exact"
-    },
-    "plant-8ff82317ab73d4": {
-      "provider": "other_catalogue_nursery",
-      "nurseryId": "photo-secretgardengrowers-com",
-      "imageUrl": "https://secretgardengrowers.com/cdn/shop/products/HydrangeapaniculataLittleLime.jpg?v=1676083973&width=178",
-      "sourceUrl": "https://secretgardengrowers.com/products/hydrangea-paniculata-little-lime",
-      "matchedName": "Hydrangea paniculata 'Little Lime'",
-      "identityEvidence": {
-        "method": "product_jsonld",
-        "canonicalName": "Hydrangea paniculata 'Little Lime'"
-      },
-      "imageHosts": [
-        "secretgardengrowers.com"
-      ],
-      "imagePathPrefixes": null,
-      "license": "existing_catalogue_source_policy",
-      "taxonKey": "hydrangea paniculata little lime",
-      "latinName": "Hydrangea paniculata 'Little Lime'",
-      "image": "assets/biljke/reference-8a8011d9fd70acf18bad4f03.jpg",
-      "sha256": "8a8011d9fd70acf18bad4f03d0560e496d6ef2bd320c226806dce881bf22710c",
-      "checkedAt": "2026-11-10T14:44:05Z",
-      "matchLevel": "exact"
-    },
-    "plant-98da30d6cdab1b": {
-      "provider": "other_catalogue_nursery",
-      "nurseryId": "photo-olddairynursery-com",
-      "imageUrl": "https://olddairynursery.com/cdn/shop/files/798px-Ophiopogon_planiscapus__Nigrescens__kz01.jpg?v=1724101612",
-      "sourceUrl": "https://olddairynursery.com/products/ophiopogon-planiscapus-nigrescens",
-      "matchedName": "Ophiopogon planiscapus 'Nigrescens'",
-      "identityEvidence": {
-        "method": "product_og_image",
-        "canonicalName": "Ophiopogon planiscapus 'Nigrescens'"
-      },
-      "imageHosts": [
-        "olddairynursery.com"
-      ],
-      "imagePathPrefixes": null,
-      "license": "existing_catalogue_source_policy",
-      "taxonKey": "ophiopogon planiscapus nigrescens",
-      "latinName": "Ophiopogon planiscapus 'Nigrescens'",
-      "image": "assets/biljke/reference-490fa8e0b423e405b8922de7.jpg",
-      "sha256": "490fa8e0b423e405b8922de7ec19e38e99e06ce9e0ecc63ad3e8f051fbe5e36e",
-      "checkedAt": "2026-11-10T14:44:18Z",
-      "matchLevel": "exact"
-    },
-    "plant-b4ef8b5da580a2": {
-      "provider": "other_catalogue_nursery",
-      "nurseryId": "photo-secretgardengrowers-com",
-      "imageUrl": "https://secretgardengrowers.com/cdn/shop/files/PXL-20240731_003037618.jpg?v=1722455433&width=3072",
-      "sourceUrl": "https://secretgardengrowers.com/products/pennisetum-orientale",
-      "matchedName": "Pennisetum orientale",
-      "identityEvidence": {
-        "method": "product_jsonld",
-        "canonicalName": "Pennisetum orientale"
-      },
-      "imageHosts": [
-        "secretgardengrowers.com"
-      ],
-      "imagePathPrefixes": null,
-      "license": "existing_catalogue_source_policy",
-      "taxonKey": "cenchrus orientalis",
-      "latinName": "Pennisetum orientale",
-      "image": "assets/biljke/reference-26a3c11e09845c14b0561125.jpg",
-      "sha256": "26a3c11e09845c14b056112589a7115ed89fb0d63ae1a2684b8b92e8e9f0c346",
-      "checkedAt": "2026-11-10T14:44:19Z",
-      "matchLevel": "exact"
-    },
-    "plant-a673ae8c07c8a4": {
-      "provider": "other_catalogue_nursery",
-      "nurseryId": "photo-olddairynursery-com",
-      "imageUrl": "https://olddairynursery.com/cdn/shop/files/Schlangen-Knoterich__Bistorta_officinalis.jpg?v=1733673180",
-      "sourceUrl": "https://olddairynursery.com/products/persicaria-bistorta",
-      "matchedName": "Persicaria bistorta",
-      "identityEvidence": {
-        "method": "product_og_image",
-        "canonicalName": "Persicaria bistorta"
-      },
-      "imageHosts": [
-        "olddairynursery.com"
-      ],
-      "imagePathPrefixes": null,
-      "license": "existing_catalogue_source_policy",
-      "taxonKey": "persicaria bistorta",
-      "latinName": "Persicaria bistorta",
-      "image": "assets/biljke/reference-1bdf2f22d40f15fe05d6bd70.jpg",
-      "sha256": "1bdf2f22d40f15fe05d6bd703826ffd2c698bd485b78c91d46473b876d681329",
-      "checkedAt": "2026-11-10T14:44:20Z",
-      "matchLevel": "exact"
-    },
-    "plant-b1fc7ebad5242f": {
-      "provider": "other_catalogue_nursery",
-      "nurseryId": "photo-majestictrees-co-uk",
-      "imageUrl": "https://majestictrees.co.uk/cdn/shop/files/10990-osmanthus-burkwoodii-mainim-600x600.jpg?v=1693761710&width=1920",
-      "sourceUrl": "https://majestictrees.co.uk/products/osmanthus-x-burkwoodii",
-      "matchedName": "Osmanthus x burkwoodii",
-      "identityEvidence": {
-        "method": "product_jsonld",
-        "canonicalName": "Osmanthus x burkwoodii"
-      },
-      "imageHosts": [
-        "majestictrees.co.uk"
-      ],
-      "imagePathPrefixes": null,
-      "license": "existing_catalogue_source_policy",
-      "taxonKey": "osmanthus x burkwoodii",
-      "latinName": "Osmanthus x burkwoodii",
-      "image": "assets/biljke/reference-dc8710a4cce2979f627ddcc2.jpg",
-      "sha256": "dc8710a4cce2979f627ddcc2cabe71b0f745fab14e03a939a45183dbadb10fda",
-      "checkedAt": "2026-11-10T14:44:22Z",
-      "matchLevel": "exact"
-    },
-    "plant-ce3fc8d22cadc1": {
-      "provider": "other_catalogue_nursery",
-      "nurseryId": "photo-majestictrees-co-uk",
-      "imageUrl": "https://majestictrees.co.uk/cdn/shop/files/10393-prunus-cerasifera-pissardii-mainim-600x600.jpg?v=1782393870&width=1920",
-      "sourceUrl": "https://majestictrees.co.uk/products/prunus-cerasifera-pissardii",
-      "matchedName": "Prunus cerasifera 'Pissardii'",
-      "identityEvidence": {
-        "method": "product_jsonld",
-        "canonicalName": "Prunus cerasifera 'Pissardii'"
-      },
-      "imageHosts": [
-        "majestictrees.co.uk"
-      ],
-      "imagePathPrefixes": null,
-      "license": "existing_catalogue_source_policy",
-      "taxonKey": "prunus cerasifera pissardii",
-      "latinName": "Prunus cerasifera 'Pissardii'",
-      "image": "assets/biljke/reference-82e39fbc9547215610ebc63a.jpg",
-      "sha256": "82e39fbc9547215610ebc63a9330343212c055e26b5301a1bc00ed73ffc30bb5",
-      "checkedAt": "2026-11-10T14:44:37Z",
-      "matchLevel": "exact"
     }
   },
   "retiredReferences": {
@@ -10653,8 +10457,8 @@
       "sourceUrl": "https://innocentiemangonipiante.it/en/gleditsia-triacanthos-spectrum/"
     },
     "plant-f15e3e2208445c": {
-      "image": "assets/biljke/reference-e7f60f00ea6dbff2201d792c.jpg",
-      "sourceUrl": "https://www.lorberg.com/en-gb/article/2790/liriope-muscari"
+      "image": "assets/biljke/reference-ba463d0d72ed167792cb7950.jpg",
+      "sourceUrl": "https://www.gbif.org/occurrence/6188243368"
     },
     "plant-66b798eaf0e1c0": {
       "image": "assets/biljke/reference-e7f60f00ea6dbff2201d792c.jpg",
@@ -10665,12 +10469,12 @@
       "sourceUrl": "https://innocentiemangonipiante.it/en/picea-omorika/"
     },
     "plant-55f453754f82bd": {
-      "image": "assets/biljke/reference-17a0ead2ea587bb361b06395.jpg",
-      "sourceUrl": "https://smitsbv.nl/producten/aesculus-indica/"
+      "image": "assets/biljke/reference-09f08c60714f09eec81c8eb2.jpg",
+      "sourceUrl": "https://www.vdberk.com/trees/aesculus-indica/"
     },
     "plant-9579a4e5d17e48": {
-      "image": "assets/biljke/reference-433cfda1660b8abb16382287.jpg",
-      "sourceUrl": "https://www.gbif.org/occurrence/6451823846"
+      "image": "assets/biljke/reference-b5f56d8c3a84bdab77e47c43.jpg",
+      "sourceUrl": "https://secretgardengrowers.com/products/hosta-plantaginea"
     },
     "plant-f6d69bad2051c1": {
       "image": "assets/biljke/reference-036edb598df522dc58c1629d.jpg",
@@ -10687,6 +10491,294 @@
     "plant-30d9970c3195a1": {
       "image": "assets/biljke/reference-00c3461d712e824d5b955f9e.jpg",
       "sourceUrl": "https://www.lorberg.com/de-de/cotoneaster-x-suecicus-coral-beauty"
+    },
+    "plant-eceb6507153902": {
+      "image": "assets/biljke/reference-10107ee4ff0adc8ef73c3bdf.jpg",
+      "sourceUrl": "https://majestictrees.co.uk/products/acer-pacific-sunset"
+    },
+    "plant-80f1da5d27c0c6": {
+      "image": "assets/biljke/reference-edcfb913b9dc3b9f549d1161.jpg",
+      "sourceUrl": "https://biojela.rs/product/acer-palmatum-sangokaku/"
+    },
+    "plant-e94badbc80f8a8": {
+      "image": "assets/biljke/reference-7b0b0e26f33deed3f5b4a3f4.jpg",
+      "sourceUrl": "https://www.vdberk.co.uk/trees/acer-pseudoplatanus-worley/"
+    },
+    "plant-d4368472f69e93": {
+      "image": "assets/biljke/reference-e02753a905fc8685fbadcd60.jpg",
+      "sourceUrl": "https://www.vdberk.co.uk/trees/acer-saccharinum-asplenifolium/"
+    },
+    "plant-b066984e3e4f72": {
+      "image": "assets/biljke/reference-a3e0f3192f3fc593adb9b457.jpg",
+      "sourceUrl": "https://www.gbif.org/occurrence/6236179192"
+    },
+    "plant-274066fb782dbf": {
+      "image": "assets/biljke/reference-df693df20b9b28de7cb6fef7.jpg",
+      "sourceUrl": "https://www.gbif.org/occurrence/6498147350"
+    },
+    "plant-19779e0433bfdf": {
+      "image": "assets/biljke/reference-5803616b1e558669c4d088fb.jpg",
+      "sourceUrl": "https://plant-werk.nl/product/achillea-filipendulina-parkers-variety/"
+    },
+    "plant-43a8171726fcdd": {
+      "image": "assets/biljke/reference-e5fb21c479ce476a8bce28d1.jpg",
+      "sourceUrl": "https://plant-werk.nl/product/ajuga-reptans-catlins-giant/"
+    },
+    "plant-6350515e113bdc": {
+      "image": "assets/biljke/reference-556bd467374e3ca79f0ee4fd.jpg",
+      "sourceUrl": "https://plant-werk.nl/product/aster-novi-belgii-marie-ballard/"
+    },
+    "plant-3f2ccbb8f11141": {
+      "image": "assets/biljke/reference-7d247d626860d60b92e28e79.jpg",
+      "sourceUrl": "https://biojela.rs/product/berberis-thunbergii-erecta-2/"
+    },
+    "plant-bb1e99b3c785e2": {
+      "image": "assets/biljke/reference-c2492947e6b25fe7a89c4571.jpg",
+      "sourceUrl": "https://www.vdberk.co.uk/trees/betula-alleghaniensis/"
+    },
+    "plant-7b567e281367e3": {
+      "image": "assets/biljke/reference-c2492947e6b25fe7a89c4571.jpg",
+      "sourceUrl": "https://www.vdberk.co.uk/trees/betula-alleghaniensis/"
+    },
+    "plant-02376b686cafbb": {
+      "image": "assets/biljke/reference-c43922363160644d36322971.jpg",
+      "sourceUrl": "https://www.frankpmatthews.com/catalogue/ornamental-trees/betula/betula-pendula-tristis/"
+    },
+    "plant-73e835a5884bea": {
+      "image": "assets/biljke/reference-c509ca0f9060eab992133b5c.jpg",
+      "sourceUrl": "https://www.gbif.org/occurrence/5177124925"
+    },
+    "plant-69e36d8474e7d8": {
+      "image": "assets/biljke/reference-5c8cf5bcc9d45d60e66f0b53.jpg",
+      "sourceUrl": "https://www.knollgardens.co.uk/product/calamagrostis-brachytricha/"
+    },
+    "plant-ab0b485c7a1b12": {
+      "image": "assets/biljke/reference-b42badae90ee9a30cf3ad1b1.jpg",
+      "sourceUrl": "https://www.knollgardens.co.uk/product/carex-divulsa/"
+    },
+    "plant-68087a490ecfa8": {
+      "image": "assets/biljke/reference-52382d6627d9b2cfca767dc4.jpg",
+      "sourceUrl": "https://plant-werk.nl/product/carex-flagellifera-kiwi/"
+    },
+    "plant-6abc01a65c45b7": {
+      "image": "assets/biljke/reference-60793b5cffe55f2ba55a1cc5.jpg",
+      "sourceUrl": "https://www.bigplantnursery.co.uk/shop/plants/flowers-and-grasses/carex-testacea-prairie-fire/"
+    },
+    "plant-7f02e51df91d38": {
+      "image": "assets/biljke/reference-fbad9146995e8699ebc2dd04.jpg",
+      "sourceUrl": "https://www.vdberk.co.uk/trees/cedrus-deodara-karl-fuchs/"
+    },
+    "plant-03332cc004a85e": {
+      "image": "assets/biljke/reference-5dbaacb633368463c6d10430.jpg",
+      "sourceUrl": "https://www.vdberk.co.uk/trees/cedrus-libani-glauca-pendula/"
+    },
+    "plant-158e048d4ead5d": {
+      "image": "assets/biljke/reference-3910eaeb879acf4dd881097c.jpg",
+      "sourceUrl": "https://www.gbif.org/occurrence/6133063675"
+    },
+    "plant-0a77808e3edf13": {
+      "image": "assets/biljke/reference-08505b5350f1a40a0d678154.jpg",
+      "sourceUrl": "https://www.vdberk.co.uk/trees/chamaecyparis-lawsoniana-columnaris/"
+    },
+    "plant-aaebb1c1960940": {
+      "image": "assets/biljke/reference-a14ead775eb7042a9e1a5207.jpg",
+      "sourceUrl": "https://www.vdberk.co.uk/trees/cornus-florida-f-rubra/"
+    },
+    "plant-d22f43268706fa": {
+      "image": "assets/biljke/reference-9beb73613a21419a6693a658.jpg",
+      "sourceUrl": "https://www.gbif.org/occurrence/6130557971"
+    },
+    "plant-123479a69dd64f": {
+      "image": "assets/biljke/reference-95e3729311ee5e409715699c.jpg",
+      "sourceUrl": "https://www.vdberk.co.uk/trees/crataegus-persimilis-splendens/"
+    },
+    "plant-f25ea2bbece475": {
+      "image": "assets/biljke/reference-142818d1fe3e57e0c1486a52.jpg",
+      "sourceUrl": "https://www.gbif.org/occurrence/5938071226"
+    },
+    "plant-293f26f1672c4f": {
+      "image": "assets/biljke/reference-173aaa1fe98d4664416f3469.jpg",
+      "sourceUrl": "https://www.gbif.org/occurrence/6163101701"
+    },
+    "plant-262be7be43b526": {
+      "image": "assets/biljke/reference-3493461d6bb1688354e53b5a.jpg",
+      "sourceUrl": "https://plant-werk.nl/product/deschampsia-cespitosa-palava/"
+    },
+    "plant-f816663b421aad": {
+      "image": "assets/biljke/reference-96a2c9462626dea2ff0184ff.jpg",
+      "sourceUrl": "https://odonals.com/product/deutzia-gracilis-nikko/"
+    },
+    "plant-e5369db57b740e": {
+      "image": "assets/biljke/reference-54872a52d29bf7128b1647a1.jpg",
+      "sourceUrl": "https://plant-werk.nl/product/echinops-bannaticus-blue-glow/"
+    },
+    "plant-8f552578420d7e": {
+      "image": "assets/biljke/reference-7d98d17d1264dac40046103f.jpg",
+      "sourceUrl": "https://www.gbif.org/occurrence/6129851284"
+    },
+    "plant-f7baf961ce141f": {
+      "image": "assets/biljke/reference-374f721510f375e11d4b1ecb.jpg",
+      "sourceUrl": "https://www.vdberk.co.uk/trees/fagus-sylvatica-riversii/"
+    },
+    "plant-f45db48e72b497": {
+      "image": "assets/biljke/reference-0f3c48b6d27551aba79c7a7b.jpg",
+      "sourceUrl": "https://www.bigplantnursery.co.uk/shop/plants/bamboo/fargeisa/fargesia-nitida-black-pearl/"
+    },
+    "plant-8033602353d119": {
+      "image": "assets/biljke/reference-f7658dfe85b94d565abdbbbd.jpg",
+      "sourceUrl": "https://www.bigplantnursery.co.uk/shop/plants/bamboo/fargeisa/fargesia-robusta-campbell/"
+    },
+    "plant-42ed463c83d4dc": {
+      "image": "assets/biljke/reference-5872eb2f2f39e905c817626e.jpg",
+      "sourceUrl": "https://www.vdberk.co.uk/trees/hamamelis-intermedia/"
+    },
+    "plant-c1ccee0a920085": {
+      "image": "assets/biljke/reference-c78e7eea602c851846babf93.jpg",
+      "sourceUrl": "https://www.provendernurseries.co.uk/factsheets/hamamelis-x-intermedia-diane"
+    },
+    "plant-5c2da33cccb7f8": {
+      "image": "assets/biljke/reference-d81352566bfb72627dc7ecfb.jpg",
+      "sourceUrl": "https://www.gbif.org/occurrence/6252983021"
+    },
+    "plant-3da457b71894cb": {
+      "image": "assets/biljke/reference-c24fd8e3d1733b0d02d1ef80.jpg",
+      "sourceUrl": "https://www.gbif.org/occurrence/6398676048"
+    },
+    "plant-eb65fbb228d141": {
+      "image": "assets/biljke/reference-4ecb2ebd1efa6b4fb9179b25.jpg",
+      "sourceUrl": "https://www.viversplanas.com/en/products/hibiscus-syriacus/"
+    },
+    "plant-5acd0e95239a5f": {
+      "image": "assets/biljke/reference-cf21b469b2aacd81cef62ada.jpg",
+      "sourceUrl": "https://plant-werk.nl/product/hosta-tardiana-halcyon/"
+    },
+    "plant-2b953880fcfed5": {
+      "image": "assets/biljke/reference-22cdeeae9310d68aa4e13289.jpg",
+      "sourceUrl": "https://www.ashwoodnurseries.com/product/hydrangea-arborescens-sweet-annabelle/"
+    },
+    "plant-300c9363fc8e14": {
+      "image": "assets/biljke/reference-f9eb6b52e9b3c8d703d340ac.jpg",
+      "sourceUrl": "https://www.gbif.org/occurrence/6147576131"
+    },
+    "plant-8df6466e6a68e4": {
+      "image": "assets/biljke/reference-927f418fe5171bcfd4a67057.jpg",
+      "sourceUrl": "https://www.vdberk.co.uk/trees/liriodendron-tulipifera-aureomarginatum/"
+    },
+    "plant-7238b1ae51445f": {
+      "image": "assets/biljke/reference-24f511f9a2a160f8e442c0c7.jpg",
+      "sourceUrl": "https://plant-werk.nl/product/miscanthus-sinensis-yaku-jima/"
+    },
+    "plant-3911669b036d7c": {
+      "image": "assets/biljke/reference-738b9348b3366022726cb3fa.jpg",
+      "sourceUrl": "https://www.viversplanas.com/en/products/morus-alba-fruitless/"
+    },
+    "plant-f5569fc2e224b3": {
+      "image": "assets/biljke/reference-726477187283570f8eaf1b71.jpg",
+      "sourceUrl": "https://www.gbif.org/occurrence/6252498376"
+    },
+    "plant-52f7978caf4634": {
+      "image": "assets/biljke/reference-4eb6b6aad58eb1765f9d0ee5.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Panicum_virgatum.jpg"
+    },
+    "plant-84e72281feaa72": {
+      "image": "assets/biljke/reference-40d7d3e4b8531629e559cdea.jpg",
+      "sourceUrl": "https://plant-werk.nl/product/persicaria-amplexicaulis-dark-red/"
+    },
+    "plant-1b32527d81ccd6": {
+      "image": "assets/biljke/reference-08f404d43209b223eff8c9e2.jpg",
+      "sourceUrl": "https://www.provendernurseries.co.uk/factsheets/photinia-x-fraseri-little-red-robin"
+    },
+    "plant-344c699f8d0e4c": {
+      "image": "assets/biljke/reference-a7bf5ac1f31548837a624540.jpg",
+      "sourceUrl": "https://www.gbif.org/occurrence/5938131257"
+    },
+    "plant-b6576634224b1c": {
+      "image": "assets/biljke/reference-e38e63c1f84ca48e2cef92f5.jpg",
+      "sourceUrl": "https://www.frankpmatthews.com/catalogue/ornamental-trees/prunus/prunus-kiku-shidare-zakura/"
+    },
+    "plant-76a27aa2433b7d": {
+      "image": "assets/biljke/reference-3f7760260a6b5e1968b38979.jpg",
+      "sourceUrl": "https://www.vdberk.co.uk/trees/prunus-eminens-umbraculifera/"
+    },
+    "plant-90434f6cca0439": {
+      "image": "assets/biljke/reference-860b613b4b9a4b612c48cb18.jpg",
+      "sourceUrl": "https://www.gbif.org/occurrence/5938350921"
+    },
+    "plant-d6bc33f781049f": {
+      "image": "assets/biljke/reference-a0f273145c941b24c7ccbed3.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pyrusnivalis.jpg"
+    },
+    "plant-470f7318053ca5": {
+      "image": "assets/biljke/reference-29d78ad9cad9a0d982be0cf5.jpg",
+      "sourceUrl": "https://www.vdberk.co.uk/trees/robinia-pseudoacacia-pyramidalis/"
+    },
+    "plant-2f78aaf28d94d4": {
+      "image": "assets/biljke/reference-8992bfa8b58d712b12c8b4c1.jpg",
+      "sourceUrl": "https://plant-werk.nl/product/rudbeckia-fulgida-goldsturm/"
+    },
+    "plant-40eb8ef6290b82": {
+      "image": "assets/biljke/reference-c9a01076b266d0eafebac3bc.jpg",
+      "sourceUrl": "https://www.gbif.org/occurrence/6162807633"
+    },
+    "plant-f7f490785ef2e3": {
+      "image": "assets/biljke/reference-23ab9ae28a824b93ba904cf8.jpg",
+      "sourceUrl": "https://www.provendernurseries.co.uk/product/salvia-x-sylvestris-mainacht"
+    },
+    "plant-15283a66fb7d3e": {
+      "image": "assets/biljke/reference-5a5bc8c3a4d9240f1465e9f0.jpg",
+      "sourceUrl": "https://www.gbif.org/occurrence/6179000576"
+    },
+    "plant-6946aeac61fe92": {
+      "image": "assets/biljke/reference-e845b1af723ab8aba9c62d9b.jpg",
+      "sourceUrl": "https://www.knollgardens.co.uk/product/sedum-herbstfreude-autumn-joy/"
+    },
+    "plant-70f7966491cea4": {
+      "image": "assets/biljke/reference-32fcef135e7d45045ec7743c.jpg",
+      "sourceUrl": "https://www.knollgardens.co.uk/product/sedum-matrona/"
+    },
+    "plant-22701ebacaa7bc": {
+      "image": "assets/biljke/reference-30e09522737eb6fd6f072f86.jpg",
+      "sourceUrl": "https://plant-werk.nl/product/sedum-purple-emperor/"
+    },
+    "plant-eb55a52bc85a2b": {
+      "image": "assets/biljke/reference-1814bbedca429f7e482469cf.jpg",
+      "sourceUrl": "https://www.vdberk.co.uk/trees/sequoiadendron-giganteum-glaucum/"
+    },
+    "plant-50f7629c021cd0": {
+      "image": "assets/biljke/reference-9334737fedc17bf526546584.jpg",
+      "sourceUrl": "https://www.gbif.org/occurrence/6470306802"
+    },
+    "plant-43201d5e8991bc": {
+      "image": "assets/biljke/reference-080736ff8bc2a129157c7c19.jpg",
+      "sourceUrl": "https://www.gbif.org/occurrence/6452256318"
+    },
+    "plant-7fbdfd9e2dcc12": {
+      "image": "assets/biljke/reference-d9100cb6b670897f371534e5.jpg",
+      "sourceUrl": "https://www.gbif.org/occurrence/5938398685"
+    },
+    "plant-b96dc37004f9ff": {
+      "image": "assets/biljke/reference-485f33e9bc1f1b804c30a607.jpg",
+      "sourceUrl": "https://www.vdberk.co.uk/trees/tilia-monticola/"
+    },
+    "plant-d4771d309212f6": {
+      "image": "assets/biljke/reference-bad80d653b5c34335fab8014.jpg",
+      "sourceUrl": "https://www.vdberk.co.uk/trees/tilia-tomentosa-szeleste/"
+    },
+    "plant-f909981347d7d7": {
+      "image": "assets/biljke/reference-7bb4a437522f372d688fb372.jpg",
+      "sourceUrl": "https://www.vdberk.co.uk/trees/tilia-europaea-euchlora/"
+    },
+    "plant-2d6ea78c9fc019": {
+      "image": "assets/biljke/reference-0c9c270bae6ea0bdf3ea035c.jpg",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:New_HorizonGFF.jpg"
+    },
+    "plant-4466ccc42f55fb": {
+      "image": "assets/biljke/reference-66694157bc68f91096930cb8.jpg",
+      "sourceUrl": "https://plant-werk.nl/product/vinca-minor-atropurpurea/"
+    },
+    "plant-73e1d2d5aad5df": {
+      "image": "assets/biljke/reference-c7f16b5782fbb627f35e56c3.jpg",
+      "sourceUrl": "https://www.gbif.org/occurrence/6178320781"
     }
   },
   "excludedImageHashes": [
@@ -10719,5 +10811,2713 @@
       "Cotoneaster dammerii 'Skogholm'",
       "Cotoneaster x suecicus 'Coral Beauty'"
     ]
+  },
+  "sourcePolicyRetirements": {
+    "plant-eceb6507153902": {
+      "photo": {
+        "image": "assets/biljke/reference-10107ee4ff0adc8ef73c3bdf.jpg",
+        "sourceUrl": "https://majestictrees.co.uk/products/acer-pacific-sunset"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-majestictrees-co-uk",
+        "imageUrl": "https://majestictrees.co.uk/cdn/shop/files/11253-acer-pacific-sunset-5-600x600.jpg?v=1716450847&width=1920",
+        "sourceUrl": "https://majestictrees.co.uk/products/acer-pacific-sunset",
+        "matchedName": "Acer 'Pacific Sunset'",
+        "identityEvidence": {
+          "method": "product_jsonld",
+          "canonicalName": "Acer 'Pacific Sunset'"
+        },
+        "imageHosts": [
+          "majestictrees.co.uk"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "acer pacific sunset",
+        "latinName": "Acer 'Pacific Sunset'",
+        "image": "assets/biljke/reference-10107ee4ff0adc8ef73c3bdf.jpg",
+        "sha256": "10107ee4ff0adc8ef73c3bdfb8f2d262029ec33727cd4aee12cefa011c1085f6",
+        "checkedAt": "2026-11-10T11:13:25Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-80f1da5d27c0c6": {
+      "photo": {
+        "image": "assets/biljke/reference-edcfb913b9dc3b9f549d1161.jpg",
+        "sourceUrl": "https://biojela.rs/product/acer-palmatum-sangokaku/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "biojela",
+        "imageUrl": "https://media.biojela.rs/2021/04/3b-.jpg",
+        "sourceUrl": "https://biojela.rs/product/acer-palmatum-sangokaku/",
+        "matchedName": "Acer palmatum 'Sangokaku'",
+        "identityEvidence": {
+          "method": "product_og_image",
+          "canonicalName": "Acer palmatum 'Sangokaku'"
+        },
+        "imageHosts": [
+          "biojela.rs",
+          "media.biojela.rs"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "latinName": "Acer palmatum 'Sangokaku'",
+        "image": "assets/biljke/reference-edcfb913b9dc3b9f549d1161.jpg",
+        "sha256": "edcfb913b9dc3b9f549d11611d76918b58737de3c414fc9ac75efe175c110d6b",
+        "checkedAt": "2026-11-10T10:10:52Z",
+        "matchLevel": "exact",
+        "taxonKey": "acer palmatum sangokaku"
+      }
+    },
+    "plant-e94badbc80f8a8": {
+      "photo": {
+        "image": "assets/biljke/reference-7b0b0e26f33deed3f5b4a3f4.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/acer-pseudoplatanus-worley/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "van-den-berk",
+        "imageUrl": "https://www.vdberk.co.uk/media/5820/acer-pseudoplatanus-worley.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/acer-pseudoplatanus-worley/",
+        "matchedName": "Acer pseudoplatanus 'Worley'",
+        "identityEvidence": {
+          "method": "product_og_image",
+          "canonicalName": "Acer pseudoplatanus 'Worley'"
+        },
+        "imageHosts": [
+          "www.vdberk.co.uk",
+          "www.vdberk.com",
+          "www.vdberk.de",
+          "www.vdberk.nl"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "acer pseudoplatanus worley",
+        "latinName": "Acer pseudoplatanus 'Worley'",
+        "image": "assets/biljke/reference-7b0b0e26f33deed3f5b4a3f4.jpg",
+        "sha256": "7b0b0e26f33deed3f5b4a3f4eecfd4b55c3b31b0ce657c522c511e5583e24613",
+        "checkedAt": "2026-11-10T11:23:21Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-d4368472f69e93": {
+      "photo": {
+        "image": "assets/biljke/reference-e02753a905fc8685fbadcd60.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/acer-saccharinum-asplenifolium/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "van-den-berk",
+        "imageUrl": "https://www.vdberk.co.uk/media/6120/acer-saccharinum-asplenifolium.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/acer-saccharinum-asplenifolium/",
+        "matchedName": "Acer saccharinum 'Asplenifolium'",
+        "identityEvidence": {
+          "method": "product_og_image",
+          "canonicalName": "Acer saccharinum 'Asplenifolium'"
+        },
+        "imageHosts": [
+          "www.vdberk.co.uk",
+          "www.vdberk.com",
+          "www.vdberk.de",
+          "www.vdberk.nl"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "acer saccharinum asplenifolium",
+        "latinName": "Acer saccharinum 'Asplenifolium'",
+        "image": "assets/biljke/reference-e02753a905fc8685fbadcd60.jpg",
+        "sha256": "e02753a905fc8685fbadcd6083b3b0f2f753a3ed93811ff861722fad7e915bbb",
+        "checkedAt": "2026-11-10T11:23:22Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-b066984e3e4f72": {
+      "photo": {
+        "image": "assets/biljke/reference-a3e0f3192f3fc593adb9b457.jpg",
+        "sourceUrl": "https://www.gbif.org/occurrence/6236179192"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "gbif",
+        "imageUrl": "https://api.gbif.org/v1/image/cache/1200x/occurrence/6236179192/media/79455dc907b38592abe6577cf540b4cb",
+        "sourceUrl": "https://www.gbif.org/occurrence/6236179192",
+        "matchedName": "Acer tataricum",
+        "identityEvidence": [
+          "Acer tataricum"
+        ],
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "imageHosts": [
+          "api.gbif.org"
+        ],
+        "imagePathPrefixes": {
+          "api.gbif.org": [
+            "/v1/image/cache/"
+          ]
+        },
+        "latinName": "Acer tataricum",
+        "image": "assets/biljke/reference-a3e0f3192f3fc593adb9b457.jpg",
+        "sha256": "a3e0f3192f3fc593adb9b45757cde6bf0c669ee8e5e30e0a008bad48d436c4fa",
+        "checkedAt": "2026-11-10T10:14:27Z",
+        "matchLevel": "exact",
+        "taxonKey": "acer tataricum"
+      }
+    },
+    "plant-274066fb782dbf": {
+      "photo": {
+        "image": "assets/biljke/reference-df693df20b9b28de7cb6fef7.jpg",
+        "sourceUrl": "https://www.gbif.org/occurrence/6498147350"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "gbif",
+        "imageUrl": "https://api.gbif.org/v1/image/cache/1200x/occurrence/6498147350/media/35d3c6005824b493ed8953de2b3eeb46",
+        "sourceUrl": "https://www.gbif.org/occurrence/6498147350",
+        "matchedName": "Acer freemanii",
+        "identityEvidence": [
+          "Acer freemanii"
+        ],
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "imageHosts": [
+          "api.gbif.org"
+        ],
+        "imagePathPrefixes": {
+          "api.gbif.org": [
+            "/v1/image/cache/"
+          ]
+        },
+        "taxonKey": "acer freemanii",
+        "latinName": "Acer x freemanii",
+        "image": "assets/biljke/reference-df693df20b9b28de7cb6fef7.jpg",
+        "sha256": "df693df20b9b28de7cb6fef7a9ca3e67c18ae6b0abefbb2c3bc3554085c6708b",
+        "checkedAt": "2026-11-10T11:35:25Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-19779e0433bfdf": {
+      "photo": {
+        "image": "assets/biljke/reference-5803616b1e558669c4d088fb.jpg",
+        "sourceUrl": "https://plant-werk.nl/product/achillea-filipendulina-parkers-variety/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-plant-werk-nl",
+        "imageUrl": "https://plant-werk.nl/wp-content/uploads/Achillea-filipendulina-Parkers-Variety-bloem3.jpg",
+        "sourceUrl": "https://plant-werk.nl/product/achillea-filipendulina-parkers-variety/",
+        "matchedName": "Achillea filipendulina 'Parker's Variety'",
+        "identityEvidence": {
+          "method": "product_jsonld",
+          "canonicalName": "Achillea filipendulina 'Parker's Variety'"
+        },
+        "imageHosts": [
+          "plant-werk.nl"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "achillea filipendulina parkers variety",
+        "latinName": "Achillea filipendulina 'Parker's Variety'",
+        "image": "assets/biljke/reference-5803616b1e558669c4d088fb.jpg",
+        "sha256": "5803616b1e558669c4d088fb7d5d444926ba67cb309c294420457d256ff11434",
+        "checkedAt": "2026-11-10T11:23:23Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-55f453754f82bd": {
+      "photo": {
+        "image": "assets/biljke/reference-09f08c60714f09eec81c8eb2.jpg",
+        "sourceUrl": "https://www.vdberk.com/trees/aesculus-indica/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "van-den-berk",
+        "imageUrl": "https://www.vdberk.com/media/7230/aesculus-indica.jpg",
+        "sourceUrl": "https://www.vdberk.com/trees/aesculus-indica/",
+        "matchedName": "Aesculus indica",
+        "identityEvidence": {
+          "method": "product_og_image",
+          "canonicalName": "Aesculus indica"
+        },
+        "imageHosts": [
+          "www.vdberk.co.uk",
+          "www.vdberk.com",
+          "www.vdberk.de",
+          "www.vdberk.nl"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "aesculus indica",
+        "latinName": "Aesculus indica",
+        "image": "assets/biljke/reference-09f08c60714f09eec81c8eb2.jpg",
+        "sha256": "09f08c60714f09eec81c8eb206ca9772490485be47965f5db4272fdeaa29fb13",
+        "checkedAt": "2026-11-10T11:13:29Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-43a8171726fcdd": {
+      "photo": {
+        "image": "assets/biljke/reference-e5fb21c479ce476a8bce28d1.jpg",
+        "sourceUrl": "https://plant-werk.nl/product/ajuga-reptans-catlins-giant/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-plant-werk-nl",
+        "imageUrl": "https://plant-werk.nl/wp-content/uploads/Ajuga-reptans-Catlins-Giant-bloem-1.jpg",
+        "sourceUrl": "https://plant-werk.nl/product/ajuga-reptans-catlins-giant/",
+        "matchedName": "Ajuga reptans 'Catlins Giant'",
+        "identityEvidence": {
+          "method": "product_jsonld",
+          "canonicalName": "Ajuga reptans 'Catlins Giant'"
+        },
+        "imageHosts": [
+          "plant-werk.nl"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "ajuga reptans catlins giant",
+        "latinName": "Ajuga reptans 'Catlins Giant'",
+        "image": "assets/biljke/reference-e5fb21c479ce476a8bce28d1.jpg",
+        "sha256": "e5fb21c479ce476a8bce28d1d576d53b25e1b6ce2703a66f29e2ec555166df29",
+        "checkedAt": "2026-11-10T11:23:23Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-6350515e113bdc": {
+      "photo": {
+        "image": "assets/biljke/reference-556bd467374e3ca79f0ee4fd.jpg",
+        "sourceUrl": "https://plant-werk.nl/product/aster-novi-belgii-marie-ballard/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-plant-werk-nl",
+        "imageUrl": "https://plant-werk.nl/wp-content/uploads/Aster-novi-belgii-Marie-Ballard-bloem-1-scaled.jpg",
+        "sourceUrl": "https://plant-werk.nl/product/aster-novi-belgii-marie-ballard/",
+        "matchedName": "Aster novi belgii 'Marie ballard'",
+        "identityEvidence": {
+          "method": "product_jsonld",
+          "canonicalName": "Aster novi belgii 'Marie ballard'"
+        },
+        "imageHosts": [
+          "plant-werk.nl"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "aster novi belgii marie ballard",
+        "latinName": "Aster novi belgii 'Marie ballard'",
+        "image": "assets/biljke/reference-556bd467374e3ca79f0ee4fd.jpg",
+        "sha256": "556bd467374e3ca79f0ee4fd2dee8c525aa8f3dc820afcf9bf3b64677447a57a",
+        "checkedAt": "2026-11-10T11:23:25Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-3f2ccbb8f11141": {
+      "photo": {
+        "image": "assets/biljke/reference-7d247d626860d60b92e28e79.jpg",
+        "sourceUrl": "https://biojela.rs/product/berberis-thunbergii-erecta-2/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "biojela",
+        "imageUrl": "https://media.biojela.rs/2021/11/5-1.jpg",
+        "sourceUrl": "https://biojela.rs/product/berberis-thunbergii-erecta-2/",
+        "matchedName": "Berberis thunbergii 'Erecta'",
+        "identityEvidence": {
+          "method": "product_og_image",
+          "canonicalName": "Berberis thunbergii 'Erecta'"
+        },
+        "imageHosts": [
+          "biojela.rs",
+          "media.biojela.rs"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "latinName": "Berberis thunbergii 'Erecta'",
+        "image": "assets/biljke/reference-7d247d626860d60b92e28e79.jpg",
+        "sha256": "7d247d626860d60b92e28e7906c20d252da34debbe270ed1723a4665989c3ea8",
+        "checkedAt": "2026-11-10T10:05:04Z",
+        "matchLevel": "exact",
+        "taxonKey": "berberis thunbergii erecta"
+      }
+    },
+    "plant-bb1e99b3c785e2": {
+      "photo": {
+        "image": "assets/biljke/reference-c2492947e6b25fe7a89c4571.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/betula-alleghaniensis/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "van-den-berk",
+        "imageUrl": "https://www.vdberk.co.uk/media/11990/betula-alleghaniensis.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/betula-alleghaniensis/",
+        "matchedName": "Betula alleghaniensis",
+        "identityEvidence": {
+          "method": "product_og_image",
+          "canonicalName": "Betula alleghaniensis"
+        },
+        "imageHosts": [
+          "www.vdberk.co.uk",
+          "www.vdberk.com",
+          "www.vdberk.de",
+          "www.vdberk.nl"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "betula alleghaniensis",
+        "latinName": "Betula alleghaniensis",
+        "image": "assets/biljke/reference-c2492947e6b25fe7a89c4571.jpg",
+        "sha256": "c2492947e6b25fe7a89c4571e35b21ffacd1bb8ec95aa945548ec6e728ac6e00",
+        "checkedAt": "2026-11-10T11:23:26Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-7b567e281367e3": {
+      "photo": {
+        "image": "assets/biljke/reference-c2492947e6b25fe7a89c4571.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/betula-alleghaniensis/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "van-den-berk",
+        "imageUrl": "https://www.vdberk.co.uk/media/11990/betula-alleghaniensis.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/betula-alleghaniensis/",
+        "matchedName": "Betula alleghaniensis",
+        "identityEvidence": {
+          "method": "product_og_image",
+          "canonicalName": "Betula alleghaniensis"
+        },
+        "imageHosts": [
+          "www.vdberk.co.uk",
+          "www.vdberk.com",
+          "www.vdberk.de",
+          "www.vdberk.nl"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "betula alleghaniensis",
+        "latinName": "Betula lutea",
+        "image": "assets/biljke/reference-c2492947e6b25fe7a89c4571.jpg",
+        "sha256": "c2492947e6b25fe7a89c4571e35b21ffacd1bb8ec95aa945548ec6e728ac6e00",
+        "checkedAt": "2026-11-10T11:23:26Z",
+        "matchLevel": "exact",
+        "sharedFromPlantId": "plant-bb1e99b3c785e2",
+        "synonymEvidence": [
+          {
+            "name": "Betula alleghaniensis",
+            "evidenceUrls": [
+              "https://api.gbif.org/v1/species/match?name=Betula+lutea&kingdom=Plantae&strict=true",
+              "https://www.gbif.org/species/5331779"
+            ],
+            "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+          }
+        ]
+      }
+    },
+    "plant-02376b686cafbb": {
+      "photo": {
+        "image": "assets/biljke/reference-c43922363160644d36322971.jpg",
+        "sourceUrl": "https://www.frankpmatthews.com/catalogue/ornamental-trees/betula/betula-pendula-tristis/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-frankpmatthews-com",
+        "imageUrl": "https://www.frankpmatthews.com/app/uploads/2022/07/11493_14106_f9db.jpg",
+        "sourceUrl": "https://www.frankpmatthews.com/catalogue/ornamental-trees/betula/betula-pendula-tristis/",
+        "matchedName": "Betula pendula 'Tristis'",
+        "identityEvidence": {
+          "method": "product_jsonld",
+          "canonicalName": "Betula pendula 'Tristis'"
+        },
+        "imageHosts": [
+          "www.frankpmatthews.com"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "betula pendula tristis",
+        "latinName": "Betula pendula 'Tristis'",
+        "image": "assets/biljke/reference-c43922363160644d36322971.jpg",
+        "sha256": "c43922363160644d36322971e1060dac896990023c590d11a2d0c2a0a92d615a",
+        "checkedAt": "2026-11-10T11:23:28Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-73e835a5884bea": {
+      "photo": {
+        "image": "assets/biljke/reference-c509ca0f9060eab992133b5c.jpg",
+        "sourceUrl": "https://www.gbif.org/occurrence/5177124925"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "gbif",
+        "imageUrl": "https://api.gbif.org/v1/image/cache/1200x/occurrence/5177124925/media/b2a4fc1ebb48571f88dc1055ff81b224",
+        "sourceUrl": "https://www.gbif.org/occurrence/5177124925",
+        "matchedName": "Betula utilis",
+        "identityEvidence": [
+          "Betula utilis"
+        ],
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "imageHosts": [
+          "api.gbif.org"
+        ],
+        "imagePathPrefixes": {
+          "api.gbif.org": [
+            "/v1/image/cache/"
+          ]
+        },
+        "latinName": "Betula utilis",
+        "image": "assets/biljke/reference-c509ca0f9060eab992133b5c.jpg",
+        "sha256": "c509ca0f9060eab992133b5c4b1306e973efbb95552a3b37d89edcf155282bf1",
+        "checkedAt": "2026-11-10T10:09:51Z",
+        "matchLevel": "exact",
+        "taxonKey": "betula utilis"
+      }
+    },
+    "plant-69e36d8474e7d8": {
+      "photo": {
+        "image": "assets/biljke/reference-5c8cf5bcc9d45d60e66f0b53.jpg",
+        "sourceUrl": "https://www.knollgardens.co.uk/product/calamagrostis-brachytricha/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-knollgardens-co-uk",
+        "imageUrl": "https://www.knollgardens.co.uk/wp-content/uploads/2022/02/Calamagrostis-brachytricha093650.jpg",
+        "sourceUrl": "https://www.knollgardens.co.uk/product/calamagrostis-brachytricha/",
+        "matchedName": "Calamagrostis brachytricha",
+        "identityEvidence": {
+          "method": "product_jsonld",
+          "canonicalName": "Calamagrostis brachytricha"
+        },
+        "imageHosts": [
+          "www.knollgardens.co.uk"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "calamagrostis brachytricha",
+        "latinName": "Calamagrostis brachytricha",
+        "image": "assets/biljke/reference-5c8cf5bcc9d45d60e66f0b53.jpg",
+        "sha256": "5c8cf5bcc9d45d60e66f0b5346b3e68c762065f2d822ab6c5328d06ef10dbd00",
+        "checkedAt": "2026-11-10T11:13:33Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-ab0b485c7a1b12": {
+      "photo": {
+        "image": "assets/biljke/reference-b42badae90ee9a30cf3ad1b1.jpg",
+        "sourceUrl": "https://www.knollgardens.co.uk/product/carex-divulsa/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-knollgardens-co-uk",
+        "imageUrl": "https://www.knollgardens.co.uk/wp-content/uploads/2018/10/Carex-divulsa0172b-scaled.jpg",
+        "sourceUrl": "https://www.knollgardens.co.uk/product/carex-divulsa/",
+        "matchedName": "Carex divulsa",
+        "identityEvidence": {
+          "method": "product_jsonld",
+          "canonicalName": "Carex divulsa"
+        },
+        "imageHosts": [
+          "www.knollgardens.co.uk"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "carex divulsa",
+        "latinName": "Carex divulsa",
+        "image": "assets/biljke/reference-b42badae90ee9a30cf3ad1b1.jpg",
+        "sha256": "b42badae90ee9a30cf3ad1b15704ac8c8ca12e139bbbbc03e75ba2cafbcd35e5",
+        "checkedAt": "2026-11-10T11:23:30Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-68087a490ecfa8": {
+      "photo": {
+        "image": "assets/biljke/reference-52382d6627d9b2cfca767dc4.jpg",
+        "sourceUrl": "https://plant-werk.nl/product/carex-flagellifera-kiwi/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-plant-werk-nl",
+        "imageUrl": "https://plant-werk.nl/wp-content/uploads/Carex-flagellifera-Kiwi-blad.jpg",
+        "sourceUrl": "https://plant-werk.nl/product/carex-flagellifera-kiwi/",
+        "matchedName": "Carex flagellifera 'Kiwi'",
+        "identityEvidence": {
+          "method": "product_jsonld",
+          "canonicalName": "Carex flagellifera 'Kiwi'"
+        },
+        "imageHosts": [
+          "plant-werk.nl"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "carex flagellifera kiwi",
+        "latinName": "Carex flagellifera 'Kiwi'",
+        "image": "assets/biljke/reference-52382d6627d9b2cfca767dc4.jpg",
+        "sha256": "52382d6627d9b2cfca767dc44f4cb43eae3480509a605b275880974049f7d421",
+        "checkedAt": "2026-11-10T11:23:31Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-6abc01a65c45b7": {
+      "photo": {
+        "image": "assets/biljke/reference-60793b5cffe55f2ba55a1cc5.jpg",
+        "sourceUrl": "https://www.bigplantnursery.co.uk/shop/plants/flowers-and-grasses/carex-testacea-prairie-fire/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-bigplantnursery-co-uk",
+        "imageUrl": "https://www.bigplantnursery.co.uk/wp-content/uploads/2019/11/Carex-testacea-Prairie-Fire.jpg",
+        "sourceUrl": "https://www.bigplantnursery.co.uk/shop/plants/flowers-and-grasses/carex-testacea-prairie-fire/",
+        "matchedName": "Carex testacea 'Prairie Fire'",
+        "identityEvidence": {
+          "method": "product_jsonld",
+          "canonicalName": "Carex testacea 'Prairie Fire'"
+        },
+        "imageHosts": [
+          "www.bigplantnursery.co.uk"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "carex testacea prairie fire",
+        "latinName": "Carex testacea 'Prairie Fire'",
+        "image": "assets/biljke/reference-60793b5cffe55f2ba55a1cc5.jpg",
+        "sha256": "60793b5cffe55f2ba55a1cc5afa7dbafe3881f7672fa27993257e7bc0802c727",
+        "checkedAt": "2026-11-10T11:23:29Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-7f02e51df91d38": {
+      "photo": {
+        "image": "assets/biljke/reference-fbad9146995e8699ebc2dd04.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/cedrus-deodara-karl-fuchs/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "van-den-berk",
+        "imageUrl": "https://www.vdberk.co.uk/media/401390/cedrus-deodara-karl-fuchs.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/cedrus-deodara-karl-fuchs/",
+        "matchedName": "Cedrus deodara 'Karl Fuchs'",
+        "identityEvidence": {
+          "method": "product_og_image",
+          "canonicalName": "Cedrus deodara 'Karl Fuchs'"
+        },
+        "imageHosts": [
+          "www.vdberk.co.uk",
+          "www.vdberk.com",
+          "www.vdberk.de",
+          "www.vdberk.nl"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "cedrus deodara karl fuchs",
+        "latinName": "Cedrus deodara 'Karl Fuchs'",
+        "image": "assets/biljke/reference-fbad9146995e8699ebc2dd04.jpg",
+        "sha256": "fbad9146995e8699ebc2dd04c0b57449cb3f8a15eda1c33430602a9cf3e8906c",
+        "checkedAt": "2026-11-10T11:13:38Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-03332cc004a85e": {
+      "photo": {
+        "image": "assets/biljke/reference-5dbaacb633368463c6d10430.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/cedrus-libani-glauca-pendula/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "van-den-berk",
+        "imageUrl": "https://www.vdberk.co.uk/media/401610/cedrus-libani-glauca-pendula.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/cedrus-libani-glauca-pendula/",
+        "matchedName": "Cedrus libani 'Glauca Pendula'",
+        "identityEvidence": {
+          "method": "product_og_image",
+          "canonicalName": "Cedrus libani 'Glauca Pendula'"
+        },
+        "imageHosts": [
+          "www.vdberk.co.uk",
+          "www.vdberk.com",
+          "www.vdberk.de",
+          "www.vdberk.nl"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "cedrus libani glauca pendula",
+        "latinName": "Cedrus libani 'Glauca Pendula'",
+        "image": "assets/biljke/reference-5dbaacb633368463c6d10430.jpg",
+        "sha256": "5dbaacb633368463c6d10430dbc0ae9ee0128f7fdc7b1e2c2ddd93ceb2460c17",
+        "checkedAt": "2026-11-10T11:23:32Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-158e048d4ead5d": {
+      "photo": {
+        "image": "assets/biljke/reference-3910eaeb879acf4dd881097c.jpg",
+        "sourceUrl": "https://www.gbif.org/occurrence/6133063675"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "gbif",
+        "imageUrl": "https://api.gbif.org/v1/image/cache/1200x/occurrence/6133063675/media/4aa35075542e761b9a5e2db754cd6fbe",
+        "sourceUrl": "https://www.gbif.org/occurrence/6133063675",
+        "matchedName": "Chamaecyparis lawsoniana",
+        "identityEvidence": [
+          "Chamaecyparis lawsoniana"
+        ],
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "imageHosts": [
+          "api.gbif.org"
+        ],
+        "imagePathPrefixes": {
+          "api.gbif.org": [
+            "/v1/image/cache/"
+          ]
+        },
+        "latinName": "Chamaecyparis lawsoniana",
+        "image": "assets/biljke/reference-3910eaeb879acf4dd881097c.jpg",
+        "sha256": "3910eaeb879acf4dd881097c7d99457e01ee805d096fd1cf7dc22c3d114b44fd",
+        "checkedAt": "2026-11-10T10:00:34Z",
+        "matchLevel": "exact",
+        "taxonKey": "chamaecyparis lawsoniana"
+      }
+    },
+    "plant-0a77808e3edf13": {
+      "photo": {
+        "image": "assets/biljke/reference-08505b5350f1a40a0d678154.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/chamaecyparis-lawsoniana-columnaris/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "van-den-berk",
+        "imageUrl": "https://www.vdberk.co.uk/media/402030/chamaecyparis-lawsoniana-columnaris.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/chamaecyparis-lawsoniana-columnaris/",
+        "matchedName": "Chamaecyparis lawsoniana 'Columnaris'",
+        "identityEvidence": {
+          "method": "product_og_image",
+          "canonicalName": "Chamaecyparis lawsoniana 'Columnaris'"
+        },
+        "imageHosts": [
+          "www.vdberk.co.uk",
+          "www.vdberk.com",
+          "www.vdberk.de",
+          "www.vdberk.nl"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "chamaecyparis lawsoniana columnaris",
+        "latinName": "Chamaecyparis lawsoniana 'Columnaris'",
+        "image": "assets/biljke/reference-08505b5350f1a40a0d678154.jpg",
+        "sha256": "08505b5350f1a40a0d6781546dfb4e23f2fd82008b1868cf2e1fc74f96c0def3",
+        "checkedAt": "2026-11-10T11:13:39Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-aaebb1c1960940": {
+      "photo": {
+        "image": "assets/biljke/reference-a14ead775eb7042a9e1a5207.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/cornus-florida-f-rubra/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "van-den-berk",
+        "imageUrl": "https://www.vdberk.co.uk/media/28430/cornus-florida-f-rubra.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/cornus-florida-f-rubra/",
+        "matchedName": "Cornus florida f. rubra",
+        "identityEvidence": {
+          "method": "product_og_image",
+          "canonicalName": "Cornus florida f. rubra"
+        },
+        "imageHosts": [
+          "www.vdberk.co.uk",
+          "www.vdberk.com",
+          "www.vdberk.de",
+          "www.vdberk.nl"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "cornus florida f rubra",
+        "latinName": "Cornus florida f. rubra",
+        "image": "assets/biljke/reference-a14ead775eb7042a9e1a5207.jpg",
+        "sha256": "a14ead775eb7042a9e1a52072da5c8b2c64d7c115b1837a722ebf8f9eaf580aa",
+        "checkedAt": "2026-11-10T11:23:34Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-d22f43268706fa": {
+      "photo": {
+        "image": "assets/biljke/reference-9beb73613a21419a6693a658.jpg",
+        "sourceUrl": "https://www.gbif.org/occurrence/6130557971"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "gbif",
+        "imageUrl": "https://api.gbif.org/v1/image/cache/1200x/occurrence/6130557971/media/c0972d6e6ad376b3c377308cdf7f0c59",
+        "sourceUrl": "https://www.gbif.org/occurrence/6130557971",
+        "matchedName": "Cotoneaster dammeri",
+        "identityEvidence": [
+          "Cotoneaster dammeri"
+        ],
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "imageHosts": [
+          "api.gbif.org"
+        ],
+        "imagePathPrefixes": {
+          "api.gbif.org": [
+            "/v1/image/cache/"
+          ]
+        },
+        "latinName": "Cotoneaster dammeri",
+        "image": "assets/biljke/reference-9beb73613a21419a6693a658.jpg",
+        "sha256": "9beb73613a21419a6693a658c557ee513f07bf102e7554312b48df4d542c00fd",
+        "checkedAt": "2026-11-10T10:17:24Z",
+        "matchLevel": "exact",
+        "taxonKey": "cotoneaster dammeri"
+      }
+    },
+    "plant-123479a69dd64f": {
+      "photo": {
+        "image": "assets/biljke/reference-95e3729311ee5e409715699c.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/crataegus-persimilis-splendens/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "van-den-berk",
+        "imageUrl": "https://www.vdberk.co.uk/media/31790/crataegus-persimilis-splendens.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/crataegus-persimilis-splendens/",
+        "matchedName": "Crataegus x persimilis 'Splendens'",
+        "identityEvidence": {
+          "method": "product_og_image",
+          "canonicalName": "Crataegus x persimilis 'Splendens'"
+        },
+        "imageHosts": [
+          "www.vdberk.co.uk",
+          "www.vdberk.com",
+          "www.vdberk.de",
+          "www.vdberk.nl"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "crataegus persimilis splendens",
+        "latinName": "Crataegus x persimilis 'Splendens'",
+        "image": "assets/biljke/reference-95e3729311ee5e409715699c.jpg",
+        "sha256": "95e3729311ee5e409715699c4ba72c01b611d6028aeafbb7e753a0d5ef5f114b",
+        "checkedAt": "2026-11-10T11:34:51Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-f25ea2bbece475": {
+      "photo": {
+        "image": "assets/biljke/reference-142818d1fe3e57e0c1486a52.jpg",
+        "sourceUrl": "https://www.gbif.org/occurrence/5938071226"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "gbif",
+        "imageUrl": "https://api.gbif.org/v1/image/cache/1200x/occurrence/5938071226/media/ef622deedd64dcaef4d6a1d24510acd7",
+        "sourceUrl": "https://www.gbif.org/occurrence/5938071226",
+        "matchedName": "Cupressus arizonica",
+        "identityEvidence": [
+          "Cupressus arizonica"
+        ],
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "imageHosts": [
+          "api.gbif.org"
+        ],
+        "imagePathPrefixes": {
+          "api.gbif.org": [
+            "/v1/image/cache/"
+          ]
+        },
+        "latinName": "Cupressus arizonica",
+        "image": "assets/biljke/reference-142818d1fe3e57e0c1486a52.jpg",
+        "sha256": "142818d1fe3e57e0c1486a52a4e8c9ecd3118cadd017935248a2659abcfc69d3",
+        "checkedAt": "2026-11-10T10:19:22Z",
+        "matchLevel": "exact",
+        "taxonKey": "cupressus arizonica"
+      }
+    },
+    "plant-293f26f1672c4f": {
+      "photo": {
+        "image": "assets/biljke/reference-173aaa1fe98d4664416f3469.jpg",
+        "sourceUrl": "https://www.gbif.org/occurrence/6163101701"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "gbif",
+        "imageUrl": "https://api.gbif.org/v1/image/cache/1200x/occurrence/6163101701/media/82a375dd466f1d85df9b57de240b4c51",
+        "sourceUrl": "https://www.gbif.org/occurrence/6163101701",
+        "matchedName": "Cupressus sempervirens",
+        "identityEvidence": [
+          "Cupressus sempervirens"
+        ],
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "imageHosts": [
+          "api.gbif.org"
+        ],
+        "imagePathPrefixes": {
+          "api.gbif.org": [
+            "/v1/image/cache/"
+          ]
+        },
+        "latinName": "Cupressus sempervirens",
+        "image": "assets/biljke/reference-173aaa1fe98d4664416f3469.jpg",
+        "sha256": "173aaa1fe98d4664416f34695b7b09bdca8a90c17eca4e48687ff98122b3335f",
+        "checkedAt": "2026-11-10T10:02:53Z",
+        "matchLevel": "exact",
+        "taxonKey": "cupressus sempervirens"
+      }
+    },
+    "plant-262be7be43b526": {
+      "photo": {
+        "image": "assets/biljke/reference-3493461d6bb1688354e53b5a.jpg",
+        "sourceUrl": "https://plant-werk.nl/product/deschampsia-cespitosa-palava/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-plant-werk-nl",
+        "imageUrl": "https://plant-werk.nl/wp-content/uploads/Deschampsia-cespitosa-Palava-bloem.jpg",
+        "sourceUrl": "https://plant-werk.nl/product/deschampsia-cespitosa-palava/",
+        "matchedName": "Deschampsia cespitosa 'Palava'",
+        "identityEvidence": {
+          "method": "product_jsonld",
+          "canonicalName": "Deschampsia cespitosa 'Palava'"
+        },
+        "imageHosts": [
+          "plant-werk.nl"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "deschampsia cespitosa palava",
+        "latinName": "Deschampsia cespitosa 'Palava'",
+        "image": "assets/biljke/reference-3493461d6bb1688354e53b5a.jpg",
+        "sha256": "3493461d6bb1688354e53b5a57f7d909951c98efcb557efed4203b329b9a975b",
+        "checkedAt": "2026-11-10T11:23:38Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-f816663b421aad": {
+      "photo": {
+        "image": "assets/biljke/reference-96a2c9462626dea2ff0184ff.jpg",
+        "sourceUrl": "https://odonals.com/product/deutzia-gracilis-nikko/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-odonals-com",
+        "imageUrl": "https://odonals.com/wp-content/uploads/2025/04/DETA-439.jpg",
+        "sourceUrl": "https://odonals.com/product/deutzia-gracilis-nikko/",
+        "matchedName": "Deutzia gracilis 'Nikko'",
+        "identityEvidence": {
+          "method": "product_jsonld",
+          "canonicalName": "Deutzia gracilis 'Nikko'"
+        },
+        "imageHosts": [
+          "odonals.com"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "deutzia gracilis nikko",
+        "latinName": "Deutzia gracilis 'Nikko'",
+        "image": "assets/biljke/reference-96a2c9462626dea2ff0184ff.jpg",
+        "sha256": "96a2c9462626dea2ff0184ff2e0973ae988d0947ea9dda2f8d12c25a93df4f02",
+        "checkedAt": "2026-11-10T11:13:44Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-e5369db57b740e": {
+      "photo": {
+        "image": "assets/biljke/reference-54872a52d29bf7128b1647a1.jpg",
+        "sourceUrl": "https://plant-werk.nl/product/echinops-bannaticus-blue-glow/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-plant-werk-nl",
+        "imageUrl": "https://plant-werk.nl/wp-content/uploads/Echinops-bannaticus-Blue-Glow-bloem-1.jpg",
+        "sourceUrl": "https://plant-werk.nl/product/echinops-bannaticus-blue-glow/",
+        "matchedName": "Echinops bannaticus 'Blue Glow'",
+        "identityEvidence": {
+          "method": "product_jsonld",
+          "canonicalName": "Echinops bannaticus 'Blue Glow'"
+        },
+        "imageHosts": [
+          "plant-werk.nl"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "echinops bannaticus blue glow",
+        "latinName": "Echinops bannaticus 'Blue Glow'",
+        "image": "assets/biljke/reference-54872a52d29bf7128b1647a1.jpg",
+        "sha256": "54872a52d29bf7128b1647a17c26bcef8dd8a3f4cc5f57de662730c999aa5e4f",
+        "checkedAt": "2026-11-10T11:23:37Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-8f552578420d7e": {
+      "photo": {
+        "image": "assets/biljke/reference-7d98d17d1264dac40046103f.jpg",
+        "sourceUrl": "https://www.gbif.org/occurrence/6129851284"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "gbif",
+        "imageUrl": "https://api.gbif.org/v1/image/cache/1200x/occurrence/6129851284/media/acbf541f31c30b34d4dabcf2004446ef",
+        "sourceUrl": "https://www.gbif.org/occurrence/6129851284",
+        "matchedName": "Euonymus fortunei",
+        "identityEvidence": [
+          "Euonymus fortunei"
+        ],
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "imageHosts": [
+          "api.gbif.org"
+        ],
+        "imagePathPrefixes": {
+          "api.gbif.org": [
+            "/v1/image/cache/"
+          ]
+        },
+        "taxonKey": "euonymus fortunei",
+        "latinName": "Euonymus fortunei",
+        "image": "assets/biljke/reference-7d98d17d1264dac40046103f.jpg",
+        "sha256": "7d98d17d1264dac40046103f6d3942d2194f7e48606caef9b09780ae5ac28d7b",
+        "checkedAt": "2026-11-10T11:15:49Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-f7baf961ce141f": {
+      "photo": {
+        "image": "assets/biljke/reference-374f721510f375e11d4b1ecb.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/fagus-sylvatica-riversii/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "van-den-berk",
+        "imageUrl": "https://www.vdberk.co.uk/media/FASRIVER/Fagus%20sylvatica%20Riversii%2060-70%20LAAC.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/fagus-sylvatica-riversii/",
+        "matchedName": "Fagus sylvatica 'Riversii'",
+        "identityEvidence": {
+          "method": "product_og_image",
+          "canonicalName": "Fagus sylvatica 'Riversii'"
+        },
+        "imageHosts": [
+          "www.vdberk.co.uk",
+          "www.vdberk.com",
+          "www.vdberk.de",
+          "www.vdberk.nl"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "fagus sylvatica riversii",
+        "latinName": "Fagus sylvatica 'Riversii'",
+        "image": "assets/biljke/reference-374f721510f375e11d4b1ecb.jpg",
+        "sha256": "374f721510f375e11d4b1ecb1f22ba6b2fdadf18948ad2df8979494cdc317694",
+        "checkedAt": "2026-11-10T11:13:50Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-f45db48e72b497": {
+      "photo": {
+        "image": "assets/biljke/reference-0f3c48b6d27551aba79c7a7b.jpg",
+        "sourceUrl": "https://www.bigplantnursery.co.uk/shop/plants/bamboo/fargeisa/fargesia-nitida-black-pearl/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-bigplantnursery-co-uk",
+        "imageUrl": "https://www.bigplantnursery.co.uk/wp-content/uploads/2019/10/Fargesia-nitida-Black-Pearl_1.jpg",
+        "sourceUrl": "https://www.bigplantnursery.co.uk/shop/plants/bamboo/fargeisa/fargesia-nitida-black-pearl/",
+        "matchedName": "Fargesia nitida 'Black Pearl'",
+        "identityEvidence": {
+          "method": "product_jsonld",
+          "canonicalName": "Fargesia nitida 'Black Pearl'"
+        },
+        "imageHosts": [
+          "www.bigplantnursery.co.uk"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "fargesia nitida black pearl",
+        "latinName": "Fargesia nitida 'Black Pearl'",
+        "image": "assets/biljke/reference-0f3c48b6d27551aba79c7a7b.jpg",
+        "sha256": "0f3c48b6d27551aba79c7a7b537289199e25afba66b5db4eb63c9089a01759b2",
+        "checkedAt": "2026-11-10T11:23:43Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-8033602353d119": {
+      "photo": {
+        "image": "assets/biljke/reference-f7658dfe85b94d565abdbbbd.jpg",
+        "sourceUrl": "https://www.bigplantnursery.co.uk/shop/plants/bamboo/fargeisa/fargesia-robusta-campbell/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-bigplantnursery-co-uk",
+        "imageUrl": "https://www.bigplantnursery.co.uk/wp-content/uploads/2019/10/Fargesia-robusta-Campbell_1.jpg",
+        "sourceUrl": "https://www.bigplantnursery.co.uk/shop/plants/bamboo/fargeisa/fargesia-robusta-campbell/",
+        "matchedName": "Fargesia robusta 'Campbell'",
+        "identityEvidence": {
+          "method": "product_jsonld",
+          "canonicalName": "Fargesia robusta 'Campbell'"
+        },
+        "imageHosts": [
+          "www.bigplantnursery.co.uk"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "fargesia robusta campbell",
+        "latinName": "Fargesia robusta 'Campbell'",
+        "image": "assets/biljke/reference-f7658dfe85b94d565abdbbbd.jpg",
+        "sha256": "f7658dfe85b94d565abdbbbdd44bbed5d7a37564b176b2fc32bd22091b3fc8ab",
+        "checkedAt": "2026-11-10T11:13:49Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-42ed463c83d4dc": {
+      "photo": {
+        "image": "assets/biljke/reference-5872eb2f2f39e905c817626e.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/hamamelis-intermedia/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "van-den-berk",
+        "imageUrl": "https://www.vdberk.co.uk/media/45900/hamamelis-intermedia.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/hamamelis-intermedia/",
+        "matchedName": "Hamamelis x intermedia",
+        "identityEvidence": {
+          "method": "product_og_image",
+          "canonicalName": "Hamamelis x intermedia"
+        },
+        "imageHosts": [
+          "www.vdberk.co.uk",
+          "www.vdberk.com",
+          "www.vdberk.de",
+          "www.vdberk.nl"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "hamamelis intermedia",
+        "latinName": "Hamamelis x intermedia",
+        "image": "assets/biljke/reference-5872eb2f2f39e905c817626e.jpg",
+        "sha256": "5872eb2f2f39e905c817626e243c26a9c02ea7a8f9a76cf4bd04620b2a601d89",
+        "checkedAt": "2026-11-10T11:34:49Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-c1ccee0a920085": {
+      "photo": {
+        "image": "assets/biljke/reference-c78e7eea602c851846babf93.jpg",
+        "sourceUrl": "https://www.provendernurseries.co.uk/factsheets/hamamelis-x-intermedia-diane"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-provendernurseries-co-uk",
+        "imageUrl": "https://www.provendernurseries.co.uk/files/images/misc/hamamelis-x-intermedia-diane-1548358389_n.jpg",
+        "sourceUrl": "https://www.provendernurseries.co.uk/factsheets/hamamelis-x-intermedia-diane",
+        "matchedName": "Hamamelis x intermedia 'Diane'",
+        "identityEvidence": {
+          "method": "exact_product_image_alt",
+          "canonicalName": "Hamamelis x intermedia 'Diane'"
+        },
+        "imageHosts": [
+          "www.provendernurseries.co.uk"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "hamamelis intermedia diane",
+        "latinName": "Hamamelis x intermedia 'Diane'",
+        "image": "assets/biljke/reference-c78e7eea602c851846babf93.jpg",
+        "sha256": "c78e7eea602c851846babf9338c2fff7a3693840410b86507a24e742c6247384",
+        "checkedAt": "2026-11-10T11:34:50Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-5c2da33cccb7f8": {
+      "photo": {
+        "image": "assets/biljke/reference-d81352566bfb72627dc7ecfb.jpg",
+        "sourceUrl": "https://www.gbif.org/occurrence/6252983021"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "gbif",
+        "imageUrl": "https://api.gbif.org/v1/image/cache/1200x/occurrence/6252983021/media/98cd97e0f577e68557615b6f36acfc87",
+        "sourceUrl": "https://www.gbif.org/occurrence/6252983021",
+        "matchedName": "Helichrysum italicum",
+        "identityEvidence": [
+          "Helichrysum italicum"
+        ],
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "imageHosts": [
+          "api.gbif.org"
+        ],
+        "imagePathPrefixes": {
+          "api.gbif.org": [
+            "/v1/image/cache/"
+          ]
+        },
+        "latinName": "Helichrysum italicum",
+        "image": "assets/biljke/reference-d81352566bfb72627dc7ecfb.jpg",
+        "sha256": "d81352566bfb72627dc7ecfba8d928ff6e965775cbee015a96436e7180757378",
+        "checkedAt": "2026-11-10T10:08:42Z",
+        "matchLevel": "exact",
+        "taxonKey": "helichrysum italicum"
+      }
+    },
+    "plant-3da457b71894cb": {
+      "photo": {
+        "image": "assets/biljke/reference-c24fd8e3d1733b0d02d1ef80.jpg",
+        "sourceUrl": "https://www.gbif.org/occurrence/6398676048"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "gbif",
+        "imageUrl": "https://api.gbif.org/v1/image/cache/1200x/occurrence/6398676048/media/25a493b1ad337444dc8009a49830f6d1",
+        "sourceUrl": "https://www.gbif.org/occurrence/6398676048",
+        "matchedName": "Hibiscus moscheutos",
+        "identityEvidence": [
+          "Hibiscus moscheutos"
+        ],
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "imageHosts": [
+          "api.gbif.org"
+        ],
+        "imagePathPrefixes": {
+          "api.gbif.org": [
+            "/v1/image/cache/"
+          ]
+        },
+        "latinName": "Hibiscus moscheutos",
+        "image": "assets/biljke/reference-c24fd8e3d1733b0d02d1ef80.jpg",
+        "sha256": "c24fd8e3d1733b0d02d1ef80646040d2e93193c62e0ab2360df6d65092eba33e",
+        "checkedAt": "2026-11-10T10:04:56Z",
+        "matchLevel": "exact",
+        "taxonKey": "hibiscus moscheutos"
+      }
+    },
+    "plant-eb65fbb228d141": {
+      "photo": {
+        "image": "assets/biljke/reference-4ecb2ebd1efa6b4fb9179b25.jpg",
+        "sourceUrl": "https://www.viversplanas.com/en/products/hibiscus-syriacus/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "vivers-planas",
+        "imageUrl": "https://images.hoobaweb.com/1298/imgf-1200-630/hibiscus-syriacus3.jpg",
+        "sourceUrl": "https://www.viversplanas.com/en/products/hibiscus-syriacus/",
+        "matchedName": "Hibiscus syriacus",
+        "identityEvidence": {
+          "method": "product_og_image",
+          "canonicalName": "Hibiscus syriacus"
+        },
+        "imageHosts": [
+          "images.hoobaweb.com",
+          "www.viversplanas.com"
+        ],
+        "imagePathPrefixes": {
+          "images.hoobaweb.com": [
+            "/1298/"
+          ]
+        },
+        "license": "existing_catalogue_source_policy",
+        "latinName": "Hibiscus syriacus",
+        "image": "assets/biljke/reference-4ecb2ebd1efa6b4fb9179b25.jpg",
+        "sha256": "4ecb2ebd1efa6b4fb9179b250e36b6082ae88dcde7b84d935486120ec3814a95",
+        "checkedAt": "2026-11-10T10:18:59Z",
+        "matchLevel": "exact",
+        "taxonKey": "hibiscus syriacus"
+      }
+    },
+    "plant-9579a4e5d17e48": {
+      "photo": {
+        "image": "assets/biljke/reference-b5f56d8c3a84bdab77e47c43.jpg",
+        "sourceUrl": "https://secretgardengrowers.com/products/hosta-plantaginea"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "reviewed_primary_nursery",
+        "sourceUrl": "https://secretgardengrowers.com/products/hosta-plantaginea",
+        "imageUrl": "https://secretgardengrowers.com/cdn/shop/products/hosta-plantaginea.jpg?v=1653088035&width=1445",
+        "matchedName": "Hosta plantaginea",
+        "imageHosts": [
+          "secretgardengrowers.com"
+        ],
+        "identityEvidence": {
+          "method": "primary_full_name_and_visual_review",
+          "evidenceUrls": [
+            "https://secretgardengrowers.com/products/hosta-plantaginea",
+            "https://www.rhs.org.uk/plants/8821/hosta-plantaginea/details",
+            "https://www.worldfloraonline.org/taxon/wfo-0000663320"
+          ],
+          "reviewedAt": "2026-11-10"
+        },
+        "license": "nursery_source_with_provenance",
+        "taxonKey": "hosta plantaginea",
+        "latinName": "Hosta plantaginea",
+        "image": "assets/biljke/reference-b5f56d8c3a84bdab77e47c43.jpg",
+        "sha256": "b5f56d8c3a84bdab77e47c43920d900f647ad39ad6ab0f4e2c9b4118d2342350",
+        "checkedAt": "2026-11-10T11:34:37Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-5acd0e95239a5f": {
+      "photo": {
+        "image": "assets/biljke/reference-cf21b469b2aacd81cef62ada.jpg",
+        "sourceUrl": "https://plant-werk.nl/product/hosta-tardiana-halcyon/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-plant-werk-nl",
+        "imageUrl": "https://plant-werk.nl/wp-content/uploads/Hosta-Halcyon-bloem.jpg",
+        "sourceUrl": "https://plant-werk.nl/product/hosta-tardiana-halcyon/",
+        "matchedName": "Hosta tardiana 'Halcyon'",
+        "identityEvidence": {
+          "method": "product_jsonld",
+          "canonicalName": "Hosta tardiana 'Halcyon'"
+        },
+        "imageHosts": [
+          "plant-werk.nl"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "hosta tardiana halcyon",
+        "latinName": "Hosta tardiana 'Halcyon'",
+        "image": "assets/biljke/reference-cf21b469b2aacd81cef62ada.jpg",
+        "sha256": "cf21b469b2aacd81cef62adac67325cda2041c205aed7d3de6383c7c6741862b",
+        "checkedAt": "2026-11-10T11:23:50Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-2b953880fcfed5": {
+      "photo": {
+        "image": "assets/biljke/reference-22cdeeae9310d68aa4e13289.jpg",
+        "sourceUrl": "https://www.ashwoodnurseries.com/product/hydrangea-arborescens-sweet-annabelle/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-ashwoodnurseries-com",
+        "imageUrl": "https://www.ashwoodnurseries.com/wp-content/uploads/2024/05/20sweet_annabelle.jpg",
+        "sourceUrl": "https://www.ashwoodnurseries.com/product/hydrangea-arborescens-sweet-annabelle/",
+        "matchedName": "Hydrangea arborescens 'Sweet Annabelle'",
+        "identityEvidence": {
+          "method": "product_jsonld",
+          "canonicalName": "Hydrangea arborescens 'Sweet Annabelle'"
+        },
+        "imageHosts": [
+          "www.ashwoodnurseries.com"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "hydrangea arborescens sweet annabelle",
+        "latinName": "Hydrangea arborescens 'Sweet Annabelle'",
+        "image": "assets/biljke/reference-22cdeeae9310d68aa4e13289.jpg",
+        "sha256": "22cdeeae9310d68aa4e13289a5ade3568c8a123cbad4d1a4e7e149f05cf74d62",
+        "checkedAt": "2026-11-10T11:23:51Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-300c9363fc8e14": {
+      "photo": {
+        "image": "assets/biljke/reference-f9eb6b52e9b3c8d703d340ac.jpg",
+        "sourceUrl": "https://www.gbif.org/occurrence/6147576131"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "gbif",
+        "imageUrl": "https://api.gbif.org/v1/image/cache/1200x/occurrence/6147576131/media/425e63aeb93637b290f3de3432b9abf4",
+        "sourceUrl": "https://www.gbif.org/occurrence/6147576131",
+        "matchedName": "Lavandula stoechas",
+        "identityEvidence": [
+          "Lavandula stoechas"
+        ],
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "imageHosts": [
+          "api.gbif.org"
+        ],
+        "imagePathPrefixes": {
+          "api.gbif.org": [
+            "/v1/image/cache/"
+          ]
+        },
+        "latinName": "Lavandula stoechas",
+        "image": "assets/biljke/reference-f9eb6b52e9b3c8d703d340ac.jpg",
+        "sha256": "f9eb6b52e9b3c8d703d340ac756726e923947b385879d8938aaf5f719e6c7bb4",
+        "checkedAt": "2026-11-10T10:03:38Z",
+        "matchLevel": "exact",
+        "taxonKey": "lavandula stoechas"
+      }
+    },
+    "plant-8df6466e6a68e4": {
+      "photo": {
+        "image": "assets/biljke/reference-927f418fe5171bcfd4a67057.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/liriodendron-tulipifera-aureomarginatum/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "van-den-berk",
+        "imageUrl": "https://www.vdberk.co.uk/media/Bomen/LITAUREO/Liriodendron%20tulipifera%20Aureomarginatum%2050-60.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/liriodendron-tulipifera-aureomarginatum/",
+        "matchedName": "Liriodendron tulipifera 'Aureomarginatum'",
+        "identityEvidence": {
+          "method": "product_og_image",
+          "canonicalName": "Liriodendron tulipifera 'Aureomarginatum'"
+        },
+        "imageHosts": [
+          "www.vdberk.co.uk",
+          "www.vdberk.com",
+          "www.vdberk.de",
+          "www.vdberk.nl"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "liriodendron tulipifera aureomarginatum",
+        "latinName": "Liriodendron tulipifera 'Aureomarginatum'",
+        "image": "assets/biljke/reference-927f418fe5171bcfd4a67057.jpg",
+        "sha256": "927f418fe5171bcfd4a670574e519c968f54b8bba330e5c5386122987e21d3a1",
+        "checkedAt": "2026-11-10T11:14:08Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-f15e3e2208445c": {
+      "photo": {
+        "image": "assets/biljke/reference-ba463d0d72ed167792cb7950.jpg",
+        "sourceUrl": "https://www.gbif.org/occurrence/6188243368"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "gbif",
+        "imageUrl": "https://api.gbif.org/v1/image/cache/1200x/occurrence/6188243368/media/67d4c8e84223d48f47351a0379afed39",
+        "sourceUrl": "https://www.gbif.org/occurrence/6188243368",
+        "matchedName": "Liriope muscari",
+        "identityEvidence": [
+          "Liriope muscari"
+        ],
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "imageHosts": [
+          "api.gbif.org"
+        ],
+        "imagePathPrefixes": {
+          "api.gbif.org": [
+            "/v1/image/cache/"
+          ]
+        },
+        "taxonKey": "liriope muscari",
+        "latinName": "Liriope muscari",
+        "image": "assets/biljke/reference-ba463d0d72ed167792cb7950.jpg",
+        "sha256": "ba463d0d72ed167792cb79508f9848aa451e709cfa995c70212b2feca82f84ae",
+        "checkedAt": "2026-11-10T11:15:23Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-7238b1ae51445f": {
+      "photo": {
+        "image": "assets/biljke/reference-24f511f9a2a160f8e442c0c7.jpg",
+        "sourceUrl": "https://plant-werk.nl/product/miscanthus-sinensis-yaku-jima/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-plant-werk-nl",
+        "imageUrl": "https://plant-werk.nl/wp-content/uploads/Miscanthus-sinensis-Yaku-Jima-bloem.jpg",
+        "sourceUrl": "https://plant-werk.nl/product/miscanthus-sinensis-yaku-jima/",
+        "matchedName": "Miscanthus sinensis 'Yaku Jima'",
+        "identityEvidence": {
+          "method": "product_jsonld",
+          "canonicalName": "Miscanthus sinensis 'Yaku Jima'"
+        },
+        "imageHosts": [
+          "plant-werk.nl"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "miscanthus sinensis yaku jima",
+        "latinName": "Miscanthus sinensis 'Yaku Jima'",
+        "image": "assets/biljke/reference-24f511f9a2a160f8e442c0c7.jpg",
+        "sha256": "24f511f9a2a160f8e442c0c787c751519e07ee1a3be3b8f5d829eb673ae6d3ec",
+        "checkedAt": "2026-11-10T11:24:13Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-3911669b036d7c": {
+      "photo": {
+        "image": "assets/biljke/reference-738b9348b3366022726cb3fa.jpg",
+        "sourceUrl": "https://www.viversplanas.com/en/products/morus-alba-fruitless/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "vivers-planas",
+        "imageUrl": "https://images.hoobaweb.com/1298/imgf-1200-630/morus-alba-fruitless5.jpg",
+        "sourceUrl": "https://www.viversplanas.com/en/products/morus-alba-fruitless/",
+        "matchedName": "Morus alba 'Fruitless'",
+        "identityEvidence": {
+          "method": "product_og_image",
+          "canonicalName": "Morus alba 'Fruitless'"
+        },
+        "imageHosts": [
+          "images.hoobaweb.com",
+          "www.viversplanas.com"
+        ],
+        "imagePathPrefixes": {
+          "images.hoobaweb.com": [
+            "/1298/"
+          ]
+        },
+        "license": "existing_catalogue_source_policy",
+        "latinName": "Morus alba 'Fruitless'",
+        "image": "assets/biljke/reference-738b9348b3366022726cb3fa.jpg",
+        "sha256": "738b9348b3366022726cb3faaf7453d8c0ca2b3f447dd88d3253a7fb4dbdddf6",
+        "checkedAt": "2026-11-10T10:04:30Z",
+        "matchLevel": "exact",
+        "taxonKey": "morus alba fruitless"
+      }
+    },
+    "plant-f5569fc2e224b3": {
+      "photo": {
+        "image": "assets/biljke/reference-726477187283570f8eaf1b71.jpg",
+        "sourceUrl": "https://www.gbif.org/occurrence/6252498376"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "gbif",
+        "imageUrl": "https://api.gbif.org/v1/image/cache/1200x/occurrence/6252498376/media/1f1d9af02f0f01468dc44a40e1c404d3",
+        "sourceUrl": "https://www.gbif.org/occurrence/6252498376",
+        "matchedName": "Ophiopogon japonicus",
+        "identityEvidence": [
+          "Ophiopogon japonicus"
+        ],
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "imageHosts": [
+          "api.gbif.org"
+        ],
+        "imagePathPrefixes": {
+          "api.gbif.org": [
+            "/v1/image/cache/"
+          ]
+        },
+        "latinName": "Ophiopogon japonicus",
+        "image": "assets/biljke/reference-726477187283570f8eaf1b71.jpg",
+        "sha256": "726477187283570f8eaf1b7144907957e70e81e0d3ad723d0f214e74b5b47283",
+        "checkedAt": "2026-11-10T10:19:45Z",
+        "matchLevel": "exact",
+        "taxonKey": "ophiopogon japonicus"
+      }
+    },
+    "plant-52f7978caf4634": {
+      "photo": {
+        "image": "assets/biljke/reference-4eb6b6aad58eb1765f9d0ee5.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Panicum_virgatum.jpg"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "commons",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Panicum_virgatum.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Panicum_virgatum.jpg",
+        "matchedName": "Panicum virgatum",
+        "identityEvidence": [
+          "File:Panicum virgatum.jpg",
+          "Panicum virgatum"
+        ],
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "imageHosts": [
+          "upload.wikimedia.org"
+        ],
+        "imagePathPrefixes": {
+          "upload.wikimedia.org": [
+            "/wikipedia/commons/"
+          ]
+        },
+        "taxonKey": "panicum virgatum",
+        "latinName": "Panicum virgatum",
+        "image": "assets/biljke/reference-4eb6b6aad58eb1765f9d0ee5.jpg",
+        "sha256": "4eb6b6aad58eb1765f9d0ee5f179fcc012623723387aa5b3e4380d9f2b56d350",
+        "checkedAt": "2026-11-10T11:16:15Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-84e72281feaa72": {
+      "photo": {
+        "image": "assets/biljke/reference-40d7d3e4b8531629e559cdea.jpg",
+        "sourceUrl": "https://plant-werk.nl/product/persicaria-amplexicaulis-dark-red/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-plant-werk-nl",
+        "imageUrl": "https://plant-werk.nl/wp-content/uploads/Persicaria-amplexicaulis-Dark-Red-bloem6-scaled.jpg",
+        "sourceUrl": "https://plant-werk.nl/product/persicaria-amplexicaulis-dark-red/",
+        "matchedName": "Persicaria amplexicaulis 'Dark Red'",
+        "identityEvidence": {
+          "method": "product_jsonld",
+          "canonicalName": "Persicaria amplexicaulis 'Dark Red'"
+        },
+        "imageHosts": [
+          "plant-werk.nl"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "persicaria amplexicaulis dark red",
+        "latinName": "Persicaria amplexicaulis 'Dark Red'",
+        "image": "assets/biljke/reference-40d7d3e4b8531629e559cdea.jpg",
+        "sha256": "40d7d3e4b8531629e559cdea661b3f9a1a1dae7722d31a7816846d42e4e3bf8b",
+        "checkedAt": "2026-11-10T11:24:15Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-1b32527d81ccd6": {
+      "photo": {
+        "image": "assets/biljke/reference-08f404d43209b223eff8c9e2.jpg",
+        "sourceUrl": "https://www.provendernurseries.co.uk/factsheets/photinia-x-fraseri-little-red-robin"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-provendernurseries-co-uk",
+        "imageUrl": "https://www.provendernurseries.co.uk/files/images/misc/photinia-x-fraseri-little-red-robin-1548358384_n.jpg",
+        "sourceUrl": "https://www.provendernurseries.co.uk/factsheets/photinia-x-fraseri-little-red-robin",
+        "matchedName": "Photinia x fraseri 'Little Red Robin'",
+        "identityEvidence": {
+          "method": "exact_product_image_alt",
+          "canonicalName": "Photinia x fraseri 'Little Red Robin'"
+        },
+        "imageHosts": [
+          "www.provendernurseries.co.uk"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "photinia fraseri little red robin",
+        "latinName": "Photinia x fraseri 'Little Red Robin'",
+        "image": "assets/biljke/reference-08f404d43209b223eff8c9e2.jpg",
+        "sha256": "08f404d43209b223eff8c9e2dcb58a15a23d3f90b499da459d46bab6d9fd730b",
+        "checkedAt": "2026-11-10T11:34:51Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-344c699f8d0e4c": {
+      "photo": {
+        "image": "assets/biljke/reference-a7bf5ac1f31548837a624540.jpg",
+        "sourceUrl": "https://www.gbif.org/occurrence/5938131257"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "gbif",
+        "imageUrl": "https://api.gbif.org/v1/image/cache/1200x/occurrence/5938131257/media/d036cbcc49e1a01b92699039d9e621c5",
+        "sourceUrl": "https://www.gbif.org/occurrence/5938131257",
+        "matchedName": "Populus nigra",
+        "identityEvidence": [
+          "Populus nigra"
+        ],
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "imageHosts": [
+          "api.gbif.org"
+        ],
+        "imagePathPrefixes": {
+          "api.gbif.org": [
+            "/v1/image/cache/"
+          ]
+        },
+        "latinName": "Populus nigra",
+        "image": "assets/biljke/reference-a7bf5ac1f31548837a624540.jpg",
+        "sha256": "a7bf5ac1f31548837a62454085c1ed78111b767d9016f82a5b64322f75f8ae23",
+        "checkedAt": "2026-11-10T10:04:08Z",
+        "matchLevel": "exact",
+        "taxonKey": "populus nigra"
+      }
+    },
+    "plant-b6576634224b1c": {
+      "photo": {
+        "image": "assets/biljke/reference-e38e63c1f84ca48e2cef92f5.jpg",
+        "sourceUrl": "https://www.frankpmatthews.com/catalogue/ornamental-trees/prunus/prunus-kiku-shidare-zakura/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-frankpmatthews-com",
+        "imageUrl": "https://www.frankpmatthews.com/app/uploads/2022/08/12008_14794_0411.jpg",
+        "sourceUrl": "https://www.frankpmatthews.com/catalogue/ornamental-trees/prunus/prunus-kiku-shidare-zakura/",
+        "matchedName": "Prunus 'Kiku-shidare-zakura'",
+        "identityEvidence": {
+          "method": "product_jsonld",
+          "canonicalName": "Prunus 'Kiku-shidare-zakura'"
+        },
+        "imageHosts": [
+          "www.frankpmatthews.com"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "prunus kiku shidare zakura",
+        "latinName": "Prunus 'Kiku-shidare-zakura'",
+        "image": "assets/biljke/reference-e38e63c1f84ca48e2cef92f5.jpg",
+        "sha256": "e38e63c1f84ca48e2cef92f528a1e5b09bf1a80ed02b4cca76206d5d1095b12b",
+        "checkedAt": "2026-11-10T11:24:32Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-76a27aa2433b7d": {
+      "photo": {
+        "image": "assets/biljke/reference-3f7760260a6b5e1968b38979.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/prunus-eminens-umbraculifera/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "van-den-berk",
+        "imageUrl": "https://www.vdberk.co.uk/media/72410/prunus-eminens-umbraculifera.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/prunus-eminens-umbraculifera/",
+        "matchedName": "Prunus x eminens 'Umbraculifera'",
+        "identityEvidence": {
+          "method": "product_og_image",
+          "canonicalName": "Prunus x eminens 'Umbraculifera'"
+        },
+        "imageHosts": [
+          "www.vdberk.co.uk",
+          "www.vdberk.com",
+          "www.vdberk.de",
+          "www.vdberk.nl"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "prunus eminens umbraculifera",
+        "latinName": "Prunus x eminens 'Umbraculifera'",
+        "image": "assets/biljke/reference-3f7760260a6b5e1968b38979.jpg",
+        "sha256": "3f7760260a6b5e1968b38979218545ab722e78e6f8062bbaf1942c2f57752198",
+        "checkedAt": "2026-11-10T11:34:53Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-90434f6cca0439": {
+      "photo": {
+        "image": "assets/biljke/reference-860b613b4b9a4b612c48cb18.jpg",
+        "sourceUrl": "https://www.gbif.org/occurrence/5938350921"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "gbif",
+        "imageUrl": "https://api.gbif.org/v1/image/cache/1200x/occurrence/5938350921/media/0bc6384514198c46e21ea30ae8c69db7",
+        "sourceUrl": "https://www.gbif.org/occurrence/5938350921",
+        "matchedName": "Pseudotsuga menziesii",
+        "identityEvidence": [
+          "Pseudotsuga menziesii"
+        ],
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "imageHosts": [
+          "api.gbif.org"
+        ],
+        "imagePathPrefixes": {
+          "api.gbif.org": [
+            "/v1/image/cache/"
+          ]
+        },
+        "latinName": "Pseudotsuga menziesii",
+        "image": "assets/biljke/reference-860b613b4b9a4b612c48cb18.jpg",
+        "sha256": "860b613b4b9a4b612c48cb183a030f79c6c3aad9ca0e641a30cfd7a4e3ff4910",
+        "checkedAt": "2026-11-10T10:11:40Z",
+        "matchLevel": "exact",
+        "taxonKey": "pseudotsuga menziesii"
+      }
+    },
+    "plant-d6bc33f781049f": {
+      "photo": {
+        "image": "assets/biljke/reference-a0f273145c941b24c7ccbed3.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pyrusnivalis.jpg"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "commons",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Pyrusnivalis.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pyrusnivalis.jpg",
+        "matchedName": "Pyrus nivalis",
+        "identityEvidence": [
+          "Pyrus nivalis"
+        ],
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "imageHosts": [
+          "upload.wikimedia.org"
+        ],
+        "imagePathPrefixes": {
+          "upload.wikimedia.org": [
+            "/wikipedia/commons/"
+          ]
+        },
+        "latinName": "Pyrus nivalis",
+        "image": "assets/biljke/reference-a0f273145c941b24c7ccbed3.jpg",
+        "sha256": "a0f273145c941b24c7ccbed3850fd85ff99f2cbf72df96353ac1b1bc89b00fcc",
+        "checkedAt": "2026-11-10T10:17:36Z",
+        "matchLevel": "exact",
+        "taxonKey": "pyrus nivalis"
+      }
+    },
+    "plant-470f7318053ca5": {
+      "photo": {
+        "image": "assets/biljke/reference-29d78ad9cad9a0d982be0cf5.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/robinia-pseudoacacia-pyramidalis/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "van-den-berk",
+        "imageUrl": "https://www.vdberk.co.uk/media/78660/robinia-pseudoacacia-pyramidalis.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/robinia-pseudoacacia-pyramidalis/",
+        "matchedName": "Robinia pseudoacacia 'Pyramidalis'",
+        "identityEvidence": {
+          "method": "product_og_image",
+          "canonicalName": "Robinia pseudoacacia 'Pyramidalis'"
+        },
+        "imageHosts": [
+          "www.vdberk.co.uk",
+          "www.vdberk.com",
+          "www.vdberk.de",
+          "www.vdberk.nl"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "robinia pseudoacacia pyramidalis",
+        "latinName": "Robinia pseudoacacia 'Pyramidalis'",
+        "image": "assets/biljke/reference-29d78ad9cad9a0d982be0cf5.jpg",
+        "sha256": "29d78ad9cad9a0d982be0cf55684891e6d4352e4b23285895cd2c04e3c7494e3",
+        "checkedAt": "2026-11-10T11:24:42Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-2f78aaf28d94d4": {
+      "photo": {
+        "image": "assets/biljke/reference-8992bfa8b58d712b12c8b4c1.jpg",
+        "sourceUrl": "https://plant-werk.nl/product/rudbeckia-fulgida-goldsturm/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-plant-werk-nl",
+        "imageUrl": "https://plant-werk.nl/wp-content/uploads/Rudbeckia-fulgida-Gold-Sturm-bloem-scaled.jpg",
+        "sourceUrl": "https://plant-werk.nl/product/rudbeckia-fulgida-goldsturm/",
+        "matchedName": "Rudbeckia fulgida 'Goldsturm'",
+        "identityEvidence": {
+          "method": "product_jsonld",
+          "canonicalName": "Rudbeckia fulgida 'Goldsturm'"
+        },
+        "imageHosts": [
+          "plant-werk.nl"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "rudbeckia fulgida goldsturm",
+        "latinName": "Rudbeckia fulgida 'Goldsturm'",
+        "image": "assets/biljke/reference-8992bfa8b58d712b12c8b4c1.jpg",
+        "sha256": "8992bfa8b58d712b12c8b4c184f78375a24808677f916fd57833e5493f6ddf0b",
+        "checkedAt": "2026-11-10T11:24:42Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-40eb8ef6290b82": {
+      "photo": {
+        "image": "assets/biljke/reference-c9a01076b266d0eafebac3bc.jpg",
+        "sourceUrl": "https://www.gbif.org/occurrence/6162807633"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "gbif",
+        "imageUrl": "https://api.gbif.org/v1/image/cache/1200x/occurrence/6162807633/media/fd404afb63f259fc5ec484781986ee61",
+        "sourceUrl": "https://www.gbif.org/occurrence/6162807633",
+        "matchedName": "Salvia officinalis",
+        "identityEvidence": [
+          "Salvia officinalis"
+        ],
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "imageHosts": [
+          "api.gbif.org"
+        ],
+        "imagePathPrefixes": {
+          "api.gbif.org": [
+            "/v1/image/cache/"
+          ]
+        },
+        "latinName": "Salvia officinalis",
+        "image": "assets/biljke/reference-c9a01076b266d0eafebac3bc.jpg",
+        "sha256": "c9a01076b266d0eafebac3bcb2de9ee7af7b10cffcdca838e91eb70df0b8b9cd",
+        "checkedAt": "2026-11-10T10:05:17Z",
+        "matchLevel": "exact",
+        "taxonKey": "salvia officinalis"
+      }
+    },
+    "plant-f7f490785ef2e3": {
+      "photo": {
+        "image": "assets/biljke/reference-23ab9ae28a824b93ba904cf8.jpg",
+        "sourceUrl": "https://www.provendernurseries.co.uk/product/salvia-x-sylvestris-mainacht"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-provendernurseries-co-uk",
+        "imageUrl": "https://www.provendernurseries.co.uk/files/images/webshop/5055021235431-jpg-266x400-61fbec88b5a12_src.webp",
+        "sourceUrl": "https://www.provendernurseries.co.uk/product/salvia-x-sylvestris-mainacht",
+        "matchedName": "Salvia x sylvestris 'Mainacht'",
+        "identityEvidence": {
+          "method": "product_og_image",
+          "canonicalName": "Salvia x sylvestris 'Mainacht'"
+        },
+        "imageHosts": [
+          "www.provendernurseries.co.uk"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "salvia sylvestris mainacht",
+        "latinName": "Salvia x sylvestris 'Mainacht'",
+        "image": "assets/biljke/reference-23ab9ae28a824b93ba904cf8.jpg",
+        "sha256": "23ab9ae28a824b93ba904cf889aff5ee606f2ca054d88af6c8fe1d2dab9e39de",
+        "checkedAt": "2026-11-10T11:34:54Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-15283a66fb7d3e": {
+      "photo": {
+        "image": "assets/biljke/reference-5a5bc8c3a4d9240f1465e9f0.jpg",
+        "sourceUrl": "https://www.gbif.org/occurrence/6179000576"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "gbif",
+        "imageUrl": "https://api.gbif.org/v1/image/cache/1200x/occurrence/6179000576/media/9b4af4d83b9494cb6df748082a94429c",
+        "sourceUrl": "https://www.gbif.org/occurrence/6179000576",
+        "matchedName": "Sasa veitchii",
+        "identityEvidence": [
+          "Sasa veitchii"
+        ],
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "imageHosts": [
+          "api.gbif.org"
+        ],
+        "imagePathPrefixes": {
+          "api.gbif.org": [
+            "/v1/image/cache/"
+          ]
+        },
+        "latinName": "Sasa veitchii",
+        "image": "assets/biljke/reference-5a5bc8c3a4d9240f1465e9f0.jpg",
+        "sha256": "5a5bc8c3a4d9240f1465e9f032f7134f43efba817f6dee56c1ee662954d0af86",
+        "checkedAt": "2026-11-10T10:00:31Z",
+        "matchLevel": "exact",
+        "taxonKey": "sasa veitchii"
+      }
+    },
+    "plant-6946aeac61fe92": {
+      "photo": {
+        "image": "assets/biljke/reference-e845b1af723ab8aba9c62d9b.jpg",
+        "sourceUrl": "https://www.knollgardens.co.uk/product/sedum-herbstfreude-autumn-joy/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-knollgardens-co-uk",
+        "imageUrl": "https://www.knollgardens.co.uk/wp-content/uploads/2018/10/Sedum-Herbsfreude6056b-scaled.jpg",
+        "sourceUrl": "https://www.knollgardens.co.uk/product/sedum-herbstfreude-autumn-joy/",
+        "matchedName": "Sedum 'Herbstfreude'",
+        "identityEvidence": {
+          "method": "product_jsonld",
+          "canonicalName": "Sedum 'Herbstfreude'"
+        },
+        "imageHosts": [
+          "www.knollgardens.co.uk"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "sedum herbstfreude",
+        "latinName": "Sedum 'Herbstfreude'",
+        "image": "assets/biljke/reference-e845b1af723ab8aba9c62d9b.jpg",
+        "sha256": "e845b1af723ab8aba9c62d9be3d1d120fcbf3e0905b925ee0de64f765937f875",
+        "checkedAt": "2026-11-10T11:24:46Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-70f7966491cea4": {
+      "photo": {
+        "image": "assets/biljke/reference-32fcef135e7d45045ec7743c.jpg",
+        "sourceUrl": "https://www.knollgardens.co.uk/product/sedum-matrona/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-knollgardens-co-uk",
+        "imageUrl": "https://www.knollgardens.co.uk/wp-content/uploads/2018/10/Sedum-Matrona2725b-scaled.jpg",
+        "sourceUrl": "https://www.knollgardens.co.uk/product/sedum-matrona/",
+        "matchedName": "Sedum 'Matrona'",
+        "identityEvidence": {
+          "method": "product_jsonld",
+          "canonicalName": "Sedum 'Matrona'"
+        },
+        "imageHosts": [
+          "www.knollgardens.co.uk"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "sedum matrona",
+        "latinName": "Sedum 'Matrona'",
+        "image": "assets/biljke/reference-32fcef135e7d45045ec7743c.jpg",
+        "sha256": "32fcef135e7d45045ec7743c9e17648666b9e0de47dfabf7d28243de67d9dd93",
+        "checkedAt": "2026-11-10T11:24:47Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-22701ebacaa7bc": {
+      "photo": {
+        "image": "assets/biljke/reference-30e09522737eb6fd6f072f86.jpg",
+        "sourceUrl": "https://plant-werk.nl/product/sedum-purple-emperor/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-plant-werk-nl",
+        "imageUrl": "https://plant-werk.nl/wp-content/uploads/Sedum-Purple-Emperor-bloem.jpg",
+        "sourceUrl": "https://plant-werk.nl/product/sedum-purple-emperor/",
+        "matchedName": "Sedum 'Purple Emperor'",
+        "identityEvidence": {
+          "method": "product_jsonld",
+          "canonicalName": "Sedum 'Purple Emperor'"
+        },
+        "imageHosts": [
+          "plant-werk.nl"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "sedum purple emperor",
+        "latinName": "Sedum 'Purple Emperor'",
+        "image": "assets/biljke/reference-30e09522737eb6fd6f072f86.jpg",
+        "sha256": "30e09522737eb6fd6f072f867d6324b1c0cb5cdfe86244c3c335c481e777844d",
+        "checkedAt": "2026-11-10T11:24:47Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-eb55a52bc85a2b": {
+      "photo": {
+        "image": "assets/biljke/reference-1814bbedca429f7e482469cf.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/sequoiadendron-giganteum-glaucum/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "van-den-berk",
+        "imageUrl": "https://www.vdberk.co.uk/media/415220/sequoiadendron-giganteum-glaucum.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/sequoiadendron-giganteum-glaucum/",
+        "matchedName": "Sequoiadendron giganteum 'Glaucum'",
+        "identityEvidence": {
+          "method": "product_og_image",
+          "canonicalName": "Sequoiadendron giganteum 'Glaucum'"
+        },
+        "imageHosts": [
+          "www.vdberk.co.uk",
+          "www.vdberk.com",
+          "www.vdberk.de",
+          "www.vdberk.nl"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "sequoiadendron giganteum glaucum",
+        "latinName": "Sequoiadendron giganteum 'Glaucum'",
+        "image": "assets/biljke/reference-1814bbedca429f7e482469cf.jpg",
+        "sha256": "1814bbedca429f7e482469cf899ed9867debc5987c8528b054cc6ae75de8b146",
+        "checkedAt": "2026-11-10T11:24:48Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-50f7629c021cd0": {
+      "photo": {
+        "image": "assets/biljke/reference-9334737fedc17bf526546584.jpg",
+        "sourceUrl": "https://www.gbif.org/occurrence/6470306802"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "gbif",
+        "imageUrl": "https://api.gbif.org/v1/image/cache/1200x/occurrence/6470306802/media/c13d6a54a1ee44d2db5f708ac2f6a469",
+        "sourceUrl": "https://www.gbif.org/occurrence/6470306802",
+        "matchedName": "Spiraea japonica",
+        "identityEvidence": [
+          "Spiraea japonica"
+        ],
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "imageHosts": [
+          "api.gbif.org"
+        ],
+        "imagePathPrefixes": {
+          "api.gbif.org": [
+            "/v1/image/cache/"
+          ]
+        },
+        "taxonKey": "spiraea japonica",
+        "latinName": "Spiraea japonica",
+        "image": "assets/biljke/reference-9334737fedc17bf526546584.jpg",
+        "sha256": "9334737fedc17bf5265465846cbe4f0fc4ffca7aaded9d73b15ccf15be163897",
+        "checkedAt": "2026-11-10T11:16:12Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-43201d5e8991bc": {
+      "photo": {
+        "image": "assets/biljke/reference-080736ff8bc2a129157c7c19.jpg",
+        "sourceUrl": "https://www.gbif.org/occurrence/6452256318"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "gbif",
+        "imageUrl": "https://api.gbif.org/v1/image/cache/1200x/occurrence/6452256318/media/9c78b89342d6f5f9d4b63ec212e63787",
+        "sourceUrl": "https://www.gbif.org/occurrence/6452256318",
+        "matchedName": "Stachys byzantina",
+        "identityEvidence": [
+          "Stachys byzantina"
+        ],
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "imageHosts": [
+          "api.gbif.org"
+        ],
+        "imagePathPrefixes": {
+          "api.gbif.org": [
+            "/v1/image/cache/"
+          ]
+        },
+        "taxonKey": "stachys byzanthina",
+        "latinName": "Stachys byzanthina",
+        "image": "assets/biljke/reference-080736ff8bc2a129157c7c19.jpg",
+        "sha256": "080736ff8bc2a129157c7c19e1858a334f0ab97c14c7950fccee280a707949b6",
+        "checkedAt": "2026-11-10T11:35:12Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-7fbdfd9e2dcc12": {
+      "photo": {
+        "image": "assets/biljke/reference-d9100cb6b670897f371534e5.jpg",
+        "sourceUrl": "https://www.gbif.org/occurrence/5938398685"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "gbif",
+        "imageUrl": "https://api.gbif.org/v1/image/cache/1200x/occurrence/5938398685/media/e3af2b8f1d7ada86ff4c02579e3a547b",
+        "sourceUrl": "https://www.gbif.org/occurrence/5938398685",
+        "matchedName": "Thuja occidentalis",
+        "identityEvidence": [
+          "Thuja occidentalis"
+        ],
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "imageHosts": [
+          "api.gbif.org"
+        ],
+        "imagePathPrefixes": {
+          "api.gbif.org": [
+            "/v1/image/cache/"
+          ]
+        },
+        "taxonKey": "thuja occidentalis",
+        "latinName": "Thuja occidentalis",
+        "image": "assets/biljke/reference-d9100cb6b670897f371534e5.jpg",
+        "sha256": "d9100cb6b670897f371534e533a99cbfe0047e95cf0cbd4861816705e7235d1a",
+        "checkedAt": "2026-11-10T11:16:42Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-b96dc37004f9ff": {
+      "photo": {
+        "image": "assets/biljke/reference-485f33e9bc1f1b804c30a607.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/tilia-monticola/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "van-den-berk",
+        "imageUrl": "https://www.vdberk.co.uk/media/88355/tilia-monticola.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/tilia-monticola/",
+        "matchedName": "Tilia monticola",
+        "identityEvidence": {
+          "method": "product_og_image",
+          "canonicalName": "Tilia monticola"
+        },
+        "imageHosts": [
+          "www.vdberk.co.uk",
+          "www.vdberk.com",
+          "www.vdberk.de",
+          "www.vdberk.nl"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "tilia monticola",
+        "latinName": "Tilia monticola",
+        "image": "assets/biljke/reference-485f33e9bc1f1b804c30a607.jpg",
+        "sha256": "485f33e9bc1f1b804c30a607882907ace68963d455980af072365b97e346e74a",
+        "checkedAt": "2026-11-10T11:24:51Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-d4771d309212f6": {
+      "photo": {
+        "image": "assets/biljke/reference-bad80d653b5c34335fab8014.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/tilia-tomentosa-szeleste/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "van-den-berk",
+        "imageUrl": "https://www.vdberk.co.uk/media/88630/tilia-tomentosa-szeleste.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/tilia-tomentosa-szeleste/",
+        "matchedName": "Tilia tomentosa 'Szeleste'",
+        "identityEvidence": {
+          "method": "product_og_image",
+          "canonicalName": "Tilia tomentosa 'Szeleste'"
+        },
+        "imageHosts": [
+          "www.vdberk.co.uk",
+          "www.vdberk.com",
+          "www.vdberk.de",
+          "www.vdberk.nl"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "tilia tomentosa szeleste",
+        "latinName": "Tilia tomentosa 'Szeleste'",
+        "image": "assets/biljke/reference-bad80d653b5c34335fab8014.jpg",
+        "sha256": "bad80d653b5c34335fab8014a8eb480c4790132c68563bc404dd4ce0698f6ab0",
+        "checkedAt": "2026-11-10T11:15:56Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-f909981347d7d7": {
+      "photo": {
+        "image": "assets/biljke/reference-7bb4a437522f372d688fb372.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/tilia-europaea-euchlora/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "van-den-berk",
+        "imageUrl": "https://www.vdberk.co.uk/media/TIEEUCHL/Tilia%20europaea%20Euchlora%2035-40%20T1-12-2.jpg",
+        "sourceUrl": "https://www.vdberk.co.uk/trees/tilia-europaea-euchlora/",
+        "matchedName": "Tilia x europaea 'Euchlora'",
+        "identityEvidence": {
+          "method": "product_og_image",
+          "canonicalName": "Tilia x europaea 'Euchlora'"
+        },
+        "imageHosts": [
+          "www.vdberk.co.uk",
+          "www.vdberk.com",
+          "www.vdberk.de",
+          "www.vdberk.nl"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "tilia europaea euchlora",
+        "latinName": "Tilia x europaea 'Euchlora'",
+        "image": "assets/biljke/reference-7bb4a437522f372d688fb372.jpg",
+        "sha256": "7bb4a437522f372d688fb37291dbe33a862cae8cfd1585667ecbd1fb5c1d9a49",
+        "checkedAt": "2026-11-10T11:34:55Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-2d6ea78c9fc019": {
+      "photo": {
+        "image": "assets/biljke/reference-0c9c270bae6ea0bdf3ea035c.jpg",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:New_HorizonGFF.jpg"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "commons",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/c/c0/New_HorizonGFF.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+        "sourceUrl": "https://commons.wikimedia.org/wiki/File:New_HorizonGFF.jpg",
+        "matchedName": "Ulmus 'New Horizon'",
+        "identityEvidence": [
+          "Ulmus 'New Horizon'; Photo taken by author at Great Fontley, UK, Oct. 2007"
+        ],
+        "license": "Public domain",
+        "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+        "imageHosts": [
+          "upload.wikimedia.org"
+        ],
+        "imagePathPrefixes": {
+          "upload.wikimedia.org": [
+            "/wikipedia/commons/"
+          ]
+        },
+        "latinName": "Ulmus 'New Horizon'",
+        "image": "assets/biljke/reference-0c9c270bae6ea0bdf3ea035c.jpg",
+        "sha256": "0c9c270bae6ea0bdf3ea035c9a25143d164630c42434d0a00549179487d4260f",
+        "checkedAt": "2026-11-10T10:03:14Z",
+        "matchLevel": "exact",
+        "taxonKey": "ulmus new horizon"
+      }
+    },
+    "plant-4466ccc42f55fb": {
+      "photo": {
+        "image": "assets/biljke/reference-66694157bc68f91096930cb8.jpg",
+        "sourceUrl": "https://plant-werk.nl/product/vinca-minor-atropurpurea/"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-plant-werk-nl",
+        "imageUrl": "https://plant-werk.nl/wp-content/uploads/Vinca-minor-Atropurpurea-bloem1-e1672853952610.jpg",
+        "sourceUrl": "https://plant-werk.nl/product/vinca-minor-atropurpurea/",
+        "matchedName": "Vinca minor 'Atropurpurea'",
+        "identityEvidence": {
+          "method": "product_jsonld",
+          "canonicalName": "Vinca minor 'Atropurpurea'"
+        },
+        "imageHosts": [
+          "plant-werk.nl"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "vinca minor atropurpurea",
+        "latinName": "Vinca minor 'Atropurpurea'",
+        "image": "assets/biljke/reference-66694157bc68f91096930cb8.jpg",
+        "sha256": "66694157bc68f91096930cb8bb4ff5db53766531eed8fb8942509390c4e4ed21",
+        "checkedAt": "2026-11-10T11:24:59Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-73e1d2d5aad5df": {
+      "photo": {
+        "image": "assets/biljke/reference-c7f16b5782fbb627f35e56c3.jpg",
+        "sourceUrl": "https://www.gbif.org/occurrence/6178320781"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "gbif",
+        "imageUrl": "https://api.gbif.org/v1/image/cache/1200x/occurrence/6178320781/media/c84d7bda1440f5e58e287cc97fd046a0",
+        "sourceUrl": "https://www.gbif.org/occurrence/6178320781",
+        "matchedName": "Viola tricolor",
+        "identityEvidence": [
+          "Viola tricolor"
+        ],
+        "license": "CC0-1.0",
+        "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+        "imageHosts": [
+          "api.gbif.org"
+        ],
+        "imagePathPrefixes": {
+          "api.gbif.org": [
+            "/v1/image/cache/"
+          ]
+        },
+        "latinName": "Viola tricolor",
+        "image": "assets/biljke/reference-c7f16b5782fbb627f35e56c3.jpg",
+        "sha256": "c7f16b5782fbb627f35e56c3d32296c390caaaecab2b8a1dc6aacc839fabf313",
+        "checkedAt": "2026-11-10T10:09:47Z",
+        "matchLevel": "exact",
+        "taxonKey": "viola tricolor"
+      }
+    },
+    "plant-cc21d9ee76f153": {
+      "photo": {
+        "image": "assets/biljke/reference-80b4ff9117d73b62b0b1b4e9.jpg",
+        "sourceUrl": "https://majestictrees.co.uk/products/acer-palmatum-seiryu"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-majestictrees-co-uk",
+        "imageUrl": "https://majestictrees.co.uk/cdn/shop/files/10044-acer-palm-seiryu-mainim-600x600.jpg?v=1694165784&width=1920",
+        "sourceUrl": "https://majestictrees.co.uk/products/acer-palmatum-seiryu",
+        "matchedName": "Acer palmatum 'Seiryu'",
+        "identityEvidence": {
+          "method": "product_jsonld",
+          "canonicalName": "Acer palmatum 'Seiryu'"
+        },
+        "imageHosts": [
+          "majestictrees.co.uk"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "acer palmatum seiryu",
+        "latinName": "Acer palmatum 'Seiryu'",
+        "image": "assets/biljke/reference-80b4ff9117d73b62b0b1b4e9.jpg",
+        "sha256": "80b4ff9117d73b62b0b1b4e997685508fc0bbd668933d9c39e1d35058101b2f9",
+        "checkedAt": "2026-11-10T14:43:16Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-a2a94fa0e6b6b7": {
+      "photo": {
+        "image": "assets/biljke/reference-5493f09b4a0e2cf6c5152d2b.jpg",
+        "sourceUrl": "https://olddairynursery.com/products/aster-amellus-rudolf-goethe"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-olddairynursery-com",
+        "imageUrl": "https://olddairynursery.com/cdn/shop/files/Asteramellus_RudolfGoethe__latesummerblooms_OldDairyNursery_DSCF3992.jpg?v=1787859562",
+        "sourceUrl": "https://olddairynursery.com/products/aster-amellus-rudolf-goethe",
+        "matchedName": "Aster amellus 'Rudolf Goethe'",
+        "identityEvidence": {
+          "method": "product_og_image",
+          "canonicalName": "Aster amellus 'Rudolf Goethe'"
+        },
+        "imageHosts": [
+          "olddairynursery.com"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "aster amellus rudolf goethe",
+        "latinName": "Aster amellus 'Rudolf Goethe'",
+        "image": "assets/biljke/reference-5493f09b4a0e2cf6c5152d2b.jpg",
+        "sha256": "5493f09b4a0e2cf6c5152d2bd1bc7bf4dc7a720e827eb59251878f07535c572c",
+        "checkedAt": "2026-11-10T14:43:16Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-12d4512c15f964": {
+      "photo": {
+        "image": "assets/biljke/reference-f0daa827e18d05879cc99b8f.jpg",
+        "sourceUrl": "https://majestictrees.co.uk/products/betula-ermanii-holland"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-majestictrees-co-uk",
+        "imageUrl": "https://majestictrees.co.uk/cdn/shop/files/10089-betula-ermanii-holland-othr01-600x600.jpg?v=1716453360&width=1920",
+        "sourceUrl": "https://majestictrees.co.uk/products/betula-ermanii-holland",
+        "matchedName": "Betula ermanii 'Holland'",
+        "identityEvidence": {
+          "method": "product_jsonld",
+          "canonicalName": "Betula ermanii 'Holland'"
+        },
+        "imageHosts": [
+          "majestictrees.co.uk"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "betula ermanii holland",
+        "latinName": "Betula ermanii 'Holland'",
+        "image": "assets/biljke/reference-f0daa827e18d05879cc99b8f.jpg",
+        "sha256": "f0daa827e18d05879cc99b8fe0df1bc5139636250ed77237d49772f3cad6aa69",
+        "checkedAt": "2026-11-10T14:43:23Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-955c2408fc889c": {
+      "photo": {
+        "image": "assets/biljke/reference-faff6434a519a739adab486f.jpg",
+        "sourceUrl": "https://majestictrees.co.uk/products/gleditsia-triacanthos-spectrum"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-majestictrees-co-uk",
+        "imageUrl": "https://majestictrees.co.uk/cdn/shop/files/11833-gleditsia-triacanthos-spectrum-mainim-600x600.jpg?v=1753343965&width=1920",
+        "sourceUrl": "https://majestictrees.co.uk/products/gleditsia-triacanthos-spectrum",
+        "matchedName": "Gleditsia triacanthos 'Spectrum'",
+        "identityEvidence": {
+          "method": "product_jsonld",
+          "canonicalName": "Gleditsia triacanthos 'Spectrum'"
+        },
+        "imageHosts": [
+          "majestictrees.co.uk"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "gleditsia triacanthos spectrum",
+        "latinName": "Gleditsia triacanthos 'Spectrum'",
+        "image": "assets/biljke/reference-faff6434a519a739adab486f.jpg",
+        "sha256": "faff6434a519a739adab486f99110d707b709915ee80bca7ed67f479721d4d2a",
+        "checkedAt": "2026-11-10T14:44:02Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-8ff82317ab73d4": {
+      "photo": {
+        "image": "assets/biljke/reference-8a8011d9fd70acf18bad4f03.jpg",
+        "sourceUrl": "https://secretgardengrowers.com/products/hydrangea-paniculata-little-lime"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-secretgardengrowers-com",
+        "imageUrl": "https://secretgardengrowers.com/cdn/shop/products/HydrangeapaniculataLittleLime.jpg?v=1676083973&width=178",
+        "sourceUrl": "https://secretgardengrowers.com/products/hydrangea-paniculata-little-lime",
+        "matchedName": "Hydrangea paniculata 'Little Lime'",
+        "identityEvidence": {
+          "method": "product_jsonld",
+          "canonicalName": "Hydrangea paniculata 'Little Lime'"
+        },
+        "imageHosts": [
+          "secretgardengrowers.com"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "hydrangea paniculata little lime",
+        "latinName": "Hydrangea paniculata 'Little Lime'",
+        "image": "assets/biljke/reference-8a8011d9fd70acf18bad4f03.jpg",
+        "sha256": "8a8011d9fd70acf18bad4f03d0560e496d6ef2bd320c226806dce881bf22710c",
+        "checkedAt": "2026-11-10T14:44:05Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-98da30d6cdab1b": {
+      "photo": {
+        "image": "assets/biljke/reference-490fa8e0b423e405b8922de7.jpg",
+        "sourceUrl": "https://olddairynursery.com/products/ophiopogon-planiscapus-nigrescens"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-olddairynursery-com",
+        "imageUrl": "https://olddairynursery.com/cdn/shop/files/798px-Ophiopogon_planiscapus__Nigrescens__kz01.jpg?v=1724101612",
+        "sourceUrl": "https://olddairynursery.com/products/ophiopogon-planiscapus-nigrescens",
+        "matchedName": "Ophiopogon planiscapus 'Nigrescens'",
+        "identityEvidence": {
+          "method": "product_og_image",
+          "canonicalName": "Ophiopogon planiscapus 'Nigrescens'"
+        },
+        "imageHosts": [
+          "olddairynursery.com"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "ophiopogon planiscapus nigrescens",
+        "latinName": "Ophiopogon planiscapus 'Nigrescens'",
+        "image": "assets/biljke/reference-490fa8e0b423e405b8922de7.jpg",
+        "sha256": "490fa8e0b423e405b8922de7ec19e38e99e06ce9e0ecc63ad3e8f051fbe5e36e",
+        "checkedAt": "2026-11-10T14:44:18Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-b1fc7ebad5242f": {
+      "photo": {
+        "image": "assets/biljke/reference-dc8710a4cce2979f627ddcc2.jpg",
+        "sourceUrl": "https://majestictrees.co.uk/products/osmanthus-x-burkwoodii"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-majestictrees-co-uk",
+        "imageUrl": "https://majestictrees.co.uk/cdn/shop/files/10990-osmanthus-burkwoodii-mainim-600x600.jpg?v=1693761710&width=1920",
+        "sourceUrl": "https://majestictrees.co.uk/products/osmanthus-x-burkwoodii",
+        "matchedName": "Osmanthus x burkwoodii",
+        "identityEvidence": {
+          "method": "product_jsonld",
+          "canonicalName": "Osmanthus x burkwoodii"
+        },
+        "imageHosts": [
+          "majestictrees.co.uk"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "osmanthus x burkwoodii",
+        "latinName": "Osmanthus x burkwoodii",
+        "image": "assets/biljke/reference-dc8710a4cce2979f627ddcc2.jpg",
+        "sha256": "dc8710a4cce2979f627ddcc2cabe71b0f745fab14e03a939a45183dbadb10fda",
+        "checkedAt": "2026-11-10T14:44:22Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-b4ef8b5da580a2": {
+      "photo": {
+        "image": "assets/biljke/reference-26a3c11e09845c14b0561125.jpg",
+        "sourceUrl": "https://secretgardengrowers.com/products/pennisetum-orientale"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-secretgardengrowers-com",
+        "imageUrl": "https://secretgardengrowers.com/cdn/shop/files/PXL-20240731_003037618.jpg?v=1722455433&width=3072",
+        "sourceUrl": "https://secretgardengrowers.com/products/pennisetum-orientale",
+        "matchedName": "Pennisetum orientale",
+        "identityEvidence": {
+          "method": "product_jsonld",
+          "canonicalName": "Pennisetum orientale"
+        },
+        "imageHosts": [
+          "secretgardengrowers.com"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "cenchrus orientalis",
+        "latinName": "Pennisetum orientale",
+        "image": "assets/biljke/reference-26a3c11e09845c14b0561125.jpg",
+        "sha256": "26a3c11e09845c14b056112589a7115ed89fb0d63ae1a2684b8b92e8e9f0c346",
+        "checkedAt": "2026-11-10T14:44:19Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-a673ae8c07c8a4": {
+      "photo": {
+        "image": "assets/biljke/reference-1bdf2f22d40f15fe05d6bd70.jpg",
+        "sourceUrl": "https://olddairynursery.com/products/persicaria-bistorta"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-olddairynursery-com",
+        "imageUrl": "https://olddairynursery.com/cdn/shop/files/Schlangen-Knoterich__Bistorta_officinalis.jpg?v=1733673180",
+        "sourceUrl": "https://olddairynursery.com/products/persicaria-bistorta",
+        "matchedName": "Persicaria bistorta",
+        "identityEvidence": {
+          "method": "product_og_image",
+          "canonicalName": "Persicaria bistorta"
+        },
+        "imageHosts": [
+          "olddairynursery.com"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "persicaria bistorta",
+        "latinName": "Persicaria bistorta",
+        "image": "assets/biljke/reference-1bdf2f22d40f15fe05d6bd70.jpg",
+        "sha256": "1bdf2f22d40f15fe05d6bd703826ffd2c698bd485b78c91d46473b876d681329",
+        "checkedAt": "2026-11-10T14:44:20Z",
+        "matchLevel": "exact"
+      }
+    },
+    "plant-ce3fc8d22cadc1": {
+      "photo": {
+        "image": "assets/biljke/reference-82e39fbc9547215610ebc63a.jpg",
+        "sourceUrl": "https://majestictrees.co.uk/products/prunus-cerasifera-pissardii"
+      },
+      "reason": "outside_offer_nurseries",
+      "retiredAt": "2026-11-11",
+      "sourceEvidence": {
+        "provider": "other_catalogue_nursery",
+        "nurseryId": "photo-majestictrees-co-uk",
+        "imageUrl": "https://majestictrees.co.uk/cdn/shop/files/10393-prunus-cerasifera-pissardii-mainim-600x600.jpg?v=1782393870&width=1920",
+        "sourceUrl": "https://majestictrees.co.uk/products/prunus-cerasifera-pissardii",
+        "matchedName": "Prunus cerasifera 'Pissardii'",
+        "identityEvidence": {
+          "method": "product_jsonld",
+          "canonicalName": "Prunus cerasifera 'Pissardii'"
+        },
+        "imageHosts": [
+          "majestictrees.co.uk"
+        ],
+        "imagePathPrefixes": null,
+        "license": "existing_catalogue_source_policy",
+        "taxonKey": "prunus cerasifera pissardii",
+        "latinName": "Prunus cerasifera 'Pissardii'",
+        "image": "assets/biljke/reference-82e39fbc9547215610ebc63a.jpg",
+        "sha256": "82e39fbc9547215610ebc63a9330343212c055e26b5301a1bc00ed73ffc30bb5",
+        "checkedAt": "2026-11-10T14:44:37Z",
+        "matchLevel": "exact"
+      }
+    }
   }
 }
