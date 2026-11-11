@@ -836,6 +836,7 @@ body[data-view="search"] .search-field:focus-within .search-icon { color:var(--a
 }
 
 </style>
+      <link rel="stylesheet" href="./assets/moja-ponuda.css">
   </head>
   <body data-view="search">
     <a class="skip-link" href="#main">Pređi na sadržaj</a>
@@ -845,6 +846,7 @@ body[data-view="search"] .search-field:focus-within .search-icon { color:var(--a
           <img class="brand-apple" src="./assets/demetra-rb-favicon-original.png" width="14" height="14" alt="" aria-hidden="true">
           <span class="brand-wordmark"><span class="brand-title header-glass-text">demetra rb index</span><small class="header-glass-text">DIGITALNI REGISTAR BILJAKA</small></span>
         </a>
+        <button id="open-my-quote" type="button" class="my-quote-nav" data-action="open-my-quote" aria-controls="my-quote-view" aria-expanded="false">Moja ponuda <span id="my-quote-count">0</span></button>
       </div>
     </header>
 
@@ -934,10 +936,14 @@ body[data-view="search"] .search-field:focus-within .search-icon { color:var(--a
       </section>
 
     </main>
+    <section id="my-quote-view" class="my-quote-view" aria-labelledby="quote-heading" hidden></section>
+    <div id="quote-toast" class="quote-toast" role="status" aria-live="polite" hidden></div>
 
     <dialog id="plant-dialog" class="dialog detail-dialog" aria-labelledby="plant-detail-title"><div id="plant-dialog-content"></div></dialog>
     <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="false"></div>
     <noscript><p class="noscript-notice">Za korišćenje kataloga potrebno je uključiti JavaScript u pregledaču.</p></noscript>
+    <script src="./assets/moja-ponuda-core.js"></script>
+    <script src="./assets/moja-ponuda.js"></script>
     <script type="module">
 // BEGIN CATALOG CORE
 const {validateImport,searchPlants,normalize}=(()=>{
@@ -1531,7 +1537,7 @@ function visibleDataNotes(offer) {
   }).filter(Boolean))];
 }
 
-function renderOffer(offer, plant, nursery) {
+function offerParameters(offer) {
   const typeLabel = offer.seedlingType === 'standard' ? 'Standard' :
     offer.seedlingType === 'multistem' ? 'Multistem' : 'Nije navedeno u ponudi';
   const transplantCodes = [...new Set(offer.transplantCodes || [])];
@@ -1539,7 +1545,7 @@ function renderOffer(offer, plant, nursery) {
     (transplantCodes.length ? String(offer.transplantCount) + ' (' + transplantCodes.join(', ') + ')' :
       offer.transplantNote || String(offer.transplantCount)) :
     offer.transplantNote || transplantCodes.join(', ');
-  const measurements = [
+  return [
     ['Tip sadnice', typeLabel],
     ['Obim sadnice', offer.circumference],
     ['Visina sadnice', offer.height],
@@ -1550,6 +1556,10 @@ function renderOffer(offer, plant, nursery) {
     ['Broj presađivanja', transplantValue],
     ...visibleAdditionalParameters(offer).map(({ label, value }) => [label, value])
   ];
+}
+
+function renderOffer(offer, plant, nursery) {
+  const measurements = offerParameters(offer);
   const dataNotes = visibleDataNotes(offer);
   const priceNote = visiblePriceNote(offer);
   const hasPrice = offer.price !== null && offer.price !== undefined && offer.price !== '';
@@ -1579,7 +1589,8 @@ function renderOffer(offer, plant, nursery) {
     '<div class="offer-price"><strong>' + escapeHTML(formattedPrice(offer)) +
     '</strong><small>' + escapeHTML((hasPrice ? '/ ' + (offer.unit || 'kom') + ' · ' : '') +
       (offer.taxStatus || 'PDV nije naveden')) + '</small></div>' +
-    (priceNote ? '<p class="image-kind">' + escapeHTML(priceNote) + '</p>' : '') + '</div></div></div>' +
+    (priceNote ? '<p class="image-kind">' + escapeHTML(priceNote) + '</p>' : '') +
+    '<button type="button" class="quote-add" data-action="add-to-quote" data-offer-id="' + escapeHTML(offer.id) + '">Dodaj u moju ponudu</button></div></div></div>' +
     '<div class="offer-footer"><div class="offer-source"><strong>' +
     sourceLink + '</strong><br>' + escapeHTML(sourceTiming) +
     (dataNotes.length ? '<br><strong>Tačnost podataka:</strong> ' + escapeHTML(dataNotes.join(' ')) : '') +
@@ -1619,7 +1630,7 @@ function renderRecord(plant) {
   );
   $('plant-dialog-content').innerHTML =
     '<div class="dialog-topline detail-topline"><span class="dialog-topline-label">Digitalna kartica biljke</span>' +
-    '<div class="detail-topline-actions"><button type="button" class="icon-button" data-action="close-record" aria-label="Zatvori zapis i vrati se na pretragu">' +
+    '<div class="detail-topline-actions"><button type="button" class="record-quote-link" data-action="open-my-quote">Moja ponuda ↗</button><button type="button" class="icon-button" data-action="close-record" aria-label="Zatvori zapis i vrati se na pretragu">' +
     closeIcon + '</button></div></div>' +
     '<div class="detail-hero' + (plantPhoto ? ' with-photo' : ' without-photo') + '"><div class="detail-hero-copy"><p class="category-label">' +
     escapeHTML(plant.category || 'Biljka') + (plant.demo ? ' · DEMO ZAPIS' : '') +
@@ -1642,7 +1653,31 @@ function renderRecord(plant) {
     '</div>';
 }
 
+function makeQuoteItem(offerId) {
+  const offer = state.catalog?.offers.find(item => item.id === offerId && !['needs_review', 'superseded'].includes(item.recordStatus));
+  if (!offer) return null;
+  const plant = plantById(offer.plantId), nursery = nurseryById(offer.nurseryId);
+  if (!plant || !nursery) return null;
+  return {
+    offerId: offer.id, plantId: plant.id, nurseryId: nursery.id,
+    latinName: plant.latinName, commonName: plant.commonName || '', nursery: nursery.name,
+    country: nursery.country || '', unit: offer.unit || 'kom', currency: offer.currency || 'EUR',
+    sourcePrice: offer.price, price: offer.price === null ? '' : String(offer.price), quantity: '1', note: '',
+    parameters: offerParameters(offer),
+    details: [
+      ['Kategorija', plant.category], ['Opis biljke', plant.description],
+      ['Drugi nazivi', (plant.synonyms || []).join('; ')], ['Izvorna oznaka tipa', offer.seedlingTypeCode],
+      ['Dostupnost', offer.availability], ['PDV', offer.taxStatus],
+      ['Vrsta cene', offer.priceKind === 'historical' ? 'Cena iz arhivirane ponude' : 'Nabavna cena iz ponude'],
+      ['Napomena o ceni', visiblePriceNote(offer)], ['Napomene o podacima', visibleDataNotes(offer).join(' ')],
+      ['Izvor', offer.source], ['Datum izvora', offer.sourceDate], ['Period izvora', offer.sourcePeriod],
+      ['Veza ka izvoru', offer.sourceUrl]
+    ].filter(([,value]) => value !== '' && value !== null && value !== undefined)
+  };
+}
+
 function openRecord(id) {
+  quoteApp?.hide();
   const plant = plantById(id);
   if (!plant) {
     closeSuggestions();
@@ -1657,12 +1692,14 @@ function openRecord(id) {
   closeSuggestions();
   setStatus('');
   renderRecord(plant);
+  quoteApp?.refresh();
   if (!dialog.open) dialog.showModal();
   document.title = plant.latinName + ' · demetra rb index';
   history.replaceState(null, '', '#plant=' + encodeURIComponent(id));
 }
 
 function returnToSearch() {
+  quoteApp?.hide();
   state.selectedPlantId = null;
   if (dialog.open) dialog.close();
   document.title = 'demetra rb index';
@@ -1687,6 +1724,7 @@ function submitSearch(useActiveSuggestion = true) {
 }
 
 function handleRoute() {
+  if (location.hash === '#moja-ponuda') { quoteApp?.open(); return; }
   if (!state.catalog) return;
   const hash = location.hash.slice(1);
   if (hash.startsWith('plant=')) {
@@ -1751,6 +1789,7 @@ dialog.addEventListener('click', (event) => {
 });
 dialog.addEventListener('close', () => {
   state.selectedPlantId = null;
+  if (quoteApp?.isOpen()) return;
   document.title = 'demetra rb index';
   history.replaceState(null, '', '#search');
 });
@@ -1804,6 +1843,11 @@ async function init() {
   }
 }
 
+const quoteApp = window.DemetraQuote?.create({
+  getItem: makeQuoteItem,
+  onOpen() { closeSuggestions(); if (dialog.open) dialog.close(); },
+  onClose() { input.focus({preventScroll:true}); }
+});
 init();
 
     </script>
