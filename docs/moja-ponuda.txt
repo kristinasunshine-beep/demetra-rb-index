@@ -8,10 +8,10 @@ MOJA PONUDA — UPUTSTVO
 5. U „Podaci za zaglavlje ponude“ unesite broj, datum, sastavljača i investitora.
 6. Izaberite „Preuzmi Excel“. Dobijena .xlsx datoteka ostaje izmenjiva u Excelu.
 
-List „Moja ponuda“ sadrži memorandum, stavke, osnovne parametre, količinu,
-jediničnu cenu, valutu, formulu iznosa i formule zbirova.
-List „Parametri“ sadrži sve dostupne parametre tačno odabranih varijanti,
-izvorne napomene, dostupnost, poreski status i izvornu cenu iz kataloga.
+Excel ima samo jedan list, „Moja ponuda“, sa memorandumom, stavkama,
+parametrima sadnica, količinom, jediničnom cenom, valutom i formulama
+iznosa i zbirova. Napomena korisnika je uz parametre odgovarajuće stavke.
+List „Parametri“ je uklonjen iz izvoza.
 Izmena cene u sopstvenoj ponudi ne menja cenu u katalogu.
 
 Cene u EUR i RSD imaju zasebne zbirove. Nema automatske konverzije niti
