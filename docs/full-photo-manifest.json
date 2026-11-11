@@ -1437,14 +1437,14 @@
       "imageHosts": [
         "www.lorberg.com"
       ],
-      "imagePathPrefixes": null,
+      "imagePathPrefixes": {},
       "license": "existing_catalogue_source_policy",
+      "taxonKey": "cotoneaster x suecicus coral beauty",
       "latinName": "Cotoneaster x suecicus 'Coral Beauty'",
       "image": "assets/biljke/reference-00c3461d712e824d5b955f9e.jpg",
       "sha256": "00c3461d712e824d5b955f9e98278488c065441008be4c10fee7590a131579be",
-      "checkedAt": "2026-11-10T10:03:40Z",
-      "matchLevel": "exact",
-      "taxonKey": "cotoneaster x suecicus coral beauty"
+      "checkedAt": "2026-11-11T11:55:57Z",
+      "matchLevel": "exact"
     },
     "plant-30e1ad5d1f2fc3": {
       "provider": "other_catalogue_nursery",
@@ -1781,30 +1781,25 @@
     },
     "plant-3911669b036d7c": {
       "provider": "other_catalogue_nursery",
-      "nurseryId": "vivers-planas",
-      "imageUrl": "https://images.hoobaweb.com/1298/imgf-1200-630/morus-alba-fruitless5.jpg",
-      "sourceUrl": "https://www.viversplanas.com/en/products/morus-alba-fruitless/",
+      "nurseryId": "smits-boomkwekerij",
+      "imageUrl": "https://smitsbv.nl/wp-content/uploads/2026/03/58069.jpg",
+      "sourceUrl": "https://smitsbv.nl/producten/morus-alba-fruitless/",
       "matchedName": "Morus alba 'Fruitless'",
       "identityEvidence": {
-        "method": "product_og_image",
+        "method": "page_primary_image",
         "canonicalName": "Morus alba 'Fruitless'"
       },
       "imageHosts": [
-        "images.hoobaweb.com",
-        "www.viversplanas.com"
+        "smitsbv.nl"
       ],
-      "imagePathPrefixes": {
-        "images.hoobaweb.com": [
-          "/1298/"
-        ]
-      },
+      "imagePathPrefixes": {},
       "license": "existing_catalogue_source_policy",
+      "taxonKey": "morus alba fruitless",
       "latinName": "Morus alba 'Fruitless'",
-      "image": "assets/biljke/reference-738b9348b3366022726cb3fa.jpg",
-      "sha256": "738b9348b3366022726cb3faaf7453d8c0ca2b3f447dd88d3253a7fb4dbdddf6",
-      "checkedAt": "2026-11-10T10:04:30Z",
-      "matchLevel": "exact",
-      "taxonKey": "morus alba fruitless"
+      "image": "assets/biljke/reference-62334fd676ddaf2cb85e1bce.jpg",
+      "sha256": "62334fd676ddaf2cb85e1bce9ba3decb1d41dcc6631de20341629f2bf1581645",
+      "checkedAt": "2026-11-11T11:56:32Z",
+      "matchLevel": "exact"
     },
     "plant-39abdb89d9bcb2": {
       "provider": "other_catalogue_nursery",
@@ -3880,26 +3875,25 @@
     },
     "plant-80f1da5d27c0c6": {
       "provider": "other_catalogue_nursery",
-      "nurseryId": "biojela",
-      "imageUrl": "https://media.biojela.rs/2021/04/3b-.jpg",
-      "sourceUrl": "https://biojela.rs/product/acer-palmatum-sangokaku/",
+      "nurseryId": "smits-boomkwekerij",
+      "imageUrl": "https://smitsbv.nl/wp-content/uploads/2026/03/85914.jpg",
+      "sourceUrl": "https://smitsbv.nl/producten/acer-palmatum-sangokaku/",
       "matchedName": "Acer palmatum 'Sangokaku'",
       "identityEvidence": {
-        "method": "product_og_image",
+        "method": "page_primary_image",
         "canonicalName": "Acer palmatum 'Sangokaku'"
       },
       "imageHosts": [
-        "biojela.rs",
-        "media.biojela.rs"
+        "smitsbv.nl"
       ],
-      "imagePathPrefixes": null,
+      "imagePathPrefixes": {},
       "license": "existing_catalogue_source_policy",
+      "taxonKey": "acer palmatum sangokaku",
       "latinName": "Acer palmatum 'Sangokaku'",
-      "image": "assets/biljke/reference-edcfb913b9dc3b9f549d1161.jpg",
-      "sha256": "edcfb913b9dc3b9f549d11611d76918b58737de3c414fc9ac75efe175c110d6b",
-      "checkedAt": "2026-11-10T10:10:52Z",
-      "matchLevel": "exact",
-      "taxonKey": "acer palmatum sangokaku"
+      "image": "assets/biljke/reference-0592a13ea060d08fe30716fa.jpg",
+      "sha256": "0592a13ea060d08fe30716fa1a16c8f88418076c0d78bafbea4981332d167eaa",
+      "checkedAt": "2026-11-11T11:56:00Z",
+      "matchLevel": "exact"
     },
     "plant-84a21a9e2b9275": {
       "provider": "other_catalogue_nursery",

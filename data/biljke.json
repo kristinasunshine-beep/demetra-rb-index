@@ -323,7 +323,11 @@
         "Acer palmatum 'Sango kaku'",
         "Acer palmatum Sangokaku"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-0592a13ea060d08fe30716fa.jpg",
+        "sourceUrl": "https://smitsbv.nl/producten/acer-palmatum-sangokaku/"
+      }
     },
     {
       "id": "plant-cc21d9ee76f153",
@@ -5018,7 +5022,11 @@
         "Morus alba Fruitless",
         "Morus alba Fruitless ROOF"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-62334fd676ddaf2cb85e1bce.jpg",
+        "sourceUrl": "https://smitsbv.nl/producten/morus-alba-fruitless/"
+      }
     },
     {
       "id": "plant-30e1ad5d1f2fc3",

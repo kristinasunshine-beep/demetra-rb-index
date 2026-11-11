@@ -1,10 +1,10 @@
 {
   "schemaVersion": 2,
-  "checkedAt": "2026-11-11T07:48:57Z",
+  "checkedAt": "2026-11-11T11:57:54Z",
   "status": "partial",
   "plants": 619,
   "plantsInventoried": 619,
-  "plantsWithPhoto": 384,
+  "plantsWithPhoto": 386,
   "plantsWithoutPhoto": [
     {
       "plantId": "plant-ee364e988134ba",
@@ -25,10 +25,6 @@
     {
       "plantId": "plant-eac4a83d81ce66",
       "latinName": "Acer palmatum 'Disectum'"
-    },
-    {
-      "plantId": "plant-80f1da5d27c0c6",
-      "latinName": "Acer palmatum 'Sangokaku'"
     },
     {
       "plantId": "plant-cc21d9ee76f153",
@@ -607,10 +603,6 @@
       "latinName": "Miscanthus sinensis 'Yaku Jima'"
     },
     {
-      "plantId": "plant-3911669b036d7c",
-      "latinName": "Morus alba 'Fruitless'"
-    },
-    {
       "plantId": "plant-7554ad08ac45af",
       "latinName": "Nepeta 'Six Hill Giant'"
     },
@@ -947,7 +939,7 @@
       "latinName": "Viola tricolor"
     }
   ],
-  "coveragePercent": 62.04,
+  "coveragePercent": 62.36,
   "activeOffers": 2948,
-  "remainingOffers": 446
+  "remainingOffers": 436
 }

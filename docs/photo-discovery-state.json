@@ -13693,6 +13693,23 @@
         "reason": "download_failed",
         "at": "2026-11-09T15:07:19Z"
       }
+    },
+    "ebben": {
+      "frontier": [],
+      "visited": [],
+      "pages": [
+        "https://www.ebben.nl/en/treeebb/titszele-tilia-tomentosa-szeleste/",
+        "https://www.ebben.nl/en/treeebb/litaureo-liriodendron-tulipifera-aureomarginatum/",
+        "https://www.ebben.nl/en/treeebb/piomorik-picea-omorika/",
+        "https://www.ebben.nl/nl/treeebb/pinigra-pinus-nigra/",
+        "https://www.ebben.nl/en/treeebb/fasriver-fagus-sylvatica-riversii/",
+        "https://www.ebben.nl/en/treeebb/preumbra-prunus-x-eminens-umbraculifera/",
+        "https://www.ebben.nl/en/treeebb/chlcolum-chamaecyparis-lawsoniana-columnaris/",
+        "https://www.ebben.nl/nl/treeebb/haidiane-hamamelis-x-intermedia-diane/",
+        "https://www.ebben.nl/en/treeebb/ladecidu-larix-decidua/",
+        "https://www.ebben.nl/en/treeebb/sttenuis-stipa-tenuissima/"
+      ],
+      "robots": {}
     }
   },
   "pairs": {
@@ -15506,7 +15523,75 @@
       },
       "checkedAt": "2026-11-10T08:13:42Z",
       "candidateFingerprint": "0cda679f9177065e72479b5f40af0a10f02377844ec755ba12ff5b4ce0c79959"
+    },
+    "lorberg::plant-abies-concolor": {
+      "binding": {
+        "plantId": "plant-abies-concolor",
+        "nurseryId": "lorberg",
+        "offerIds": [
+          "photo-index-lorberg"
+        ],
+        "pageUrl": "https://www.lorberg.com/en-gb/article/65/abies-concolor",
+        "imageUrl": "https://www.lorberg.com/content/files/3199/Abies-procera-Procumbens-1200x630-proportionalbiggest.webp",
+        "matchedName": "Abies concolor",
+        "canonicalName": "Abies concolor",
+        "policy": {
+          "nurseryId": "lorberg",
+          "resolver": "product",
+          "fillMissing": true,
+          "pageHosts": [
+            "www.lorberg.com"
+          ],
+          "imageHosts": [
+            "www.lorberg.com"
+          ],
+          "pagePathPattern": "/en\\-gb/article/65/abies\\-concolor"
+        },
+        "verifiedAt": "2026-11-11T11:55:29Z",
+        "evidence": {
+          "method": "product_jsonld",
+          "discoveredUrl": "https://www.lorberg.com/en-gb/article/65/abies-concolor",
+          "discovery": "nursery_sitemap_or_observed_link",
+          "identity": "exact_full_botanical_name"
+        }
+      },
+      "checkedAt": "2026-11-11T11:55:29Z",
+      "candidateFingerprint": "f66e4cceed1b85586634db2db3982f9a8569cd81cc116b8c06f66847a4ec1f4b"
+    },
+    "smits-boomkwekerij::plant-abies-concolor": {
+      "binding": {
+        "plantId": "plant-abies-concolor",
+        "nurseryId": "smits-boomkwekerij",
+        "offerIds": [
+          "photo-index-smits-boomkwekerij"
+        ],
+        "pageUrl": "https://smitsbv.nl/producten/abies-concolor/",
+        "imageUrl": "https://smitsbv.nl/wp-content/uploads/2026/03/Abies-concolor-5-6m.webp",
+        "matchedName": "Abies concolor",
+        "canonicalName": "Abies concolor",
+        "policy": {
+          "nurseryId": "smits-boomkwekerij",
+          "resolver": "product",
+          "fillMissing": true,
+          "pageHosts": [
+            "smitsbv.nl"
+          ],
+          "imageHosts": [
+            "smitsbv.nl"
+          ],
+          "pagePathPattern": "/producten/abies\\-concolor/"
+        },
+        "verifiedAt": "2026-11-11T11:55:29Z",
+        "evidence": {
+          "method": "page_primary_image",
+          "discoveredUrl": "https://smitsbv.nl/producten/abies-concolor/",
+          "discovery": "nursery_sitemap_or_observed_link",
+          "identity": "exact_full_botanical_name"
+        }
+      },
+      "checkedAt": "2026-11-11T11:55:29Z",
+      "candidateFingerprint": "9ff5e9adf44fb2d599a90c73c3c0114210c6157a99da9f683f545037ad45ce50"
     }
   },
-  "updatedAt": "2026-11-10T11:17:40Z"
+  "updatedAt": "2026-11-11T11:55:29Z"
 }
