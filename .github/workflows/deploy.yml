@@ -49,7 +49,9 @@ jobs:
         run: python scripts/repair_photo_asset_paths.py
 
       - name: Proveri katalog i povezane fajlove
-        run: node scripts/check-catalog.mjs
+        run: |
+          node scripts/check-catalog.mjs
+          python scripts/photo_source_policy.py
 
       - name: Pripremi GitHub Pages
         uses: actions/configure-pages@v6.0.0

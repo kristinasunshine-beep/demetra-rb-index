@@ -1,4 +1,4 @@
-name: Fotografije za sve biljke
+name: Fotografije rasadnika iz ponuda
 
 on:
   push:
@@ -69,11 +69,15 @@ jobs:
         id: repair
         run: python scripts/repair_photo_asset_paths.py --github-output "$GITHUB_OUTPUT"
 
+      - name: Primeni pravila izvora na sve biljke
+        run: python scripts/full_photo_coverage.py --audit-only
+
       - name: Proveri katalog, kultivare i javne kartice
         shell: bash
         run: |
           set -euo pipefail
           node scripts/check-catalog.mjs
+          python scripts/photo_source_policy.py
           python -m unittest discover -s scripts/tests -p 'test_*photo*.py'
           python -m unittest discover -s scripts/tests -p 'test_source_policy.py'
           node scripts/tests/test_photo_reference_render.mjs
@@ -119,7 +123,7 @@ jobs:
                   lines.append('| Biljke koje jos cekaju fotografiju | ' + str(len(missing)) + ' |')
               lines += ['', 'Kompletan spisak: `docs/photo-coverage.json`.',
                         'Nastavak pretrage: `docs/full-photo-state.json`.',
-                        'Identitet, izvor i evidencija otvorenih licenci: `docs/full-photo-manifest.json`.',
+                        'Identitet i poreklo fotografija iz rasadnika u ponudama: `docs/full-photo-manifest.json`.',
                         '', 'Pregled svih biljaka ne znaci da je za svaku pronadjena odgovarajuca slika. '
                         'Nepotvrdjen kultivar ostaje u redu za dopunu.']
               if report.get('fatal'):
@@ -133,6 +137,7 @@ jobs:
       - name: Proveri dopunjen katalog
         run: |
           node scripts/check-catalog.mjs
+          python scripts/photo_source_policy.py
           python scripts/full_photo_coverage.py --validate-only
 
       - name: Sacuvaj foto dopunu bez prepisivanja paralelnih izmena
