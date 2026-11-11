@@ -1,0 +1,42 @@
+MOJA PONUDA — UPUTSTVO
+
+1. Pronađite biljku u katalogu i otvorite njenu digitalnu karticu.
+2. Kod konkretne varijante rasadnika izaberite „Dodaj u moju ponudu“.
+   Svaka varijanta se bira zasebno, sa svojim merama, načinom isporuke i cenom.
+3. Otvorite „Moja ponuda“ iz hedera ili iz digitalne kartice.
+4. Po potrebi izmenite količinu, cenu i napomenu za izabrane stavke.
+5. U „Podaci za zaglavlje ponude“ unesite broj, datum, sastavljača i investitora.
+6. Izaberite „Preuzmi Excel“. Dobijena .xlsx datoteka ostaje izmenjiva u Excelu.
+
+List „Moja ponuda“ sadrži memorandum, stavke, osnovne parametre, količinu,
+jediničnu cenu, valutu, formulu iznosa i formule zbirova.
+List „Parametri“ sadrži sve dostupne parametre tačno odabranih varijanti,
+izvorne napomene, dostupnost, poreski status i izvornu cenu iz kataloga.
+Izmena cene u sopstvenoj ponudi ne menja cenu u katalogu.
+
+Cene u EUR i RSD imaju zasebne zbirove. Nema automatske konverzije niti
+pretpostavljene stope PDV-a. Izvorni poreski status naveden je uz stavku.
+Prazna cena se ne tumači kao nula. Pre preuzimanja potrebno je popuniti
+količinu i cenu za svaku odabranu stavku. Nulta cena je dozvoljena.
+
+Ponuda se automatski čuva u istom pregledaču. Nije vezana za nalog i ne
+prenosi se automatski na druge uređaje. Ako pregledač ne dozvoli čuvanje,
+stranica prikazuje obaveštenje i ponudu je moguće odmah preuzeti u Excelu.
+Posle uklanjanja stavke ili pražnjenja ponude postoji „Vrati uklonjeno“.
+
+MEMORANDUM
+Originalni DEMETRA RB logotip i grupa znakova AQRA 45001:2018, NAC,
+ISO 14001:2015 i ISO 9001:2015 preuzeti su iz dostavljenog memoranduma
+„Ponuda za uređenje.xlsx“. Slike su ugrađene bez prerade.
+Podaci firme: MB 06517293; PIB 101713319; Zarija Vujoševića 80,
+11070 Novi Beograd; +381 11 3112798; office@demetrarb.com;
+https://demetrarb.com/BG/.
+Kratak opis delatnosti je izmenjiv u zaglavlju svake ponude.
+
+ODRŽAVANJE
+Funkcionalnost je u assets/moja-ponuda-core.js, assets/moja-ponuda.js i
+assets/moja-ponuda.css. Excel obrazac je assets/moja-ponuda-template.xlsx.
+Izvoz radi u pregledaču, koristeći lokalnu kopiju JSZip 3.10.1.
+Licenca biblioteke je u assets/vendor/JSZIP-LICENSE.txt.
+Podaci investitora i izabrane stavke ne šalju se posebnom serveru.
+Automatska provera je scripts/tests/test_my_quote.mjs i izvršava se pre objave.
