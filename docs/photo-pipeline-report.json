@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "status": "partial",
-  "requests": 277,
+  "requests": 336,
   "workers": 8,
   "events": [
     {
@@ -12,7 +12,7 @@
   ],
   "coverage": {
     "schemaVersion": 2,
-    "checkedAt": "2026-11-11T11:57:54Z",
+    "checkedAt": "2026-11-12T12:52:24Z",
     "status": "partial",
     "plants": 619,
     "plantsInventoried": 619,
@@ -956,6 +956,6 @@
     "remainingOffers": 436
   },
   "nonPhotoDataUnchanged": true,
-  "newlyVerified": 2,
+  "newlyVerified": 0,
   "refreshCandidates": 0
 }
