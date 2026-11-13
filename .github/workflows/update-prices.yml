@@ -1,17 +1,24 @@
-name: Cene iz ponuda — online osvezavanje iskljuceno
+name: Proveri jutarnje ažuriranje cena
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '35 7 * * *'
 
-permissions: {}
+permissions:
+  contents: read
 
 jobs:
-  source-policy:
-    runs-on: ubuntu-latest
-    timeout-minutes: 2
+  verify-price-refresh:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
     steps:
-      - name: Prikazi pravilo izvora
-        run: |
-          echo "## Online osvezavanje cena je iskljuceno" >> "$GITHUB_STEP_SUMMARY"
-          echo "Cene, mere, tip sadnice i napomene uzimaju se iskljucivo iz foldera Rasadnici ponude." >> "$GITHUB_STEP_SUMMARY"
-          echo "Jedina online automatizacija je Osvezi kataloske fotografije." >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Proveri potvrdu iz poslovnog foldera
+        run: node scripts/check-price-sync.mjs

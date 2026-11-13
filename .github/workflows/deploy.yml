@@ -52,6 +52,7 @@ jobs:
         run: |
           node scripts/check-catalog.mjs
           node --test scripts/tests/test_my_quote.mjs
+          node --test scripts/tests/test_quick_recommendation.mjs scripts/tests/test_folder_price_refresh.mjs scripts/tests/test_recommendation_excel_preservation.mjs
           python scripts/photo_source_policy.py
 
       - name: Pripremi GitHub Pages
@@ -68,6 +69,9 @@ jobs:
 
           cp -- index.html "$PAGES_UPLOAD_DIR/"
           cp -- data/biljke.json data/rasadnici.json data/kataloske-stavke.json "$PAGES_UPLOAD_DIR/data/"
+          if [[ -f data/price-sync-status.json ]]; then
+            cp -- data/price-sync-status.json "$PAGES_UPLOAD_DIR/data/"
+          fi
 
           for directory in assets fonts; do
             if [[ -d "$directory" ]]; then

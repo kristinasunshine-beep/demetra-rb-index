@@ -286,8 +286,17 @@ export async function verifyPanels(root) {
         label + 'regresiona provera mora biti vezana za poznati izvorni red.');
       assert.equal(original.sourceEvidence?.sourceFile, regression.sourceFile,
         label + 'regresioni podatak mora pripadati odgovarajućoj ponudi.');
-      if (Object.hasOwn(regression, 'price')) assert.equal(original.price, regression.price,
-        label + 'cena iz poznatog izvornog reda mora ostati nepromenjena.');
+      if (Object.hasOwn(regression, 'price')) {
+        const update=original.priceEvidence?.folderUpdate;
+        if(update){
+          assert.equal(update.method,'unchanged-identity-row-and-header',label+'nepoznat postupak provere cene.');
+          assert.match(update.sourceSha256||'',/^[a-f0-9]{64}$/,label+'nedostaje otisak novog izvora.');
+          assert.match(update.rowSignature||'',/^[a-f0-9]{64}$/,label+'nedostaje potvrda izvornog reda.');
+          assert.match(update.headerSignature||'',/^[a-f0-9]{64}$/,label+'nedostaje potvrda zaglavlja.');
+          assert.equal(original.priceEvidence.amount,original.price,label+'potvrda i cena se razlikuju.');
+          assert.equal(original.priceRefresh?.originalAmount,regression.price,label+'početna cena mora ostati vezana za arhivski dokaz.');
+        }else assert.equal(original.price,regression.price,label+'cena izvornog reda mora imati potvrdu svake izmene.');
+      }
       if (Object.hasOwn(regression, 'currency')) {
         const confirmedEUR = !regression.currency && original.currencyStatus === 'owner_confirmed' &&
           original.currencyEvidence?.origin === 'catalogue_owner_confirmation' &&

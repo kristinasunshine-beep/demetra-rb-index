@@ -837,6 +837,7 @@ body[data-view="search"] .search-field:focus-within .search-icon { color:var(--a
 
 </style>
       <link rel="stylesheet" href="./assets/moja-ponuda.css">
+      <link rel="stylesheet" href="./assets/brza-preporuka.css">
   </head>
   <body data-view="search">
     <a class="skip-link" href="#main">Pređi na sadržaj</a>
@@ -846,7 +847,10 @@ body[data-view="search"] .search-field:focus-within .search-icon { color:var(--a
           <img class="brand-apple" src="./assets/demetra-rb-favicon-original.png" width="14" height="14" alt="" aria-hidden="true">
           <span class="brand-wordmark"><span class="brand-title header-glass-text">demetra rb index</span><small class="header-glass-text">DIGITALNI REGISTAR BILJAKA</small></span>
         </a>
-        <button id="open-my-quote" type="button" class="my-quote-nav" data-action="open-my-quote" aria-controls="my-quote-view" aria-expanded="false">Moja ponuda <span id="my-quote-count">0</span></button>
+        <nav class="header-actions" aria-label="Alati kataloga">
+          <button id="open-quick-recommendation" type="button" class="quick-nav" aria-controls="quick-recommendation-view" aria-expanded="false">Brza preporuka</button>
+          <button id="open-my-quote" type="button" class="my-quote-nav" data-action="open-my-quote" aria-controls="my-quote-view" aria-expanded="false">Moja ponuda <span id="my-quote-count">0</span></button>
+        </nav>
       </div>
     </header>
 
@@ -937,6 +941,7 @@ body[data-view="search"] .search-field:focus-within .search-icon { color:var(--a
 
     </main>
     <section id="my-quote-view" class="my-quote-view" aria-labelledby="quote-heading" hidden></section>
+    <section id="quick-recommendation-view" class="recommend-view" aria-labelledby="recommend-heading" hidden></section>
     <div id="quote-toast" class="quote-toast" role="status" aria-live="polite" hidden></div>
 
     <dialog id="plant-dialog" class="dialog detail-dialog" aria-labelledby="plant-detail-title"><div id="plant-dialog-content"></div></dialog>
@@ -944,6 +949,8 @@ body[data-view="search"] .search-field:focus-within .search-icon { color:var(--a
     <noscript><p class="noscript-notice">Za korišćenje kataloga potrebno je uključiti JavaScript u pregledaču.</p></noscript>
     <script src="./assets/moja-ponuda-core.js"></script>
     <script src="./assets/moja-ponuda.js"></script>
+    <script src="./assets/brza-preporuka-core.js"></script>
+    <script src="./assets/brza-preporuka.js"></script>
     <script type="module">
 // BEGIN CATALOG CORE
 const {validateImport,searchPlants,normalize}=(()=>{
@@ -1177,6 +1184,15 @@ function validateOffer(item, index, plantIds, nurseryIds) {
     sourceUrl: safeURL(item.sourceUrl, `${label}, link izvora`),
     sourcePeriod: textValue(item.sourcePeriod, `${label}, period izvora`, { max: 60 }),
     checkedAt: dateValue(item.checkedAt, `${label}, datum provere`),
+    parameterRole: textValue(item.sourceEvidence?.parameterRole || item.parameterRole, `${label}, uloga mera`, { max: 40 }),
+    priceRefresh: item.priceRefresh ? {
+      status: textValue(item.priceRefresh.status, `${label}, status provere cene`, { max: 30 }),
+      checkedAt: dateValue(String(item.priceRefresh.checkedAt || '').slice(0,10), `${label}, datum provere cenovnika`),
+      changedAt: dateValue(String(item.priceRefresh.changedAt || '').slice(0,10), `${label}, datum promene cene`)
+    } : null,
+    validUntil: dateValue(item.validUntil, `${label}, važenje ponude`),
+    availableQuantity: typeof item.availableQuantity === 'number' && Number.isFinite(item.availableQuantity) && item.availableQuantity >= 0 ? item.availableQuantity : null,
+    available: typeof item.available === 'boolean' ? item.available : null,
     priceKind, priceNote,
     dataOrigin,
     transplantCount,
@@ -1677,6 +1693,7 @@ function makeQuoteItem(offerId) {
 }
 
 function openRecord(id) {
+  recommendationApp?.hide();
   quoteApp?.hide();
   const plant = plantById(id);
   if (!plant) {
@@ -1699,6 +1716,7 @@ function openRecord(id) {
 }
 
 function returnToSearch() {
+  recommendationApp?.hide();
   quoteApp?.hide();
   state.selectedPlantId = null;
   if (dialog.open) dialog.close();
@@ -1724,6 +1742,7 @@ function submitSearch(useActiveSuggestion = true) {
 }
 
 function handleRoute() {
+  if (location.hash === '#brza-preporuka') { recommendationApp?.open(); return; }
   if (location.hash === '#moja-ponuda') { quoteApp?.open(); return; }
   if (!state.catalog) return;
   const hash = location.hash.slice(1);
@@ -1789,7 +1808,7 @@ dialog.addEventListener('click', (event) => {
 });
 dialog.addEventListener('close', () => {
   state.selectedPlantId = null;
-  if (quoteApp?.isOpen()) return;
+  if (quoteApp?.isOpen() || recommendationApp?.isOpen()) return;
   document.title = 'demetra rb index';
   history.replaceState(null, '', '#search');
 });
@@ -1845,8 +1864,13 @@ async function init() {
 
 const quoteApp = window.DemetraQuote?.create({
   getItem: makeQuoteItem,
-  onOpen() { closeSuggestions(); if (dialog.open) dialog.close(); },
+  onOpen() { recommendationApp?.hide(); closeSuggestions(); if (dialog.open) dialog.close(); },
   onClose() { input.focus({preventScroll:true}); }
+});
+const recommendationApp = window.DemetraRecommendation?.create({
+  getCatalog: () => state.catalog,
+  onOpen() { quoteApp?.hide(); closeSuggestions(); if (dialog.open) dialog.close(); },
+  onClose() { returnToSearch(); input.focus({preventScroll:true}); }
 });
 init();
 
