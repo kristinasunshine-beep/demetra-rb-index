@@ -9,6 +9,10 @@ const base={id:'a-old',plantId:'p1',nurseryId:'n1',circumference:'18–20',heigh
 const catalog={plants:[{id:'p1',latinName:"Acer campestre 'Elsrijk'",synonyms:[]},{id:'p2',latinName:'Acer campestre',synonyms:[]},{id:'p3',latinName:"Acer campestre 'Elegant'",synonyms:[]}],nurseries:[{id:'n1',name:'Rasadnik A'},{id:'n2',name:'Rasadnik B'}],offers:[base,{...base,id:'a-new',price:70,sourceDate:'2026-11-13'},{...base,id:'b-match',nurseryId:'n2',price:65,sourceDate:'2026-11-12'},{...base,id:'bad-size',circumference:'12-14',price:5},{...base,id:'bad-cultivar',plantId:'p3',price:1},{...base,id:'bad-species',plantId:'p2',price:2},{...base,id:'hidden',recordStatus:'needs_review',price:3},{...base,id:'pending',price:4,priceRefresh:{status:'pending'}},{...base,id:'no-stock',price:1,availability:'Out of stock'}]};
 const index=Core.makeIndex(catalog),request={name:"Acer campestre 'Elsrijk'",circumference:'18-20',height:'3-3.5m',potSize:'C50',rootType:'container',seedlingType:'standard',transplantCount:3,quantity:5};
 const result=Core.recommend(index,request);assert.equal(result.offerId,'b-match');assert.equal(result.price,65);
+assert.deepEqual(result.suppliers.map(s=>[s.name,s.price]),[['Rasadnik B',65],['Rasadnik A',70]]);
+assert.equal(result.values.length,6);assert.equal(result.values[1],'Rasadnik B');assert.equal(result.values[2],65);assert(result.values[0].includes('Rasadnik A')&&result.values[0].includes('Rasadnik B'));
+assert.equal(Core.recommend(index,{...request,cultivar:'Elsrijk'}).price,65);
+assert.equal(Core.recommend(index,{...request,cultivar:'Elegant'}).status,'unmatched');
 assert.equal(Core.recommend(index,{...request,name:"Acer campestre 'Wrong'"}).status,'unmatched');
 assert.equal(Core.recommend(index,{...request,height:'400-450'}).status,'unmatched');
 assert.equal(Core.recommend(index,{...request,currency:'RSD'}).status,'unmatched');
@@ -47,6 +51,21 @@ assert.deepEqual(unitMap,{name:0,height:1,circumference:2,potSize:3});
 assert.equal(Core.recommend(index,Core.requestFromRow([request.name,'3–3,5','180-200',50],unitMap,unitHeaders)).price,65);
 assert.equal(Core.recommend(index,Core.requestFromRow([request.name,'300-350 cm','18-20 cm','50 L'],unitMap,unitHeaders)).price,65);
 assert.equal(Core.recommend(index,Core.requestFromRow([request.name,'3–3,5','180-200',50],unitMap,['Naziv biljke','Visina (m/cm)','Obim (mm)','Saksija (L)'])).status,'unmatched');
+// Automatic recognition preserves every descriptive constraint; no column-mapping UI is needed.
+const descriptiveRows=[['Naziv biljke','Parametri sadnice','Opis','Napomena'],[request.name,'obim 18–20','h 300–350','crven list']];
+const descriptive=Core.detectSheet(descriptiveRows,index);assert.equal(descriptive.enabled,true);assert.deepEqual(descriptive.map.preferences,[1,2,3]);
+assert.match(Core.recommend(index,Core.requestFromRow(descriptiveRows[1],descriptive.map,descriptive.headers)).message,/crven list/);
+descriptiveRows[1][3]='container';assert.equal(Core.recommend(index,Core.requestFromRow(descriptiveRows[1],descriptive.map,descriptive.headers)).price,65);
+const multilineRows=[['Latinski','Visina','Obim'],['naziv','(m)','(cm)'],[request.name,'3–3,5','18–20']];
+const multiline=Core.detectSheet(multilineRows,index);assert.equal(multiline.headerRow,1);assert.equal(multiline.dataStartRow,2);assert.equal(Core.recommend(index,Core.requestFromRow(multilineRows[2],multiline.map,multiline.headers)).price,65);
+const headerless=Core.detectSheet([[request.name,'obim 18–20; h 300–350']],index);assert.equal(headerless.hasHeader,false);assert.equal(headerless.headerRow,-1);assert.equal(headerless.dataStartRow,0);assert.equal(headerless.map.name,0);
+assert.equal(Core.detectSheet(Array(130000).fill([request.name]),index).enabled,true);
+assert.equal(Core.detectSheet([['Naziv biljke','Parametar','Vrednost'],[request.name,'Visina','300–350'],[request.name,'Obim','18–20']],index).enabled,false);
+const withDescription={...request,sourceDescription:request.name+' - klen; visina sadnice 300–350cm, obim 18–20cm, kontejnirano, 3x presađivano'};
+assert.equal(Core.recommend(index,withDescription).price,65);
+assert.match(Core.recommend(index,{...withDescription,preferences:'I. klasa; pravilno oblikovana krošnja'}).message,/I.? klasa.*pravilno oblikovana krošnja/i);
+const priorOutput=[['Naziv biljke','Parametri sadnice',...Core.EXTRA_HEADERS],[request.name,'obim 18–20; h 300–350',...result.values]];
+const repeat=Core.detectSheet(priorOutput,index);assert.deepEqual(repeat.map,{name:0,preferences:1});assert.equal(Core.recommend(index,Core.requestFromRow(priorOutput[1],repeat.map,repeat.headers)).price,65);
 const actual=await Promise.all(['biljke','rasadnici','kataloske-stavke'].map(async n=>JSON.parse(await readFile(root+'/data/'+n+'.json','utf8'))));
 const actualIndex=Core.makeIndex({plants:actual[0].plants,nurseries:actual[1].nurseries,offers:actual[2].offers});
 let reviewed=0;for(const offer of actual[2].offers){if(!offer.price||['needs_review','superseded'].includes(offer.recordStatus))continue;const plant=actualIndex.plants.get(offer.plantId);const req={name:plant.latinName,circumference:offer.circumference,height:offer.height,potSize:offer.potSize,rootType:offer.rootType,seedlingType:offer.seedlingType,currency:offer.currency};const found=Core.recommend(actualIndex,req);if(found.status==='matched'){const chosen=actual[2].offers.find(o=>o.id===found.offerId);assert.equal(chosen.plantId,offer.plantId);for(const key of ['circumference','height','potSize'])if(req[key])assert(Core.measureMatches(req[key],chosen[key],key));assert.equal(chosen.currency,offer.currency);}reviewed++;}
@@ -57,7 +76,7 @@ const bytes=await Excel.build(await readFile(root+'/assets/brza-preporuka-templa
 const book=XLSX.read(bytes,{type:'array',cellDates:true});assert.deepEqual(book.SheetNames,['Spisak','Napomena']);
 const rows=XLSX.utils.sheet_to_json(book.Sheets.Spisak,{header:1,defval:''});
 for(let r=0;r<original.length;r++)for(let c=0;c<original[r].length;c++)assert.equal(rows[r][c],original[r][c]);
-assert.equal(book.Sheets.Spisak.E2.v,65);assert.equal(book.Sheets.Spisak.E2.t,'n');assert(!book.Sheets.Spisak.A3.f);
+assert.equal(book.Sheets.Spisak.F2.v,65);assert.equal(book.Sheets.Spisak.F2.t,'n');assert(!book.Sheets.Spisak.A3.f);
 const zip=await Zip.loadAsync(bytes,{checkCRC32:true});const main=await zip.file('xl/worksheets/sheet1.xml').async('string');assert(main.includes('state="frozen"')&&main.includes('<autoFilter'));
 if(process.env.DEMETRA_RECOMMEND_TEST_OUTPUT){await mkdir(process.env.DEMETRA_RECOMMEND_TEST_OUTPUT,{recursive:true});await writeFile(resolve(process.env.DEMETRA_RECOMMEND_TEST_OUTPUT,'provera-preporuke.xlsx'),new Uint8Array(bytes));}
 // No application-level row cap: rows beyond common 100/1000/10000 limits use the same exact matching.

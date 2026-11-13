@@ -9,6 +9,7 @@
   function setAttr(tag,name,value){const re=new RegExp('\\s'+name+'="[^"]*"');return re.test(tag)?tag.replace(re,` ${name}="${xml(value)}"`):tag.replace(/(\/?>)/,` ${name}="${xml(value)}"$1`);}
   function collection(source,name,item){const body=source.match(new RegExp('<'+name+'\\b[^>]*>([\\s\\S]*?)<\\/'+name+'>'))?.[1]||'';return body.match(new RegExp('<'+item+'\\b[^>]*?(?:\\/>|>[\\s\\S]*?<\\/'+item+'>)','g'))||[];}
   function replaceCollection(source,name,items){const replacement=`<${name} count="${items.length}">${items.join('')}</${name}>`,re=new RegExp('<'+name+'\\b[^>]*?(?:\\/>|>[\\s\\S]*?<\\/'+name+'>)');if(re.test(source))return source.replace(re,replacement);if(name==='numFmts')return source.replace(/(<styleSheet\b[^>]*>)/,'$1'+replacement);throw new Error('Nedostaju Excel stilovi: '+name);}
+  function euroStyles(source,priceStyle){let output=normalizeXml(source);const formats=collection(output,'numFmts','numFmt'),id=Math.max(163,...formats.map(v=>Number(attr(v,'numFmtId'))))+1;formats.push(`<numFmt numFmtId="${id}" formatCode="#,##0.00 &quot;€&quot;"/>`);output=replaceCollection(output,'numFmts',formats);const styles=collection(output,'cellXfs','xf');styles[Number(priceStyle)]=setAttr(setAttr(styles[Number(priceStyle)],'numFmtId',id),'applyNumberFormat',1);return replaceCollection(output,'cellXfs',styles);}
   function copyResultStyles(source,seed,selected){
     let output=normalizeXml(source);seed=normalizeXml(seed);const offsets={};
     for(const [name,item] of [['fonts','font'],['fills','fill'],['borders','border']]){const current=collection(output,name,item);offsets[item+'Id']=current.length;output=replaceCollection(output,name,current.concat(collection(seed,name,item)));}
@@ -19,8 +20,29 @@
     for(const [name,id] of Object.entries(selected)){let style=from[Number(id)];if(!style)throw new Error('Nedostaje stil Excel preporuke.');for(const [attribute,offset] of Object.entries(offsets))style=setAttr(style,attribute,Number(attr(style,attribute)||0)+offset);const oldFormat=attr(style,'numFmtId');if(formatMap.has(oldFormat))style=setAttr(style,'numFmtId',formatMap.get(oldFormat));style=setAttr(style,'xfId',0);style=setAttr(style,'applyProtection',1);style=style.replace(/<protection\b[^>]*\/>/g,'');style=/\/>$/.test(style)?style.replace(/\/>$/,'><protection locked="0"/></xf>'):style.replace(/<\/xf>$/,'<protection locked="0"/></xf>');mapped[name]=current.length;current.push(style);}
     return {xml:replaceCollection(output,'cellXfs',current),styles:mapped};
   }
-  function resultWidth(offset){return [30,18,14,48,22,26,22,22,58][offset]||25;}
+  function resultHeader(sheet,column){return String(sheet.rows[sheet.headerRow]?.[column]||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();}
+  function isPriceColumn(sheet,column){return sheet.processed&&column>=sheet.originalColumns&&/\bcena\b/.test(resultHeader(sheet,column));}
+  function resultWidth(sheet,offset){const header=resultHeader(sheet,sheet.originalColumns+offset);if(/spisak rasadnika/.test(header))return 42;if(/rasadnik/.test(header))return 34;if(/\bcena\b/.test(header))return 24;if(/parametri/.test(header))return 48;if(/rezultat/.test(header))return 58;if(/datum/.test(header))return 22;if(/valuta/.test(header))return 14;return 25;}
   function resolveSheetPath(target){const parts=(target.startsWith('/')?target.slice(1):'xl/'+target).split('/'),out=[];for(const part of parts){if(part==='..')out.pop();else if(part&&part!=='.')out.push(part);}return out.join('/');}
+  function addedSheetXml(sheet,styles){
+    let rows='',widths='';
+    for(let c=0;c<sheet.originalColumns;c++)widths+=`<col min="${c+1}" max="${c+1}" width="${Math.min(48,Math.max(22,String(sheet.rows[sheet.headerRow]?.[c]||'').length+3))}" customWidth="1"/>`;
+    for(let r=0;r<sheet.rows.length;r++){let cells='';for(let c=0;c<sheet.originalColumns;c++){const value=sheet.rows[r]?.[c];if(value===null||value===undefined||value==='')continue;cells+=cell(col(c)+(r+1),value,r===sheet.headerRow?styles.resultHeader:value instanceof Date?styles.date:styles.text);}const height=r===sheet.headerRow?42:Math.min(409,Math.max(28,...sheet.rows[r].slice(0,sheet.originalColumns).map((v,c)=>String(v??'').split('\n').reduce((n,line)=>n+Math.max(1,Math.ceil(line.length/(Math.min(48,Math.max(22,String(sheet.rows[sheet.headerRow]?.[c]||'').length+3))-2))),0)*13+10)));rows+=`<row r="${r+1}" ht="${height}" customHeight="1">${cells}</row>`;}
+    return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><sheetViews><sheetView workbookViewId="0" showGridLines="0"><pane ySplit="${sheet.headerRow+1}" topLeftCell="A${sheet.headerRow+2}" activePane="bottomLeft" state="frozen"/></sheetView></sheetViews><sheetFormatPr defaultRowHeight="28"/><cols>${widths}</cols><sheetData>${rows}</sheetData></worksheet>`;
+  }
+  async function extendSourceTables(zip,entry,sheet){
+    const slash=entry.lastIndexOf('/'),directory=entry.slice(0,slash),relations=zip.file(directory+'/_rels/'+entry.slice(slash+1)+'.rels');if(!relations)return;
+    for(const tag of (await relations.async('string')).match(/<Relationship\b[^>]*\/>/g)||[]){
+      if(!/\/table$/.test(attr(tag,'Type')||''))continue;
+      const target=decode(attr(tag,'Target')),parts=(target.startsWith('/')?target.slice(1):directory+'/'+target).split('/'),resolved=[];for(const part of parts){if(part==='..')resolved.pop();else if(part&&part!=='.')resolved.push(part);}const path=resolved.join('/');if(!zip.file(path))continue;
+      let source=normalizeXml(await zip.file(path).async('string'));const table=source.match(/<table\b[^>]*>/)?.[0],ref=attr(table||'','ref'),range=ref?.match(/^([A-Z]+)(\d+):([A-Z]+)(\d+)$/);if(!range||range[3]!==col(sheet.originalColumns-1)||Number(range[2])!==sheet.headerRow+1)continue;
+      const columns=collection(source,'tableColumns','tableColumn'),names=new Set(columns.map(v=>decode(attr(v,'name')).toLowerCase()));let id=Math.max(0,...columns.map(v=>Number(attr(v,'id'))||0));
+      for(let c=sheet.originalColumns;c<sheet.columns;c++){const label=String(sheet.rows[sheet.headerRow][c]||'Preporuka');let name=label,suffix=2;while(names.has(name.toLowerCase()))name=label+' ('+(suffix++)+')';names.add(name.toLowerCase());sheet.rows[sheet.headerRow][c]=name;columns.push(`<tableColumn id="${++id}" name="${xml(name)}"/>`);}
+      const extended=`${range[1]}${range[2]}:${col(sheet.columns-1)}${range[4]}`;source=source.replace(table,setAttr(table,'ref',extended));source=replaceCollection(source,'tableColumns',columns);
+      const filter=source.match(/<autoFilter\b[^>]*?(?:\/>|>[\s\S]*?<\/autoFilter>)/);if(filter){const old=attr(filter[0],'ref')?.match(/^([A-Z]+\d+):[A-Z]+(\d+)$/);source=source.replace(filter[0],setAttr(filter[0],'ref',old?old[1]+':'+col(sheet.columns-1)+old[2]:extended));}else source=source.replace(/(<table\b[^>]*>)/,'$1'+`<autoFilter ref="${extended}"/>`);
+      const sort=source.match(/<sortState\b[^>]*>/)?.[0],sortRef=attr(sort||'','ref')?.match(/^([A-Z]+\d+):[A-Z]+(\d+)$/);if(sortRef)source=source.replace(sort,setAttr(sort,'ref',sortRef[1]+':'+col(sheet.columns-1)+sortRef[2]));zip.file(path,source);
+    }
+  }
   function patchSheet(original,sheet,styles){
     let source=normalizeXml(original),existing=new Map(),lastRow=0;
     const dataMatch=source.match(/<sheetData\b[^>]*?(?:\/>|>([\s\S]*?)<\/sheetData>)/);
@@ -28,17 +50,17 @@
     for(const row of (dataMatch[1]||'').match(/<row\b[^>]*?(?:\/>|>[\s\S]*?<\/row>)/g)||[]){const r=Number(attr(row,'r'))||lastRow+1;existing.set(r,row);lastRow=r;}
     for(let r=sheet.headerRow;r<sheet.rows.length;r++){
       const values=sheet.rows[r]||[];let cells='';
-      for(let c=sheet.originalColumns;c<values.length;c++){const value=values[c];if(value===null||value===undefined||value==='')continue;const style=r===sheet.headerRow?styles.resultHeader:value instanceof Date?styles.date:c===sheet.originalColumns+1?styles.price:styles.text;cells+=cell(col(c)+(r+1),value,style);}
+      for(let c=sheet.originalColumns;c<values.length;c++){const value=values[c];if(value===null||value===undefined||value==='')continue;const style=r===sheet.headerRow?styles.resultHeader:value instanceof Date?styles.date:isPriceColumn(sheet,c)?styles.price:styles.text;cells+=cell(col(c)+(r+1),value,style);}
       if(!cells)continue;
       let row=existing.get(r+1)||`<row r="${r+1}"/>`;
-      const height=r===sheet.headerRow?42:Math.min(120,Math.max(28,...values.slice(sheet.originalColumns).map((v,c)=>String(v??'').split('\n').reduce((n,line)=>n+Math.max(1,Math.ceil(line.length/(resultWidth(c)-2))),0)*13+10)));
+      const height=r===sheet.headerRow?42:Math.min(409,Math.max(28,...values.slice(sheet.originalColumns).map((v,c)=>String(v??'').split('\n').reduce((n,line)=>n+Math.max(1,Math.ceil(line.length/(resultWidth(sheet,c)-2))),0)*13+10)));
       if(Number(attr(row,'ht')||0)<height){row=setAttr(row,'ht',height);row=setAttr(row,'customHeight',1);}
       row=/\/>$/.test(row)?row.replace(/\/>$/,'>'+cells+'</row>'):row.replace(/<\/row>$/,cells+'</row>');existing.set(r+1,row);
     }
     source=source.replace(dataMatch[0],'<sheetData>'+[...existing.entries()].sort((a,b)=>a[0]-b[0]).map(([,row])=>row).join('')+'</sheetData>');
     const start=sheet.originalColumns+1,end=sheet.columns,columns=[];
     for(const tag of collection(source,'cols','col')){const min=Number(attr(tag,'min')),max=Number(attr(tag,'max'));if(max<start||min>end)columns.push(tag);else{if(min<start)columns.push(setAttr(tag,'max',start-1));if(max>end)columns.push(setAttr(tag,'min',end+1));}}
-    for(let c=start;c<=end;c++)columns.push(`<col min="${c}" max="${c}" width="${resultWidth(c-start)}" customWidth="1"/>`);
+    for(let c=start;c<=end;c++)columns.push(`<col min="${c}" max="${c}" width="${resultWidth(sheet,c-start)}" customWidth="1"/>`);
     const cols='<cols>'+columns.sort((a,b)=>Number(attr(a,'min'))-Number(attr(b,'min'))).join('')+'</cols>',colsRe=/<cols\b[^>]*?(?:\/>|>[\s\S]*?<\/cols>)/;
     source=colsRe.test(source)?source.replace(colsRe,cols):source.replace(/<sheetData\b/,cols+'<sheetData');
     const oldDimension=source.match(/<dimension\b[^>]*\/>/),oldRef=attr(oldDimension?.[0]||'','ref')?.split(':').pop()||'',oldColumn=oldRef.match(/[A-Z]+/)?.[0]||'A';let oldIndex=0;for(const char of oldColumn)oldIndex=oldIndex*26+char.charCodeAt(0)-64;
@@ -57,12 +79,27 @@
     if(!zip.file('xl/workbook.xml')||!zip.file('xl/styles.xml'))throw new Error('Izvorni XLSX nema očekivanu strukturu. Sačuvaj ga ponovo u Excelu kao .xlsx.');
     const templateSheet=normalizeXml(await seed.file('xl/worksheets/sheet1.xml').async('string'));
     const seedStyle=ref=>templateSheet.match(new RegExp('<c\\b(?=[^>]*\\br="'+ref+'")[^>]*'))?.[0].match(/\bs="(\d+)"/)?.[1]||'0';
-    const combined=copyResultStyles(await zip.file('xl/styles.xml').async('string'),await seed.file('xl/styles.xml').async('string'),{resultHeader:seedStyle('B1'),text:seedStyle('A2'),price:seedStyle('B2'),date:seedStyle('C2')});
+    const combined=copyResultStyles(await zip.file('xl/styles.xml').async('string'),euroStyles(await seed.file('xl/styles.xml').async('string'),seedStyle('B2')),{resultHeader:seedStyle('B1'),text:seedStyle('A2'),price:seedStyle('B2'),date:seedStyle('C2')});
     zip.file('xl/styles.xml',combined.xml);
-    const workbook=normalizeXml(await zip.file('xl/workbook.xml').async('string')),relationships=await zip.file('xl/_rels/workbook.xml.rels').async('string'),paths=new Map();
+    let workbook=normalizeXml(await zip.file('xl/workbook.xml').async('string')),relationships=await zip.file('xl/_rels/workbook.xml.rels').async('string'),types=await zip.file('[Content_Types].xml').async('string');const paths=new Map();
     for(const tag of relationships.match(/<Relationship\b[^>]*\/>/g)||[])paths.set(attr(tag,'Id'),resolveSheetPath(decode(attr(tag,'Target'))));
     const sourceSheets=new Map((workbook.match(/<sheet\b[^>]*\/>/g)||[]).map(tag=>[decode(attr(tag,'name')),paths.get(attr(tag,'r:id'))]));
-    for(let i=0;i<sheets.length;i++){const sheet=sheets[i];if(!sheet.processed)continue;if(sheet.rows.length>1048576||sheet.columns>16384)throw new Error('Tabela prelazi ograničenje Excel formata (1.048.576 redova ili 16.384 kolone).');const entry=sourceSheets.get(sheet.name);if(!entry||!zip.file(entry))throw new Error('Nije pronađen izvorni Excel list: '+sheet.name);zip.file(entry,patchSheet(await zip.file(entry).async('string'),sheet,combined.styles));onProgress(i,sheet.rows.length,sheet.rows.length);await new Promise(resolve=>setTimeout(resolve,0));}
+    let added=0,nextSheetId=Math.max(0,...(workbook.match(/<sheet\b[^>]*\/>/g)||[]).map(tag=>Number(attr(tag,'sheetId'))||0));
+    for(let i=0;i<sheets.length;i++){
+      const sheet=sheets[i];if(!sheet.processed)continue;if(sheet.rows.length>1048576||sheet.columns>16384)throw new Error('Tabela prelazi ograničenje Excel formata (1.048.576 redova ili 16.384 kolone).');
+      let entry=sourceSheets.get(sheet.name),source;
+      if(sheet.addedSheet){
+        if(entry)throw new Error('Naziv dodatnog Excel lista već postoji: '+sheet.name);
+        let number=1;while(zip.file(`xl/worksheets/recommendation${number}.xml`)||paths.has(`demetraRecommendation${number}`))number++;
+        entry=`xl/worksheets/recommendation${number}.xml`;const relation=`demetraRecommendation${number}`;
+        workbook=workbook.replace('</sheets>',`<sheet name="${xml(sheet.name)}" sheetId="${++nextSheetId}" r:id="${relation}"/></sheets>`);
+        relationships=relationships.replace('</Relationships>',`<Relationship Id="${relation}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/recommendation${number}.xml"/></Relationships>`);
+        types=types.replace('</Types>',`<Override PartName="/${entry}" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/></Types>`);
+        paths.set(relation,entry);sourceSheets.set(sheet.name,entry);source=addedSheetXml(sheet,combined.styles);added++;
+      }else{if(!entry||!zip.file(entry))throw new Error('Nije pronađen izvorni Excel list: '+sheet.name);await extendSourceTables(zip,entry,sheet);source=await zip.file(entry).async('string');}
+      zip.file(entry,patchSheet(source,sheet,combined.styles));onProgress(i,sheet.rows.length,sheet.rows.length);await new Promise(resolve=>setTimeout(resolve,0));
+    }
+    if(added){if(!/<workbook\b[^>]*xmlns:r=/.test(workbook))workbook=workbook.replace(/<workbook\b/,'<workbook xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"');zip.file('xl/workbook.xml',workbook);zip.file('xl/_rels/workbook.xml.rels',relationships);zip.file('[Content_Types].xml',types);}
     return zip.generateAsync({type:'arraybuffer',compression:'DEFLATE'});
   }
   async function build(template,sheets,Zip,onProgress=()=>{},originalWorkbook=null){
@@ -71,6 +108,7 @@
     const seed=normalizeXml(await zip.file('xl/worksheets/sheet1.xml').async('string'));
     const style=ref=>seed.match(new RegExp('<c\\b(?=[^>]*\\br="'+ref+'")[^>]*'))?.[0].match(/\bs="(\d+)"/)?.[1]||'0';
     const styles={header:style('A1'),resultHeader:style('B1'),text:style('A2'),price:style('B2'),date:style('C2')};
+    zip.file('xl/styles.xml',euroStyles(await zip.file('xl/styles.xml').async('string'),styles.price));
     let sheetTags='',relationships='',overrides='';
     for(let index=0;index<sheets.length;index++){
       const sheet=sheets[index],rows=sheet.rows,columns=Math.max(1,sheet.columns);
@@ -79,16 +117,16 @@
       for(let r=0;r<rows.length;r++){
         const values=rows[r]||[];let cells='';
         for(let c=0;c<values.length;c++){const value=values[c];if(value===undefined||value===null||value==='')continue;const header=sheet.processed&&r===sheet.headerRow;
-          const chosen=header?(c>=sheet.originalColumns?styles.resultHeader:styles.header):value instanceof Date?styles.date:c===sheet.originalColumns+1&&sheet.processed?styles.price:styles.text;
+          const chosen=header?(c>=sheet.originalColumns?styles.resultHeader:styles.header):value instanceof Date?styles.date:isPriceColumn(sheet,c)?styles.price:styles.text;
           cells+=cell(col(c)+(r+1),value,chosen);
         }
-        const height=sheet.processed&&r===sheet.headerRow?42:Math.min(90,Math.max(28,...values.map(v=>Math.ceil(String(v??'').length/38)*13+10)));
+        const height=sheet.processed&&r===sheet.headerRow?42:Math.min(409,Math.max(28,...values.map((v,c)=>String(v??'').split('\n').reduce((n,line)=>n+Math.max(1,Math.ceil(line.length/(sheet.processed&&c>=sheet.originalColumns?resultWidth(sheet,c-sheet.originalColumns)-2:Math.min(40,Math.max(16,String(rows[sheet.headerRow]?.[c]??'').length+3))-2))),0)*13+10)));
         data+=`<row r="${r+1}" ht="${height}" customHeight="1">${cells}</row>`;
         if(r%500===0){onProgress(index,r,rows.length);await new Promise(resolve=>setTimeout(resolve,0));}
       }
       const freeze=sheet.processed?sheet.headerRow+1:0;
       const view=freeze?`<pane ySplit="${freeze}" topLeftCell="A${freeze+1}" activePane="bottomLeft" state="frozen"/>`:'';
-      let widths='';for(let c=0;c<columns;c++){const result=sheet.processed&&c>=sheet.originalColumns;const offset=c-sheet.originalColumns;const width=result?([30,18,14,48,22,26,22,22,58][offset]||25):Math.min(40,Math.max(16,String(rows[sheet.headerRow]?.[c]??'').length+3));widths+=`<col min="${c+1}" max="${c+1}" width="${width}" customWidth="1"/>`;}
+      let widths='';for(let c=0;c<columns;c++){const result=sheet.processed&&c>=sheet.originalColumns;const offset=c-sheet.originalColumns;const width=result?resultWidth(sheet,offset):Math.min(40,Math.max(16,String(rows[sheet.headerRow]?.[c]??'').length+3));widths+=`<col min="${c+1}" max="${c+1}" width="${width}" customWidth="1"/>`;}
       const filter=sheet.processed?`<autoFilter ref="A${sheet.headerRow+1}:${col(columns-1)}${Math.max(sheet.headerRow+2,rows.length)}"/>`:'';
       const content=`<?xml version="1.0" encoding="UTF-8" standalone="yes"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><dimension ref="A1:${col(columns-1)}${Math.max(1,rows.length)}"/><sheetViews><sheetView workbookViewId="0" showGridLines="0">${view}</sheetView></sheetViews><sheetFormatPr defaultRowHeight="28"/><cols>${widths}</cols><sheetData>${data}</sheetData>${filter}<pageMargins left="0.3" right="0.3" top="0.5" bottom="0.5" header="0.2" footer="0.2"/><pageSetup orientation="landscape" paperSize="9" fitToWidth="1" fitToHeight="0"/></worksheet>`;
       zip.file(`xl/worksheets/sheet${index+1}.xml`,content);

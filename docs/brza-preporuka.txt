@@ -1,40 +1,21 @@
-BRZA PREPORUKA — 13.11.2026.
+BRZA PREPORUKA
 
-U hederu otvori Brza preporuka i izaberi Excel tabelu. Prepoznate kolone
-pojavljuju se odmah; po potrebi izaberi odgovarajuće kolone i red zaglavlja.
-Klikni Pronađi preporuke, pa Preuzmi Excel. Datoteka ide u preuzimanja
-pregledača (obično Downloads / Preuzimanja), odnosno na mesto koje izabereš.
+1. U hederu otvori Brza preporuka.
+2. Prevuci Excel datoteku ili klikni Izaberi Excel. Obrada počinje odmah.
+3. Klikni Preuzmi Excel. Dokument je u preuzimanjima pregledača.
 
-Obrađuju se svi listovi koje izabereš i svi njihovi redovi, bez limita od
-100 ili 1.000 stavki. Važe fizička ograničenja memorije uređaja i Excel formata.
-Originalni listovi i vrednosti ostaju u rezultatu, uz nove kolone: rasadnik,
-nabavna cena, valuta, parametri, jedinica, PDV, datum ponude i rezultat.
-Kod .xlsx datoteka čuvaju se izvorne formule, formatiranje, spojene ćelije,
-slike i ostali listovi; preporuke se dodaju u nove kolone. Za poređenje se
-koriste vrednosti koje su sačuvane u datoteci, pa pre slanja sačuvaj obračunatu
-tabelu u Excelu. Kod drugih formata prenose se listovi i sačuvane vrednosti,
-bez makroa, slika i izvornog formatiranja. Datoteka se obrađuje lokalno
-u pregledaču; ne šalje se na server.
+Sistem sam prepoznaje listove, zaglavlja, latinske nazive i parametre.
+Nema ručnog povezivanja kolona, izbora valute ili dodatnog pokretanja.
 
-Preporuka koristi isključivo postojeći Demetra katalog i potvrđene podatke
-iz poslovnih ponuda. Vrsta i kultivar moraju se poklapati. Tražene mere i
-ostali povezani uslovi proveravaju se pojedinačno. Najnovija ponuda iste
-varijante ima prednost nad starom. Cene sa različitom valutom, jedinicom
-ili poreskom osnovom ne porede se kao da su iste. Nepotpun ili nejasan
-zahtev dobija objašnjenje; program ne nagađa drugu biljku ili dimenziju.
+U izlazu ostaju sve izvorne kolone, redovi i listovi. Dodaju se spisak
+odgovarajućih rasadnika, rasadnik sa najnižom cenom, najniža nabavna
+cena u evrima, ponuđeni parametri, datum ponude i rezultat preporuke.
 
-JUTARNJE CENE
-Lokalna automatizacija čita poslovni folder svako jutro. Originalne datoteke
-ne menja. Potvrđuje identitet reda, mere, zaglavlje, format i valutu pre
-promene jedinične cene. Promenjen naziv ili dimenzija zaustavlja tu izmenu.
-Promenjeni PDF, skenovi i nove tabele zahtevaju dodatno čitanje sadržaja;
-nepretumačeni iznosi se ne objavljuju kao potvrđene nove cene.
+Poređenje poštuje vrstu, kultivar, mere i opisne zahteve. Ako izvor ne
+potvrđuje traženu biljku ili zahtev, red dobija objašnjenje bez izmišljene
+cene. Obrada drugih biljaka se nastavlja. Obrađuje se ceo spisak.
 
-GitHub Actions ne može direktno da čita poslovni Y: disk. Lokalna jutarnja
-automatizacija priprema dve javne JSON datoteke; povezani GitHub pristup
-potreban je za njihovu automatsku objavu. Provera na GitHub-u upozorava
-ako potvrda izvora nije osvežena više od 36 sati.
-
-Za lokalni zakazani rad poslovni računar i aplikacija moraju biti uključeni,
-a mrežni folder dostupan. Privatni dokumenti, putanja foldera i lozinke
-nisu deo javnog sajta. Fotografije i postojeći dizajn ostaju sačuvani.
+U XLSX dokumentu ostaju izvorni izgled, formule i slike. Ako list nema
+zaglavlje, original ostaje sačuvan, a automatski se dodaje list preporuke.
+Drugi podržani formati prenose sačuvane vrednosti svih listova.
+Datoteka se obrađuje lokalno u pregledaču.
