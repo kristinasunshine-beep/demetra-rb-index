@@ -72,7 +72,7 @@
       const short = params.filter(([,value]) => !/^nije navedeno|^nepoznat/i.test(String(value))).slice(0,3);
       return `<article class="quote-item" data-quote-row="${id}"><div class="quote-plant"><span class="quote-row-number">${index+1}</span><h3>${escape(item.latinName)}</h3><p class="quote-quick-params">${short.map(([label,value])=>escape(label+': '+value)).join(' · ') || 'Parametri nisu navedeni u katalogu.'}</p><details class="quote-parameters"><summary>Svi parametri i napomene</summary><dl>${[...params,...item.details].map(([label,value])=>`<div><dt>${escape(label)}</dt><dd>${escape(value || 'Nije navedeno')}</dd></div>`).join('')}</dl><label class="quote-field"><span>Moja napomena</span><textarea data-quote-item="${id}" data-quote-edit="note" maxlength="4000" rows="2">${escape(item.note)}</textarea></label><a href="#plant=${encodeURIComponent(item.plantId)}">Otvori karticu biljke ↗</a></details></div><div class="quote-nursery"><span class="quote-mobile-label">Rasadnik</span>${escape(item.nursery)}<small>${escape(item.country)}</small></div>
       <label class="quote-number"><span>Količina (${escape(item.unit)})</span><input aria-label="Količina: ${escape(item.latinName)}, stavka ${index+1}" inputmode="decimal" data-quote-item="${id}" data-quote-edit="quantity" value="${escape(item.quantity)}" maxlength="40"><small data-quote-error="quantity"></small></label>
-      <label class="quote-number"><span>Cena (${escape(item.currency === 'EUR' ? '€' : item.currency)})</span><input aria-label="Cena ${escape(item.currency)}: ${escape(item.latinName)}, stavka ${index+1}" inputmode="decimal" data-quote-item="${id}" data-quote-edit="price" value="${escape(item.price)}" placeholder="Unesi cenu" maxlength="40"><small data-quote-error="price"></small><small class="quote-source-price">Katalog: ${item.sourcePrice === null ? 'nije navedena' : escape(Core.money(item.sourcePrice,item.currency))}</small></label>
+      <label class="quote-number"><span>Cena (${escape(item.currency === 'EUR' ? '€' : item.currency)})</span><input aria-label="Cena ${escape(item.currency)}: ${escape(item.latinName)}, stavka ${index+1}" inputmode="decimal" data-quote-item="${id}" data-quote-edit="price" value="${escape(item.price)}" placeholder="Unesi cenu" maxlength="40"><small data-quote-error="price"></small><small class="quote-source-price">Katalog: ${item.sourcePrice === null ? 'nije navedena' : escape(Core.money(item.sourcePrice,item.sourcePriceCurrency))}</small></label>
       <div class="quote-amount"><span>Iznos</span><strong data-quote-amount>—</strong></div><button type="button" class="quote-remove" data-quote-remove="${id}" aria-label="Ukloni ${escape(item.latinName)}, stavka ${index+1}">×</button></article>`;
     }
     function renderItems() {
@@ -105,8 +105,17 @@
     function hide() {
       opened = false; root.hidden = true; main.hidden = false; document.body.dataset.view = 'search'; syncButtons();
     }
+    function syncCatalogPrices() {
+      const changed = Core.refreshCatalogPrices(quote, config.getItem);
+      if (changed) save();
+      return changed;
+    }
+    function refresh() {
+      if (syncCatalogPrices() && opened) renderItems();
+      else syncButtons();
+    }
     function open() {
-      opened = true; config.onOpen?.(); renderItems();
+      syncCatalogPrices(); opened = true; config.onOpen?.(); renderItems();
       root.hidden = false; main.hidden = true; document.body.dataset.view = 'quote';
       document.title = 'Moja ponuda · demetra rb index';
       history.replaceState(null,'','#moja-ponuda'); syncButtons(); toast.hidden = true;
@@ -116,6 +125,7 @@
       hide(); document.title = 'demetra rb index'; history.replaceState(null,'','#search'); config.onClose?.();
     }
     async function download() {
+      if (syncCatalogPrices()) renderItems();
       if (exporting || !Core.summarize(quote).ready || !Core.validDate(quote.meta.date)) return;
       exporting = true; updateTotals(); el('quote-export-status').textContent = 'Pripremam Excel ponudu…';
       const downloadQuote = Core.parseQuote(JSON.stringify(quote));
@@ -137,7 +147,10 @@
         if (target.dataset.quoteMeta === 'description') el('quote-description').textContent = target.value;
       } else if (target.dataset.quoteEdit) {
         const item = quote.items.find(item=>item.offerId === target.dataset.quoteItem);
-        if (item) item[target.dataset.quoteEdit] = target.value;
+        if (item) {
+          item[target.dataset.quoteEdit] = target.value;
+          if (target.dataset.quoteEdit === 'price') item.priceEdited = true;
+        }
       } else return;
       save(); updateTotals();
     });
@@ -171,12 +184,12 @@
       if (target.dataset.quoteAction === 'undo' && removed) {
         const ids = new Set(quote.items.map(item=>item.offerId));
         quote.items = [...removed.items.filter(item=>!ids.has(item.offerId)),...quote.items];
-        removed = null; el('quote-undo').hidden=true; save(); renderItems();
+        removed = null; el('quote-undo').hidden=true; syncCatalogPrices(); save(); renderItems();
       }
       if (target.id === 'quote-download') download();
     });
     syncButtons(); renderItems();
-    return {open,hide,refresh:syncButtons,isOpen:()=>opened};
+    return {open,hide,refresh,isOpen:()=>opened};
   }
   window.DemetraQuote = {create};
 })();

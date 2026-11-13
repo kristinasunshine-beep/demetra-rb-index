@@ -1,0 +1,28 @@
+VALUTA PRI UVOZU I OBJAVLJIVANJU
+
+Javni price/currency moraju predstavljati proverenu cenu u EUR. Izvorni
+iznos i valuta ostaju u sourceAmount/sourceCurrency. Preračunavanje RSD
+uvek polazi od izvornog iznosa, nikada od prethodno izračunatog EUR iznosa.
+
+Posle offline uvoza, a pre objavljivanja, obavezno izvršiti:
+node scripts/currency-normalization.mjs --repo . --apply
+node scripts/currency-normalization.mjs --repo . --check
+node scripts/check-catalog.mjs
+
+recover_ods_prices.py uvozi isključivo dokazanu EUR cenu iz originalne
+ODS ćelije. recover_arbor_catalog.py čuva postojeću dokumentovanu potvrdu
+vlasnika za EUR; bez nje ne pretpostavlja valutu. Neutvrđena valuta ostaje
+neutvrđena i normalizator uklanja brojčanu cenu iz javnog prikaza.
+Oba uvoza osvežavaju izvorni iznos i uklanjaju zastarelu FX/dnevnu potvrdu.
+Novi necenjeni red iz materialize_source_rows.py ne nasleđuje roditeljsku
+cenu, izvorni iznos, konverziju ili potvrdu dnevne provere.
+
+scripts/catalog-exclusions.json sadrži ponude koje je vlasnik isključio.
+Materijalizacija odbija isključeni ID ili njegov izvorni red, a provera
+kataloga sprečava ponovno objavljivanje. Originalni dokumenti se ne menjaju.
+
+update_prices.py je blokiran pravilom sourcePolicy.nonPhoto =
+rasadnici-ponude-zip. Nije deo dnevnog cenovnog toka. Pre eventualnog
+ponovnog uključivanja adapter mora upisivati novu originalnu cenu/valutu,
+ukloniti prethodni dokaz konverzije i porediti binding sa izvornom valutom.
+Zatim mora izvršiti isti normalizator i provere pre objavljivanja.

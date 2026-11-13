@@ -220,13 +220,18 @@ console.log(JSON.stringify({ ok: true, allKnownParametersInMainPanelForEveryType
   sourcePolicyEnforced: true, notesEscaped: true,
   reviewExplainedWithoutUnconfirmedOffer: true }, null, 2));
 
-const confirmedEuro = render({price: 125.5, currency: '', currencyStatus:'not_stated',
+const unknownCurrency = render({price: 125.5, currency: '', currencyStatus:'not_stated',
   priceNote:'Valuta nije navedena u izvornom cenovniku; iznos je prenet bez konverzije. Današnja cena i dostupnost nisu potvrđene.'});
-assert(confirmedEuro.includes('125,50') && confirmedEuro.includes('€'));
-assert(!confirmedEuro.includes('Valuta nije navedena'));
-assert(confirmedEuro.includes('Današnja cena i dostupnost nisu potvrđene.'));
+assert(unknownCurrency.includes('Cena nije navedena') && !unknownCurrency.includes('125,50'));
+assert(unknownCurrency.includes('Valuta nije navedena'));
+assert(unknownCurrency.includes('Današnja cena i dostupnost nisu potvrđene.'));
 const noPrice = render({price:null,currency:''});
 assert(noPrice.includes('Cena nije navedena'));
 assert(!noPrice.includes('0,00'));
 const statedCurrency = render({price:1000,currency:'RSD'});
-assert(statedCurrency.includes('RSD') && !statedCurrency.includes('€'));
+assert(statedCurrency.includes('Cena nije navedena') && !statedCurrency.includes('1.000,00'));
+const converted={price:49.31,currency:'EUR',currencyStatus:'converted',sourceAmount:5800,sourceCurrency:'RSD',priceConversion:{status:'converted',fromCurrency:'RSD',toCurrency:'EUR',originalAmount:5800,rate:117.6203,rateDate:'2026-11-13'}};
+const euroPrice=render(converted);assert(euroPrice.includes('49,31')&&euroPrice.includes('€'));assert(!euroPrice.includes('5.800')&&!euroPrice.includes('117.6203'));
+assert(render({...converted,price:5800}).includes('Cena nije navedena'),'A relabelled RSD amount must not become EUR');
+assert(render({...converted,priceConversion:{...converted.priceConversion,rate:0}}).includes('Cena nije navedena'));
+const nativeEuro=render({price:5800,currency:'EUR',sourceAmount:5800,sourceCurrency:'EUR'});assert(nativeEuro.includes('5.800,00')&&nativeEuro.includes('€'),'A genuine large EUR price must not be divided by an exchange rate');

@@ -51,14 +51,19 @@
       commonName: text(value.commonName, 500), nursery: text(value.nursery, 500),
       country: text(value.country, 200), unit: text(value.unit || 'kom', 30),
       currency: text(value.currency || 'EUR', 10).toUpperCase(),
+      sourcePriceCurrency: text(value.sourcePriceCurrency || value.currency || 'EUR', 10).toUpperCase(),
       sourcePrice: value.sourcePrice === null || value.sourcePrice === undefined ? null : Number(value.sourcePrice),
       parameters: pairs(value.parameters || []), details: pairs(value.details || []),
       quantity: text(value.quantity ?? '1', 40), price: text(value.price ?? value.sourcePrice ?? '', 40),
-      note: text(value.note, 4000)
+      note: text(value.note, 4000), priceEdited: value.priceEdited === true
     };
-    if (!/^[A-Z]{3}$/.test(item.currency)) throw new Error('Valuta stavke nije ispravna.');
+    if (!/^[A-Z]{3}$/.test(item.currency) || !/^[A-Z]{3}$/.test(item.sourcePriceCurrency)) throw new Error('Valuta stavke nije ispravna.');
     if (item.sourcePrice !== null && (!Number.isFinite(item.sourcePrice) || item.sourcePrice < 0)) {
       throw new Error('Neispravna kataloška cena.');
+    }
+    if (typeof value.priceEdited !== 'boolean') {
+      const entered = parseDecimal(item.price);
+      item.priceEdited = item.price.trim() !== '' && (!entered.valid || item.sourcePrice === null || entered.value !== item.sourcePrice);
     }
     return item;
   }
@@ -79,6 +84,25 @@
     if (quote.items.length >= MAX_ITEMS) throw new Error('Dostignut je maksimalan broj stavki u jednoj ponudi.');
     quote.items.push(item);
     return true;
+  }
+  function refreshCatalogPrices(quote, getItem) {
+    let changed = false;
+    for (const item of quote.items) {
+      const snapshot = getItem(item.offerId);
+      if (!snapshot) continue;
+      const current = normalizeItem(snapshot);
+      if (item.sourcePrice !== current.sourcePrice || item.sourcePriceCurrency !== current.sourcePriceCurrency) {
+        item.sourcePrice = current.sourcePrice;
+        item.sourcePriceCurrency = current.sourcePriceCurrency;
+        changed = true;
+      }
+      if (!item.priceEdited && (item.price !== current.price || item.currency !== current.currency)) {
+        item.price = current.price;
+        item.currency = current.currency;
+        changed = true;
+      }
+    }
+    return changed;
   }
   function parseDecimal(raw, { decimals = 4, positive = false, max = 10000000 } = {}) {
     let value = String(raw ?? '').trim().replace(/[\s\u00a0\u202f]/g, '');
@@ -233,6 +257,6 @@
     return 'Demetra-RB-ponuda-' + suffix + '.xlsx';
   }
   return { VERSION, STORAGE_KEY, COMPANY, MAX_ITEMS, localDate, validDate, defaultMeta, normalizeMeta,
-    emptyQuote, parseQuote, normalizeItem, addItem, parseDecimal, lineResult, summarize, money,
+    emptyQuote, parseQuote, normalizeItem, addItem, refreshCatalogPrices, parseDecimal, lineResult, summarize, money,
     compactParameters, buildXlsx, filename, xmlEscape };
 });

@@ -10,8 +10,8 @@ const require=createRequire(import.meta.url);
 const Core=require(root+'/assets/moja-ponuda-core.js');
 const Zip=require(root+'/assets/vendor/jszip-3.10.1.min.js');
 const html=await readFile(root+'/index.html','utf8');
-assert(html.includes('<script src="./assets/moja-ponuda-core.js"></script>'));
-assert(html.includes('<script src="./assets/moja-ponuda.js"></script>'));
+assert(/<script src="\.\/assets\/moja-ponuda-core\.js(?:\?[^\"]*)?"><\/script>/.test(html));
+assert(/<script src="\.\/assets\/moja-ponuda\.js(?:\?[^\"]*)?"><\/script>/.test(html));
 const core=html.match(/\/\/ BEGIN CATALOG CORE\n([\s\S]*?)\/\/ END CATALOG CORE/)[1];
 const ui=html.slice(html.indexOf('const $ = (id)'),html.indexOf('function openRecord(id)'));
 const context=createContext({URL,atob:globalThis.atob,document:{baseURI:'https://example.test/',getElementById:()=>({})}});
@@ -25,11 +25,13 @@ for(const offer of valid){
   context.offerId=offer.id;
   const item=JSON.parse(JSON.stringify(new Script('makeQuoteItem(offerId)').runInContext(context)));
   assert.equal(item.offerId,offer.id);assert.equal(item.plantId,offer.plantId);assert.equal(item.nurseryId,offer.nurseryId);
-  assert.equal(item.sourcePrice,offer.price);
+  context.sourceOffer=offer;const expectedPrice=new Script('catalogEuroPrice(sourceOffer)').runInContext(context);
+  assert.equal(item.sourcePrice,expectedPrice);
+  assert.equal(item.currency,'EUR');assert.equal(item.sourcePriceCurrency,'EUR');
   const normalized=Core.normalizeItem(item);
   assert(normalized.parameters.some(([key,value])=>key==='Obim sadnice'&&value===(offer.circumference||'')));
   assert(normalized.parameters.some(([key,value])=>key==='Visina sadnice'&&value===(offer.height||'')));
-  if(offer.price!==null)assert(Core.lineResult(normalized).valid,'Catalog price must be usable: '+offer.id+' '+offer.price);
+  if(expectedPrice!==null)assert(Core.lineResult(normalized).valid,'Catalog price must be usable: '+offer.id+' '+expectedPrice);
   snapshots.push(normalized);
 }
 for(const offer of offers.offers.filter(o=>['needs_review','superseded'].includes(o.recordStatus))){
@@ -61,6 +63,26 @@ assert.throws(()=>Core.parseQuote('{bad json'));
 assert.throws(()=>Core.parseQuote({...quote,items:[first,first]}));
 assert.equal(Core.normalizeItem({...first,currency:'RSD'}).currency,'RSD');
 assert.throws(()=>Core.normalizeItem({...first,currency:'XXXX'}));
+// Previously cached catalogue amounts refresh; manual price overrides retain their amount and currency.
+const legacy={...first,sourcePrice:5800,price:'5800',currency:'EUR',quantity:'3',note:'Zadrži moju napomenu'};delete legacy.priceEdited;delete legacy.sourcePriceCurrency;
+const cached=Core.parseQuote({...Core.emptyQuote(),items:[legacy]});assert.equal(cached.items[0].priceEdited,false);
+const current={...first,sourcePrice:49.31,price:'49.31',currency:'EUR',sourcePriceCurrency:'EUR',priceEdited:false};
+assert(Core.refreshCatalogPrices(cached,()=>current));assert.equal(cached.items[0].price,'49.31');assert.equal(cached.items[0].sourcePrice,49.31);assert.equal(cached.items[0].quantity,'3');assert.equal(cached.items[0].note,legacy.note);assert(!Core.refreshCatalogPrices(cached,()=>current));
+for(const override of [{...legacy,price:'120'},{...legacy,price:'5800',priceEdited:true},{...legacy,price:'',priceEdited:true},{...legacy,price:'6000',currency:'RSD'}]){
+  const manual=Core.parseQuote({...Core.emptyQuote(),items:[override]});assert.equal(manual.items[0].priceEdited,true);Core.refreshCatalogPrices(manual,()=>current);assert.equal(manual.items[0].price,override.price);assert.equal(manual.items[0].currency,override.currency);assert.equal(manual.items[0].sourcePrice,49.31);assert.equal(manual.items[0].sourcePriceCurrency,'EUR');assert.equal(Core.parseQuote(JSON.stringify(manual)).items[0].priceEdited,true);
+}
+Core.refreshCatalogPrices(cached,()=>({...current,sourcePrice:null,price:''}));assert.equal(cached.items[0].price,'');assert.equal(cached.items[0].sourcePrice,null);
+// Exercise the actual app's storage migration and price-input handler in an isolated DOM/storage.
+const uiNodes=new Map(),saved=new Map([[Core.STORAGE_KEY,JSON.stringify({...Core.emptyQuote(),items:[legacy]})]]);
+const uiNode=id=>{if(!uiNodes.has(id))uiNodes.set(id,{innerHTML:'',textContent:'',listeners:{},setAttribute(){},addEventListener(name,listener){this.listeners[name]=listener;},querySelectorAll(){return [];}});return uiNodes.get(id);};
+const uiDocument={baseURI:'https://example.test/',getElementById:uiNode,querySelectorAll:()=>[],addEventListener(){}};
+const appContext=createContext({URL,document:uiDocument,window:{DemetraQuoteCore:Core},localStorage:{getItem:key=>saved.get(key)||null,setItem:(key,value)=>saved.set(key,value)}});
+new Script(await readFile(root+'/assets/moja-ponuda.js','utf8')).runInContext(appContext);
+let latest={...current};const app=appContext.window.DemetraQuote.create({getItem:()=>latest});app.refresh();
+assert.equal(JSON.parse(saved.get(Core.STORAGE_KEY)).items[0].price,'49.31');
+uiNode('my-quote-view').listeners.input({target:{dataset:{quoteEdit:'price',quoteItem:first.offerId},value:'120'}});
+latest={...current,price:'77',sourcePrice:77};app.refresh();
+const savedOverride=JSON.parse(saved.get(Core.STORAGE_KEY)).items[0];assert.equal(savedOverride.price,'120');assert.equal(savedOverride.priceEdited,true);assert.equal(savedOverride.sourcePrice,77);
 const template=await readFile(root+'/assets/moja-ponuda-template.xlsx');
 const bytes=await Core.buildXlsx(template,quote,Zip);
 const zip=await Zip.loadAsync(bytes,{checkCRC32:true});

@@ -1,6 +1,12 @@
-name: Proveri jutarnje ažuriranje cena
+name: Osveži kurs i proveri jutarnje cene
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/update-prices.yml'
+      - 'scripts/currency-normalization.mjs'
+      - 'scripts/update_exchange_rates.mjs'
   workflow_dispatch:
   schedule:
     - cron: '35 7 * * *'
@@ -8,8 +14,66 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  # Share the publication lock with the photo workflow; never overwrite its data.
+  group: demetra-price-update-${{ github.repository }}
+  cancel-in-progress: false
+
 jobs:
+  normalize-currency:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
+    steps:
+      - name: Preuzmi najnoviji main
+        uses: actions/checkout@v7.0.1
+        with:
+          ref: main
+          fetch-depth: 1
+      - uses: actions/setup-node@v7.1.0
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Sačuvaj polazni commit
+        id: baseline
+        shell: bash
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+      - name: Preuzmi zvanični NBS kurs i preračunaj izvorne cene
+        run: node scripts/update_exchange_rates.mjs --repo .
+      - name: Proveri izvorne iznose i konverziju
+        run: |
+          node scripts/currency-normalization.mjs --repo . --check
+          node --test scripts/tests/test_currency_normalization.mjs scripts/tests/test_folder_price_refresh.mjs
+          node scripts/check-catalog.mjs
+      - name: Sačuvaj kurs i cene bez prepisivanja paralelnih izmena
+        id: commit
+        shell: bash
+        env:
+          PRICE_BASE_SHA: ${{ steps.baseline.outputs.sha }}
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin main
+          if [[ "$(git rev-parse FETCH_HEAD)" != "$PRICE_BASE_SHA" ]]; then
+            echo "::error::Main je izmenjen tokom preračunavanja. Nijedna izmena nije objavljena; sledeći prolaz koristi novi main."
+            exit 1
+          fi
+          git add -- data/exchange-rates.json data/kataloske-stavke.json
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "data: osveži NBS kurs i cene u evrima"
+          git push origin HEAD:main
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
   verify-price-refresh:
+    # This check is independent: an unavailable private folder cannot block FX.
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
@@ -22,3 +86,13 @@ jobs:
           package-manager-cache: false
       - name: Proveri potvrdu iz poslovnog foldera
         run: node scripts/check-price-sync.mjs
+
+  publish:
+    needs: normalize-currency
+    if: needs.normalize-currency.outputs.changed == 'true' || (needs.normalize-currency.result == 'success' && github.event_name == 'workflow_dispatch')
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    # GITHUB_TOKEN commits do not trigger push workflows, so publish explicitly.
+    uses: ./.github/workflows/deploy.yml

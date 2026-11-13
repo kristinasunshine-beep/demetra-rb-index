@@ -55,6 +55,18 @@ def locator(evidence, row=None):
 
 def materialize(document, plants, archive, root):
     output = copy.deepcopy(document)
+    exclusions_file = root / 'scripts/catalog-exclusions.json'
+    exclusions = json.loads(exclusions_file.read_text(encoding='utf8')) if exclusions_file.exists() else {'schemaVersion': 1, 'excludedOffers': []}
+    if exclusions.get('schemaVersion') != 1 or not isinstance(exclusions.get('excludedOffers'), list):
+        raise ValueError('Invalid catalogue exclusion policy.')
+    excluded_ids = {item['offerId'] for item in exclusions['excludedOffers']}
+    excluded_rows = set()
+    for item in exclusions['excludedOffers']:
+        cell = re.fullmatch(r'[A-Z]+([1-9]\d*)', item.get('priceCell', ''))
+        if cell and item.get('sourceSha256') and item.get('sheet'):
+            excluded_rows.add((item['sourceSha256'], item['sheet'], cell.group(1)))
+    if any(offer['id'] in excluded_ids for offer in output['offers']):
+        raise ValueError('Catalogue contains an offer explicitly excluded by its owner.')
     plant_map = {plant['id']: plant for plant in plants['plants']}
     by_id = {offer['id']: offer for offer in output['offers']}
     originals = list(output['offers'])
@@ -63,6 +75,8 @@ def materialize(document, plants, archive, root):
 
     def verify(evidence, row=None):
         row = row or {}
+        if locator(evidence, row) in excluded_rows:
+            raise ValueError('Source row explicitly excluded by the catalogue owner; it cannot be materialized again.')
         member = row.get('sourceFile') if row.get('sourceSha256') else None
         member = member or evidence.get('archivePath') or evidence.get('sourcePath')
         expected = row.get('sourceSha256') or evidence.get('sourceSha256')
@@ -109,7 +123,9 @@ def materialize(document, plants, archive, root):
         child = copy.deepcopy(parent)
         for key in ('recordStatus', 'replacedByOfferIds', 'priceEvidence', 'panelParameterEvidence',
                     'traitsEvidence', 'additionalParameters', 'reviewNote', 'transplantCount',
-                    'transplantCodes', 'supersededByOfferIds'):
+                    'transplantCodes', 'supersededByOfferIds', 'sourceAmount', 'sourceCurrency',
+                    'sourceCurrencyEvidence', 'priceConversion', 'priceRefresh',
+                    'currencyEvidence', 'priceObservation'):
             child.pop(key, None)
         descriptor = row.get('requestedDescription') if requested else row.get('specification')
         child['specification'] = descriptor

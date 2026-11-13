@@ -43,6 +43,8 @@ class ArborRepairTests(unittest.TestCase):
         self.assertEqual(actual["price"], 2000)
         self.assertEqual(actual["currency"], "")
         self.assertEqual(actual["currencyStatus"], "not_stated")
+        self.assertEqual(actual['sourceAmount'], 2000)
+        self.assertEqual(actual['sourceCurrency'], '')
         self.assertEqual(actual["priceKind"], "historical")
         self.assertEqual(actual["priceNote"], repair.NO_CURRENCY_NOTE)
         self.assertEqual(actual["priceEvidence"]["priceCell"], "E4")
@@ -115,6 +117,43 @@ class ArborRepairTests(unittest.TestCase):
         self.assertEqual(actual["priceNote"], repair.ZERO_NOTE)
         self.assertEqual(actual["priceEvidence"]["amount"], 0)
         self.assertEqual(report["counts"]["zeroAmountsLeftNull"], 1)
+
+    def test_reimport_clears_stale_converted_amount_and_zero_cannot_restore_it(self):
+        for raw_price, expected in [('2000', 2000), ('0', None)]:
+            with self.subTest(raw_price=raw_price):
+                old = offer()
+                old.update(price=49.31, currency='EUR', currencyStatus='converted',
+                           sourceAmount=5800, sourceCurrency='RSD',
+                           sourceCurrencyEvidence={'currency': 'RSD'},
+                           priceConversion={'status': 'converted', 'originalAmount': 5800},
+                           priceRefresh={'status': 'verified'}, priceObservation={'raw': '5800'})
+                original = document([old]); snapshot = copy.deepcopy(original)
+                result, _ = repair.recover(original, source([row(price=raw_price)]), now=NOW)
+                actual = result['offers'][0]
+                self.assertEqual(actual['price'], expected)
+                self.assertEqual(actual['sourceAmount'], expected)
+                self.assertEqual(actual['sourceCurrency'], '')
+                self.assertEqual(actual['currency'], '')
+                self.assertEqual(actual['currencyStatus'], 'not_stated')
+                for field in ('priceConversion', 'priceRefresh', 'priceObservation'):
+                    self.assertNotIn(field, actual)
+                self.assertEqual(original, snapshot)
+
+    def test_reimport_preserves_documented_owner_eur_confirmation(self):
+        old = offer()
+        proof = {'origin': 'catalogue_owner_confirmation', 'reference': 'docs/currency-confirmation.json'}
+        old.update(price=80, currency='EUR', currencyStatus='owner_confirmed',
+                   sourceAmount=80, sourceCurrency='EUR', currencyEvidence=proof,
+                   priceRefresh={'status': 'verified'})
+        result, _ = repair.recover(document([old]), source(), now=NOW)
+        actual = result['offers'][0]
+        self.assertEqual(actual['price'], 2000)
+        self.assertEqual(actual['sourceAmount'], 2000)
+        self.assertEqual(actual['sourceCurrency'], 'EUR')
+        self.assertEqual(actual['currency'], 'EUR')
+        self.assertEqual(actual['currencyStatus'], 'owner_confirmed')
+        self.assertEqual(actual['sourceCurrencyEvidence'], proof)
+        self.assertNotIn('priceRefresh', actual)
 
     def test_formula_or_missing_price_not_silently_imported(self):
         for status in ["formula_not_evaluated", "missing", "not_numeric_cell", "negative"]:

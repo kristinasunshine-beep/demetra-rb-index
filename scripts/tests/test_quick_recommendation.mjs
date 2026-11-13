@@ -15,7 +15,17 @@ assert.equal(Core.recommend(index,{...request,cultivar:'Elsrijk'}).price,65);
 assert.equal(Core.recommend(index,{...request,cultivar:'Elegant'}).status,'unmatched');
 assert.equal(Core.recommend(index,{...request,name:"Acer campestre 'Wrong'"}).status,'unmatched');
 assert.equal(Core.recommend(index,{...request,height:'400-450'}).status,'unmatched');
-assert.equal(Core.recommend(index,{...request,currency:'RSD'}).status,'unmatched');
+assert.equal(Core.recommend(index,{...request,currency:'RSD'}).price,65,'Input currency is preserved in the source sheet; output compares normalized EUR offers');
+const converted={...base,id:'converted-rsd',price:49.31,currency:'EUR',sourceAmount:5800,sourceCurrency:'RSD',currencyStatus:'converted',priceConversion:{status:'converted',fromCurrency:'RSD',toCurrency:'EUR',originalAmount:5800,rate:117.6203,rateDate:'2026-11-13'}};
+assert.equal(Core.euroPrice(converted),49.31);
+assert.equal(Core.recommend(Core.makeIndex({...catalog,offers:[converted]}),request).price,49.31);
+assert.equal(Core.recommend(Core.makeIndex({...catalog,offers:[converted]}),request).suppliers[0].price,49.31);
+for(const invalid of [{...converted,price:5800},{...converted,currency:'RSD',price:5800},{...converted,priceConversion:undefined},{...converted,priceConversion:{...converted.priceConversion,rate:0}},{...converted,priceConversion:{...converted.priceConversion,originalAmount:5000}},{...converted,currencyStatus:'unresolved'},{...converted,priceConversion:{...converted.priceConversion,status:'unresolved'}}]){
+  assert.equal(Core.euroPrice(invalid),null);const failed=Core.recommend(Core.makeIndex({...catalog,offers:[invalid]}),request);assert.equal(failed.status,'unmatched');assert.equal(failed.suppliers[0].price,null);
+}
+assert.equal(Core.euroPrice({...base,price:5800,sourceCurrency:'EUR',sourceAmount:5800}),5800);
+assert.equal(Core.euroPrice({...base,price:5800,sourceCurrency:'EUR',sourceAmount:58}),null);
+assert.equal(Core.recommend(Core.makeIndex({...catalog,offers:[base,{...base,id:'new-unconverted',sourceDate:'2026-11-13',price:5800,currency:'RSD'}]}),request).status,'unmatched','A newer currency change must not revive the obsolete EUR price');
 assert.equal(Core.recommend(index,{...request,preferences:'18-20'}).status,'unmatched');
 assert.equal(Core.recommend(index,{...request,preferences:'crven list'}).status,'unmatched');
 assert.equal(Core.recommend(index,{...request,quantity:-1}).status,'unmatched');
@@ -68,7 +78,7 @@ const priorOutput=[['Naziv biljke','Parametri sadnice',...Core.EXTRA_HEADERS],[r
 const repeat=Core.detectSheet(priorOutput,index);assert.deepEqual(repeat.map,{name:0,preferences:1});assert.equal(Core.recommend(index,Core.requestFromRow(priorOutput[1],repeat.map,repeat.headers)).price,65);
 const actual=await Promise.all(['biljke','rasadnici','kataloske-stavke'].map(async n=>JSON.parse(await readFile(root+'/data/'+n+'.json','utf8'))));
 const actualIndex=Core.makeIndex({plants:actual[0].plants,nurseries:actual[1].nurseries,offers:actual[2].offers});
-let reviewed=0;for(const offer of actual[2].offers){if(!offer.price||['needs_review','superseded'].includes(offer.recordStatus))continue;const plant=actualIndex.plants.get(offer.plantId);const req={name:plant.latinName,circumference:offer.circumference,height:offer.height,potSize:offer.potSize,rootType:offer.rootType,seedlingType:offer.seedlingType,currency:offer.currency};const found=Core.recommend(actualIndex,req);if(found.status==='matched'){const chosen=actual[2].offers.find(o=>o.id===found.offerId);assert.equal(chosen.plantId,offer.plantId);for(const key of ['circumference','height','potSize'])if(req[key])assert(Core.measureMatches(req[key],chosen[key],key));assert.equal(chosen.currency,offer.currency);}reviewed++;}
+let reviewed=0;for(const offer of actual[2].offers){if(!offer.price||['needs_review','superseded'].includes(offer.recordStatus))continue;const plant=actualIndex.plants.get(offer.plantId);const req={name:plant.latinName,circumference:offer.circumference,height:offer.height,potSize:offer.potSize,rootType:offer.rootType,seedlingType:offer.seedlingType,currency:offer.currency};const found=Core.recommend(actualIndex,req);if(found.status==='matched'){const chosen=actual[2].offers.find(o=>o.id===found.offerId);assert.equal(chosen.plantId,offer.plantId);for(const key of ['circumference','height','potSize'])if(req[key])assert(Core.measureMatches(req[key],chosen[key],key));assert.equal(chosen.currency,'EUR');assert.equal(found.price,Core.euroPrice(chosen));}reviewed++;}
 // Preserve every row and every original column, including text identifiers and literal formula-like text.
 const original=[['Naziv biljke','Obim','Šifra'],[request.name,'18-20','0012'],['=HYPERLINK("https://example.invalid")','','0000']];
 const sheets=[{name:'Spisak',processed:true,headerRow:0,originalColumns:3,columns:3+Core.EXTRA_HEADERS.length,rows:original.map((row,i)=>[...row,...(i===0?Core.EXTRA_HEADERS:i===1?result.values:Array(Core.EXTRA_HEADERS.length).fill(''))])},{name:'Napomena',processed:false,columns:1,rows:[['Sačuvan drugi list']]}];

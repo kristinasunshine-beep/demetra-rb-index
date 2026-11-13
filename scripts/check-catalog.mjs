@@ -10,14 +10,28 @@ try{
   const html=await readFile(join(root,'index.html'),'utf8');
   const core=html.match(/\/\/ BEGIN CATALOG CORE\n([\s\S]*?)\/\/ END CATALOG CORE/);
   if(!core)fail('Nedostaje zajednička provera u index.html.');
-  const [plants,nurseries,offers,scope,config]=await Promise.all([
+  const [plants,nurseries,offers,scope,config,exclusions]=await Promise.all([
     read('data/biljke.json'),read('data/rasadnici.json'),read('data/kataloske-stavke.json'),
-    read('scripts/catalog-scope.json'),read('scripts/price-sources.json')
+    read('scripts/catalog-scope.json'),read('scripts/price-sources.json'),read('scripts/catalog-exclusions.json')
   ]);
   for(const envelope of [plants,nurseries,offers]){
     if(envelope.schemaVersion!==1||!Number.isFinite(Date.parse(envelope.updatedAt)))fail('Neispravna verzija ili datum datoteke.');
   }
   const catalog={schemaVersion:1,sourcePolicy:offers.sourcePolicy,plants:plants.plants,nurseries:nurseries.nurseries,offers:offers.offers,updatedAt:offers.updatedAt};
+  if(exclusions.schemaVersion!==1||!Array.isArray(exclusions.excludedOffers))fail('Neispravan registar izuzetih ponuda.');
+  const excludedIds=new Set(),excludedLocations=new Set();
+  const sourceLocation=(hash,sheet,cell)=>[hash,sheet,cell].join('\u0000');
+  for(const excluded of exclusions.excludedOffers){
+    if(!excluded.offerId||!excluded.sourceSha256||!excluded.sheet||!excluded.priceCell)fail('Nedostaje identitet izuzete ponude.');
+    if(excludedIds.has(excluded.offerId))fail('Dupliran zapis u registru izuzetih ponuda: '+excluded.offerId);
+    excludedIds.add(excluded.offerId);
+    excludedLocations.add(sourceLocation(excluded.sourceSha256,excluded.sheet,excluded.priceCell));
+  }
+  for(const offer of catalog.offers){
+    const source=offer.sourceEvidence||{},price=offer.priceEvidence||{};
+    const location=sourceLocation(source.sourceSha256||price.sourceSha256||price.sha256,price.sheet||source.sheet,price.priceCell||source.priceCell);
+    if(excludedIds.has(offer.id)||excludedLocations.has(location))fail('Ponuda uklonjena po zahtevu vlasnice ne sme ponovo biti u katalogu: '+offer.id);
+  }
   const context=createContext({URL,atob:globalThis.atob,catalogJSON:JSON.stringify(catalog)},{codeGeneration:{strings:false,wasm:false}});
   new Script(core[1]+'\nvalidateImport(JSON.parse(catalogJSON));').runInContext(context,{timeout:5000});
   const exact=(actual,expected,label)=>{

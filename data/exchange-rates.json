@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "base": "EUR",
+  "quote": "RSD",
+  "rate": 117.6203,
+  "rateDate": "2026-11-13",
+  "source": "NBS official middle rate",
+  "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate",
+  "listNumber": "217",
+  "fetchedAt": "2026-11-13T14:29:05.274Z"
+}

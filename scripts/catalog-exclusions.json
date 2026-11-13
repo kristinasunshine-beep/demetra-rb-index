@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-11-13T14:52:41.236Z",
+  "reason": "Catalogue owner requested removal of the seven offers from Sadnice 6-8.xlsx, Sheet1, D17:D23. Preserve other offers and photos of these plants.",
+  "excludedOffers": [
+    {
+      "offerId": "record-339408648ed211",
+      "plantId": "plant-acer-campestre",
+      "sourceSha256": "e9296caf2c683cc8f30844a4a55a43b94ff04e0cd6df421ba77312c7f290fa37",
+      "sheet": "Sheet1",
+      "priceCell": "D17",
+      "reason": "Removed at catalogue owner request on 2026-11-13"
+    },
+    {
+      "offerId": "record-591b73e1e1ed80",
+      "plantId": "plant-acer-platanoides",
+      "sourceSha256": "e9296caf2c683cc8f30844a4a55a43b94ff04e0cd6df421ba77312c7f290fa37",
+      "sheet": "Sheet1",
+      "priceCell": "D18",
+      "reason": "Removed at catalogue owner request on 2026-11-13"
+    },
+    {
+      "offerId": "record-dd8fce3b50244e",
+      "plantId": "plant-celtis-australis",
+      "sourceSha256": "e9296caf2c683cc8f30844a4a55a43b94ff04e0cd6df421ba77312c7f290fa37",
+      "sheet": "Sheet1",
+      "priceCell": "D19",
+      "reason": "Removed at catalogue owner request on 2026-11-13"
+    },
+    {
+      "offerId": "record-4f500fb59a4b23",
+      "plantId": "plant-e0c98a176132c0",
+      "sourceSha256": "e9296caf2c683cc8f30844a4a55a43b94ff04e0cd6df421ba77312c7f290fa37",
+      "sheet": "Sheet1",
+      "priceCell": "D20",
+      "reason": "Removed at catalogue owner request on 2026-11-13"
+    },
+    {
+      "offerId": "record-f949f97dd6a6f6",
+      "plantId": "plant-ae4e248ab385a3",
+      "sourceSha256": "e9296caf2c683cc8f30844a4a55a43b94ff04e0cd6df421ba77312c7f290fa37",
+      "sheet": "Sheet1",
+      "priceCell": "D21",
+      "reason": "Removed at catalogue owner request on 2026-11-13"
+    },
+    {
+      "offerId": "record-b2012e339148c3",
+      "plantId": "plant-ffdbfd76e4d96d",
+      "sourceSha256": "e9296caf2c683cc8f30844a4a55a43b94ff04e0cd6df421ba77312c7f290fa37",
+      "sheet": "Sheet1",
+      "priceCell": "D22",
+      "reason": "Removed at catalogue owner request on 2026-11-13"
+    },
+    {
+      "offerId": "record-2d045487b1899a",
+      "plantId": "plant-022d6a0c76b4f1",
+      "sourceSha256": "e9296caf2c683cc8f30844a4a55a43b94ff04e0cd6df421ba77312c7f290fa37",
+      "sheet": "Sheet1",
+      "priceCell": "D23",
+      "reason": "Removed at catalogue owner request on 2026-11-13"
+    }
+  ]
+}

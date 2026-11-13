@@ -133,10 +133,19 @@
     return request;
   }
   const MEASURES=['circumference','height','crownWidth','potSize','rootBall','stemDiameter','potDiameter','clearStemHeight'];
+  function euroPrice(offer){
+    if(typeof offer.price!=='number'||!Number.isFinite(offer.price)||offer.price<0||offer.currency!=='EUR'||offer.currencyStatus==='unresolved'||offer.priceConversion?.status==='unresolved')return null;
+    const source=offer.sourceCurrency||'',conversion=offer.priceConversion;
+    if(!source&&!conversion)return offer.price;
+    if(source==='EUR'&&!conversion)return offer.sourceAmount===undefined||offer.sourceAmount===offer.price?offer.price:null;
+    if(!source||source==='EUR'||conversion?.status!=='converted'||conversion.fromCurrency!==source||conversion.toCurrency!=='EUR'||typeof offer.sourceAmount!=='number'||!Number.isFinite(offer.sourceAmount)||offer.sourceAmount<0||conversion.originalAmount!==offer.sourceAmount||typeof conversion.rate!=='number'||!Number.isFinite(conversion.rate)||conversion.rate<=0||!/^\d{4}-\d{2}-\d{2}$/.test(conversion.rateDate||''))return null;
+    const expected=Math.round((offer.sourceAmount/conversion.rate+Number.EPSILON)*100)/100;
+    return Math.abs(offer.price-expected)<1e-9?offer.price:null;
+  }
   function sameRequirement(key,a,b){if(MEASURES.includes(key))return measureMatches(a,b,key)&&measureMatches(b,a,key);if(key==='rootType')return rootType(a)===rootType(b);if(key==='seedlingType')return form(a)===form(b);if(key==='unit')return unit(a)===unit(b);if(key==='transplantCount')return transplantNumber(a)===transplantNumber(b);return norm(a)===norm(b);}
   function transplantNumber(v){const match=String(v??'').trim().match(/^(\d+)(?:\s*[x×]\s*v?)?$/i);return match?Number(match[1]):null;}
   function offeredValue(o,key){if(o[key]!==null&&o[key]!==undefined&&o[key]!=='')return o[key];const values=(o.additionalParameters||[]).filter(p=>headerField(p.label)===key).map(p=>p.value);return values.length&&values.every(v=>sameRequirement(key,v,values[0]))?values[0]:'';}
-  function variantKey(o){const measureKey=k=>{const value=offeredValue(o,k),m=parseMeasure(value,k);return m?.valid?[m.op,Number(m.lo.toFixed(6)),Number(m.hi.toFixed(6))].join(':'):norm(value);};return [o.plantId,o.nurseryId,...MEASURES.map(measureKey),form(o.seedlingType),rootType(o.rootType),String(o.transplantCount??''),unit(o.unit),taxGroup(o.taxStatus),o.currency].join('|');}
+  function variantKey(o){const measureKey=k=>{const value=offeredValue(o,k),m=parseMeasure(value,k);return m?.valid?[m.op,Number(m.lo.toFixed(6)),Number(m.hi.toFixed(6))].join(':'):norm(value);};return [o.plantId,o.nurseryId,...MEASURES.map(measureKey),form(o.seedlingType),rootType(o.rootType),String(o.transplantCount??''),unit(o.unit),taxGroup(o.taxStatus)].join('|');}
   function dateValue(o){return /^\d{4}-\d{2}-\d{2}/.test(o.sourceDate||'')?o.sourceDate.slice(0,10):'';}
   function newestVariants(offers){const stamp=o=>o.priceRefresh?.status==='verified'&&/^\d{4}-\d{2}-\d{2}/.test(o.priceRefresh.changedAt||'')?o.priceRefresh.changedAt.slice(0,10):dateValue(o);const groups=new Map();for(const o of offers){const key=variantKey(o);if(!groups.has(key))groups.set(key,[]);groups.get(key).push(o);}return [...groups.values()].flatMap(rows=>{const dates=rows.map(stamp).filter(Boolean).sort();return dates.length?rows.filter(o=>stamp(o)===dates.at(-1)):rows;});}
   function parameters(o){const labels={seedlingType:'Tip',circumference:'Obim',height:'Visina',crownWidth:'Širina krošnje',potSize:'Saksija',rootBall:'Busen',stemDiameter:'Prečnik sadnice',potDiameter:'Prečnik saksije',clearStemHeight:'Visina do krošnje',rootType:'Isporuka',transplantCount:'Presađivanja'};return Object.entries(labels).map(([k,l])=>[l,offeredValue(o,k)]).filter(([,v])=>v!==''&&v!==null&&v!==undefined).map(([l,v])=>`${l}: ${v}`).join('; ');}
@@ -163,7 +172,7 @@
     if(pref.rest)return fail('Ponuda ne potvrđuje opisni zahtev: '+pref.rest);
     if(pref.conflicts.length)return fail('Različiti zahtevi za polja: '+pref.conflicts.join(', '));
     for(const [key,value] of Object.entries(pref.fields)){if(requested[key]!==undefined&&String(requested[key]).trim()&&!sameRequirement(key,requested[key],value))return fail('Različiti zahtevi za polje: '+FIELDS.find(f=>f[0]===key)?.[1]);requested[key]=value;}
-    const currency='EUR';if(String(requested.currency??'').trim()&&!/^(?:EUR|€|EURO|EVRO)$/i.test(String(requested.currency).trim()))return fail('Poređenje koristi nabavne cene u EUR, bez automatskog preračunavanja drugih valuta.');
+    const currency='EUR';
     const requestedQuantity=Number(String(requested.quantity??'').replace(',','.'));
     if(String(requested.quantity??'').trim()&&(!Number.isFinite(requestedQuantity)||requestedQuantity<=0))return fail('Količina zahteva nije ispravan pozitivan broj.');
     const now=options.today||new Date().toISOString().slice(0,10);
@@ -181,7 +190,7 @@
     if(!offers.length)return fail('Nema ponude koja potvrđuje sve tražene parametre.');
     offers=newestVariants(offers);
     const suppliers=supplierList(index,offers);
-    offers=offers.filter(o=>Number.isFinite(o.price)&&o.price>0&&o.currency===currency);
+    offers=offers.filter(o=>euroPrice(o)!==null&&o.price>0);
     if(!offers.length)return fail('Za ove parametre nema potvrđene cene u valuti '+currency+'.',suppliers);
     const tax=new Set(offers.map(o=>taxGroup(o.taxStatus))),units=new Set(offers.map(o=>unit(o.unit)));
     // A price per pack, a gross amount and an unknown tax basis cannot silently win over a net unit price.
@@ -197,7 +206,7 @@
     return {status:'matched',offerId:best.id,plantId:found.id,price:best.price,currency,supplier,suppliers,message,
       values:[supplierText(suppliers),supplier,best.price,parameters(best),dateValue(best),message]};
   }
-  function supplierList(index,offers){const groups=new Map();for(const offer of offers){if(!groups.has(offer.nurseryId))groups.set(offer.nurseryId,[]);groups.get(offer.nurseryId).push(offer);}return [...groups].map(([nurseryId,rows])=>{const prices=rows.filter(o=>Number.isFinite(o.price)&&o.price>0&&o.currency==='EUR').map(o=>o.price);return {nurseryId,name:index.nurseries.get(nurseryId)?.name||nurseryId,price:prices.length?Math.min(...prices):null,currency:'EUR',offerIds:rows.map(o=>o.id)};}).sort((a,b)=>(a.price??Infinity)-(b.price??Infinity)||a.name.localeCompare(b.name));}
+  function supplierList(index,offers){const groups=new Map();for(const offer of offers){if(!groups.has(offer.nurseryId))groups.set(offer.nurseryId,[]);groups.get(offer.nurseryId).push(offer);}return [...groups].map(([nurseryId,rows])=>{const prices=rows.filter(o=>euroPrice(o)!==null&&o.price>0).map(o=>o.price);return {nurseryId,name:index.nurseries.get(nurseryId)?.name||nurseryId,price:prices.length?Math.min(...prices):null,currency:'EUR',offerIds:rows.map(o=>o.id)};}).sort((a,b)=>(a.price??Infinity)-(b.price??Infinity)||a.name.localeCompare(b.name));}
   function supplierText(suppliers){return suppliers.map(s=>s.name+' — '+(s.price===null?'cena u EUR nije navedena':s.price.toLocaleString('sr-Latn-RS',{minimumFractionDigits:2,maximumFractionDigits:2})+' €')).join('\n');}
-  return {FIELDS,EXTRA_HEADERS,norm,headerField,detectHeader,detectSheet,form,rootType,unit,taxGroup,parseMeasure,measureMatches,makeIndex,findPlant,parsePreferences,requestFromRow,newestVariants,parameters,recommend};
+  return {FIELDS,EXTRA_HEADERS,norm,headerField,detectHeader,detectSheet,form,rootType,unit,taxGroup,parseMeasure,measureMatches,makeIndex,findPlant,parsePreferences,requestFromRow,newestVariants,parameters,recommend,euroPrice};
 });

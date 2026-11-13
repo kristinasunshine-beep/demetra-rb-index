@@ -99,9 +99,13 @@ def recover(document, plants, rows):
             continue
         amount = price['value']
         assert amount >= 0
-        offer.update(price=amount, currency='EUR', currencyStatus='stated', priceKind='historical',
+        for field in ('priceConversion', 'priceRefresh', 'priceObservation', 'currencyEvidence'):
+            offer.pop(field, None)
+        offer.update(price=amount, currency='EUR', sourceAmount=amount, sourceCurrency='EUR', currencyStatus='stated', priceKind='historical',
                      priceNote='Cena je preneta iz originalne arhivirane ponude rasadnika.', unit='kom',
                      availability='Arhivirana ponuda — aktuelna dostupnost nije potvrđena.')
+        offer['sourceCurrencyEvidence'] = {'origin': 'original_ods_price_cell', 'currency': 'EUR',
+            'sourceSha256': EXPECTED_SHA, 'sheet': 'Blad1', 'priceCell': 'G'+str(row)}
         offer['priceEvidence'] = {
             'kind': 'historical_supplier_offer', 'method': 'original_ods_xml_exact_source_row',
             'sourceFile': Path(MEMBER).name, 'archivePath': MEMBER, 'sourceSha256': EXPECTED_SHA,

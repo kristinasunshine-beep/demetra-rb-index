@@ -16,14 +16,21 @@ try{lock=await fs.open(lockFile,'wx');}catch{throw new Error('Prethodna jutarnja
 try{
  const head=await request(api+'/git/ref/heads/main'),commit=await request(api+'/git/commits/'+head.object.sha);
  const run=path.join(work,'prepared'),dataDir=path.join(run,'data');await fs.mkdir(dataDir,{recursive:true});
- const response=await fetch(`https://raw.githubusercontent.com/${repository}/${head.object.sha}/data/kataloske-stavke.json`,{headers});if(!response.ok)throw new Error('Aktuelni katalog nije mogao da se preuzme.');
- const original=await response.text();await fs.writeFile(path.join(dataDir,'kataloske-stavke.json'),original);
+ // Read catalogue and the reviewed exchange rate from one immutable commit.
+ // The private-folder refresh must never silently use a bundled/stale local rate.
+ const snapshots=await Promise.all(['kataloske-stavke.json','exchange-rates.json'].map(async name=>{
+   const response=await fetch(`https://raw.githubusercontent.com/${repository}/${head.object.sha}/data/${name}`,{headers});if(!response.ok)throw new Error('Aktuelni katalog ili potvrđeni kurs nije mogao da se preuzme: '+name);
+   return {name,text:await response.text()};
+ }));
+ for(const snapshot of snapshots)await fs.writeFile(path.join(dataDir,snapshot.name),snapshot.text);
+ const original=snapshots.find(s=>s.name==='kataloske-stavke.json').text;
  const {report}=await refreshFolder({source,repo:run,stateFile:path.join(work,'private-price-state.json'),reportFile:path.join(work,'last-price-report.json'),apply:true});
  const before=JSON.parse(original),after=JSON.parse(await fs.readFile(path.join(dataDir,'kataloske-stavke.json'),'utf8'));
  if(before.offers.length!==after.offers.length)throw new Error('Promenjen broj zapisa tokom cenovnog ažuriranja.');
- const strip=o=>Object.fromEntries(Object.entries(o).filter(([k])=>!['price','priceEvidence','priceRefresh'].includes(k)));
+ const priceFields=new Set(['price','currency','currencyStatus','currencyEvidence','sourceAmount','sourceCurrency','sourceCurrencyEvidence','priceConversion','priceEvidence','priceRefresh']);
+ const strip=o=>Object.fromEntries(Object.entries(o).filter(([k])=>!priceFields.has(k)));
  for(let i=0;i<before.offers.length;i++)if(JSON.stringify(strip(before.offers[i]))!==JSON.stringify(strip(after.offers[i])))throw new Error('Ažuriranje pokušava da promeni podatke izvan cene: '+before.offers[i].id);
- const manifest={preparedAt:new Date().toISOString(),repository,baseCommit:head.object.sha,files:['data/kataloske-stavke.json','data/price-sync-status.json'],verified:report.verified,changed:report.updated,pending:report.pending.length,newSources:report.newFiles.length,published:false};
+ const manifest={preparedAt:new Date().toISOString(),repository,baseCommit:head.object.sha,files:['data/kataloske-stavke.json','data/price-sync-status.json','data/exchange-rates.json'],verified:report.verified,changed:report.updated,pending:report.pending.length,newSources:report.newFiles.length,exchangeRateDate:JSON.parse(snapshots.find(s=>s.name==='exchange-rates.json').text).rateDate,published:false};
  await fs.writeFile(path.join(work,'prepared-update.json'),JSON.stringify(manifest,null,2)+'\n');
  if(args.includes('--publish')){
    if(!token)throw new Error('Potvrđene cene su pripremljene, ali GitHub nije povezan za objavljivanje.');

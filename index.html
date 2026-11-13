@@ -947,9 +947,9 @@ body[data-view="search"] .search-field:focus-within .search-icon { color:var(--a
     <dialog id="plant-dialog" class="dialog detail-dialog" aria-labelledby="plant-detail-title"><div id="plant-dialog-content"></div></dialog>
     <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="false"></div>
     <noscript><p class="noscript-notice">Za korišćenje kataloga potrebno je uključiti JavaScript u pregledaču.</p></noscript>
-    <script src="./assets/moja-ponuda-core.js"></script>
-    <script src="./assets/moja-ponuda.js"></script>
-    <script src="./assets/brza-preporuka-core.js?v=auto-20261113"></script>
+    <script src="./assets/moja-ponuda-core.js?v=eur-20261113"></script>
+    <script src="./assets/moja-ponuda.js?v=eur-20261113"></script>
+    <script src="./assets/brza-preporuka-core.js?v=eur-20261113"></script>
     <script src="./assets/brza-preporuka.js?v=auto-20261113"></script>
     <script type="module">
 // BEGIN CATALOG CORE
@@ -1176,6 +1176,13 @@ function validateOffer(item, index, plantIds, nurseryIds) {
     potSize: textValue(item.potSize, `${label}, saksija`, { max: 160 }),
     rootType: textValue(item.rootType, `${label}, način isporuke`, { max: 100, fallback: 'Nije navedeno' }),
     price, currency, currencyStatus,
+    sourceAmount: item.sourceAmount === undefined ? undefined : priceValue(item.sourceAmount, `${label}, izvorni iznos`),
+    sourceCurrency: textValue(item.sourceCurrency, `${label}, izvorna valuta`, { max: 3 }).toUpperCase(),
+    priceConversion: isObject(item.priceConversion) ? {
+      status: item.priceConversion.status, fromCurrency: item.priceConversion.fromCurrency,
+      toCurrency: item.priceConversion.toCurrency, originalAmount: item.priceConversion.originalAmount,
+      rate: item.priceConversion.rate, rateDate: item.priceConversion.rateDate
+    } : undefined,
     unit: textValue(item.unit, `${label}, jedinica`, { max: 30, fallback: 'kom' }),
     taxStatus: textValue(item.taxStatus, `${label}, PDV`, { max: 100, fallback: 'Nije navedeno' }),
     availability: textValue(item.availability, `${label}, dostupnost`, { max: 150, fallback: 'U katalogu — proveriti' }),
@@ -1378,21 +1385,25 @@ function formattedDate(value) {
   return Number.isNaN(date.getTime()) ? String(value) : date.toLocaleDateString('sr-Latn-RS');
 }
 
+function catalogEuroPrice(offer) {
+  if (typeof offer.price !== 'number' || !Number.isFinite(offer.price) || offer.price < 0 || offer.currency !== 'EUR' || offer.currencyStatus === 'unresolved' || offer.priceConversion?.status === 'unresolved') return null;
+  const source = offer.sourceCurrency || '', conversion = offer.priceConversion;
+  if (!source && !conversion) return offer.price;
+  if (source === 'EUR' && !conversion) return offer.sourceAmount === undefined || offer.sourceAmount === offer.price ? offer.price : null;
+  if (!source || source === 'EUR' || conversion?.status !== 'converted' || conversion.fromCurrency !== source || conversion.toCurrency !== 'EUR' || typeof offer.sourceAmount !== 'number' || !Number.isFinite(offer.sourceAmount) || offer.sourceAmount < 0 || conversion.originalAmount !== offer.sourceAmount || typeof conversion.rate !== 'number' || !Number.isFinite(conversion.rate) || conversion.rate <= 0 || !/^\d{4}-\d{2}-\d{2}$/.test(conversion.rateDate || '')) return null;
+  const expected = Math.round((offer.sourceAmount / conversion.rate + Number.EPSILON) * 100) / 100;
+  return Math.abs(offer.price - expected) < 1e-9 ? offer.price : null;
+}
+
 function formattedPrice(offer) {
-  if (offer.price === null || offer.price === undefined || offer.price === '') return 'Cena nije navedena';
-  const amount = Number(offer.price);
-  if (!Number.isFinite(amount)) return 'Cena nije navedena';
-  const currency = offer.currency || 'EUR'; // Catalogue owner confirmed unlabelled prices are EUR.
-  try {
-    return new Intl.NumberFormat('sr-Latn-RS', {
-      style: 'currency', currency, maximumFractionDigits: 2
-    }).format(amount);
-  } catch { return amount.toLocaleString('sr-Latn-RS') + ' ' + currency; }
+  const amount = catalogEuroPrice(offer);
+  if (amount === null) return 'Cena nije navedena';
+  return new Intl.NumberFormat('sr-Latn-RS', { style: 'currency', currency: 'EUR', maximumFractionDigits: 2 }).format(amount);
 }
 
 function visiblePriceNote(offer) {
   let note = offer.priceNote || '';
-  if (offer.price !== null && offer.price !== undefined && offer.price !== '' && (!offer.currency || offer.currency === 'EUR')) {
+  if (catalogEuroPrice(offer) !== null) {
     for (const phrase of ["Valuta nije navedena u izvornom cenovniku; iznos je prenet bez konverzije.", "Valuta nije navedena; iznos nije konvertovan.", "Valuta nije navedena u izvoru."]) note = note.replaceAll(phrase, '');
   }
   return note.replace(/\s+/g, ' ').trim();
@@ -1674,11 +1685,12 @@ function makeQuoteItem(offerId) {
   if (!offer) return null;
   const plant = plantById(offer.plantId), nursery = nurseryById(offer.nurseryId);
   if (!plant || !nursery) return null;
+  const price = catalogEuroPrice(offer);
   return {
     offerId: offer.id, plantId: plant.id, nurseryId: nursery.id,
     latinName: plant.latinName, commonName: plant.commonName || '', nursery: nursery.name,
-    country: nursery.country || '', unit: offer.unit || 'kom', currency: offer.currency || 'EUR',
-    sourcePrice: offer.price, price: offer.price === null ? '' : String(offer.price), quantity: '1', note: '',
+    country: nursery.country || '', unit: offer.unit || 'kom', currency: 'EUR', sourcePriceCurrency: 'EUR',
+    sourcePrice: price, price: price === null ? '' : String(price), priceEdited: false, quantity: '1', note: '',
     parameters: offerParameters(offer),
     details: [
       ['Kategorija', plant.category], ['Opis biljke', plant.description],
@@ -1851,6 +1863,7 @@ async function init() {
       plants: plants.plants, nurseries: nurseries.nurseries,
       offers: offers.offers, favorites: [], updatedAt: offers.updatedAt });
     state.catalog = freezeDeep(result.data);
+    quoteApp?.refresh();
     input.removeAttribute('aria-busy');
     if (input.value.trim()) updateSearch();
     handleRoute();

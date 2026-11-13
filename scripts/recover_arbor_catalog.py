@@ -284,12 +284,29 @@ def recover(document, source, now=None, dry_run=False):
         counts["agreeingDuplicateMatches" if len(matches) > 1 else "uniqueMatches"] += 1
         if new_inpot:
             counts["matchedExplicitNewInpot"] += 1
+        owner_proof = old.get('currencyEvidence') or {}
+        confirmed_eur = (
+            old.get('currency') == 'EUR' and old.get('sourceCurrency', 'EUR') == 'EUR' and
+            isinstance(owner_proof, dict) and owner_proof.get('origin') == 'catalogue_owner_confirmation' and
+            owner_proof.get('reference') == 'docs/currency-confirmation.json'
+        )
+        # This workbook has no currency marker. Retain an existing owner EUR
+        # confirmation; otherwise keep currency unknown, never infer it from FX.
+        for field in ('priceConversion', 'priceRefresh', 'priceObservation', 'sourceCurrencyEvidence'):
+            updated.pop(field, None)
+        if not confirmed_eur:
+            updated.pop('currencyEvidence', None)
         updated["price"] = json_number(row.amount) if row.price_status == "positive" else None
-        updated["currency"] = ""
+        updated['sourceAmount'] = updated['price']
+        updated['sourceCurrency'] = 'EUR' if confirmed_eur else ''
+        updated["currency"] = 'EUR' if confirmed_eur else ''
+        updated['currencyStatus'] = 'owner_confirmed' if confirmed_eur else 'not_stated'
+        updated['sourceCurrencyEvidence'] = copy.deepcopy(owner_proof) if confirmed_eur else {
+            'origin': 'original_workbook_currency_not_stated', 'sourceSha256': source.sha256,
+            'sheet': source.sheet, 'priceCell': f'E{row.row}'}
         updated["priceKind"] = "historical"
-        updated["priceNote"] = NO_CURRENCY_NOTE if row.price_status == "positive" else ZERO_NOTE
+        updated["priceNote"] = ('Cena iz arhivirane ponude; valuta EUR potvrđena od strane vlasnika kataloga.' if confirmed_eur else NO_CURRENCY_NOTE) if row.price_status == "positive" else ZERO_NOTE
         if row.price_status == "positive":
-            updated["currencyStatus"] = "not_stated"
             counts["positiveAmounts"] += 1
         else:
             counts["zeroAmountsLeftNull"] += 1

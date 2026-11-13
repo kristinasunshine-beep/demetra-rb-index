@@ -1,5 +1,5 @@
 'use strict';
-importScripts('vendor/xlsx-0.20.3.full.min.js','vendor/jszip-3.10.1.min.js','brza-preporuka-core.js?v=auto-20261113','recommendation-excel.js?v=auto-20261113');
+importScripts('vendor/xlsx-0.20.3.full.min.js','vendor/jszip-3.10.1.min.js','brza-preporuka-core.js?v=eur-20261113','recommendation-excel.js?v=eur-20261113');
 const Core=self.DemetraRecommendCore;
 let sheets=[],results=null,originalWorkbook=null;
 function send(type,data={}){postMessage({type,...data});}

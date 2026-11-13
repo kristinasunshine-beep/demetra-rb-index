@@ -287,21 +287,30 @@ export async function verifyPanels(root) {
       assert.equal(original.sourceEvidence?.sourceFile, regression.sourceFile,
         label + 'regresioni podatak mora pripadati odgovarajućoj ponudi.');
       if (Object.hasOwn(regression, 'price')) {
+        const sourceAmount = original.sourceAmount ?? original.price;
         const update=original.priceEvidence?.folderUpdate;
         if(update){
           assert.equal(update.method,'unchanged-identity-row-and-header',label+'nepoznat postupak provere cene.');
           assert.match(update.sourceSha256||'',/^[a-f0-9]{64}$/,label+'nedostaje otisak novog izvora.');
           assert.match(update.rowSignature||'',/^[a-f0-9]{64}$/,label+'nedostaje potvrda izvornog reda.');
           assert.match(update.headerSignature||'',/^[a-f0-9]{64}$/,label+'nedostaje potvrda zaglavlja.');
-          assert.equal(original.priceEvidence.amount,original.price,label+'potvrda i cena se razlikuju.');
+          assert.equal(original.priceEvidence.amount,sourceAmount,label+'potvrda i izvorna cena se razlikuju.');
           assert.equal(original.priceRefresh?.originalAmount,regression.price,label+'početna cena mora ostati vezana za arhivski dokaz.');
-        }else assert.equal(original.price,regression.price,label+'cena izvornog reda mora imati potvrdu svake izmene.');
+        }else assert.equal(sourceAmount,regression.price,label+'izvorna cena mora ostati sačuvana pre konverzije.');
+        if(original.sourceCurrency==='RSD'){
+          assert.equal(original.priceConversion?.status,'converted',label+'nedostaje potvrda konverzije.');
+          assert.equal(original.priceConversion.originalAmount,sourceAmount,label+'konverzija mora koristiti izvorni dinarski iznos.');
+          assert.equal(original.price,Math.round((sourceAmount/original.priceConversion.rate+Number.EPSILON)*100)/100,label+'neispravan obračun RSD/EUR.');
+        }
       }
       if (Object.hasOwn(regression, 'currency')) {
         const confirmedEUR = !regression.currency && original.currencyStatus === 'owner_confirmed' &&
           original.currencyEvidence?.origin === 'catalogue_owner_confirmation' &&
           original.currencyEvidence?.reference === 'docs/currency-confirmation.json';
-        assert.equal(original.currency, confirmedEUR ? 'EUR' : regression.currency,
+        const converted=original.sourceCurrency==='RSD'&&original.priceConversion?.status==='converted';
+        if(converted)assert.equal(original.sourceCurrency,regression.currency||original.sourceCurrency,
+          label+'izvorna valuta pre konverzije mora ostati vezana za dokaz.');
+        assert.equal(original.currency, converted||confirmedEUR ? 'EUR' : regression.currency,
           label + 'valuta mora odgovarati izvoru ili izricitoj potvrdi vlasnice kataloga.');
       }
       if (Object.hasOwn(regression, 'sourceRow')) assert.equal(original.sourceEvidence?.row, regression.sourceRow,
@@ -339,9 +348,9 @@ export async function verifyPanels(root) {
       checkedNoteProvenance.add(offer.id);
     }
     const pricePanel = markup.match(/<div class="offer-price"><strong>([\s\S]*?)<\/strong>/)?.[1];
-    const expectedPrice = offer.price === null ? 'Cena nije navedena' :
+    const expectedPrice = offer.price === null || offer.currency !== 'EUR' ? 'Cena nije navedena' :
       new Intl.NumberFormat('sr-Latn-RS',
-        { style: 'currency', currency: offer.currency || 'EUR', maximumFractionDigits: 2 }).format(offer.price);
+        { style: 'currency', currency: 'EUR', maximumFractionDigits: 2 }).format(offer.price);
     assert.equal(pricePanel, esc(expectedPrice), label + 'izvorna cena mora biti u cenovnom panelu.');
   }
 
