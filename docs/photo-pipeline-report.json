@@ -1,7 +1,7 @@
 {
   "schemaVersion": 2,
   "status": "partial",
-  "requests": 337,
+  "requests": 256,
   "workers": 8,
   "events": [
     {
@@ -12,7 +12,7 @@
   ],
   "coverage": {
     "schemaVersion": 2,
-    "checkedAt": "2026-11-13T12:21:31Z",
+    "checkedAt": "2026-11-14T11:35:42Z",
     "status": "partial",
     "plants": 619,
     "plantsInventoried": 619,
@@ -952,7 +952,7 @@
       }
     ],
     "coveragePercent": 62.36,
-    "activeOffers": 2948,
+    "activeOffers": 2941,
     "remainingOffers": 436
   },
   "nonPhotoDataUnchanged": true,
