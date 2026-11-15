@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light">
-    <meta name="theme-color" content="#f4f4ed">
+    <meta name="theme-color" content="#161a19">
     <meta name="description" content="Unesite početak latinskog naziva. Pronađite biljku i otvorite njen digitalni zapis.">
     <title>demetra rb index</title>
     <link rel="icon" href="data:,">
@@ -838,50 +838,36 @@ body[data-view="search"] .search-field:focus-within .search-icon { color:var(--a
 </style>
       <link rel="stylesheet" href="./assets/moja-ponuda.css">
       <link rel="stylesheet" href="./assets/brza-preporuka.css?v=auto-20261113">
+      <link rel="stylesheet" href="./assets/control-room.css?v=02t-20261115">
   </head>
-  <body data-view="search">
+  <body class="control-room" data-view="search">
     <a class="skip-link" href="#main">Pređi na sadržaj</a>
     <header class="app-header">
       <div class="header-inner">
         <a class="brand" href="#search" data-action="navigate" data-view="search" aria-label="Demetra RB Index početna">
-          <img class="brand-apple" src="./assets/demetra-rb-favicon-original.png" width="14" height="14" alt="" aria-hidden="true">
-          <span class="brand-wordmark"><span class="brand-title header-glass-text">demetra rb index</span><small class="header-glass-text">DIGITALNI REGISTAR BILJAKA</small></span>
+          <span class="brand-mark-control" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="#FA593B" stroke-width="1.6"><circle cx="16" cy="12" r="8.5"/><path d="M16 8v17m0-9c6-8 10-4 5 0-3 3-5 3-5 3m0-2c-5-8-10-4-5 0 3 3 5 3 5 3M8 26h16"/></svg></span>
+          <span class="brand-wordmark">DEMETRA <span class="brand-secondary">RB</span><small>INDEX / DIGITALNI REGISTAR</small></span>
         </a>
+        <div class="rail-divider"></div>
+        <div class="rail-caption">RADNI PROSTOR / NAVIGACIJA</div>
         <nav class="header-actions" aria-label="Alati kataloga">
-          <button id="open-quick-recommendation" type="button" class="quick-nav" aria-controls="quick-recommendation-view" aria-expanded="false">Brza preporuka</button>
-          <button id="open-my-quote" type="button" class="my-quote-nav" data-action="open-my-quote" aria-controls="my-quote-view" aria-expanded="false">Moja ponuda <span id="my-quote-count">0</span></button>
+          <a href="#search" class="control-nav-search is-current" data-action="navigate" data-view="search" aria-current="page"><span class="nav-num">01</span> Pretraga <span class="nav-corner">↗</span></a>
+          <button id="open-quick-recommendation" type="button" class="quick-nav" aria-controls="quick-recommendation-view" aria-expanded="false"><span class="nav-num">02</span> Brza preporuka <span class="nav-corner">↗</span></button>
+          <button id="open-my-quote" type="button" class="my-quote-nav" data-action="open-my-quote" aria-controls="my-quote-view" aria-expanded="false"><span class="nav-num">03</span> Moja ponuda <span id="my-quote-count">0</span></button>
         </nav>
+        <div class="rail-explain"><span>KONCEPT / 02</span>Od identifikacije do specifikacije. <strong>Jedan sistem za brže projektantske odluke.</strong></div>
+        <div class="rail-bottom"><span class="online">INDEX / AKTIVAN</span><span>2026</span></div>
       </div>
     </header>
 
     <main id="main" class="workspace">
       <section id="search-intro" class="search-intro search-only" aria-labelledby="search-heading">
+        <div class="control-hero-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="16" cy="12" r="8.5"/><path d="M16 8v17m0-9c6-8 10-4 5 0-3 3-5 3-5 3m0-2c-5-8-10-4-5 0 3 3 5 3 5 3"/></svg></div>
         <div class="search-intro-copy">
-          <p class="index-eyebrow"><span class="index-dot" aria-hidden="true"></span> BOTANIČKI INDEKS <span class="index-edition">/ 01</span></p>
-          <h1 id="search-heading">Jedno ime. <em>Cela biljka.</em></h1>
-          <p class="search-lead">Fotografije, dimenzije i nabavne cene u digitalnoj kartici biljke.</p>
+          <p class="index-eyebrow"><span class="index-dot" aria-hidden="true"></span> BOTANIČKI OPERATIVNI SISTEM <span class="index-edition">/ 001</span></p>
+          <h1 id="search-heading"><span>OD IMENA.</span><em>DO ZAPISA.</em></h1>
         </div>
-        <figure class="specimen-study" aria-hidden="true">
-          <svg xmlns="http://www.w3.org/2000/svg" class="demetra-mark" viewBox="0 0 340 310" role="img" aria-labelledby="dm2-title dm2-desc">
-            <title id="dm2-title">Demetra — kružni znak</title>
-            <desc id="dm2-desc">Kružna krošnja obuhvata mladu biljku sa dva lista. Impuls se kreće centralnim stablom i vodoravnom bazom.</desc>
-            <defs>
-              <path id="dm2-flow" d="M170 66V241Q170 267 143 267H115H225H170V66" pathLength="100"/>
-              <filter id="dm2-glow" x="100" y="50" width="140" height="234" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                <feGaussianBlur stdDeviation="2.2"/>
-              </filter>
-            </defs>
-            <path class="dm2-wood" d="M136 207.34A90 90 0 1 1 170 214" stroke-width="9"/>
-            <path class="dm2-leaf-dark" d="M173 128C175 102 195 85 223 85C218 111 201 130 173 128Z"/>
-            <path class="dm2-leaf" d="M168 159C143 164 121 148 114 122C141 119 162 134 168 159Z"/>
-            <path class="dm2-wood" d="M170 66V267" stroke-width="13"/>
-            <path class="dm2-wood" d="M170 241Q170 267 143 267H115M170 241Q170 267 197 267H225M115 267H225" stroke-width="13"/>
-            <g class="dm2-pulse" pointer-events="none" aria-hidden="true">
-              <use href="#dm2-flow" class="dm2-halo" stroke-width="11" filter="url(#dm2-glow)"/>
-              <use href="#dm2-flow" class="dm2-core" stroke-width="3.4"/>
-            </g>
-          </svg>
-        </figure>
+        <div class="control-principle"><strong>PRINCIP / BRZO. TAČNO. PREGLEDNO.</strong><p>Pronađite biljku, uporedite dimenzije i izvore, formirajte ponudu. <b>Sve kroz jedan projektantski indeks.</b></p></div>
       </section>
 
       <section class="page-heading" id="page-heading" hidden>
@@ -893,14 +879,15 @@ body[data-view="search"] .search-field:focus-within .search-icon { color:var(--a
         <div id="heading-actions" class="heading-actions"></div>
       </section>
 
+      <div class="control-search-shell">
       <section id="catalog-tools" class="catalog-tools" aria-label="Pretraga i filteri">
-        <div class="search-brow search-only"><span class="search-field-caption">POČNITE LATINSKIM NAZIVOM</span><span>A <span aria-hidden="true">→</span> Ac <span aria-hidden="true">→</span> Acer…</span></div>
+        <div class="search-brow search-only"><span class="search-field-caption"><b>01 /</b> PRETRAŽI BOTANIČKI INDEKS</span><span>LATINSKI NAZIV → DIGITALNA KARTICA</span></div>
         <div class="search-row">
           <div class="search-wrap">
             <div class="search-field">
               <svg class="icon search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/></svg>
               <label class="sr-only" for="plant-search">Pretražite po latinskom nazivu</label>
-              <input id="plant-search" type="search" autocomplete="off" spellcheck="false" placeholder="Latinski naziv…" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="search-options" aria-describedby="search-help">
+              <input id="plant-search" type="search" autocomplete="off" spellcheck="false" placeholder="Unesite naziv biljke…" role="combobox" aria-autocomplete="list" aria-expanded="false" aria-controls="search-options" aria-describedby="search-help">
               <button id="clear-search" type="button" class="icon-button clear-search" data-action="clear-search" aria-label="Obriši pretragu" hidden><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></button>
               <button id="search-go" type="button" class="search-go search-only" data-action="search-go" aria-label="Pronađi biljku"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M8 31 31 8M9 8h22v22"/></svg></button>
             </div>
@@ -926,9 +913,11 @@ body[data-view="search"] .search-field:focus-within .search-icon { color:var(--a
       </section>
 
       <section id="search-context" class="search-context search-only" aria-label="Pomoć pri pretrazi">
-        <div class="search-guidance"><p id="search-help">Prvo slovo otvara do pet predloga. Nastavite da kucate i izaberite biljku.</p><span class="keyboard-tip"><kbd>↑</kbd><kbd>↓</kbd> izbor <kbd>↵</kbd> otvori</span></div>
-        <p class="prototype-note"><span aria-hidden="true">◌</span> Prvo izdanje · povezani podaci iz materijala i kataloga rasadnika.</p>
+        <div class="search-guidance"><p id="search-help">PREDLOZI SE OTVARAJU TOKOM KUCANJA</p><span class="keyboard-tip">IZBOR <kbd>↑</kbd><kbd>↓</kbd></span></div>
+        
       </section>
+      </div>
+      <div class="control-home-footer search-only">DEMETRA RB INDEX © 2026</div>
 
       <p id="search-status" class="search-status sr-only" role="status" aria-live="polite"></p>
       <div class="results-heading" id="results-heading" hidden>
@@ -1596,14 +1585,15 @@ function renderOffer(offer, plant, nursery) {
   const sourceTiming = [offer.sourceDate ? 'Datum izvora: ' + formattedDate(offer.sourceDate) :
     offer.sourcePeriod ? 'Period izvora: ' + offer.sourcePeriod : 'Datum objave nije naveden',
     offer.checkedAt ? 'Provereno: ' + formattedDate(offer.checkedAt) : ''].filter(Boolean).join(' · ');
-  const supplierPhoto = imageURL(offer.image);
-  const photoMarkup = supplierPhoto ?
-    '<div class="offer-photo">' + imageMarkup(offer.image, plant.latinName + ' — ' + nursery.name) +
-    '</div>' : '';
+  const referenceAllowed = !!(plant.photo && !plant.photo.matchLevel && !/(?:commons\.wikimedia\.org|(?:^|\/)www\.gbif\.org)/i.test(plant.photo.sourceUrl || ''));
+  const photoValue = offer.image || (referenceAllowed ? plant.photo.image : '');
+  const supplierPhoto = imageURL(photoValue);
+  const photoMarkup = supplierPhoto ? '<div class="offer-photo">' + imageMarkup(photoValue, plant.latinName + (offer.image ? ' — ' + nursery.name : ' — fotografija vrste')) + '</div>' : '';
+  const photoSource = supplierPhoto && !offer.image ? '<div class="record-photo-reference">Fotografija vrste</div>' : '';
 
   return '<article class="offer-card" data-offer-id="' + escapeHTML(offer.id) + '">' +
     '<div class="offer-card-body' + (supplierPhoto ? '' : ' without-photo') + '">' +
-    (photoMarkup ? '<div class="offer-visual">' + photoMarkup + '</div>' : '') +
+    (photoMarkup ? '<div class="offer-visual">' + photoMarkup + photoSource + '</div>' : '') +
     '<div class="offer-details"><div class="offer-topline"><span class="availability">' +
     escapeHTML(offer.availability || 'Dostupnost nije navedena') + '</span>' +
     (offer.demo || nursery.demo ? '<span class="demo-badge">Demo ponuda</span>' : '') +
@@ -1659,14 +1649,20 @@ function renderRecord(plant) {
     '<div class="dialog-topline detail-topline"><span class="dialog-topline-label">Digitalna kartica biljke</span>' +
     '<div class="detail-topline-actions"><button type="button" class="record-quote-link" data-action="open-my-quote">Moja ponuda ↗</button><button type="button" class="icon-button" data-action="close-record" aria-label="Zatvori zapis i vrati se na pretragu">' +
     closeIcon + '</button></div></div>' +
-    '<div class="detail-hero' + (plantPhoto ? ' with-photo' : ' without-photo') + '"><div class="detail-hero-copy"><p class="category-label">' +
+    '<div class="detail-hero without-photo"><div class="detail-hero-copy"><p class="category-label">' +
     escapeHTML(plant.category || 'Biljka') + (plant.demo ? ' · DEMO ZAPIS' : '') +
     '</p><h2 id="plant-detail-title">' + escapeHTML(plant.latinName) + '</h2>' +
     (plant.commonName ? '<p class="detail-common">' + escapeHTML(plant.commonName) + '</p>' : '') +
     (plant.description ? '<p class="detail-description">' + escapeHTML(plant.description) + '</p>' : '') +
     (plant.synonyms?.length ? '<p class="detail-synonyms">Drugi nazivi: ' + escapeHTML(plant.synonyms.join(' · ')) + '</p>' : '') +
     '<div class="detail-meta"><span>' + escapeHTML(nurseryCountLabel(nurseryIds.length) + ' · ' + offerCountLabel(offers.length)) +
-    '</span></div></div>' + plantPhoto + '</div><div class="detail-body"><h3 class="section-label">Kataloški zapisi rasadnika</h3>' +
+    '</span></div></div></div><div class="detail-body">' +
+    '<details class="record-extra-info"><summary>Dodatni podaci o biljci</summary>' +
+    '<p><strong>Kategorija:</strong> ' + escapeHTML(plant.category || 'Biljka') + '</p>' +
+    (plant.description ? '<p><strong>Opis:</strong> ' + escapeHTML(plant.description) + '</p>' : '') +
+    (plant.synonyms?.length ? '<p><strong>Drugi nazivi:</strong> ' + escapeHTML(plant.synonyms.join(' · ')) + '</p>' : '') +
+    '<p>' + escapeHTML(nurseryCountLabel(nurseryIds.length) + ' · ' + offerCountLabel(offers.length)) + '</p></details>' +
+    '<h3 class="section-label">Kataloški zapisi rasadnika</h3>' +
     (offers.length ? nurseryIds.map((nurseryId) => {
       const nursery = nurseryById(nurseryId) || { id: nurseryId, name: 'Rasadnik nije naveden', country: '' };
       const variants = offers.filter((offer) => offer.nurseryId === nurseryId);
@@ -1730,6 +1726,9 @@ function openRecord(id) {
 function returnToSearch() {
   recommendationApp?.hide();
   quoteApp?.hide();
+  $('main').hidden = false;
+  document.body.dataset.view = 'search';
+  document.querySelector('.control-nav-search')?.classList.add('is-current');
   state.selectedPlantId = null;
   if (dialog.open) dialog.close();
   document.title = 'demetra rb index';
@@ -1877,12 +1876,12 @@ async function init() {
 
 const quoteApp = window.DemetraQuote?.create({
   getItem: makeQuoteItem,
-  onOpen() { recommendationApp?.hide(); closeSuggestions(); if (dialog.open) dialog.close(); },
+  onOpen() { recommendationApp?.hide(); closeSuggestions(); if (dialog.open) dialog.close(); document.querySelector('.control-nav-search')?.classList.remove('is-current'); },
   onClose() { input.focus({preventScroll:true}); }
 });
 const recommendationApp = window.DemetraRecommendation?.create({
   getCatalog: () => state.catalog,
-  onOpen() { quoteApp?.hide(); closeSuggestions(); if (dialog.open) dialog.close(); },
+  onOpen() { quoteApp?.hide(); closeSuggestions(); if (dialog.open) dialog.close(); document.querySelector('.control-nav-search')?.classList.remove('is-current'); },
   onClose() { returnToSearch(); input.focus({preventScroll:true}); }
 });
 init();
