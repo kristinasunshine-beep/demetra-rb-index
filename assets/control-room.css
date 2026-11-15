@@ -285,3 +285,10 @@ body.control-room .quote-item .quote-mobile-label{font:11px var(--mono)}
  body.control-room[data-view="search"] #plant-search{font-size:22px}
  body.control-room .offer-details>.measurements{grid-template-columns:1fr}
 }
+
+/* Typographic title pairs are live headings, not decorative images. */
+body.control-room .recommend-titlebar h1 span,body.control-room .quote-titlebar h1 span{display:block}
+body.control-room .recommend-titlebar h1 span.outline,body.control-room .quote-titlebar h1 span.outline{color:transparent;-webkit-text-stroke:1.4px var(--ink);letter-spacing:-.083em}
+body.control-room .recommend-titlebar h1{margin-bottom:0}
+body.control-room .quote-titlebar h1{margin-top:14px}
+body.control-room .recommend-titlebar h1,body.control-room .quote-titlebar h1{overflow-wrap:anywhere}
