@@ -13,6 +13,7 @@ import unittest
 from PIL import Image
 
 MODULE = Path(__file__).resolve().parents[1] / "update_photos.py"
+sys.path.insert(0, str(MODULE.parent))
 spec = importlib.util.spec_from_file_location("demetra_update_photos", MODULE)
 photos = importlib.util.module_from_spec(spec)
 sys.modules[spec.name] = photos
@@ -281,6 +282,79 @@ class PhotoUpdaterTests(unittest.TestCase):
         self.assertEqual(photos.resolve_product_image(page, PAGE, NAME, self.policy), (NEW_IMAGE, "page_primary_image"))
         page = '<h1>' + NAME + '</h1><meta property="og:title" content="' + NAME + '"><meta property="og:image" content="' + NEW_IMAGE + '">'
         self.assertEqual(photos.resolve_product_image(page, PAGE, NAME, self.policy), (NEW_IMAGE, "product_og_image"))
+
+    def test_rejected_principal_image_allows_another_confirmed_product_image(self):
+        page = product_page(image_url=OLD_IMAGE) + '<meta property="og:title" content="' + NAME + '"><meta property="og:image" content="' + NEW_IMAGE + '">'
+        self.assertEqual(photos.resolve_product_image(page, PAGE, NAME, self.policy,
+                         excluded_images=[OLD_IMAGE]), (NEW_IMAGE, 'product_og_image'))
+        with self.assertRaises(photos.PhotoError):
+            photos.resolve_product_image(page, PAGE, "Acer palmatum 'Seiryu'", self.policy,
+                                         excluded_images=[OLD_IMAGE])
+        with self.assertRaises(photos.PhotoError):
+            photos.resolve_product_image(page, PAGE, NAME, self.policy,
+                                         excluded_images=[OLD_IMAGE, NEW_IMAGE])
+
+    def test_rejected_lorberg_asset_cannot_return_as_another_size(self):
+        rejected = 'https://www.lorberg.com/content/files/12313/Wrong-1200x630.webp'
+        resized = 'https://www.lorberg.com/content/files/12313/Wrong-718x750.webp'
+        correct = 'https://www.lorberg.com/content/files/12363/Correct-1200x630.webp'
+        policy = {**self.policy, 'imageHosts':['www.lorberg.com']}
+        page = product_page(image_url=[resized, correct])
+        self.assertEqual(photos.resolve_product_image(page, PAGE, NAME, policy,
+                         excluded_images=[rejected]), (correct, 'product_jsonld'))
+
+    def test_lve_same_botanical_product_variant_keeps_exact_identity(self):
+        page_url = 'https://www.lve-baumschule.de/fagus-sylvatica-riversii/6353661'
+        variant = 'https://www.lve-baumschule.de/fagus-sylvatica-riversii/bks33180123'
+        name = "Fagus sylvatica 'Riversii'"
+        policy = {'nurseryId':'lorenz-von-ehren','resolver':'product','pagePathPattern':'/.*',
+                  'pageHosts':['www.lve-baumschule.de'], 'imageHosts':['www.lve-baumschule.de']}
+        page = '<link rel="canonical" href="'+page_url+'"><meta property="og:url" content="'+variant+'"><h1>'+name+'</h1><img alt="'+name+'" src="/media/tree.jpg">'
+        page += '<script type="application/ld+json">'+json.dumps({'@type':'Product','name':name,'sku':'bks33180123'})+'</script>'
+        self.assertEqual(photos.resolve_product_image(page,page_url,name,policy)[0], 'https://www.lve-baumschule.de/media/tree.jpg')
+        for wrong in [page.replace(variant,variant.replace('riversii','dawyck')),
+                      page.replace('Riversii','Dawyck'),
+                      page.replace(variant,variant.replace('lve-baumschule.de','evil.test')),
+                      page.replace('"sku": "bks33180123"', '"sku": "another"'),
+                      page.replace('rel="canonical" href="'+page_url, 'rel="canonical" href="'+variant)]:
+            with self.assertRaises(photos.PhotoError):
+                photos.resolve_product_image(wrong,page_url,name,policy)
+
+    def test_lve_internal_variant_requires_exact_product_form_binding(self):
+        page_url = 'https://www.lve-baumschule.de/carex-morrowii-irish-green/6353170'
+        name = "Carex morrowii 'Irish Green'"
+        uuid = '4f9ee4021e1138697265456a79c2caa4'
+        variant = 'https://www.lve-baumschule.de/detail/' + uuid
+        policy = {'nurseryId':'lorenz-von-ehren','resolver':'product','pagePathPattern':'/.*',
+                  'pageHosts':['www.lve-baumschule.de'], 'imageHosts':['www.lve-baumschule.de']}
+        product = {'@type':'Product','name':name,'sku':'bkA252118340218',
+                   'offers':{'@type':'Offer','url':variant}}
+        page = (f'<link rel="canonical" href="{page_url}"><meta property="og:url" content="{variant}">'
+                f'<h1>{name}</h1><img alt="{name}" src="/media/carex.jpg">'
+                f'<input type="hidden" name="lineItems[{uuid}][id]" value="{uuid}">'
+                '<script type="application/ld+json">' + json.dumps(product) + '</script>')
+        self.assertEqual(photos.resolve_product_image(page,page_url,name,policy)[0],
+                         'https://www.lve-baumschule.de/media/carex.jpg')
+        with self.assertRaises(photos.PhotoError):
+            photos.resolve_product_image(page.replace(f'value="{uuid}"', 'value="wrong"'),page_url,name,policy)
+
+    def test_lve_trademark_marker_is_scoped_and_preserves_cultivar(self):
+        page_url = 'https://www.lve-baumschule.de/hydrangea-paniculata-little-lime/6996342'
+        variant = 'https://www.lve-baumschule.de/hydrangea-paniculata-little-lime-r/SANA074772'
+        name = "Hydrangea paniculata 'Little Lime'"
+        policy = {'nurseryId':'lorenz-von-ehren','resolver':'product','pagePathPattern':'/.*',
+                  'pageHosts':['www.lve-baumschule.de'], 'imageHosts':['www.lve-baumschule.de']}
+        product = {'@type':'Product','name':name+' -R-','sku':'SANA074772'}
+        page = (f'<link rel="canonical" href="{page_url}"><meta property="og:url" content="{variant}">'
+                f'<h1>{name} -R-</h1><img alt="{name}" src="/media/little-lime.jpg">'
+                '<script type="application/ld+json">' + json.dumps(product) + '</script>')
+        self.assertEqual(photos.resolve_product_image(page,page_url,name,policy)[0],
+                         'https://www.lve-baumschule.de/media/little-lime.jpg')
+        for wrong in (page.replace('Little Lime', 'Little Lime Punch'), page.replace(' -R-', ' R')):
+            with self.assertRaises(photos.PhotoError):
+                photos.resolve_product_image(wrong,page_url,name,policy)
+        with self.assertRaises(photos.PhotoError):
+            photos.resolve_product_image(page,page_url,name,dict(policy,nurseryId='other-nursery'))
 
 
 if __name__ == "__main__":

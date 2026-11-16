@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "sourcePolicy": "original_supplied_offer",
+  "entries": [
+    {
+      "plantId": "plant-52334251b3e7c9",
+      "latinName": "Euonymus Green Spire",
+      "nurseryId": "combinatie-mauritz",
+      "offerIds": [
+        "record-951fd82cbfad06",
+        "record-d294ff0970b9c4"
+      ],
+      "sourceSha256": "00ede53cf78c51b849cdd92b871b231e41727bd7a9bb368dd3b04654aa7f65c5",
+      "image": "assets/biljke/offer-8fcef7ebfd5a34206faa682c.jpg",
+      "imageSha256": "8fcef7ebfd5a34206faa682cd32cacb0a70a1041cb5babc3462430be5024ebe5",
+      "provenance": {
+        "sourceFile": "2.jpg",
+        "reviewedAt": "2026-11-16T10:46:00Z",
+        "identityEvidence": "Exact listed plant and offer row visually confirmed in the supplied original.",
+        "crop": {
+          "left": 8,
+          "top": 42,
+          "right": 648,
+          "bottom": 404,
+          "unit": "pixels"
+        },
+        "originalDimensions": [
+          784,
+          413
+        ]
+      }
+    },
+    {
+      "plantId": "plant-4a39dc341bd2c6",
+      "latinName": "Euonymus japonicus 'Microphyllus'",
+      "nurseryId": "combinatie-mauritz",
+      "offerIds": [
+        "record-7619379bbaab71"
+      ],
+      "sourceSha256": "df957a38739fcce05fc84b9f8908961e9a1b9503a47830d945f2e6c5cb5eb106",
+      "image": "assets/biljke/offer-2f135b9e20926b3f11c76039.jpg",
+      "imageSha256": "2f135b9e20926b3f11c76039e4499e6ee2e92f4af5373eda4185a3889d199e27",
+      "provenance": {
+        "sourceFile": "1.jpg",
+        "reviewedAt": "2026-11-16T10:46:00Z",
+        "identityEvidence": "Exact listed plant and offer row visually confirmed in the supplied original.",
+        "crop": {
+          "left": 12,
+          "top": 168,
+          "right": 413,
+          "bottom": 641,
+          "unit": "pixels"
+        },
+        "originalDimensions": [
+          696,
+          647
+        ]
+      }
+    },
+    {
+      "plantId": "plant-f15e3e2208445c",
+      "latinName": "Liriope muscari",
+      "nurseryId": "vannucci-piante",
+      "offerIds": [
+        "record-bd95163436d8e7"
+      ],
+      "sourceSha256": "7c7c25fbe2ac9ac9aa41d0c5996986cf18179d345f766585c3cd8e37ab95bf8c",
+      "image": "assets/biljke/offer-121bbcd1e85c0ad119d2db4d.jpg",
+      "imageSha256": "121bbcd1e85c0ad119d2db4d99656c9a6f4df788bd3d173eb1f747ee97afbe6e",
+      "provenance": {
+        "sourceFile": "dem_expo_13_10_2026.pdf",
+        "reviewedAt": "2026-11-16T10:46:00Z",
+        "identityEvidence": "Exact listed plant and offer row visually confirmed in the supplied original.",
+        "page": 2,
+        "sourceRow": "8",
+        "pdfImageIndexZeroBased": 3
+      }
+    },
+    {
+      "plantId": "plant-cd48a494b63f41",
+      "latinName": "Ginkgo biloba 'Ohatsuki'",
+      "nurseryId": "lorberg",
+      "offerIds": [
+        "record-a30fa0c558b28d"
+      ],
+      "sourceSha256": "16af3748c7679bec88a60cf765e519ec1257d5454929b50a7a53fc5eb1bc529a",
+      "image": "assets/biljke/offer-f18a33ec8931b7e28e5f2d81.jpg",
+      "imageSha256": "f18a33ec8931b7e28e5f2d8139869324c32676c83ac11397b7fc53b3a4524d01",
+      "provenance": {
+        "sourceFile": "Angebot-Nr 309236.pdf",
+        "reviewedAt": "2026-11-16T10:46:00Z",
+        "identityEvidence": "Exact listed plant and offer row visually confirmed in the supplied original.",
+        "page": 1,
+        "sourceRow": "3",
+        "pdfImageIndexZeroBased": 3
+      },
+      "supplementalProof": {
+        "photoSourceFile": "fotos.pdf",
+        "photoSourceSha256": "1f7f4ad7c10591d0e2a24d8c8c0ecfe1329912e0ed80f3eead7a7a696f4a0e21",
+        "quoteNumber": "309236",
+        "quoteDate": "2025-09-12",
+        "position": "3"
+      }
+    }
+  ]
+}

@@ -197,7 +197,7 @@ def candidates_for(plant, offers, references, policies, index, names=None):
     return sorted(candidates.values(), key=lambda x: (x['tier'], -x['score'], x['nurseryId'], x['pageUrl']))
 
 
-def nursery_candidate(plant, item, policy, index, session, names=None):
+def nursery_candidate(plant, item, policy, index, session, names=None, *, excluded_images=()):
     page = item['pageUrl']
     rules = index.get('nurseries', {}).get(item['nurseryId'], {}).get('robots', {}).get(urlsplit(page).hostname)
     if rules:
@@ -211,7 +211,8 @@ def nursery_candidate(plant, item, policy, index, session, names=None):
     # Search aliases are for navigation, never evidence of cultivar identity.
     for name in names or [plant['latinName']]:
         try:
-            image, method = resolve_product_image(response.body.decode('utf-8', 'replace'), response.url, name, policy)
+            image, method = resolve_product_image(response.body.decode('utf-8', 'replace'), response.url, name, policy,
+                                                  excluded_images=excluded_images)
             return {'provider': 'supplying_nursery' if item['tier'] == 0 else 'other_catalogue_nursery',
                     'nurseryId': item['nurseryId'], 'imageUrl': image, 'sourceUrl': response.url,
                     'matchedName': name, 'identityEvidence': {'method': method, 'canonicalName': plant['latinName']},
@@ -312,7 +313,7 @@ def update_index(root, plants, offers, session, budget, seconds, config=None):
         virtual = [{'id': 'photo-index-'+n['id'], 'plantId': plants[0]['id'], 'nurseryId': n['id']}
                    for n in nurseries] if plants else []
         (target/'data/kataloske-stavke.json').write_bytes(encoded({'offers': virtual}))
-        result = discover(target, budget=budget, max_seconds=seconds, fetcher=session.get)
+        result = discover(target, budget=budget, max_seconds=seconds, fetcher=session.get, index_only=True)
         return read(target, 'docs/photo-discovery-state.json', {'schemaVersion':1,'nurseries':{},'pairs':{}}), result
 
 

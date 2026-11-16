@@ -10,15 +10,122 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 import copy
 from datetime import datetime, timezone
 import hashlib
+from io import BytesIO
 import json
 import os
 from pathlib import Path
 import threading
 import time
 from urllib.parse import urlsplit
+from PIL import Image, UnidentifiedImageError
 
 import full_photo_coverage as core
-from update_photos import PhotoError, DEFAULT_LIMITS, check_url, fetch_resource, to_jpeg, commit_files
+import volentis_photo_catalog
+import willaert_photo_catalog
+from update_photos import PhotoError, DEFAULT_LIMITS, check_url, fetch_resource, to_jpeg, commit_files, identity_matches
+
+DYNAMIC_PROVIDERS = {'volentis': volentis_photo_catalog, 'willaert': willaert_photo_catalog}
+
+
+def lookup_names(plant, config):
+    """Only the catalogue name and explicitly evidenced full-name aliases."""
+    return list(dict.fromkeys([plant['latinName']] + [a['name'] for a in
+        config.get('exactNameAliases', {}).get(plant['id'], [])
+        if a.get('name') and a.get('evidenceUrls')]))
+
+
+def lookup_plan(plant, offers, generic, policies, names, providers=None):
+    """All supplying nursery lookups precede any other offer nursery."""
+    providers = DYNAMIC_PROVIDERS if providers is None else providers
+    own = {o['nurseryId'] for o in offers if o['plantId'] == plant['id'] and
+           o.get('recordStatus') not in core.INACTIVE}
+    dynamic = []
+    for nid, module in providers.items():
+        policy = policies.get(nid)
+        if not policy or not module.PAGE_HOSTS <= set(policy['pageHosts']) or not module.IMAGE_HOSTS <= set(policy['imageHosts']):
+            continue
+        for name in names:
+            dynamic.append({'kind': 'dynamic', 'nurseryId': nid, 'name': name,
+                            'pageUrl': module.search_url(name), 'tier': 0 if nid in own else 1})
+    return ([item for item in generic if item['tier'] == 0] +
+            [item for item in dynamic if item['tier'] == 0] +
+            [item for item in dynamic if item['tier'] != 0] +
+            [item for item in generic if item['tier'] != 0])
+
+
+class DynamicCatalogues:
+    """Read-only adapter with once-per-session, fail-closed robots checks."""
+    def __init__(self, session, policies, index, providers=None):
+        self.session, self.policies, self.index = session, policies, index
+        self.providers = DYNAMIC_PROVIDERS if providers is None else providers
+        self.lock = threading.Lock()
+        self.robot_locks, self.robot_results, self.fetchers = {}, {}, {}
+
+    def fetcher_for(self, nursery_id):
+        with self.lock:
+            if nursery_id not in self.fetchers:
+                def get(url, **kwargs):
+                    policy = self.policies[nursery_id]
+                    # Module endpoint hosts never extend the approved policy.
+                    check_url(url, policy['pageHosts'])
+                    kwargs['hosts'] = policy['pageHosts']
+                    return self.session.get(url, **kwargs)
+                self.fetchers[nursery_id] = get
+            return self.fetchers[nursery_id]
+
+    def robots(self, nursery_id, host):
+        key = (nursery_id, host)
+        with self.lock:
+            guard = self.robot_locks.setdefault(key, threading.Lock())
+        with guard:
+            if key in self.robot_results:
+                value = self.robot_results[key]
+                if isinstance(value, Exception):
+                    raise value
+                return value
+            known = self.index.get('nurseries', {}).get(nursery_id, {}).get('robots', {})
+            if host in known and isinstance(known[host], (str, list)):
+                rules = known[host]
+            else:
+                try:
+                    response = self.session.get('https://' + host + '/robots.txt',
+                        hosts=self.policies[nursery_id]['pageHosts'], max_bytes=512_000,
+                        timeout=15, kind='page')
+                    rules = response.body.decode('utf-8', 'replace').splitlines()
+                except core.Exhausted:
+                    raise
+                except PhotoError as exc:
+                    if exc.code == 'http_error' and 'HTTP 404' in str(exc):
+                        rules = []
+                    else:
+                        self.robot_results[key] = exc
+                        raise
+            self.robot_results[key] = rules
+            return rules
+
+    def find(self, plant, item):
+        nid, name = item['nurseryId'], item['name']
+        policy = self.policies.get(nid)
+        module = self.providers.get(nid)
+        if not policy or not module or not module.PAGE_HOSTS <= set(policy['pageHosts']) or not module.IMAGE_HOSTS <= set(policy['imageHosts']):
+            raise PhotoError('outside_offer_nurseries', 'Dynamic catalogue is not configured for this offer nursery.')
+        host = urlsplit(module.search_url(name)).hostname
+        rules = self.robots(nid, host)
+        rows = module.candidates(name, fetcher=self.fetcher_for(nid), robots_rules=rules)
+        result = []
+        for row in rows:
+            evidence = row.get('identityEvidence') or {}
+            if row.get('nurseryId') != nid or row.get('matchedName') != name or not identity_matches(evidence.get('name'), name):
+                raise PhotoError('identity_missing', 'Dynamic photograph lacks the exact full botanical name.')
+            candidate = {**row, 'provider': 'supplying_nursery' if item['tier'] == 0 else 'other_catalogue_nursery',
+                         'canonicalName': plant['latinName'],
+                         'identityEvidence': {**evidence, 'canonicalName': plant['latinName']},
+                         'imageHosts': policy['imageHosts'], 'imagePathPrefixes': policy.get('imagePathPrefixes'),
+                         'license': 'existing_catalogue_source_policy'}
+            if not core.candidate_allowed(candidate, self.policies):
+                raise PhotoError('outside_offer_nurseries', 'Dynamic photograph is outside the configured nursery hosts.')
+            result.append(candidate)
+        return result
 
 
 class ParallelSession:
@@ -79,28 +186,60 @@ def run(root,*,workers=8,request_budget=2500,max_seconds=1200,cache_dir=None,fet
     taxon_keys=core.taxonomy_keys(plants,config)
     original={name:(root/name).read_bytes() if (root/name).exists() else None for name in core.INPUTS}
     session=ParallelSession(request_budget,max_seconds,fetcher)
+    dynamic=DynamicCatalogues(session,policies,index)
     pending={}; events=[]
+    # Workers only read this snapshot. New cross-worker conflicts are checked
+    # again by the serialized store below, before any catalogue mutation.
+    known_taxa_by_hash={}
+    for record in manifest['plants'].values():
+        if record.get('sha256'):
+            known_taxa_by_hash.setdefault(record['sha256'],set()).add(record.get('taxonKey',record.get('latinName')))
+
+    def validate_candidate_bytes(plant,candidate,body):
+        if not core.candidate_allowed(candidate,policies):raise PhotoError('outside_offer_nurseries','Only offer nursery photographs are accepted.')
+        if candidate.get('matchedName') not in lookup_names(plant,config):raise PhotoError('identity_missing','Only the exact catalogue name or documented full alias is accepted.')
+        if candidate.get('imageUrl') in manifest.get('excludedImageUrls',[]):raise PhotoError('reviewed_image_exclusion','Reviewed image rejected.')
+        sha=core.digest(body)
+        if sha in manifest.get('excludedImageHashes',[]) or sha in manifest.get('ambiguousImages',{}):
+            raise PhotoError('reviewed_image_exclusion','Rejected or ambiguous image cannot be cached.')
+        if known_taxa_by_hash.get(sha,set())-{taxon_keys[plant['id']]}:
+            raise PhotoError('image_identity_conflict','The same photo belongs to another full botanical name.')
+        try:
+            with Image.open(BytesIO(body)) as picture:
+                if min(picture.size)<128:raise PhotoError('image_too_small','Photo is too small for the catalogue.')
+                picture.verify()
+        except (UnidentifiedImageError,OSError,ValueError) as exc:
+            raise PhotoError('invalid_image','Cached photo is not a decodable raster image.') from exc
+
+    def discard_cache(plant_id):
+        for path in (cache_dir/(plant_id+'.json'),cache_dir/(plant_id+'.jpg')):
+            path.unlink(missing_ok=True)
 
     def lookup(plant):
-        names=[plant['latinName']]+[a['name'] for a in config.get('exactNameAliases',{}).get(plant['id'],[]) if a.get('evidenceUrls')]
+        names=lookup_names(plant,config)
         errors=[]
         meta_path=cache_dir/(plant['id']+'.json'); jpg_path=cache_dir/(plant['id']+'.jpg')
         if meta_path.exists() and jpg_path.exists():
-            cached=json.loads(meta_path.read_text(encoding='utf8')); body=jpg_path.read_bytes()
-            if not plant.get('photo') and core.candidate_allowed(cached.get('candidate',{}),policies) and cached.get('catalogueName')==plant['latinName'] and cached.get('sha256')==core.digest(body) and cached['candidate'].get('matchedName') in names and cached['candidate'].get('imageUrl') not in manifest.get('excludedImageUrls',[]) and cached.get('sha256') not in manifest.get('excludedImageHashes',[]):
-                return cached['candidate'],body,[]
+            try:
+                cached=json.loads(meta_path.read_text(encoding='utf8')); body=jpg_path.read_bytes()
+                if not plant.get('photo') and cached.get('catalogueName')==plant['latinName'] and cached.get('sha256')==core.digest(body):
+                    validate_candidate_bytes(plant,cached.get('candidate',{}),body)
+                    return cached['candidate'],body,[]
+            except (PhotoError,OSError,ValueError):
+                discard_cache(plant['id'])
         def download(candidate):
             if not core.candidate_allowed(candidate,policies):raise PhotoError('outside_offer_nurseries','Only offer nursery photographs are accepted.')
+            if candidate.get('matchedName') not in names:raise PhotoError('identity_missing','Only the exact catalogue name or documented full alias is accepted.')
             if candidate.get('imageUrl') in manifest.get('excludedImageUrls',[]):raise PhotoError('reviewed_image_exclusion','Reviewed image rejected.')
             response=session.get(candidate['imageUrl'],hosts=candidate['imageHosts'],path_prefixes=candidate.get('imagePathPrefixes'),max_bytes=DEFAULT_LIMITS['maxImageBytes'],timeout=15,kind='image')
             if response.content_type not in ('image/jpeg','image/png','image/webp','image/avif','image/gif'):raise PhotoError('invalid_image','Not a raster image.')
             body=to_jpeg(response.body,DEFAULT_LIMITS)
-            if core.digest(body) in manifest.get('excludedImageHashes',[]):raise PhotoError('reviewed_image_exclusion','Reviewed image rejected.')
+            validate_candidate_bytes(plant,candidate,body)
             candidate['taxonKey']=taxon_keys[plant['id']]
             commit_files({jpg_path:body,meta_path:core.encoded({'catalogueName':plant['latinName'],'sha256':core.digest(body),'candidate':candidate})})
             return candidate,body,errors
         entry=state['plants'][plant['id']]
-        candidates=core.candidates_for(plant,offers,refs,policies,index,names)
+        candidates=lookup_plan(plant,offers,core.candidates_for(plant,offers,refs,policies,index,names),policies,names)
         if plant.get('photo'):
             record=manifest['plants'][plant['id']]
             candidates=[{'nurseryId':record['nurseryId'],'pageUrl':record['sourceUrl'],'tier':0}]+[c for c in candidates if c['pageUrl']!=record['sourceUrl']]
@@ -111,10 +250,36 @@ def run(root,*,workers=8,request_budget=2500,max_seconds=1200,cache_dir=None,fet
         stop=min(len(candidates),start+30)
         for pos in range(start,stop):
             item=candidates[pos]
+            # Preserve this item if the shared request/time budget ends midway.
+            entry['nextCandidate']=pos
             try:
-                result=download(core.nursery_candidate(plant,item,policies[item['nurseryId']],index,session,names))
-                entry.pop('nextCandidate',None)
-                return result
+                if item.get('kind')=='dynamic':
+                    for candidate in dynamic.find(plant,item)[:6]:
+                        try:
+                            result=download(candidate)
+                            return result
+                        except PhotoError as exc:
+                            if isinstance(exc,core.Exhausted):raise
+                            errors.append({'source':candidate['sourceUrl'],'reason':exc.code})
+                    entry['nextCandidate']=pos+1
+                    continue
+                excluded=set(manifest.get('excludedImageUrls',[]))
+                # A rejected main photo does not invalidate every other photo
+                # of this exact product. Reuse the cached page, keep all source
+                # and full-cultivar checks, and try only a bounded set of images.
+                for attempt in range(6):
+                    candidate=core.nursery_candidate(plant,item,policies[item['nurseryId']],index,session,names,
+                                                     excluded_images=excluded)
+                    try:
+                        result=download(candidate)
+                        return result
+                    except PhotoError as exc:
+                        if exc.code not in ('reviewed_image_exclusion','invalid_image','invalid_image_type',
+                                            'image_too_small','placeholder_image','image_identity_conflict'):
+                            raise
+                        excluded.add(candidate['imageUrl'])
+                        errors.append({'source':item['pageUrl'],'reason':exc.code})
+                entry['nextCandidate']=pos+1
             except core.Exhausted:return None,None,errors+[{'reason':'budget_exhausted'}]
             except (PhotoError,OSError,ValueError) as exc:
                 errors.append({'source':item['pageUrl'],'reason':getattr(exc,'code','source_error')})
@@ -137,10 +302,17 @@ def run(root,*,workers=8,request_budget=2500,max_seconds=1200,cache_dir=None,fet
                 if candidate:
                     candidate['taxonKey']=taxon_keys[plant['id']]
                     core.store_jpeg(root,plant,candidate,jpeg,pending,manifest,policies)
+                    state['plants'][plant['id']].pop('nextCandidate',None)
                     print('Foto: '+plant['latinName'],flush=True)
                 if plant.get('photo'):state['plants'][plant['id']]['lastRefreshAttemptAt']=core.stamp()
                 state['plants'][plant['id']].update(status='verified' if plant.get('photo') else 'pending',checkedAt=core.stamp(),failures=errors)
             except (PhotoError,OSError,ValueError,KeyError) as exc:
+                # A concurrent lookup can discover a duplicate after another
+                # worker has passed its snapshot check. Never let that durable
+                # cache short-circuit the next search or discard its cursor.
+                if getattr(exc,'code','') in ('image_identity_conflict','reviewed_image_exclusion',
+                                              'image_too_small','invalid_image','asset_collision'):
+                    discard_cache(plant['id'])
                 events.append({'plantId':plant['id'],'reason':getattr(exc,'code','candidate_error'),'detail':str(exc)})
     for plant in plants:
         record=manifest['plants'].get(plant['id'],{})

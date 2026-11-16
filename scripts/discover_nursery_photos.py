@@ -16,7 +16,7 @@ import json
 from pathlib import Path
 import re
 import time
-from urllib.parse import unquote, urljoin, urlsplit, urlunsplit
+from urllib.parse import parse_qs, unquote, urljoin, urlsplit, urlunsplit
 from urllib.robotparser import RobotFileParser
 import xml.etree.ElementTree as ET
 
@@ -30,12 +30,14 @@ PRIORITY = ['lorberg', 'innocenti-mangoni', 'vannucci-piante', 'willaert',
 STATE_PATH = 'docs/photo-discovery-state.json'
 DEFAULTS = {'timeout': 20, 'maxBytes': 3_000_000, 'maxSitemapBytes': 20_000_000, 'maxUrlsPerNursery': 40000,
             'maxCandidatesPerPair': 3, 'retryDays': 7, 'refreshIndexDays': 30,
-            'maxResourcesPerNurseryPerRun': 8}
+            'resourceRetryDays': 1, 'maxResourcesPerNurseryPerRun': 8,
+            'maxIndexResourcesPerNurseryPerRun': 32}
+INDEX_VERSION = 2
 
 
 def read(path, default=None):
     path = Path(path)
-    return json.loads(path.read_text()) if path.exists() else copy.deepcopy(default)
+    return json.loads(path.read_text(encoding='utf-8')) if path.exists() else copy.deepcopy(default)
 
 
 def stamp(now=None):
@@ -82,7 +84,10 @@ def names_for(plant):
 def candidate_rank(url, names):
     """URL ranking chooses candidates only. The page must still prove identity."""
     path = unquote(urlsplit(url).path).casefold()
-    tail = path.rstrip('/').rsplit('/', 1)[-1]
+    segments = path.rstrip('/').split('/')
+    # The current Lorenz von Ehren catalogue uses /botanical-name/product-id.
+    # This ranks observed URLs only; the full name still has to match the page.
+    tail = segments[-2] if len(segments) > 2 and segments[-1].isdigit() else segments[-1]
     tokens = tuple(re.findall(r'[^\W_]+', tail, flags=re.UNICODE))
     best = 0
     for name in names:
@@ -145,7 +150,7 @@ def resource_rank(url):
 
 def page_links(source, base, hosts):
     doc = Document(source)
-    links = []
+    links, seen = [], set()
     for node in doc.nodes:
         if node.tag not in {'a', 'link'}:
             continue
@@ -153,9 +158,56 @@ def page_links(source, base, hosts):
         if not href:
             continue
         url = normalize_url(urljoin(base, href))
-        if allowed(url, hosts) and url not in links and not re.search(r'\.(?:png|jpe?g|gif|svg|webp|ico|css|js|woff2?|pdf|zip)(?:$|\?)', url, re.I):
+        if allowed(url, hosts) and url not in seen and not re.search(r'\.(?:png|jpe?g|gif|svg|webp|ico|css|js|woff2?|pdf|zip)(?:$|\?)', url, re.I):
             links.append(url)
+            seen.add(url)
     return links
+
+
+def catalogue_links(source, base, hosts):
+    """Follow only observed catalogue/list/pagination links on approved hosts.
+
+    A nursery homepage often links to a catalogue rather than each product.
+    Product links are still indexed as candidates, not accepted as photographs.
+    No search queries or botanical product URLs are synthesized here.
+    """
+    collections = {'catalog', 'catalogue', 'catalogo', 'catalogus', 'assortiment', 'assortment',
+                   'assortimento', 'sortiment', 'pflanzen', 'planten', 'piante',
+                   'plants', 'products', 'producten', 'produits', 'shop', 'webshop',
+                   'treeebb', 'plantengids', 'sortiment-online', 'our-trees'}
+    output, seen = [], set()
+    for node in Document(source).nodes:
+        if node.tag not in {'a', 'link'} or not node.attrs.get('href'):
+            continue
+        url = normalize_url(urljoin(base, node.attrs['href']))
+        if not allowed(url, hosts):
+            continue
+        parsed = urlsplit(url)
+        parts = [p.casefold() for p in unquote(parsed.path).strip('/').split('/') if p]
+        rel = node.attrs.get('rel', '').casefold().split()
+        context, ancestor = '', node
+        while ancestor:
+            context += ' ' + ancestor.attrs.get('class', '') + ' ' + ancestor.attrs.get('id', '')
+            ancestor = ancestor.parent
+        query = parse_qs(parsed.query)
+        # Numeric page cursors and rel=next/prev come from the site's own links.
+        pagination = (any(value in rel for value in ('next', 'prev')) or
+                      bool(re.search(r'pagination|pager|page-numbers', context, re.I)) or
+                      any(key.casefold() in {'page', 'paged', 'pagenumber', 'pageindex', 'offset', 'start'}
+                          and all(re.fullmatch(r'\d+', value) for value in values)
+                          for key, values in query.items()))
+        listing = bool(parts and (parts[-1] in collections or
+                       any(part in {'product-category', 'product-categorie', 'collections', 'our-trees'} for part in parts) or
+                       (len(parts) >= 3 and parts[-2] in {'page', 'p'} and parts[-1].isdigit() and
+                        any(part in collections for part in parts[:-2]))))
+        # Do not schedule assets, account actions, carts or arbitrary external links.
+        unsafe_path = re.search(r'\.(?:png|jpe?g|gif|svg|webp|pdf|zip|xml)(?:$|\?)', url, re.I)
+        unsafe_action = any(re.search(r'cart|checkout|logout|login|account|add-to-cart|wc-ajax', value, re.I)
+                            for value in [parsed.path, *query.keys()])
+        if (listing or pagination) and not unsafe_path and not unsafe_action and url not in seen:
+            output.append(url)
+            seen.add(url)
+    return output
 
 
 def sitemap_links(body, base, hosts, max_urls):
@@ -203,7 +255,8 @@ class BudgetReached(Exception):
     pass
 
 
-def discover(root, *, budget=120, fetcher=fetch_resource, now=None, dry_run=False, max_seconds=480):
+def discover(root, *, budget=120, fetcher=fetch_resource, now=None, dry_run=False, max_seconds=480,
+             index_only=False):
     root = Path(root).resolve()
     if type(budget) is not int or not 1 <= budget <= 2000:
         raise ValueError('budget must be an integer between 1 and 2000')
@@ -229,7 +282,7 @@ def discover(root, *, budget=120, fetcher=fetch_resource, now=None, dry_run=Fals
         pairs.setdefault(key, {'plantId': offer['plantId'], 'nurseryId': offer['nurseryId'], 'offerIds': []})['offerIds'].append(offer['id'])
     report = {'status': 'completed', 'startedAt': now, 'requests': 0, 'budget': budget,
               'bindings': [], 'pending': [], 'errors': [], 'missingPairs': len(pairs),
-              'statePath': STATE_PATH, 'dryRun': bool(dry_run)}
+              'statePath': STATE_PATH, 'dryRun': bool(dry_run), 'indexOnly': bool(index_only)}
     used = {}
     stopped_hosts = set()
     response_cache = {}
@@ -245,8 +298,13 @@ def discover(root, *, budget=120, fetcher=fetch_resource, now=None, dry_run=Fals
             raise BudgetReached()
         report['requests'] += 1
         max_bytes = limits['maxSitemapBytes'] if is_sitemap(url) else limits['maxBytes']
-        result = fetcher(url, hosts=policy['pageHosts'], max_bytes=max_bytes,
-                         timeout=min(limits['timeout'], max(1, int(deadline-time.monotonic()))), kind='page')
+        try:
+            result = fetcher(url, hosts=policy['pageHosts'], max_bytes=max_bytes,
+                             timeout=min(limits['timeout'], max(1, int(deadline-time.monotonic()))), kind='page')
+        except PhotoError as exc:
+            if exc.code in {'site_blocked', 'host_blocked_for_run'} or re.search(r'HTTP (?:403|429|503)\b', str(exc)):
+                stopped_hosts.add(host)
+            raise
         check_url(result.url, policy['pageHosts'])
         if len(result.body) > max_bytes:
             raise PhotoError('response_too_large', 'Discovery response exceeds byte budget.')
@@ -263,18 +321,27 @@ def discover(root, *, budget=120, fetcher=fetch_resource, now=None, dry_run=Fals
         if not policy:
             continue
         ns = state['nurseries'].setdefault(nursery_id, {'frontier': [], 'visited': [], 'pages': [], 'robots': {}})
+        for field, default in (('frontier', []), ('visited', []), ('pages', []), ('robots', {})):
+            ns.setdefault(field, default)
         ns.setdefault('failedResources', {})
         ns.setdefault('blockedHosts', {})
+        upgrading = ns.get('indexVersion', 0) < INDEX_VERSION
+        if upgrading:
+            # Older states kept only lastError after consuming a failed URL.
+            # Migrate it once so an empty frontier does not mean a complete index.
+            legacy = ns.get('lastError', {})
+            if legacy.get('url') and allowed(legacy['url'], policy['pageHosts']):
+                ns['failedResources'].setdefault(legacy['url'], copy.deepcopy(legacy))
         for host, checked in ns['blockedHosts'].items():
             if not due(checked, now, limits['retryDays']):
                 stopped_hosts.add(host)
         for url, failure in ns['failedResources'].items():
-            if due(failure.get('at'), now, limits['retryDays']):
+            if due(failure.get('at'), now, limits['resourceRetryDays']):
                 if url not in ns['frontier']:
                     ns['frontier'].append(url)
                 if url in ns['visited']:
                     ns['visited'].remove(url)
-        if not ns.get('indexedAt') or due(ns.get('indexedAt'), now, limits['refreshIndexDays']):
+        if upgrading or not ns.get('indexedAt') or due(ns.get('indexedAt'), now, limits['refreshIndexDays']):
             # Standard discovery endpoints, not guessed plant URLs. A robots
             # sitemap or homepage link is preferred as soon as it is observed.
             homes = list(dict.fromkeys(['https://' + host + '/' for host in policy['pageHosts']] + [policy['website']]))
@@ -283,11 +350,13 @@ def discover(root, *, budget=120, fetcher=fetch_resource, now=None, dry_run=Fals
             ns['frontier'] = list(dict.fromkeys(seeds + ns['frontier']))
             ns['visited'] = []
             ns['indexedAt'] = now
+            ns['indexVersion'] = INDEX_VERSION
         used[nursery_id] = 0
 
     # Round-robin resources prevent one large sitemap from starving every
     # other supplier. URL lists remain cached for future plants and later runs.
-    crawl_budget = max(1, budget // 2)
+    crawl_budget = budget if index_only else max(1, budget // 2)
+    resource_limit = limits['maxIndexResourcesPerNurseryPerRun'] if index_only else limits['maxResourcesPerNurseryPerRun']
     while report['requests'] < crawl_budget and time.monotonic() < deadline:
         progressed = False
         for nursery_id in nursery_ids:
@@ -297,15 +366,23 @@ def discover(root, *, budget=120, fetcher=fetch_resource, now=None, dry_run=Fals
             if not policy:
                 continue
             ns = state['nurseries'][nursery_id]
-            if not ns['frontier'] or used[nursery_id] >= limits['maxResourcesPerNurseryPerRun']:
+            if not ns['frontier'] or used[nursery_id] >= resource_limit:
                 continue
-            url = ns['frontier'].pop(0)
-            if url in ns['visited']:
+            # Stale/blocked queue heads must not hide later resources on another
+            # already-approved host; blocked hosts themselves remain paused.
+            url = None
+            for _ in range(len(ns['frontier'])):
+                candidate = ns['frontier'].pop(0)
+                if candidate in ns['visited']:
+                    continue
+                if urlsplit(candidate).hostname in stopped_hosts:
+                    ns['frontier'].append(candidate)
+                    continue
+                url = candidate
+                break
+            if url is None:
                 continue
             host, path = urlsplit(url).hostname, urlsplit(url).path
-            if host in stopped_hosts:
-                ns['frontier'].insert(0, url)
-                continue
             rules = ns['robots'].get(host)
             if rules and path != '/robots.txt':
                 robots = RobotFileParser(); robots.parse(rules)
@@ -317,8 +394,6 @@ def discover(root, *, budget=120, fetcher=fetch_resource, now=None, dry_run=Fals
             used[nursery_id] += 1
             try:
                 result = get(url, policy)
-                ns['visited'].append(url)
-                ns['failedResources'].pop(url, None)
                 raw = result.body.decode('utf-8', 'replace')
                 resources, pages = [], []
                 if path == '/robots.txt':
@@ -335,8 +410,12 @@ def discover(root, *, budget=120, fetcher=fetch_resource, now=None, dry_run=Fals
                         pages = urls
                 elif result.content_type in {'text/html', 'application/xhtml+xml'}:
                     links = page_links(raw, result.url, policy['pageHosts'])
-                    resources = [x for x in links if is_sitemap(x)]
+                    resources = [x for x in links if is_sitemap(x)] + catalogue_links(raw, result.url, policy['pageHosts'])
                     pages = [x for x in links if not is_sitemap(x)]
+                ns['visited'].append(url)
+                ns['failedResources'].pop(url, None)
+                if ns.get('lastError', {}).get('url') == url:
+                    ns.pop('lastError', None)
                 new_resources = []
                 for link in resources:
                     if not allowed(link, policy['pageHosts']):
@@ -358,7 +437,7 @@ def discover(root, *, budget=120, fetcher=fetch_resource, now=None, dry_run=Fals
                 ns['visited'].append(url)
                 ns['lastError'] = {'url': url, 'reason': getattr(exc, 'code', 'fetch_error'), 'at': now}
                 ns['failedResources'][url] = ns['lastError']
-                if ns['lastError']['reason'] in {'site_blocked', 'host_blocked_for_run'}:
+                if host in stopped_hosts:
                     ns['blockedHosts'][host] = now
                 report['errors'].append({'nurseryId': nursery_id, **ns['lastError']})
                 # A missing robots endpoint still allows a single standard
@@ -385,7 +464,7 @@ def discover(root, *, budget=120, fetcher=fetch_resource, now=None, dry_run=Fals
             for genus in genera & tokens:
                 index[genus].append(url)
         genus_urls[nursery_id] = index
-    order = sorted(pairs, key=lambda k: (bool(state['pairs'].get(k, {}).get('checkedAt')),
+    order = [] if index_only else sorted(pairs, key=lambda k: (bool(state['pairs'].get(k, {}).get('checkedAt')),
                                         state['pairs'].get(k, {}).get('checkedAt', ''),
                                         nursery_ids.index(pairs[k]['nurseryId']), k))
     for key in order:
@@ -471,7 +550,7 @@ def discover(root, *, budget=120, fetcher=fetch_resource, now=None, dry_run=Fals
             except BudgetReached:
                 break
             except (PhotoError, OSError, ValueError) as exc:
-                if getattr(exc, 'code', '') in {'site_blocked', 'host_blocked_for_run'}:
+                if urlsplit(url).hostname in stopped_hosts:
                     ns['blockedHosts'][urlsplit(url).hostname] = now
                 failures.append({'url': url, 'reason': getattr(exc, 'code', 'fetch_error')})
             next_candidate = candidate_index + 1
@@ -496,9 +575,14 @@ def discover(root, *, budget=120, fetcher=fetch_resource, now=None, dry_run=Fals
         report['status'] = 'incomplete_sources'
     report['confirmedPairs'] = len(report['bindings'])
     report['pendingPairs'] = len(report['pending'])
-    report['coverageComplete'] = not report['pending']
+    report['coverageComplete'] = not index_only and not report['pending']
     report['indexedPages'] = sum(len(x.get('pages', [])) for x in state['nurseries'].values())
     report['queuedResources'] = sum(len(x.get('frontier', [])) for x in state['nurseries'].values())
+    report['failedResources'] = sum(len(x.get('failedResources', {})) for x in state['nurseries'].values())
+    if index_only:
+        report['indexComplete'] = not report['queuedResources'] and not report['failedResources']
+        if not report['indexComplete'] and report['status'] == 'completed':
+            report['status'] = 'partial_budget' if report['queuedResources'] else 'incomplete_sources'
     if state != initial_state:
         state['updatedAt'] = now
         if not dry_run:
@@ -513,12 +597,14 @@ def main(argv=None):
     parser.add_argument('--budget', type=int, default=120)
     parser.add_argument('--max-seconds', type=int, default=480)
     parser.add_argument('--dry-run', action='store_true')
+    parser.add_argument('--index-only', action='store_true')
     parser.add_argument('--report', type=Path)
     args = parser.parse_args(argv)
-    report = discover(args.root, budget=args.budget, dry_run=args.dry_run, max_seconds=args.max_seconds)
+    report = discover(args.root, budget=args.budget, dry_run=args.dry_run, max_seconds=args.max_seconds,
+                      index_only=args.index_only)
     if args.report:
         args.report.parent.mkdir(parents=True, exist_ok=True)
-        args.report.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
+        args.report.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
     print(json.dumps({k: v for k, v in report.items() if k not in {'bindings', 'pending', 'errors'}}, ensure_ascii=False, indent=2))
     return 0
 

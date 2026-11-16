@@ -268,11 +268,26 @@ def supported_page(policy, url):
             bool(re.fullmatch(policy["pagePathPattern"], p.path)))
 
 
-def resolve_product_image(source, page_url, latin_name, policy):
+def image_resource_key(url):
+    """Recognize resized variants of the same reviewed Lorberg photograph."""
+    parsed = urlsplit(url)
+    asset = re.match(r'^/content/files/(\d+)/', parsed.path)
+    if parsed.hostname in {'www.lorberg.com', 'lorberg.com'} and asset:
+        return parsed.hostname, asset.group(0)
+    return url_key(url)
+
+
+def resolve_product_image(source, page_url, latin_name, policy, *, excluded_images=()):
     """Resolve only the principal image of an identified, supported product."""
     require(supported_page(policy, page_url), "unsupported_page", "This URL has no supported product resolver.")
     doc = Document(source)
     objects = jsonld_objects(doc)
+    is_lve = (policy.get('nurseryId') == 'lorenz-von-ehren' and
+              urlsplit(page_url).hostname == 'www.lve-baumschule.de')
+    name_matches = identity_matches
+    if is_lve:
+        from lve_photo_catalog import matches_lve_name, same_product_variant as lve_product_variant
+        name_matches = matches_lve_name
     # A bare {"@id": "..."} reference must not overwrite its ImageObject.
     refs = {}
     for item in objects:
@@ -287,25 +302,33 @@ def resolve_product_image(source, page_url, latin_name, policy):
         if node.tag == "link" and "canonical" in node.attrs.get("rel", "").split():
             require(url_key(urljoin(page_url, node.attrs.get("href", ""))) == url_key(page_url),
                     "page_identity_mismatch", "Canonical URL differs from the requested product.")
+    def same_product_variant(value):
+        candidate_url = urljoin(page_url, value)
+        if url_key(candidate_url) == url_key(page_url):
+            return True
+        return is_lve and lve_product_variant(doc, objects, page_url, candidate_url, latin_name)
     for value in metas.get("og:url", []):
-        require(url_key(urljoin(page_url, value)) == url_key(page_url),
+        require(same_product_variant(value),
                 "page_identity_mismatch", "Open Graph URL points to a different page.")
     h1s = [n.text() for n in doc.nodes if n.tag == "h1" and not n.excluded() and n.text()]
     products = [x for x in objects if has_type(x, "Product") and
-                identity_matches(x.get("name", ""), latin_name) and
-                (not x.get("url") or url_key(urljoin(page_url, x["url"])) == url_key(page_url))]
+                name_matches(x.get("name", ""), latin_name) and
+                (not x.get("url") or same_product_variant(x["url"]))]
     if h1s:
-        require(all(identity_matches(t, latin_name, title=True) for t in h1s),
+        require(all(name_matches(t, latin_name, title=True) for t in h1s),
                 "plant_identity_mismatch", "Product heading does not exactly match genus, species and cultivar.")
     elif not products:
         titles = [n.text() for n in doc.nodes if n.tag == "title"]
-        require(any(identity_matches(t, latin_name, title=True) for t in titles),
+        require(any(name_matches(t, latin_name, title=True) for t in titles),
                 "plant_identity_mismatch", "Product name could not be confirmed.")
 
+    excluded_keys = {image_resource_key(url) for url in excluded_images}
     def candidate(value, method):
         for raw in image_values(value, refs):
             url = urljoin(page_url, html.unescape(raw))
             if BLOCKED_IMAGE.search(unquote(urlsplit(url).path)) or urlsplit(url).path.lower().endswith(".svg"):
+                continue
+            if image_resource_key(url) in excluded_keys:
                 continue
             check_url(url, policy["imageHosts"], policy.get("imagePathPrefixes"))
             return url, method
@@ -334,13 +357,13 @@ def resolve_product_image(source, page_url, latin_name, policy):
     # Some botanical catalogues have no Product JSON-LD. Require BOTH the
     # exact product identity checked above and an image's own full-name alt.
     for node in doc.nodes:
-        if node.tag == "img" and not node.excluded() and identity_matches(node.attrs.get("alt", ""), latin_name, title=True):
+        if node.tag == "img" and not node.excluded() and name_matches(node.attrs.get("alt", ""), latin_name, title=True):
             result = candidate(node.attrs.get("data-large_image") or node.attrs.get("data-src") or
                                node.attrs.get("data-original") or node.attrs.get("src"), "exact_product_image_alt")
             if result:
                 return result
     og_names = metas.get("og:title", []) + metas.get("og:image:alt", [])
-    if any(identity_matches(value, latin_name, title=True) for value in og_names):
+    if any(name_matches(value, latin_name, title=True) for value in og_names):
         result = candidate(metas.get("og:image:secure_url", []) + metas.get("og:image", []), "product_og_image")
         if result:
             return result

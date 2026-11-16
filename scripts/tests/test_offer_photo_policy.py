@@ -114,7 +114,7 @@ class OfferPhotoPolicyTests(unittest.TestCase):
     def test_parallel_candidate_cursor_advances_beyond_first_thirty(self):
         items=[{'nurseryId':'fixture','pageUrl':'https://example.org/'+str(i),'tier':0} for i in range(35)]
         seen=[]
-        def candidate(plant,item,*args):
+        def candidate(plant,item,*args,**kwargs):
             seen.append(item['pageUrl'])
             raise PhotoError('identity_missing','Not this cultivar')
         with patch.object(core,'candidates_for',return_value=items), patch.object(core,'nursery_candidate',side_effect=candidate):
@@ -123,6 +123,29 @@ class OfferPhotoPolicyTests(unittest.TestCase):
             seen.clear()
             parallel.run(self.root, plant_ids={'a'},cache_dir=self.root/'cache',max_seconds=10)
         self.assertEqual(seen,[i['pageUrl'] for i in items[30:]])
+
+    def test_rejected_image_hash_tries_next_exact_product_photo_without_refetching_page(self):
+        name = self.f.plants[0]['latinName']
+        page = 'https://example.org/acer-campestre-elsrijk'
+        self.f.write('docs/photo-discovery-state.json', {'nurseries':{'fixture':{'pages':[page]}}})
+        wrong = fixtures.bitmap((20,30,40))
+        good = fixtures.bitmap((50,100,150))
+        config = self.f.read('scripts/full-photo-policy.json')
+        config['excludedImageHashes'] = [core.digest(to_jpeg(wrong, DEFAULT_LIMITS))]
+        self.f.write('scripts/full-photo-policy.json', config)
+        calls = []
+        def fetch(url, **kwargs):
+            calls.append(url)
+            if kwargs['kind'] == 'page':
+                html = '<h1>'+name+'</h1><img class="wp-post-image" src="https://images.example.org/wrong.jpg"><img class="wp-post-image" src="https://images.example.org/correct.jpg">'
+                return FetchResult(html.encode(), url, 'text/html')
+            return FetchResult(wrong if url.endswith('/wrong.jpg') else good, url, 'image/png')
+        before = (self.root/'data/kataloske-stavke.json').read_bytes()
+        report = parallel.run(self.root, plant_ids={'a'}, fetcher=fetch, cache_dir=self.root/'cache', max_seconds=30)
+        self.assertEqual(report['newlyVerified'], 1)
+        self.assertEqual(self.f.read(core.MANIFEST)['plants']['a']['imageUrl'], 'https://images.example.org/correct.jpg')
+        self.assertEqual(calls, [page, 'https://images.example.org/wrong.jpg', 'https://images.example.org/correct.jpg'])
+        self.assertEqual((self.root/'data/kataloske-stavke.json').read_bytes(), before)
 
 
 if __name__ == '__main__':

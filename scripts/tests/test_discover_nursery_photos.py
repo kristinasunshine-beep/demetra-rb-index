@@ -6,11 +6,16 @@ import tempfile
 import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
-from discover_nursery_photos import discover, names_for, sitemap_links, STATE_PATH
+from discover_nursery_photos import discover, names_for, sitemap_links, candidate_rank, STATE_PATH, INDEX_VERSION
 from update_photos import FetchResult, PhotoError
 
 
 class DiscoveryTests(unittest.TestCase):
+    def test_observed_botanical_slug_before_numeric_product_id_is_ranked(self):
+        url = 'https://www.lve-baumschule.de/fagus-sylvatica-riversii/6353661'
+        self.assertEqual(candidate_rank(url, ["Fagus sylvatica 'Riversii'"]), 100)
+        self.assertEqual(candidate_rank(url, ["Fagus sylvatica 'Dawyck'"]), 0)
+
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.root = Path(self.temp.name)
@@ -228,6 +233,130 @@ class DiscoveryTests(unittest.TestCase):
         self.calls.clear()
         self.run_discovery(budget=20)
         self.assertEqual(self.calls, [])
+
+    def test_legacy_consumed_failed_sitemap_reenters_index_queue(self):
+        old_map = 'https://nursery.test/old-map.xml'
+        self.routes[old_map] = ('application/xml', self.sitemap([self.product]))
+        self.routes['https://nursery.test/map.xml'] = ('application/xml', self.sitemap([]))
+        self.write(STATE_PATH, {'schemaVersion': 1, 'pairs': {}, 'nurseries': {'n1': {
+            'indexedAt': '2026-11-08T12:00:00Z', 'frontier': [], 'visited': [old_map],
+            'pages': [], 'robots': {}, 'failedResources': {},
+            'lastError': {'url': old_map, 'reason': 'timeout', 'at': '2026-11-08T12:00:00Z'}}}})
+        result = self.run_discovery(budget=20, index_only=True)
+        saved = json.loads((self.root / STATE_PATH).read_text())['nurseries']['n1']
+        self.assertIn(old_map, self.calls)
+        self.assertIn(self.product, saved['pages'])
+        self.assertNotIn(old_map, saved['failedResources'])
+        self.assertNotIn('lastError', saved)
+        self.assertEqual(result['bindings'], [])
+        self.assertNotIn(self.product, self.calls, 'Indexing must not fetch product candidates')
+
+    def test_transport_resource_retry_is_one_day_without_refreshing_successful_index(self):
+        failed = 'https://nursery.test/retry.xml'
+        self.routes[failed] = ('application/xml', self.sitemap([self.product]))
+        failure = {'url': failed, 'reason': 'download_failed', 'at': '2026-11-08T12:00:00Z'}
+        self.write(STATE_PATH, {'schemaVersion': 1, 'pairs': {}, 'nurseries': {'n1': {
+            'indexVersion': INDEX_VERSION, 'indexedAt': '2026-11-08T12:00:00Z',
+            'frontier': [], 'visited': [failed], 'pages': [], 'robots': {},
+            'failedResources': {failed: failure}}}})
+        result = self.run_discovery(budget=20, index_only=True)
+        self.assertEqual(self.calls, [failed])
+        self.assertEqual(result['indexedPages'], 1)
+        self.calls.clear()
+        self.run_discovery(budget=20, index_only=True)
+        self.assertEqual(self.calls, [])
+
+    def test_index_follows_observed_catalogue_and_pagination_not_external_or_action_links(self):
+        catalogue = 'https://nursery.test/plants'
+        page_two = catalogue + '?page=2'
+        self.routes['https://nursery.test/map.xml'] = ('application/xml', self.sitemap([]))
+        self.routes['https://nursery.test/'] = ('text/html', '<a href="/plants">Catalogue</a>')
+        self.routes[catalogue] = ('text/html', '<a rel="next" href="?page=2">Next</a>'
+                                 '<a href="https://competitor.test/plants">Other</a>'
+                                 '<a href="/shop?add-to-cart=42">Buy</a>')
+        self.routes[page_two] = ('text/html', '<a href="' + self.product + '">Red Dragon</a>')
+        result = self.run_discovery(budget=20, index_only=True)
+        saved = json.loads((self.root / STATE_PATH).read_text())['nurseries']['n1']
+        self.assertIn(catalogue, self.calls)
+        self.assertIn(page_two, self.calls)
+        self.assertIn(self.product, saved['pages'])
+        self.assertNotIn(self.product, self.calls)
+        self.assertFalse(any('competitor.test' in url or 'add-to-cart' in url for url in self.calls))
+        self.assertFalse(result['coverageComplete'], 'An index alone does not confirm plant photographs')
+
+    def test_index_only_uses_full_budget_and_retains_sitemap_continuation(self):
+        maps = ['https://nursery.test/product-sitemap-' + str(i) + '.xml' for i in range(4)]
+        self.routes['https://nursery.test/map.xml'] = ('application/xml', '<sitemapindex>' + ''.join(
+            '<sitemap><loc>' + url + '</loc></sitemap>' for url in maps) + '</sitemapindex>')
+        for i, url in enumerate(maps):
+            self.routes[url] = ('application/xml', self.sitemap([self.product + '-' + str(i)]))
+        result = self.run_discovery(budget=4, index_only=True)
+        self.assertEqual(result['requests'], 4)
+        self.assertEqual(result['indexedPages'], 2)
+        self.assertGreater(result['queuedResources'], 0)
+        self.assertEqual(result['status'], 'partial_budget')
+        self.calls.clear()
+        again = self.run_discovery(budget=20, index_only=True)
+        self.assertEqual(again['indexedPages'], 4)
+        self.assertNotIn('https://nursery.test/robots.txt', self.calls)
+
+    def test_visited_frontier_head_does_not_hide_new_resource(self):
+        stale = 'https://nursery.test/already.xml'
+        self.write(STATE_PATH, {'schemaVersion': 1, 'pairs': {}, 'nurseries': {'n1': {
+            'indexVersion': INDEX_VERSION, 'indexedAt': '2026-11-09T12:00:00Z',
+            'frontier': [stale, 'https://nursery.test/map.xml'], 'visited': [stale], 'pages': [], 'robots': {}}}})
+        self.run_discovery(budget=20, index_only=True)
+        self.assertEqual(self.calls, ['https://nursery.test/map.xml'])
+
+    def test_blocked_frontier_head_does_not_starve_other_approved_host(self):
+        other = 'https://catalogue.nursery.test/map.xml'
+        self.write('scripts/photo-discovery.json', {'sources': [{'nurseryId': 'n1',
+                   'pageHosts': ['catalogue.nursery.test']}]})
+        self.routes[other] = ('application/xml', self.sitemap([self.product]))
+        self.write(STATE_PATH, {'schemaVersion': 1, 'pairs': {}, 'nurseries': {'n1': {
+            'indexVersion': INDEX_VERSION, 'indexedAt': '2026-11-09T12:00:00Z',
+            'frontier': ['https://nursery.test/map.xml', other], 'visited': [], 'pages': [], 'robots': {},
+            'blockedHosts': {'nursery.test': '2026-11-09T12:00:00Z'}}}})
+        self.run_discovery(budget=20, index_only=True)
+        self.assertEqual(self.calls, [other])
+
+    def test_http_access_refusal_remains_paused_despite_short_resource_retry(self):
+        self.routes['https://nursery.test/robots.txt'] = ('text/plain', PhotoError('http_error', 'Source returned HTTP 403.'))
+        self.run_discovery(budget=20, index_only=True)
+        self.assertEqual(self.calls, ['https://nursery.test/robots.txt'])
+        self.calls.clear()
+        discover(self.root, fetcher=self.fetch, now='2026-11-11T15:00:00Z', budget=20, index_only=True)
+        self.assertEqual(self.calls, [], '403 cooldown must not be shortened to transport retry')
+
+    def test_catalogue_crawl_respects_robots_for_observed_navigation(self):
+        self.routes['https://nursery.test/robots.txt'] = ('text/plain', 'User-agent: *\nDisallow: /plants\nSitemap: https://nursery.test/map.xml')
+        self.routes['https://nursery.test/map.xml'] = ('application/xml', self.sitemap([]))
+        self.routes['https://nursery.test/'] = ('text/html', '<a href="/plants">Catalogue</a>')
+        self.run_discovery(budget=20, index_only=True)
+        self.assertNotIn('https://nursery.test/plants', self.calls)
+
+    def test_utf8_catalogue_names_work_on_windows_system_encodings(self):
+        data = {'nurseries': [{'id': 'n1', 'name': 'Rasadnik Čačak – drveće i žbunje',
+                              'website': 'https://nursery.test/', 'verificationStatus': 'verified'}]}
+        (self.root / 'data/rasadnici.json').write_bytes(json.dumps(data, ensure_ascii=False).encode('utf-8'))
+        result = self.run_discovery(budget=20)
+        self.assertEqual(result['confirmedPairs'], 1)
+
+    def test_observed_tree_categories_and_english_assortment_are_crawled(self):
+        trees = 'https://nursery.test/our-trees/'
+        category = trees + 'field-grown/'
+        assortment = 'https://nursery.test/en/assortment/'
+        self.routes['https://nursery.test/map.xml'] = ('application/xml', self.sitemap([]))
+        self.routes['https://nursery.test/'] = ('text/html', '<a href="/our-trees/">Trees</a><a href="/en/assortment/">Assortment</a>')
+        self.routes[trees] = ('text/html', '<a href="' + category + '">Field grown</a>')
+        self.routes[category] = ('text/html', '<a href="' + self.product + '">Red Dragon</a>')
+        self.routes[assortment] = ('text/html', '<h1>Assortment</h1>')
+        self.run_discovery(budget=20, index_only=True)
+        for page in [trees, category, assortment]:
+            self.assertIn(page, self.calls)
+        self.assertNotIn(self.product, self.calls)
+        saved = json.loads((self.root / STATE_PATH).read_text())['nurseries']['n1']
+        self.assertIn(self.product, saved['pages'])
 
 
 if __name__ == '__main__':

@@ -15,9 +15,10 @@ on:
       - 'scripts/tests/test_photo_reference_render.mjs'
       - 'docs/full-photo-*.json'
       - 'docs/photo-discovery-state.json'
+      - 'docs/reviewed-offer-photos.json'
       - 'docs/fotografije.json'
   schedule:
-    - cron: '23 4 * * *'
+    - cron: '23 */4 * * *'
   workflow_dispatch:
 
 permissions: {}
@@ -69,6 +70,11 @@ jobs:
         id: repair
         run: python scripts/repair_photo_asset_paths.py --github-output "$GITHUB_OUTPUT"
 
+      - name: Dodaj proverene fotografije iz dostavljenih ponuda
+        run: |
+          python scripts/apply_reviewed_offer_photos.py --apply > "$RUNNER_TEMP/reviewed-offer-photo-report.json"
+          cat "$RUNNER_TEMP/reviewed-offer-photo-report.json"
+
       - name: Primeni pravila izvora na sve biljke
         run: python scripts/full_photo_coverage.py --audit-only
 
@@ -84,7 +90,7 @@ jobs:
 
       - name: Osvezi indeks izvora
         if: steps.repair.outputs.changed != 'true'
-        run: python scripts/full_photo_coverage.py --index-only --request-budget 300 --max-seconds 180
+        run: python scripts/full_photo_coverage.py --index-only --request-budget 600 --max-seconds 360
 
       - name: Obradi sve biljke i nastavi sacuvani red pretrage
         id: refresh
@@ -97,7 +103,7 @@ jobs:
           --report "${{ runner.temp }}/full-photo-report.json"
 
       - name: Prikazi stvarnu pokrivenost
-        if: always() && steps.refresh.outcome != 'skipped'
+        if: always()
         shell: bash
         run: |
           python - <<'PY'
@@ -106,18 +112,23 @@ jobs:
           from pathlib import Path
 
           report_path = Path(os.environ['RUNNER_TEMP']) / 'full-photo-report.json'
+          reviewed_path = Path(os.environ['RUNNER_TEMP']) / 'reviewed-offer-photo-report.json'
+          coverage_path = Path('docs/photo-coverage.json')
           lines = ['## Fotografije za sve biljke', '']
+          report = json.loads(report_path.read_text(encoding='utf-8')) if report_path.is_file() else {}
+          coverage = report.get('coverage') or (json.loads(coverage_path.read_text(encoding='utf-8')) if coverage_path.is_file() else {})
           if not report_path.is_file():
-              lines.append('Obrada nije zavrsena; pogledajte gresku prethodnog koraka.')
-          else:
-              report = json.loads(report_path.read_text(encoding='utf-8'))
-              coverage = report.get('coverage', report)
-              lines += ['Status: **' + str(report.get('status', 'unknown')) + '**', '',
+              lines.append('Online obrada nije zavrsena; prikazana je poslednja sacuvana pokrivenost.')
+          if coverage:
+              lines += ['Status: **' + str(coverage.get('status', 'unknown')) + '**', '',
                         '| Rezultat | Broj |', '| --- | ---: |',
                         '| Biljke obuhvacene katalogom | ' + str(coverage.get('plants', '—')) + ' |',
                         '| Biljke sa fotografijom | ' + str(coverage.get('plantsWithPhoto', '—')) + ' |']
-              lines += ['| Nove potvrdene fotografije u ovom prolazu | ' + str(report.get('newlyVerified', 0)) + ' |',
+              lines += ['| Nove online referentne fotografije u ovom prolazu | ' + str(report.get('newlyVerified', 0)) + ' |',
                         '| Mrezni zahtevi u ovom prolazu | ' + str(report.get('requests', 0)) + ' |']
+              if reviewed_path.is_file() and reviewed_path.stat().st_size:
+                  reviewed = json.loads(reviewed_path.read_text(encoding='utf-8'))
+                  lines.append('| Ponude dopunjene proverenom izvornom fotografijom | ' + str(reviewed.get('changedOffers', 0)) + ' |')
               missing = coverage.get('plantsWithoutPhoto', [])
               if isinstance(missing, list):
                   lines.append('| Biljke koje jos cekaju fotografiju | ' + str(len(missing)) + ' |')
@@ -157,8 +168,31 @@ jobs:
             exit 1
           fi
 
+          # Validate against the immutable checkout, not a later working copy.
+          # Prices, names, parameters, ordering and every non-photo field stay exact.
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          import subprocess
+          import sys
+
+          sys.path.insert(0, 'scripts')
+          from apply_reviewed_offer_photos import protect as protect_offers
+          from full_photo_coverage import protect as protect_plants
+
+          baseline = os.environ['PHOTO_BASE_SHA']
+          for filename, protect in [('data/kataloske-stavke.json', protect_offers),
+                                    ('data/biljke.json', protect_plants)]:
+              original = subprocess.run(['git', 'show', baseline + ':' + filename],
+                                        check=True, stdout=subprocess.PIPE).stdout
+              protect(json.loads(original), json.loads(Path(filename).read_text(encoding='utf-8')))
+          print('Potvrdjeno: izmenjena su samo dozvoljena polja fotografija.')
+          PY
+
           for path in \
             data/biljke.json \
+            data/kataloske-stavke.json \
             docs/full-photo-state.json \
             docs/full-photo-manifest.json \
             docs/photo-discovery-state.json \

@@ -11,5 +11,20 @@
     "refreshIndexDays": 30,
     "maxResourcesPerNurseryPerRun": 8
   },
-  "sources": []
+  "sources": [
+    {
+      "nurseryId": "volentis",
+      "pageHosts": ["portal.volentis.com"],
+      "imageHosts": ["cdn.volentis.com"],
+      "imagePathPrefixes": {"cdn.volentis.com": ["/d/"]},
+      "reviewedSourceEvidence": ["https://www.volentis.com/assortiment/", "https://portal.volentis.com/en/offers/2"]
+    },
+    {
+      "nurseryId": "lorenz-von-ehren",
+      "pageHosts": ["www.lve-baumschule.de"],
+      "imageHosts": ["www.lve-baumschule.de"],
+      "sitemaps": ["https://www.lve-baumschule.de/sitemap.xml"],
+      "reviewedSourceEvidence": ["https://www.lve-baumschule.de/service/impressum/"]
+    }
+  ]
 }
