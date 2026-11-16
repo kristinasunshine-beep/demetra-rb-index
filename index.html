@@ -1657,7 +1657,7 @@ function renderRecord(plant) {
   );
   $('plant-dialog-content').innerHTML =
     '<div class="dialog-topline detail-topline"><span class="dialog-topline-label">' + escapeHTML(plant.latinName) + '</span>' +
-    '<div class="detail-topline-actions"><button type="button" class="record-quote-link" data-action="open-my-quote">Moja ponuda ↗</button><button type="button" class="icon-button" data-action="close-record" aria-label="Zatvori zapis i vrati se na pretragu">' +
+    '<div class="detail-topline-actions"><button type="button" class="record-quote-link" data-action="open-my-quote">Moja ponuda <span class="record-quote-count" aria-hidden="true">(0)</span> ↗</button><button type="button" class="icon-button" data-action="close-record" aria-label="Zatvori zapis i vrati se na pretragu">' +
     closeIcon + '</button></div></div>' +
     '<div class="detail-hero without-photo"><div class="detail-hero-copy"><p class="category-label">' +
     escapeHTML(plant.category || 'Biljka') + (plant.demo ? ' · DEMO ZAPIS' : '') +
