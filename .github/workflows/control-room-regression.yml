@@ -22,6 +22,7 @@ jobs:
       - name: Verify UI integration without replacing catalog data
         run: |
           node --test scripts/tests/test_control_room_ui.mjs
+          node scripts/tests/test_photo_reference_render.mjs
           node --check assets/brza-preporuka.js
           node --check assets/moja-ponuda.js
       - name: Run live browser interaction checks
