@@ -26,6 +26,7 @@ jobs:
           node --check assets/brza-preporuka.js
           node --check assets/moja-ponuda.js
           node --test scripts/tests/test_quick_recommendation.mjs
+          node --test scripts/tests/test_biograd_tender_matching.mjs
       - name: Run live browser interaction checks
         run: |
           npm install --no-save --no-package-lock playwright@1.56.1
