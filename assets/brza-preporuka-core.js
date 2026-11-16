@@ -237,10 +237,27 @@
       return {status:'empty',message:'',values:Array(EXTRA_HEADERS.length).fill('')};
     if(found.error){
       const candidates=nameSuggestions(index,requested.name);
+      const evidence=[];
+      for(const candidate of candidates){
+        const match=index.names.get(norm(candidate));
+        if(!match||match.size!==1)continue;
+        for(const offer of index.byPlant.get([...match][0])||[]){
+          if(offer.priceKind!=='historical')continue;
+          const nursery=index.nurseries.get(offer.nurseryId)?.name||offer.nurseryId;
+          const amount=euroPrice(offer);
+          evidence.push('MOGUĆI ARHIVSKI TRAG · '+candidate+' · '+nursery+' · '+
+            (amount===null?'cena nije potvrđena u EUR':amount.toLocaleString('sr-Latn-RS',{minimumFractionDigits:2,maximumFractionDigits:2})+' €')+
+            '; '+(offer.source||offer.id)+'; '+(parameters(offer)||'bez mera'));
+        }
+      }
       const message=found.error+(candidates.length?
-        ' Za stručnu proveru (bez automatske zamene): '+candidates.join('; ')+'.':'');
-      return {status:'unmatched',recognized:false,candidates,message,suppliers:[],
-        values:['','','','','',message]};
+        ' Predlozi za stručnu proveru (bez automatske zamene): '+candidates.join('; ')+'.':'')+
+        (evidence.length?' Arhivske cene mogućih kandidata nisu ponude za traženu vrstu.':'');
+      const evidenceText=evidence.slice(0,70).join('\n')+
+        (evidence.length>70?'\nPrikazano je prvih 70 mogućih arhivskih tragova; ostatak proveriti u registru.':'');
+      return {status:'unmatched',recognized:false,candidates,possibleArchive:evidence.length>0,
+        message,suppliers:[],price:null,
+        values:[evidenceText,'','','Identitet biljke nije potvrđen; ne koristiti cene mogućih kandidata za obračun.','',message]};
     }
     if(requested._validationError)
       return tenderEvidence(index,found.id,'Ulazni zahtev za proveru: '+requested._validationError);
