@@ -348,7 +348,11 @@
         "Acer palmatum Seiryu",
         "Seiryu"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-eec9196bad382bb2b5bdf75b.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/acer-palmatum-seiryu/acpseiry/"
+      }
     },
     {
       "id": "plant-acer-platanoides",
@@ -809,7 +813,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-62bd2dc3540944cddff46719.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/ajuga-reptans-catlins-giant/ajrcgian/"
+      }
     },
     {
       "id": "plant-dc12c2322be581",
@@ -1530,7 +1538,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-2cc250e6f449084477e6dccb.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/campanula-portenschlagiana/caporten/"
+      }
     },
     {
       "id": "plant-af044c2feaa8a5",
@@ -1620,7 +1632,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-cec5e562868b5dbec8608989.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/carex-testacea-prairie-fire/catpfire/"
+      }
     },
     {
       "id": "plant-carpinus-betulus",
@@ -1785,7 +1801,11 @@
       "searchAliases": [
         "Summer Sorbet"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-8b919aabc463be17a1303667.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/caryopteris-clandonensis-summer-sorbet/cacssorb/"
+      }
     },
     {
       "id": "plant-c5c515ab916b60",
@@ -1930,7 +1950,11 @@
         "Cedrus glauca Pendula",
         "Cedrus libani Glauca Pendula"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-d2400979a0b7b818dd53c3d0.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/cedrus-libani-glauca-pendula/celgpend/"
+      }
     },
     {
       "id": "plant-celtis-australis",
@@ -2036,7 +2060,11 @@
         "Columnare",
         "Columnaris"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-6589875e33a0ecaf7278bea4.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/chamaecyparis-lawsoniana-columnaris/chlcolum/"
+      }
     },
     {
       "id": "plant-f3c06d6a9c2baf",
@@ -2411,7 +2439,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-fd729a68499bc165bc0d62a2.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/cotoneaster-dammeri/codammer/"
+      }
     },
     {
       "id": "plant-b13d7ac3d86694",
@@ -2483,8 +2515,8 @@
       ],
       "demo": false,
       "photo": {
-        "image": "assets/biljke/reference-747ec20268bf7c3015312a8b.jpg",
-        "sourceUrl": "https://www.lorberg.com/de-de/cotoneaster-x-suecicus-coral-beauty"
+        "image": "assets/biljke/reference-d90c72e2cd98e60200b460c6.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/cotoneaster-x-suecicus-coral-beauty/coscbeau/"
       }
     },
     {
@@ -2679,7 +2711,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-65bd057462a9638bb5361046.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/deutzia-gracilis-nikko/degnikko/"
+      }
     },
     {
       "id": "plant-b3ec587a9a14bd",
@@ -2957,7 +2993,11 @@
       "searchAliases": [
         "Harlequin"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-2d4692c6ce4a9eba09f81b3d.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/euonymus-fortunei-harlequin/eufharle/"
+      }
     },
     {
       "id": "plant-02331224c7eab5",
@@ -3038,7 +3078,11 @@
       "searchAliases": [
         "Euonymus Microphyllus"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-42ef4212dd5857bb03b38783.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/euonymus-japonicus-microphyllus/eujmicro/"
+      }
     },
     {
       "id": "plant-b0bc71eeccd9fc",
@@ -3250,7 +3294,11 @@
       "searchAliases": [
         "Fargesia robusta Campbell"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-54970bf0067f02162580d2c3.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/fargesia-robusta-campbell/farcampb/"
+      }
     },
     {
       "id": "plant-4e7ed2976c3e5e",
@@ -3260,7 +3308,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-77c0612d14378fa3ec01da16.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/festuca-glauca/feglauca/"
+      }
     },
     {
       "id": "plant-7ddbfac0f54d7b",
@@ -3690,8 +3742,8 @@
       ],
       "demo": false,
       "photo": {
-        "image": "assets/biljke/reference-0a128c2adc848afb79d77988.jpg",
-        "sourceUrl": "https://www.lve-baumschule.de/hamamelis-intermedia-diane/6353799"
+        "image": "assets/biljke/reference-96611e7eefe31b42b0363fd0.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/hamamelis-intermedia-diane/haidiane/"
       }
     },
     {
@@ -3726,7 +3778,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-437fc84976786e1d5e3a9a8c.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/helichrysum-italicum/heitalic/"
+      }
     },
     {
       "id": "plant-d69ba2c451ed76",
@@ -4351,7 +4407,11 @@
       "searchAliases": [
         "Lagerstroemia Tuscarora"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-c7f0909e35578689fb526f67.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/lagerstroemia-tuscarora/latuscar/"
+      }
     },
     {
       "id": "plant-3f70a4b46ba024",
@@ -4635,7 +4695,11 @@
         "Liliodendron tulipifera 'Aureomarginatum'",
         "Liriodendron tulipifera Aureomarginatum"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-081c127cd57ec417ab5dfa83.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/liriodendron-tulipifera-aureomarginatum/litaureo/"
+      }
     },
     {
       "id": "plant-f15e3e2208445c",
@@ -5231,7 +5295,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-38a696afa4b6b8f14878de43.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/ophiopogon-japonicus/opjaponi/"
+      }
     },
     {
       "id": "plant-98da30d6cdab1b",
@@ -5548,7 +5616,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-899d3f0388e8e952838bde9e.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/persicaria-bistorta/pebistor/"
+      }
     },
     {
       "id": "plant-8dfcdbd9a06e2e",
@@ -5613,7 +5685,11 @@
         "Photinia × fraseri 'Little Red Robin'",
         "photiniu little red robin"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-bdadcbf75ca4d970e0c3fc13.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/photinia-fraseri-little-red-robin/phflrrob/"
+      }
     },
     {
       "id": "plant-3a1aeb3df1ce96",
@@ -7275,7 +7351,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-a93c5b063c391892638765b9.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/salvia-officinalis/saoffici/"
+      }
     },
     {
       "id": "plant-f7f490785ef2e3",
@@ -8449,7 +8529,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-b90f97d51b4c70ed87c2a172.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/vinca-minor-atropurpurea/vimatrop/"
+      }
     },
     {
       "id": "plant-1b5175e2a2f097",

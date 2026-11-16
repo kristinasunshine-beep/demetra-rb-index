@@ -9,6 +9,7 @@ from pathlib import Path
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from PIL import Image
 
@@ -79,6 +80,33 @@ class FullCoverageTests(unittest.TestCase):
         self.assertEqual(len(report['coverage']['plantsWithoutPhoto']), 619)
         self.assertEqual(set(self.read(coverage.STATE)['plants']), {p['id'] for p in plants})
         self.assertEqual(report['requests'], 0)
+
+    def test_audit_exclusion_urls_use_approved_image_paths_and_preserve_hash_guards(self):
+        config = self.read('scripts/full-photo-policy.json')
+        configured_hash = hashlib.sha256(b'configured rejected image').hexdigest()
+        archive_hash = hashlib.sha256(b'archived rejected image').hexdigest()
+        allowed = 'https://images.example.org/approved/rejected.jpg'
+        archive_allowed = 'https://example.org/archived-rejected.jpg'
+        outside = 'https://outside.example.net/forbidden.jpg'
+        wrong_path = 'https://images.example.org/unapproved/forbidden.jpg'
+        config.update(excludedImageHashes=[configured_hash], excludedImageUrls=[allowed, outside, wrong_path])
+        self.write('scripts/full-photo-policy.json', config)
+        self.write('scripts/photo-discovery.json', {'sources': [{'nurseryId': 'fixture',
+            'imagePathPrefixes': {'images.example.org': ['/approved/']}}]})
+        with patch('archive_photo_recovery.rejected_jpeg_hashes', return_value={archive_hash}), \
+             patch('archive_photo_recovery.rejected_source_urls', return_value={archive_allowed, outside, wrong_path}):
+            report = self.run_job(audit_only=True)
+        manifest = self.read(coverage.MANIFEST)
+        self.assertEqual(manifest['excludedImageHashes'], sorted([configured_hash, archive_hash]))
+        self.assertEqual(manifest['excludedImageUrls'], sorted([allowed, archive_allowed]))
+        self.assertEqual(report['requests'], 0)
+        policies = coverage.allowed_policies(self.root)
+        for forbidden in (outside, wrong_path):
+            proposed = {**candidate(self.plants[0]['latinName']), 'imageUrl': forbidden}
+            self.assertFalse(coverage.candidate_allowed(proposed, policies))
+            with self.assertRaises(PhotoError) as caught:
+                coverage.store_jpeg(self.root, self.plants[0], proposed, bitmap(), {}, manifest, policies)
+            self.assertEqual(caught.exception.code, 'outside_offer_nurseries')
 
     def test_unlinked_plants_searched_by_full_name_and_saved_compactly(self):
         seen = []

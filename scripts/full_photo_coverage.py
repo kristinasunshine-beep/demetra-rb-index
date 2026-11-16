@@ -26,7 +26,7 @@ from update_photos import (DEFAULT_LIMITS, PhotoError, check_url, commit_files,
 from discover_nursery_photos import (build_policies, candidate_rank, discover,
                                     names_for, blocked_html)
 
-from photo_source_policy import allowed_policies, candidate_allowed, offered_nurseries, validate_sources
+from photo_source_policy import allowed_policies, allowed_url, candidate_allowed, offered_nurseries, validate_sources
 
 INACTIVE = {'superseded', 'needs_review'}
 STATE = 'docs/full-photo-state.json'
@@ -360,7 +360,12 @@ def run(root, *, request_budget=1000, max_seconds=1500, audit_only=False, fetche
             photo_taxa.setdefault(record['sha256'],set()).add(record.get('taxonKey',record.get('latinName')))
     from archive_photo_recovery import rejected_jpeg_hashes, rejected_source_urls
     manifest['excludedImageHashes'] = sorted(rejected_jpeg_hashes(root) | set(config.get('excludedImageHashes',[])))
-    manifest['excludedImageUrls'] = sorted(rejected_source_urls(root) | set(config.get('excludedImageUrls',[])))
+    # Outside-source hosts are already rejected by the acquisition policy.
+    # Keep their hash guards, without republishing their historical image URLs.
+    manifest['excludedImageUrls'] = sorted(
+        url for url in rejected_source_urls(root) | set(config.get('excludedImageUrls',[]))
+        if any(allowed_url(url, policy['imageHosts'], policy.get('imagePathPrefixes'))
+               for policy in policies.values()))
     ambiguous_hashes = {sha for sha,names in photo_taxa.items() if len(names)>1} | set(manifest.get('ambiguousImages',{})) | set(manifest['excludedImageHashes'])
     # Preserve provenance off the cards. Species substitutions and references
     # requiring visible attribution cannot be migrated into a metadata-free card.
