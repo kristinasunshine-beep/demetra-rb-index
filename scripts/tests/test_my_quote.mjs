@@ -91,6 +91,16 @@ const workbook=await zip.file('xl/workbook.xml').async('string');
 assert.equal((workbook.match(/<(?:x:)?sheet\b/g)||[]).length,1,'Excel must contain only one worksheet.');
 assert(workbook.includes('name="Moja ponuda"')&&!workbook.includes('name="Parametri"'));
 assert.equal(zip.file('xl/worksheets/sheet2.xml'),null,'Removed worksheet must not remain in the file.');
+// Read the exported unit-column geometry from the actual XLSX worksheet XML.
+const unitColumn = [...sheet.matchAll(/<col\b[^>]*\/>/g)].find(([tag])=>{
+  const min=Number(tag.match(/\bmin="(\d+)"/)?.[1]);
+  const max=Number(tag.match(/\bmax="(\d+)"/)?.[1]);
+  return min<=5&&max>=5;
+})?.[0];
+assert(unitColumn,'Unit column E must be explicitly sized');
+assert(Number(unitColumn.match(/\bwidth="([\d.]+)"/)?.[1])>=16,'Unit width must fit full words instead of single letters');
+assert(sheet.includes('Jed.')||sheet.includes('Jed'), 'Original unit heading must remain unchanged');
+assert(sheet.includes('customHeight="1"'),'Rows must retain custom height for wrapped text');
 assert(sheet.includes('<f>ROUND(F23*G23,2)</f><v>37.5</v>'));
 assert(sheet.includes('<f>ROUND(F24*G24,2)</f><v>40</v>'));
 assert(sheet.includes('<f>SUM(H23:H24)</f><v>77.5</v>'));
