@@ -54,7 +54,7 @@
     return {headerRow,map,headers:effectiveHeaders,dataStartRow,hasHeader,enabled:true};
   }
   function form(v){const n=norm(v);if(/^(standard|std|stam|hochstanden|hochstaemmig|hochstaff|jednostablo|visoko stablo|hs)$/.test(n))return 'standard';if(/^(multistem|multi stem|multi|vise stablo|visestablo|visestablasica|zbun|bush|grm|ms)$/.test(n))return 'multistem';return n;}
-  function rootType(v){const n=norm(v);if(/^(wrb|wire root ball|busen u zicanoj korpi(?: wrb| drkl| mdb| w b)?|wire basket|dr bal|db|zicana korpa)$/.test(n))return 'wrb';if(/^(cont|container|kontejner(?: cont| cg| clt)?|container grown|kontejnerska|co|c)$/.test(n))return 'container';if(/^(br|bare root|goli koren(?: br)?|bare roots)$/.test(n))return 'bare-root';if(/^(rb|root ball|busen(?: rb| kl| zolla)?|balled|bal|b)$/.test(n))return 'root-ball';if(/^(woodbox|wood box|drvena kutija|drvena kutija woodbox)$/.test(n))return 'woodbox';if(/^(airpot|air pot|air pot kontejner airpot)$/.test(n))return 'airpot';return n;}
+  function rootType(v){const n=norm(v);if(/^(wrb|wire root ball|busen u zicanoj korpi(?: wrb| drkl| mdb| w b)?|wire basket|dr bal|db|zicana korpa)$/.test(n))return 'wrb';if(/^(cont|container|kontejner(?: cont| cg| clt)?|container grown|kontejnerska|kontejnerirano|kontejnerirana|kontejnirano|co|c)$/.test(n))return 'container';if(/^(br|bare root|goli koren(?: br)?|bare roots)$/.test(n))return 'bare-root';if(/^(rb|root ball|busen(?: rb| kl| zolla)?|balled|bal|b)$/.test(n))return 'root-ball';if(/^(woodbox|wood box|drvena kutija|drvena kutija woodbox)$/.test(n))return 'woodbox';if(/^(airpot|air pot|air pot kontejner airpot)$/.test(n))return 'airpot';return n;}
   function unit(v){const n=norm(v);return /^(kom|komad|komada|pc|pcs|piece|pieces|st|stuck|stuk)$/.test(n)?'kom':n;}
   function taxGroup(v){const n=norm(v);if(/bez pdv|excluding vat|excl vat|pdv 0|non imponibile/.test(n))return 'net';if(/sa pdv|ukljucen pdv|including vat|incl vat/.test(n))return 'gross';return 'unspecified';}
   function parseMeasure(value,field){
@@ -108,7 +108,7 @@
     take('crownWidth',new RegExp('(?:sirina krosnje|širina krošnje|crown width)\\s*[:=]?\\s*'+amount,'gi'));
     take('potSize',new RegExp('(?:\\bpot|\\bsaksija|\\bclt|\\bc(?=\\s*\\d))\\s*[:=]?\\s*'+amount,'gi'));
     take('seedlingType',/\b(multistem|multi[- ]stem|standard|std)\b/gi);
-    take('rootType',/\b(wrb|container|kontejner|kontejnirano|kontejnerski|bare root|goli koren|woodbox|rb)\b/gi,v=>/kontejnirano|kontejnerski/i.test(v)?'container':v);
+    take('rootType',/\b(wrb|container|kontejner|kontejnerirano|kontejnerirana|kontejnirano|kontejnerski|bare root|goli koren|woodbox|rb)\b/gi,v=>/kontejnerirano|kontejnerirana|kontejnirano|kontejnerski/i.test(v)?'container':v);
     take('transplantCount',/\b(\d+)\s*(?:[x×]\s*v|[x×]\s*presa[đd]ivano|puta presađivana|puta presadjivana)\b/gi);
     const rest=s.replace(/[;,|:.()\s]+/g,' ').trim();
     return {fields,rest,conflicts};
@@ -164,7 +164,7 @@
   }
   function recommend(index,input,options={}){
     const requested={...input},found=findPlant(index,requested.name,requested.cultivar);
-    const fail=(message,suppliers=[])=>({status:'unmatched',message,suppliers,values:[supplierText(suppliers),'','','','',message]});
+    const fail=(message,suppliers=[])=>({status:'unmatched',recognized:!!found.id,message,suppliers,values:[supplierText(suppliers),'','','','',message]});
     if(!String(requested.name??'').trim())return {status:'empty',message:'',values:Array(EXTRA_HEADERS.length).fill('')};
     if(requested._validationError)return fail(requested._validationError);
     if(found.error)return fail(found.error);
@@ -187,14 +187,14 @@
       if(requested.quantity!==undefined&&String(requested.quantity).trim()&&Number.isFinite(o.availableQuantity)&&o.availableQuantity<Number(String(requested.quantity).replace(',','.')))return false;
       return true;
     });
-    if(!offers.length)return fail('Nema ponude koja potvrđuje sve tražene parametre.');
+    if(!offers.length)return historicalReference(index,found.id,'Nijedna ponuda ne potvrđuje sve tražene parametre.');
     offers=newestVariants(offers);
     const suppliers=supplierList(index,offers);
     offers=offers.filter(o=>euroPrice(o)!==null&&o.price>0);
-    if(!offers.length)return fail('Za ove parametre nema potvrđene cene u valuti '+currency+'.',suppliers);
+    if(!offers.length)return historicalReference(index,found.id,'Za ove parametre nema potvrđene cene u valuti '+currency+'.',suppliers);
     const tax=new Set(offers.map(o=>taxGroup(o.taxStatus))),units=new Set(offers.map(o=>unit(o.unit)));
     // A price per pack, a gross amount and an unknown tax basis cannot silently win over a net unit price.
-    if(tax.size>1||units.size>1)return fail('Cene nisu uporedive: '+[tax.size>1?'različit ili nepoznat PDV':'',units.size>1?'različite jedinice mere':''].filter(Boolean).join('; ')+'.',suppliers);
+    if(tax.size>1||units.size>1)return historicalReference(index,found.id,'Cene nisu uporedive: '+[tax.size>1?'različit ili nepoznat PDV':'',units.size>1?'različite jedinice mere':''].filter(Boolean).join('; ')+'.',suppliers);
     offers.sort((a,b)=>a.price-b.price||(index.nurseries.get(a.nurseryId)?.name||'').localeCompare(index.nurseries.get(b.nurseryId)?.name||'')||a.id.localeCompare(b.id));
     const best=offers[0],supplier=index.nurseries.get(best.nurseryId)?.name||best.nurseryId;
     const ties=offers.filter(o=>o.price===best.price),names=[...new Set(ties.map(o=>index.nurseries.get(o.nurseryId)?.name||o.nurseryId))];
@@ -203,8 +203,33 @@
     if(tax.has('unspecified'))message+=' PDV nije naveden u izvoru.';
     if(names.length>1)message+=' Ista cena: '+names.join(', ')+'.';
     if(best.unit)message+=' Jedinica cene: '+best.unit+'.';if(best.taxStatus&&taxGroup(best.taxStatus)!=='unspecified')message+=' '+best.taxStatus+'.';
-    return {status:'matched',offerId:best.id,plantId:found.id,price:best.price,currency,supplier,suppliers,message,
+    return {status:'matched',recognized:true,offerId:best.id,plantId:found.id,price:best.price,currency,supplier,suppliers,message,
       values:[supplierText(suppliers),supplier,best.price,parameters(best),dateValue(best),message]};
+  }
+  // Historical catalogue records are evidence of a source price, not evidence
+  // that the supplier can currently deliver a plant meeting all requirements.
+  // Never put a mismatching price in the "lowest price" output column.
+  function historicalReference(index,plantId,reason,existingSuppliers=[]){
+    const archived=(index.byPlant.get(plantId)||[])
+      .filter(o=>o.priceKind==='historical' && o.priceRefresh?.status!=='pending')
+      .sort((a,b)=>(euroPrice(a)??Infinity)-(euroPrice(b)??Infinity)||a.id.localeCompare(b.id));
+    if(!archived.length)return {status:'unmatched',recognized:true,message:reason,suppliers:existingSuppliers,
+      values:[supplierText(existingSuppliers),'','','','',reason]};
+    const detailed=archived.map(o=>{
+      const name=index.nurseries.get(o.nurseryId)?.name||o.nurseryId;
+      const price=euroPrice(o),amount=price!==null?price.toLocaleString('sr-Latn-RS',{minimumFractionDigits:2,maximumFractionDigits:2})+' €':'bez potvrđene EUR cene';
+      return name+' — ARHIVA '+amount+'; '+(parameters(o)||'parametri nisu navedeni')+
+        '; izvor: '+(o.source||o.id)+(dateValue(o)?'; datum: '+dateValue(o):'');
+    });
+    const message='Biljka je prepoznata u indeksu. Postoje arhivski zapisi, ali nema potvrđene uporedive ponude za tražene parametre. '+reason+
+      ' Arhivske cene nisu preporučene nabavne cene; proveriti specifikaciju, dostupnost i PDV.';
+    const suppliers=archived.map(o=>({
+      name:(index.nurseries.get(o.nurseryId)?.name||o.nurseryId)+' · ARHIVA',
+      price:euroPrice(o),nurseryId:o.nurseryId,offerIds:[o.id],
+      historical:true
+    }));
+    return {status:'unmatched',recognized:true,archival:true,plantId,price:null,suppliers,message,
+      values:[detailed.join('\n'),'','', 'Arhivski parametri nisu potvrda tražene specifikacije.','',message]};
   }
   function supplierList(index,offers){const groups=new Map();for(const offer of offers){if(!groups.has(offer.nurseryId))groups.set(offer.nurseryId,[]);groups.get(offer.nurseryId).push(offer);}return [...groups].map(([nurseryId,rows])=>{const prices=rows.filter(o=>euroPrice(o)!==null&&o.price>0).map(o=>o.price);return {nurseryId,name:index.nurseries.get(nurseryId)?.name||nurseryId,price:prices.length?Math.min(...prices):null,currency:'EUR',offerIds:rows.map(o=>o.id)};}).sort((a,b)=>(a.price??Infinity)-(b.price??Infinity)||a.name.localeCompare(b.name));}
   function supplierText(suppliers){return suppliers.map(s=>s.name+' — '+(s.price===null?'cena u EUR nije navedena':s.price.toLocaleString('sr-Latn-RS',{minimumFractionDigits:2,maximumFractionDigits:2})+' €')).join('\n');}
