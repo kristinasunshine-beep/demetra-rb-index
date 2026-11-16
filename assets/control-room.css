@@ -339,3 +339,28 @@ body.control-room .header-actions #my-quote-count{
   body.control-room .detail-topline .dialog-topline-label{font-size:11px}
   body.control-room .header-actions #my-quote-count{font-size:11px}
 }
+
+/* Serbian vernacular labels: confirmed species name or transparently marked genus label. */
+body.control-room[data-view="search"] .search-popup .suggestion-names{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  gap:5px;
+  min-width:0;
+  flex:1;
+}
+body.control-room[data-view="search"] .search-popup .suggestion-name{display:block;white-space:normal;overflow-wrap:anywhere}
+body.control-room[data-view="search"] .search-popup .suggestion-common{
+  display:block;
+  font:11px/1.4 var(--sans);
+  color:#6C796E;
+  white-space:normal;
+  overflow-wrap:anywhere;
+}
+body.control-room .detail-common{display:block!important;color:#C9D7CA!important;font:500 clamp(14px,1.7vw,19px)/1.45 var(--sans)!important;margin-top:12px!important}
+body.control-room .detail-common-text{display:block}
+body.control-room .quote-plant .quote-domestic{font:12px/1.45 var(--sans);color:#637567;margin:1px 0 10px}
+@media(max-width:600px){
+ body.control-room[data-view="search"] .search-popup .suggestion-common{font-size:11px}
+ body.control-room .detail-common{font-size:15px!important}
+}
