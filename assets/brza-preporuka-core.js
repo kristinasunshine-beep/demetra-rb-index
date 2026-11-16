@@ -167,7 +167,12 @@
     const fail=(message,suppliers=[])=>({status:'unmatched',recognized:!!found.id,message,suppliers,values:[supplierText(suppliers),'','','','',message]});
     if(!String(requested.name??'').trim())return {status:'empty',message:'',values:Array(EXTRA_HEADERS.length).fill('')};
     if(requested._validationError)return fail(requested._validationError);
-    if(found.error)return fail(found.error);
+    if(found.error){
+      const requestedName=norm(requested.name),related=[...index.plants.values()]
+        .filter(plant=>norm(plant.latinName).startsWith(requestedName+' '))
+        .map(plant=>plant.latinName).slice(0,5);
+      return fail(found.error+(related.length?' U indeksu postoje povezani kultivari: '+related.join('; ')+'. Oni nisu isto što i tražena osnovna vrsta.':''));
+    }
     const pref=parsePreferences([found.remainder,requested.preferences,descriptionRequirements(requested.sourceDescription,requested)].filter(Boolean).join('; '));
     if(pref.rest)return fail('Ponuda ne potvrđuje opisni zahtev: '+pref.rest);
     if(pref.conflicts.length)return fail('Različiti zahtevi za polja: '+pref.conflicts.join(', '));
