@@ -1294,7 +1294,7 @@ const $ = (id) => document.getElementById(id);
 const escapeHTML = (value) => String(value ?? '').replace(/[&<>"']/g, (character) => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
 }[character]));
-const domesticLabel = plant => window.DemetraVernacular?.resolve(plant) ||
+const domesticLabel = plant => (typeof window !== 'undefined' ? window.DemetraVernacular?.resolve(plant) : null) ||
   (plant.commonName ? {name:plant.commonName,level:'existing',note:'Domaći naziv'} :
     {name:'Naziv nije potvrđen',level:'unknown',note:'Domaći naziv nije potvrđen'});
 const domesticMarkup = (plant, cssClass) => {
