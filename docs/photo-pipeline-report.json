@@ -1,12 +1,12 @@
 {
   "schemaVersion": 2,
   "status": "partial",
-  "requests": 573,
+  "requests": 544,
   "workers": 8,
   "events": [],
   "coverage": {
     "schemaVersion": 2,
-    "checkedAt": "2026-11-16T12:17:48Z",
+    "checkedAt": "2026-11-16T22:26:46Z",
     "status": "partial",
     "plants": 619,
     "plantsInventoried": 619,
