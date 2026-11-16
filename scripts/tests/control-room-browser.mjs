@@ -27,9 +27,17 @@ try {
   await page.locator('#plant-search').fill('aCER PALMATUM');
   assert.equal(await page.locator('#plant-search').inputValue(),'Acer palmatum');
   await page.locator('#search-popup .suggestion').first().waitFor({timeout:15000});
+  // The light dropdown must have dark legible text; inherited white previously hid names.
+  const suggestionName=page.locator('#search-popup .suggestion-name').first();
+  assert.match(await suggestionName.innerText(),/Acer/i,'suggested plant has a visible Latin name');
+  const suggestionColor=await suggestionName.evaluate(el=>getComputedStyle(el).color);
+  assert.equal(suggestionColor,'rgb(22, 26, 25)','suggestion text contrast on white');
+
   await page.locator('#search-popup .suggestion').first().click();
   await page.locator('#plant-dialog[open]').waitFor({timeout:10000});
   assert.match(await page.locator('#plant-detail-title').innerText(),/Acer palmatum/i);
+  assert.equal((await page.locator('#plant-dialog .dialog-topline-label').innerText()).trim(),'Acer palmatum','card header uses current plant name');
+
   assert.ok(await page.locator('#plant-dialog .offer-card').count()>0,'real offer cards');
   const price=await page.locator('#plant-dialog .offer-pricing .offer-price strong').first().boundingBox();
   const action=await page.locator('#plant-dialog .offer-pricing .quote-add').first().boundingBox();
@@ -40,8 +48,12 @@ try {
   assert.ok(await image.evaluate(el=>el.naturalWidth)>0,'photograph loaded');
 
   await page.locator('#plant-dialog .quote-add').first().click();
+  assert.equal((await page.locator('#my-quote-count').innerText()).trim(),'(1)','quote nav registers one selected species');
+
   await page.locator('#plant-dialog .record-quote-link').click();
   await page.locator('#my-quote-view:not([hidden])').waitFor({timeout:10000});
+  assert.equal((await page.locator('#my-quote-count').innerText()).trim(),'(1)','quote count persists on navigation');
+
   assert.ok(await page.locator('#quote-items .quote-item').count()>0,'quote contains selected offer');
   const item=page.locator('#quote-items .quote-item').first();
   await item.locator('input[data-quote-edit="quantity"]').fill('2');
