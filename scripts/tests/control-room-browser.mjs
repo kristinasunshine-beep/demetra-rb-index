@@ -23,6 +23,14 @@ try {
   assert.equal(await page.locator('.control-nav-search').isVisible(),true,'sidebar search nav');
   assert.equal(await page.locator('#open-quick-recommendation').isVisible(),true);
   assert.equal(await page.locator('#open-my-quote').isVisible(),true);
+  const vernacularCoverage = await page.evaluate(async () => {
+    const response = await fetch('./data/biljke.json');
+    const plants = (await response.json()).plants;
+    return {total:plants.length, missing:plants.filter(p=>!window.DemetraVernacular?.resolve(p)?.name).map(p=>p.latinName)};
+  });
+  assert.equal(vernacularCoverage.total,619);
+  assert.deepEqual(vernacularCoverage.missing,[], 'every plant has a Serbian species/genus label');
+
 
   await page.locator('#plant-search').fill('aCER PALMATUM');
   assert.equal(await page.locator('#plant-search').inputValue(),'Acer palmatum');
@@ -33,9 +41,12 @@ try {
   const suggestionColor=await suggestionName.evaluate(el=>getComputedStyle(el).color);
   assert.equal(suggestionColor,'rgb(22, 26, 25)','suggestion text contrast on white');
 
+  assert.equal((await page.locator('#search-popup .suggestion-common').first().innerText()).trim(),'Japanski javor');
   await page.locator('#search-popup .suggestion').first().click();
   await page.locator('#plant-dialog[open]').waitFor({timeout:10000});
   assert.match(await page.locator('#plant-detail-title').innerText(),/Acer palmatum/i);
+  assert.equal((await page.locator('#plant-dialog .detail-common').innerText()).trim(),'Japanski javor');
+
   assert.equal((await page.locator('#plant-dialog .dialog-topline-label').innerText()).trim(),'Acer palmatum','card header uses current plant name');
 
   assert.ok(await page.locator('#plant-dialog .offer-card').count()>0,'real offer cards');
@@ -55,6 +66,8 @@ try {
   assert.equal((await page.locator('#my-quote-count').innerText()).trim(),'(1)','quote count persists on navigation');
 
   assert.ok(await page.locator('#quote-items .quote-item').count()>0,'quote contains selected offer');
+  assert.equal((await page.locator('#quote-items .quote-domestic').first().innerText()).trim(),'Japanski javor');
+
   const item=page.locator('#quote-items .quote-item').first();
   await item.locator('input[data-quote-edit="quantity"]').fill('2');
   await item.locator('input[data-quote-edit="price"]').fill('100');
