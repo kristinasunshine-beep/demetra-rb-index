@@ -105,7 +105,7 @@ try {
   await page.locator('#quick-recommendation-view:not([hidden])').waitFor({timeout:10000});
   await page.locator('#recommend-file').setInputFiles({name:'spisak.csv',mimeType:'text/csv',buffer:Buffer.from('Naziv biljke;Visina sadnice\nAcer palmatum;300 cm\n','utf8')});
   await page.locator('#recommend-results:not([hidden])').waitFor({timeout:45000});
-  assert.ok((await page.locator('#recommend-result-counts').innerText()).includes('Obrađeno biljaka:'),'recommendation processed Excel-compatible CSV');
+  assert.ok((await page.locator('#recommend-result-counts').innerText()).includes('Obrađeno:'),'recommendation processed Excel-compatible CSV');
   assert.equal(await page.locator('#recommend-download').isEnabled(),true);
   const [recommended]=await Promise.all([page.waitForEvent('download',{timeout:30000}),page.locator('#recommend-download').click()]);
   assert.ok(recommended.suggestedFilename().endsWith('.xlsx'),'recommendation Excel export');
