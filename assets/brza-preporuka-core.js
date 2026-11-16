@@ -201,6 +201,36 @@
     if(related.length)return related;
     return /^[a-z]+ (?:spp?|ssp)\.?$/i.test(name)?candidates.slice(0,3).map(p=>p.name):[];
   }
+  function tenderEvidence(index,plantId,reason,sourceSuppliers=[]){
+    const evidence=(index.byPlant.get(plantId)||[]).filter(o=>
+      (o.parameterRole||o.sourceEvidence?.parameterRole)!=='requested' &&
+      !['needs_review','superseded'].includes(o.recordStatus));
+    if(!evidence.length)return {status:'unmatched',recognized:true,archival:false,
+      message:'Biljka je prepoznata u indeksu. '+reason+' Nema povezanih cenovničkih zapisa.',
+      suppliers:[],values:['','','','','','Biljka je prepoznata, nema povezanih ponuda. '+reason]};
+    const ordered=evidence.slice().sort((a,b)=>(euroPrice(a)??Infinity)-(euroPrice(b)??Infinity)||a.id.localeCompare(b.id));
+    const rows=ordered.map(o=>{
+      const nursery=index.nurseries.get(o.nurseryId)?.name||o.nurseryId;
+      const price=euroPrice(o);
+      const label=price===null?'cena nije potvrđena u EUR':price.toLocaleString('sr-Latn-RS',{minimumFractionDigits:2,maximumFractionDigits:2})+' €';
+      const date=dateValue(o);
+      return nursery+' — '+(o.priceKind==='historical'?'ARHIVA':'IZVOR')+' '+label+
+        '; '+(parameters(o)||'bez potvrđenih parametara')+
+        '; '+(o.source||o.id)+(date?'; datum '+date:'');
+    });
+    const suppliers=ordered.map(o=>({
+      name:(index.nurseries.get(o.nurseryId)?.name||o.nurseryId)+
+        (o.priceKind==='historical'?' · ARHIVA':' · ZA PROVERU'),
+      price:euroPrice(o),offerIds:[o.id],nurseryId:o.nurseryId,
+      historical:o.priceKind==='historical'
+    }));
+    const archived=ordered.some(o=>o.priceKind==='historical');
+    const message='Biljka je prepoznata; izvori postoje. '+reason+
+      ' Iznosi iz arhive i nepotpuno provereni izvori nisu predstavljeni kao sigurna aktuelna nabavna cena.';
+    return {status:'unmatched',recognized:true,archival:archived,requiresReview:true,plantId,
+      suppliers,message,price:null,
+      values:[rows.join('\n'),'','','Nezavisno proveriti vrstu, parametre, kvalitet i današnju dostupnost.','',message]};
+  }
   function recommendTender(index,input,options={}){
     const requested={...input},found=findPlant(index,requested.name,requested.cultivar);
     if(!String(requested.name??'').trim())
@@ -213,7 +243,7 @@
         values:['','','','','',message]};
     }
     if(requested._validationError)
-      return historicalReference(index,found.id,'Ulazni zahtev za proveru: '+requested._validationError);
+      return tenderEvidence(index,found.id,'Ulazni zahtev za proveru: '+requested._validationError);
     const qualitative=String(requested.preferences||'').trim();
     const sourceDescription=String(requested.sourceDescription||'').trim();
     const structured=MEASURES.some(k=>String(requested[k]??'').trim())||
@@ -234,7 +264,7 @@
     const reason=[checked.status==='matched'?
       'Dimenzije su uporedive, ali aktuelna cena, lager ili kvalitet nisu potvrđeni.':
       checked.message,...review].filter(Boolean).join(' ');
-    const evidence=historicalReference(index,found.id,reason,checked.suppliers||[]);
+    const evidence=tenderEvidence(index,found.id,reason,checked.suppliers||[]);
     return {...evidence,recognized:true,requiresReview:review.length>0,
       alternatives,baseStatus:checked.status};
   }
