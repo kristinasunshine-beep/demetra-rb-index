@@ -37,19 +37,34 @@
     return best;
   }
   function informationalHeader(value){return GENERATED_HEADERS.includes(norm(value))||/^(?:r b|r br|rb|redni broj|broj|id|sifra|oznaka|code|dionica|deonica|lokacija|grupa biljaka|kategorija|grupa|izvor|source|izvorni dokument|dokument|domaci naziv|narodni naziv|srpski naziv|hrvatski naziv|common name|cena|cijena|jedinicna cena|jedinicna cijena|nabavna cena|ukupno|iznos|total|price|rasadnik|dobavljac|supplier)(?:\s+(?:eur|euro|evra|evro|pdv|sa pdv|bez pdv))?$/.test(norm(value));}
+  function looksBotanical(value){
+    // Recognize unmatched Latin species names in headerless spreadsheets so they
+    // are reported as missing, rather than silently leaving the sheet unprocessed.
+    return /^[A-Z][a-z]{2,}\s+[a-z][a-z-]{2,}(?:\s+(?:['‘’][^'‘’]+['‘’]|×\s+[a-z-]+))?$/.test(String(value??'').trim());
+  }
+  function isAdministrativeColumn(rows,column){
+    const values=rows.map(row=>String(row?.[column]??'').trim()).filter(Boolean);
+    if(!values.length)return false;
+    return values.every(value=>
+      /^(?:arhiva|archive|istorijska ponuda|istorijski cenovnik|aktuelno|active|current|izvor|source|ponuda)$/i.test(value)||
+      /^(?:record|offer|plant|entry|row)-[\w-]+$/i.test(value)||
+      /^\d{1,3}(?:[ .]\d{3})*(?:[.,]\d+)?\s*(?:EUR|€|RSD|din)\s*$/i.test(value)||
+      /^\d+(?:[.,]\d+)?$/.test(value)
+    );
+  }
   function detectSheet(rows,index,options={}){
     const guess=detectHeader(rows,index),headers=guess.headers||[],tokens=headers.map(norm);
     const auxiliary=tokens.some(v=>/^(?:parametar|parameter|naziv parametra)$/.test(v))&&tokens.some(v=>/^(?:vrednost|vrijednost|value)$/.test(v));
     if(auxiliary)return {headerRow:guess.row,map:{},headers,dataStartRow:guess.dataStartRow,hasHeader:true,enabled:false,reason:'Pomoćni list sa pojedinačnim parametrima sačuvan je bez dupliranja biljaka.'};
     let hasHeader=guess.hasHeader,headerRow=guess.row,dataStartRow=guess.dataStartRow,map={...guess.map},effectiveHeaders=headers;
     if(!hasHeader){
-      const counts=new Map();for(let r=0;r<Math.min(rows.length,240);r++)(rows[r]||[]).forEach((v,c)=>{if(!index||!String(v??'').trim())return;const found=findPlant(index,v);if(found.id){const hit=counts.get(c)||{count:0,first:r};hit.count++;counts.set(c,hit);}});
+      const counts=new Map();for(let r=0;r<Math.min(rows.length,240);r++)(rows[r]||[]).forEach((v,c)=>{if(!index||!String(v??'').trim())return;const found=findPlant(index,v);if(found.id||looksBotanical(v)){const hit=counts.get(c)||{count:0,first:r};hit.count+=found.id?3:1;counts.set(c,hit);}});
       const ranked=[...counts.entries()].sort((a,b)=>b[1].count-a[1].count);
       if(!ranked.length||ranked[1]&&ranked[1][1].count===ranked[0][1].count)return {headerRow:-1,map:{},headers:[],dataStartRow:0,hasHeader:false,enabled:false,reason:'List ne sadrži jednoznačno prepoznat spisak biljaka.'};
       map={name:ranked[0][0]};hasHeader=false;headerRow=-1;dataStartRow=0;effectiveHeaders=Array(rows.reduce((width,row)=>Math.max(width,row?.length||0),0)).fill('');
     }
     const used=new Set(Object.values(map).flat());
-    const descriptions=[];for(let c=0;c<effectiveHeaders.length;c++)if(!used.has(c)&&!informationalHeader(effectiveHeaders[c])&&rows.slice(dataStartRow,dataStartRow+240).some(row=>String(row?.[c]??'').trim()))descriptions.push(c);
+    const descriptions=[];for(let c=0;c<effectiveHeaders.length;c++)if(!used.has(c)&&!informationalHeader(effectiveHeaders[c])&&!isAdministrativeColumn(rows.slice(dataStartRow,dataStartRow+240),c)&&rows.slice(dataStartRow,dataStartRow+240).some(row=>String(row?.[c]??'').trim()))descriptions.push(c);
     if(descriptions.length)map.preferences=[...new Set([].concat(map.preferences??[],descriptions))];
     return {headerRow,map,headers:effectiveHeaders,dataStartRow,hasHeader,enabled:true};
   }
