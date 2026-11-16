@@ -685,7 +685,11 @@
       "searchAliases": [
         "Acer freemanii"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-0636b16b420d32444682a681.jpg",
+        "sourceUrl": "https://www.vannuccipiante.it/healthy_plants/acer-x-freemanii/"
+      }
     },
     {
       "id": "plant-960523df19e42d",
@@ -6300,7 +6304,11 @@
         "Prunus cerasifera 'Pissardi'",
         "Prunus pissardii"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-edd03fce1764ffbd0ddebc3f.jpg",
+        "sourceUrl": "https://www.vannuccipiante.it/healthy_plants/prunus-cerasifera-pissardii/"
+      }
     },
     {
       "id": "plant-512dcc509b276f",

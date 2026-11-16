@@ -1,16 +1,16 @@
 {
   "schemaVersion": 2,
   "status": "partial",
-  "requests": 723,
+  "requests": 557,
   "workers": 8,
   "events": [],
   "coverage": {
     "schemaVersion": 2,
-    "checkedAt": "2026-11-16T11:28:13Z",
+    "checkedAt": "2026-11-16T12:05:05Z",
     "status": "partial",
     "plants": 619,
     "plantsInventoried": 619,
-    "plantsWithPhoto": 425,
+    "plantsWithPhoto": 446,
     "plantsWithoutPhoto": [
       {
         "plantId": "plant-ee364e988134ba",
@@ -23,10 +23,6 @@
       {
         "plantId": "plant-eac4a83d81ce66",
         "latinName": "Acer palmatum 'Disectum'"
-      },
-      {
-        "plantId": "plant-cc21d9ee76f153",
-        "latinName": "Acer palmatum 'Seiryu'"
       },
       {
         "plantId": "plant-ea9d1ba6a468c5",
@@ -45,10 +41,6 @@
         "latinName": "Acer saccharinum 'Asplenifolium'"
       },
       {
-        "plantId": "plant-274066fb782dbf",
-        "latinName": "Acer x freemanii"
-      },
-      {
         "plantId": "plant-bcef3f3c122b68",
         "latinName": "Achillea 'Red Velvet'"
       },
@@ -63,10 +55,6 @@
       {
         "plantId": "plant-55f453754f82bd",
         "latinName": "Aesculus indica"
-      },
-      {
-        "plantId": "plant-43a8171726fcdd",
-        "latinName": "Ajuga reptans 'Catlins Giant'"
       },
       {
         "plantId": "plant-7678bcfc643713",
@@ -133,10 +121,6 @@
         "latinName": "Callicarpa japonica 'Kwangtungensis'"
       },
       {
-        "plantId": "plant-79e5dadb762dfc",
-        "latinName": "Campanula portenschlagiana"
-      },
-      {
         "plantId": "plant-af044c2feaa8a5",
         "latinName": "Carex buchananii 'Firefox'"
       },
@@ -157,10 +141,6 @@
         "latinName": "Carex morrovii 'Variegata'"
       },
       {
-        "plantId": "plant-6abc01a65c45b7",
-        "latinName": "Carex testacea 'Prairie Fire'"
-      },
-      {
         "plantId": "plant-de609ad6a8d046",
         "latinName": "Carpinus betulus 'Fastigiata' feathered tree"
       },
@@ -171,10 +151,6 @@
       {
         "plantId": "plant-c70c1d1764e1a1",
         "latinName": "Caryopteris incana 'Pavilon Pink'"
-      },
-      {
-        "plantId": "plant-b20f33d07166cb",
-        "latinName": "Caryopteris x clandonensis 'Summer Sorbet'"
       },
       {
         "plantId": "plant-7e01e6cb52d3de",
@@ -189,20 +165,12 @@
         "latinName": "Cedrus deodara 'Karl Fuchs'"
       },
       {
-        "plantId": "plant-03332cc004a85e",
-        "latinName": "Cedrus libani 'Glauca Pendula'"
-      },
-      {
         "plantId": "plant-158e048d4ead5d",
         "latinName": "Chamaecyparis lawsoniana"
       },
       {
         "plantId": "plant-2ebeb0e8ff455f",
         "latinName": "Chamaecyparis lawsoniana 'Alumii'"
-      },
-      {
-        "plantId": "plant-0a77808e3edf13",
-        "latinName": "Chamaecyparis lawsoniana 'Columnaris'"
       },
       {
         "plantId": "plant-f3c06d6a9c2baf",
@@ -237,10 +205,6 @@
         "latinName": "Cotinus coggygria 'Atropurpurea'"
       },
       {
-        "plantId": "plant-d22f43268706fa",
-        "latinName": "Cotoneaster dammeri"
-      },
-      {
         "plantId": "plant-1e15dc4052e9b6",
         "latinName": "Crataegus monogyna Rosea"
       },
@@ -259,10 +223,6 @@
       {
         "plantId": "plant-2ab84b946b895e",
         "latinName": "Deschampsia cespitosa 'Trautrager'"
-      },
-      {
-        "plantId": "plant-f816663b421aad",
-        "latinName": "Deutzia gracilis 'Nikko'"
       },
       {
         "plantId": "plant-b3ec587a9a14bd",
@@ -301,10 +261,6 @@
         "latinName": "Euonymus fortunei"
       },
       {
-        "plantId": "plant-ad030630aebb83",
-        "latinName": "Euonymus fortunei 'Harlequin'"
-      },
-      {
         "plantId": "plant-849f15111e5047",
         "latinName": "Eupatorium maculatum 'Atropurpurea'"
       },
@@ -335,14 +291,6 @@
       {
         "plantId": "plant-f45db48e72b497",
         "latinName": "Fargesia nitida 'Black Pearl'"
-      },
-      {
-        "plantId": "plant-8033602353d119",
-        "latinName": "Fargesia robusta 'Campbell'"
-      },
-      {
-        "plantId": "plant-4e7ed2976c3e5e",
-        "latinName": "Festuca glauca"
       },
       {
         "plantId": "plant-7ddbfac0f54d7b",
@@ -383,10 +331,6 @@
       {
         "plantId": "plant-d1062b9945f832",
         "latinName": "Hedera helix 'Erecta'"
-      },
-      {
-        "plantId": "plant-5c2da33cccb7f8",
-        "latinName": "Helichrysum italicum"
       },
       {
         "plantId": "plant-af27098d701cd9",
@@ -461,10 +405,6 @@
         "latinName": "Kniphofia hybrida 'Mango Popsicle'"
       },
       {
-        "plantId": "plant-115062730a44a6",
-        "latinName": "Lagerstroemia 'Tuscarora'"
-      },
-      {
         "plantId": "plant-300c9363fc8e14",
         "latinName": "Lavandula stoechas"
       },
@@ -475,10 +415,6 @@
       {
         "plantId": "plant-250d3cfa5a6d06",
         "latinName": "Liquidambar styraciflua 'Gum"
-      },
-      {
-        "plantId": "plant-8df6466e6a68e4",
-        "latinName": "Liriodendron tulipifera 'Aureomarginatum'"
       },
       {
         "plantId": "plant-c929416d95e605",
@@ -517,10 +453,6 @@
         "latinName": "Nepeta fastigiata"
       },
       {
-        "plantId": "plant-f5569fc2e224b3",
-        "latinName": "Ophiopogon japonicus"
-      },
-      {
         "plantId": "plant-98da30d6cdab1b",
         "latinName": "Ophiopogon planiscapus 'Nigrescens'"
       },
@@ -549,20 +481,12 @@
         "latinName": "Persicaria amplexicaulis 'Summer Dance'"
       },
       {
-        "plantId": "plant-a673ae8c07c8a4",
-        "latinName": "Persicaria bistorta"
-      },
-      {
         "plantId": "plant-d5b3484c0630a1",
         "latinName": "Phlox douglasii 'Lilac cloud'"
       },
       {
         "plantId": "plant-d8dfb013fd1c3f",
         "latinName": "Photinia fasserii 'Red Robin' P"
-      },
-      {
-        "plantId": "plant-1b32527d81ccd6",
-        "latinName": "Photinia x fraseri 'Little Red Robin'"
       },
       {
         "plantId": "plant-1e09c82f7b33b3",
@@ -693,10 +617,6 @@
         "latinName": "Salvia nemorioa 'Berggarten'"
       },
       {
-        "plantId": "plant-40eb8ef6290b82",
-        "latinName": "Salvia officinalis"
-      },
-      {
         "plantId": "plant-f7f490785ef2e3",
         "latinName": "Salvia x sylvestris 'Mainacht'"
       },
@@ -777,10 +697,6 @@
         "latinName": "Veronica hybrida 'Blue Indigo'"
       },
       {
-        "plantId": "plant-4466ccc42f55fb",
-        "latinName": "Vinca minor 'Atropurpurea'"
-      },
-      {
         "plantId": "plant-1b5175e2a2f097",
         "latinName": "Vinca minor ralph shugert"
       },
@@ -789,11 +705,11 @@
         "latinName": "Viola tricolor"
       }
     ],
-    "coveragePercent": 68.66,
+    "coveragePercent": 72.05,
     "activeOffers": 2941,
-    "remainingOffers": 356
+    "remainingOffers": 308
   },
   "nonPhotoDataUnchanged": true,
-  "newlyVerified": 37,
+  "newlyVerified": 2,
   "refreshCandidates": 0
 }

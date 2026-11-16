@@ -10139,6 +10139,52 @@
       "sha256": "899d3f0388e8e952838bde9e0d5f0f2022d025633d7337f47f382a129fa2fdd3",
       "checkedAt": "2026-11-16T10:51:41Z",
       "matchLevel": "exact"
+    },
+    "plant-ce3fc8d22cadc1": {
+      "provider": "supplying_nursery",
+      "nurseryId": "vannucci-piante",
+      "imageUrl": "https://www.vannuccipiante.it/wp-content/uploads/2024/08/PRUNUS-CERASIFERA-PISSARDI-CLT.230-25-30-ALTO-FUSTO_AVX190B48C.jpg",
+      "sourceUrl": "https://www.vannuccipiante.it/healthy_plants/prunus-cerasifera-pissardii/",
+      "matchedName": "Prunus cerasifera 'Pissardii'",
+      "identityEvidence": {
+        "method": "page_primary_image",
+        "canonicalName": "Prunus cerasifera 'Pissardii'"
+      },
+      "imageHosts": [
+        "webshop.vannuccipiante.it",
+        "www.vannuccipiante.it"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "prunus cerasifera pissardii",
+      "latinName": "Prunus cerasifera 'Pissardii'",
+      "image": "assets/biljke/reference-edd03fce1764ffbd0ddebc3f.jpg",
+      "sha256": "edd03fce1764ffbd0ddebc3facad3ab953344cde09168e73316c3e281df23b42",
+      "checkedAt": "2026-11-16T12:03:00Z",
+      "matchLevel": "exact"
+    },
+    "plant-274066fb782dbf": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "vannucci-piante",
+      "imageUrl": "https://www.vannuccipiante.it/wp-content/uploads/2024/08/acer-freemani-autumn-blaze-clt70.jpg",
+      "sourceUrl": "https://www.vannuccipiante.it/healthy_plants/acer-x-freemanii/",
+      "matchedName": "Acer x freemanii",
+      "identityEvidence": {
+        "method": "page_primary_image",
+        "canonicalName": "Acer x freemanii"
+      },
+      "imageHosts": [
+        "webshop.vannuccipiante.it",
+        "www.vannuccipiante.it"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "acer freemanii",
+      "latinName": "Acer x freemanii",
+      "image": "assets/biljke/reference-0636b16b420d32444682a681.jpg",
+      "sha256": "0636b16b420d32444682a681b7642369541f42d6f2dc9d847b08481ea5f91f31",
+      "checkedAt": "2026-11-16T12:03:30Z",
+      "matchLevel": "exact"
     }
   },
   "retiredReferences": {
@@ -10178,17 +10224,17 @@
   "excludedImageHashes": [
     "025fd0a8c72d28992d92e8edccafd10e7dd37d8dbb65453c43b2b7ff99c19b0c",
     "036edb598df522dc58c1629d35d8406524c0316a6923d35e801cadbfe577e57f",
+    "0a128c2adc848afb79d7798882df88f44cec4a2bc9a9e34423a0c6b332a280b3",
     "17a0ead2ea587bb361b06395e068d06bc059c3b4081da00b075b0a9e910598d3",
     "433cfda1660b8abb16382287119ce611e3f8091b54844278988ee02fb883a11f",
     "60f663455036df48f7bf03880c3acc880b8ea7cda10aaeac8740246aac8e85e5",
     "6b8c491aae2753765c93a6cdfc578d6272223b6e25f5bbc3d57274522ecbfa89",
+    "747ec20268bf7c3015312a8b361bae9638fb4b7b32f59398616337db278ee239",
     "7af531db62aa9be6a29521a154b0efed07393ee54aa3f5eba452fb4863a38c60",
     "7c8c9791f48b31f8f099def88389a80526e368b066412ede670e93f090d6c3dc",
     "9b36c96ac12bdfb6ce7f2b3c644c182be8dcc4f08f0ca3288a406ddd4a8ffc30",
     "e7f60f00ea6dbff2201d792ceb7f61f703e1bd1531f505e7a1ca6077cdf0cc2d",
-    "f9e15c42a054e3cdae830394fb68172ce1b3509a92fa031e5c7878c13f9ecd08",
-    "747ec20268bf7c3015312a8b361bae9638fb4b7b32f59398616337db278ee239",
-    "0a128c2adc848afb79d7798882df88f44cec4a2bc9a9e34423a0c6b332a280b3"
+    "f9e15c42a054e3cdae830394fb68172ce1b3509a92fa031e5c7878c13f9ecd08"
   ],
   "excludedImageUrls": [
     "https://innocentiemangonipiante.it/wp-content/uploads/2023/06/1641208648.jpg",
@@ -10198,10 +10244,10 @@
     "https://innocentiemangonipiante.it/wp-content/uploads/2023/11/1697015648.jpg",
     "https://smitsbv.nl/wp-content/uploads/2026/01/1200x630px-sociaal-delen-website.jpg",
     "https://www.lorberg.com/content/files/12313/Liriope-muscari-Royal-Purple-1200x630-proportionalbiggest.webp",
-    "https://www.lorberg.com/content/files/4560/Acer-platanoides-1200x630-proportionalbiggest.webp",
-    "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/ASNBMBAL_369_1212202210140.jpg",
     "https://www.lorberg.com/content/files/3236/Cotoneaster-dammeri-Coral-Beauty-1200x630-proportionalbiggest.webp",
-    "https://www.lve-baumschule.de/media/44/03/2e/1646915979/7067443.JPG"
+    "https://www.lorberg.com/content/files/4560/Acer-platanoides-1200x630-proportionalbiggest.webp",
+    "https://www.lve-baumschule.de/media/44/03/2e/1646915979/7067443.JPG",
+    "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/ASNBMBAL_369_1212202210140.jpg"
   ],
   "ambiguousImages": {
     "00c3461d712e824d5b955f9e98278488c065441008be4c10fee7590a131579be": [
