@@ -61,9 +61,11 @@
         button.classList.toggle('is-added', active);
         button.textContent = active ? '✓ U mojoj ponudi' : 'Dodaj u moju ponudu';
       });
-      el('my-quote-count').textContent = String(quote.items.length);
-      const count=quote.items.length, last=count%10, teen=count%100;
-      const word=last===1&&teen!==11?'stavka':last>=2&&last<=4&&(teen<12||teen>14)?'stavke':'stavki';
+      // Count botanical species, not duplicate nursery offers of the same plant.
+      const count = new Set(quote.items.map(item => item.plantId || item.latinName)).size;
+      const last = count % 10, teen = count % 100;
+      const word = last === 1 && teen !== 11 ? 'biljka' : last >= 2 && last <= 4 && (teen < 12 || teen > 14) ? 'biljke' : 'biljaka';
+      el('my-quote-count').textContent = '(' + count + ')';
       nav.setAttribute('aria-label', `Moja ponuda, ${count} ${word}`);
       nav.setAttribute('aria-expanded', String(opened));
     }
