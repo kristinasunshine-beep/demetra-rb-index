@@ -1,6 +1,7 @@
 import sys
 from pathlib import Path
 import unittest
+from urllib.parse import urlencode
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from update_photos import FetchResult, PhotoError
@@ -76,6 +77,68 @@ class VolentisTests(unittest.TestCase):
         rows = source.parse_cards(card('ACER PALMATUM SEIRYU'), PAGE, "Acer palmatum 'Seiryu'")
         self.assertEqual(rows[0]['matchedName'], "Acer palmatum 'Seiryu'")
         self.assertEqual(rows[0]['identityEvidence']['name'], 'ACER PALMATUM SEIRYU')
+
+    def test_observed_later_page_exact_photo_is_returned(self):
+        name="Acer palmatum 'Seiryu'"
+        later='https://portal.volentis.com/en/offers/2?'+urlencode({'SearchText':name})
+        calls=[]
+        def fetch(url,**kwargs):
+            calls.append(url)
+            body=(card(image='https://cdn.volentis.com/logos/a.png',extra_class='default')+
+                  '<a class="page-link" href="'+later+'">2</a>') if len(calls)==1 else card()
+            return FetchResult(body.encode(),url,'text/html')
+        rows=source.candidates(name,fetcher=fetch)
+        self.assertEqual(calls,[source.search_url(name),later])
+        self.assertEqual(len(rows),1)
+        self.assertEqual(rows[0]['identityEvidence']['pageUrl'],later)
+
+    def test_pagination_rejects_wrong_query_host_path_and_extra_parameters(self):
+        name='Acer palmatum'
+        bad=['https://evil.example/en/offers/2?SearchText=Acer+palmatum',
+             'https://portal.volentis.com/en/offers/2?SearchText=Acer',
+             'https://portal.volentis.com/en/offers/2?SearchText=Acer+palmatum&ShapeType=Other',
+             'https://portal.volentis.com/en/dashboard?SearchText=Acer+palmatum',
+             'https://portal.volentis.com/en/offers/2',
+             'http://portal.volentis.com/en/offers/2?SearchText=Acer+palmatum']
+        body=''.join('<a class="page-link" href="'+url+'">2</a>' for url in bad)
+        calls=[]
+        def fetch(url,**kwargs):
+            calls.append(url)
+            return FetchResult(body.encode(),url,'text/html')
+        self.assertEqual(source.candidates(name,fetcher=fetch),[])
+        self.assertEqual(len(calls),1)
+
+    def test_later_wrong_cultivar_and_placeholder_stay_rejected(self):
+        name="Acer palmatum 'Seiryu'"
+        later='https://portal.volentis.com/en/offers/2?'+urlencode({'SearchText':name})
+        def fetch(url,**kwargs):
+            body=('<a class="page-link" href="'+later+'">2</a>') if '/1?' in url else (
+                  card(name="Acer palmatum 'Bloodgood'")+card(image='https://cdn.volentis.com/logos/a.png'))
+            return FetchResult(body.encode(),url,'text/html')
+        self.assertEqual(source.candidates(name,fetcher=fetch),[])
+
+    def test_page_cap_and_each_observed_page_robots(self):
+        calls=[]
+        def fetch(url,**kwargs):
+            calls.append(url)
+            page=int(url.split('/offers/')[1].split('?')[0])
+            link='https://portal.volentis.com/en/offers/'+str(page+1)+'?SearchText=Acer+palmatum'
+            return FetchResult(('<a class="page-link" href="'+link+'">next</a>').encode(),url,'text/html')
+        source.candidates('Acer palmatum',fetcher=fetch)
+        self.assertEqual(len(calls),10)
+        calls.clear()
+        source.candidates('Acer palmatum',fetcher=fetch,robots_rules='User-agent: *\nDisallow: /en/offers/2')
+        self.assertEqual(len(calls),1)
+
+    def test_shared_budget_exception_propagates_without_extra_page_requests(self):
+        calls=[]
+        def fetch(url,**kwargs):
+            calls.append(url)
+            if len(calls)==2:raise PhotoError('budget_exhausted','Shared budget exhausted')
+            return FetchResult(b'<a class="page-link" href="/en/offers/2?SearchText=Acer+palmatum">2</a>',url,'text/html')
+        with self.assertRaisesRegex(PhotoError,'budget'):
+            source.candidates('Acer palmatum',fetcher=fetch)
+        self.assertEqual(len(calls),2)
 
 
 if __name__ == '__main__':

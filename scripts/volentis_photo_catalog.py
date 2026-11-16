@@ -15,7 +15,7 @@ from pathlib import Path
 import re
 import threading
 import time
-from urllib.parse import urlencode, urljoin, urlsplit
+from urllib.parse import parse_qs, urlencode, urljoin, urlsplit
 from urllib.robotparser import RobotFileParser
 
 from update_photos import Document, PhotoError, check_url, fetch_resource, identity_matches
@@ -92,24 +92,75 @@ def parse_cards(source, page_url, latin_names):
     return result
 
 
-def candidates(latin_name, *, fetcher=fetch_resource, timeout=20, robots_rules=None):
+def _listing_page(url, latin_name):
+    """Only the observed public listing route with the unchanged search."""
+    try:
+        check_url(url, PAGE_HOSTS)
+    except PhotoError:
+        return None
+    parsed = urlsplit(url)
+    number = re.fullmatch(r'/en/offers/([1-9][0-9]*)', parsed.path)
+    if not number or parsed.fragment or parse_qs(parsed.query, keep_blank_values=True) != {'SearchText': [latin_name]}:
+        return None
+    return int(number.group(1))
+
+
+def pagination_links(source, page_url, latin_name):
+    """Follow actual pagination anchors; never manufacture page URLs."""
+    pages = {}
+    for node in Document(source).nodes:
+        if node.tag != 'a' or 'page-link' not in node.attrs.get('class', '').split():
+            continue
+        href = node.attrs.get('href', '')
+        if not href or href.startswith('#'):
+            continue
+        url = urljoin(page_url, href)
+        number = _listing_page(url, latin_name)
+        if number is not None:
+            pages.setdefault(number, url)
+    return pages
+
+
+def candidates(latin_name, *, fetcher=fetch_resource, timeout=20, robots_rules=None, max_pages=10):
+    if not 1 <= max_pages <= 10:
+        raise ValueError('Volentis pagination is limited to 1-10 pages.')
     url = search_url(latin_name)
+    robots = None
     if robots_rules is not None:
         robots = RobotFileParser()
         robots.parse(robots_rules.splitlines() if isinstance(robots_rules, str) else robots_rules)
         if not robots.can_fetch('DemetraPhotoBot', url):
             raise PhotoError('robots_disallowed', 'Public catalogue search is disallowed by robots.txt.')
-    response = fetcher(url, hosts=PAGE_HOSTS, max_bytes=3_000_000,
-                       timeout=timeout, kind='page')
-    check_url(response.url, PAGE_HOSTS)
-    if response.content_type not in ('text/html', 'application/xhtml+xml'):
-        raise PhotoError('wrong_content_type', 'Volentis search did not return HTML.')
-    return parse_cards(response.body.decode('utf-8', 'replace'), response.url, latin_name)
+    pending, visited, result, seen = {1: url}, set(), [], set()
+    while pending and len(visited) < max_pages:
+        number = min(pending)
+        page_url = pending.pop(number)
+        visited.add(number)
+        if robots is not None and not robots.can_fetch('DemetraPhotoBot', page_url):
+            continue
+        # Every page goes through the caller's existing shared request budget,
+        # deadline, response cache and host concurrency limits.
+        response = fetcher(page_url, hosts=PAGE_HOSTS, max_bytes=3_000_000,
+                           timeout=timeout, kind='page')
+        if _listing_page(response.url, latin_name) != number:
+            raise PhotoError('wrong_search_page', 'Volentis redirected to a different search or listing page.')
+        if response.content_type not in ('text/html', 'application/xhtml+xml'):
+            raise PhotoError('wrong_content_type', 'Volentis search did not return HTML.')
+        source = response.body.decode('utf-8', 'replace')
+        for candidate in parse_cards(source, response.url, latin_name):
+            key = candidate['sourceUrl'], candidate['imageUrl']
+            if key not in seen:
+                seen.add(key)
+                result.append(candidate)
+        for next_number, next_url in pagination_links(source, response.url, latin_name).items():
+            if next_number not in visited:
+                pending.setdefault(next_number, next_url)
+    return result
 
 
 def discover(plants, *, fetcher=fetch_resource, max_seconds=900, request_budget=300,
              workers=2, cache_dir=None):
-    """Bounded read-only first search page per plant, at most two in flight."""
+    """Bounded read-only paginated searches, at most two requests in flight."""
     if not 1 <= workers <= 2 or not 1 <= request_budget <= 300 or not 1 <= max_seconds <= 900:
         raise ValueError('Invalid discovery limits')
     stop = threading.Event()
