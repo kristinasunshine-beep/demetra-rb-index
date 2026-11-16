@@ -177,7 +177,69 @@
     }
     return text.replace(/^\s*[;,:]\s*/,'');
   }
+
+  // Tender-specific mode keeps incomplete archival evidence visible without
+  // presenting historical prices or unverified qualitative requirements as current.
+  function editDistance(a,b){
+    let previous=Array.from({length:b.length+1},(_,i)=>i);
+    for(let i=1;i<=a.length;i++){
+      const row=[i];
+      for(let j=1;j<=b.length;j++)row.push(Math.min(row[j-1]+1,previous[j]+1,previous[j-1]+(a[i-1]===b[j-1]?0:1)));
+      previous=row;
+    }
+    return previous[b.length];
+  }
+  function nameSuggestions(index,value){
+    const name=norm(value),genus=name.split(' ')[0];
+    const candidates=[...index.plants.values()]
+      .filter(p=>norm(p.latinName).split(' ')[0]===genus)
+      .map(p=>({name:p.latinName,distance:editDistance(norm(p.latinName),name)}))
+      .sort((a,b)=>a.distance-b.distance||a.name.localeCompare(b.name));
+    const close=candidates.filter(p=>p.distance<=2).slice(0,3).map(p=>p.name);
+    if(close.length)return close;
+    const related=candidates.filter(p=>norm(p.name).startsWith(name+' ')).slice(0,3).map(p=>p.name);
+    if(related.length)return related;
+    return /^[a-z]+ (?:spp?|ssp)\.?$/i.test(name)?candidates.slice(0,3).map(p=>p.name):[];
+  }
+  function recommendTender(index,input,options={}){
+    const requested={...input},found=findPlant(index,requested.name,requested.cultivar);
+    if(!String(requested.name??'').trim())
+      return {status:'empty',message:'',values:Array(EXTRA_HEADERS.length).fill('')};
+    if(found.error){
+      const candidates=nameSuggestions(index,requested.name);
+      const message=found.error+(candidates.length?
+        ' Za stručnu proveru (bez automatske zamene): '+candidates.join('; ')+'.':'');
+      return {status:'unmatched',recognized:false,candidates,message,suppliers:[],
+        values:['','','','','',message]};
+    }
+    if(requested._validationError)
+      return historicalReference(index,found.id,'Ulazni zahtev za proveru: '+requested._validationError);
+    const qualitative=String(requested.preferences||'').trim();
+    const sourceDescription=String(requested.sourceDescription||'').trim();
+    const structured=MEASURES.some(k=>String(requested[k]??'').trim())||
+      ['rootType','seedlingType','transplantCount'].some(k=>String(requested[k]??'').trim());
+    const alternatives=/\b(?:balirano|balled)\s+ili\s+(?:kontejnirano|kontejnerirano|kontejner)\b/i.test(String(requested.rootType||''));
+    const groupPriority=/\b(?:grupni|group)\b[\s\S]{0,150}\b(?:traže|traze|obavezno|require|mora)\b/i.test(qualitative);
+    const safe={...requested,preferences:'',sourceDescription:structured?'':sourceDescription};
+    if(alternatives)safe.rootType='Kontejner';
+    const checked=recommend(index,safe,{...options,tenderMode:false});
+    const matched=(index.byPlant.get(found.id)||[]).find(o=>o.id===checked.offerId);
+    const historical=matched?.priceKind==='historical'||!matched?.priceRefresh?.checkedAt;
+    const review=[];
+    if(qualitative)review.push('Kvalitativni uslovi nisu potvrđeni u ponudi: '+qualitative);
+    if(alternatives)review.push('Isporuka navodi dve mogućnosti (balirano ili kontejnirano). '+
+      (groupPriority?'Grupni uslovi zahtevaju strožu proveru izvora.':'Izbor mora da potvrdi projektant.'));
+    if(checked.status==='matched'&&!historical&&!review.length)
+      return {...checked,status:'matched',qualitativeVerified:true};
+    const reason=[checked.status==='matched'?
+      'Dimenzije su uporedive, ali aktuelna cena, lager ili kvalitet nisu potvrđeni.':
+      checked.message,...review].filter(Boolean).join(' ');
+    const evidence=historicalReference(index,found.id,reason,checked.suppliers||[]);
+    return {...evidence,recognized:true,requiresReview:review.length>0,
+      alternatives,baseStatus:checked.status};
+  }
   function recommend(index,input,options={}){
+    if(options.tenderMode)return recommendTender(index,input,options);
     const requested={...input},found=findPlant(index,requested.name,requested.cultivar);
     const fail=(message,suppliers=[])=>({status:'unmatched',recognized:!!found.id,message,suppliers,values:[supplierText(suppliers),'','','','',message]});
     if(!String(requested.name??'').trim())return {status:'empty',message:'',values:Array(EXTRA_HEADERS.length).fill('')};
@@ -253,5 +315,5 @@
   }
   function supplierList(index,offers){const groups=new Map();for(const offer of offers){if(!groups.has(offer.nurseryId))groups.set(offer.nurseryId,[]);groups.get(offer.nurseryId).push(offer);}return [...groups].map(([nurseryId,rows])=>{const prices=rows.filter(o=>euroPrice(o)!==null&&o.price>0).map(o=>o.price);return {nurseryId,name:index.nurseries.get(nurseryId)?.name||nurseryId,price:prices.length?Math.min(...prices):null,currency:'EUR',offerIds:rows.map(o=>o.id)};}).sort((a,b)=>(a.price??Infinity)-(b.price??Infinity)||a.name.localeCompare(b.name));}
   function supplierText(suppliers){return suppliers.map(s=>s.name+' — '+(s.price===null?'cena u EUR nije navedena':s.price.toLocaleString('sr-Latn-RS',{minimumFractionDigits:2,maximumFractionDigits:2})+' €')).join('\n');}
-  return {FIELDS,EXTRA_HEADERS,norm,headerField,detectHeader,detectSheet,form,rootType,unit,taxGroup,parseMeasure,measureMatches,makeIndex,findPlant,parsePreferences,requestFromRow,newestVariants,parameters,recommend,euroPrice};
+  return {FIELDS,EXTRA_HEADERS,norm,headerField,detectHeader,detectSheet,form,rootType,unit,taxGroup,parseMeasure,measureMatches,makeIndex,findPlant,parsePreferences,requestFromRow,newestVariants,parameters,recommend,recommendTender,nameSuggestions,euroPrice};
 });
