@@ -364,3 +364,56 @@ body.control-room .quote-plant .quote-domestic{font:12px/1.45 var(--sans);color:
  body.control-room[data-view="search"] .search-popup .suggestion-common{font-size:11px}
  body.control-room .detail-common{font-size:15px!important}
 }
+
+/* 02U — Consistent Swiss editorial indices for all three sidebar tools.
+   Previous .my-quote-nav span rule in the legacy quote stylesheet put
+   the 03 index inside a green circle. Override that rule only for
+   navigation indices, without touching the live (N) quote count. */
+body.control-room .header-actions :is(a,button) > .nav-num {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex: 0 0 23px;
+  width: 23px;
+  min-width: 23px;
+  height: auto;
+  min-height: 0;
+  padding: 0 7px 0 0;
+  margin: 0;
+  background: transparent;
+  color: inherit;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  font: 700 10px/1.15 var(--mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .35px;
+  position: relative;
+}
+body.control-room .header-actions :is(a,button) > .nav-num::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 13px;
+  width: 1px;
+  background: currentColor;
+  opacity: .33;
+}
+body.control-room .header-actions :is(a,button):not(.is-current):not([aria-expanded="true"]) > .nav-num {
+  color: #FA593B;
+}
+body.control-room .header-actions :is(a,button).is-current > .nav-num,
+body.control-room .header-actions :is(a,button)[aria-expanded="true"] > .nav-num {
+  color: #161A19;
+}
+@media (max-width: 760px) {
+  body.control-room .header-actions :is(a,button) > .nav-num {
+    flex-basis: 23px;
+    width: 23px;
+    min-width: 23px;
+    font-size: 10px;
+  }
+}
