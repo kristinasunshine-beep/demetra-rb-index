@@ -58,8 +58,12 @@ try {
   await image.evaluate(el=>el.decode()).catch(()=>{});
   assert.ok(await image.evaluate(el=>el.naturalWidth)>0,'photograph loaded');
 
+  assert.equal((await page.locator('#plant-dialog .record-quote-count').innerText()).trim(),'(0)','card shortcut initially shows empty quote');
   await page.locator('#plant-dialog .quote-add').first().click();
   assert.equal((await page.locator('#my-quote-count').innerText()).trim(),'(1)','quote nav registers one selected species');
+  assert.equal((await page.locator('#plant-dialog .record-quote-count').innerText()).trim(),'(1)','card shortcut registers the same selected species');
+  assert.equal((await page.locator('#plant-dialog .record-quote-link').getAttribute('aria-label')),'Moja ponuda, 1 biljka');
+  assert.ok(await page.locator('#plant-dialog .quote-add.is-added').count()>0,'added supplier offer is saved before navigating');
 
   await page.locator('#plant-dialog .record-quote-link').click();
   await page.locator('#my-quote-view:not([hidden])').waitFor({timeout:10000});

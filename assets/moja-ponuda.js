@@ -65,7 +65,16 @@
       const count = new Set(quote.items.map(item => item.plantId || item.latinName)).size;
       const last = count % 10, teen = count % 100;
       const word = last === 1 && teen !== 11 ? 'biljka' : last >= 2 && last <= 4 && (teen < 12 || teen > 14) ? 'biljke' : 'biljaka';
-      el('my-quote-count').textContent = '(' + count + ')';
+      const counterText = '(' + count + ')';
+      el('my-quote-count').textContent = counterText;
+      // The plant-card shortcut is rendered dynamically; keep every visible shortcut
+      // in sync with the same persisted quote, including restored items.
+      document.querySelectorAll('.record-quote-count').forEach(counter => {
+        counter.textContent = counterText;
+      });
+      document.querySelectorAll('.record-quote-link[data-action="open-my-quote"]').forEach(button => {
+        button.setAttribute('aria-label', `Moja ponuda, ${count} ${word}`);
+      });
       nav.setAttribute('aria-label', `Moja ponuda, ${count} ${word}`);
       nav.setAttribute('aria-expanded', String(opened));
     }
