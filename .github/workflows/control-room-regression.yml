@@ -25,10 +25,13 @@ jobs:
           node scripts/tests/test_photo_reference_render.mjs
           node --check assets/brza-preporuka.js
           node --check assets/moja-ponuda.js
+          node --test scripts/tests/test_quick_recommendation.mjs
       - name: Run live browser interaction checks
         run: |
           npm install --no-save --no-package-lock playwright@1.56.1
           node scripts/tests/control-room-browser.mjs
+      - name: Diagnose historical plant-offer matching
+        run: node scripts/tests/diagnose_archive_matching.mjs
       - name: Validate real catalog and original source policy
         run: |
           python scripts/repair_photo_asset_paths.py

@@ -78,6 +78,30 @@ const priorOutput=[['Naziv biljke','Parametri sadnice',...Core.EXTRA_HEADERS],[r
 const repeat=Core.detectSheet(priorOutput,index);assert.deepEqual(repeat.map,{name:0,preferences:1});assert.equal(Core.recommend(index,Core.requestFromRow(priorOutput[1],repeat.map,repeat.headers)).price,65);
 const actual=await Promise.all(['biljke','rasadnici','kataloske-stavke'].map(async n=>JSON.parse(await readFile(root+'/data/'+n+'.json','utf8'))));
 const actualIndex=Core.makeIndex({plants:actual[0].plants,nurseries:actual[1].nurseries,offers:actual[2].offers});
+const archivedTable=[
+  ['Cupressus sempervirens','visina 300/400 cm, kontejnerirano, 3x presađivano','Arhiva','record-6792bed22c891f','780.00 EUR'],
+  ['Celtis australis','visina 400cm, kontejnerirano, 3x presađivano','Arhiva','record-386f70c062c2d0','165.00 EUR'],
+  ['Fraxinus ornus','visina 400cm, kontejnerirano, 3x presađivano','Arhiva','record-8966e3dbe80452','275.00 EUR']
+];
+const archivedConfig=Core.detectSheet(archivedTable,actualIndex);
+assert.equal(archivedConfig.enabled,true,'archival spreadsheet should be processed without a header');
+assert.equal(archivedConfig.map.name,0);
+assert.deepEqual(archivedConfig.map.preferences,[1],'source record IDs, status labels and archive prices must not become botanical requirements');
+assert.equal(Core.parsePreferences('visina 300/400 cm, kontejnerirano, 3x presađivano').rest,'');
+for(const [rowIndex,plantName] of [[0,'Cupressus sempervirens'],[1,'Celtis australis']]){
+  const request=Core.requestFromRow(archivedTable[rowIndex],archivedConfig.map,archivedConfig.headers);
+  const evidence=Core.recommend(actualIndex,request);
+  assert.equal(evidence.recognized,true,plantName+' species identified');
+  assert.equal(evidence.archival,true,plantName+' archival offers made visible');
+  assert.equal(evidence.status,'unmatched','a mismatched archival price must not become a confirmed recommendation');
+  assert.equal(evidence.values[2],'','leave numerical lowest purchase price blank without specification match');
+  assert.ok(evidence.values[0].includes('ARHIVA'),plantName+' archive source/prices visible');
+  assert.ok(evidence.suppliers.some(row=>row.price>0),plantName+' source price retained for review');
+}
+const unmatchedFraxinus=Core.recommend(actualIndex,Core.requestFromRow(archivedTable[2],archivedConfig.map,archivedConfig.headers));
+assert.equal(unmatchedFraxinus.recognized,false);
+assert.match(unmatchedFraxinus.message,/Fraxinus ornus 'Mecsek'/,'do not silently substitute cultivar for base species');
+
 let reviewed=0;for(const offer of actual[2].offers){if(!offer.price||['needs_review','superseded'].includes(offer.recordStatus))continue;const plant=actualIndex.plants.get(offer.plantId);const req={name:plant.latinName,circumference:offer.circumference,height:offer.height,potSize:offer.potSize,rootType:offer.rootType,seedlingType:offer.seedlingType,currency:offer.currency};const found=Core.recommend(actualIndex,req);if(found.status==='matched'){const chosen=actual[2].offers.find(o=>o.id===found.offerId);assert.equal(chosen.plantId,offer.plantId);for(const key of ['circumference','height','potSize'])if(req[key])assert(Core.measureMatches(req[key],chosen[key],key));assert.equal(chosen.currency,'EUR');assert.equal(found.price,Core.euroPrice(chosen));}reviewed++;}
 // Preserve every row and every original column, including text identifiers and literal formula-like text.
 const original=[['Naziv biljke','Obim','Šifra'],[request.name,'18-20','0012'],['=HYPERLINK("https://example.invalid")','','0000']];

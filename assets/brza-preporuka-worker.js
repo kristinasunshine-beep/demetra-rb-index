@@ -1,5 +1,5 @@
 'use strict';
-importScripts('vendor/xlsx-0.20.3.full.min.js','vendor/jszip-3.10.1.min.js','brza-preporuka-core.js?v=eur-20261113','recommendation-excel.js?v=eur-20261113');
+importScripts('vendor/xlsx-0.20.3.full.min.js','vendor/jszip-3.10.1.min.js','brza-preporuka-core.js?v=archive-20261116','recommendation-excel.js?v=eur-20261113');
 const Core=self.DemetraRecommendCore;
 let sheets=[],results=null,originalWorkbook=null;
 function send(type,data={}){postMessage({type,...data});}
@@ -19,7 +19,7 @@ self.onmessage=async({data})=>{try{
     const book=XLSX.read(input,{type:'array',dense:true,cellDates:true,cellNF:true,bookVBA:false,raw:/\.(csv|tsv)$/i.test(data.file.name)});
     if(/\.xlsx$/i.test(data.file.name))originalWorkbook=input;
     sheets=book.SheetNames.map(name=>({name,...readRows(book.Sheets[name])}));
-    const index=Core.makeIndex(data.catalog);let matched=0,unmatched=0,processed=0;const preview=[];
+    const index=Core.makeIndex(data.catalog);let matched=0,unmatched=0,processed=0,recognized=0,archival=0;const preview=[];
     results=[];const addedSheets=[],names=new Set(sheets.map(s=>s.name));
     for(let i=0;i<sheets.length;i++){
       const original=sheets[i],config=Core.detectSheet(original.rows,index,original.name);let sheet={...original,rows:original.rows.map(row=>row.slice()),processed:false};results.push(sheet);
@@ -38,14 +38,14 @@ self.onmessage=async({data})=>{try{
         const result=Core.recommend(index,request,{currency:'EUR'}),outRow=config.hasHeader===false?r+1:r;
         result.values.forEach((v,c)=>{sheet.rows[outRow][sheet.originalColumns+c]=v;});
         if(result.status!=='empty'){
-          processed++;if(result.status==='matched')matched++;else unmatched++;
+          processed++;if(result.status==='matched')matched++;else unmatched++;if(result.recognized)recognized++;if(result.archival)archival++;
           if(preview.length<40)preview.push({sheet:original.name,row:r+1,name:[request.name,request.cultivar].filter(Boolean).join(' '),parameters:original.rows[r].flatMap((value,c)=>c!==config.map.name&&String(value??'').trim()?[{label:headers[c],value:value instanceof Date?value.toISOString().slice(0,10):String(value)}]:[]),...result});
         }
         if(r%200===0){send('progress',{message:`Obrađeno ${processed.toLocaleString('sr-Latn-RS')} stavki…`,processed});await new Promise(resolve=>setTimeout(resolve,0));}
       }
     }
     results.push(...addedSheets);
-    send('results',{matched,unmatched,processed,preview});
+    send('results',{matched,unmatched,processed,recognized,archival,preview});
   }else if(data.type==='export'){
     if(!results)throw new Error('Prvo pokreni poređenje.');
     send('progress',{message:'Pripremam novu Excel tabelu…'});

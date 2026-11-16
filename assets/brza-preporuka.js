@@ -15,15 +15,15 @@
     function setBusy(value){busy=value;root.setAttribute('aria-busy',String(value));el('recommend-download').disabled=value||!hasResult;el('recommend-cancel').hidden=!value;el('recommend-file').disabled=value;}
     function ensureWorker(){
       if(worker)return worker;
-      const workerUrl=assets.workerSource?URL.createObjectURL(new Blob([assets.workerSource],{type:'text/javascript'})):new URL('./assets/brza-preporuka-worker.js?v=eur-20261113',document.baseURI);
+      const workerUrl=assets.workerSource?URL.createObjectURL(new Blob([assets.workerSource],{type:'text/javascript'})):new URL('./assets/brza-preporuka-worker.js?v=archive-20261116',document.baseURI);
       worker=new Worker(workerUrl);if(assets.workerSource)URL.revokeObjectURL(workerUrl);
       worker.onmessage=({data})=>{
         if(data.type==='progress')status(data.message);
         if(data.type==='results'){
           hasResult=true;setBusy(false);el('recommend-results').hidden=false;el('recommend-result-heading').textContent=filename;
-          el('recommend-result-counts').textContent=`Obrađeno biljaka: ${data.processed.toLocaleString('sr-Latn-RS')} · Sa odgovarajućom ponudom: ${data.matched.toLocaleString('sr-Latn-RS')} · Bez potvrđene ponude: ${data.unmatched.toLocaleString('sr-Latn-RS')}`;
-          el('recommend-results-body').innerHTML=data.preview.map(r=>`<tr class="${r.status==='matched'?'is-match':'is-unmatched'}"><td><strong>${escape(r.name)}</strong></td><td class="recommend-parameters">${(r.parameters||[]).map(p=>`<div><span>${escape(p.label)}:</span> ${escape(p.value)}</div>`).join('')||'—'}</td><td>${(r.suppliers||[]).map(s=>`<div>${escape(s.name)} <small>${escape(Number.isFinite(s.price)?euros(s.price):'Cena nije navedena')}</small></div>`).join('')||'—'}</td><td class="recommend-price">${r.price!==undefined?escape(euros(r.price)):'—'}${r.supplier?`<small>${escape(r.supplier)}</small>`:''}</td><td>${escape(r.message)}</td></tr>`).join('');
-          el('recommend-preview-note').textContent=(data.processed>data.preview.length?`Pregled prvih ${data.preview.length} biljaka. `:'')+'Excel sadrži ceo spisak, sve izvorne kolone, rasadnike i najniže nabavne cene u evrima.';
+          el('recommend-result-counts').textContent=`Obrađeno: ${data.processed.toLocaleString('sr-Latn-RS')} · Prepoznate biljke: ${(data.recognized??data.matched).toLocaleString('sr-Latn-RS')} · Tačno podudaranje: ${data.matched.toLocaleString('sr-Latn-RS')} · Arhivski tragovi bez potvrđenog podudaranja: ${(data.archival??0).toLocaleString('sr-Latn-RS')} · Bez potvrđene ponude: ${data.unmatched.toLocaleString('sr-Latn-RS')}`;
+          el('recommend-results-body').innerHTML=data.preview.map(r=>`<tr class="${r.status==='matched'?'is-match':'is-unmatched'}"><td><strong>${escape(r.name)}</strong></td><td class="recommend-parameters">${(r.parameters||[]).map(p=>`<div><span>${escape(p.label)}:</span> ${escape(p.value)}</div>`).join('')||'—'}</td><td>${(r.suppliers||[]).map(s=>`<div>${escape(s.name)} <small>${escape(Number.isFinite(s.price)?euros(s.price):'Cena nije navedena')}</small></div>`).join('')||'—'}</td><td class="recommend-price">${typeof r.price==='number'&&Number.isFinite(r.price)?escape(euros(r.price)):'—'}${r.supplier?`<small>${escape(r.supplier)}</small>`:''}</td><td>${escape(r.message)}</td></tr>`).join('');
+          el('recommend-preview-note').textContent=(data.processed>data.preview.length?`Pregled prvih ${data.preview.length} biljaka. `:'')+'Excel zadržava sve izvorne kolone. Najniža nabavna cena popunjava se samo kada je podudaranje sa traženim parametrima potvrđeno; arhivski tragovi su odvojeno označeni, bez lažne najniže cene.';
           el('recommend-results').scrollIntoView({behavior:'smooth',block:'start'});status('Gotovo. Preuzmi Excel sa preporukama.');
         }
         if(data.type==='download'){
