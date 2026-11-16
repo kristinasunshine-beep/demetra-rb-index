@@ -23,6 +23,24 @@ try {
   assert.equal(await page.locator('.control-nav-search').isVisible(),true,'sidebar search nav');
   assert.equal(await page.locator('#open-quick-recommendation').isVisible(),true);
   assert.equal(await page.locator('#open-my-quote').isVisible(),true);
+  // The legacy quote CSS gave only 03 a green circular badge.
+  // All three navigation indices must use the same unboxed typography.
+  const navIndices=await page.locator('.header-actions > :is(a,button) > .nav-num')
+    .evaluateAll(elements=>elements.map(el=>{
+      const style=getComputedStyle(el);
+      return {label:el.textContent.trim(),radius:style.borderRadius,
+        background:style.backgroundColor,height:el.getBoundingClientRect().height,
+        width:el.getBoundingClientRect().width};
+    }));
+  assert.deepEqual(navIndices.map(x=>x.label),['01','02','03']);
+  for(const index of navIndices){
+    assert.equal(index.radius,'0px',index.label+' must have no circle');
+    assert.equal(index.background,'rgba(0, 0, 0, 0)',index.label+' must have no badge background');
+    assert.ok(index.width>=22&&index.width<=25,index.label+' must align with the other indices');
+  }
+  assert.ok(Math.max(...navIndices.map(x=>x.height))-Math.min(...navIndices.map(x=>x.height))<2,
+    'all navigation numbers must have consistent height');
+
   const vernacularCoverage = await page.evaluate(async () => {
     const response = await fetch('./data/biljke.json');
     const plants = (await response.json()).plants;
