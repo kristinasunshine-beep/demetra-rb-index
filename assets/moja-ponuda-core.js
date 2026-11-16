@@ -190,6 +190,45 @@
     return /<dimension\b/.test(xml) ? xml.replace(/<dimension\b[^>]*\/>/, dimension) :
       xml.replace('<sheetViews',dimension+'<sheetViews');
   }
+  // Make the "Jed." (unit) column wide enough for ordinary Serbian words.
+  // Do not alter unit data, formulas, template colors or the other eight columns.
+  // Split any template <col> group that spans E so no adjacent widths change.
+  function setColumnWidth(xml, columnNumber, width) {
+    const columnTag = /<col\b[^>]*\/>/g;
+    const updateAttribute = (tag, name, value) => {
+      const attribute = new RegExp('\\b' + name + '="[^"]*"');
+      if (attribute.test(tag)) return tag.replace(attribute, name + '="' + value + '"');
+      return tag.replace(/\s*\/>$/, ' ' + name + '="' + value + '"/>');
+    };
+    const segment = (tag, min, max, targetWidth = null) => {
+      let revised = updateAttribute(updateAttribute(tag, 'min', min), 'max', max);
+      if (targetWidth !== null) {
+        revised = updateAttribute(revised, 'width', targetWidth);
+        revised = updateAttribute(revised, 'customWidth', 1).replace(/\sbestFit="[^"]*"/, '');
+      }
+      return revised;
+    };
+    const custom = '<col min="' + columnNumber + '" max="' + columnNumber +
+      '" width="' + width + '" customWidth="1"/>';
+    const section = xml.match(/<cols\b[^>]*>[\s\S]*?<\/cols>/)?.[0];
+    if (!section) {
+      if (!/<sheetData\b/.test(xml)) throw new Error('Nedostaje tabela za Excel izvoz.');
+      return xml.replace(/<sheetData\b/, '<cols>' + custom + '</cols><sheetData');
+    }
+    let changed = false;
+    const revised = section.replace(columnTag, tag => {
+      const min = Number(tag.match(/\bmin="(\d+)"/)?.[1]);
+      const max = Number(tag.match(/\bmax="(\d+)"/)?.[1]);
+      if (!Number.isInteger(min) || !Number.isInteger(max) || columnNumber < min || columnNumber > max) return tag;
+      changed = true;
+      return (min < columnNumber ? segment(tag, min, columnNumber - 1) : '') +
+        segment(tag, columnNumber, columnNumber, width) +
+        (max > columnNumber ? segment(tag, columnNumber + 1, max) : '');
+    });
+    return xml.replace(section, changed ? revised :
+      revised.replace(/<\/cols>$/, custom + '</cols>'));
+  }
+
   function lineHeight(values, widths, min = 30) {
     const lines = Math.max(...values.map((value, index) => String(value ?? '').split('\n')
       .reduce((sum, part) => sum + Math.max(1, Math.ceil(part.length / widths[index])), 0)));
@@ -207,6 +246,10 @@
     if (!total.ready) throw new Error('Popunite ispravnu količinu i cenu za svaku stavku pre preuzimanja.');
     const zip = await Zip.loadAsync(template, { checkCRC32: true });
     let main = spreadsheetXml(await zip.file('xl/worksheets/sheet1.xml').async('string'));
+    // The template's former 6-character unit column broke "jedinica iz
+    // cenovnika" into fragments, sometimes leaving a single letter on a line.
+    // A 16.5-character width wraps the original phrase in two natural lines.
+    main = setColumnWidth(main, 5, 16.5);
     const meta = quote.meta;
     const date = Math.round((Date.parse(meta.date + 'T00:00:00Z') - Date.UTC(1899, 11, 30)) / 86400000);
     const fields = {
@@ -229,7 +272,7 @@
       const number = index + 23, result = total.rows[index];
       const values = [index + 1, item.latinName, compactParameters(item), item.nursery, item.unit,
         result.quantity.value, result.price.value, result.amount, item.currency];
-      const height = lineHeight(values, [5, 28, 45, 22, 6, 11, 14, 15, 7], 60);
+      const height = lineHeight(values, [5, 28, 45, 22, 16, 11, 14, 15, 7], 60);
       rows += `<row r="${number}" ht="${height}" customHeight="1">` + values.map((value, column) =>
         cell(cols[column] + number, value, styles[column], column === 7 ? `ROUND(F${number}*G${number},2)` : '')).join('') + '</row>';
     });
