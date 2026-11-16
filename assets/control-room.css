@@ -292,3 +292,50 @@ body.control-room .recommend-titlebar h1 span.outline,body.control-room .quote-t
 body.control-room .recommend-titlebar h1{margin-bottom:0}
 body.control-room .quote-titlebar h1{margin-top:14px}
 body.control-room .recommend-titlebar h1,body.control-room .quote-titlebar h1{overflow-wrap:anywhere}
+
+/* QA 2026-11-16: the dark search surface inherits white text, but its
+   autocomplete results are on white; explicitly restore dark, readable text. */
+body.control-room[data-view="search"] .search-popup{
+  color:#161A19;
+  background:#FFFFFF;
+}
+body.control-room[data-view="search"] .search-popup .suggestion,
+body.control-room[data-view="search"] .search-popup .suggestion-name{
+  color:#161A19;
+  opacity:1;
+  visibility:visible;
+}
+body.control-room[data-view="search"] .search-popup .suggestion-meta{
+  color:#536357;
+}
+body.control-room[data-view="search"] .search-popup .suggestion:hover,
+body.control-room[data-view="search"] .search-popup .suggestion.selected{
+  background:#F9E6E0;
+  color:#161A19;
+}
+body.control-room[data-view="search"] .search-popup .suggestions-empty{color:#44564A}
+body.control-room .detail-topline .dialog-topline-label{
+  text-transform:none;
+  font-size:12px;
+  font-weight:650;
+  letter-spacing:0;
+  color:#263D2F;
+  overflow-wrap:anywhere;
+}
+/* Counter is a parenthesized number of distinct plant species (not offer variants). */
+body.control-room .header-actions #my-quote-count{
+  display:inline;
+  min-width:0;
+  height:auto;
+  padding:0;
+  margin-left:auto;
+  border:0;
+  background:transparent;
+  font:600 12px var(--mono);
+  color:inherit;
+  white-space:nowrap;
+}
+@media(max-width:760px){
+  body.control-room .detail-topline .dialog-topline-label{font-size:11px}
+  body.control-room .header-actions #my-quote-count{font-size:11px}
+}
