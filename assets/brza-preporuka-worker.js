@@ -35,7 +35,7 @@ self.onmessage=async({data})=>{try{
         if(!original.rows[r]?.some(value=>String(value??'').trim()))continue;
         const request=Core.requestFromRow(original.rows[r],config.map,headers);
         if(original.rows[r].includes('Formula bez sačuvane vrednosti'))request._validationError='Formula u izvornoj tabeli nema sačuvanu vrednost za poređenje.';
-        const tender=Boolean(String(request.preferences||'').trim()||String(request.sourceDescription||'').trim()||/\bili\b/i.test(String(request.rootType||'')));
+        const tender=Boolean((config.hasHeader && headers.some(h=>/izvorni opis stavke|dodatni uslovi iz troskovnika|dodatni uvjeti iz troskovnika|zahtevane karakteristike|zahtijevane karakteristike/i.test(Core.norm(h)))) || /\b(?:balirano|balled)\s+ili\s+/i.test(String(request.rootType||'')));
         const result=Core.recommend(index,request,{currency:'EUR',tenderMode:tender}),outRow=config.hasHeader===false?r+1:r;
         result.values.forEach((v,c)=>{sheet.rows[outRow][sheet.originalColumns+c]=v;});
         if(result.status!=='empty'){
