@@ -86,7 +86,11 @@
         "Acer Pacific Sunset",
         "Pacific Sunset"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-78de425fb0a7a0b7cab0336f.jpg",
+        "sourceUrl": "https://portal.volentis.com/en/offers/details/acer-pacific-sunset-fullground-avenue"
+      }
     },
     {
       "id": "plant-acer-campestre",
@@ -170,7 +174,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-292767052fc397ac947d11d9.jpg",
+        "sourceUrl": "https://www.lve-baumschule.de/acer-freemanii-celzam/6352825"
+      }
     },
     {
       "id": "plant-3af4f8935b363e",
@@ -643,7 +651,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-72cf7d94ee05423006c72e2b.jpg",
+        "sourceUrl": "https://www.lve-baumschule.de/acer-tataricum/6352873"
+      }
     },
     {
       "id": "plant-6b59a6dd768183",
@@ -937,7 +949,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-4ff09336f99512e7dc281356.jpg",
+        "sourceUrl": "https://www.lve-baumschule.de/anemone-hupehensis-praecox/6355783"
+      }
     },
     {
       "id": "plant-6da0cb91ead2d6",
@@ -961,7 +977,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-4b3915de602ff1f725e3c8c8.jpg",
+        "sourceUrl": "https://www.lve-baumschule.de/aster-amellus-rudolf-goethe/6352977"
+      }
     },
     {
       "id": "plant-7678bcfc643713",
@@ -1267,7 +1287,11 @@
       "searchAliases": [
         "Betula pend. 'Tristis'"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-fc8d6cbdad3f127ae8a9a7e2.jpg",
+        "sourceUrl": "https://www.lve-baumschule.de/betula-pendula-tristis/6353073"
+      }
     },
     {
       "id": "plant-0dbd46667617fb",
@@ -1450,7 +1474,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-a2e8bf30ce7c8d74d54deeb6.jpg",
+        "sourceUrl": "https://www.lve-baumschule.de/calamagrostis-brachytricha/6353115"
+      }
     },
     {
       "id": "plant-c1682a0147cdbb",
@@ -1564,7 +1592,11 @@
       "searchAliases": [
         "Carex Irish Green"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-bf923a8eb2f92c8f861d3114.jpg",
+        "sourceUrl": "https://www.lve-baumschule.de/carex-morrowii-irish-green/6353170"
+      }
     },
     {
       "id": "plant-db4880291fcf31",
@@ -1621,7 +1653,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-b9a5384e52659bf101a25a72.jpg",
+        "sourceUrl": "https://portal.volentis.com/en/offers/details/carpinus-betulus-beekman-fullground-avenue"
+      }
     },
     {
       "id": "plant-4adab3e6770de0",
@@ -2399,7 +2435,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-361cdc2d14422c73a1e469db.jpg",
+        "sourceUrl": "https://www.lorberg.com/en-gb/article/1166/cotoneaster-dammeri-skogholm"
+      }
     },
     {
       "id": "plant-abf8db858504cf",
@@ -2441,7 +2481,11 @@
       "searchAliases": [
         "Cotoneaster 'Coral Beauty'"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-747ec20268bf7c3015312a8b.jpg",
+        "sourceUrl": "https://www.lorberg.com/de-de/cotoneaster-x-suecicus-coral-beauty"
+      }
     },
     {
       "id": "plant-c70544f5f8cf54",
@@ -2536,7 +2580,11 @@
         "Crataegus persimilis 'Splendens'",
         "Crataegus persimilis Splendens"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-ab1a822b7ca42805104b75b1.jpg",
+        "sourceUrl": "https://portal.volentis.com/en/offers/details/crataegus-persimilis-splendens-fullground-multistemmed"
+      }
     },
     {
       "id": "plant-c049b88381debf",
@@ -2607,7 +2655,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-d40ed3422e64bbf7645cbb71.jpg",
+        "sourceUrl": "https://www.lve-baumschule.de/deschampsia-cespitosa-palava/6982498"
+      }
     },
     {
       "id": "plant-2ab84b946b895e",
@@ -2719,7 +2771,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-0997b0f529de21a8544492ed.jpg",
+        "sourceUrl": "https://www.lve-baumschule.de/echinops-bannaticus-blue-glow/6353556"
+      }
     },
     {
       "id": "plant-9e29aabd847d02",
@@ -3165,7 +3221,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-48294aaa85fda8d9f2f7229c.jpg",
+        "sourceUrl": "https://www.lve-baumschule.de/fagus-sylvatica-riversii/6353661"
+      }
     },
     {
       "id": "plant-f45db48e72b497",
@@ -3320,7 +3380,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-574fe9bfe27927607aa0bfd6.jpg",
+        "sourceUrl": "https://portal.volentis.com/en/offers/details/fraxinus-excelsior-nana-fullground-avenue"
+      }
     },
     {
       "id": "plant-4653f1f15e0283",
@@ -3624,7 +3688,11 @@
         "Hamamelis intermedia 'Diane'",
         "Hamamelis intermedia Diane"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-0a128c2adc848afb79d77988.jpg",
+        "sourceUrl": "https://www.lve-baumschule.de/hamamelis-intermedia-diane/6353799"
+      }
     },
     {
       "id": "plant-b50f4e6010238c",
@@ -3970,7 +4038,11 @@
         "Hydrangea 'Little Lime'",
         "Hydrangea paniculata Little Lime"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-64b637e7434275e3d0cda4b2.jpg",
+        "sourceUrl": "https://www.lve-baumschule.de/hydrangea-paniculata-little-lime/6996342"
+      }
     },
     {
       "id": "plant-4a0054b3f08374",
@@ -4153,7 +4225,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-264f385c97ef3e91222fc8c1.jpg",
+        "sourceUrl": "https://www.lve-baumschule.de/juniperus-communis-repanda/6354004"
+      }
     },
     {
       "id": "plant-5893766152d9ef",
@@ -4569,7 +4645,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-f526d17fdc8a09e8cea058d5.jpg",
+        "sourceUrl": "https://www.lorberg.com/en-gb/article/2790/liriope-muscari"
+      }
     },
     {
       "id": "plant-66b798eaf0e1c0",
@@ -4582,7 +4662,11 @@
         "Liriope musc big blue",
         "Liriope muscari big blue"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-454abe2d8a4ef51e27ac0893.jpg",
+        "sourceUrl": "https://www.lorberg.com/en-gb/article/2801/liriope-muscari-big-blue"
+      }
     },
     {
       "id": "plant-cbae7f1448bf7c",
@@ -4981,7 +5065,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-0c513bd46c4a93971db761d9.jpg",
+        "sourceUrl": "https://www.lve-baumschule.de/miscanthus-sinensis-yaku-jima/6354272"
+      }
     },
     {
       "id": "plant-c5bfa414e6300e",
@@ -5370,7 +5458,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-4ca66d46cdc2908868d8268d.jpg",
+        "sourceUrl": "https://www.lve-baumschule.de/pennisetum-orientale/6983720"
+      }
     },
     {
       "id": "plant-af43a57be76efb",
@@ -5976,7 +6068,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-6cda63a50c2dbbad199210a0.jpg",
+        "sourceUrl": "https://www.lve-baumschule.de/populus-nigra/6354538"
+      }
     },
     {
       "id": "plant-23e4f18822f860",
@@ -6168,7 +6264,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-e74d36b878c2cdf91178b938.jpg",
+        "sourceUrl": "https://portal.volentis.com/en/offers/details/prunus-cerasus-may-duke-container-avenue"
+      }
     },
     {
       "id": "plant-1f509f3c339c01",
@@ -6552,7 +6652,11 @@
         "Prunus eminens 'Umbraculifera'",
         "Prunus eminens Umbraculifera"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-bea10140e9cad9d105fe8f18.jpg",
+        "sourceUrl": "https://portal.volentis.com/en/offers/details/prunus-eminens-umbraculifera-fullground-avenue"
+      }
     },
     {
       "id": "plant-49e30437b17525",
@@ -6662,7 +6766,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-82546f7134debf9ec8815e16.jpg",
+        "sourceUrl": "https://portal.volentis.com/en/offers/details/pyrus-nivalis-fullground-avenue"
+      }
     },
     {
       "id": "plant-f00c55bd78dd3e",
@@ -6841,7 +6949,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-3051ed134a2b36bb2242b4ce.jpg",
+        "sourceUrl": "https://www.lve-baumschule.de/rhamnus-frangula/6354736"
+      }
     },
     {
       "id": "plant-2b63609672e071",
@@ -6939,7 +7051,11 @@
       "searchAliases": [
         "Robinia pseud. 'Pyramidalis'"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-e3f5d48600bd495dbc54e58d.jpg",
+        "sourceUrl": "https://www.lve-baumschule.de/robinia-pseudoacacia-pyramidalis/6355014"
+      }
     },
     {
       "id": "plant-ba23bb5bf35b89",
@@ -6979,7 +7095,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-07b85c8c49e54ae865120766.jpg",
+        "sourceUrl": "https://www.lve-baumschule.de/rudbeckia-fulgida-goldsturm/6355382"
+      }
     },
     {
       "id": "plant-c01671d345f47b",
@@ -7203,7 +7323,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-80954b54f5a594722bcd4ca0.jpg",
+        "sourceUrl": "https://www.lve-baumschule.de/sasa-veitchii/6355441"
+      }
     },
     {
       "id": "plant-3915d73e34b3bc",
@@ -7223,7 +7347,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-6ebdc671272770830e85c8b1.jpg",
+        "sourceUrl": "https://www.lve-baumschule.de/sedum-herbstfreude/6355458"
+      }
     },
     {
       "id": "plant-70f7966491cea4",
@@ -7233,7 +7361,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-4ebc7aa0ddb41c99bb653df7.jpg",
+        "sourceUrl": "https://www.lve-baumschule.de/sedum-matrona/6355459"
+      }
     },
     {
       "id": "plant-22701ebacaa7bc",
@@ -7281,7 +7413,11 @@
       "searchAliases": [
         "Sequoiadendron giganteum Glaucum"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-889169fc3a1f555d347b8086.jpg",
+        "sourceUrl": "https://www.lve-baumschule.de/sequoiadendron-giganteum-glaucum/6355464"
+      }
     },
     {
       "id": "plant-3790186abdcdff",
@@ -7448,7 +7584,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-37bfdf019591fc9a97935399.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/stachys-byzantina/"
+      }
     },
     {
       "id": "plant-072321aa05ca04",
@@ -7657,7 +7797,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-9ca650c73f1524cee510d7b3.jpg",
+        "sourceUrl": "https://www.lve-baumschule.de/thuja-occidentalis/6355623"
+      }
     },
     {
       "id": "plant-e4fc9e40988f75",
@@ -7976,7 +8120,11 @@
         "Tilia europaea 'Euchlora'",
         "Tilia europaea Euchlora"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-454296eabc569df85d89b49a.jpg",
+        "sourceUrl": "https://portal.volentis.com/en/offers/details/tilia-europaea-euchlora-fullground-avenue"
+      }
     },
     {
       "id": "plant-44efd7cccf671a",

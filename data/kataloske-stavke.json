@@ -347636,8 +347636,8 @@
       "sourcePeriod": "",
       "checkedAt": "",
       "specification": "Liriope muscari; Type CLT; Size 3",
-      "image": "",
-      "imageKind": "Kataloška fotografija rasadnika",
+      "image": "assets/biljke/offer-121bbcd1e85c0ad119d2db4d.jpg",
+      "imageKind": "Fotografija iz dostavljene ponude",
       "imageSourceUrl": "",
       "demo": false,
       "currencyStatus": "confirmed",
@@ -347761,7 +347761,22 @@
         "sourceDocumentStatesCurrency": true
       },
       "sourceAmount": 4.5,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "EUR",
+      "imageEvidence": {
+        "origin": "reviewed_original_offer",
+        "sourceSha256": "7c7c25fbe2ac9ac9aa41d0c5996986cf18179d345f766585c3cd8e37ab95bf8c",
+        "imageSha256": "121bbcd1e85c0ad119d2db4d99656c9a6f4df788bd3d173eb1f747ee97afbe6e",
+        "dimensions": [
+          373,
+          500
+        ],
+        "sourceFile": "dem_expo_13_10_2026.pdf",
+        "reviewedAt": "2026-11-16T10:46:00Z",
+        "identityEvidence": "Exact listed plant and offer row visually confirmed in the supplied original.",
+        "page": 2,
+        "sourceRow": "8",
+        "pdfImageIndexZeroBased": 3
+      }
     },
     {
       "id": "record-ed9881232c1635",
@@ -348514,8 +348529,8 @@
       "sourcePeriod": "Autumn 2025",
       "checkedAt": "",
       "specification": "Ginkgo biloba 'Ohatsuki'; Schirm 4xv mDb Sth.100-120 200-250",
-      "image": "",
-      "imageKind": "Kataloška fotografija rasadnika",
+      "image": "assets/biljke/offer-f18a33ec8931b7e28e5f2d81.jpg",
+      "imageKind": "Fotografija iz dostavljene ponude",
       "imageSourceUrl": "",
       "demo": false,
       "currencyStatus": "confirmed",
@@ -348676,7 +348691,29 @@
         "sourceDocumentStatesCurrency": true
       },
       "sourceAmount": 1500,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "EUR",
+      "imageEvidence": {
+        "origin": "reviewed_original_offer",
+        "sourceSha256": "16af3748c7679bec88a60cf765e519ec1257d5454929b50a7a53fc5eb1bc529a",
+        "imageSha256": "f18a33ec8931b7e28e5f2d8139869324c32676c83ac11397b7fc53b3a4524d01",
+        "dimensions": [
+          1200,
+          1200
+        ],
+        "sourceFile": "Angebot-Nr 309236.pdf",
+        "reviewedAt": "2026-11-16T10:46:00Z",
+        "identityEvidence": "Exact listed plant and offer row visually confirmed in the supplied original.",
+        "page": 1,
+        "sourceRow": "3",
+        "pdfImageIndexZeroBased": 3,
+        "supplementalProof": {
+          "photoSourceFile": "fotos.pdf",
+          "photoSourceSha256": "1f7f4ad7c10591d0e2a24d8c8c0ecfe1329912e0ed80f3eead7a7a696f4a0e21",
+          "quoteNumber": "309236",
+          "quoteDate": "2025-09-12",
+          "position": "3"
+        }
+      }
     },
     {
       "id": "record-9d0dfad9922454",
@@ -405718,14 +405755,14 @@
       "sourceUrl": "",
       "sourcePeriod": "",
       "checkedAt": "",
-      "image": "",
+      "image": "assets/biljke/offer-2f135b9e20926b3f11c76039.jpg",
       "imageSourceUrl": "",
       "id": "record-7619379bbaab71",
       "plantId": "plant-4a39dc341bd2c6",
       "nurseryId": "combinatie-mauritz",
       "demo": false,
       "source": "Combinatie Mauritz B.V. · prilog 9f8250",
-      "imageKind": "Kataloška fotografija rasadnika",
+      "imageKind": "Fotografija iz dostavljene ponude",
       "price": 3.65,
       "currency": "EUR",
       "currencyStatus": "owner_confirmed",
@@ -405801,7 +405838,30 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 3.65,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "EUR",
+      "imageEvidence": {
+        "origin": "reviewed_original_offer",
+        "sourceSha256": "df957a38739fcce05fc84b9f8908961e9a1b9503a47830d945f2e6c5cb5eb106",
+        "imageSha256": "2f135b9e20926b3f11c76039e4499e6ee2e92f4af5373eda4185a3889d199e27",
+        "dimensions": [
+          401,
+          473
+        ],
+        "sourceFile": "1.jpg",
+        "reviewedAt": "2026-11-16T10:46:00Z",
+        "identityEvidence": "Exact listed plant and offer row visually confirmed in the supplied original.",
+        "crop": {
+          "left": 12,
+          "top": 168,
+          "right": 413,
+          "bottom": 641,
+          "unit": "pixels"
+        },
+        "originalDimensions": [
+          696,
+          647
+        ]
+      }
     },
     {
       "circumference": "",
@@ -405813,14 +405873,14 @@
       "sourceUrl": "",
       "sourcePeriod": "",
       "checkedAt": "",
-      "image": "",
+      "image": "assets/biljke/offer-8fcef7ebfd5a34206faa682c.jpg",
       "imageSourceUrl": "",
       "id": "record-951fd82cbfad06",
       "plantId": "plant-52334251b3e7c9",
       "nurseryId": "combinatie-mauritz",
       "demo": false,
       "source": "Combinatie Mauritz B.V. · prilog fcf95d",
-      "imageKind": "Kataloška fotografija rasadnika",
+      "imageKind": "Fotografija iz dostavljene ponude",
       "price": 4.25,
       "currency": "EUR",
       "currencyStatus": "owner_confirmed",
@@ -405895,7 +405955,30 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 4.25,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "EUR",
+      "imageEvidence": {
+        "origin": "reviewed_original_offer",
+        "sourceSha256": "00ede53cf78c51b849cdd92b871b231e41727bd7a9bb368dd3b04654aa7f65c5",
+        "imageSha256": "8fcef7ebfd5a34206faa682cd32cacb0a70a1041cb5babc3462430be5024ebe5",
+        "dimensions": [
+          640,
+          362
+        ],
+        "sourceFile": "2.jpg",
+        "reviewedAt": "2026-11-16T10:46:00Z",
+        "identityEvidence": "Exact listed plant and offer row visually confirmed in the supplied original.",
+        "crop": {
+          "left": 8,
+          "top": 42,
+          "right": 648,
+          "bottom": 404,
+          "unit": "pixels"
+        },
+        "originalDimensions": [
+          784,
+          413
+        ]
+      }
     },
     {
       "circumference": "",
@@ -405907,14 +405990,14 @@
       "sourceUrl": "",
       "sourcePeriod": "",
       "checkedAt": "",
-      "image": "",
+      "image": "assets/biljke/offer-8fcef7ebfd5a34206faa682c.jpg",
       "imageSourceUrl": "",
       "id": "record-d294ff0970b9c4",
       "plantId": "plant-52334251b3e7c9",
       "nurseryId": "combinatie-mauritz",
       "demo": false,
       "source": "Combinatie Mauritz B.V. · prilog fcf95d",
-      "imageKind": "Kataloška fotografija rasadnika",
+      "imageKind": "Fotografija iz dostavljene ponude",
       "price": 4.25,
       "currency": "EUR",
       "currencyStatus": "owner_confirmed",
@@ -405989,7 +406072,30 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 4.25,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "EUR",
+      "imageEvidence": {
+        "origin": "reviewed_original_offer",
+        "sourceSha256": "00ede53cf78c51b849cdd92b871b231e41727bd7a9bb368dd3b04654aa7f65c5",
+        "imageSha256": "8fcef7ebfd5a34206faa682cd32cacb0a70a1041cb5babc3462430be5024ebe5",
+        "dimensions": [
+          640,
+          362
+        ],
+        "sourceFile": "2.jpg",
+        "reviewedAt": "2026-11-16T10:46:00Z",
+        "identityEvidence": "Exact listed plant and offer row visually confirmed in the supplied original.",
+        "crop": {
+          "left": 8,
+          "top": 42,
+          "right": 648,
+          "bottom": 404,
+          "unit": "pixels"
+        },
+        "originalDimensions": [
+          784,
+          413
+        ]
+      }
     },
     {
       "id": "offer-pdf-2fa6700b85b1cabc0ef3",

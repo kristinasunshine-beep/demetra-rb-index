@@ -1,22 +1,14 @@
 {
   "schemaVersion": 2,
-  "checkedAt": "2026-11-16T09:18:57Z",
+  "checkedAt": "2026-11-16T11:28:13Z",
   "status": "partial",
   "plants": 619,
   "plantsInventoried": 619,
-  "plantsWithPhoto": 386,
+  "plantsWithPhoto": 425,
   "plantsWithoutPhoto": [
     {
       "plantId": "plant-ee364e988134ba",
       "latinName": "Acer 'Norwegian Sunset'"
-    },
-    {
-      "plantId": "plant-eceb6507153902",
-      "latinName": "Acer 'Pacific Sunset'"
-    },
-    {
-      "plantId": "plant-986e7dcb29f3b7",
-      "latinName": "Acer freemanii 'Celzam'"
     },
     {
       "plantId": "plant-9030e7f16d3409",
@@ -47,10 +39,6 @@
       "latinName": "Acer saccharinum 'Asplenifolium'"
     },
     {
-      "plantId": "plant-b066984e3e4f72",
-      "latinName": "Acer tataricum"
-    },
-    {
       "plantId": "plant-274066fb782dbf",
       "latinName": "Acer x freemanii"
     },
@@ -73,14 +61,6 @@
     {
       "plantId": "plant-43a8171726fcdd",
       "latinName": "Ajuga reptans 'Catlins Giant'"
-    },
-    {
-      "plantId": "plant-631cbe20406538",
-      "latinName": "Anemone hupehensis 'Praecox'"
-    },
-    {
-      "plantId": "plant-a2a94fa0e6b6b7",
-      "latinName": "Aster amellus 'Rudolf Goethe'"
     },
     {
       "plantId": "plant-7678bcfc643713",
@@ -131,10 +111,6 @@
       "latinName": "Betula pendula 'Golden Cloud'"
     },
     {
-      "plantId": "plant-02376b686cafbb",
-      "latinName": "Betula pendula 'Tristis'"
-    },
-    {
       "plantId": "plant-73e835a5884bea",
       "latinName": "Betula utilis"
     },
@@ -145,10 +121,6 @@
     {
       "plantId": "plant-df19cd984a361e",
       "latinName": "Buddleja davidii 'White Ball'"
-    },
-    {
-      "plantId": "plant-69e36d8474e7d8",
-      "latinName": "Calamagrostis brachytricha"
     },
     {
       "plantId": "plant-d06bcf40111fbd",
@@ -179,16 +151,8 @@
       "latinName": "Carex morrovii 'Variegata'"
     },
     {
-      "plantId": "plant-bef4074eaff0f2",
-      "latinName": "Carex morrowii 'Irish Green'"
-    },
-    {
       "plantId": "plant-6abc01a65c45b7",
       "latinName": "Carex testacea 'Prairie Fire'"
-    },
-    {
-      "plantId": "plant-ead1d895a5ec98",
-      "latinName": "Carpinus betulus 'Beekman'"
     },
     {
       "plantId": "plant-de609ad6a8d046",
@@ -271,20 +235,8 @@
       "latinName": "Cotoneaster dammeri"
     },
     {
-      "plantId": "plant-02e2d7be8908da",
-      "latinName": "Cotoneaster dammerii 'Skogholm'"
-    },
-    {
-      "plantId": "plant-30d9970c3195a1",
-      "latinName": "Cotoneaster x suecicus 'Coral Beauty'"
-    },
-    {
       "plantId": "plant-1e15dc4052e9b6",
       "latinName": "Crataegus monogyna Rosea"
-    },
-    {
-      "plantId": "plant-123479a69dd64f",
-      "latinName": "Crataegus x persimilis 'Splendens'"
     },
     {
       "plantId": "plant-1d63d032975002",
@@ -297,10 +249,6 @@
     {
       "plantId": "plant-293f26f1672c4f",
       "latinName": "Cupressus sempervirens"
-    },
-    {
-      "plantId": "plant-262be7be43b526",
-      "latinName": "Deschampsia cespitosa 'Palava'"
     },
     {
       "plantId": "plant-2ab84b946b895e",
@@ -327,10 +275,6 @@
       "latinName": "Echinacea purpurea 'Cheyenne Spirit'"
     },
     {
-      "plantId": "plant-e5369db57b740e",
-      "latinName": "Echinops bannaticus 'Blue Glow'"
-    },
-    {
       "plantId": "plant-f20d785dd5a422",
       "latinName": "Elaeagnus ebbingei 'Compactum'"
     },
@@ -353,14 +297,6 @@
     {
       "plantId": "plant-ad030630aebb83",
       "latinName": "Euonymus fortunei 'Harlequin'"
-    },
-    {
-      "plantId": "plant-52334251b3e7c9",
-      "latinName": "Euonymus Green Spire"
-    },
-    {
-      "plantId": "plant-4a39dc341bd2c6",
-      "latinName": "Euonymus japonicus 'Microphyllus'"
     },
     {
       "plantId": "plant-849f15111e5047",
@@ -391,10 +327,6 @@
       "latinName": "Fagus sylvatica 'Purpurea fastigiata'"
     },
     {
-      "plantId": "plant-f7baf961ce141f",
-      "latinName": "Fagus sylvatica 'Riversii'"
-    },
-    {
       "plantId": "plant-f45db48e72b497",
       "latinName": "Fargesia nitida 'Black Pearl'"
     },
@@ -419,10 +351,6 @@
       "latinName": "Fraxinus excelsior 'Globosa'"
     },
     {
-      "plantId": "plant-b1f0477fdfe037",
-      "latinName": "Fraxinus excelsior 'Nana'"
-    },
-    {
       "plantId": "plant-a9d6a182a4e421",
       "latinName": "Gaura lindheimeri 'Whirling Butterfly'"
     },
@@ -439,20 +367,12 @@
       "latinName": "Ginkgo biloba 'Globus'"
     },
     {
-      "plantId": "plant-cd48a494b63f41",
-      "latinName": "Ginkgo biloba 'Ohatsuki'"
-    },
-    {
       "plantId": "plant-955c2408fc889c",
       "latinName": "Gleditsia triacanthos 'Spectrum'"
     },
     {
       "plantId": "plant-42ed463c83d4dc",
       "latinName": "Hamamelis x intermedia"
-    },
-    {
-      "plantId": "plant-c1ccee0a920085",
-      "latinName": "Hamamelis x intermedia 'Diane'"
     },
     {
       "plantId": "plant-d1062b9945f832",
@@ -515,16 +435,8 @@
       "latinName": "Hydrangea arborescens 'Sweet Annabelle'"
     },
     {
-      "plantId": "plant-8ff82317ab73d4",
-      "latinName": "Hydrangea paniculata 'Little Lime'"
-    },
-    {
       "plantId": "plant-4ae8a353cc72d2",
       "latinName": "Ilex crenata Dark Star"
-    },
-    {
-      "plantId": "plant-df76b734eb608c",
-      "latinName": "Juniperus communis 'Repanda'"
     },
     {
       "plantId": "plant-5893766152d9ef",
@@ -563,14 +475,6 @@
       "latinName": "Liriodendron tulipifera 'Aureomarginatum'"
     },
     {
-      "plantId": "plant-f15e3e2208445c",
-      "latinName": "Liriope muscari"
-    },
-    {
-      "plantId": "plant-66b798eaf0e1c0",
-      "latinName": "Liriope muscari 'Big Blue'"
-    },
-    {
       "plantId": "plant-c929416d95e605",
       "latinName": "Liriope spicata"
     },
@@ -599,10 +503,6 @@
       "latinName": "Miscanthus sinensis 'Rotfeder'"
     },
     {
-      "plantId": "plant-7238b1ae51445f",
-      "latinName": "Miscanthus sinensis 'Yaku Jima'"
-    },
-    {
       "plantId": "plant-7554ad08ac45af",
       "latinName": "Nepeta 'Six Hill Giant'"
     },
@@ -629,10 +529,6 @@
     {
       "plantId": "plant-99d1408b6679aa",
       "latinName": "Pennisetum alopecuroides 'Redhead'"
-    },
-    {
-      "plantId": "plant-b4ef8b5da580a2",
-      "latinName": "Pennisetum orientale"
     },
     {
       "plantId": "plant-af43a57be76efb",
@@ -699,10 +595,6 @@
       "latinName": "Pleioblastus pumilis"
     },
     {
-      "plantId": "plant-344c699f8d0e4c",
-      "latinName": "Populus nigra"
-    },
-    {
       "plantId": "plant-fbd63e50cb51f6",
       "latinName": "Populus nigra 'Pyramidalis'"
     },
@@ -717,10 +609,6 @@
     {
       "plantId": "plant-512dcc509b276f",
       "latinName": "Prunus cerasifera Atropurpurea"
-    },
-    {
-      "plantId": "plant-ecb0149026ff84",
-      "latinName": "Prunus cerasus 'May Duke'"
     },
     {
       "plantId": "plant-1f509f3c339c01",
@@ -755,20 +643,12 @@
       "latinName": "Prunus subhirtella 'Pink Perfection'"
     },
     {
-      "plantId": "plant-76a27aa2433b7d",
-      "latinName": "Prunus x eminens 'Umbraculifera'"
-    },
-    {
       "plantId": "plant-90434f6cca0439",
       "latinName": "Pseudotsuga menziesii"
     },
     {
       "plantId": "plant-0745a6109ba8ea",
       "latinName": "Pyrus communis (Williams) körte"
-    },
-    {
-      "plantId": "plant-d6bc33f781049f",
-      "latinName": "Pyrus nivalis"
     },
     {
       "plantId": "plant-c8e469c1c612b4",
@@ -783,10 +663,6 @@
       "latinName": "Quercus x warei 'Regal Prince'"
     },
     {
-      "plantId": "plant-75ad0c865be022",
-      "latinName": "Rhamnus frangula"
-    },
-    {
       "plantId": "plant-2b63609672e071",
       "latinName": "Rhododendron japonica 'Maruschka'"
     },
@@ -797,14 +673,6 @@
     {
       "plantId": "plant-3fd5ef6f08fccc",
       "latinName": "Robinia pseudoacacia 'Globosa'"
-    },
-    {
-      "plantId": "plant-470f7318053ca5",
-      "latinName": "Robinia pseudoacacia 'Pyramidalis'"
-    },
-    {
-      "plantId": "plant-2f78aaf28d94d4",
-      "latinName": "Rudbeckia fulgida 'Goldsturm'"
     },
     {
       "plantId": "plant-c01671d345f47b",
@@ -827,20 +695,8 @@
       "latinName": "Salvia x sylvestris 'Mainacht'"
     },
     {
-      "plantId": "plant-15283a66fb7d3e",
-      "latinName": "Sasa veitchii"
-    },
-    {
       "plantId": "plant-3915d73e34b3bc",
       "latinName": "Sedum 'Autumn Fire'"
-    },
-    {
-      "plantId": "plant-6946aeac61fe92",
-      "latinName": "Sedum 'Herbstfreude'"
-    },
-    {
-      "plantId": "plant-70f7966491cea4",
-      "latinName": "Sedum 'Matrona'"
     },
     {
       "plantId": "plant-22701ebacaa7bc",
@@ -859,10 +715,6 @@
       "latinName": "Spiraea japonica"
     },
     {
-      "plantId": "plant-43201d5e8991bc",
-      "latinName": "Stachys byzanthina"
-    },
-    {
       "plantId": "plant-bd6d032ea834e7",
       "latinName": "Syringa meyeri 'Josee'"
     },
@@ -877,10 +729,6 @@
     {
       "plantId": "plant-f90625c780d65d",
       "latinName": "Thuja Berckmani"
-    },
-    {
-      "plantId": "plant-7fbdfd9e2dcc12",
-      "latinName": "Thuja occidentalis"
     },
     {
       "plantId": "plant-188273295c67a4",
@@ -905,10 +753,6 @@
     {
       "plantId": "plant-d4771d309212f6",
       "latinName": "Tilia tomentosa 'Szeleste'"
-    },
-    {
-      "plantId": "plant-f909981347d7d7",
-      "latinName": "Tilia x europaea 'Euchlora'"
     },
     {
       "plantId": "plant-f7f4e4fe59b035",
@@ -939,7 +783,7 @@
       "latinName": "Viola tricolor"
     }
   ],
-  "coveragePercent": 62.36,
+  "coveragePercent": 68.66,
   "activeOffers": 2941,
-  "remainingOffers": 436
+  "remainingOffers": 356
 }

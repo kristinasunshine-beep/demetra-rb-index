@@ -794,29 +794,27 @@
       "taxonKey": "acer palmatum bloodgood"
     },
     "plant-15283a66fb7d3e": {
-      "provider": "gbif",
-      "imageUrl": "https://api.gbif.org/v1/image/cache/1200x/occurrence/6179000576/media/9b4af4d83b9494cb6df748082a94429c",
-      "sourceUrl": "https://www.gbif.org/occurrence/6179000576",
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "lorenz-von-ehren",
+      "imageUrl": "https://www.lve-baumschule.de/media/bc/83/22/1646917632/6902725.JPG",
+      "sourceUrl": "https://www.lve-baumschule.de/sasa-veitchii/6355441",
       "matchedName": "Sasa veitchii",
-      "identityEvidence": [
-        "Sasa veitchii"
-      ],
-      "license": "CC0-1.0",
-      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-      "imageHosts": [
-        "api.gbif.org"
-      ],
-      "imagePathPrefixes": {
-        "api.gbif.org": [
-          "/v1/image/cache/"
-        ]
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Sasa veitchii"
       },
+      "imageHosts": [
+        "www.lve-baumschule.de",
+        "www.lve.de"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "sasa veitchii",
       "latinName": "Sasa veitchii",
-      "image": "assets/biljke/reference-5a5bc8c3a4d9240f1465e9f0.jpg",
-      "sha256": "5a5bc8c3a4d9240f1465e9f032f7134f43efba817f6dee56c1ee662954d0af86",
-      "checkedAt": "2026-11-10T10:00:31Z",
-      "matchLevel": "exact",
-      "taxonKey": "sasa veitchii"
+      "image": "assets/biljke/reference-80954b54f5a594722bcd4ca0.jpg",
+      "sha256": "80954b54f5a594722bcd4ca04bf045cac2f4637eafbc6edb5b36ce2b22e64d1a",
+      "checkedAt": "2026-11-16T11:26:46Z",
+      "matchLevel": "exact"
     },
     "plant-158e048d4ead5d": {
       "provider": "gbif",
@@ -1427,7 +1425,7 @@
     "plant-30d9970c3195a1": {
       "provider": "other_catalogue_nursery",
       "nurseryId": "lorberg",
-      "imageUrl": "https://www.lorberg.com/content/files/3235/Cotoneaster-dammeri-Coral-Beauty-1200x630-proportionalbiggest.webp",
+      "imageUrl": "https://www.lorberg.com/content/files/3236/Cotoneaster-dammeri-Coral-Beauty-1200x630-proportionalbiggest.webp",
       "sourceUrl": "https://www.lorberg.com/de-de/cotoneaster-x-suecicus-coral-beauty",
       "matchedName": "Cotoneaster x suecicus 'Coral Beauty'",
       "identityEvidence": {
@@ -1441,9 +1439,9 @@
       "license": "existing_catalogue_source_policy",
       "taxonKey": "cotoneaster x suecicus coral beauty",
       "latinName": "Cotoneaster x suecicus 'Coral Beauty'",
-      "image": "assets/biljke/reference-00c3461d712e824d5b955f9e.jpg",
-      "sha256": "00c3461d712e824d5b955f9e98278488c065441008be4c10fee7590a131579be",
-      "checkedAt": "2026-11-16T09:16:42Z",
+      "image": "assets/biljke/reference-747ec20268bf7c3015312a8b.jpg",
+      "sha256": "747ec20268bf7c3015312a8b361bae9638fb4b7b32f59398616337db278ee239",
+      "checkedAt": "2026-11-16T11:26:33Z",
       "matchLevel": "exact"
     },
     "plant-30e1ad5d1f2fc3": {
@@ -1579,29 +1577,27 @@
       "taxonKey": "perovskia atriplicifolia blue spire"
     },
     "plant-344c699f8d0e4c": {
-      "provider": "gbif",
-      "imageUrl": "https://api.gbif.org/v1/image/cache/1200x/occurrence/5938131257/media/d036cbcc49e1a01b92699039d9e621c5",
-      "sourceUrl": "https://www.gbif.org/occurrence/5938131257",
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "lorenz-von-ehren",
+      "imageUrl": "https://www.lve-baumschule.de/media/5a/4a/76/1646916928/7062028.JPG",
+      "sourceUrl": "https://www.lve-baumschule.de/populus-nigra/6354538",
       "matchedName": "Populus nigra",
-      "identityEvidence": [
-        "Populus nigra"
-      ],
-      "license": "CC0-1.0",
-      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-      "imageHosts": [
-        "api.gbif.org"
-      ],
-      "imagePathPrefixes": {
-        "api.gbif.org": [
-          "/v1/image/cache/"
-        ]
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Populus nigra"
       },
+      "imageHosts": [
+        "www.lve-baumschule.de",
+        "www.lve.de"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "populus nigra",
       "latinName": "Populus nigra",
-      "image": "assets/biljke/reference-a7bf5ac1f31548837a624540.jpg",
-      "sha256": "a7bf5ac1f31548837a62454085c1ed78111b767d9016f82a5b64322f75f8ae23",
-      "checkedAt": "2026-11-10T10:04:08Z",
-      "matchLevel": "exact",
-      "taxonKey": "populus nigra"
+      "image": "assets/biljke/reference-6cda63a50c2dbbad199210a0.jpg",
+      "sha256": "6cda63a50c2dbbad199210a029f92d30d541454190761791a00b0cfc66a1c12a",
+      "checkedAt": "2026-11-16T11:26:53Z",
+      "matchLevel": "exact"
     },
     "plant-34d5c3899b3339": {
       "provider": "supplying_nursery",
@@ -3144,7 +3140,7 @@
     "plant-66b798eaf0e1c0": {
       "provider": "other_catalogue_nursery",
       "nurseryId": "lorberg",
-      "imageUrl": "https://www.lorberg.com/content/files/12313/Liriope-muscari-Royal-Purple-1200x630-proportionalbiggest.webp",
+      "imageUrl": "https://www.lorberg.com/content/files/12363/Liriope-muscari-Big-Blue-1200x630-proportionalbiggest.webp",
       "sourceUrl": "https://www.lorberg.com/en-gb/article/2801/liriope-muscari-big-blue",
       "matchedName": "Liriope muscari 'Big Blue'",
       "identityEvidence": {
@@ -3154,14 +3150,14 @@
       "imageHosts": [
         "www.lorberg.com"
       ],
-      "imagePathPrefixes": null,
+      "imagePathPrefixes": {},
       "license": "existing_catalogue_source_policy",
+      "taxonKey": "liriope muscari big blue",
       "latinName": "Liriope muscari 'Big Blue'",
-      "image": "assets/biljke/reference-e7f60f00ea6dbff2201d792c.jpg",
-      "sha256": "e7f60f00ea6dbff2201d792ceb7f61f703e1bd1531f505e7a1ca6077cdf0cc2d",
-      "checkedAt": "2026-11-10T10:09:12Z",
-      "matchLevel": "exact",
-      "taxonKey": "liriope muscari big blue"
+      "image": "assets/biljke/reference-454abe2d8a4ef51e27ac0893.jpg",
+      "sha256": "454abe2d8a4ef51e27ac0893d47851ebbcc847e68e0156def1407f5b42be91d5",
+      "checkedAt": "2026-11-16T11:26:38Z",
+      "matchLevel": "exact"
     },
     "plant-6775e8dd246cf2": {
       "provider": "other_catalogue_nursery",
@@ -5498,29 +5494,27 @@
       "taxonKey": "quercus frainetto"
     },
     "plant-b066984e3e4f72": {
-      "provider": "gbif",
-      "imageUrl": "https://api.gbif.org/v1/image/cache/1200x/occurrence/6236179192/media/79455dc907b38592abe6577cf540b4cb",
-      "sourceUrl": "https://www.gbif.org/occurrence/6236179192",
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "lorenz-von-ehren",
+      "imageUrl": "https://www.lve-baumschule.de/media/dd/e0/b5/1648713694/6896069.JPG",
+      "sourceUrl": "https://www.lve-baumschule.de/acer-tataricum/6352873",
       "matchedName": "Acer tataricum",
-      "identityEvidence": [
-        "Acer tataricum"
-      ],
-      "license": "CC0-1.0",
-      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-      "imageHosts": [
-        "api.gbif.org"
-      ],
-      "imagePathPrefixes": {
-        "api.gbif.org": [
-          "/v1/image/cache/"
-        ]
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Acer tataricum"
       },
+      "imageHosts": [
+        "www.lve-baumschule.de",
+        "www.lve.de"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "acer tataricum",
       "latinName": "Acer tataricum",
-      "image": "assets/biljke/reference-a3e0f3192f3fc593adb9b457.jpg",
-      "sha256": "a3e0f3192f3fc593adb9b45757cde6bf0c669ee8e5e30e0a008bad48d436c4fa",
-      "checkedAt": "2026-11-10T10:14:27Z",
-      "matchLevel": "exact",
-      "taxonKey": "acer tataricum"
+      "image": "assets/biljke/reference-72cf7d94ee05423006c72e2b.jpg",
+      "sha256": "72cf7d94ee05423006c72e2b4df028b8d7cfcc12352a366cb234b13a28538caa",
+      "checkedAt": "2026-11-16T11:26:26Z",
+      "matchLevel": "exact"
     },
     "plant-b0bc71eeccd9fc": {
       "provider": "other_catalogue_nursery",
@@ -6692,29 +6686,37 @@
       "taxonKey": "helictotrichon sempervirens"
     },
     "plant-d6bc33f781049f": {
-      "provider": "commons",
-      "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/a/ac/Pyrusnivalis.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Pyrusnivalis.jpg",
+      "nurseryId": "volentis",
+      "provider": "other_catalogue_nursery",
       "matchedName": "Pyrus nivalis",
-      "identityEvidence": [
-        "Pyrus nivalis"
-      ],
-      "license": "Public domain",
-      "licenseUrl": "https://creativecommons.org/publicdomain/mark/1.0/",
+      "sourceUrl": "https://portal.volentis.com/en/offers/details/pyrus-nivalis-fullground-avenue",
+      "imageUrl": "https://cdn.volentis.com/d/1OBHkUXaESZ6khUWrVMBRg0nSMFFcqHv4/pyrus-nivalis-12-16.jpg?width=600&height=350&mode=max&anchor=top",
+      "identityEvidence": {
+        "kind": "exact_named_offer_card",
+        "name": "Pyrus nivalis",
+        "pageUrl": "https://portal.volentis.com/en/offers/1?SearchText=Pyrus+nivalis",
+        "detailUrl": "https://portal.volentis.com/en/offers/details/pyrus-nivalis-fullground-avenue",
+        "imageUrl": "https://cdn.volentis.com/d/1OBHkUXaESZ6khUWrVMBRg0nSMFFcqHv4/pyrus-nivalis-12-16.jpg?width=600&height=350&mode=max&anchor=top",
+        "canonicalName": "Pyrus nivalis"
+      },
+      "resolver": "volentis_offer_card",
+      "canonicalName": "Pyrus nivalis",
       "imageHosts": [
-        "upload.wikimedia.org"
+        "cdn.volentis.com",
+        "www.volentis.com"
       ],
       "imagePathPrefixes": {
-        "upload.wikimedia.org": [
-          "/wikipedia/commons/"
+        "cdn.volentis.com": [
+          "/d/"
         ]
       },
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "pyrus nivalis",
       "latinName": "Pyrus nivalis",
-      "image": "assets/biljke/reference-a0f273145c941b24c7ccbed3.jpg",
-      "sha256": "a0f273145c941b24c7ccbed3850fd85ff99f2cbf72df96353ac1b1bc89b00fcc",
-      "checkedAt": "2026-11-10T10:17:36Z",
-      "matchLevel": "exact",
-      "taxonKey": "pyrus nivalis"
+      "image": "assets/biljke/reference-82546f7134debf9ec8815e16.jpg",
+      "sha256": "82546f7134debf9ec8815e161a7bd18ca0635390d3fef0735136e41a5626cba8",
+      "checkedAt": "2026-11-16T11:26:29Z",
+      "matchLevel": "exact"
     },
     "plant-d7147c29cd9c07": {
       "provider": "supplying_nursery",
@@ -7582,28 +7584,25 @@
       "taxonKey": "abies nordmanniana"
     },
     "plant-f15e3e2208445c": {
-      "provider": "gbif",
-      "imageUrl": "https://api.gbif.org/v1/image/cache/1200x/occurrence/6188243368/media/67d4c8e84223d48f47351a0379afed39",
-      "sourceUrl": "https://www.gbif.org/occurrence/6188243368",
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "lorberg",
+      "imageUrl": "https://www.lorberg.com/content/files/12314/Liriope-muscari-1200x630-proportionalbiggest.webp",
+      "sourceUrl": "https://www.lorberg.com/en-gb/article/2790/liriope-muscari",
       "matchedName": "Liriope muscari",
-      "identityEvidence": [
-        "Liriope muscari"
-      ],
-      "license": "CC0-1.0",
-      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-      "imageHosts": [
-        "api.gbif.org"
-      ],
-      "imagePathPrefixes": {
-        "api.gbif.org": [
-          "/v1/image/cache/"
-        ]
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Liriope muscari"
       },
+      "imageHosts": [
+        "www.lorberg.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
       "taxonKey": "liriope muscari",
       "latinName": "Liriope muscari",
-      "image": "assets/biljke/reference-ba463d0d72ed167792cb7950.jpg",
-      "sha256": "ba463d0d72ed167792cb79508f9848aa451e709cfa995c70212b2feca82f84ae",
-      "checkedAt": "2026-11-10T11:15:23Z",
+      "image": "assets/biljke/reference-f526d17fdc8a09e8cea058d5.jpg",
+      "sha256": "f526d17fdc8a09e8cea058d5faef3ec9e5b27c37b1b85efcf7d497a65538dcf4",
+      "checkedAt": "2026-11-16T11:27:21Z",
       "matchLevel": "exact"
     },
     "plant-f174b6f4ab417f": {
@@ -8995,47 +8994,59 @@
       ]
     },
     "plant-eceb6507153902": {
+      "nurseryId": "volentis",
       "provider": "other_catalogue_nursery",
-      "nurseryId": "photo-majestictrees-co-uk",
-      "imageUrl": "https://majestictrees.co.uk/cdn/shop/files/11253-acer-pacific-sunset-5-600x600.jpg?v=1716450847&width=1920",
-      "sourceUrl": "https://majestictrees.co.uk/products/acer-pacific-sunset",
       "matchedName": "Acer 'Pacific Sunset'",
+      "sourceUrl": "https://portal.volentis.com/en/offers/details/acer-pacific-sunset-fullground-avenue",
+      "imageUrl": "https://cdn.volentis.com/d/130B3kevYjYEsA1wCgONhCEugvLStVDa7/acer-pacific-sunset-14-18.jpg?width=600&height=350&mode=max&anchor=top",
       "identityEvidence": {
-        "method": "product_jsonld",
+        "kind": "exact_named_offer_card",
+        "name": "Acer PACIFIC SUNSET",
+        "pageUrl": "https://portal.volentis.com/en/offers/1?SearchText=Acer+%27Pacific+Sunset%27",
+        "detailUrl": "https://portal.volentis.com/en/offers/details/acer-pacific-sunset-fullground-avenue",
+        "imageUrl": "https://cdn.volentis.com/d/130B3kevYjYEsA1wCgONhCEugvLStVDa7/acer-pacific-sunset-14-18.jpg?width=600&height=350&mode=max&anchor=top",
         "canonicalName": "Acer 'Pacific Sunset'"
       },
+      "resolver": "volentis_offer_card",
+      "canonicalName": "Acer 'Pacific Sunset'",
       "imageHosts": [
-        "majestictrees.co.uk"
+        "cdn.volentis.com",
+        "www.volentis.com"
       ],
-      "imagePathPrefixes": null,
+      "imagePathPrefixes": {
+        "cdn.volentis.com": [
+          "/d/"
+        ]
+      },
       "license": "existing_catalogue_source_policy",
       "taxonKey": "acer pacific sunset",
       "latinName": "Acer 'Pacific Sunset'",
-      "image": "assets/biljke/reference-10107ee4ff0adc8ef73c3bdf.jpg",
-      "sha256": "10107ee4ff0adc8ef73c3bdfb8f2d262029ec33727cd4aee12cefa011c1085f6",
-      "checkedAt": "2026-11-10T11:13:25Z",
+      "image": "assets/biljke/reference-78de425fb0a7a0b7cab0336f.jpg",
+      "sha256": "78de425fb0a7a0b7cab0336f1718e77c8a8919e6c16f395374ac9ad8bd152deb",
+      "checkedAt": "2026-11-16T11:25:51Z",
       "matchLevel": "exact"
     },
     "plant-69e36d8474e7d8": {
       "provider": "other_catalogue_nursery",
-      "nurseryId": "photo-knollgardens-co-uk",
-      "imageUrl": "https://www.knollgardens.co.uk/wp-content/uploads/2022/02/Calamagrostis-brachytricha093650.jpg",
-      "sourceUrl": "https://www.knollgardens.co.uk/product/calamagrostis-brachytricha/",
+      "nurseryId": "lorenz-von-ehren",
+      "imageUrl": "https://www.lve-baumschule.de/media/13/2e/f0/1648713896/6896627.JPG",
+      "sourceUrl": "https://www.lve-baumschule.de/calamagrostis-brachytricha/6353115",
       "matchedName": "Calamagrostis brachytricha",
       "identityEvidence": {
         "method": "product_jsonld",
         "canonicalName": "Calamagrostis brachytricha"
       },
       "imageHosts": [
-        "www.knollgardens.co.uk"
+        "www.lve-baumschule.de",
+        "www.lve.de"
       ],
-      "imagePathPrefixes": null,
+      "imagePathPrefixes": {},
       "license": "existing_catalogue_source_policy",
       "taxonKey": "calamagrostis brachytricha",
       "latinName": "Calamagrostis brachytricha",
-      "image": "assets/biljke/reference-5c8cf5bcc9d45d60e66f0b53.jpg",
-      "sha256": "5c8cf5bcc9d45d60e66f0b5346b3e68c762065f2d822ab6c5328d06ef10dbd00",
-      "checkedAt": "2026-11-10T11:13:33Z",
+      "image": "assets/biljke/reference-a2e8bf30ce7c8d74d54deeb6.jpg",
+      "sha256": "a2e8bf30ce7c8d74d54deeb6f033d48272f79c34f52e02daaad461b43bb70f3d",
+      "checkedAt": "2026-11-16T11:26:39Z",
       "matchLevel": "exact"
     },
     "plant-7f02e51df91d38": {
@@ -9133,28 +9144,26 @@
       "matchLevel": "exact"
     },
     "plant-f7baf961ce141f": {
-      "provider": "other_catalogue_nursery",
-      "nurseryId": "van-den-berk",
-      "imageUrl": "https://www.vdberk.co.uk/media/FASRIVER/Fagus%20sylvatica%20Riversii%2060-70%20LAAC.jpg",
-      "sourceUrl": "https://www.vdberk.co.uk/trees/fagus-sylvatica-riversii/",
+      "provider": "supplying_nursery",
+      "nurseryId": "lorenz-von-ehren",
+      "imageUrl": "https://www.lve-baumschule.de/media/7d/5e/g0/1648643364/6898431.JPG",
+      "sourceUrl": "https://www.lve-baumschule.de/fagus-sylvatica-riversii/6353661",
       "matchedName": "Fagus sylvatica 'Riversii'",
       "identityEvidence": {
-        "method": "product_og_image",
+        "method": "product_jsonld",
         "canonicalName": "Fagus sylvatica 'Riversii'"
       },
       "imageHosts": [
-        "www.vdberk.co.uk",
-        "www.vdberk.com",
-        "www.vdberk.de",
-        "www.vdberk.nl"
+        "www.lve-baumschule.de",
+        "www.lve.de"
       ],
-      "imagePathPrefixes": null,
+      "imagePathPrefixes": {},
       "license": "existing_catalogue_source_policy",
       "taxonKey": "fagus sylvatica riversii",
       "latinName": "Fagus sylvatica 'Riversii'",
-      "image": "assets/biljke/reference-374f721510f375e11d4b1ecb.jpg",
-      "sha256": "374f721510f375e11d4b1ecb1f22ba6b2fdadf18948ad2df8979494cdc317694",
-      "checkedAt": "2026-11-10T11:13:50Z",
+      "image": "assets/biljke/reference-48294aaa85fda8d9f2f7229c.jpg",
+      "sha256": "48294aaa85fda8d9f2f7229c807a488d7413320c5fa64acc7b0f3f5c0c0151ea",
+      "checkedAt": "2026-11-16T11:26:42Z",
       "matchLevel": "exact"
     },
     "plant-1b51cad9a929f8": {
@@ -9350,28 +9359,26 @@
       "matchLevel": "exact"
     },
     "plant-7fbdfd9e2dcc12": {
-      "provider": "gbif",
-      "imageUrl": "https://api.gbif.org/v1/image/cache/1200x/occurrence/5938398685/media/e3af2b8f1d7ada86ff4c02579e3a547b",
-      "sourceUrl": "https://www.gbif.org/occurrence/5938398685",
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "lorenz-von-ehren",
+      "imageUrl": "https://www.lve-baumschule.de/media/77/5e/ba/1646917834/6903160.JPG",
+      "sourceUrl": "https://www.lve-baumschule.de/thuja-occidentalis/6355623",
       "matchedName": "Thuja occidentalis",
-      "identityEvidence": [
-        "Thuja occidentalis"
-      ],
-      "license": "CC0-1.0",
-      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-      "imageHosts": [
-        "api.gbif.org"
-      ],
-      "imagePathPrefixes": {
-        "api.gbif.org": [
-          "/v1/image/cache/"
-        ]
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Thuja occidentalis"
       },
+      "imageHosts": [
+        "www.lve-baumschule.de",
+        "www.lve.de"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
       "taxonKey": "thuja occidentalis",
       "latinName": "Thuja occidentalis",
-      "image": "assets/biljke/reference-d9100cb6b670897f371534e5.jpg",
-      "sha256": "d9100cb6b670897f371534e533a99cbfe0047e95cf0cbd4861816705e7235d1a",
-      "checkedAt": "2026-11-10T11:16:42Z",
+      "image": "assets/biljke/reference-9ca650c73f1524cee510d7b3.jpg",
+      "sha256": "9ca650c73f1524cee510d7b38130bfd90681781c15ec8f5de78a1d4eaa349da1",
+      "checkedAt": "2026-11-16T11:26:56Z",
       "matchLevel": "exact"
     },
     "plant-e94badbc80f8a8": {
@@ -9517,24 +9524,25 @@
     },
     "plant-02376b686cafbb": {
       "provider": "other_catalogue_nursery",
-      "nurseryId": "photo-frankpmatthews-com",
-      "imageUrl": "https://www.frankpmatthews.com/app/uploads/2022/07/11493_14106_f9db.jpg",
-      "sourceUrl": "https://www.frankpmatthews.com/catalogue/ornamental-trees/betula/betula-pendula-tristis/",
+      "nurseryId": "lorenz-von-ehren",
+      "imageUrl": "https://www.lve-baumschule.de/media/0e/00/82/1648713859/7061053.JPG",
+      "sourceUrl": "https://www.lve-baumschule.de/betula-pendula-tristis/6353073",
       "matchedName": "Betula pendula 'Tristis'",
       "identityEvidence": {
         "method": "product_jsonld",
         "canonicalName": "Betula pendula 'Tristis'"
       },
       "imageHosts": [
-        "www.frankpmatthews.com"
+        "www.lve-baumschule.de",
+        "www.lve.de"
       ],
-      "imagePathPrefixes": null,
+      "imagePathPrefixes": {},
       "license": "existing_catalogue_source_policy",
       "taxonKey": "betula pendula tristis",
       "latinName": "Betula pendula 'Tristis'",
-      "image": "assets/biljke/reference-c43922363160644d36322971.jpg",
-      "sha256": "c43922363160644d36322971e1060dac896990023c590d11a2d0c2a0a92d615a",
-      "checkedAt": "2026-11-10T11:23:28Z",
+      "image": "assets/biljke/reference-fc8d6cbdad3f127ae8a9a7e2.jpg",
+      "sha256": "fc8d6cbdad3f127ae8a9a7e216bded747bd28caa82875532a3349b01c96acc02",
+      "checkedAt": "2026-11-16T11:25:54Z",
       "matchLevel": "exact"
     },
     "plant-6abc01a65c45b7": {
@@ -9655,46 +9663,48 @@
     },
     "plant-e5369db57b740e": {
       "provider": "other_catalogue_nursery",
-      "nurseryId": "photo-plant-werk-nl",
-      "imageUrl": "https://plant-werk.nl/wp-content/uploads/Echinops-bannaticus-Blue-Glow-bloem-1.jpg",
-      "sourceUrl": "https://plant-werk.nl/product/echinops-bannaticus-blue-glow/",
+      "nurseryId": "lorenz-von-ehren",
+      "imageUrl": "https://www.lve-baumschule.de/media/g0/df/9e/1648643250/6898236.JPG",
+      "sourceUrl": "https://www.lve-baumschule.de/echinops-bannaticus-blue-glow/6353556",
       "matchedName": "Echinops bannaticus 'Blue Glow'",
       "identityEvidence": {
         "method": "product_jsonld",
         "canonicalName": "Echinops bannaticus 'Blue Glow'"
       },
       "imageHosts": [
-        "plant-werk.nl"
+        "www.lve-baumschule.de",
+        "www.lve.de"
       ],
-      "imagePathPrefixes": null,
+      "imagePathPrefixes": {},
       "license": "existing_catalogue_source_policy",
       "taxonKey": "echinops bannaticus blue glow",
       "latinName": "Echinops bannaticus 'Blue Glow'",
-      "image": "assets/biljke/reference-54872a52d29bf7128b1647a1.jpg",
-      "sha256": "54872a52d29bf7128b1647a17c26bcef8dd8a3f4cc5f57de662730c999aa5e4f",
-      "checkedAt": "2026-11-10T11:23:37Z",
+      "image": "assets/biljke/reference-0997b0f529de21a8544492ed.jpg",
+      "sha256": "0997b0f529de21a8544492edff479d2a3f2b4e3f2453eee8b201bf40c096d119",
+      "checkedAt": "2026-11-16T11:26:02Z",
       "matchLevel": "exact"
     },
     "plant-262be7be43b526": {
       "provider": "other_catalogue_nursery",
-      "nurseryId": "photo-plant-werk-nl",
-      "imageUrl": "https://plant-werk.nl/wp-content/uploads/Deschampsia-cespitosa-Palava-bloem.jpg",
-      "sourceUrl": "https://plant-werk.nl/product/deschampsia-cespitosa-palava/",
+      "nurseryId": "lorenz-von-ehren",
+      "imageUrl": "https://www.lve-baumschule.de/media/fc/b6/6a/1648643227/7062606.JPG",
+      "sourceUrl": "https://www.lve-baumschule.de/deschampsia-cespitosa-palava/6982498",
       "matchedName": "Deschampsia cespitosa 'Palava'",
       "identityEvidence": {
         "method": "product_jsonld",
         "canonicalName": "Deschampsia cespitosa 'Palava'"
       },
       "imageHosts": [
-        "plant-werk.nl"
+        "www.lve-baumschule.de",
+        "www.lve.de"
       ],
-      "imagePathPrefixes": null,
+      "imagePathPrefixes": {},
       "license": "existing_catalogue_source_policy",
       "taxonKey": "deschampsia cespitosa palava",
       "latinName": "Deschampsia cespitosa 'Palava'",
-      "image": "assets/biljke/reference-3493461d6bb1688354e53b5a.jpg",
-      "sha256": "3493461d6bb1688354e53b5a57f7d909951c98efcb557efed4203b329b9a975b",
-      "checkedAt": "2026-11-10T11:23:38Z",
+      "image": "assets/biljke/reference-d40ed3422e64bbf7645cbb71.jpg",
+      "sha256": "d40ed3422e64bbf7645cbb717b5b9d343e61678a5d5055c9a6c7ef4d46980712",
+      "checkedAt": "2026-11-16T11:26:44Z",
       "matchLevel": "exact"
     },
     "plant-f45db48e72b497": {
@@ -9765,24 +9775,25 @@
     },
     "plant-7238b1ae51445f": {
       "provider": "other_catalogue_nursery",
-      "nurseryId": "photo-plant-werk-nl",
-      "imageUrl": "https://plant-werk.nl/wp-content/uploads/Miscanthus-sinensis-Yaku-Jima-bloem.jpg",
-      "sourceUrl": "https://plant-werk.nl/product/miscanthus-sinensis-yaku-jima/",
+      "nurseryId": "lorenz-von-ehren",
+      "imageUrl": "https://www.lve-baumschule.de/media/8e/8b/5f/1646916598/7081219.JPG",
+      "sourceUrl": "https://www.lve-baumschule.de/miscanthus-sinensis-yaku-jima/6354272",
       "matchedName": "Miscanthus sinensis 'Yaku Jima'",
       "identityEvidence": {
         "method": "product_jsonld",
         "canonicalName": "Miscanthus sinensis 'Yaku Jima'"
       },
       "imageHosts": [
-        "plant-werk.nl"
+        "www.lve-baumschule.de",
+        "www.lve.de"
       ],
-      "imagePathPrefixes": null,
+      "imagePathPrefixes": {},
       "license": "existing_catalogue_source_policy",
       "taxonKey": "miscanthus sinensis yaku jima",
       "latinName": "Miscanthus sinensis 'Yaku Jima'",
-      "image": "assets/biljke/reference-24f511f9a2a160f8e442c0c7.jpg",
-      "sha256": "24f511f9a2a160f8e442c0c787c751519e07ee1a3be3b8f5d829eb673ae6d3ec",
-      "checkedAt": "2026-11-10T11:24:13Z",
+      "image": "assets/biljke/reference-0c513bd46c4a93971db761d9.jpg",
+      "sha256": "0c513bd46c4a93971db761d9299037b9f0038d4bed52af765a4e8d93ee40d6e1",
+      "checkedAt": "2026-11-16T11:26:28Z",
       "matchLevel": "exact"
     },
     "plant-84e72281feaa72": {
@@ -9831,93 +9842,94 @@
     },
     "plant-470f7318053ca5": {
       "provider": "other_catalogue_nursery",
-      "nurseryId": "van-den-berk",
-      "imageUrl": "https://www.vdberk.co.uk/media/78660/robinia-pseudoacacia-pyramidalis.jpg",
-      "sourceUrl": "https://www.vdberk.co.uk/trees/robinia-pseudoacacia-pyramidalis/",
+      "nurseryId": "lorenz-von-ehren",
+      "imageUrl": "https://www.lve-baumschule.de/media/e6/bf/9b/1646917406/7062735.JPG",
+      "sourceUrl": "https://www.lve-baumschule.de/robinia-pseudoacacia-pyramidalis/6355014",
       "matchedName": "Robinia pseudoacacia 'Pyramidalis'",
       "identityEvidence": {
-        "method": "product_og_image",
+        "method": "product_jsonld",
         "canonicalName": "Robinia pseudoacacia 'Pyramidalis'"
       },
       "imageHosts": [
-        "www.vdberk.co.uk",
-        "www.vdberk.com",
-        "www.vdberk.de",
-        "www.vdberk.nl"
+        "www.lve-baumschule.de",
+        "www.lve.de"
       ],
-      "imagePathPrefixes": null,
+      "imagePathPrefixes": {},
       "license": "existing_catalogue_source_policy",
       "taxonKey": "robinia pseudoacacia pyramidalis",
       "latinName": "Robinia pseudoacacia 'Pyramidalis'",
-      "image": "assets/biljke/reference-29d78ad9cad9a0d982be0cf5.jpg",
-      "sha256": "29d78ad9cad9a0d982be0cf55684891e6d4352e4b23285895cd2c04e3c7494e3",
-      "checkedAt": "2026-11-10T11:24:42Z",
+      "image": "assets/biljke/reference-e3f5d48600bd495dbc54e58d.jpg",
+      "sha256": "e3f5d48600bd495dbc54e58dba64aad37a3d79da61568d52c23b4891519fd015",
+      "checkedAt": "2026-11-16T11:26:35Z",
       "matchLevel": "exact"
     },
     "plant-2f78aaf28d94d4": {
       "provider": "other_catalogue_nursery",
-      "nurseryId": "photo-plant-werk-nl",
-      "imageUrl": "https://plant-werk.nl/wp-content/uploads/Rudbeckia-fulgida-Gold-Sturm-bloem-scaled.jpg",
-      "sourceUrl": "https://plant-werk.nl/product/rudbeckia-fulgida-goldsturm/",
+      "nurseryId": "lorenz-von-ehren",
+      "imageUrl": "https://www.lve-baumschule.de/media/a6/e1/20/1646917566/6902607.JPG",
+      "sourceUrl": "https://www.lve-baumschule.de/rudbeckia-fulgida-goldsturm/6355382",
       "matchedName": "Rudbeckia fulgida 'Goldsturm'",
       "identityEvidence": {
         "method": "product_jsonld",
         "canonicalName": "Rudbeckia fulgida 'Goldsturm'"
       },
       "imageHosts": [
-        "plant-werk.nl"
+        "www.lve-baumschule.de",
+        "www.lve.de"
       ],
-      "imagePathPrefixes": null,
+      "imagePathPrefixes": {},
       "license": "existing_catalogue_source_policy",
       "taxonKey": "rudbeckia fulgida goldsturm",
       "latinName": "Rudbeckia fulgida 'Goldsturm'",
-      "image": "assets/biljke/reference-8992bfa8b58d712b12c8b4c1.jpg",
-      "sha256": "8992bfa8b58d712b12c8b4c184f78375a24808677f916fd57833e5493f6ddf0b",
-      "checkedAt": "2026-11-10T11:24:42Z",
+      "image": "assets/biljke/reference-07b85c8c49e54ae865120766.jpg",
+      "sha256": "07b85c8c49e54ae865120766b13d77a8c550c2f12ce62d4f4158e54f55748102",
+      "checkedAt": "2026-11-16T11:26:33Z",
       "matchLevel": "exact"
     },
     "plant-6946aeac61fe92": {
       "provider": "other_catalogue_nursery",
-      "nurseryId": "photo-knollgardens-co-uk",
-      "imageUrl": "https://www.knollgardens.co.uk/wp-content/uploads/2018/10/Sedum-Herbsfreude6056b-scaled.jpg",
-      "sourceUrl": "https://www.knollgardens.co.uk/product/sedum-herbstfreude-autumn-joy/",
+      "nurseryId": "lorenz-von-ehren",
+      "imageUrl": "https://www.lve-baumschule.de/media/1e/c3/d7/1646917645/6902760.JPG",
+      "sourceUrl": "https://www.lve-baumschule.de/sedum-herbstfreude/6355458",
       "matchedName": "Sedum 'Herbstfreude'",
       "identityEvidence": {
         "method": "product_jsonld",
         "canonicalName": "Sedum 'Herbstfreude'"
       },
       "imageHosts": [
-        "www.knollgardens.co.uk"
+        "www.lve-baumschule.de",
+        "www.lve.de"
       ],
-      "imagePathPrefixes": null,
+      "imagePathPrefixes": {},
       "license": "existing_catalogue_source_policy",
       "taxonKey": "sedum herbstfreude",
       "latinName": "Sedum 'Herbstfreude'",
-      "image": "assets/biljke/reference-e845b1af723ab8aba9c62d9b.jpg",
-      "sha256": "e845b1af723ab8aba9c62d9be3d1d120fcbf3e0905b925ee0de64f765937f875",
-      "checkedAt": "2026-11-10T11:24:46Z",
+      "image": "assets/biljke/reference-6ebdc671272770830e85c8b1.jpg",
+      "sha256": "6ebdc671272770830e85c8b195f80435a9432ffef2a4e4529100dd87651c4c57",
+      "checkedAt": "2026-11-16T11:26:31Z",
       "matchLevel": "exact"
     },
     "plant-70f7966491cea4": {
       "provider": "other_catalogue_nursery",
-      "nurseryId": "photo-knollgardens-co-uk",
-      "imageUrl": "https://www.knollgardens.co.uk/wp-content/uploads/2018/10/Sedum-Matrona2725b-scaled.jpg",
-      "sourceUrl": "https://www.knollgardens.co.uk/product/sedum-matrona/",
+      "nurseryId": "lorenz-von-ehren",
+      "imageUrl": "https://www.lve-baumschule.de/media/e9/c9/82/1646917646/7081258.JPG",
+      "sourceUrl": "https://www.lve-baumschule.de/sedum-matrona/6355459",
       "matchedName": "Sedum 'Matrona'",
       "identityEvidence": {
         "method": "product_jsonld",
         "canonicalName": "Sedum 'Matrona'"
       },
       "imageHosts": [
-        "www.knollgardens.co.uk"
+        "www.lve-baumschule.de",
+        "www.lve.de"
       ],
-      "imagePathPrefixes": null,
+      "imagePathPrefixes": {},
       "license": "existing_catalogue_source_policy",
       "taxonKey": "sedum matrona",
       "latinName": "Sedum 'Matrona'",
-      "image": "assets/biljke/reference-32fcef135e7d45045ec7743c.jpg",
-      "sha256": "32fcef135e7d45045ec7743c9e17648666b9e0de47dfabf7d28243de67d9dd93",
-      "checkedAt": "2026-11-10T11:24:47Z",
+      "image": "assets/biljke/reference-4ebc7aa0ddb41c99bb653df7.jpg",
+      "sha256": "4ebc7aa0ddb41c99bb653df755879725dab8a1ea8b08b30675895d9eb8eacec4",
+      "checkedAt": "2026-11-16T11:26:32Z",
       "matchLevel": "exact"
     },
     "plant-22701ebacaa7bc": {
@@ -9944,27 +9956,25 @@
     },
     "plant-eb55a52bc85a2b": {
       "provider": "other_catalogue_nursery",
-      "nurseryId": "van-den-berk",
-      "imageUrl": "https://www.vdberk.co.uk/media/415220/sequoiadendron-giganteum-glaucum.jpg",
-      "sourceUrl": "https://www.vdberk.co.uk/trees/sequoiadendron-giganteum-glaucum/",
+      "nurseryId": "lorenz-von-ehren",
+      "imageUrl": "https://www.lve-baumschule.de/media/2a/ba/82/1646917654/7072573.JPG",
+      "sourceUrl": "https://www.lve-baumschule.de/sequoiadendron-giganteum-glaucum/6355464",
       "matchedName": "Sequoiadendron giganteum 'Glaucum'",
       "identityEvidence": {
-        "method": "product_og_image",
+        "method": "product_jsonld",
         "canonicalName": "Sequoiadendron giganteum 'Glaucum'"
       },
       "imageHosts": [
-        "www.vdberk.co.uk",
-        "www.vdberk.com",
-        "www.vdberk.de",
-        "www.vdberk.nl"
+        "www.lve-baumschule.de",
+        "www.lve.de"
       ],
-      "imagePathPrefixes": null,
+      "imagePathPrefixes": {},
       "license": "existing_catalogue_source_policy",
       "taxonKey": "sequoiadendron giganteum glaucum",
       "latinName": "Sequoiadendron giganteum 'Glaucum'",
-      "image": "assets/biljke/reference-1814bbedca429f7e482469cf.jpg",
-      "sha256": "1814bbedca429f7e482469cf899ed9867debc5987c8528b054cc6ae75de8b146",
-      "checkedAt": "2026-11-10T11:24:48Z",
+      "image": "assets/biljke/reference-889169fc3a1f555d347b8086.jpg",
+      "sha256": "889169fc3a1f555d347b8086ef8ba19fe8239d640571f9ef5b393375bbb63f02",
+      "checkedAt": "2026-11-16T11:26:33Z",
       "matchLevel": "exact"
     },
     "plant-b96dc37004f9ff": {
@@ -10143,49 +10153,58 @@
     },
     "plant-c1ccee0a920085": {
       "provider": "other_catalogue_nursery",
-      "nurseryId": "photo-provendernurseries-co-uk",
-      "imageUrl": "https://www.provendernurseries.co.uk/files/images/misc/hamamelis-x-intermedia-diane-1548358389_n.jpg",
-      "sourceUrl": "https://www.provendernurseries.co.uk/factsheets/hamamelis-x-intermedia-diane",
-      "matchedName": "Hamamelis x intermedia 'Diane'",
+      "nurseryId": "lorenz-von-ehren",
+      "imageUrl": "https://www.lve-baumschule.de/media/44/03/2e/1646915979/7067443.JPG",
+      "sourceUrl": "https://www.lve-baumschule.de/hamamelis-intermedia-diane/6353799",
+      "matchedName": "Hamamelis intermedia 'Diane'",
       "identityEvidence": {
-        "method": "exact_product_image_alt",
+        "method": "product_jsonld",
         "canonicalName": "Hamamelis x intermedia 'Diane'"
       },
       "imageHosts": [
-        "www.provendernurseries.co.uk"
+        "www.lve-baumschule.de",
+        "www.lve.de"
       ],
-      "imagePathPrefixes": null,
+      "imagePathPrefixes": {},
       "license": "existing_catalogue_source_policy",
       "taxonKey": "hamamelis intermedia diane",
       "latinName": "Hamamelis x intermedia 'Diane'",
-      "image": "assets/biljke/reference-c78e7eea602c851846babf93.jpg",
-      "sha256": "c78e7eea602c851846babf9338c2fff7a3693840410b86507a24e742c6247384",
-      "checkedAt": "2026-11-10T11:34:50Z",
+      "image": "assets/biljke/reference-0a128c2adc848afb79d77988.jpg",
+      "sha256": "0a128c2adc848afb79d7798882df88f44cec4a2bc9a9e34423a0c6b332a280b3",
+      "checkedAt": "2026-11-16T11:26:27Z",
       "matchLevel": "exact"
     },
     "plant-123479a69dd64f": {
+      "nurseryId": "volentis",
       "provider": "other_catalogue_nursery",
-      "nurseryId": "van-den-berk",
-      "imageUrl": "https://www.vdberk.co.uk/media/31790/crataegus-persimilis-splendens.jpg",
-      "sourceUrl": "https://www.vdberk.co.uk/trees/crataegus-persimilis-splendens/",
-      "matchedName": "Crataegus x persimilis 'Splendens'",
+      "matchedName": "Crataegus persimilis 'Splendens'",
+      "sourceUrl": "https://portal.volentis.com/en/offers/details/crataegus-persimilis-splendens-fullground-multistemmed",
+      "imageUrl": "https://cdn.volentis.com/d/1wz_wfyuN-ztq95Q9eVsLvc7edaIp8kcR/crataegus-persimilis-splendens-300-350-ms.jpg?width=600&height=350&mode=max&anchor=top",
       "identityEvidence": {
-        "method": "product_og_image",
+        "kind": "exact_named_offer_card",
+        "name": "Crataegus persimilis 'Splendens'",
+        "pageUrl": "https://portal.volentis.com/en/offers/1?SearchText=Crataegus+persimilis+%27Splendens%27",
+        "detailUrl": "https://portal.volentis.com/en/offers/details/crataegus-persimilis-splendens-fullground-multistemmed",
+        "imageUrl": "https://cdn.volentis.com/d/1wz_wfyuN-ztq95Q9eVsLvc7edaIp8kcR/crataegus-persimilis-splendens-300-350-ms.jpg?width=600&height=350&mode=max&anchor=top",
         "canonicalName": "Crataegus x persimilis 'Splendens'"
       },
+      "resolver": "volentis_offer_card",
+      "canonicalName": "Crataegus x persimilis 'Splendens'",
       "imageHosts": [
-        "www.vdberk.co.uk",
-        "www.vdberk.com",
-        "www.vdberk.de",
-        "www.vdberk.nl"
+        "cdn.volentis.com",
+        "www.volentis.com"
       ],
-      "imagePathPrefixes": null,
+      "imagePathPrefixes": {
+        "cdn.volentis.com": [
+          "/d/"
+        ]
+      },
       "license": "existing_catalogue_source_policy",
       "taxonKey": "crataegus persimilis splendens",
       "latinName": "Crataegus x persimilis 'Splendens'",
-      "image": "assets/biljke/reference-95e3729311ee5e409715699c.jpg",
-      "sha256": "95e3729311ee5e409715699c4ba72c01b611d6028aeafbb7e753a0d5ef5f114b",
-      "checkedAt": "2026-11-10T11:34:51Z",
+      "image": "assets/biljke/reference-ab1a822b7ca42805104b75b1.jpg",
+      "sha256": "ab1a822b7ca42805104b75b14441c5af2addf7ba4c100cebc06905ff01536d65",
+      "checkedAt": "2026-11-16T11:26:29Z",
       "matchLevel": "exact"
     },
     "plant-1b32527d81ccd6": {
@@ -10211,28 +10230,36 @@
       "matchLevel": "exact"
     },
     "plant-76a27aa2433b7d": {
-      "provider": "other_catalogue_nursery",
-      "nurseryId": "van-den-berk",
-      "imageUrl": "https://www.vdberk.co.uk/media/72410/prunus-eminens-umbraculifera.jpg",
-      "sourceUrl": "https://www.vdberk.co.uk/trees/prunus-eminens-umbraculifera/",
-      "matchedName": "Prunus x eminens 'Umbraculifera'",
+      "nurseryId": "volentis",
+      "provider": "supplying_nursery",
+      "matchedName": "Prunus eminens 'Umbraculifera'",
+      "sourceUrl": "https://portal.volentis.com/en/offers/details/prunus-eminens-umbraculifera-fullground-avenue",
+      "imageUrl": "https://cdn.volentis.com/d/1NiRmNPTW2vVYhsa1HNsfshBk-vxVlWdj/prunus-eminens-umbraculifera-10-14-225st.jpg?width=600&height=350&mode=max&anchor=top",
       "identityEvidence": {
-        "method": "product_og_image",
+        "kind": "exact_named_offer_card",
+        "name": "Prunus eminens 'Umbraculifera'",
+        "pageUrl": "https://portal.volentis.com/en/offers/1?SearchText=Prunus+eminens+%27Umbraculifera%27",
+        "detailUrl": "https://portal.volentis.com/en/offers/details/prunus-eminens-umbraculifera-fullground-avenue",
+        "imageUrl": "https://cdn.volentis.com/d/1NiRmNPTW2vVYhsa1HNsfshBk-vxVlWdj/prunus-eminens-umbraculifera-10-14-225st.jpg?width=600&height=350&mode=max&anchor=top",
         "canonicalName": "Prunus x eminens 'Umbraculifera'"
       },
+      "resolver": "volentis_offer_card",
+      "canonicalName": "Prunus x eminens 'Umbraculifera'",
       "imageHosts": [
-        "www.vdberk.co.uk",
-        "www.vdberk.com",
-        "www.vdberk.de",
-        "www.vdberk.nl"
+        "cdn.volentis.com",
+        "www.volentis.com"
       ],
-      "imagePathPrefixes": null,
+      "imagePathPrefixes": {
+        "cdn.volentis.com": [
+          "/d/"
+        ]
+      },
       "license": "existing_catalogue_source_policy",
       "taxonKey": "prunus eminens umbraculifera",
       "latinName": "Prunus x eminens 'Umbraculifera'",
-      "image": "assets/biljke/reference-3f7760260a6b5e1968b38979.jpg",
-      "sha256": "3f7760260a6b5e1968b38979218545ab722e78e6f8062bbaf1942c2f57752198",
-      "checkedAt": "2026-11-10T11:34:53Z",
+      "image": "assets/biljke/reference-bea10140e9cad9d105fe8f18.jpg",
+      "sha256": "bea10140e9cad9d105fe8f186d522743e6fd1f76d41752b42e26e61342c82ae8",
+      "checkedAt": "2026-11-16T11:26:29Z",
       "matchLevel": "exact"
     },
     "plant-49e30437b17525": {
@@ -10280,28 +10307,36 @@
       "matchLevel": "exact"
     },
     "plant-f909981347d7d7": {
-      "provider": "other_catalogue_nursery",
-      "nurseryId": "van-den-berk",
-      "imageUrl": "https://www.vdberk.co.uk/media/TIEEUCHL/Tilia%20europaea%20Euchlora%2035-40%20T1-12-2.jpg",
-      "sourceUrl": "https://www.vdberk.co.uk/trees/tilia-europaea-euchlora/",
-      "matchedName": "Tilia x europaea 'Euchlora'",
+      "nurseryId": "volentis",
+      "provider": "supplying_nursery",
+      "matchedName": "Tilia europaea 'Euchlora'",
+      "sourceUrl": "https://portal.volentis.com/en/offers/details/tilia-europaea-euchlora-fullground-avenue",
+      "imageUrl": "https://cdn.volentis.com/d/1i0c-rq6BIlcAhndHjjhjD1fiFYJQxvz4/tilia-europaea-euchlora-10-12.jpg?width=600&height=350&mode=max&anchor=top",
       "identityEvidence": {
-        "method": "product_og_image",
+        "kind": "exact_named_offer_card",
+        "name": "Tilia europaea 'Euchlora'",
+        "pageUrl": "https://portal.volentis.com/en/offers/1?SearchText=Tilia+europaea+%27Euchlora%27",
+        "detailUrl": "https://portal.volentis.com/en/offers/details/tilia-europaea-euchlora-fullground-avenue",
+        "imageUrl": "https://cdn.volentis.com/d/1i0c-rq6BIlcAhndHjjhjD1fiFYJQxvz4/tilia-europaea-euchlora-10-12.jpg?width=600&height=350&mode=max&anchor=top",
         "canonicalName": "Tilia x europaea 'Euchlora'"
       },
+      "resolver": "volentis_offer_card",
+      "canonicalName": "Tilia x europaea 'Euchlora'",
       "imageHosts": [
-        "www.vdberk.co.uk",
-        "www.vdberk.com",
-        "www.vdberk.de",
-        "www.vdberk.nl"
+        "cdn.volentis.com",
+        "www.volentis.com"
       ],
-      "imagePathPrefixes": null,
+      "imagePathPrefixes": {
+        "cdn.volentis.com": [
+          "/d/"
+        ]
+      },
       "license": "existing_catalogue_source_policy",
       "taxonKey": "tilia europaea euchlora",
       "latinName": "Tilia x europaea 'Euchlora'",
-      "image": "assets/biljke/reference-7bb4a437522f372d688fb372.jpg",
-      "sha256": "7bb4a437522f372d688fb37291dbe33a862cae8cfd1585667ecbd1fb5c1d9a49",
-      "checkedAt": "2026-11-10T11:34:55Z",
+      "image": "assets/biljke/reference-454296eabc569df85d89b49a.jpg",
+      "sha256": "454296eabc569df85d89b49a1d933a3309fbfc452e9b41df1cc98369fb341412",
+      "checkedAt": "2026-11-16T11:26:45Z",
       "matchLevel": "exact"
     },
     "plant-a14f511a15098e": {
@@ -10327,28 +10362,25 @@
       "matchLevel": "exact"
     },
     "plant-43201d5e8991bc": {
-      "provider": "gbif",
-      "imageUrl": "https://api.gbif.org/v1/image/cache/1200x/occurrence/6452256318/media/9c78b89342d6f5f9d4b63ec212e63787",
-      "sourceUrl": "https://www.gbif.org/occurrence/6452256318",
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "innocenti-mangoni",
+      "imageUrl": "https://innocentiemangonipiante.it/wp-content/uploads/2023/10/1643986750-scaled.jpeg",
+      "sourceUrl": "https://innocentiemangonipiante.it/en/stachys-byzantina/",
       "matchedName": "Stachys byzantina",
-      "identityEvidence": [
-        "Stachys byzantina"
-      ],
-      "license": "CC0-1.0",
-      "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-      "imageHosts": [
-        "api.gbif.org"
-      ],
-      "imagePathPrefixes": {
-        "api.gbif.org": [
-          "/v1/image/cache/"
-        ]
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Stachys byzanthina"
       },
+      "imageHosts": [
+        "innocentiemangonipiante.it"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
       "taxonKey": "stachys byzanthina",
       "latinName": "Stachys byzanthina",
-      "image": "assets/biljke/reference-080736ff8bc2a129157c7c19.jpg",
-      "sha256": "080736ff8bc2a129157c7c19e1858a334f0ab97c14c7950fccee280a707949b6",
-      "checkedAt": "2026-11-10T11:35:12Z",
+      "image": "assets/biljke/reference-37bfdf019591fc9a97935399.jpg",
+      "sha256": "37bfdf019591fc9a97935399e55875bcf6eb7677fe2b9e51d965c3c6bbbd3d1f",
+      "checkedAt": "2026-11-16T11:26:49Z",
       "matchLevel": "exact"
     },
     "plant-274066fb782dbf": {
@@ -10374,6 +10406,311 @@
       "image": "assets/biljke/reference-df693df20b9b28de7cb6fef7.jpg",
       "sha256": "df693df20b9b28de7cb6fef7a9ca3e67c18ae6b0abefbb2c3bc3554085c6708b",
       "checkedAt": "2026-11-10T11:35:25Z",
+      "matchLevel": "exact"
+    },
+    "plant-02e2d7be8908da": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "lorberg",
+      "imageUrl": "https://www.lorberg.com/content/files/18006/Cotoneaster-dammeri-Skogholm-1200x630-proportionalbiggest.webp",
+      "sourceUrl": "https://www.lorberg.com/en-gb/article/1166/cotoneaster-dammeri-skogholm",
+      "matchedName": "Cotoneaster dammeri 'Skogholm'",
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Cotoneaster dammerii 'Skogholm'"
+      },
+      "imageHosts": [
+        "www.lorberg.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "cotoneaster dammeri skogholm",
+      "latinName": "Cotoneaster dammerii 'Skogholm'",
+      "image": "assets/biljke/reference-361cdc2d14422c73a1e469db.jpg",
+      "sha256": "361cdc2d14422c73a1e469dbbe2f0f01618f2c7d0652fecdce71a45385c937f3",
+      "checkedAt": "2026-11-16T11:25:49Z",
+      "matchLevel": "exact"
+    },
+    "plant-986e7dcb29f3b7": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "lorenz-von-ehren",
+      "imageUrl": "https://www.lve-baumschule.de/media/a2/a6/4b/1648713588/7075347.JPG",
+      "sourceUrl": "https://www.lve-baumschule.de/acer-freemanii-celzam/6352825",
+      "matchedName": "Acer freemanii 'Celzam'",
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Acer freemanii 'Celzam'"
+      },
+      "imageHosts": [
+        "www.lve-baumschule.de",
+        "www.lve.de"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "acer freemanii celzam",
+      "latinName": "Acer freemanii 'Celzam'",
+      "image": "assets/biljke/reference-292767052fc397ac947d11d9.jpg",
+      "sha256": "292767052fc397ac947d11d9e95c457b35f3f6855eec3e540e4804dd8754fc7a",
+      "checkedAt": "2026-11-16T11:25:49Z",
+      "matchLevel": "exact"
+    },
+    "plant-631cbe20406538": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "lorenz-von-ehren",
+      "imageUrl": "https://www.lve-baumschule.de/media/61/ce/b1/1648713754/6896289.JPG",
+      "sourceUrl": "https://www.lve-baumschule.de/anemone-hupehensis-praecox/6355783",
+      "matchedName": "Anemone hupehensis 'Praecox'",
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Anemone hupehensis 'Praecox'"
+      },
+      "imageHosts": [
+        "www.lve-baumschule.de",
+        "www.lve.de"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "anemone hupehensis praecox",
+      "latinName": "Anemone hupehensis 'Praecox'",
+      "image": "assets/biljke/reference-4ff09336f99512e7dc281356.jpg",
+      "sha256": "4ff09336f99512e7dc28135653596de9f3af8dbfae0b5f31f96fe16bc383f38a",
+      "checkedAt": "2026-11-16T11:25:49Z",
+      "matchLevel": "exact"
+    },
+    "plant-a2a94fa0e6b6b7": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "lorenz-von-ehren",
+      "imageUrl": "https://www.lve-baumschule.de/media/83/04/38/1648713780/7079677.JPG",
+      "sourceUrl": "https://www.lve-baumschule.de/aster-amellus-rudolf-goethe/6352977",
+      "matchedName": "Aster amellus 'Rudolf Goethe'",
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Aster amellus 'Rudolf Goethe'"
+      },
+      "imageHosts": [
+        "www.lve-baumschule.de",
+        "www.lve.de"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "aster amellus rudolf goethe",
+      "latinName": "Aster amellus 'Rudolf Goethe'",
+      "image": "assets/biljke/reference-4b3915de602ff1f725e3c8c8.jpg",
+      "sha256": "4b3915de602ff1f725e3c8c83b9ce8163ac4d111c7f48de98a4c7b47f20a1f61",
+      "checkedAt": "2026-11-16T11:25:51Z",
+      "matchLevel": "exact"
+    },
+    "plant-ead1d895a5ec98": {
+      "nurseryId": "volentis",
+      "provider": "supplying_nursery",
+      "matchedName": "Carpinus betulus 'Beekman'",
+      "sourceUrl": "https://portal.volentis.com/en/offers/details/carpinus-betulus-beekman-fullground-avenue",
+      "imageUrl": "https://cdn.volentis.com/d/1IFbum_sHcr43HnCZGCYNYurh0QM0SwRz/carpinus-betulus-beekman-20-30.jpg?width=600&height=350&mode=max&anchor=top",
+      "identityEvidence": {
+        "kind": "exact_named_offer_card",
+        "name": "Carpinus betulus 'Beekman'",
+        "pageUrl": "https://portal.volentis.com/en/offers/1?SearchText=Carpinus+betulus+%27Beekman%27",
+        "detailUrl": "https://portal.volentis.com/en/offers/details/carpinus-betulus-beekman-fullground-avenue",
+        "imageUrl": "https://cdn.volentis.com/d/1IFbum_sHcr43HnCZGCYNYurh0QM0SwRz/carpinus-betulus-beekman-20-30.jpg?width=600&height=350&mode=max&anchor=top",
+        "canonicalName": "Carpinus betulus 'Beekman'"
+      },
+      "resolver": "volentis_offer_card",
+      "canonicalName": "Carpinus betulus 'Beekman'",
+      "imageHosts": [
+        "cdn.volentis.com",
+        "www.volentis.com"
+      ],
+      "imagePathPrefixes": {
+        "cdn.volentis.com": [
+          "/d/"
+        ]
+      },
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "carpinus betulus beekman",
+      "latinName": "Carpinus betulus 'Beekman'",
+      "image": "assets/biljke/reference-b9a5384e52659bf101a25a72.jpg",
+      "sha256": "b9a5384e52659bf101a25a72b0cee83a6d984a1ef49e71d6ad2b46efe016966b",
+      "checkedAt": "2026-11-16T11:25:54Z",
+      "matchLevel": "exact"
+    },
+    "plant-b1f0477fdfe037": {
+      "nurseryId": "volentis",
+      "provider": "supplying_nursery",
+      "matchedName": "Fraxinus excelsior 'Nana'",
+      "sourceUrl": "https://portal.volentis.com/en/offers/details/fraxinus-excelsior-nana-fullground-avenue",
+      "imageUrl": "https://cdn.volentis.com/d/1EBih4DRVUt4hQptUX3aEAsdfyT2FjciS/fraxinus-excelsior-nana-12-16.jpg?width=600&height=350&mode=max&anchor=top",
+      "identityEvidence": {
+        "kind": "exact_named_offer_card",
+        "name": "Fraxinus excelsior 'Nana'",
+        "pageUrl": "https://portal.volentis.com/en/offers/1?SearchText=Fraxinus+excelsior+%27Nana%27",
+        "detailUrl": "https://portal.volentis.com/en/offers/details/fraxinus-excelsior-nana-fullground-avenue",
+        "imageUrl": "https://cdn.volentis.com/d/1EBih4DRVUt4hQptUX3aEAsdfyT2FjciS/fraxinus-excelsior-nana-12-16.jpg?width=600&height=350&mode=max&anchor=top",
+        "canonicalName": "Fraxinus excelsior 'Nana'"
+      },
+      "resolver": "volentis_offer_card",
+      "canonicalName": "Fraxinus excelsior 'Nana'",
+      "imageHosts": [
+        "cdn.volentis.com",
+        "www.volentis.com"
+      ],
+      "imagePathPrefixes": {
+        "cdn.volentis.com": [
+          "/d/"
+        ]
+      },
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "fraxinus excelsior nana",
+      "latinName": "Fraxinus excelsior 'Nana'",
+      "image": "assets/biljke/reference-574fe9bfe27927607aa0bfd6.jpg",
+      "sha256": "574fe9bfe27927607aa0bfd603aab7e79bd96fb3207fbdc0857358cb7c9b8a70",
+      "checkedAt": "2026-11-16T11:26:05Z",
+      "matchLevel": "exact"
+    },
+    "plant-df76b734eb608c": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "lorenz-von-ehren",
+      "imageUrl": "https://www.lve-baumschule.de/media/cc/11/e7/1646916191/7061581.JPG",
+      "sourceUrl": "https://www.lve-baumschule.de/juniperus-communis-repanda/6354004",
+      "matchedName": "Juniperus communis 'Repanda'",
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Juniperus communis 'Repanda'"
+      },
+      "imageHosts": [
+        "www.lve-baumschule.de",
+        "www.lve.de"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "juniperus communis repanda",
+      "latinName": "Juniperus communis 'Repanda'",
+      "image": "assets/biljke/reference-264f385c97ef3e91222fc8c1.jpg",
+      "sha256": "264f385c97ef3e91222fc8c1a82a20367672ae1f05fff1a4027f889e5d5e896a",
+      "checkedAt": "2026-11-16T11:26:10Z",
+      "matchLevel": "exact"
+    },
+    "plant-ecb0149026ff84": {
+      "nurseryId": "volentis",
+      "provider": "supplying_nursery",
+      "matchedName": "Prunus cerasus 'May Duke'",
+      "sourceUrl": "https://portal.volentis.com/en/offers/details/prunus-cerasus-may-duke-container-avenue",
+      "imageUrl": "https://cdn.volentis.com/d/1hNnw02pSJ9meFvkQgCrIdX9YyX1jLKLU/prunus-cerasus-dubbele-meikers-cont-10-14-225st.jpg?width=600&height=350&mode=max&anchor=top",
+      "identityEvidence": {
+        "kind": "exact_named_offer_card",
+        "name": "Prunus cerasus 'May Duke'",
+        "pageUrl": "https://portal.volentis.com/en/offers/1?SearchText=Prunus+cerasus+%27May+Duke%27",
+        "detailUrl": "https://portal.volentis.com/en/offers/details/prunus-cerasus-may-duke-container-avenue",
+        "imageUrl": "https://cdn.volentis.com/d/1hNnw02pSJ9meFvkQgCrIdX9YyX1jLKLU/prunus-cerasus-dubbele-meikers-cont-10-14-225st.jpg?width=600&height=350&mode=max&anchor=top",
+        "canonicalName": "Prunus cerasus 'May Duke'"
+      },
+      "resolver": "volentis_offer_card",
+      "canonicalName": "Prunus cerasus 'May Duke'",
+      "imageHosts": [
+        "cdn.volentis.com",
+        "www.volentis.com"
+      ],
+      "imagePathPrefixes": {
+        "cdn.volentis.com": [
+          "/d/"
+        ]
+      },
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "prunus cerasus may duke",
+      "latinName": "Prunus cerasus 'May Duke'",
+      "image": "assets/biljke/reference-e74d36b878c2cdf91178b938.jpg",
+      "sha256": "e74d36b878c2cdf91178b938bef772587d6bb9e32dc689a4668943a066944ef2",
+      "checkedAt": "2026-11-16T11:26:16Z",
+      "matchLevel": "exact"
+    },
+    "plant-bef4074eaff0f2": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "lorenz-von-ehren",
+      "imageUrl": "https://www.lve-baumschule.de/media/e8/53/ce/1648642845/6896711.JPG",
+      "sourceUrl": "https://www.lve-baumschule.de/carex-morrowii-irish-green/6353170",
+      "matchedName": "Carex morrowii 'Irish Green'",
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Carex morrowii 'Irish Green'"
+      },
+      "imageHosts": [
+        "www.lve-baumschule.de",
+        "www.lve.de"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "carex morrowii irish green",
+      "latinName": "Carex morrowii 'Irish Green'",
+      "image": "assets/biljke/reference-bf923a8eb2f92c8f861d3114.jpg",
+      "sha256": "bf923a8eb2f92c8f861d311492c6192cc0088b065d7e2a2fcd139f908a56f50e",
+      "checkedAt": "2026-11-16T11:26:29Z",
+      "matchLevel": "exact"
+    },
+    "plant-8ff82317ab73d4": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "lorenz-von-ehren",
+      "imageUrl": "https://www.lve-baumschule.de/media/68/4e/3a/1646916093/7067572.JPG",
+      "sourceUrl": "https://www.lve-baumschule.de/hydrangea-paniculata-little-lime/6996342",
+      "matchedName": "Hydrangea paniculata 'Little Lime'",
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Hydrangea paniculata 'Little Lime'"
+      },
+      "imageHosts": [
+        "www.lve-baumschule.de",
+        "www.lve.de"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "hydrangea paniculata little lime",
+      "latinName": "Hydrangea paniculata 'Little Lime'",
+      "image": "assets/biljke/reference-64b637e7434275e3d0cda4b2.jpg",
+      "sha256": "64b637e7434275e3d0cda4b2ba32357851131a31ead7e2a9bd19dc5f57e1003b",
+      "checkedAt": "2026-11-16T11:26:34Z",
+      "matchLevel": "exact"
+    },
+    "plant-b4ef8b5da580a2": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "lorenz-von-ehren",
+      "imageUrl": "https://www.lve-baumschule.de/media/d9/b3/a4/1646916703/7060719.JPG",
+      "sourceUrl": "https://www.lve-baumschule.de/pennisetum-orientale/6983720",
+      "matchedName": "Pennisetum orientale",
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Pennisetum orientale"
+      },
+      "imageHosts": [
+        "www.lve-baumschule.de",
+        "www.lve.de"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "cenchrus orientalis",
+      "latinName": "Pennisetum orientale",
+      "image": "assets/biljke/reference-4ca66d46cdc2908868d8268d.jpg",
+      "sha256": "4ca66d46cdc2908868d8268d1d1982fabde793d9fe03f8d7ffcbc7d82d0fddb2",
+      "checkedAt": "2026-11-16T11:26:39Z",
+      "matchLevel": "exact"
+    },
+    "plant-75ad0c865be022": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "lorenz-von-ehren",
+      "imageUrl": "https://www.lve-baumschule.de/media/05/f2/2e/1646917239/6901413.JPG",
+      "sourceUrl": "https://www.lve-baumschule.de/rhamnus-frangula/6354736",
+      "matchedName": "Rhamnus frangula",
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Rhamnus frangula"
+      },
+      "imageHosts": [
+        "www.lve-baumschule.de",
+        "www.lve.de"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "rhamnus frangula",
+      "latinName": "Rhamnus frangula",
+      "image": "assets/biljke/reference-3051ed134a2b36bb2242b4ce.jpg",
+      "sha256": "3051ed134a2b36bb2242b4ce91cd7afe46e4d3f54fb5eb93010a5cfd18d514ff",
+      "checkedAt": "2026-11-16T11:26:54Z",
       "matchLevel": "exact"
     }
   },
@@ -10783,6 +11120,7 @@
     "60f663455036df48f7bf03880c3acc880b8ea7cda10aaeac8740246aac8e85e5",
     "6b8c491aae2753765c93a6cdfc578d6272223b6e25f5bbc3d57274522ecbfa89",
     "7af531db62aa9be6a29521a154b0efed07393ee54aa3f5eba452fb4863a38c60",
+    "7c8c9791f48b31f8f099def88389a80526e368b066412ede670e93f090d6c3dc",
     "9b36c96ac12bdfb6ce7f2b3c644c182be8dcc4f08f0ca3288a406ddd4a8ffc30",
     "e7f60f00ea6dbff2201d792ceb7f61f703e1bd1531f505e7a1ca6077cdf0cc2d",
     "f9e15c42a054e3cdae830394fb68172ce1b3509a92fa031e5c7878c13f9ecd08"
@@ -10798,7 +11136,8 @@
     "https://upload.wikimedia.org/wikipedia/commons/3/3e/EB1911_-_Branchlet_of_Larch_%28Larix_europaea%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
     "https://www.lorberg.com/content/files/12313/Liriope-muscari-Royal-Purple-1200x630-proportionalbiggest.webp",
     "https://www.lorberg.com/content/files/4560/Acer-platanoides-1200x630-proportionalbiggest.webp",
-    "https://www.reali.it/wp-content/uploads/2025/12/ACESAWI-287x300.jpg"
+    "https://www.reali.it/wp-content/uploads/2025/12/ACESAWI-287x300.jpg",
+    "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/ASNBMBAL_369_1212202210140.jpg"
   ],
   "ambiguousImages": {
     "00c3461d712e824d5b955f9e98278488c065441008be4c10fee7590a131579be": [
