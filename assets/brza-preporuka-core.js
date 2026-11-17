@@ -366,7 +366,7 @@
       checked.message,...review].filter(Boolean).join(' ');
     const evidence=tenderEvidence(index,found.id,reason,checked.suppliers||[]);
     return withNearest({...evidence,recognized:true,requiresReview:review.length>0,
-      deliveryAlternatives:alternatives,baseStatus:checked.status});
+      alternatives,baseStatus:checked.status});
   }
   function recommend(index,input,options={}){
     if(options.tenderMode)return recommendTender(index,input,options);
