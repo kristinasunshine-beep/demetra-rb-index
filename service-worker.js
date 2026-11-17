@@ -12,12 +12,12 @@ self.addEventListener('fetch', event => {
   if (req.method !== 'GET' || new URL(req.url).origin !== self.location.origin) return;
   const url = new URL(req.url);
   // Never put current or archival prices, dynamic catalog entries, exports or private quotes into SW cache.
-  if (url.pathname.includes('/data/') || /\\.(?:json|xlsx|xls|csv|zip)$/i.test(url.pathname)) return;
+  if (url.pathname.includes('/data/') || /\.(?:json|xlsx|xls|csv|zip)$/i.test(url.pathname)) return;
   if (req.mode === 'navigate') {
     event.respondWith(fetch(req).catch(() => caches.match('./index.html')));
     return;
   }
-  const pathSuffixes = SHELL.filter(path => path !== './').map(path => path.replace(/^\\.\\//, ''));
+  const pathSuffixes = SHELL.filter(path => path !== './').map(path => path.replace(/^\.\//, ''));
   if (pathSuffixes.some(path => url.pathname.endsWith('/' + path))) {
     event.respondWith(caches.match(req,{ignoreSearch:true}).then(cached => cached || fetch(req)));
   }
