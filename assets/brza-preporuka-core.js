@@ -231,87 +231,6 @@
       suppliers,message,price:null,
       values:[rows.join('\n'),'','','Nezavisno proveriti vrstu, parametre, kvalitet i današnju dostupnost.','',message]};
   }
-
-  // A nearest source is a discovery aid, not a verified purchase offer.
-  // Hard botanical identity is checked before ranking; cultivars cannot silently
-  // substitute for their parent species.
-  function nearestOffers(index,input,limit=3){
-    const found=findPlant(index,input.name,input.cultivar);
-    if(!found.id)return [];
-    const labels={height:'Visina',circumference:'Obim',crownWidth:'Krošnja',
-      potSize:'Saksija',rootBall:'Busen',stemDiameter:'Prečnik sadnice',
-      potDiameter:'Prečnik saksije',clearStemHeight:'Visina do krošnje',
-      rootType:'Isporuka',seedlingType:'Forma',transplantCount:'Presađivanja',
-      unit:'Jedinica'};
-    const needs=MEASURES.concat(['rootType','seedlingType','transplantCount','unit'])
-      .filter(field=>String(input[field]??'').trim());
-    const optionalRoot=/\b(?:balirano|balled)\s+ili\s+(?:kontejnirano|kontejnerirano|kontejner)\b/i.test(String(input.rootType||''));
-    const records=(index.byPlant.get(found.id)||[])
-      .filter(o=>(o.parameterRole||o.sourceEvidence?.parameterRole)!=='requested' &&
-        !['needs_review','superseded'].includes(o.recordStatus));
-    const ranked=records.map(offer=>{
-      let score=0,confirmedFields=0;
-      const differences=[],unknown=[];
-      for(const field of needs){
-        const want=String(input[field]),value=offeredValue(offer,field);
-        const got=String(value??'').trim(),label=labels[field]||field;
-        if(!got){unknown.push(label);score+=3;continue;}
-        let same=false,extra=0;
-        if(MEASURES.includes(field)){
-          same=measureMatches(want,got,field);
-          if(!same){
-            const a=parseMeasure(want,field),b=parseMeasure(got,field);
-            if(a?.valid&&b?.valid){
-              const gap=Math.max(0,b.lo-a.hi,a.lo-b.hi);
-              const span=Math.max(field==='potSize'?5:20,Math.abs(a.hi-a.lo),Math.abs(a.lo)*.12);
-              extra=Math.min(6,gap/span*4);
-            }
-          }
-        }else if(field==='rootType'){
-          const gotRoot=rootType(got);
-          same=optionalRoot?['container','root-ball','wrb'].includes(gotRoot):
-            rootType(want)===gotRoot;
-        }else if(field==='seedlingType')same=form(want)===form(got);
-        else if(field==='transplantCount')
-          same=transplantNumber(want)!==null&&transplantNumber(want)===transplantNumber(got);
-        else if(field==='unit')same=unit(want)===unit(got);
-        if(same)confirmedFields++;
-        else {differences.push(label+': '+got+' (traženo '+want+')');score+=8+extra;}
-      }
-      const noStock=unavailable(offer);
-      if(noStock)score+=25;
-      // If two offers are equally close to the requested plant, prefer the
-      // record that explicitly verifies more of the requested measurements.
-      const currentPrice=offer.priceKind==='current' &&
-        offer.priceRefresh?.status==='verified' &&
-        Boolean(offer.priceRefresh?.checkedAt);
-      const price=euroPrice(offer);
-      return {id:offer.id,plantId:offer.plantId,
-        nursery:index.nurseries.get(offer.nurseryId)?.name||offer.nurseryId,
-        nurseryId:offer.nurseryId,price,currency:'EUR',
-        historical:offer.priceKind==='historical',currentPrice,
-        noStock,source:offer.source||offer.id,sourceDate:dateValue(offer),
-        taxStatus:offer.taxStatus||'',parameters:parameters(offer),
-        score:Math.round(score*100)/100,confirmedFields,
-        totalFields:needs.length,differences,unknown,
-        closeness:(!differences.length&&!unknown.length)?'uporediva':
-          differences.length?'najbliža alternativa':'nepotpuni podaci'};
-    });
-    ranked.sort((a,b)=>a.score-b.score||b.confirmedFields-a.confirmedFields||
-      (b.currentPrice?1:0)-(a.currentPrice?1:0)||
-      (a.price===null?1:0)-(b.price===null?1:0)||
-      a.nursery.localeCompare(b.nursery)||
-      (a.price??Infinity)-(b.price??Infinity)||a.id.localeCompare(b.id));
-    // Show distinct nurseries in the brief preview; source details and all
-    // underlying archived rows remain preserved separately in exported Excel.
-    const byNursery=new Set(),selected=[];
-    for(const candidate of ranked){
-      if(byNursery.has(candidate.nurseryId))continue;
-      byNursery.add(candidate.nurseryId);selected.push(candidate);
-      if(selected.length>=limit)break;
-    }
-    return selected;
-  }
   function recommendTender(index,input,options={}){
     const requested={...input},found=findPlant(index,requested.name,requested.cultivar);
     if(!String(requested.name??'').trim())
@@ -340,10 +259,8 @@
         message,suppliers:[],price:null,
         values:[evidenceText,'','','Identitet biljke nije potvrđen; ne koristiti cene mogućih kandidata za obračun.','',message]};
     }
-    const nearest=nearestOffers(index,requested);
-    const withNearest=result=>({...result,bestCandidate:nearest[0]||null,nearbyOffers:nearest});
     if(requested._validationError)
-      return withNearest(tenderEvidence(index,found.id,'Ulazni zahtev za proveru: '+requested._validationError));
+      return tenderEvidence(index,found.id,'Ulazni zahtev za proveru: '+requested._validationError);
     const qualitative=String(requested.preferences||'').trim();
     const sourceDescription=String(requested.sourceDescription||'').trim();
     const structured=MEASURES.some(k=>String(requested[k]??'').trim())||
@@ -360,13 +277,13 @@
     if(alternatives)review.push('Isporuka navodi dve mogućnosti (balirano ili kontejnirano). '+
       (groupPriority?'Grupni uslovi zahtevaju strožu proveru izvora.':'Izbor mora da potvrdi projektant.'));
     if(checked.status==='matched'&&!historical&&!review.length)
-      return withNearest({...checked,status:'matched',qualitativeVerified:true});
+      return {...checked,status:'matched',qualitativeVerified:true};
     const reason=[checked.status==='matched'?
       'Dimenzije su uporedive, ali aktuelna cena, lager ili kvalitet nisu potvrđeni.':
       checked.message,...review].filter(Boolean).join(' ');
     const evidence=tenderEvidence(index,found.id,reason,checked.suppliers||[]);
-    return withNearest({...evidence,recognized:true,requiresReview:review.length>0,
-      alternatives,baseStatus:checked.status});
+    return {...evidence,recognized:true,requiresReview:review.length>0,
+      alternatives,baseStatus:checked.status};
   }
   function recommend(index,input,options={}){
     if(options.tenderMode)return recommendTender(index,input,options);
@@ -445,5 +362,5 @@
   }
   function supplierList(index,offers){const groups=new Map();for(const offer of offers){if(!groups.has(offer.nurseryId))groups.set(offer.nurseryId,[]);groups.get(offer.nurseryId).push(offer);}return [...groups].map(([nurseryId,rows])=>{const prices=rows.filter(o=>euroPrice(o)!==null&&o.price>0).map(o=>o.price);return {nurseryId,name:index.nurseries.get(nurseryId)?.name||nurseryId,price:prices.length?Math.min(...prices):null,currency:'EUR',offerIds:rows.map(o=>o.id)};}).sort((a,b)=>(a.price??Infinity)-(b.price??Infinity)||a.name.localeCompare(b.name));}
   function supplierText(suppliers){return suppliers.map(s=>s.name+' — '+(s.price===null?'cena u EUR nije navedena':s.price.toLocaleString('sr-Latn-RS',{minimumFractionDigits:2,maximumFractionDigits:2})+' €')).join('\n');}
-  return {FIELDS,EXTRA_HEADERS,norm,headerField,detectHeader,detectSheet,form,rootType,unit,taxGroup,parseMeasure,measureMatches,makeIndex,findPlant,parsePreferences,requestFromRow,newestVariants,parameters,recommend,recommendTender,nearestOffers,nameSuggestions,euroPrice};
+  return {FIELDS,EXTRA_HEADERS,norm,headerField,detectHeader,detectSheet,form,rootType,unit,taxGroup,parseMeasure,measureMatches,makeIndex,findPlant,parsePreferences,requestFromRow,newestVariants,parameters,recommend,recommendTender,nameSuggestions,euroPrice};
 });
