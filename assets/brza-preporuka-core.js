@@ -299,6 +299,7 @@
     });
     ranked.sort((a,b)=>a.score-b.score||b.confirmedFields-a.confirmedFields||
       (b.currentPrice?1:0)-(a.currentPrice?1:0)||
+      (a.price===null?1:0)-(b.price===null?1:0)||
       a.nursery.localeCompare(b.nursery)||
       (a.price??Infinity)-(b.price??Infinity)||a.id.localeCompare(b.id));
     // Show distinct nurseries in the brief preview; source details and all
@@ -340,7 +341,7 @@
         values:[evidenceText,'','','Identitet biljke nije potvrđen; ne koristiti cene mogućih kandidata za obračun.','',message]};
     }
     const nearest=nearestOffers(index,requested);
-    const withNearest=result=>({...result,bestCandidate:nearest[0]||null,alternatives:nearest});
+    const withNearest=result=>({...result,bestCandidate:nearest[0]||null,nearbyOffers:nearest});
     if(requested._validationError)
       return withNearest(tenderEvidence(index,found.id,'Ulazni zahtev za proveru: '+requested._validationError));
     const qualitative=String(requested.preferences||'').trim();
