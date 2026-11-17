@@ -21,6 +21,8 @@ self.onmessage=async({data})=>{try{
     sheets=book.SheetNames.map(name=>({name,...readRows(book.Sheets[name])}));
     const index=Core.makeIndex(data.catalog);let matched=0,unmatched=0,processed=0,recognized=0,archival=0;const preview=[];
     results=[];const addedSheets=[],names=new Set(sheets.map(s=>s.name));
+    const compactHeaders=['Biljka','Najbliži rasadnik','Cena izvora (€)','Status cene','Razlike / provera','Drugi rasadnik','Cena 2 (€)','Treći rasadnik','Cena 3 (€)'];
+    const compactRows=[compactHeaders];
     for(let i=0;i<sheets.length;i++){
       const original=sheets[i],config=Core.detectSheet(original.rows,index,original.name);let sheet={...original,rows:original.rows.map(row=>row.slice()),processed:false};results.push(sheet);
       if(!config?.enabled)continue;
@@ -41,6 +43,22 @@ self.onmessage=async({data})=>{try{
         const nearby=result.nearbyOffers || Core.nearestOffers(index,request,3);
         result.values.forEach((v,c)=>{sheet.rows[outRow][sheet.originalColumns+c]=v;});
         if(result.status!=='empty'){
+          const top=nearby[0],second=nearby[1],third=nearby[2];
+          const quality=top ? (top.differences||[]).concat((top.unknown||[]).map(label=>label+' nije potvrđeno')) : [];
+          const label=result.status==='matched'&&top?.currentPrice&&top.id===result.offerId&&!result.requiresReview
+            ?'Cena proverena':top?(top.historical?'Arhiva · proveriti':'Proveriti uslove'):
+              result.candidates?.length?'Proveriti naziv':'Bez izvora';
+          compactRows.push([
+            [request.name,request.cultivar].filter(Boolean).join(' '),
+            top?.nursery||'',
+            Number.isFinite(top?.price)?top.price:'',
+            label,
+            quality.slice(0,4).join('; ')||result.candidates?.slice(0,2).join('; ')||'',
+            second?.nursery||'',Number.isFinite(second?.price)?second.price:'',
+            third?.nursery||'',Number.isFinite(third?.price)?third.price:''
+          ]);
+        }
+        if(result.status!=='empty'){
           processed++;if(result.status==='matched')matched++;else unmatched++;if(result.recognized)recognized++;if(result.archival)archival++;
           if(preview.length<40)preview.push({sheet:original.name,row:r+1,name:[request.name,request.cultivar].filter(Boolean).join(' '),parameters:original.rows[r].flatMap((value,c)=>c!==config.map.name&&String(value??'').trim()?[{label:headers[c],value:value instanceof Date?value.toISOString().slice(0,10):String(value)}]:[]),...result,bestCandidate:nearest,nearbyOffers:nearby});
         }
@@ -48,6 +66,13 @@ self.onmessage=async({data})=>{try{
       }
     }
     results.push(...addedSheets);
+    if(compactRows.length>1){
+      let name='Brzi pregled',suffix=2;
+      while(names.has(name)){name='Brzi pregled '+suffix++;if(name.length>31)name=name.slice(0,31);}
+      names.add(name);
+      results.unshift({name,quickSummary:true,addedSheet:true,processed:true,headerRow:0,
+        rows:compactRows,originalColumns:compactHeaders.length,columns:compactHeaders.length});
+    }
     send('results',{matched,unmatched,processed,recognized,archival,preview});
   }else if(data.type==='export'){
     if(!results)throw new Error('Prvo pokreni poređenje.');
