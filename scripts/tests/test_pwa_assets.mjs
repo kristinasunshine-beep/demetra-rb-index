@@ -29,8 +29,8 @@ test('Browser favicon is separate white/coral art, never the green PWA tile',()=
   const html=txt('index.html');
   assert.match(favicon,/<rect[^>]*fill="#FFFFFF"/);
   assert.match(favicon,/<g[^>]*stroke="#F9583B"/);
-  assert.doesNotMatch(favicon,/#606763|stroke="#FAF9F3"/);
-  assert.match(mobile,/<rect[^>]*fill="#606763"/);
+  assert.doesNotMatch(favicon,/#234D36|stroke="#FAF9F3"/);
+  assert.match(mobile,/<rect[^>]*fill="#234D36"/);
   assert.match(html,/rel="icon" href="\.\/assets\/icons\/favicon\.svg/);
   assert.match(html,/rel="apple-touch-icon" href="\.\/assets\/icons\/apple-touch-icon\.png/);
   const bg=readFileSync(resolve(root,'assets/icons/favicon-32.png'));
@@ -64,18 +64,18 @@ test('Offline shell does not cache catalog JSON, user quotes or archived prices'
   assert.doesNotMatch(service,/\.put\(/);
 });
 
-test('Final approved PWA tile uses the original frame green without a decorative ring',()=>{
+test('Final approved PWA tile uses the original DEMETRA brand green without a decorative ring',()=>{
   for(const file of ['assets/icons/icon.svg','assets/icons/icon-maskable.svg']){
     const svg=txt(file);
-    assert.match(svg,/<rect[^>]*fill="#606763"/,'exact original square stroke HEX');
+    assert.match(svg,/<rect[^>]*fill="#234D36"/,'exact original square stroke HEX');
     assert.doesNotMatch(svg,/<circle[^>]*cx="256"[^>]*cy="256"/,'no extra decorative circle around tree');
     assert.match(svg,/<g[^>]*stroke="#F9583B"/,'original coral plant symbol');
     assert.match(svg,/<circle cx="16" cy="12" r="8.5"\/>/,'original circular treetop remains');
     assert.doesNotMatch(svg,/fill="#151918"/,'dark background removed');
   }
   const manifest=JSON.parse(txt('manifest.webmanifest'));
-  assert.equal(manifest.background_color,'#606763');
-  assert.equal(manifest.theme_color,'#606763');
+  assert.equal(manifest.background_color,'#234D36');
+  assert.equal(manifest.theme_color,'#234D36');
 });
 test('Mobile outline is real condensed font, not distorted Arial',()=>{
   const css=txt('assets/control-room-mobile-outline.css');
