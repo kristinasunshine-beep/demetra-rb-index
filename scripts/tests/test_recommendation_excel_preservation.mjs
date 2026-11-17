@@ -43,6 +43,27 @@ const extra={name:'Preporuka bez zaglavlja',processed:true,addedSheet:true,heade
 const addedBytes=await Excel.build(template,[...sheets.map(s=>({...s,processed:false})),extra],Zip,()=>{},original),addedZip=await Zip.loadAsync(addedBytes),addedBook=XLSX.read(addedBytes,{type:'array',cellStyles:true});
 assert.deepEqual(addedBook.SheetNames,[...book.SheetNames,extra.name]);assert.equal(addedBook.Sheets[extra.name].A2.v,'Acer campestre');assert.equal(addedBook.Sheets[extra.name].E2.v,80.5);assert.equal(addedBook.Sheets[extra.name].E2.z,'#,##0.00 "€"');
 for(const name of Object.keys(before.files).filter(name=>/^xl\/worksheets\//.test(name)&&!before.files[name].dir))assert.equal(await addedZip.file(name).async('string'),await before.file(name).async('string'),'Headerless export changed original worksheet '+name);
+// Export with the extra five-column overview: all original sheets, values and
+// formulas remain intact and the first tab mirrors the approved UI.
+const overview={name:'Pregled preporuke',overview:true,processed:true,addedSheet:true,
+  headerRow:0,originalColumns:5,columns:5,
+  rows:[['Latinski naziv biljke','Parametri iz tvoje tabele','Spisak rasadnika','Najniža nabavna cena (€)','Rezultat'],
+    ['Cupressus sempervirens','Visina: 300–400 cm','Rasadnik A — 780,00 €','', 'Arhivski izvor · proveriti'],
+    ['Celtis australis','Visina: 400 cm','Rasadnik B — 165,00 €','', 'Arhivski izvor · proveriti']]};
+const overviewBytes=await Excel.build(template,[overview,...sheets.map(sheet=>({...sheet,processed:false}))],Zip,()=>{},original);
+const overviewBook=XLSX.read(overviewBytes,{type:'array',cellStyles:true,cellDates:true});
+assert.equal(overviewBook.SheetNames[0],'Pregled preporuke');
+assert.deepEqual(overviewBook.Sheets['Pregled preporuke'].A2.v,'Cupressus sempervirens');
+assert.deepEqual(overviewBook.Sheets['Pregled preporuke'].C2.v,'Rasadnik A — 780,00 €');
+assert.equal(overviewBook.Sheets['Pregled preporuke'].D2,undefined,'archive source price is not assigned as confirmed purchase price');
+for(const name of book.SheetNames)for(const [addr,cell] of Object.entries(book.Sheets[name])){
+  if(addr.startsWith('!'))continue;
+  const preserved=overviewBook.Sheets[name][addr];
+  assert(preserved,'original cell remains: '+name+' '+addr);
+  assert.equal(preserved.f,cell.f,'original formula remains: '+name+' '+addr);
+  if(cell.v instanceof Date)assert.equal(preserved.v.getTime(),cell.v.getTime(),'original date remains');
+  else assert.deepEqual(preserved.v,cell.v,'original value remains: '+name+' '+addr);
+}
 const originalFormula=Object.entries(source).find(([address,c])=>!address.startsWith('!')&&c.f);assert(originalFormula,'Source must contain actual formulas');assert.equal(addedBook.Sheets[book.SheetNames[0]][originalFormula[0]].f,originalFormula[1].f);
 // A native Excel table must include added results so sorting never detaches them from their plants.
 const tableBase=await Excel.build(template,[{name:'Biljke',processed:false,headerRow:0,originalColumns:2,columns:2,rows:[['Naziv','Obim'],['Acer campestre','18-20']]}],Zip),tableZip=await Zip.loadAsync(tableBase);
