@@ -1,20 +1,86 @@
 {
   "schemaVersion": 2,
-  "startedAt": "2026-11-17T14:03:32Z",
-  "finishedAt": "2026-11-17T14:03:41Z",
-  "scope": "all_catalog_plants",
-  "requests": 0,
-  "auditOnly": true,
-  "nonPhotoDataUnchanged": true,
-  "stages": {
-    "fullCoverage": {
-      "status": "completed"
+  "status": "partial",
+  "requests": 597,
+  "workers": 8,
+  "events": [],
+  "sourceHealth": {
+    "portal.volentis.com": {
+      "requests": 130,
+      "succeeded": 129,
+      "retries": 0,
+      "httpErrors": {
+        "404": 1
+      },
+      "stopped": false,
+      "lastFailure": {
+        "source": "https://portal.volentis.com/robots.txt",
+        "reason": "http_error",
+        "detail": "Source returned HTTP 404.",
+        "httpStatus": 404
+      }
+    },
+    "www.willaert.be": {
+      "requests": 120,
+      "succeeded": 120,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": false,
+      "requestIntervalSeconds": 1.0
+    },
+    "catalogue.vannuccipiante.it": {
+      "requests": 4,
+      "succeeded": 4,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": false
+    },
+    "webshop.vannuccipiante.it": {
+      "requests": 14,
+      "succeeded": 14,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": false
+    },
+    "smitsbv.nl": {
+      "requests": 26,
+      "succeeded": 26,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": false
+    },
+    "www.lorberg.com": {
+      "requests": 72,
+      "succeeded": 72,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": false
+    },
+    "innocentiemangonipiante.it": {
+      "requests": 224,
+      "succeeded": 224,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": false
+    },
+    "www.lve-baumschule.de": {
+      "requests": 6,
+      "succeeded": 6,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": false
+    },
+    "www.vannuccipiante.it": {
+      "requests": 1,
+      "succeeded": 1,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": false
     }
   },
-  "events": [],
   "coverage": {
     "schemaVersion": 2,
-    "checkedAt": "2026-11-17T14:03:42Z",
+    "checkedAt": "2026-11-17T14:14:47Z",
     "status": "partial",
     "plants": 619,
     "plantsInventoried": 619,
@@ -453,8 +519,7 @@
     "activeOffers": 2941,
     "remainingOffers": 205
   },
-  "status": "partial",
-  "sourceErrors": 498,
-  "verifiedPlantReferences": 507,
-  "newlyVerified": 0
+  "nonPhotoDataUnchanged": true,
+  "newlyVerified": 0,
+  "refreshCandidates": 0
 }
