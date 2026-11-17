@@ -50,3 +50,24 @@ test('Offline shell does not cache catalog JSON, user quotes or archived prices'
   assert.match(service,/fetch\(req\)\.catch/);
   assert.doesNotMatch(service,/\.put\(/);
 });
+
+test('Final approved PWA tile uses the original frame green with high-contrast ring',()=>{
+  for(const file of ['assets/icons/icon.svg','assets/icons/icon-maskable.svg']){
+    const svg=txt(file);
+    assert.match(svg,/<rect[^>]*fill="#606763"/,'exact original square stroke HEX');
+    assert.match(svg,/<circle[^>]*stroke="#FAF9F3"/,'light circle legible over green');
+    assert.match(svg,/<g[^>]*stroke="#F9583B"/,'original coral plant symbol');
+    assert.doesNotMatch(svg,/fill="#151918"/,'dark background removed');
+  }
+  const manifest=JSON.parse(txt('manifest.webmanifest'));
+  assert.equal(manifest.background_color,'#606763');
+  assert.equal(manifest.theme_color,'#606763');
+});
+test('Mobile outline is real condensed font, not distorted Arial',()=>{
+  const css=txt('assets/control-room-mobile-outline.css');
+  assert.match(css,/BarlowCondensed-SemiBold\.ttf/);
+  assert.match(css,/font-family: "DEMETRA Mobile Outline"/);
+  assert.match(css,/transform: none/);
+  assert.match(css,/@media screen and \(max-width:760px\)/);
+  assert.ok(statSync(resolve(root,'fonts/BarlowCondensed-SemiBold.ttf')).size>50000);
+});
