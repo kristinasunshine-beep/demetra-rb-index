@@ -68,6 +68,6 @@ test('Mobile outline is real condensed font, not distorted Arial',()=>{
   assert.match(css,/BarlowCondensed-SemiBold\.ttf/);
   assert.match(css,/font-family: "DEMETRA Mobile Outline"/);
   assert.match(css,/transform: none/);
-  assert.match(css,/@media screen and \(max-width:760px\)/);
+  assert.match(css,/@media screen and \(max-width:\s*760px\)/);
   assert.ok(statSync(resolve(root,'fonts/BarlowCondensed-SemiBold.ttf')).size>50000);
 });
