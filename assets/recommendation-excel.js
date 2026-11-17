@@ -22,8 +22,10 @@
       let style=current[id];
       style=setAttr(style,'applyAlignment',1);
       const alignment='<alignment vertical="top" wrapText="1"/>';
-      style=style.replace(/<alignment\\b[^>]*\\/>/g,'').replace(/<alignment\\b[^>]*>[\\s\\S]*?<\\/alignment>/g,'');
-      style=/\\/>$/.test(style)?style.replace(/\\/>$/, '>'+alignment+'</xf>'):style.replace(/<\\/xf>$/,alignment+'</xf>');
+      // SpreadsheetML requires alignment before protection in an xf node.
+      style=style.replace(/<alignment\b[^>]*\/>/g,'').replace(/<alignment\b[^>]*>[\s\S]*?<\/alignment>/g,'');
+      style=style.replace(/<protection\b/,alignment+'<protection');
+      if(!style.includes(alignment))style=style.replace(/<\/xf>$/,alignment+'</xf>');
       current[id]=style;
     }
     return {xml:replaceCollection(output,'cellXfs',current),styles:mapped};
