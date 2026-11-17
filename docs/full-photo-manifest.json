@@ -1334,9 +1334,6 @@
       "identityEvidence": {
         "kind": "exact_named_catalog_card",
         "name": "Cotoneaster x suecicus 'Coral Beauty'",
-        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Cotoneaster++x+suecicus+%27Coral+Beauty%27",
-        "detailUrl": "https://www.willaert.be/nl/plant/cotoneaster-x-suecicus-coral-beauty/coscbeau/",
-        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/COSCBEAU_369_30122014121436.jpg",
         "canonicalName": "Cotoneaster x suecicus 'Coral Beauty'"
       },
       "taxonKey": "cotoneaster x suecicus coral beauty",
@@ -1745,7 +1742,7 @@
       "sha256": "c632ff202971177619bc41d4b61d68d94d45cbb790f6cdbf837ad67cd1ea795e",
       "checkedAt": "2026-11-10T10:04:33Z",
       "matchLevel": "exact",
-      "taxonKey": "photinia x fraseri red robin"
+      "taxonKey": "photinia fasserii red robin p"
     },
     "plant-3a72282de5ba3a": {
       "provider": "other_catalogue_nursery",
@@ -2001,9 +1998,6 @@
       "identityEvidence": {
         "kind": "exact_named_catalog_card",
         "name": "Salvia officinalis",
-        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Salvia+officinalis",
-        "detailUrl": "https://www.willaert.be/nl/plant/salvia-officinalis/saoffici/",
-        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/SALVIA_OFFICINALIS.jpg",
         "canonicalName": "Salvia officinalis"
       },
       "taxonKey": "salvia officinalis",
@@ -2147,7 +2141,7 @@
       "sha256": "b7d6987ec5d2383c55b978870a9ce6bf85c1ce742216306115d880c56849142c",
       "checkedAt": "2026-11-10T10:05:58Z",
       "matchLevel": "exact",
-      "taxonKey": "tilia x europaea pallida"
+      "taxonKey": "tilia europea palida"
     },
     "plant-451a380df8b137": {
       "provider": "other_catalogue_nursery",
@@ -2748,7 +2742,7 @@
       "sha256": "da4d988f552f15565dfd0adedf3394d225a035611725ef2b95550e42e37d1e7a",
       "checkedAt": "2026-11-10T10:08:32Z",
       "matchLevel": "exact",
-      "taxonKey": "catalpa bignonioides nana"
+      "taxonKey": "catalpa bignonioides globosa"
     },
     "plant-5b42929f0f6d8b": {
       "provider": "other_catalogue_nursery",
@@ -2784,9 +2778,6 @@
       "identityEvidence": {
         "kind": "exact_named_catalog_card",
         "name": "Helichrysum italicum",
-        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Helichrysum+italicum",
-        "detailUrl": "https://www.willaert.be/nl/plant/helichrysum-italicum/heitalic/",
-        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/HEITALIC_369_16052024165821.jpg",
         "canonicalName": "Helichrysum italicum"
       },
       "taxonKey": "helichrysum italicum",
@@ -4209,26 +4200,27 @@
       "taxonKey": "acer rubrum"
     },
     "plant-955c2408fc889c": {
-      "provider": "other_catalogue_nursery",
       "nurseryId": "innocenti-mangoni",
-      "imageUrl": "https://innocentiemangonipiante.it/wp-content/uploads/2023/10/1610699208.jpg",
+      "imageUrl": "https://innocentiemangonipiante.it/wp-content/themes/yootheme/cache/df/1610699208-df7080e4.jpeg",
       "sourceUrl": "https://innocentiemangonipiante.it/en/gleditsia-triacanthos-spectrum/",
       "matchedName": "Gleditsia triacanthos 'Spectrum'",
       "identityEvidence": {
-        "method": "product_jsonld",
+        "kind": "exact_named_product_gallery",
+        "detail": "Exact H1 and gallery photo alt GLEDITSIA triacanthos Spectrum 1, observed via web open.",
         "canonicalName": "Gleditsia triacanthos 'Spectrum'"
       },
+      "provider": "other_catalogue_nursery",
+      "taxonKey": "gleditsia triacanthos spectrum",
       "imageHosts": [
         "innocentiemangonipiante.it"
       ],
-      "imagePathPrefixes": null,
+      "imagePathPrefixes": {},
       "license": "existing_catalogue_source_policy",
       "latinName": "Gleditsia triacanthos 'Spectrum'",
-      "image": "assets/biljke/reference-e8393acc79b9753eaa56589b.jpg",
-      "sha256": "e8393acc79b9753eaa56589b9afb709d943263038654d77624e801416a7f265f",
-      "checkedAt": "2026-11-10T10:11:54Z",
-      "matchLevel": "exact",
-      "taxonKey": "gleditsia triacanthos spectrum"
+      "image": "assets/biljke/reference-8549cae5dd3317c5c7eaaff7.jpg",
+      "sha256": "8549cae5dd3317c5c7eaaff74d4ab8aa6df09139d20d4c3795d3e7877a4dfb55",
+      "checkedAt": "2026-11-17T13:15:58Z",
+      "matchLevel": "exact"
     },
     "plant-95fc3ec4ba0ae9": {
       "provider": "other_catalogue_nursery",
@@ -5120,7 +5112,7 @@
       "sha256": "ea6e5db75a1f0f08317522ac778c861bc8ce712918dd5e5f30fecbce5abd8e4a",
       "checkedAt": "2026-11-10T10:14:07Z",
       "matchLevel": "exact",
-      "taxonKey": "acer platanoides globosum"
+      "taxonKey": "acer platanoides globosa"
     },
     "plant-acer-pseudoplatanus": {
       "provider": "supplying_nursery",
@@ -5671,7 +5663,7 @@
       "sha256": "d19b1dd5f6fcd97a63bcbf1ff41b1fe43fde288795b48a72b604d409620dd65c",
       "checkedAt": "2026-11-10T10:15:49Z",
       "matchLevel": "exact",
-      "taxonKey": "prunus serrulata kiku shidare zakura"
+      "taxonKey": "prunus kiku shidare zakura"
     },
     "plant-c049b88381debf": {
       "provider": "other_catalogue_nursery",
@@ -6301,9 +6293,6 @@
       "identityEvidence": {
         "kind": "exact_named_catalog_card",
         "name": "Cotoneaster dammeri",
-        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Cotoneaster++dammeri",
-        "detailUrl": "https://www.willaert.be/nl/plant/cotoneaster-dammeri/codammer/",
-        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/CODAMMER_369_23122022112758.jpg",
         "canonicalName": "Cotoneaster dammeri"
       },
       "taxonKey": "cotoneaster dammeri",
@@ -6436,9 +6425,6 @@
       "identityEvidence": {
         "kind": "exact_named_offer_card",
         "name": "Pyrus nivalis",
-        "pageUrl": "https://portal.volentis.com/en/offers/1?SearchText=Pyrus+nivalis",
-        "detailUrl": "https://portal.volentis.com/en/offers/details/pyrus-nivalis-fullground-avenue",
-        "imageUrl": "https://cdn.volentis.com/d/1OBHkUXaESZ6khUWrVMBRg0nSMFFcqHv4/pyrus-nivalis-12-16.jpg?width=600&height=350&mode=max&anchor=top",
         "canonicalName": "Pyrus nivalis"
       },
       "resolver": "volentis_offer_card",
@@ -7469,9 +7455,6 @@
       "identityEvidence": {
         "kind": "exact_named_catalog_card",
         "name": "Ophiopogon japonicus",
-        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Ophiopogon+japonicus",
-        "detailUrl": "https://www.willaert.be/nl/plant/ophiopogon-japonicus/opjaponi/",
-        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/OPJAPONI_369_3012201415567.JPG",
         "canonicalName": "Ophiopogon japonicus"
       },
       "taxonKey": "ophiopogon japonicus",
@@ -8539,7 +8522,7 @@
       "sha256": "c632ff202971177619bc41d4b61d68d94d45cbb790f6cdbf837ad67cd1ea795e",
       "checkedAt": "2026-11-10T10:04:33Z",
       "matchLevel": "exact",
-      "taxonKey": "photinia x fraseri red robin",
+      "taxonKey": "photinia fasserii red robin p",
       "sharedFromPlantId": "plant-3a1aeb3df1ce96",
       "synonymEvidence": [
         {
@@ -8571,7 +8554,7 @@
       "sha256": "c632ff202971177619bc41d4b61d68d94d45cbb790f6cdbf837ad67cd1ea795e",
       "checkedAt": "2026-11-10T10:04:33Z",
       "matchLevel": "exact",
-      "taxonKey": "photinia x fraseri red robin",
+      "taxonKey": "photinia fasserii red robin p",
       "sharedFromPlantId": "plant-3a1aeb3df1ce96",
       "synonymEvidence": [
         {
@@ -8722,9 +8705,6 @@
       "identityEvidence": {
         "kind": "exact_named_offer_card",
         "name": "Acer PACIFIC SUNSET",
-        "pageUrl": "https://portal.volentis.com/en/offers/1?SearchText=Acer+%27Pacific+Sunset%27",
-        "detailUrl": "https://portal.volentis.com/en/offers/details/acer-pacific-sunset-fullground-avenue",
-        "imageUrl": "https://cdn.volentis.com/d/130B3kevYjYEsA1wCgONhCEugvLStVDa7/acer-pacific-sunset-14-18.jpg?width=600&height=350&mode=max&anchor=top",
         "canonicalName": "Acer 'Pacific Sunset'"
       },
       "resolver": "volentis_offer_card",
@@ -8781,9 +8761,6 @@
       "identityEvidence": {
         "kind": "exact_named_catalog_card",
         "name": "Chamaecyparis lawsoniana 'Columnaris'",
-        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Chamaecyparis+lawsoniana+%27Columnaris%27",
-        "detailUrl": "https://www.willaert.be/nl/plant/chamaecyparis-lawsoniana-columnaris/chlcolum/",
-        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/CHLCOLUM_369_30122014112040.jpg",
         "canonicalName": "Chamaecyparis lawsoniana 'Columnaris'"
       },
       "taxonKey": "chamaecyparis lawsoniana columnaris",
@@ -8809,9 +8786,6 @@
       "identityEvidence": {
         "kind": "exact_named_catalog_card",
         "name": "Deutzia gracilis 'Nikko'",
-        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Deutzia+gracilis+%27Nikko%27",
-        "detailUrl": "https://www.willaert.be/nl/plant/deutzia-gracilis-nikko/degnikko/",
-        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/DEUTZIA_GRACILIS_'NIKKO'.jpg",
         "canonicalName": "Deutzia gracilis 'Nikko'"
       },
       "taxonKey": "deutzia gracilis nikko",
@@ -8837,9 +8811,6 @@
       "identityEvidence": {
         "kind": "exact_named_catalog_card",
         "name": "Fargesia robusta 'Campbell'",
-        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Fargesia+robusta+%27Campbell%27",
-        "detailUrl": "https://www.willaert.be/nl/plant/fargesia-robusta-campbell/farcampb/",
-        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/FARCAMPB_369_2904202417315.jpg",
         "canonicalName": "Fargesia robusta 'Campbell'"
       },
       "taxonKey": "fargesia robusta campbell",
@@ -8910,9 +8881,6 @@
       "identityEvidence": {
         "kind": "exact_named_catalog_card",
         "name": "Liriodendron tulipifera 'Aureomarginatum'",
-        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Liriodendron+tulipifera+%27Aureomarginatum%27",
-        "detailUrl": "https://www.willaert.be/nl/plant/liriodendron-tulipifera-aureomarginatum/litaureo/",
-        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/LIRIODENDRON_TULIPIFERA_'AUREOMARGINATUM'.jpg",
         "canonicalName": "Liriodendron tulipifera 'Aureomarginatum'"
       },
       "taxonKey": "liriodendron tulipifera aureomarginatum",
@@ -9005,9 +8973,6 @@
       "identityEvidence": {
         "kind": "exact_named_catalog_card",
         "name": "Ajuga reptans 'Catlin's Giant'",
-        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Ajuga+reptans+%27Catlin%27s+Giant%27",
-        "detailUrl": "https://www.willaert.be/nl/plant/ajuga-reptans-catlins-giant/ajrcgian/",
-        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/AJRCGIAN_369_10102018164625.JPG",
         "canonicalName": "Ajuga reptans 'Catlins Giant'"
       },
       "taxonKey": "ajuga reptans catlins giant",
@@ -9056,9 +9021,6 @@
       "identityEvidence": {
         "kind": "exact_named_catalog_card",
         "name": "Carex testacea 'Prairie Fire'",
-        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Carex+testacea+%27Prairie+Fire%27",
-        "detailUrl": "https://www.willaert.be/nl/plant/carex-testacea-prairie-fire/catpfire/",
-        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/CATPFIRE_369_28062018105013.jpg",
         "canonicalName": "Carex testacea 'Prairie Fire'"
       },
       "taxonKey": "carex testacea prairie fire",
@@ -9084,9 +9046,6 @@
       "identityEvidence": {
         "kind": "exact_named_catalog_card",
         "name": "Cedrus libani 'Glauca Pendula'",
-        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Cedrus+libani++%27Glauca+Pendula%27",
-        "detailUrl": "https://www.willaert.be/nl/plant/cedrus-libani-glauca-pendula/celgpend/",
-        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/CELGPEND_369_30122014111751.JPG",
         "canonicalName": "Cedrus libani 'Glauca Pendula'"
       },
       "taxonKey": "cedrus libani glauca pendula",
@@ -9296,9 +9255,6 @@
       "identityEvidence": {
         "kind": "exact_named_catalog_card",
         "name": "Vinca minor 'Atropurpurea'",
-        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Vinca+minor+%27Atropurpurea%27",
-        "detailUrl": "https://www.willaert.be/nl/plant/vinca-minor-atropurpurea/vimatrop/",
-        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/VIMATROP_369_30122014182525.JPG",
         "canonicalName": "Vinca minor 'Atropurpurea'"
       },
       "taxonKey": "vinca minor atropurpurea",
@@ -9390,9 +9346,6 @@
       "identityEvidence": {
         "kind": "exact_named_catalog_card",
         "name": "Hamamelis intermedia 'Diane'",
-        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Hamamelis+intermedia+%27Diane%27",
-        "detailUrl": "https://www.willaert.be/nl/plant/hamamelis-intermedia-diane/haidiane/",
-        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/HAMAMELIS_INTERMEDIA_'DIANE'.jpg",
         "aliasEvidenceUrls": [
           "https://api.gbif.org/v1/species/match?name=Hamamelis+x+intermedia&kingdom=Plantae&strict=true",
           "https://www.gbif.org/species/3702531"
@@ -9419,9 +9372,6 @@
       "identityEvidence": {
         "kind": "exact_named_offer_card",
         "name": "Crataegus persimilis 'Splendens'",
-        "pageUrl": "https://portal.volentis.com/en/offers/1?SearchText=Crataegus+persimilis+%27Splendens%27",
-        "detailUrl": "https://portal.volentis.com/en/offers/details/crataegus-persimilis-splendens-fullground-multistemmed",
-        "imageUrl": "https://cdn.volentis.com/d/1wz_wfyuN-ztq95Q9eVsLvc7edaIp8kcR/crataegus-persimilis-splendens-300-350-ms.jpg?width=600&height=350&mode=max&anchor=top",
         "canonicalName": "Crataegus x persimilis 'Splendens'"
       },
       "resolver": "volentis_offer_card",
@@ -9455,9 +9405,6 @@
       "identityEvidence": {
         "kind": "exact_named_catalog_card",
         "name": "Photinia fraseri 'Little Red Robin'",
-        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Photinia+fraseri++%27Little+Red+Robin%27",
-        "detailUrl": "https://www.willaert.be/nl/plant/photinia-fraseri-little-red-robin/phflrrob/",
-        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/PHOTINIA_FRASERI__'LITTLE_RED_ROBIN'_2.jpg",
         "aliasEvidenceUrls": [
           "https://api.gbif.org/v1/species/match?name=Photinia+x+fraseri&kingdom=Plantae&strict=true",
           "https://www.gbif.org/species/5363854"
@@ -9484,9 +9431,6 @@
       "identityEvidence": {
         "kind": "exact_named_offer_card",
         "name": "Prunus eminens 'Umbraculifera'",
-        "pageUrl": "https://portal.volentis.com/en/offers/1?SearchText=Prunus+eminens+%27Umbraculifera%27",
-        "detailUrl": "https://portal.volentis.com/en/offers/details/prunus-eminens-umbraculifera-fullground-avenue",
-        "imageUrl": "https://cdn.volentis.com/d/1NiRmNPTW2vVYhsa1HNsfshBk-vxVlWdj/prunus-eminens-umbraculifera-10-14-225st.jpg?width=600&height=350&mode=max&anchor=top",
         "canonicalName": "Prunus x eminens 'Umbraculifera'"
       },
       "resolver": "volentis_offer_card",
@@ -9539,9 +9483,6 @@
       "identityEvidence": {
         "kind": "exact_named_offer_card",
         "name": "Tilia europaea 'Euchlora'",
-        "pageUrl": "https://portal.volentis.com/en/offers/1?SearchText=Tilia+europaea+%27Euchlora%27",
-        "detailUrl": "https://portal.volentis.com/en/offers/details/tilia-europaea-euchlora-fullground-avenue",
-        "imageUrl": "https://cdn.volentis.com/d/1i0c-rq6BIlcAhndHjjhjD1fiFYJQxvz4/tilia-europaea-euchlora-10-12.jpg?width=600&height=350&mode=max&anchor=top",
         "canonicalName": "Tilia x europaea 'Euchlora'"
       },
       "resolver": "volentis_offer_card",
@@ -9707,9 +9648,6 @@
       "identityEvidence": {
         "kind": "exact_named_offer_card",
         "name": "Carpinus betulus 'Beekman'",
-        "pageUrl": "https://portal.volentis.com/en/offers/1?SearchText=Carpinus+betulus+%27Beekman%27",
-        "detailUrl": "https://portal.volentis.com/en/offers/details/carpinus-betulus-beekman-fullground-avenue",
-        "imageUrl": "https://cdn.volentis.com/d/1IFbum_sHcr43HnCZGCYNYurh0QM0SwRz/carpinus-betulus-beekman-20-30.jpg?width=600&height=350&mode=max&anchor=top",
         "canonicalName": "Carpinus betulus 'Beekman'"
       },
       "resolver": "volentis_offer_card",
@@ -9740,9 +9678,6 @@
       "identityEvidence": {
         "kind": "exact_named_offer_card",
         "name": "Fraxinus excelsior 'Nana'",
-        "pageUrl": "https://portal.volentis.com/en/offers/1?SearchText=Fraxinus+excelsior+%27Nana%27",
-        "detailUrl": "https://portal.volentis.com/en/offers/details/fraxinus-excelsior-nana-fullground-avenue",
-        "imageUrl": "https://cdn.volentis.com/d/1EBih4DRVUt4hQptUX3aEAsdfyT2FjciS/fraxinus-excelsior-nana-12-16.jpg?width=600&height=350&mode=max&anchor=top",
         "canonicalName": "Fraxinus excelsior 'Nana'"
       },
       "resolver": "volentis_offer_card",
@@ -9757,7 +9692,7 @@
         ]
       },
       "license": "existing_catalogue_source_policy",
-      "taxonKey": "fraxinus excelsior nana",
+      "taxonKey": "fraxinus excelsior globosa",
       "latinName": "Fraxinus excelsior 'Nana'",
       "image": "assets/biljke/reference-574fe9bfe27927607aa0bfd6.jpg",
       "sha256": "574fe9bfe27927607aa0bfd603aab7e79bd96fb3207fbdc0857358cb7c9b8a70",
@@ -9796,9 +9731,6 @@
       "identityEvidence": {
         "kind": "exact_named_offer_card",
         "name": "Prunus cerasus 'May Duke'",
-        "pageUrl": "https://portal.volentis.com/en/offers/1?SearchText=Prunus+cerasus+%27May+Duke%27",
-        "detailUrl": "https://portal.volentis.com/en/offers/details/prunus-cerasus-may-duke-container-avenue",
-        "imageUrl": "https://cdn.volentis.com/d/1hNnw02pSJ9meFvkQgCrIdX9YyX1jLKLU/prunus-cerasus-dubbele-meikers-cont-10-14-225st.jpg?width=600&height=350&mode=max&anchor=top",
         "canonicalName": "Prunus cerasus 'May Duke'"
       },
       "resolver": "volentis_offer_card",
@@ -9924,9 +9856,6 @@
       "identityEvidence": {
         "kind": "exact_named_catalog_card",
         "name": "Acer palmatum 'Seiryu'",
-        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Acer+palmatum+%27Seiryu%27",
-        "detailUrl": "https://www.willaert.be/nl/plant/acer-palmatum-seiryu/acpseiry/",
-        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/ACPSEIRY_369_29122014175826.JPG",
         "canonicalName": "Acer palmatum 'Seiryu'"
       },
       "taxonKey": "acer palmatum seiryu",
@@ -9952,9 +9881,6 @@
       "identityEvidence": {
         "kind": "exact_named_catalog_card",
         "name": "Campanula portenschlagiana",
-        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Campanula+portenschlagiana",
-        "detailUrl": "https://www.willaert.be/nl/plant/campanula-portenschlagiana/caporten/",
-        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/CAPORTEN_369_27102022141544.jpg",
         "canonicalName": "Campanula portenschlagiana"
       },
       "taxonKey": "campanula portenschlagiana",
@@ -9980,9 +9906,6 @@
       "identityEvidence": {
         "kind": "exact_named_catalog_card",
         "name": "Caryopteris clandonensis 'Summer Sorbet'®",
-        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Caryopteris+clandonensis+%27Summer+Sorbet%27%C2%AE",
-        "detailUrl": "https://www.willaert.be/nl/plant/caryopteris-clandonensis-summer-sorbet/cacssorb/",
-        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/CACSSORB_369_1312202210540.jpg",
         "aliasEvidenceUrls": [
           "https://api.gbif.org/v1/species/match?name=Caryopteris+x+clandonensis&kingdom=Plantae&strict=true",
           "https://www.gbif.org/species/8654143"
@@ -10012,9 +9935,6 @@
       "identityEvidence": {
         "kind": "exact_named_catalog_card",
         "name": "Euonymus fortunei 'Harlequin'",
-        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Euonymus+fortunei+%27Harlequin%27",
-        "detailUrl": "https://www.willaert.be/nl/plant/euonymus-fortunei-harlequin/eufharle/",
-        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/EUFHARLE_116_19062015113959.JPG",
         "canonicalName": "Euonymus fortunei 'Harlequin'"
       },
       "taxonKey": "euonymus fortunei harlequin",
@@ -10040,9 +9960,6 @@
       "identityEvidence": {
         "kind": "exact_named_catalog_card",
         "name": "Euonymus japonicus 'Microphyllus'",
-        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Euonymus+japonicus+%27Microphyllus%27",
-        "detailUrl": "https://www.willaert.be/nl/plant/euonymus-japonicus-microphyllus/eujmicro/",
-        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/EUJMICRO_369_24082020153551.jpg",
         "canonicalName": "Euonymus japonicus 'Microphyllus'"
       },
       "taxonKey": "euonymus japonicus microphyllus",
@@ -10068,9 +9985,6 @@
       "identityEvidence": {
         "kind": "exact_named_catalog_card",
         "name": "Festuca glauca",
-        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Festuca+glauca",
-        "detailUrl": "https://www.willaert.be/nl/plant/festuca-glauca/feglauca/",
-        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/FESTUCA_GLAUCA.jpg",
         "canonicalName": "Festuca glauca"
       },
       "taxonKey": "festuca glauca",
@@ -10096,9 +10010,6 @@
       "identityEvidence": {
         "kind": "exact_named_catalog_card",
         "name": "Lagerstroemia 'Tuscarora'",
-        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Lagerstroemia+%27Tuscarora%27",
-        "detailUrl": "https://www.willaert.be/nl/plant/lagerstroemia-tuscarora/latuscar/",
-        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/LATUSCAR_369_15012024142640.jpg",
         "canonicalName": "Lagerstroemia 'Tuscarora'"
       },
       "taxonKey": "lagerstroemia tuscarora",
@@ -10124,9 +10035,6 @@
       "identityEvidence": {
         "kind": "exact_named_catalog_card",
         "name": "Persicaria bistorta",
-        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Persicaria+bistorta",
-        "detailUrl": "https://www.willaert.be/nl/plant/persicaria-bistorta/pebistor/",
-        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/PEBISTOR_369_3003202310115.jpg",
         "canonicalName": "Persicaria bistorta"
       },
       "taxonKey": "persicaria bistorta",
@@ -10156,7 +10064,7 @@
       ],
       "imagePathPrefixes": {},
       "license": "existing_catalogue_source_policy",
-      "taxonKey": "prunus cerasifera pissardii",
+      "taxonKey": "prunus cerasifera atropurpurea",
       "latinName": "Prunus cerasifera 'Pissardii'",
       "image": "assets/biljke/reference-edd03fce1764ffbd0ddebc3f.jpg",
       "sha256": "edd03fce1764ffbd0ddebc3facad3ab953344cde09168e73316c3e281df23b42",
@@ -10185,6 +10093,2524 @@
       "sha256": "0636b16b420d32444682a681b7642369541f42d6f2dc9d847b08481ea5f91f31",
       "checkedAt": "2026-11-16T12:03:30Z",
       "matchLevel": "exact"
+    },
+    "plant-bcef3f3c122b68": {
+      "provider": "nursery",
+      "nurseryId": "willaert",
+      "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/ACHILLEA_MILLEFOLIUM_'RED_VELVET'.jpg",
+      "sourceUrl": "https://www.willaert.be/nl/plant/achillea-millefolium-red-velvet/acmrvelv/",
+      "matchedName": "Achillea millefolium 'Red Velvet'",
+      "identityEvidence": {
+        "kind": "exact_named_catalog_card",
+        "name": "Achillea millefolium 'Red Velvet'",
+        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Achillea+millefolium+%27Red+Velvet%27",
+        "detailUrl": "https://www.willaert.be/nl/plant/achillea-millefolium-red-velvet/acmrvelv/",
+        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/ACHILLEA_MILLEFOLIUM_'RED_VELVET'.jpg",
+        "canonicalName": "Achillea 'Red Velvet'"
+      },
+      "resolver": "willaert_catalog_card",
+      "taxonKey": "achillea millefolium red velvet",
+      "imageHosts": [
+        "www.willaert.be"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Achillea 'Red Velvet'",
+      "image": "assets/biljke/reference-516f252982ae20a24da76eff.jpg",
+      "sha256": "516f252982ae20a24da76eff58da84d868a73e68ff6362931d66b7704fdf6d16",
+      "checkedAt": "2026-11-17T12:52:35Z",
+      "matchLevel": "exact"
+    },
+    "plant-028aa17dda3cd5": {
+      "provider": "nursery",
+      "nurseryId": "willaert",
+      "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/AEPVARIE_369_10102018164945.JPG",
+      "sourceUrl": "https://www.willaert.be/nl/plant/aegopodium-podagraria-variegatum/aepvarie/",
+      "matchedName": "Aegopodium podagraria 'Variegatum'",
+      "identityEvidence": {
+        "kind": "exact_named_catalog_card",
+        "name": "Aegopodium podagraria 'Variegatum'",
+        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Aegopodium+podagraria+%27Variegatum%27",
+        "detailUrl": "https://www.willaert.be/nl/plant/aegopodium-podagraria-variegatum/aepvarie/",
+        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/AEPVARIE_369_10102018164945.JPG",
+        "canonicalName": "Aegopodium podagraria 'Variegata'"
+      },
+      "resolver": "willaert_catalog_card",
+      "taxonKey": "aegopodium podagraria variegata",
+      "imageHosts": [
+        "www.willaert.be"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Aegopodium podagraria 'Variegata'",
+      "image": "assets/biljke/reference-ff11bdd87ce00521c4dcd11b.jpg",
+      "sha256": "ff11bdd87ce00521c4dcd11b8d6327c25fdc68a23650b35b75e846b73426a622",
+      "checkedAt": "2026-11-17T12:52:35Z",
+      "matchLevel": "exact"
+    },
+    "plant-3ea6ef46e8dd85": {
+      "provider": "nursery",
+      "nurseryId": "willaert",
+      "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/DRFMAS_369_21062023145834.jpg",
+      "sourceUrl": "https://www.willaert.be/nl/plant/dryopteris-filix-mas/drfmas/",
+      "matchedName": "Dryopteris filix-mas",
+      "identityEvidence": {
+        "kind": "exact_named_catalog_card",
+        "name": "Dryopteris filix -mas",
+        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Dryopteris+filix+-mas",
+        "detailUrl": "https://www.willaert.be/nl/plant/dryopteris-filix-mas/drfmas/",
+        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/DRFMAS_369_21062023145834.jpg",
+        "canonicalName": "Dryopteris felix-mas"
+      },
+      "resolver": "willaert_catalog_card",
+      "taxonKey": "dryopteris felix mas",
+      "imageHosts": [
+        "www.willaert.be"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Dryopteris felix-mas",
+      "image": "assets/biljke/reference-1d5f835357c4c47ffe2e946a.jpg",
+      "sha256": "1d5f835357c4c47ffe2e946a75debefe7a70ff0607ae3c0374460491ee5ebea8",
+      "checkedAt": "2026-11-17T12:52:35Z",
+      "matchLevel": "exact"
+    },
+    "plant-9abf6576bdf184": {
+      "provider": "nursery",
+      "nurseryId": "willaert",
+      "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/EUPHORBIA_CHARACIAS_WULFENII.jpg",
+      "sourceUrl": "https://www.willaert.be/nl/plant/euphorbia-characias-wulfenii/eucwulfe/",
+      "matchedName": "Euphorbia characias 'Wulfenii'",
+      "identityEvidence": {
+        "kind": "exact_named_catalog_card",
+        "name": "Euphorbia characias 'Wulfenii'",
+        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Euphorbia+characias+%27Wulfenii%27",
+        "detailUrl": "https://www.willaert.be/nl/plant/euphorbia-characias-wulfenii/eucwulfe/",
+        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/EUPHORBIA_CHARACIAS_WULFENII.jpg",
+        "canonicalName": "Euphorbia characias subsp.wulfenii"
+      },
+      "resolver": "willaert_catalog_card",
+      "taxonKey": "euphorbia characias subsp wulfenii",
+      "imageHosts": [
+        "www.willaert.be"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Euphorbia characias subsp.wulfenii",
+      "image": "assets/biljke/reference-59716b91b66361e7cd92c369.jpg",
+      "sha256": "59716b91b66361e7cd92c369ee86f5961648b3cc2e30855216239ed2f69b0c51",
+      "checkedAt": "2026-11-17T12:52:35Z",
+      "matchLevel": "exact"
+    },
+    "plant-a9d6a182a4e421": {
+      "provider": "nursery",
+      "nurseryId": "willaert",
+      "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/GAURA_LINDHEIMERI_'WHIRLING_BUTTERFLIES'.jpg",
+      "sourceUrl": "https://www.willaert.be/nl/plant/gaura-lindheimeri-whirling-butterflies/galwbutt/",
+      "matchedName": "Gaura lindheimeri 'Whirling Butterflies'",
+      "identityEvidence": {
+        "kind": "exact_named_catalog_card",
+        "name": "Gaura lindheimeri 'Whirling Butterflies'",
+        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Gaura+lindheimeri+%27Whirling+Butterflies%27",
+        "detailUrl": "https://www.willaert.be/nl/plant/gaura-lindheimeri-whirling-butterflies/galwbutt/",
+        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/GAURA_LINDHEIMERI_'WHIRLING_BUTTERFLIES'.jpg",
+        "canonicalName": "Gaura lindheimeri 'Whirling Butterfly'"
+      },
+      "resolver": "willaert_catalog_card",
+      "taxonKey": "gaura lindheimeri whirling butterflies",
+      "imageHosts": [
+        "www.willaert.be"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Gaura lindheimeri 'Whirling Butterfly'",
+      "image": "assets/biljke/reference-37be15a7a7e601e45c839aeb.jpg",
+      "sha256": "37be15a7a7e601e45c839aeb5d7519a720b5a6c50aa69cd84742806d11c3e818",
+      "checkedAt": "2026-11-17T12:52:35Z",
+      "matchLevel": "exact"
+    },
+    "plant-9aa74aa98d72df": {
+      "provider": "nursery",
+      "nurseryId": "willaert",
+      "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/GEMSPESS_369_180320249650.jpg",
+      "sourceUrl": "https://www.willaert.be/nl/plant/geranium-macrorrhizum-spessart/gemspess/",
+      "matchedName": "Geranium macrorrhizum 'Spessart'",
+      "identityEvidence": {
+        "kind": "exact_named_catalog_card",
+        "name": "Geranium macrorrhizum 'Spessart'",
+        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Geranium+macrorrhizum+%27Spessart%27",
+        "detailUrl": "https://www.willaert.be/nl/plant/geranium-macrorrhizum-spessart/gemspess/",
+        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/GEMSPESS_369_180320249650.jpg",
+        "canonicalName": "Geranium macrorrhiuzm 'Spessart'"
+      },
+      "resolver": "willaert_catalog_card",
+      "taxonKey": "geranium macrorrhiuzm spessart",
+      "imageHosts": [
+        "www.willaert.be"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Geranium macrorrhiuzm 'Spessart'",
+      "image": "assets/biljke/reference-22113afe5292757181cac2d9.jpg",
+      "sha256": "22113afe5292757181cac2d983cbde4fa527d36c709b0b1c8d8cb35e3304cd5f",
+      "checkedAt": "2026-11-17T12:52:35Z",
+      "matchLevel": "exact"
+    },
+    "plant-f5f896a9c85e79": {
+      "provider": "nursery",
+      "nurseryId": "willaert",
+      "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/GEMIVARI_369_1402202391630.jpg",
+      "sourceUrl": "https://www.willaert.be/nl/plant/geranium-macrorrhizum-ingwersens-variety/gemivari/",
+      "matchedName": "Geranium macrorrhizum 'Ingwersen's Variety'",
+      "identityEvidence": {
+        "kind": "exact_named_catalog_card",
+        "name": "Geranium macrorrhizum 'Ingwersen's Variety'",
+        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Geranium+macrorrhizum+%27Ingwersen%27s+Variety%27",
+        "detailUrl": "https://www.willaert.be/nl/plant/geranium-macrorrhizum-ingwersens-variety/gemivari/",
+        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/GEMIVARI_369_1402202391630.jpg",
+        "canonicalName": "Geranium macrorrhizum 'Ingversens Variety'"
+      },
+      "resolver": "willaert_catalog_card",
+      "taxonKey": "geranium macrorrhizum ingversens variety",
+      "imageHosts": [
+        "www.willaert.be"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Geranium macrorrhizum 'Ingversens Variety'",
+      "image": "assets/biljke/reference-1f7bbfecd9e3fda63811041a.jpg",
+      "sha256": "1f7bbfecd9e3fda63811041aca4daa2c27a57719bfc44146cf2400219348058a",
+      "checkedAt": "2026-11-17T12:52:35Z",
+      "matchLevel": "exact"
+    },
+    "plant-8a8dfbfe7c71ad": {
+      "provider": "nursery",
+      "nurseryId": "willaert",
+      "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/HEGLITTE_369_02102018113852.JPG",
+      "sourceUrl": "https://www.willaert.be/nl/plant/heuchera-glitter/heglitte/",
+      "matchedName": "Heuchera 'Glitter'",
+      "identityEvidence": {
+        "kind": "exact_named_catalog_card",
+        "name": "Heuchera 'Glitter'®",
+        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Heuchera+%27Glitter%27",
+        "detailUrl": "https://www.willaert.be/nl/plant/heuchera-glitter/heglitte/",
+        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/HEGLITTE_369_02102018113852.JPG",
+        "canonicalName": "Heuchera hybrida 'Glitter'"
+      },
+      "resolver": "willaert_catalog_card",
+      "taxonKey": "heuchera glitter",
+      "imageHosts": [
+        "www.willaert.be"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Heuchera hybrida 'Glitter'",
+      "image": "assets/biljke/reference-1297e152e9ef80e6d25e5d64.jpg",
+      "sha256": "1297e152e9ef80e6d25e5d64e8d75e775363da060f041c5d98fdf210f453b262",
+      "checkedAt": "2026-11-17T12:52:35Z",
+      "matchLevel": "exact"
+    },
+    "plant-649f2f45b2d9ee": {
+      "provider": "nursery",
+      "nurseryId": "willaert",
+      "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/HEPARIS_369_05102018164324.JPG",
+      "sourceUrl": "https://www.willaert.be/nl/plant/heuchera-paris/heparis/",
+      "matchedName": "Heuchera 'Paris'",
+      "identityEvidence": {
+        "kind": "exact_named_catalog_card",
+        "name": "Heuchera 'Paris'®",
+        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Heuchera+%27Paris%27",
+        "detailUrl": "https://www.willaert.be/nl/plant/heuchera-paris/heparis/",
+        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/HEPARIS_369_05102018164324.JPG",
+        "canonicalName": "Heuchera hybrida 'Paris'"
+      },
+      "resolver": "willaert_catalog_card",
+      "taxonKey": "heuchera hybrida paris",
+      "imageHosts": [
+        "www.willaert.be"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Heuchera hybrida 'Paris'",
+      "image": "assets/biljke/reference-8f6ad382eea4f0fbb95d3be1.jpg",
+      "sha256": "8f6ad382eea4f0fbb95d3be131d293d1d815de31b00450672dacab3b6489844a",
+      "checkedAt": "2026-11-17T12:52:35Z",
+      "matchLevel": "exact"
+    },
+    "plant-5acd0e95239a5f": {
+      "provider": "nursery",
+      "nurseryId": "willaert",
+      "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/HOSTA_'HALCYON'.jpg",
+      "sourceUrl": "https://www.willaert.be/nl/plant/hosta-halcyon/hohalcyo/",
+      "matchedName": "Hosta 'Halcyon'",
+      "identityEvidence": {
+        "kind": "exact_named_catalog_card",
+        "name": "Hosta 'Halcyon'",
+        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Hosta+%27Halcyon%27",
+        "detailUrl": "https://www.willaert.be/nl/plant/hosta-halcyon/hohalcyo/",
+        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/HOSTA_'HALCYON'.jpg",
+        "canonicalName": "Hosta tardiana 'Halcyon'"
+      },
+      "resolver": "willaert_catalog_card",
+      "taxonKey": "hosta halcyon",
+      "imageHosts": [
+        "www.willaert.be"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Hosta tardiana 'Halcyon'",
+      "image": "assets/biljke/reference-8dbad08a2e882b361d714805.jpg",
+      "sha256": "8dbad08a2e882b361d714805f851d435cc136b3d1f8a558ae92d6c0ca3c1c62a",
+      "checkedAt": "2026-11-17T12:52:35Z",
+      "matchLevel": "exact"
+    },
+    "plant-71a1aa38376c8f": {
+      "provider": "nursery",
+      "nurseryId": "willaert",
+      "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/KNBPOPSI_369_1606202311530.JPG",
+      "sourceUrl": "https://www.willaert.be/nl/plant/kniphofia-hybr-banana-popsicle/knbpopsi/",
+      "matchedName": "Kniphofia hybr. 'Banana Popsicle'",
+      "identityEvidence": {
+        "kind": "exact_named_catalog_card",
+        "name": "Kniphofia hybr. 'Banana Popsicle'",
+        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Kniphofia+hybr.+%27Banana+Popsicle%27",
+        "detailUrl": "https://www.willaert.be/nl/plant/kniphofia-hybr-banana-popsicle/knbpopsi/",
+        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/KNBPOPSI_369_1606202311530.JPG",
+        "canonicalName": "Kniphofia hybrida 'Banana Popsicle'"
+      },
+      "resolver": "willaert_catalog_card",
+      "taxonKey": "kniphofia hybr banana popsicle",
+      "imageHosts": [
+        "www.willaert.be"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Kniphofia hybrida 'Banana Popsicle'",
+      "image": "assets/biljke/reference-822d03398997f6c664761e9e.jpg",
+      "sha256": "822d03398997f6c664761e9e438aaa6aafbc09294dd9b86d66668700a513fb8b",
+      "checkedAt": "2026-11-17T12:52:35Z",
+      "matchLevel": "exact"
+    },
+    "plant-dbbd3c036f603a": {
+      "provider": "nursery",
+      "nurseryId": "willaert",
+      "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/KNMPOPSI_369_16062023115329.JPG",
+      "sourceUrl": "https://www.willaert.be/nl/plant/kniphofia-mango-popsicle/knmpopsi/",
+      "matchedName": "Kniphofia 'Mango Popsicle'",
+      "identityEvidence": {
+        "kind": "exact_named_catalog_card",
+        "name": "Kniphofia 'Mango Popsicle' ®",
+        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Kniphofia+%27Mango+Popsicle%27",
+        "detailUrl": "https://www.willaert.be/nl/plant/kniphofia-mango-popsicle/knmpopsi/",
+        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/KNMPOPSI_369_16062023115329.JPG",
+        "canonicalName": "Kniphofia hybrida 'Mango Popsicle'"
+      },
+      "resolver": "willaert_catalog_card",
+      "taxonKey": "kniphofia hybrida mango popsicle",
+      "imageHosts": [
+        "www.willaert.be"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Kniphofia hybrida 'Mango Popsicle'",
+      "image": "assets/biljke/reference-14149d05d42dddf3cb269fc7.jpg",
+      "sha256": "14149d05d42dddf3cb269fc7cb20bfdb14f49f1b79bdec970a63556c6363ec5a",
+      "checkedAt": "2026-11-17T12:52:35Z",
+      "matchLevel": "exact"
+    },
+    "plant-2c7f9070c4620c": {
+      "provider": "nursery",
+      "nurseryId": "willaert",
+      "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/LEUCANTHEMUM__'SILBERPRINZESSCHEN'.jpg",
+      "sourceUrl": "https://www.willaert.be/nl/plant/leucanthemum-silberprinzesschen/lesilber/",
+      "matchedName": "Leucanthemum 'Silberprinzesschen'",
+      "identityEvidence": {
+        "kind": "exact_named_catalog_card",
+        "name": "Leucanthemum 'Silberprinzesschen'",
+        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Leucanthemum++%27Silberprinzesschen%27",
+        "detailUrl": "https://www.willaert.be/nl/plant/leucanthemum-silberprinzesschen/lesilber/",
+        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/LEUCANTHEMUM__'SILBERPRINZESSCHEN'.jpg",
+        "canonicalName": "Leucanthemum maximum 'Silberprinzesschen'"
+      },
+      "resolver": "willaert_catalog_card",
+      "taxonKey": "leucanthemum maximum silberprinzesschen",
+      "imageHosts": [
+        "www.willaert.be"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Leucanthemum maximum 'Silberprinzesschen'",
+      "image": "assets/biljke/reference-6f5b42a091c4df0d5a8f8c8a.jpg",
+      "sha256": "6f5b42a091c4df0d5a8f8c8a2e61a34a69ec953f5043cd2b57e434d3f1ec540f",
+      "checkedAt": "2026-11-17T12:52:35Z",
+      "matchLevel": "exact"
+    },
+    "plant-7554ad08ac45af": {
+      "provider": "nursery",
+      "nurseryId": "willaert",
+      "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/NEFSHGIA_369_30122014155129.jpg",
+      "sourceUrl": "https://www.willaert.be/nl/plant/nepeta-faassenii-six-hills-giant/nefshgia/",
+      "matchedName": "Nepeta faassenii 'Six Hills Giant'",
+      "identityEvidence": {
+        "kind": "exact_named_catalog_card",
+        "name": "Nepeta faassenii 'Six Hills Giant'",
+        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Nepeta+faassenii+%27Six+Hills+Giant%27",
+        "detailUrl": "https://www.willaert.be/nl/plant/nepeta-faassenii-six-hills-giant/nefshgia/",
+        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/NEFSHGIA_369_30122014155129.jpg",
+        "canonicalName": "Nepeta 'Six Hill Giant'"
+      },
+      "resolver": "willaert_catalog_card",
+      "taxonKey": "nepeta faassenii six hills giant",
+      "imageHosts": [
+        "www.willaert.be"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Nepeta 'Six Hill Giant'",
+      "image": "assets/biljke/reference-a805cd028323e57e07ff4d74.jpg",
+      "sha256": "a805cd028323e57e07ff4d74d7cfa3be73aa9385a4b33527978ff7e0dcacff33",
+      "checkedAt": "2026-11-17T12:52:35Z",
+      "matchLevel": "exact"
+    },
+    "plant-6114660f69e4aa": {
+      "provider": "nursery",
+      "nurseryId": "willaert",
+      "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/PEALBUNN_369_3012201416104.jpg",
+      "sourceUrl": "https://www.willaert.be/nl/plant/pennisetum-alopecuroides-little-bunny/pealbunn/",
+      "matchedName": "Pennisetum alopecuroides 'Little Bunny'",
+      "identityEvidence": {
+        "kind": "exact_named_catalog_card",
+        "name": "Pennisetum alopecuroides 'Little Bunny'",
+        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Pennisetum+alopecuroides+%27Little+Bunny%27",
+        "detailUrl": "https://www.willaert.be/nl/plant/pennisetum-alopecuroides-little-bunny/pealbunn/",
+        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/PEALBUNN_369_3012201416104.jpg",
+        "canonicalName": "Pennisetum alopecuroides 'Litttle Bunny'"
+      },
+      "resolver": "willaert_catalog_card",
+      "taxonKey": "pennisetum alopecuroides little bunny",
+      "imageHosts": [
+        "www.willaert.be"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Pennisetum alopecuroides 'Litttle Bunny'",
+      "image": "assets/biljke/reference-ca632f70791b570423ee7fb6.jpg",
+      "sha256": "ca632f70791b570423ee7fb63acaf8df0e42fd2b8865a9a77ac2f70d40f42252",
+      "checkedAt": "2026-11-17T12:52:35Z",
+      "matchLevel": "exact"
+    },
+    "plant-f7f490785ef2e3": {
+      "provider": "nursery",
+      "nurseryId": "willaert",
+      "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/SANMAINA_369_14062023115830.jpg",
+      "sourceUrl": "https://www.willaert.be/nl/plant/salvia-nemorosa-mainacht/sanmaina/",
+      "matchedName": "Salvia nemorosa 'Mainacht'",
+      "identityEvidence": {
+        "kind": "exact_named_catalog_card",
+        "name": "Salvia nemorosa 'Mainacht'",
+        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Salvia+nemorosa+%27Mainacht%27",
+        "detailUrl": "https://www.willaert.be/nl/plant/salvia-nemorosa-mainacht/sanmaina/",
+        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/SANMAINA_369_14062023115830.jpg",
+        "canonicalName": "Salvia x sylvestris 'Mainacht'"
+      },
+      "resolver": "willaert_catalog_card",
+      "taxonKey": "salvia nemorosa mainacht",
+      "imageHosts": [
+        "www.willaert.be"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Salvia x sylvestris 'Mainacht'",
+      "image": "assets/biljke/reference-eb2ca5730726880918b25596.jpg",
+      "sha256": "eb2ca5730726880918b25596392f4fc608f7acd450d15abb60f3b1994b71f11d",
+      "checkedAt": "2026-11-17T12:52:35Z",
+      "matchLevel": "exact"
+    },
+    "plant-22701ebacaa7bc": {
+      "provider": "nursery",
+      "nurseryId": "willaert",
+      "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/SEPEMPER_369_16062023144743.jpg",
+      "sourceUrl": "https://www.willaert.be/nl/plant/sedum-hybr-purple-emperor/sepemper/",
+      "matchedName": "Sedum hybr. 'Purple Emperor'",
+      "identityEvidence": {
+        "kind": "exact_named_catalog_card",
+        "name": "Sedum hybr. 'Purple Emperor'",
+        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Sedum+hybr.+%27Purple+Emperor%27",
+        "detailUrl": "https://www.willaert.be/nl/plant/sedum-hybr-purple-emperor/sepemper/",
+        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/SEPEMPER_369_16062023144743.jpg",
+        "canonicalName": "Sedum 'Purple Emperor'"
+      },
+      "resolver": "willaert_catalog_card",
+      "taxonKey": "sedum hybr purple emperor",
+      "imageHosts": [
+        "www.willaert.be"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Sedum 'Purple Emperor'",
+      "image": "assets/biljke/reference-2194dd123e51ab781250bb44.jpg",
+      "sha256": "2194dd123e51ab781250bb446d94b90077ad5e94a5665203c08b788a635669dc",
+      "checkedAt": "2026-11-17T12:52:35Z",
+      "matchLevel": "exact"
+    },
+    "plant-73234c6f4f2e5d": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "lorberg",
+      "imageUrl": "https://www.lorberg.com/content/files/3935/Hosta-x-fortunei-1200x630-proportionalbiggest.webp",
+      "sourceUrl": "https://www.lorberg.com/en-gb/article/318/hosta-sieboldiana-elegans",
+      "matchedName": "Hosta sieboldiana 'Elegans'",
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Hosta sieboldiana 'Elegance'"
+      },
+      "taxonKey": "hosta sieboldiana elegance",
+      "imageHosts": [
+        "www.lorberg.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Hosta sieboldiana 'Elegance'",
+      "image": "assets/biljke/reference-62fed6be69984b54bc29bae7.jpg",
+      "sha256": "62fed6be69984b54bc29bae718b9f234b99192e0d35b6c28a934dae448ff29c3",
+      "checkedAt": "2026-11-17T13:02:33Z",
+      "matchLevel": "exact"
+    },
+    "plant-7e4d9af7322a93": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "lorberg",
+      "imageUrl": "https://www.lorberg.com/content/files/3434/Carex-morrowii-ssp-1200x630-proportionalbiggest.webp",
+      "sourceUrl": "https://www.lorberg.com/en-gb/article/191/carex-morrowii-variegata",
+      "matchedName": "Carex morrowii 'Variegata'",
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Carex morrovii 'Variegata'"
+      },
+      "taxonKey": "carex morrovii variegata",
+      "imageHosts": [
+        "www.lorberg.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Carex morrovii 'Variegata'",
+      "image": "assets/biljke/reference-15482e19465cc637b1675f38.jpg",
+      "sha256": "15482e19465cc637b1675f386825163ae4fbd7297371408e5eb7cec807e7d519",
+      "checkedAt": "2026-11-17T13:02:33Z",
+      "matchLevel": "exact"
+    },
+    "plant-fc32b5b27e23f7": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "lorberg",
+      "imageUrl": "https://www.lorberg.com/content/files/12519/Salvia-nemorosa-1200x630-proportionalbiggest.webp",
+      "sourceUrl": "https://www.lorberg.com/en-gb/article/2862/salvia-nemorosa",
+      "matchedName": "Salvia nemorosa",
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Salvia nemerosa"
+      },
+      "taxonKey": "salvia nemerosa",
+      "imageHosts": [
+        "www.lorberg.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Salvia nemerosa",
+      "image": "assets/biljke/reference-3f0b63701cb46ae3dd0b0719.jpg",
+      "sha256": "3f0b63701cb46ae3dd0b0719083624bf7d3338be2bb0ef39711e2e0ecb740af7",
+      "checkedAt": "2026-11-17T13:02:33Z",
+      "matchLevel": "exact"
+    },
+    "plant-4bf5a1a6bdd8e0": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "lorberg",
+      "imageUrl": "https://www.lorberg.com/content/files/7259/Pleioblastus-argenteostriatus-f-1200x630-proportionalbiggest.webp",
+      "sourceUrl": "https://www.lorberg.com/de-de/pleioblastus-pumilus",
+      "matchedName": "Pleioblastus pumilus",
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Pleioblastus pumilis"
+      },
+      "taxonKey": "pleioblastus pumilis",
+      "imageHosts": [
+        "www.lorberg.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Pleioblastus pumilis",
+      "image": "assets/biljke/reference-7644268d44ccd73c61d714ef.jpg",
+      "sha256": "7644268d44ccd73c61d714eff021651e1b1d61d0e8e6024ca91e01a9bf574ad2",
+      "checkedAt": "2026-11-17T13:02:33Z",
+      "matchLevel": "exact"
+    },
+    "plant-19779e0433bfdf": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "lorberg",
+      "imageUrl": "https://www.lorberg.com/content/files/14040/Achillea-filipendulina-Parker-Bild_Nr-175747-r1-1200x630-proportionalbiggest.webp",
+      "sourceUrl": "https://www.lorberg.com/en-gb/article/2701/achillea-filipendulina-parkers-variety",
+      "matchedName": "Achillea filipendulina 'Parker´s Variety'",
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "exactH1": "Achillea filipendulina 'Parker´s Variety'",
+        "canonicalName": "Achillea filipendulina 'Parker's Variety'"
+      },
+      "taxonKey": "achillea filipendulina parker s variety",
+      "imageHosts": [
+        "www.lorberg.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Achillea filipendulina 'Parker's Variety'",
+      "image": "assets/biljke/reference-43479a6a79a6c14c159db93b.jpg",
+      "sha256": "43479a6a79a6c14c159db93be676b4b1092c1982d9b4036b8235efe36f2adf3b",
+      "checkedAt": "2026-11-17T13:02:33Z",
+      "matchLevel": "exact"
+    },
+    "plant-2ab84b946b895e": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "lorberg",
+      "imageUrl": "https://www.lorberg.com/content/files/14200/DescesTau_P_Deschampsia_cespitosa_Tautraeger_Schmiele_Tautraeger_Lorberg-r1-1200x630-proportionalbiggest.webp",
+      "sourceUrl": "https://www.lorberg.com/de-de/deschampsia-cespitosa-tautraeger",
+      "matchedName": "Deschampsia cespitosa 'Tauträger'",
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "exactH1": "Deschampsia cespitosa 'Tauträger'",
+        "canonicalName": "Deschampsia cespitosa 'Trautrager'"
+      },
+      "taxonKey": "deschampsia cespitosa tauträger",
+      "imageHosts": [
+        "www.lorberg.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Deschampsia cespitosa 'Trautrager'",
+      "image": "assets/biljke/reference-34aa6b959ba407ab824c5ddb.jpg",
+      "sha256": "34aa6b959ba407ab824c5ddbd4bc23ca0ded549e48d7c01c51439a7aeccf1e6a",
+      "checkedAt": "2026-11-17T13:02:33Z",
+      "matchLevel": "exact"
+    },
+    "plant-849f15111e5047": {
+      "provider": "nursery",
+      "nurseryId": "willaert",
+      "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/EUPATORIUM_MACULATUM_ATROPURPUREUM.jpg",
+      "sourceUrl": "https://www.willaert.be/nl/plant/eupatorium-maculatum-atropurpureum/eumatrop/",
+      "matchedName": "Eupatorium maculatum 'Atropurpureum'",
+      "identityEvidence": {
+        "kind": "exact_named_catalog_card",
+        "name": "Eupatorium maculatum 'Atropurpureum'",
+        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Eupatorium+maculatum+%27Atropurpureum%27",
+        "detailUrl": "https://www.willaert.be/nl/plant/eupatorium-maculatum-atropurpureum/eumatrop/",
+        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/EUPATORIUM_MACULATUM_ATROPURPUREUM.jpg",
+        "canonicalName": "Eupatorium maculatum 'Atropurpurea'"
+      },
+      "resolver": "willaert_catalog_card",
+      "taxonKey": "eupatorium maculatum atropurpurea",
+      "imageHosts": [
+        "www.willaert.be"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Eupatorium maculatum 'Atropurpurea'",
+      "image": "assets/biljke/reference-f6311c037e7492789bc019de.jpg",
+      "sha256": "f6311c037e7492789bc019def8417ba661ba8fe00fcdd08aefe634069772a31b",
+      "checkedAt": "2026-11-17T13:02:33Z",
+      "matchLevel": "exact"
+    },
+    "plant-98da30d6cdab1b": {
+      "provider": "nursery",
+      "nurseryId": "willaert",
+      "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/OPHIOPOGON_PLANISCAPUS_'NIGER'.jpg",
+      "sourceUrl": "https://www.willaert.be/nl/plant/ophiopogon-planiscapus-niger/oppniger/",
+      "matchedName": "Ophiopogon planiscapus 'Niger'",
+      "identityEvidence": {
+        "kind": "exact_named_catalog_card",
+        "name": "Ophiopogon planiscapus 'Niger'",
+        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Ophiopogon+planiscapus+%27Niger%27",
+        "detailUrl": "https://www.willaert.be/nl/plant/ophiopogon-planiscapus-niger/oppniger/",
+        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/OPHIOPOGON_PLANISCAPUS_'NIGER'.jpg",
+        "canonicalName": "Ophiopogon planiscapus 'Nigrescens'"
+      },
+      "resolver": "willaert_catalog_card",
+      "taxonKey": "ophiopogon planiscapus niger",
+      "imageHosts": [
+        "www.willaert.be"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Ophiopogon planiscapus 'Nigrescens'",
+      "image": "assets/biljke/reference-ae05756d0f97a7fb14f78e9b.jpg",
+      "sha256": "ae05756d0f97a7fb14f78e9b3755ef64ec93b7fd3e363cccb49092a71fb42975",
+      "checkedAt": "2026-11-17T13:02:33Z",
+      "matchLevel": "exact"
+    },
+    "plant-99d1408b6679aa": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "vannucci-piante",
+      "imageUrl": "https://catalogue.vannuccipiante.it/images/pennisetum%20alopecuroides%20red%20head-2_AVX2312194.jpg",
+      "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4017460.json",
+      "matchedName": "Pennisetum alopecuroides 'Red Head'",
+      "identityEvidence": {
+        "kind": "official_named_catalogue_json",
+        "speciesId": 4017460,
+        "genreName": "Pennisetum",
+        "speciesName": "alopecuroides",
+        "speciesVariety": "'Red Head'",
+        "imageField": "images[0]",
+        "metadataUrl": "https://catalogue.vannuccipiante.it/data/species/4017460.json",
+        "canonicalName": "Pennisetum alopecuroides 'Redhead'"
+      },
+      "taxonKey": "pennisetum alopecuroides red head",
+      "imageHosts": [
+        "catalogue.vannuccipiante.it",
+        "webshop.vannuccipiante.it",
+        "www.vannuccipiante.it"
+      ],
+      "imagePathPrefixes": {
+        "catalogue.vannuccipiante.it": [
+          "/images/"
+        ]
+      },
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Pennisetum alopecuroides 'Redhead'",
+      "image": "assets/biljke/reference-b02290dcc221e038291b1d45.jpg",
+      "sha256": "b02290dcc221e038291b1d450ba5486ec391533189f94b9092830657153d3ef0",
+      "checkedAt": "2026-11-17T13:02:33Z",
+      "matchLevel": "exact",
+      "usagePermission": {
+        "status": "confirmed_by_user",
+        "confirmedAt": "2026-11-17",
+        "scope": "Supplier catalogue photographs on the Demetra RB public website."
+      }
+    },
+    "plant-2f56803cd672d6": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "vannucci-piante",
+      "imageUrl": "https://catalogue.vannuccipiante.it/images/bambusananavariegata%28pleiobforargenteom%29%20clt%2010_AVX200011F.jpg",
+      "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4002470.json",
+      "matchedName": "Bambusa nana 'Variegata' (Pleioblastus fortunei)",
+      "identityEvidence": {
+        "kind": "official_named_catalogue_json",
+        "speciesId": 4002470,
+        "genreName": "Bambusa",
+        "speciesName": "nana",
+        "speciesVariety": "'Variegata' (Pleioblastus fortunei)",
+        "imageField": "images[0]",
+        "metadataUrl": "https://catalogue.vannuccipiante.it/data/species/4002470.json",
+        "canonicalName": "Pleioblastus fortunei 'Variegata'"
+      },
+      "taxonKey": "bambusa nana variegata",
+      "imageHosts": [
+        "catalogue.vannuccipiante.it",
+        "webshop.vannuccipiante.it",
+        "www.vannuccipiante.it"
+      ],
+      "imagePathPrefixes": {
+        "catalogue.vannuccipiante.it": [
+          "/images/"
+        ]
+      },
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Pleioblastus fortunei 'Variegata'",
+      "image": "assets/biljke/reference-0435a5ef9933973c973e664c.jpg",
+      "sha256": "0435a5ef9933973c973e664c88af8414d048eb8c6307dffd92234e2a7c9b4f40",
+      "checkedAt": "2026-11-17T13:02:33Z",
+      "matchLevel": "exact",
+      "usagePermission": {
+        "status": "confirmed_by_user",
+        "confirmedAt": "2026-11-17",
+        "scope": "Supplier catalogue photographs on the Demetra RB public website."
+      }
+    },
+    "plant-35a27a7abd3f9f": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "lorberg",
+      "imageUrl": "https://www.lorberg.com/content/files/14265/Fraxinus-angustifolia-Raywood-12-14-16-2-r1-1200x630-proportionalbiggest.webp",
+      "sourceUrl": "https://www.lorberg.com/en-gb/article/674/fraxinus-angustifolia-raywood",
+      "matchedName": "Fraxinus angustifolia 'Raywood'",
+      "identityEvidence": {
+        "method": "scoped_evidenced_identity_reuse",
+        "canonicalName": "Fraxinus angustifolia 'Reywood'",
+        "aliasEvidenceUrls": [
+          "https://www.rhs.org.uk/plants/32945/fraxinus-angustifolia-raywood-ash-raywood-claret-ash/details",
+          "https://www.lorberg.com/en-gb/article/674/fraxinus-angustifolia-raywood"
+        ],
+        "review": "Scoped archive spelling Reywood to accepted Raywood; genus and species unchanged. Original Marina Dorcol rows29/86 contain Reywood; RHS and supplier Lorberg establish Raywood. Does not authorize reuse for the separate misclassified Fraxinus americana Raywood record."
+      },
+      "taxonKey": "fraxinus angustifolia raywood",
+      "imageHosts": [
+        "www.lorberg.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Fraxinus angustifolia 'Reywood'",
+      "image": "assets/biljke/reference-37dc3264d4d5cc80fdb39582.jpg",
+      "sha256": "37dc3264d4d5cc80fdb395829218d16fbfed7bbd05feccc3ca76b73482018c40",
+      "checkedAt": "2026-11-17T13:02:33Z",
+      "matchLevel": "exact"
+    },
+    "plant-33ea6223ae519a": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "innocenti-mangoni",
+      "imageUrl": "https://innocentiemangonipiante.it/wp-content/uploads/2023/06/1642763649.jpg",
+      "sourceUrl": "https://innocentiemangonipiante.it/en/tilia-x-europaea-pallida/",
+      "matchedName": "Tilia x europaea 'Pallida'",
+      "identityEvidence": {
+        "method": "scoped_evidenced_identity_reuse",
+        "canonicalName": "Tilia europea Palida",
+        "aliasEvidenceUrls": [
+          "https://innocentiemangonipiante.it/en/tilia-x-europaea-pallida/"
+        ],
+        "review": "Scoped orthographic normalization europea Palida to x europaea Pallida, preserving the complete named selection. Original Combinatie source 1. Offer for trees row20 and Offer request3 row17 identify europea Palida. Nursery primary catalogue gives exact hybrid and cultivar. No conversion to generic Tilia or other cultivar."
+      },
+      "taxonKey": "tilia europea palida",
+      "imageHosts": [
+        "innocentiemangonipiante.it"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Tilia europea Palida",
+      "image": "assets/biljke/reference-b7d6987ec5d2383c55b97887.jpg",
+      "sha256": "b7d6987ec5d2383c55b978870a9ce6bf85c1ce742216306115d880c56849142c",
+      "checkedAt": "2026-11-17T13:02:33Z",
+      "matchLevel": "exact"
+    },
+    "plant-d8dfb013fd1c3f": {
+      "provider": "supplying_nursery",
+      "nurseryId": "innocenti-mangoni",
+      "imageUrl": "https://innocentiemangonipiante.it/wp-content/uploads/2023/06/1642161556-scaled.jpg",
+      "sourceUrl": "https://innocentiemangonipiante.it/en/photinia-x-fraseri-red-robin/",
+      "matchedName": "Photinia x fraseri 'Red Robin'",
+      "identityEvidence": {
+        "method": "scoped_evidenced_identity_reuse",
+        "canonicalName": "Photinia fasserii 'Red Robin' P",
+        "aliasEvidenceUrls": [
+          "https://innocentiemangonipiante.it/en/photinia-x-fraseri-red-robin/"
+        ],
+        "review": "Original source B18 is Photinia fasserii Red Robin P 15 20/30, with stored potSize P15. Thus trailing P is a pot-size fragment, not a cultivar word. Scoped correction fasserii to x fraseri retains Red Robin unchanged. Image remains plant-level catalogue reference, not proof of exact P15 size."
+      },
+      "taxonKey": "photinia fasserii red robin p",
+      "imageHosts": [
+        "innocentiemangonipiante.it"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Photinia fasserii 'Red Robin' P",
+      "image": "assets/biljke/reference-c632ff202971177619bc41d4.jpg",
+      "sha256": "c632ff202971177619bc41d4b61d68d94d45cbb790f6cdbf837ad67cd1ea795e",
+      "checkedAt": "2026-11-17T13:02:33Z",
+      "matchLevel": "exact"
+    },
+    "plant-7e01e6cb52d3de": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "lorberg",
+      "imageUrl": "https://www.lorberg.com/content/files/4407/Catalpa-bignonioides-1200x630-proportionalbiggest.webp",
+      "sourceUrl": "https://www.lorberg.com/en-gb/article/503/catalpa-bignonioides-nana",
+      "matchedName": "Catalpa bignonioides 'Nana'",
+      "identityEvidence": {
+        "method": "scoped_evidenced_identity_reuse",
+        "canonicalName": "Catalpa bignonioides 'Globosa'",
+        "aliasEvidenceUrls": [
+          "https://www.esveld.nl/catalnl/heesters.htm",
+          "https://www.lorberg.com/en-gb/article/503/catalpa-bignonioides-nana"
+        ],
+        "review": "Primary Esveld nursery catalogue explicitly equates Catalpa bignonioides Globosa = Catalpa bignonioides Nana. Own archived Tender1 row41 also carries supplier note br; nana. This is an evidenced full cultivar synonym, not generic spherical-form inference."
+      },
+      "taxonKey": "catalpa bignonioides globosa",
+      "imageHosts": [
+        "www.lorberg.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Catalpa bignonioides 'Globosa'",
+      "image": "assets/biljke/reference-da4d988f552f15565dfd0ade.jpg",
+      "sha256": "da4d988f552f15565dfd0adedf3394d225a035611725ef2b95550e42e37d1e7a",
+      "checkedAt": "2026-11-17T13:02:33Z",
+      "matchLevel": "exact"
+    },
+    "plant-ade2ce47351665": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "lorenz-von-ehren",
+      "imageUrl": "https://www.lve-baumschule.de/media/72/f1/71/1646917702/7072682.JPG",
+      "sourceUrl": "https://www.lve-baumschule.de/sorbus-intermedia/6355496",
+      "matchedName": "Sorbus intermedia",
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Sorbus scandica",
+        "aliasEvidenceUrls": [
+          "https://www.ebben.nl/en/treeebb/sointerm-sorbus-intermedia/"
+        ],
+        "review": "Ebben primary nursery explicitly lists Sorbus scandica as synonym of Sorbus intermedia. Photo itself is from allowed LVE (not Ebben). LVE heading and product JSON-LD associate this exact photograph with Sorbus intermedia; viewed whole multi-stem fruiting tree with nursery watermark."
+      },
+      "taxonKey": "sorbus intermedia",
+      "imageHosts": [
+        "www.lve-baumschule.de",
+        "www.lve.de"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Sorbus scandica",
+      "image": "assets/biljke/reference-ebc35f3c4fdeef93cfb3b0db.jpg",
+      "sha256": "ebc35f3c4fdeef93cfb3b0db1ad085f403e09c8cba75e86118de71b49af2bce4",
+      "checkedAt": "2026-11-17T13:02:33Z",
+      "matchLevel": "exact"
+    },
+    "plant-2b63609672e071": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "lorenz-von-ehren",
+      "imageUrl": "https://www.lve-baumschule.de/media/13/b4/db/1646917330/6901681.JPG",
+      "sourceUrl": "https://www.lve-baumschule.de/rhododendron-japanische-azalee-maruschka/6354883",
+      "matchedName": "Rhododendron Japanische Azalee 'Maruschka'",
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Rhododendron japonica 'Maruschka'",
+        "aliasEvidenceUrls": [
+          "https://www.rhs.org.uk/plants/135542/rhododendron-maruschka-ea/details"
+        ],
+        "review": "RHS accepts Rhododendron Maruschka (evergreen azalea) and lists Rhododendron japonica Maruska as synonym. LVE titles the same full cultivar as Rhododendron Japanische Azalee Maruschka (German Japanese azalea group). Cultivar Maruschka retained verbatim. Viewed red azalea flowers and dark leaves, genuine LVE photo with watermark."
+      },
+      "taxonKey": "rhododendron japanische azalee maruschka",
+      "imageHosts": [
+        "www.lve-baumschule.de",
+        "www.lve.de"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Rhododendron japonica 'Maruschka'",
+      "image": "assets/biljke/reference-423f16a80f82cb44deece402.jpg",
+      "sha256": "423f16a80f82cb44deece4027af7c26168f75566eb6ffa5c9788d73a67328ec1",
+      "checkedAt": "2026-11-17T13:02:33Z",
+      "matchLevel": "exact"
+    },
+    "plant-b3d791a8261438": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "lorberg",
+      "imageUrl": "https://www.lorberg.com/content/files/10310/Ulmus-New-Horizon-50-60-11-r1-1200x630-proportionalbiggest.webp",
+      "sourceUrl": "https://www.lorberg.com/en-gb/article/2477/ulmus-new-horizon-s-resista-r",
+      "matchedName": "Ulmus 'New Horizon' (S) Resista (R)",
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Ulmus Resista New Horizon",
+        "aliasEvidenceUrls": [
+          "https://www.arbor.be/ulmus-resista",
+          "https://www.lorberg.com/en-gb/article/2477/ulmus-new-horizon-s-resista-r"
+        ],
+        "review": "Arbor primary RESISTA page explicitly lists New Horizon as one of its separate RESISTA cultivars. Lorberg product heading is Ulmus New Horizon -S- RESISTA -R-; S/R are trademark/protection markers, not cultivar words. Complete New Horizon preserved. Viewed full nursery row of labelled product trees; image file includes New-Horizon. No pairing with the separate Rebona/Rebella/Fiorente cultivars."
+      },
+      "taxonKey": "ulmus new horizon",
+      "imageHosts": [
+        "www.lorberg.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Ulmus Resista New Horizon",
+      "image": "assets/biljke/reference-66edb842f95bad39019e0bab.jpg",
+      "sha256": "66edb842f95bad39019e0babb4689858535ff9df3662ef26289b23ae0c615c89",
+      "checkedAt": "2026-11-17T13:02:33Z",
+      "matchLevel": "exact"
+    },
+    "plant-2d6ea78c9fc019": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "lorberg",
+      "imageUrl": "https://www.lorberg.com/content/files/10310/Ulmus-New-Horizon-50-60-11-r1-1200x630-proportionalbiggest.webp",
+      "sourceUrl": "https://www.lorberg.com/en-gb/article/2477/ulmus-new-horizon-s-resista-r",
+      "matchedName": "Ulmus 'New Horizon' (S) Resista (R)",
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Ulmus 'New Horizon'",
+        "aliasEvidenceUrls": [
+          "https://www.arbor.be/ulmus-resista",
+          "https://www.lorberg.com/en-gb/article/2477/ulmus-new-horizon-s-resista-r"
+        ],
+        "review": "Arbor primary RESISTA page explicitly lists New Horizon as one of its separate RESISTA cultivars. Lorberg product heading is Ulmus New Horizon -S- RESISTA -R-; S/R are trademark/protection markers, not cultivar words. Complete New Horizon preserved. Viewed full nursery row of labelled product trees; image file includes New-Horizon. No pairing with the separate Rebona/Rebella/Fiorente cultivars."
+      },
+      "taxonKey": "ulmus new horizon",
+      "imageHosts": [
+        "www.lorberg.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Ulmus 'New Horizon'",
+      "image": "assets/biljke/reference-66edb842f95bad39019e0bab.jpg",
+      "sha256": "66edb842f95bad39019e0babb4689858535ff9df3662ef26289b23ae0c615c89",
+      "checkedAt": "2026-11-17T13:02:33Z",
+      "matchLevel": "exact"
+    },
+    "plant-1d63d032975002": {
+      "nurseryId": "vannucci-piante",
+      "imageUrl": "https://catalogue.vannuccipiante.it/images/cupressocyparis%20leylandii_AVX2312588.jpg",
+      "sourceUrl": "https://catalogue.vannuccipiante.it/en/conifere/x-cupressocyparis/-/leylandii/4005840",
+      "matchedName": "x Cupressocyparis leylandii",
+      "identityEvidence": {
+        "kind": "official_catalogue_json",
+        "pageUrl": "https://catalogue.vannuccipiante.it/en/conifere/x-cupressocyparis/-/leylandii/4005840",
+        "indexUrl": "https://catalogue.vannuccipiante.it/data/species/plants-index.json",
+        "detailUrl": "https://catalogue.vannuccipiante.it/data/species/4005840.json",
+        "catalogueId": 4005840,
+        "name": "x Cupressocyparis leylandii ",
+        "imageFilename": "cupressocyparis leylandii_AVX2312588.jpg",
+        "descriptions": [
+          {
+            "k": "EN",
+            "v": "Origin: England. A hybrid between a Monterey Cypress and Alaska Cedar (Cupressus macrocarpa and Chamaecyparis nootkaensis). Conifer with compact, conical habit with dense, regular branches from the ground, even in adult plants. Leaves: evergreen, dense, soft green, scaly, pointed. Flowers and fruit: monoecious conifer which rarely flowers and bears little fruit. Suitable for all types of soil, even calcareous soil common in the South of Italy and South of France but on the condition that the plant is propagated not by stem cutting, but by grafting onto Cupressus sempervirens which will also ensure an improved anchorage to the ground, an important factor in areas where strong winds blow. Withstands any kind of pruning, even on old trees and re-grows rapidly. Among the most suitable conifers for boundary hedges (2m tall at least) and barriers, as it is the fastest and easiest to grow."
+          }
+        ],
+        "variants": [
+          {
+            "name": "(nessuna forma)"
+          },
+          {
+            "name": "(nessuna forma)"
+          },
+          {
+            "name": "(nessuna forma)"
+          },
+          {
+            "name": "(nessuna forma)"
+          },
+          {
+            "name": "(nessuna forma)"
+          },
+          {
+            "name": "(nessuna forma)"
+          },
+          {
+            "name": "(nessuna forma)"
+          },
+          {
+            "name": "(nessuna forma)"
+          },
+          {
+            "name": "(nessuna forma)"
+          },
+          {
+            "name": "(nessuna forma)"
+          },
+          {
+            "name": "(nessuna forma)"
+          },
+          {
+            "name": "(nessuna forma)"
+          },
+          {
+            "name": "(nessuna forma)"
+          },
+          {
+            "name": "(nessuna forma)"
+          },
+          {
+            "name": "(nessuna forma)"
+          },
+          {
+            "name": "(nessuna forma)"
+          },
+          {
+            "name": "(nessuna forma)"
+          },
+          {
+            "name": "Mini standard"
+          },
+          {
+            "name": "Half standard"
+          },
+          {
+            "name": "Half standard"
+          },
+          {
+            "name": "Spiral"
+          },
+          {
+            "name": "Slim"
+          },
+          {
+            "name": "Bonsais"
+          },
+          {
+            "name": "Bonsais"
+          },
+          {
+            "name": "Bonsais"
+          },
+          {
+            "name": "Bonsais"
+          },
+          {
+            "name": "Bonsais"
+          },
+          {
+            "name": "Bonsais"
+          },
+          {
+            "name": "Bonsais"
+          },
+          {
+            "name": "Bonsais"
+          }
+        ],
+        "canonicalName": "Cupressocyparis (x) leylandii"
+      },
+      "provider": "other_catalogue_nursery",
+      "taxonKey": "cupressocyparis x leylandii",
+      "imageHosts": [
+        "catalogue.vannuccipiante.it",
+        "webshop.vannuccipiante.it",
+        "www.vannuccipiante.it"
+      ],
+      "imagePathPrefixes": {
+        "catalogue.vannuccipiante.it": [
+          "/images/"
+        ]
+      },
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Cupressocyparis (x) leylandii",
+      "image": "assets/biljke/reference-f2eaecf7afad4a0ab37ba308.jpg",
+      "sha256": "f2eaecf7afad4a0ab37ba3089fc59173189e7dd89b2863d28df7bf93ac3f0767",
+      "checkedAt": "2026-11-17T13:04:43Z",
+      "matchLevel": "exact",
+      "usagePermission": {
+        "status": "confirmed_by_user",
+        "confirmedAt": "2026-11-17",
+        "scope": "Supplier catalogue photographs on the Demetra RB public website."
+      }
+    },
+    "plant-bde223e31460f3": {
+      "nurseryId": "vannucci-piante",
+      "imageUrl": "https://catalogue.vannuccipiante.it/images/ceanothus%20tyrsiflorus%20clt%203_AVX191C870.jpg",
+      "sourceUrl": "https://catalogue.vannuccipiante.it/en/collezione-generale/ceanothus/-/thyrsiflorus-repens/4016928",
+      "matchedName": "Ceanothus thyrsiflorus 'Repens'",
+      "identityEvidence": {
+        "kind": "official_catalogue_json",
+        "pageUrl": "https://catalogue.vannuccipiante.it/en/collezione-generale/ceanothus/-/thyrsiflorus-repens/4016928",
+        "indexUrl": "https://catalogue.vannuccipiante.it/data/species/plants-index.json",
+        "detailUrl": "https://catalogue.vannuccipiante.it/data/species/4016928.json",
+        "catalogueId": 4016928,
+        "name": "Ceanothus thyrsiflorus 'Repens'",
+        "imageFilename": "ceanothus tyrsiflorus clt 3_AVX191C870.jpg",
+        "descriptions": [
+          {
+            "k": "EN",
+            "v": "Semi-hardy shrub providing ground cover. Popular choice for landscaping, undemanding in terms of soil, but less fertile ground encourages copious flowering It is covered in countless sky-blue flowers in May-June, grouped in spikes."
+          }
+        ],
+        "variants": [
+          {
+            "name": "Bush"
+          }
+        ],
+        "canonicalName": "Ceanothus thyrsiflorus var. repens"
+      },
+      "provider": "other_catalogue_nursery",
+      "taxonKey": "ceanothus thyrsiflorus repens",
+      "imageHosts": [
+        "catalogue.vannuccipiante.it",
+        "webshop.vannuccipiante.it",
+        "www.vannuccipiante.it"
+      ],
+      "imagePathPrefixes": {
+        "catalogue.vannuccipiante.it": [
+          "/images/"
+        ]
+      },
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Ceanothus thyrsiflorus var. repens",
+      "image": "assets/biljke/reference-f38ad59bd1cd7e3bb2f32000.jpg",
+      "sha256": "f38ad59bd1cd7e3bb2f32000d3a16fbebfc019deb3a9402123c046213e3bee5a",
+      "checkedAt": "2026-11-17T13:04:43Z",
+      "matchLevel": "exact",
+      "usagePermission": {
+        "status": "confirmed_by_user",
+        "confirmedAt": "2026-11-17",
+        "scope": "Supplier catalogue photographs on the Demetra RB public website."
+      }
+    },
+    "plant-aaebb1c1960940": {
+      "nurseryId": "vannucci-piante",
+      "imageUrl": "https://catalogue.vannuccipiante.it/images/cornus%20florida%20rubra%20(2)_AVX2000208.jpg",
+      "sourceUrl": "https://catalogue.vannuccipiante.it/en/collezione-generale/cornus/2003634/florida-rubra/4005310",
+      "matchedName": "Cornus florida ‘Rubra’",
+      "identityEvidence": {
+        "kind": "official_catalogue_json",
+        "pageUrl": "https://catalogue.vannuccipiante.it/en/collezione-generale/cornus/2003634/florida-rubra/4005310",
+        "indexUrl": "https://catalogue.vannuccipiante.it/data/species/plants-index.json",
+        "detailUrl": "https://catalogue.vannuccipiante.it/data/species/4005310.json",
+        "catalogueId": 4005310,
+        "name": "Cornus florida ‘Rubra’",
+        "imageFilename": "cornus florida rubra (2)_AVX2000208.jpg",
+        "descriptions": [
+          {
+            "k": "EN",
+            "v": "Red bracts, green leaves, orangey-yellow in autumn."
+          }
+        ],
+        "variants": [
+          {
+            "name": "Bush"
+          },
+          {
+            "name": "Bush"
+          },
+          {
+            "name": "Bush"
+          },
+          {
+            "name": "Bush"
+          },
+          {
+            "name": "Bush"
+          },
+          {
+            "name": "Bush"
+          },
+          {
+            "name": "Bush"
+          },
+          {
+            "name": "Bush"
+          },
+          {
+            "name": "Bush"
+          },
+          {
+            "name": "Half standard"
+          },
+          {
+            "name": "Half standard"
+          }
+        ],
+        "canonicalName": "Cornus florida f. rubra"
+      },
+      "provider": "other_catalogue_nursery",
+      "taxonKey": "cornus florida f rubra",
+      "imageHosts": [
+        "catalogue.vannuccipiante.it",
+        "webshop.vannuccipiante.it",
+        "www.vannuccipiante.it"
+      ],
+      "imagePathPrefixes": {
+        "catalogue.vannuccipiante.it": [
+          "/images/"
+        ]
+      },
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Cornus florida f. rubra",
+      "image": "assets/biljke/reference-1330896a0b86210f7cbff298.jpg",
+      "sha256": "1330896a0b86210f7cbff298b9c989505ce711dc25963c1cb03254b7c9b7c3e7",
+      "checkedAt": "2026-11-17T13:04:43Z",
+      "matchLevel": "exact",
+      "usagePermission": {
+        "status": "confirmed_by_user",
+        "confirmedAt": "2026-11-17",
+        "scope": "Supplier catalogue photographs on the Demetra RB public website."
+      }
+    },
+    "plant-1f509f3c339c01": {
+      "nurseryId": "vannucci-piante",
+      "imageUrl": "https://catalogue.vannuccipiante.it/images/prunus%20domestica%20stanley-2%20copia.jpg",
+      "sourceUrl": "https://catalogue.vannuccipiante.it/en/piante-da-frutto/prunus-domestica/-/stanley/4016482",
+      "matchedName": "Prunus domestica 'Stanley'",
+      "identityEvidence": {
+        "kind": "official_catalogue_json",
+        "pageUrl": "https://catalogue.vannuccipiante.it/en/piante-da-frutto/prunus-domestica/-/stanley/4016482",
+        "indexUrl": "https://catalogue.vannuccipiante.it/data/species/plants-index.json",
+        "detailUrl": "https://catalogue.vannuccipiante.it/data/species/4016482.json",
+        "catalogueId": 4016482,
+        "name": "Prunus domestica  'Stanley'",
+        "imageFilename": "prunus domestica stanley-2 copia.jpg",
+        "descriptions": [
+          {
+            "k": "EN",
+            "v": "Oval, bluish-red, pruinose. Yellowish-green pulp, freestone. Early September. (Clt.6, Clt.10, Clt.15, Clt.35, Clt.70, Clt.130)"
+          }
+        ],
+        "variants": [
+          {
+            "name": "Half standard"
+          },
+          {
+            "name": "Half standard"
+          },
+          {
+            "name": "Half standard"
+          },
+          {
+            "name": "Half standard"
+          },
+          {
+            "name": "Half standard"
+          },
+          {
+            "name": "Half standard"
+          },
+          {
+            "name": "Half standard"
+          },
+          {
+            "name": "Half standard"
+          },
+          {
+            "name": "Standard"
+          },
+          {
+            "name": "Trellis"
+          }
+        ],
+        "canonicalName": "Prunus domestica (Stanley) szilva"
+      },
+      "provider": "other_catalogue_nursery",
+      "taxonKey": "prunus domestica stanley",
+      "imageHosts": [
+        "catalogue.vannuccipiante.it",
+        "webshop.vannuccipiante.it",
+        "www.vannuccipiante.it"
+      ],
+      "imagePathPrefixes": {
+        "catalogue.vannuccipiante.it": [
+          "/images/"
+        ]
+      },
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Prunus domestica (Stanley) szilva",
+      "image": "assets/biljke/reference-33c6f4fd0666661636f32288.jpg",
+      "sha256": "33c6f4fd0666661636f3228859fdcd343dd66b5fcbed2cdabaf251b51d15ae33",
+      "checkedAt": "2026-11-17T13:04:43Z",
+      "matchLevel": "exact",
+      "usagePermission": {
+        "status": "confirmed_by_user",
+        "confirmedAt": "2026-11-17",
+        "scope": "Supplier catalogue photographs on the Demetra RB public website."
+      }
+    },
+    "plant-fbd63e50cb51f6": {
+      "nurseryId": "vannucci-piante",
+      "imageUrl": "https://catalogue.vannuccipiante.it/images/populusnigraitalica_AVX20004C1.jpg",
+      "sourceUrl": "https://catalogue.vannuccipiante.it/en/collezione-generale/populus/-/nigra-italica--p-nigra-pyramidalis-/4012760",
+      "matchedName": "Populus nigra ‘Italica’ (P. nigra ‘Pyramidalis’)",
+      "identityEvidence": {
+        "kind": "official_catalogue_json",
+        "pageUrl": "https://catalogue.vannuccipiante.it/en/collezione-generale/populus/-/nigra-italica--p-nigra-pyramidalis-/4012760",
+        "indexUrl": "https://catalogue.vannuccipiante.it/data/species/plants-index.json",
+        "detailUrl": "https://catalogue.vannuccipiante.it/data/species/4012760.json",
+        "catalogueId": 4012760,
+        "name": "Populus nigra ‘Italica’ (P. nigra ‘Pyramidalis’)",
+        "imageFilename": "populusnigraitalica_AVX20004C1.jpg",
+        "descriptions": [
+          {
+            "k": "EN",
+            "v": "Origin: Italy. Very popular deciduous tree, grown all over Europe. Pyramidal habit, slender. The branches are close to the trunk starting from the base. Rhomboid leaves, wider (8- 10cm) than they are long (6-8cm), borne on long stalks. The leaves are pale, shiny green and often, but not always, they turn yellow in autumn. Flowers: crimson catkins in March- April, male only, so do not produce fluffy seeds and do not make lawns and pavements dirty. Prefers cool, moist, alkaline soil. Short-lived plant."
+          }
+        ],
+        "variants": [
+          {
+            "name": "Feathered"
+          },
+          {
+            "name": "Feathered"
+          },
+          {
+            "name": "Feathered"
+          },
+          {
+            "name": "Standard"
+          },
+          {
+            "name": "Standard"
+          },
+          {
+            "name": "Standard"
+          },
+          {
+            "name": "Standard"
+          },
+          {
+            "name": "Standard"
+          },
+          {
+            "name": "Standard"
+          },
+          {
+            "name": "Standard"
+          }
+        ],
+        "canonicalName": "Populus nigra 'Pyramidalis'"
+      },
+      "provider": "other_catalogue_nursery",
+      "taxonKey": "populus nigra italica",
+      "imageHosts": [
+        "catalogue.vannuccipiante.it",
+        "webshop.vannuccipiante.it",
+        "www.vannuccipiante.it"
+      ],
+      "imagePathPrefixes": {
+        "catalogue.vannuccipiante.it": [
+          "/images/"
+        ]
+      },
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Populus nigra 'Pyramidalis'",
+      "image": "assets/biljke/reference-27c66b233e26847ce3a3caab.jpg",
+      "sha256": "27c66b233e26847ce3a3caab54308c75430f8dff1f4c7cfdf0f2cfebd742f2d8",
+      "checkedAt": "2026-11-17T13:04:43Z",
+      "matchLevel": "exact",
+      "usagePermission": {
+        "status": "confirmed_by_user",
+        "confirmedAt": "2026-11-17",
+        "scope": "Supplier catalogue photographs on the Demetra RB public website."
+      }
+    },
+    "plant-8761ba73111180": {
+      "nurseryId": "vannucci-piante",
+      "imageUrl": "https://catalogue.vannuccipiante.it/images/fagussylvaticadawycksgold%20clt%2035%20200-250%20ramificato_AVX2000296.jpg",
+      "sourceUrl": "https://catalogue.vannuccipiante.it/en/collezione-generale/fagus/-/sylvatica-dawyck-gold/4007240",
+      "matchedName": "Fagus sylvatica ‘Dawyck Gold’",
+      "identityEvidence": {
+        "kind": "official_catalogue_json",
+        "pageUrl": "https://catalogue.vannuccipiante.it/en/collezione-generale/fagus/-/sylvatica-dawyck-gold/4007240",
+        "indexUrl": "https://catalogue.vannuccipiante.it/data/species/plants-index.json",
+        "detailUrl": "https://catalogue.vannuccipiante.it/data/species/4007240.json",
+        "catalogueId": 4007240,
+        "name": "Fagus sylvatica ‘Dawyck Gold’",
+        "imageFilename": "fagussylvaticadawycksgold clt 35 200-250 ramificato_AVX2000296.jpg",
+        "descriptions": [
+          {
+            "k": "EN",
+            "v": "Deciduous tree, with an erect trunk, branches forming from ground level, with an elongated-oval habit. Like F. sylvatica 'Dawyck’ except for its golden yellow leaves."
+          }
+        ],
+        "variants": [
+          {
+            "name": "Feathered"
+          },
+          {
+            "name": "Feathered"
+          },
+          {
+            "name": "Feathered"
+          },
+          {
+            "name": "Feathered"
+          }
+        ],
+        "canonicalName": "Fagus sylvatica 'Dawyck Gold' feathered"
+      },
+      "provider": "other_catalogue_nursery",
+      "taxonKey": "fagus sylvatica dawyck gold feathered",
+      "imageHosts": [
+        "catalogue.vannuccipiante.it",
+        "webshop.vannuccipiante.it",
+        "www.vannuccipiante.it"
+      ],
+      "imagePathPrefixes": {
+        "catalogue.vannuccipiante.it": [
+          "/images/"
+        ]
+      },
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Fagus sylvatica 'Dawyck Gold' feathered",
+      "image": "assets/biljke/reference-6f9d1e3a524bf7c8d6fd2121.jpg",
+      "sha256": "6f9d1e3a524bf7c8d6fd21213fbbddbc9c5a916a698ae9d4fde8b00989e81bea",
+      "checkedAt": "2026-11-17T13:04:43Z",
+      "matchLevel": "exact",
+      "usagePermission": {
+        "status": "confirmed_by_user",
+        "confirmedAt": "2026-11-17",
+        "scope": "Supplier catalogue photographs on the Demetra RB public website."
+      }
+    },
+    "plant-3093991375a270": {
+      "nurseryId": "vannucci-piante",
+      "imageUrl": "https://catalogue.vannuccipiante.it/images/fagus%20sylv-fast%20purple%20dawick%20purple_AVX2000293.jpg",
+      "sourceUrl": "https://catalogue.vannuccipiante.it/en/collezione-generale/fagus/-/sylvatica-dawyck-purple/4007250",
+      "matchedName": "Fagus sylvatica ‘Dawyck Purple’",
+      "identityEvidence": {
+        "kind": "official_catalogue_json",
+        "pageUrl": "https://catalogue.vannuccipiante.it/en/collezione-generale/fagus/-/sylvatica-dawyck-purple/4007250",
+        "indexUrl": "https://catalogue.vannuccipiante.it/data/species/plants-index.json",
+        "detailUrl": "https://catalogue.vannuccipiante.it/data/species/4007250.json",
+        "catalogueId": 4007250,
+        "name": "Fagus sylvatica ‘Dawyck Purple’",
+        "imageFilename": "fagus sylv-fast purple dawick purple_AVX2000293.jpg",
+        "descriptions": [
+          {
+            "k": "EN",
+            "v": "Deciduous tree, with an erect trunk, branches forming from ground level, with an elongated-oval habit. Like F. sylvatica 'Dawyck’ except for its bright red foliage."
+          }
+        ],
+        "variants": [
+          {
+            "name": "Feathered"
+          },
+          {
+            "name": "Feathered"
+          },
+          {
+            "name": "Feathered"
+          },
+          {
+            "name": "Feathered"
+          },
+          {
+            "name": "Feathered"
+          },
+          {
+            "name": "Feathered"
+          },
+          {
+            "name": "Feathered"
+          },
+          {
+            "name": "Feathered"
+          },
+          {
+            "name": "Feathered"
+          },
+          {
+            "name": "Feathered"
+          },
+          {
+            "name": "Feathered"
+          },
+          {
+            "name": "Feathered"
+          }
+        ],
+        "canonicalName": "Fagus sylvatica 'Dawyck Purple' feathered"
+      },
+      "provider": "other_catalogue_nursery",
+      "taxonKey": "fagus sylvatica dawyck purple feathered",
+      "imageHosts": [
+        "catalogue.vannuccipiante.it",
+        "webshop.vannuccipiante.it",
+        "www.vannuccipiante.it"
+      ],
+      "imagePathPrefixes": {
+        "catalogue.vannuccipiante.it": [
+          "/images/"
+        ]
+      },
+      "license": "existing_catalogue_source_policy",
+      "usagePermission": {
+        "status": "confirmed_by_user",
+        "confirmedAt": "2026-11-17",
+        "scope": "Supplier catalogue photographs on the Demetra RB public website."
+      },
+      "latinName": "Fagus sylvatica 'Dawyck Purple' feathered",
+      "image": "assets/biljke/reference-d68b921c8df69d21b3efafe8.jpg",
+      "sha256": "d68b921c8df69d21b3efafe839ffdffa5e6a5b491fb996e6b6b45ffc58ca860f",
+      "checkedAt": "2026-11-17T14:03:21Z",
+      "matchLevel": "exact"
+    },
+    "plant-1a416ae9d7ca7a": {
+      "nurseryId": "vannucci-piante",
+      "imageUrl": "https://catalogue.vannuccipiante.it/images/quercus_bimondorum_crimson_spire-2.jpg",
+      "sourceUrl": "https://catalogue.vannuccipiante.it/en/collezione-generale/quercus/-/robur-crimson-spire--q-x-bimundorum-crimson-spire-/4017449",
+      "matchedName": "Quercus robur ‘Crimson Spire’® (Q. x bimundorum ‘Crimson Spire’)",
+      "identityEvidence": {
+        "kind": "official_catalogue_json",
+        "pageUrl": "https://catalogue.vannuccipiante.it/en/collezione-generale/quercus/-/robur-crimson-spire--q-x-bimundorum-crimson-spire-/4017449",
+        "indexUrl": "https://catalogue.vannuccipiante.it/data/species/plants-index.json",
+        "detailUrl": "https://catalogue.vannuccipiante.it/data/species/4017449.json",
+        "catalogueId": 4017449,
+        "name": "Quercus robur ‘Crimson Spire’® (Q. x bimundorum ‘Crimson Spire’)",
+        "imageFilename": "quercus_bimondorum_crimson_spire-2.jpg",
+        "descriptions": [
+          {
+            "k": "EN",
+            "v": "Deciduous oak, a cross between Q. robur ‘Fastigiata’ and Q. alba. It has inherited its columnar habit, even shape and tolerance to pruning from the former, and its foliage, lovely autumn colours and resistance to powdery mildew from the latter. Adapts to all soil types except moist soil."
+          }
+        ],
+        "variants": [
+          {
+            "name": "Feathered"
+          },
+          {
+            "name": "Standard"
+          },
+          {
+            "name": "Standard"
+          }
+        ],
+        "canonicalName": "Quercus x bimundorum 'Crimson Spire'"
+      },
+      "provider": "other_catalogue_nursery",
+      "taxonKey": "quercus bimundorum crimson spire",
+      "imageHosts": [
+        "catalogue.vannuccipiante.it",
+        "webshop.vannuccipiante.it",
+        "www.vannuccipiante.it"
+      ],
+      "imagePathPrefixes": {
+        "catalogue.vannuccipiante.it": [
+          "/images/"
+        ]
+      },
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Quercus x bimundorum 'Crimson Spire'",
+      "image": "assets/biljke/reference-1231d49dfd32894ca425f2a3.jpg",
+      "sha256": "1231d49dfd32894ca425f2a3b108dda0e11e1d55d13822edaa68a15ce501e7d4",
+      "checkedAt": "2026-11-17T13:04:43Z",
+      "matchLevel": "exact",
+      "usagePermission": {
+        "status": "confirmed_by_user",
+        "confirmedAt": "2026-11-17",
+        "scope": "Supplier catalogue photographs on the Demetra RB public website."
+      }
+    },
+    "plant-512dcc509b276f": {
+      "nurseryId": "vannucci-piante",
+      "imageUrl": "https://catalogue.vannuccipiante.it/images/prunus%20cerasifera%20pissardi_AVX20004C9.jpg",
+      "sourceUrl": "https://catalogue.vannuccipiante.it/en/collezione-generale/prunus/-/cerasifera-pissardii--p-cerasifera-atropurpurea-/4012910",
+      "matchedName": "Prunus cerasifera ‘Pissardii’ (P. cerasifera ‘Atropurpurea’)",
+      "identityEvidence": {
+        "kind": "official_catalogue_json",
+        "pageUrl": "https://catalogue.vannuccipiante.it/en/collezione-generale/prunus/-/cerasifera-pissardii--p-cerasifera-atropurpurea-/4012910",
+        "indexUrl": "https://catalogue.vannuccipiante.it/data/species/plants-index.json",
+        "detailUrl": "https://catalogue.vannuccipiante.it/data/species/4012910.json",
+        "catalogueId": 4012910,
+        "name": "Prunus cerasifera ‘Pissardii’ (P. cerasifera ‘Atropurpurea’)",
+        "imageFilename": "prunus cerasifera pissardi_AVX20004C9.jpg",
+        "descriptions": [
+          {
+            "k": "EN",
+            "v": "Origin: the United States. Large shrub or small deciduous tree with round, compact crown. The bark of the young branches is purplish-blue. Oval leaves, 5-7cm long, ruby when they appear, later they become reddish-purple and do not fade in summer. Simple flowers, bright pink, 2.5cm wide on the previous year’s branches. The flowers are numerous and begin to open on the bare branches and with the new leaves they literally cover the entire crown which becomes a breathtaking pink cloud. Fruit: small, red, edible plums in August- September, decorative but sporadic. Grows well in all normal garden soil, even dry and stony, but it gives best results in cool, alluvial and permeable soil. Tolerates pollution and is used a lot as a street tree where the streets are not too wide. Any pruning to keep the growth under control or to shape the tree must be carried out immediately after flowering."
+          }
+        ],
+        "variants": [
+          {
+            "name": "Bush"
+          },
+          {
+            "name": "Bush"
+          },
+          {
+            "name": "Bush"
+          },
+          {
+            "name": "Bush"
+          },
+          {
+            "name": "Bush"
+          },
+          {
+            "name": "Bush"
+          },
+          {
+            "name": "Bush"
+          },
+          {
+            "name": "Bush"
+          },
+          {
+            "name": "Bush"
+          },
+          {
+            "name": "Bush"
+          },
+          {
+            "name": "Bush"
+          },
+          {
+            "name": "Half standard"
+          },
+          {
+            "name": "Half standard"
+          },
+          {
+            "name": "Half standard"
+          },
+          {
+            "name": "3/4 standard"
+          },
+          {
+            "name": "Standard"
+          },
+          {
+            "name": "Standard"
+          },
+          {
+            "name": "Standard"
+          },
+          {
+            "name": "Standard"
+          },
+          {
+            "name": "Standard"
+          },
+          {
+            "name": "Standard"
+          },
+          {
+            "name": "Standard"
+          },
+          {
+            "name": "Standard"
+          },
+          {
+            "name": "Standard"
+          }
+        ],
+        "canonicalName": "Prunus cerasifera Atropurpurea"
+      },
+      "provider": "other_catalogue_nursery",
+      "taxonKey": "prunus cerasifera atropurpurea",
+      "imageHosts": [
+        "catalogue.vannuccipiante.it",
+        "webshop.vannuccipiante.it",
+        "www.vannuccipiante.it"
+      ],
+      "imagePathPrefixes": {
+        "catalogue.vannuccipiante.it": [
+          "/images/"
+        ]
+      },
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Prunus cerasifera Atropurpurea",
+      "image": "assets/biljke/reference-a867e2aa05cd0ed2c8c3b87f.jpg",
+      "sha256": "a867e2aa05cd0ed2c8c3b87f8dc3643dd66ae69f9ae41bcfdcd3d1f1709a4caf",
+      "checkedAt": "2026-11-17T13:04:43Z",
+      "matchLevel": "exact",
+      "usagePermission": {
+        "status": "confirmed_by_user",
+        "confirmedAt": "2026-11-17",
+        "scope": "Supplier catalogue photographs on the Demetra RB public website."
+      }
+    },
+    "plant-2c93a3023c8235": {
+      "nurseryId": "vannucci-piante",
+      "imageUrl": "https://catalogue.vannuccipiante.it/images/prunus%20cerasifera%20pissardi_AVX20004C9.jpg",
+      "sourceUrl": "https://catalogue.vannuccipiante.it/en/collezione-generale/prunus/-/cerasifera-pissardii--p-cerasifera-atropurpurea-/4012910",
+      "matchedName": "Prunus cerasifera ‘Pissardii’ (P. cerasifera ‘Atropurpurea’)",
+      "identityEvidence": {
+        "kind": "official_catalogue_json",
+        "pageUrl": "https://catalogue.vannuccipiante.it/en/collezione-generale/prunus/-/cerasifera-pissardii--p-cerasifera-atropurpurea-/4012910",
+        "indexUrl": "https://catalogue.vannuccipiante.it/data/species/plants-index.json",
+        "detailUrl": "https://catalogue.vannuccipiante.it/data/species/4012910.json",
+        "catalogueId": 4012910,
+        "name": "Prunus cerasifera ‘Pissardii’ (P. cerasifera ‘Atropurpurea’)",
+        "imageFilename": "prunus cerasifera pissardi_AVX20004C9.jpg",
+        "descriptions": [
+          {
+            "k": "EN",
+            "v": "Origin: the United States. Large shrub or small deciduous tree with round, compact crown. The bark of the young branches is purplish-blue. Oval leaves, 5-7cm long, ruby when they appear, later they become reddish-purple and do not fade in summer. Simple flowers, bright pink, 2.5cm wide on the previous year’s branches. The flowers are numerous and begin to open on the bare branches and with the new leaves they literally cover the entire crown which becomes a breathtaking pink cloud. Fruit: small, red, edible plums in August- September, decorative but sporadic. Grows well in all normal garden soil, even dry and stony, but it gives best results in cool, alluvial and permeable soil. Tolerates pollution and is used a lot as a street tree where the streets are not too wide. Any pruning to keep the growth under control or to shape the tree must be carried out immediately after flowering."
+          }
+        ],
+        "variants": [
+          {
+            "name": "Bush"
+          },
+          {
+            "name": "Bush"
+          },
+          {
+            "name": "Bush"
+          },
+          {
+            "name": "Bush"
+          },
+          {
+            "name": "Bush"
+          },
+          {
+            "name": "Bush"
+          },
+          {
+            "name": "Bush"
+          },
+          {
+            "name": "Bush"
+          },
+          {
+            "name": "Bush"
+          },
+          {
+            "name": "Bush"
+          },
+          {
+            "name": "Bush"
+          },
+          {
+            "name": "Half standard"
+          },
+          {
+            "name": "Half standard"
+          },
+          {
+            "name": "Half standard"
+          },
+          {
+            "name": "3/4 standard"
+          },
+          {
+            "name": "Standard"
+          },
+          {
+            "name": "Standard"
+          },
+          {
+            "name": "Standard"
+          },
+          {
+            "name": "Standard"
+          },
+          {
+            "name": "Standard"
+          },
+          {
+            "name": "Standard"
+          },
+          {
+            "name": "Standard"
+          },
+          {
+            "name": "Standard"
+          },
+          {
+            "name": "Standard"
+          }
+        ],
+        "canonicalName": "Prunus pissardii 'Atropurpurea'"
+      },
+      "provider": "other_catalogue_nursery",
+      "taxonKey": "prunus cerasifera atropurpurea",
+      "imageHosts": [
+        "catalogue.vannuccipiante.it",
+        "webshop.vannuccipiante.it",
+        "www.vannuccipiante.it"
+      ],
+      "imagePathPrefixes": {
+        "catalogue.vannuccipiante.it": [
+          "/images/"
+        ]
+      },
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Prunus pissardii 'Atropurpurea'",
+      "image": "assets/biljke/reference-a867e2aa05cd0ed2c8c3b87f.jpg",
+      "sha256": "a867e2aa05cd0ed2c8c3b87f8dc3643dd66ae69f9ae41bcfdcd3d1f1709a4caf",
+      "checkedAt": "2026-11-17T13:04:43Z",
+      "matchLevel": "exact",
+      "usagePermission": {
+        "status": "confirmed_by_user",
+        "confirmedAt": "2026-11-17",
+        "scope": "Supplier catalogue photographs on the Demetra RB public website."
+      }
+    },
+    "plant-b6576634224b1c": {
+      "nurseryId": "vannucci-piante",
+      "imageUrl": "https://catalogue.vannuccipiante.it/images/506s%20Prunus%20serrulata%20Kikushidarez._AVX191816A.jpg",
+      "sourceUrl": "https://catalogue.vannuccipiante.it/en/collezione-generale/prunus/-/serrulata-kiku-shidare-zakura/4013110",
+      "matchedName": "Prunus serrulata ‘Kiku-shidare-zakura’",
+      "identityEvidence": {
+        "kind": "official_catalogue_json",
+        "pageUrl": "https://catalogue.vannuccipiante.it/en/collezione-generale/prunus/-/serrulata-kiku-shidare-zakura/4013110",
+        "indexUrl": "https://catalogue.vannuccipiante.it/data/species/plants-index.json",
+        "detailUrl": "https://catalogue.vannuccipiante.it/data/species/4013110.json",
+        "catalogueId": 4013110,
+        "name": "Prunus serrulata ‘Kiku-shidare-zakura’",
+        "imageFilename": "506s Prunus serrulata Kikushidarez._AVX191816A.jpg",
+        "descriptions": [
+          {
+            "k": "EN",
+            "v": "Small deciduous tree with weeping branches which form large arches and are completely covered in flowers. Elliptic leaves, 8-10cm long, bronze when they appear, later bright green. The spectacular flowering occurs in April on bare branches and with the first leaves. The flowers are double, 3cm wide, grouped in 4-6, pure pink. Grows in many types of soil, provided it is well-drained without stagnant water."
+          }
+        ],
+        "variants": [
+          {
+            "name": "Bush"
+          },
+          {
+            "name": "Bush"
+          },
+          {
+            "name": "Feathered"
+          },
+          {
+            "name": "Half standard"
+          },
+          {
+            "name": "Half standard"
+          },
+          {
+            "name": "Half standard"
+          },
+          {
+            "name": "Standard"
+          },
+          {
+            "name": "Standard"
+          },
+          {
+            "name": "Standard"
+          },
+          {
+            "name": "Standard"
+          },
+          {
+            "name": "Standard"
+          },
+          {
+            "name": "Standard"
+          }
+        ],
+        "canonicalName": "Prunus 'Kiku-shidare-zakura'"
+      },
+      "provider": "other_catalogue_nursery",
+      "taxonKey": "prunus kiku shidare zakura",
+      "imageHosts": [
+        "catalogue.vannuccipiante.it",
+        "webshop.vannuccipiante.it",
+        "www.vannuccipiante.it"
+      ],
+      "imagePathPrefixes": {
+        "catalogue.vannuccipiante.it": [
+          "/images/"
+        ]
+      },
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Prunus 'Kiku-shidare-zakura'",
+      "image": "assets/biljke/reference-059daece2c7eb94ee1fac0d8.jpg",
+      "sha256": "059daece2c7eb94ee1fac0d8f9489e6f49639e498792df3f6b79930de095ab08",
+      "checkedAt": "2026-11-17T13:04:44Z",
+      "matchLevel": "exact",
+      "usagePermission": {
+        "status": "confirmed_by_user",
+        "confirmedAt": "2026-11-17",
+        "scope": "Supplier catalogue photographs on the Demetra RB public website."
+      }
+    },
+    "plant-ee364e988134ba": {
+      "nurseryId": "vannucci-piante",
+      "imageUrl": "https://webshop.vannuccipiante.it/wp-content/uploads/2026/11/10662___Acer___Keithsform___Norwegian_Sunset_____Acer_truncatum_x_platanoides__Keithsform____-scaled.jpg",
+      "sourceUrl": "https://webshop.vannuccipiante.it/product/acer-keithsform-norwegian-sunset-acer-truncatum-x-platanoides-keithsform/",
+      "matchedName": "Acer 'Keithsform' 'Norwegian Sunset' (Acer truncatum x platanoides 'Keithsform')",
+      "identityEvidence": {
+        "kind": "featured_product_image",
+        "caption": "Acer 'Keithsform' 'Norwegian Sunset'® (Acer truncatum x platanoides 'Keithsform')",
+        "canonicalName": "Acer 'Norwegian Sunset'"
+      },
+      "provider": "other_catalogue_nursery",
+      "taxonKey": "acer keithsform norwegian sunset",
+      "imageHosts": [
+        "catalogue.vannuccipiante.it",
+        "webshop.vannuccipiante.it",
+        "www.vannuccipiante.it"
+      ],
+      "imagePathPrefixes": {
+        "catalogue.vannuccipiante.it": [
+          "/images/"
+        ]
+      },
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Acer 'Norwegian Sunset'",
+      "image": "assets/biljke/reference-b373e9d4767544136e6d0018.jpg",
+      "sha256": "b373e9d4767544136e6d00188ac325c24060da76cb0f66d1aeefcd74bcca46e8",
+      "checkedAt": "2026-11-17T13:04:44Z",
+      "matchLevel": "exact",
+      "usagePermission": {
+        "status": "confirmed_by_user",
+        "confirmedAt": "2026-11-17",
+        "scope": "Supplier catalogue photographs on the Demetra RB public website."
+      }
+    },
+    "plant-c56754d2b73252": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "lorberg",
+      "imageUrl": "https://www.lorberg.com/content/files/16966/Pos-11-Taxus-baccata-Flachkugel-200-250-x-180-200-r1-718x750-auto.webp",
+      "sourceUrl": "https://www.lorberg.com/en-gb/article/2534/taxus-baccata",
+      "matchedName": "Taxus baccata",
+      "identityEvidence": {
+        "method": "exact_species_and_form_gallery",
+        "canonicalName": "Taxus baccata gömb",
+        "review": "Original row33 says Taxus baccata gomb (Hungarian ball form). Lorberg Taxus baccata product gallery explicitly names selected image Taxus-baccata-Flachkugel (flat ball). Visual inspection confirms clipped round/flattened ball yews. This is a form-specific plant reference, not proof of the source offer size40/60. Other gallery images of Aureomarginata, umbrella and cone forms were not used."
+      },
+      "taxonKey": "taxus baccata gömb",
+      "imageHosts": [
+        "www.lorberg.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Taxus baccata gömb",
+      "image": "assets/biljke/reference-047c60dc5995e213f77c2923.jpg",
+      "sha256": "047c60dc5995e213f77c292399886f96b1c582459098341b7b58fb12692ba3d1",
+      "checkedAt": "2026-11-17T13:14:23Z",
+      "matchLevel": "exact"
+    },
+    "plant-c8e469c1c612b4": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "willaert",
+      "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/QUIMBRIC_369_05072023101637.jpg",
+      "sourceUrl": "https://www.willaert.be/nl/plant/quercus-imbricaria/QUIMBRIC/",
+      "matchedName": "Quercus imbricaria",
+      "identityEvidence": {
+        "method": "product_heading_and_bounded_gallery",
+        "canonicalName": "Quercus lmbricaria",
+        "aliasEvidenceUrls": [
+          "https://www.willaert.be/nl/plant/quercus-imbricaria/QUIMBRIC/"
+        ],
+        "review": "Scoped typo correction: lowercase l in lmbricaria is corrected to botanical imbricaria, without changing genus or any cultivar. Live official Willaert plant page h1 Quercus imbricaria and bounded gallery img alt prove exact source. Viewed real green leaf closeup."
+      },
+      "taxonKey": "quercus imbricaria",
+      "imageHosts": [
+        "www.willaert.be"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Quercus lmbricaria",
+      "image": "assets/biljke/reference-1d04ecc56c15bdb7a49d9421.jpg",
+      "sha256": "1d04ecc56c15bdb7a49d94210986fb5de254ef06c4d205e22d0943cfe6770b6a",
+      "checkedAt": "2026-11-17T13:14:23Z",
+      "matchLevel": "exact"
+    },
+    "plant-9354d6bf7371b0": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "willaert",
+      "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/QUWRPRIN_369_17102018161744.jpg",
+      "sourceUrl": "https://www.willaert.be/nl/plant/quercus-warei-regal-prince-long/QUWRPRIN/",
+      "matchedName": "Quercus x warei 'Regal Prince' (long)",
+      "identityEvidence": {
+        "method": "product_heading_and_bounded_gallery",
+        "canonicalName": "Quercus x warei 'Regal Prince'",
+        "aliasEvidenceUrls": [
+          "https://www.rhs.org.uk/plants/273159/quercus-%C3%97-warei-regal-prince/details",
+          "https://innocentiemangonipiante.it/en/quercus-robur-regal-prince/"
+        ],
+        "review": "Willaert live h1 retains Quercus x warei Regal Prince and adds its cultivar denomination Long. RHS explicitly identifies Ware oak Long under Regal Prince. Gallery alt and image code QUWRPRIN match the product. Viewed true oak leaves and branches."
+      },
+      "taxonKey": "quercus warei regal prince",
+      "imageHosts": [
+        "www.willaert.be"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Quercus x warei 'Regal Prince'",
+      "image": "assets/biljke/reference-ed1b57b91f79611abbf4a1b4.jpg",
+      "sha256": "ed1b57b91f79611abbf4a1b43e4f5a5badde3521bce106f5893362d46b4745ef",
+      "checkedAt": "2026-11-17T13:14:23Z",
+      "matchLevel": "exact"
+    },
+    "plant-2ebeb0e8ff455f": {
+      "nurseryId": "lorenz-von-ehren",
+      "imageUrl": "https://www.lve-baumschule.de/media/0a/6e/d6/1648642948/6896915.JPG",
+      "sourceUrl": "https://www.lve-baumschule.de/chamaecyparis-lawsonia-alumii/6353240",
+      "matchedName": "Chamaecyparis lawsonia 'Alumii'",
+      "identityEvidence": {
+        "kind": "exact_named_product_gallery",
+        "detail": "Exact cultivar Alumii; product detail itself says Siehe C. lawsoniana, correcting heading lawsonia.",
+        "canonicalName": "Chamaecyparis lawsoniana 'Alumii'"
+      },
+      "provider": "other_catalogue_nursery",
+      "taxonKey": "chamaecyparis lawsonia alumii",
+      "imageHosts": [
+        "www.lve-baumschule.de",
+        "www.lve.de"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Chamaecyparis lawsoniana 'Alumii'",
+      "image": "assets/biljke/reference-8ed19ac16f6df565ac4289ca.jpg",
+      "sha256": "8ed19ac16f6df565ac4289cab213165dee0d082185219003c66754e1f5849173",
+      "checkedAt": "2026-11-17T13:15:58Z",
+      "matchLevel": "exact"
+    },
+    "plant-ab8a023e09f885": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "vannucci-piante",
+      "imageUrl": "https://catalogue.vannuccipiante.it/images/teucrium%20fruticans%20clt%2025%20palla-2.jpg",
+      "sourceUrl": "https://catalogue.vannuccipiante.it/en/collezione-generale/teucrium/-/fruticans/4015060",
+      "matchedName": "Teucrium fruticans",
+      "identityEvidence": {
+        "method": "exact_species_and_form_gallery",
+        "canonicalName": "Teucrium fruticans globe shape",
+        "detailUrl": "https://catalogue.vannuccipiante.it/data/species/4015060.json",
+        "catalogueId": 4015060,
+        "imageFilename": "teucrium fruticans clt 25 palla-2.jpg",
+        "aliasEvidenceUrls": [
+          "https://catalogue.vannuccipiante.it/en/collezione-generale/teucrium/-/fruticans/4015060",
+          "https://catalogue.vannuccipiante.it/data/species/4015060.json"
+        ],
+        "review": "Official public catalogue detail4015060 identifies genreName Teucrium, speciesName fruticans, no cultivar, and explicitly associates this photo filename including palla (Italian ball). Original canonical globe shape retained as a required form. Visual inspection shows nursery rows of rounded potted shrubs with silvery foliage and light blue flowers. Plant-level form reference only; image does not validate a particular offer size, date or price."
+      },
+      "taxonKey": "teucrium fruticans globe shape",
+      "imageHosts": [
+        "catalogue.vannuccipiante.it",
+        "webshop.vannuccipiante.it",
+        "www.vannuccipiante.it"
+      ],
+      "imagePathPrefixes": {
+        "catalogue.vannuccipiante.it": [
+          "/images/"
+        ]
+      },
+      "license": "existing_catalogue_source_policy",
+      "usagePermission": {
+        "status": "confirmed_by_user",
+        "confirmedAt": "2026-11-17",
+        "scope": "Supplier catalogue photographs on the Demetra RB public website."
+      },
+      "latinName": "Teucrium fruticans globe shape",
+      "image": "assets/biljke/reference-cd64ffce328b48a58ff6a0bd.jpg",
+      "sha256": "cd64ffce328b48a58ff6a0bd3617e9f3f33cde0f7391cf8a5d0559574a92829f",
+      "checkedAt": "2026-11-17T13:22:33Z",
+      "matchLevel": "exact"
+    },
+    "plant-3f2ccbb8f11141": {
+      "nurseryId": "innocenti-mangoni",
+      "imageUrl": "https://innocentiemangonipiante.it/wp-content/uploads/2023/10/1645093621.jpeg",
+      "sourceUrl": "https://innocentiemangonipiante.it/en/berberis-thumbergii-erecta/",
+      "matchedName": "Berberis thumbergii 'Erecta'",
+      "identityEvidence": {
+        "kind": "exact_named_product_image",
+        "canonicalName": "Berberis thunbergii 'Erecta'"
+      },
+      "provider": "other_catalogue_nursery",
+      "taxonKey": "berberis thumbergii erecta",
+      "imageHosts": [
+        "innocentiemangonipiante.it"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Berberis thunbergii 'Erecta'",
+      "image": "assets/biljke/reference-c8d892b9f46fdd3474622d94.jpg",
+      "sha256": "c8d892b9f46fdd3474622d941d583e05750395a076d857f229adc5fe4a031ff0",
+      "checkedAt": "2026-11-17T13:22:33Z",
+      "matchLevel": "exact"
+    },
+    "plant-de609ad6a8d046": {
+      "nurseryId": "vannucci-piante",
+      "imageUrl": "https://catalogue.vannuccipiante.it/images/carpinus%20betulus%20fastigiata%20ramificati%202012._AVX1911E32.jpg",
+      "sourceUrl": "https://catalogue.vannuccipiante.it/en/collezione-generale/carpinus/-/betulus-fastigiata--c-betulus-pyramidalis-/4003890",
+      "matchedName": "Carpinus betulus 'Fastigiata'",
+      "identityEvidence": {
+        "kind": "exact_named_catalogue_gallery_with_form",
+        "detailUrl": "https://catalogue.vannuccipiante.it/data/species/4003890.json",
+        "name": "Carpinus betulus ‘Fastigiata’ (C. betulus pyramidalis)",
+        "galleryFilename": "carpinus betulus fastigiata ramificati 2012._AVX1911E32.jpg",
+        "variants": [
+          "Bush",
+          "Bush",
+          "Bush",
+          "Bush",
+          "Bush",
+          "Bush",
+          "Bush",
+          "Bush",
+          "Bush",
+          "Bush",
+          "Bush",
+          "Standard",
+          "Standard",
+          "Standard",
+          "Standard",
+          "Standard",
+          "Standard",
+          "Standard",
+          "Standard",
+          "Spiral"
+        ],
+        "canonicalName": "Carpinus betulus 'Fastigiata' feathered tree"
+      },
+      "provider": "other_catalogue_nursery",
+      "taxonKey": "carpinus betulus fastigiata feathered tree",
+      "imageHosts": [
+        "catalogue.vannuccipiante.it",
+        "webshop.vannuccipiante.it",
+        "www.vannuccipiante.it"
+      ],
+      "imagePathPrefixes": {
+        "catalogue.vannuccipiante.it": [
+          "/images/"
+        ]
+      },
+      "license": "existing_catalogue_source_policy",
+      "usagePermission": {
+        "status": "confirmed_by_user",
+        "confirmedAt": "2026-11-17",
+        "scope": "Supplier catalogue photographs on the Demetra RB public website."
+      },
+      "latinName": "Carpinus betulus 'Fastigiata' feathered tree",
+      "image": "assets/biljke/reference-7b470022a1fbc0857ce393d6.jpg",
+      "sha256": "7b470022a1fbc0857ce393d61adaf367623e01a817b51e40ece75dfdf581ed1e",
+      "checkedAt": "2026-11-17T13:22:33Z",
+      "matchLevel": "exact"
+    },
+    "plant-a4bd3ecf55aa55": {
+      "nurseryId": "vannucci-piante",
+      "imageUrl": "https://catalogue.vannuccipiante.it/images/platanus%20x%20acerifolia%20tetto_AVX190A2B6.jpg",
+      "sourceUrl": "https://catalogue.vannuccipiante.it/en/collezione-generale/platanus/-/x-acerifolia--p-x-hispanica---p-x-hybrida-/4012620",
+      "matchedName": "Platanus x acerifolia",
+      "identityEvidence": {
+        "kind": "exact_named_catalogue_gallery_with_form",
+        "detailUrl": "https://catalogue.vannuccipiante.it/data/species/4012620.json",
+        "name": "Platanus x acerifolia (P. x hispanica) (P. x hybrida) ",
+        "galleryFilename": "platanus x acerifolia tetto_AVX190A2B6.jpg",
+        "variants": [
+          "Multi-stemmed",
+          "Standard",
+          "Standard",
+          "Standard",
+          "Standard",
+          "Standard",
+          "Standard",
+          "Standard",
+          "Standard",
+          "Standard",
+          "Standard",
+          "Standard",
+          "Pleached on standard",
+          "Pleached on standard",
+          "Flat-roof head on standard",
+          "Flat-roof head on standard",
+          "Flat-roof head on standard",
+          "Flat-roof head on standard",
+          "Flat-roof head on standard",
+          "Flat-roof head on standard",
+          "Flat-roof head on standard",
+          "Flat-roof head on standard",
+          "Flat-roof head on standard"
+        ],
+        "canonicalName": "Platanus acerifolia 'Roof form'"
+      },
+      "provider": "other_catalogue_nursery",
+      "taxonKey": "platanus acerifolia roof form",
+      "imageHosts": [
+        "catalogue.vannuccipiante.it",
+        "webshop.vannuccipiante.it",
+        "www.vannuccipiante.it"
+      ],
+      "imagePathPrefixes": {
+        "catalogue.vannuccipiante.it": [
+          "/images/"
+        ]
+      },
+      "license": "existing_catalogue_source_policy",
+      "usagePermission": {
+        "status": "confirmed_by_user",
+        "confirmedAt": "2026-11-17",
+        "scope": "Supplier catalogue photographs on the Demetra RB public website."
+      },
+      "latinName": "Platanus acerifolia 'Roof form'",
+      "image": "assets/biljke/reference-53947ce6207bf14cb001f0dd.jpg",
+      "sha256": "53947ce6207bf14cb001f0dda2390b5eb88a7e3b583da62aff517188ff285e35",
+      "checkedAt": "2026-11-17T13:22:33Z",
+      "matchLevel": "exact"
+    },
+    "plant-f45db48e72b497": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "innocenti-mangoni",
+      "imageUrl": "https://innocentiemangonipiante.it/wp-content/uploads/2023/06/1639584860-scaled.jpg",
+      "sourceUrl": "https://innocentiemangonipiante.it/en/bambusa-fargesia-nitida-black-pearl/",
+      "matchedName": "BAMBUSA fargesia nitida ‘Black Pearl’",
+      "identityEvidence": {
+        "kind": "product_jsonld",
+        "h1": "BAMBUSA fargesia nitida ‘Black Pearl’",
+        "canonicalName": "Fargesia nitida 'Black Pearl'"
+      },
+      "taxonKey": "bambusa fargesia nitida black pearl",
+      "imageHosts": [
+        "innocentiemangonipiante.it"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Fargesia nitida 'Black Pearl'",
+      "image": "assets/biljke/reference-7a2c6c01b7f9aa572ac612ca.jpg",
+      "sha256": "7a2c6c01b7f9aa572ac612cad53483a55e062fdefa61cb90742e2a142081829d",
+      "checkedAt": "2026-11-17T13:27:17Z",
+      "matchLevel": "exact"
+    },
+    "plant-a3569ab7034ab7": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "lorberg",
+      "imageUrl": "https://www.lorberg.com/content/files/12110/Hosta-gruen-weiss-1200x630-proportionalbiggest.webp",
+      "sourceUrl": "https://www.lorberg.com/en-gb/article/2710/hosta-x-fortunei-fire-and-ice",
+      "matchedName": "Hosta x fortunei 'Fire and Ice'",
+      "identityEvidence": {
+        "kind": "product_jsonld",
+        "h1": "Hosta x fortunei 'Fire and Ice'",
+        "registeredCultivar": "H. 'Fire and Ice'",
+        "registrationYear": 1999,
+        "registrar": "American Hosta Society",
+        "sportParent": "H. 'Patriot'",
+        "originalSpeciesMisapplied": true,
+        "canonicalName": "Hosta plantaginea 'Fire and Ice'"
+      },
+      "taxonKey": "hosta plantaginea fire and ice",
+      "imageHosts": [
+        "www.lorberg.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Hosta plantaginea 'Fire and Ice'",
+      "image": "assets/biljke/reference-9e3967b849b5ed737c1c7809.jpg",
+      "sha256": "9e3967b849b5ed737c1c780993a23833454c822dadff9bed2bf5323357771bbd",
+      "checkedAt": "2026-11-17T13:27:19Z",
+      "matchLevel": "exact"
+    },
+    "plant-ea9d1ba6a468c5": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "innocenti-mangoni",
+      "imageUrl": "https://innocentiemangonipiante.it/wp-content/uploads/2023/06/1639416486.jpg",
+      "sourceUrl": "https://innocentiemangonipiante.it/en/acer-platanoides-globosum/",
+      "matchedName": "Acer platanoides 'Globosum'",
+      "identityEvidence": {
+        "method": "scoped_evidenced_identity_reuse",
+        "canonicalName": "Acer platanoides 'Globosa'",
+        "aliasEvidenceUrls": [
+          "https://epa.oszk.hu/02400/02451/00098/pdf/EPA02451_Erdeszettorteneti_Kozlemenyek_85_2012_062-084.pdf",
+          "https://innocentiemangonipiante.it/en/acer-platanoides-globosum/"
+        ],
+        "review": "Primary forestry-history publication Erdeszettorteneti Kozlemenyek 85 (2012), printed p74, explicitly maps historical Acer platanoides globosa hort. to Acer platanoides L. Globosum. Original printed page rendered and visually checked, including surrounding Keresd park nomenclature list. Scoped full cultivar synonym; own Marina Dorcol rows9/66 preserve Globosa. Does not map any other species Globosa to this cultivar."
+      },
+      "taxonKey": "acer platanoides globosa",
+      "imageHosts": [
+        "innocentiemangonipiante.it"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Acer platanoides 'Globosa'",
+      "image": "assets/biljke/reference-ea6e5db75a1f0f08317522ac.jpg",
+      "sha256": "ea6e5db75a1f0f08317522ac778c861bc8ce712918dd5e5f30fecbce5abd8e4a",
+      "checkedAt": "2026-11-17T13:27:19Z",
+      "matchLevel": "exact"
+    },
+    "plant-7e0b0ea97d6cd5": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "innocenti-mangoni",
+      "imageUrl": "https://innocentiemangonipiante.it/wp-content/uploads/2023/06/1642172117.jpg",
+      "sourceUrl": "https://innocentiemangonipiante.it/en/pinus-mugo-mughus/",
+      "matchedName": "Pinus mugo 'Mughus'",
+      "identityEvidence": {
+        "method": "scoped_evidenced_identity_reuse",
+        "canonicalName": "Pinus mugo 'Mugus'",
+        "aliasEvidenceUrls": [
+          "https://plodovyi.ru/products/sosna-gornaya-mugus-sajenec-c3-100750",
+          "https://www.rhs.org.uk/plants/331802/pinus-mughus/details",
+          "https://innocentiemangonipiante.it/en/pinus-mugo-mughus/"
+        ],
+        "review": "Scoped spelling normalization Mugus to Mughus. Primary nursery Plodovyi same single product explicitly uses Pinus mugo Mughus in description and Pinus mugo var. mugus in its Latin-name field; RHS confirms accepted spelling Mughus. Original Tender1 row73 says Pinus mugo Mugus. Complete selection retained; no use of Pumilio or generic mountain-pine photos. External nursery is identity evidence only; photo remains existing I&M exact Mughus catalogue asset."
+      },
+      "taxonKey": "pinus mugo mughus",
+      "imageHosts": [
+        "innocentiemangonipiante.it"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Pinus mugo 'Mugus'",
+      "image": "assets/biljke/reference-476cd07611f8650c03521ead.jpg",
+      "sha256": "476cd07611f8650c03521ead767f46699d46459bb050510021021ce7b039698f",
+      "checkedAt": "2026-11-17T13:27:19Z",
+      "matchLevel": "exact"
+    },
+    "plant-ea2791c468e4c5": {
+      "provider": "supplying_nursery",
+      "nurseryId": "vannucci-piante",
+      "imageUrl": "https://www.vannuccipiante.it/wp-content/uploads/2024/08/PRUNUS-CERASIFERA-PISSARDI-CLT.230-25-30-ALTO-FUSTO_AVX190B48C.jpg",
+      "sourceUrl": "https://www.vannuccipiante.it/healthy_plants/prunus-cerasifera-pissardii/",
+      "matchedName": "Prunus cerasifera 'Pissardii'",
+      "identityEvidence": {
+        "method": "scoped_evidenced_identity_reuse",
+        "canonicalName": "Prunus pisardi",
+        "aliasEvidenceUrls": [
+          "https://www.rhs.org.uk/plants/97220/prunus-pissardii/details",
+          "https://catalogue.vannuccipiante.it/data/species/4012910.json",
+          "https://www.vannuccipiante.it/healthy_plants/prunus-cerasifera-pissardii/"
+        ],
+        "review": "RHS explicitly identifies Prunus pissardii as cherry plum Pissardii and lists Prunus cerasifera Atropurpurea as synonym; Vannucci product4012910 independently names Pissardii (P.cerasifera Atropurpurea), with photo filename spelling pissardi. Scoped own archive spelling pisardi/pisardii corrected to Pissardii; explicit Atropurpurea, where present, is retained as the same full synonym. No substitution with distinct Nigra cultivar. Reuses previously verified Vannucci exact Pissardii photo."
+      },
+      "taxonKey": "prunus cerasifera atropurpurea",
+      "imageHosts": [
+        "catalogue.vannuccipiante.it",
+        "webshop.vannuccipiante.it",
+        "www.vannuccipiante.it"
+      ],
+      "imagePathPrefixes": {
+        "catalogue.vannuccipiante.it": [
+          "/images/"
+        ]
+      },
+      "license": "existing_catalogue_source_policy",
+      "usagePermission": {
+        "status": "confirmed_by_user",
+        "confirmedAt": "2026-11-17",
+        "scope": "Supplier catalogue photographs on the Demetra RB public website."
+      },
+      "latinName": "Prunus pisardi",
+      "image": "assets/biljke/reference-edd03fce1764ffbd0ddebc3f.jpg",
+      "sha256": "edd03fce1764ffbd0ddebc3facad3ab953344cde09168e73316c3e281df23b42",
+      "checkedAt": "2026-11-17T13:27:19Z",
+      "matchLevel": "exact"
+    },
+    "plant-e4aa3716894a85": {
+      "provider": "supplying_nursery",
+      "nurseryId": "vannucci-piante",
+      "imageUrl": "https://www.vannuccipiante.it/wp-content/uploads/2024/08/PRUNUS-CERASIFERA-PISSARDI-CLT.230-25-30-ALTO-FUSTO_AVX190B48C.jpg",
+      "sourceUrl": "https://www.vannuccipiante.it/healthy_plants/prunus-cerasifera-pissardii/",
+      "matchedName": "Prunus cerasifera 'Pissardii'",
+      "identityEvidence": {
+        "method": "scoped_evidenced_identity_reuse",
+        "canonicalName": "Prunus pisardii",
+        "aliasEvidenceUrls": [
+          "https://www.rhs.org.uk/plants/97220/prunus-pissardii/details",
+          "https://catalogue.vannuccipiante.it/data/species/4012910.json",
+          "https://www.vannuccipiante.it/healthy_plants/prunus-cerasifera-pissardii/"
+        ],
+        "review": "RHS explicitly identifies Prunus pissardii as cherry plum Pissardii and lists Prunus cerasifera Atropurpurea as synonym; Vannucci product4012910 independently names Pissardii (P.cerasifera Atropurpurea), with photo filename spelling pissardi. Scoped own archive spelling pisardi/pisardii corrected to Pissardii; explicit Atropurpurea, where present, is retained as the same full synonym. No substitution with distinct Nigra cultivar. Reuses previously verified Vannucci exact Pissardii photo."
+      },
+      "taxonKey": "prunus cerasifera atropurpurea",
+      "imageHosts": [
+        "catalogue.vannuccipiante.it",
+        "webshop.vannuccipiante.it",
+        "www.vannuccipiante.it"
+      ],
+      "imagePathPrefixes": {
+        "catalogue.vannuccipiante.it": [
+          "/images/"
+        ]
+      },
+      "license": "existing_catalogue_source_policy",
+      "usagePermission": {
+        "status": "confirmed_by_user",
+        "confirmedAt": "2026-11-17",
+        "scope": "Supplier catalogue photographs on the Demetra RB public website."
+      },
+      "latinName": "Prunus pisardii",
+      "image": "assets/biljke/reference-edd03fce1764ffbd0ddebc3f.jpg",
+      "sha256": "edd03fce1764ffbd0ddebc3facad3ab953344cde09168e73316c3e281df23b42",
+      "checkedAt": "2026-11-17T13:27:19Z",
+      "matchLevel": "exact"
+    },
+    "plant-49cddc8d28d2e6": {
+      "nurseryId": "lorberg",
+      "imageUrl": "https://www.lorberg.com/content/files/16207/Pinus-sylvestris-Watereri-Bonsai-Wolkenform-200-300-x-250-300-TM49-6-r1-718x750-auto.webp",
+      "sourceUrl": "https://www.lorberg.com/en-gb/article/1354/pinus-sylvestris-watereri",
+      "matchedName": "Pinus sylvestris 'Watereri'",
+      "identityEvidence": {
+        "kind": "exact_named_product_gallery_with_form",
+        "name": "Pinus sylvestris 'Watereri'",
+        "galleryFilename": "Pinus-sylvestris-Watereri-Bonsai-Wolkenform-200-300-x-250-300-TM49-6-r1-718x750-auto.webp",
+        "form": "Bonsai; Watereri specifically Wolkenform (cloud form)",
+        "canonicalName": "Pinus sylvestris 'Watereri' bonsai form"
+      },
+      "provider": "other_catalogue_nursery",
+      "taxonKey": "pinus sylvestris watereri bonsai form",
+      "imageHosts": [
+        "www.lorberg.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Pinus sylvestris 'Watereri' bonsai form",
+      "image": "assets/biljke/reference-57ea2c47c7ebe4cc67b9efc7.jpg",
+      "sha256": "57ea2c47c7ebe4cc67b9efc782d374e85d8b6459671379a758775e34534b3f99",
+      "checkedAt": "2026-11-17T13:27:19Z",
+      "matchLevel": "exact"
+    },
+    "plant-df0b4015a5afd0": {
+      "nurseryId": "lorberg",
+      "imageUrl": "https://www.lorberg.com/content/files/16187/5_Pinus-sylvestris-Bonsai-300-400-x-300-350-3-r1-718x750-auto.webp",
+      "sourceUrl": "https://www.lorberg.com/en-gb/article/1303/pinus-sylvestris",
+      "matchedName": "Pinus sylvestris",
+      "identityEvidence": {
+        "kind": "exact_named_product_gallery_with_form",
+        "name": "Pinus sylvestris",
+        "galleryFilename": "5_Pinus-sylvestris-Bonsai-300-400-x-300-350-3-r1-718x750-auto.webp",
+        "form": "Bonsai; Watereri specifically Wolkenform (cloud form)",
+        "canonicalName": "Pinus sylvestris 'Niwaki' bonsai form"
+      },
+      "provider": "other_catalogue_nursery",
+      "taxonKey": "pinus sylvestris niwaki bonsai form",
+      "imageHosts": [
+        "www.lorberg.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Pinus sylvestris 'Niwaki' bonsai form",
+      "image": "assets/biljke/reference-d7c0b19e9eabd4e6901a9e82.jpg",
+      "sha256": "d7c0b19e9eabd4e6901a9e82ee3600535316d4c230c9b869b5f16db96c0e21c4",
+      "checkedAt": "2026-11-17T13:27:19Z",
+      "matchLevel": "exact"
+    },
+    "plant-bd6d032ea834e7": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "willaert",
+      "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/SYJOSEE_117_0208201616434.jpg",
+      "sourceUrl": "https://www.willaert.be/nl/plant/syringa-hybr-josee/SYJOSEE/",
+      "matchedName": "Syringa hybr. 'Josee'",
+      "identityEvidence": {
+        "method": "scoped_complete_hybrid_cultivar_bridge",
+        "canonicalName": "Syringa meyeri 'Josee'",
+        "aliasEvidenceUrls": [
+          "https://edelflieder.info/p/syringa-meyeri-josee",
+          "https://haeussermann.com/shop/heckenpflanzen/syringa-meyeri-josee/",
+          "https://www.internationallilacsociety.org/wp-content/uploads/2019/08/1980-Lilacs-Proceedings-Vol.-9.pdf",
+          "https://www.rhs.org.uk/plants/243675/syringa-jos%C3%A9e-morjos-060f/details"
+        ],
+        "review": "Scoped complete cultivar identity bridge: primary specialist nursery Edelflieder titles exact Syringa meyeri JOSEE and explicitly labels origin Hybride (Syringa microphylla JOSEE). Original 1978 registration, published in International Lilac Society Proceedings 1980, identifies Josee/MORjos060F as (S.velutina x S.microphylla) x S.meyeri. RHS accepts hybrid Josee/Morjos060f. Willaert bounded product gallery is exact Josee hybrid. Thus meyeri here is the nursery trade placement of the same complete hybrid cultivar, not authorization to substitute other meyeri cultivars or generic lilacs. Original catalog name and offer parameters remain unchanged."
+      },
+      "taxonKey": "syringa hybr josee",
+      "imageHosts": [
+        "www.willaert.be"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Syringa meyeri 'Josee'",
+      "image": "assets/biljke/reference-72dd711f978b10046e36aa68.jpg",
+      "sha256": "72dd711f978b10046e36aa689e263c2850e18ce098e2cda64a7003bec53ebd6a",
+      "checkedAt": "2026-11-17T13:29:46Z",
+      "matchLevel": "exact"
+    },
+    "plant-9ccb151e993cb3": {
+      "nurseryId": "lorenz-von-ehren",
+      "imageUrl": "https://www.lve-baumschule.de/media/69/d7/ee/1648643426/7067260.JPG",
+      "sourceUrl": "https://www.lve-baumschule.de/fraxinus-excelsior-nana/6353718",
+      "matchedName": "Fraxinus excelsior 'Nana'",
+      "identityEvidence": {
+        "kind": "official_nursery_explicit_synonym",
+        "name": "Fraxinus excelsior 'Nana'",
+        "synonym": "F. excelsior globosa",
+        "synonymSection": "Synonyme",
+        "galleryAlt": "Fraxinus excelsior 'Nana'",
+        "canonicalName": "Fraxinus excelsior 'Globosa'"
+      },
+      "provider": "other_catalogue_nursery",
+      "taxonKey": "fraxinus excelsior globosa",
+      "imageHosts": [
+        "www.lve-baumschule.de",
+        "www.lve.de"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Fraxinus excelsior 'Globosa'",
+      "image": "assets/biljke/reference-837b997b0b1db4905df47d3b.jpg",
+      "sha256": "837b997b0b1db4905df47d3b772110a7c738267a8595afae028266743b69624f",
+      "checkedAt": "2026-11-17T13:49:59Z",
+      "matchLevel": "exact"
+    },
+    "plant-0d4b1c3e4d42ba": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "innocenti-mangoni",
+      "imageUrl": "https://innocentiemangonipiante.it/wp-content/uploads/2023/10/1640622995.jpg",
+      "sourceUrl": "https://innocentiemangonipiante.it/en/fagus-sylvatica-dawyck-purple/",
+      "matchedName": "Fagus sylvatica 'Dawyck Purple'",
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Fagus sylvatica 'Dawyck Purple'"
+      },
+      "imageHosts": [
+        "innocentiemangonipiante.it"
+      ],
+      "imagePathPrefixes": null,
+      "license": "existing_catalogue_source_policy",
+      "latinName": "Fagus sylvatica 'Purpurea fastigiata'",
+      "image": "assets/biljke/reference-d0a48b648b5167bc1e12aef5.jpg",
+      "sha256": "d0a48b648b5167bc1e12aef5e2f4665c4432119175b8008e5eba2e63243a0964",
+      "checkedAt": "2026-11-10T10:01:27Z",
+      "matchLevel": "exact",
+      "taxonKey": "fagus sylvatica dawyck purple",
+      "sharedFromPlantId": "plant-1e781821e75a12",
+      "synonymEvidence": [
+        {
+          "name": "Fagus sylvatica ‘Dawyck Purple’",
+          "evidenceUrls": [
+            "https://www.rhs.org.uk/plants/329072/fagus-sylvatica-purpurea-fastigiata/details",
+            "https://innocentiemangonipiante.it/en/fagus-sylvatica-dawyck-purple/"
+          ],
+          "reason": "RHS explicitly confirms Purpurea Fastigiata as a synonym of Dawyck Purple. The already verified Innocenti and Mangoni Dawyck Purple catalogue photograph is reused for this exact cultivar; it is a plant reference, not evidence of offer size or delivery form. The separate feathered form retains its separately reviewed photograph."
+        }
+      ]
     }
   },
   "retiredReferences": {

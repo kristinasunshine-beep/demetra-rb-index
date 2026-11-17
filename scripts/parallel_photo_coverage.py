@@ -26,16 +26,18 @@ from PIL import Image, UnidentifiedImageError
 import full_photo_coverage as core
 import volentis_photo_catalog
 import willaert_photo_catalog
+import vannucci_photo_catalog
 from update_photos import PhotoError, DEFAULT_LIMITS, check_url, fetch_resource, to_jpeg, commit_files, identity_matches
 
-DYNAMIC_PROVIDERS = {'volentis': volentis_photo_catalog, 'willaert': willaert_photo_catalog}
+DYNAMIC_PROVIDERS = {'volentis': volentis_photo_catalog, 'willaert': willaert_photo_catalog,
+                     'vannucci-piante': vannucci_photo_catalog}
 
 
 def lookup_names(plant, config):
     """Only the catalogue name and explicitly evidenced full-name aliases."""
     return list(dict.fromkeys([plant['latinName']] + [a['name'] for a in
         config.get('exactNameAliases', {}).get(plant['id'], [])
-        if a.get('name') and a.get('evidenceUrls')]))
+        if a.get('name') and a.get('evidenceUrls') and not a.get('manualPhotoOnly')]))
 
 
 def lookup_plan(plant, offers, generic, policies, names, providers=None):

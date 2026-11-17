@@ -64,6 +64,15 @@ class DynamicIntegrationTests(unittest.TestCase):
                    {'name':"Acer palmatum 'Seiryu'",'evidenceUrls':['https://nursery.example/proof']}]}}
         self.assertEqual(pipeline.lookup_names(plant, config), [NAME])
 
+    def test_manually_reviewed_form_photo_does_not_relax_future_identity(self):
+        plant = {'id': 'ball', 'latinName': 'Taxus baccata gömb'}
+        plain = {'id': 'plain', 'latinName': 'Taxus baccata'}
+        config = {'exactNameAliases': {'ball': [{'name': 'Taxus baccata',
+            'evidenceUrls': ['https://example.org/ball-gallery'], 'manualPhotoOnly': True}]}}
+        self.assertEqual(pipeline.lookup_names(plant, config), ['Taxus baccata gömb'])
+        keys = pipeline.core.taxonomy_keys([plant, plain], config)
+        self.assertNotEqual(keys['ball'], keys['plain'])
+
     def test_robots_404_checked_once_and_protected_host_fails_closed(self):
         calls = []
         def fetch(url, **kwargs):

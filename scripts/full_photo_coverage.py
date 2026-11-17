@@ -94,7 +94,7 @@ def taxonomy_keys(plants, config):
     for plant in plants:
         original=key(plant['latinName']); find(original)
         for alias in config.get('exactNameAliases',{}).get(plant['id'],[]):
-            if not alias.get('evidenceUrls') or not alias.get('name'):
+            if not alias.get('evidenceUrls') or not alias.get('name') or alias.get('manualPhotoOnly'):
                 continue
             left,right=find(original),find(key(alias['name']))
             parents[max(left,right)]=min(left,right)
@@ -442,7 +442,7 @@ def run(root, *, request_budget=1000, max_seconds=1500, audit_only=False, fetche
             continue
         failures = []
         done, exhausted = False, False
-        approved_aliases=[a['name'] for a in config.get('exactNameAliases',{}).get(plant['id'],[]) if a.get('evidenceUrls')]
+        approved_aliases=[a['name'] for a in config.get('exactNameAliases',{}).get(plant['id'],[]) if a.get('evidenceUrls') and not a.get('manualPhotoOnly')]
         photo_names=[plant['latinName']]+approved_aliases
         candidates = candidates_for(plant, offers, refs, policies, index,photo_names)
         fingerprint = digest(encoded(candidates))

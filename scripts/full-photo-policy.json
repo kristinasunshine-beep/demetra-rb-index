@@ -236,7 +236,15 @@
         "name": "Acer truncatum x platanoides 'Keithsform'",
         "evidenceUrls": [
           "https://jfschmidt.com/wp-content/uploads/2023/01/norwegiansunsetmaple.pdf"
-        ]
+        ],
+        "reason": "Exact botanical identity reviewed against linked primary sources; full cultivar is retained and original catalogue name remains unchanged."
+      },
+      {
+        "name": "Acer 'Keithsform' 'Norwegian Sunset' (Acer truncatum x platanoides 'Keithsform')",
+        "evidenceUrls": [
+          "https://jfschmidt.com/wp-content/uploads/2023/01/norwegiansunsetmaple.pdf"
+        ],
+        "reason": "Reviewed exact botanical-name synonym or spelling correction; cultivar retained."
       }
     ],
     "plant-f816663b421aad": [
@@ -404,7 +412,15 @@
           "https://api.gbif.org/v1/species/match?name=Eupatorium+maculatum&kingdom=Plantae&strict=true",
           "https://www.gbif.org/species/3138195"
         ],
-        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim",
+        "reason": "Exact botanical identity reviewed against linked primary sources; full cultivar is retained and original catalogue name remains unchanged."
+      },
+      {
+        "name": "Eupatorium maculatum 'Atropurpureum'",
+        "evidenceUrls": [
+          "https://www.ecoledubreuil.fr/jardin/inventaire-des-plantes/eupatorium-maculatum-atropurpurea-2751"
+        ],
+        "reason": "Paris municipal horticulture school inventory lists Atropurpurea, heads same plant Atropurpureum and links Eutrochium maculatum Atropurpureum Group; nursery same plant"
       }
     ],
     "plant-a9d6a182a4e421": [
@@ -414,7 +430,15 @@
           "https://api.gbif.org/v1/species/match?name=Gaura+lindheimeri&kingdom=Plantae&strict=true",
           "https://www.gbif.org/species/3664589"
         ],
-        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim",
+        "reason": "Exact botanical identity reviewed against linked primary sources; full cultivar is retained and original catalogue name remains unchanged."
+      },
+      {
+        "name": "Gaura lindheimeri 'Whirling Butterflies'",
+        "evidenceUrls": [
+          "https://www.rhs.org.uk/plants/63441/gaura-lindheimeri-whirling-butterflies/details"
+        ],
+        "reason": "reviewed explicit same cultivar / narrow catalogue spelling correction; no general fuzzy matching"
       }
     ],
     "plant-42ed463c83d4dc": [
@@ -484,7 +508,17 @@
           "https://api.gbif.org/v1/species/match?name=Platanus+acerifolia&kingdom=Plantae&strict=true",
           "https://www.gbif.org/species/7400250"
         ],
-        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim",
+        "manualPhotoOnly": true,
+        "reason": "Exact cultivar/species and specifically pictured growth form manually reviewed; this alias must not broaden automatic discovery or image reuse."
+      },
+      {
+        "name": "Platanus x acerifolia",
+        "evidenceUrls": [
+          "https://catalogue.vannuccipiante.it/data/species/4012620.json"
+        ],
+        "reason": "Exact cultivar/species and specifically pictured growth form manually reviewed; this alias must not broaden automatic discovery or image reuse.",
+        "manualPhotoOnly": true
       }
     ],
     "plant-2c93a3023c8235": [
@@ -494,7 +528,15 @@
           "https://api.gbif.org/v1/species/match?name=Prunus+pissardii&kingdom=Plantae&strict=true",
           "https://www.gbif.org/species/3021730"
         ],
-        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim",
+        "reason": "Exact botanical identity reviewed against linked primary sources; full cultivar is retained and original catalogue name remains unchanged."
+      },
+      {
+        "name": "Prunus cerasifera ‘Pissardii’ (P. cerasifera ‘Atropurpurea’)",
+        "evidenceUrls": [
+          "https://catalogue.vannuccipiante.it/data/species/4012910.json"
+        ],
+        "reason": "Exact botanical identity reviewed against linked primary sources; full cultivar is retained and original catalogue name remains unchanged."
       }
     ],
     "plant-76a27aa2433b7d": [
@@ -524,7 +566,15 @@
           "https://api.gbif.org/v1/species/match?name=Quercus+x+bimundorum&kingdom=Plantae&strict=true",
           "https://www.gbif.org/species/2879770"
         ],
-        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim",
+        "reason": "Exact botanical identity reviewed against linked primary sources; full cultivar is retained and original catalogue name remains unchanged."
+      },
+      {
+        "name": "Quercus robur ‘Crimson Spire’® (Q. x bimundorum ‘Crimson Spire’)",
+        "evidenceUrls": [
+          "https://catalogue.vannuccipiante.it/data/species/4017449.json"
+        ],
+        "reason": "Exact botanical identity reviewed against linked primary sources; full cultivar is retained and original catalogue name remains unchanged."
       }
     ],
     "plant-9354d6bf7371b0": [
@@ -534,7 +584,16 @@
           "https://api.gbif.org/v1/species/match?name=Quercus+x+warei&kingdom=Plantae&strict=true",
           "https://www.gbif.org/species/3906564"
         ],
-        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim",
+        "reason": "Exact botanical identity reviewed against linked primary sources; full cultivar is retained and original catalogue name remains unchanged."
+      },
+      {
+        "name": "Quercus x warei 'Regal Prince' (long)",
+        "evidenceUrls": [
+          "https://www.rhs.org.uk/plants/273159/quercus-%C3%97-warei-regal-prince/details",
+          "https://innocentiemangonipiante.it/en/quercus-robur-regal-prince/"
+        ],
+        "reason": "Willaert live h1 retains Quercus x warei Regal Prince and adds its cultivar denomination Long. RHS explicitly identifies Ware oak Long under Regal Prince. Gallery alt and image code QUWRPRIN match the product. Viewed true oak leaves and branches."
       }
     ],
     "plant-c01671d345f47b": [
@@ -554,7 +613,15 @@
           "https://api.gbif.org/v1/species/match?name=Salvia+x+sylvestris&kingdom=Plantae&strict=true",
           "https://www.gbif.org/species/2926990"
         ],
-        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+        "review": "Taxon-name correction confirmed; cultivar tail retained verbatim",
+        "reason": "Exact botanical identity reviewed against linked primary sources; full cultivar is retained and original catalogue name remains unchanged."
+      },
+      {
+        "name": "Salvia nemorosa 'Mainacht'",
+        "evidenceUrls": [
+          "https://www.rhs.org.uk/plants/116997/salvia-%C3%97-sylvestris-mainacht/details"
+        ],
+        "reason": "reviewed explicit same cultivar / narrow catalogue spelling correction; no general fuzzy matching"
       }
     ],
     "plant-43201d5e8991bc": [
@@ -605,6 +672,570 @@
           "https://www.gbif.org/species/2888625"
         ],
         "review": "Taxon-name correction confirmed; cultivar tail retained verbatim"
+      }
+    ],
+    "plant-bcef3f3c122b68": [
+      {
+        "name": "Achillea millefolium 'Red Velvet'",
+        "evidenceUrls": [
+          "https://www.willaert.be/nl/plant/achillea-millefolium-red-velvet/acmrvelv/"
+        ],
+        "reason": "reviewed explicit same cultivar / narrow catalogue spelling correction; no general fuzzy matching"
+      }
+    ],
+    "plant-028aa17dda3cd5": [
+      {
+        "name": "Aegopodium podagraria 'Variegatum'",
+        "evidenceUrls": [
+          "https://www.rhs.org.uk/weeds/ground-elder"
+        ],
+        "reason": "reviewed explicit same cultivar / narrow catalogue spelling correction; no general fuzzy matching"
+      }
+    ],
+    "plant-3ea6ef46e8dd85": [
+      {
+        "name": "Dryopteris filix-mas",
+        "evidenceUrls": [
+          "https://www.willaert.be/nl/plant/dryopteris-filix-mas/drfmas/"
+        ],
+        "reason": "reviewed explicit same cultivar / narrow catalogue spelling correction; no general fuzzy matching"
+      }
+    ],
+    "plant-9abf6576bdf184": [
+      {
+        "name": "Euphorbia characias 'Wulfenii'",
+        "evidenceUrls": [
+          "https://www.rhs.org.uk/plants/99051/euphorbia-characias-subsp-wulfenii/details"
+        ],
+        "reason": "reviewed explicit same cultivar / narrow catalogue spelling correction; no general fuzzy matching"
+      }
+    ],
+    "plant-9aa74aa98d72df": [
+      {
+        "name": "Geranium macrorrhizum 'Spessart'",
+        "evidenceUrls": [
+          "https://www.willaert.be/nl/plant/geranium-macrorrhizum-spessart/gemspess/"
+        ],
+        "reason": "reviewed explicit same cultivar / narrow catalogue spelling correction; no general fuzzy matching"
+      }
+    ],
+    "plant-f5f896a9c85e79": [
+      {
+        "name": "Geranium macrorrhizum 'Ingwersen's Variety'",
+        "evidenceUrls": [
+          "https://www.geraniaceae-group.org/wp-content/uploads/2017/12/Register-of-Geranium-Cultivars-20171217.pdf"
+        ],
+        "reason": "reviewed explicit same cultivar / narrow catalogue spelling correction; no general fuzzy matching"
+      }
+    ],
+    "plant-8a8dfbfe7c71ad": [
+      {
+        "name": "Heuchera 'Glitter'",
+        "evidenceUrls": [
+          "https://www.willaert.be/nl/plant/heuchera-glitter/heglitte/"
+        ],
+        "reason": "reviewed explicit same cultivar / narrow catalogue spelling correction; no general fuzzy matching"
+      }
+    ],
+    "plant-649f2f45b2d9ee": [
+      {
+        "name": "Heuchera 'Paris'",
+        "evidenceUrls": [
+          "https://www.willaert.be/nl/plant/heuchera-paris/heparis/"
+        ],
+        "reason": "reviewed explicit same cultivar / narrow catalogue spelling correction; no general fuzzy matching"
+      }
+    ],
+    "plant-5acd0e95239a5f": [
+      {
+        "name": "Hosta 'Halcyon'",
+        "evidenceUrls": [
+          "https://www.rhs.org.uk/plants/91303/hosta-tardiana-group-halcyon/details"
+        ],
+        "reason": "reviewed explicit same cultivar / narrow catalogue spelling correction; no general fuzzy matching"
+      }
+    ],
+    "plant-71a1aa38376c8f": [
+      {
+        "name": "Kniphofia hybr. 'Banana Popsicle'",
+        "evidenceUrls": [
+          "https://www.willaert.be/nl/plant/kniphofia-hybr-banana-popsicle/knbpopsi/"
+        ],
+        "reason": "reviewed explicit same cultivar / narrow catalogue spelling correction; no general fuzzy matching"
+      }
+    ],
+    "plant-dbbd3c036f603a": [
+      {
+        "name": "Kniphofia 'Mango Popsicle'",
+        "evidenceUrls": [
+          "https://www.willaert.be/nl/plant/kniphofia-mango-popsicle/knmpopsi/"
+        ],
+        "reason": "reviewed explicit same cultivar / narrow catalogue spelling correction; no general fuzzy matching"
+      }
+    ],
+    "plant-2c7f9070c4620c": [
+      {
+        "name": "Leucanthemum 'Silberprinzesschen'",
+        "evidenceUrls": [
+          "https://www.rhs.org.uk/plants/58920/leucanthemum-%C3%97-superbum-silberprinzesschen/details"
+        ],
+        "reason": "reviewed explicit same cultivar / narrow catalogue spelling correction; no general fuzzy matching"
+      }
+    ],
+    "plant-7554ad08ac45af": [
+      {
+        "name": "Nepeta faassenii 'Six Hills Giant'",
+        "evidenceUrls": [
+          "https://www.willaert.be/nl/plant/nepeta-faassenii-six-hills-giant/nefshgia/"
+        ],
+        "reason": "reviewed explicit same cultivar / narrow catalogue spelling correction; no general fuzzy matching"
+      }
+    ],
+    "plant-6114660f69e4aa": [
+      {
+        "name": "Pennisetum alopecuroides 'Little Bunny'",
+        "evidenceUrls": [
+          "https://www.willaert.be/nl/plant/pennisetum-alopecuroides-little-bunny/pealbunn/"
+        ],
+        "reason": "reviewed explicit same cultivar / narrow catalogue spelling correction; no general fuzzy matching"
+      }
+    ],
+    "plant-22701ebacaa7bc": [
+      {
+        "name": "Sedum hybr. 'Purple Emperor'",
+        "evidenceUrls": [
+          "https://www.willaert.be/nl/plant/sedum-hybr-purple-emperor/sepemper/"
+        ],
+        "reason": "reviewed explicit same cultivar / narrow catalogue spelling correction; no general fuzzy matching"
+      }
+    ],
+    "plant-73234c6f4f2e5d": [
+      {
+        "name": "Hosta sieboldiana 'Elegans'",
+        "evidenceUrls": [
+          "https://www.lorberg.com/en-gb/article/318/hosta-sieboldiana-elegans"
+        ],
+        "reason": "reviewed narrow spelling correction; full botanical species/cultivar retained"
+      }
+    ],
+    "plant-7e4d9af7322a93": [
+      {
+        "name": "Carex morrowii 'Variegata'",
+        "evidenceUrls": [
+          "https://www.lorberg.com/en-gb/article/191/carex-morrowii-variegata"
+        ],
+        "reason": "reviewed narrow spelling correction; full botanical species/cultivar retained"
+      }
+    ],
+    "plant-fc32b5b27e23f7": [
+      {
+        "name": "Salvia nemorosa",
+        "evidenceUrls": [
+          "https://www.lorberg.com/en-gb/article/2862/salvia-nemorosa"
+        ],
+        "reason": "reviewed narrow spelling correction; full botanical species/cultivar retained"
+      }
+    ],
+    "plant-4bf5a1a6bdd8e0": [
+      {
+        "name": "Pleioblastus pumilus",
+        "evidenceUrls": [
+          "https://www.lorberg.com/de-de/pleioblastus-pumilus"
+        ],
+        "reason": "reviewed narrow spelling correction; full botanical species/cultivar retained"
+      }
+    ],
+    "plant-19779e0433bfdf": [
+      {
+        "name": "Achillea filipendulina 'Parker´s Variety'",
+        "evidenceUrls": [
+          "https://www.lorberg.com/en-gb/article/2701/achillea-filipendulina-parkers-variety"
+        ],
+        "reason": "reviewed exact nursery H1; narrow spelling/diacritic correction"
+      }
+    ],
+    "plant-2ab84b946b895e": [
+      {
+        "name": "Deschampsia cespitosa 'Tauträger'",
+        "evidenceUrls": [
+          "https://www.lorberg.com/de-de/deschampsia-cespitosa-tautraeger",
+          "https://www.rhs.org.uk/plants/78924/deschampsia-cespitosa-tautr%C3%A4ger/details"
+        ],
+        "reason": "reviewed exact nursery H1; narrow spelling/diacritic correction"
+      }
+    ],
+    "plant-98da30d6cdab1b": [
+      {
+        "name": "Ophiopogon planiscapus 'Niger'",
+        "evidenceUrls": [
+          "https://e-katalogroslin.pl/plants/4151%2Ckonwalnik-plaskopedowy-niger_ophiopogon-planiscapus-niger"
+        ],
+        "reason": "Polish Nurserymen Association explicitly lists Nigrescens as Latin synonym of Niger"
+      }
+    ],
+    "plant-99d1408b6679aa": [
+      {
+        "name": "Pennisetum alopecuroides 'Red Head'",
+        "evidenceUrls": [
+          "https://catalogue.vannuccipiante.it/data/species/4017460.json"
+        ],
+        "reason": "explicit full nursery identity; Redhead spacing only / nursery stated Pleioblastus fortunei synonym"
+      }
+    ],
+    "plant-2f56803cd672d6": [
+      {
+        "name": "Bambusa nana 'Variegata' (Pleioblastus fortunei)",
+        "evidenceUrls": [
+          "https://catalogue.vannuccipiante.it/data/species/4002470.json"
+        ],
+        "reason": "explicit full nursery identity; Redhead spacing only / nursery stated Pleioblastus fortunei synonym"
+      }
+    ],
+    "plant-35a27a7abd3f9f": [
+      {
+        "name": "Fraxinus angustifolia 'Raywood'",
+        "evidenceUrls": [
+          "https://www.rhs.org.uk/plants/32945/fraxinus-angustifolia-raywood-ash-raywood-claret-ash/details",
+          "https://www.lorberg.com/en-gb/article/674/fraxinus-angustifolia-raywood"
+        ],
+        "reason": "Scoped archive spelling Reywood to accepted Raywood; genus and species unchanged. Original Marina Dorcol rows29/86 contain Reywood; RHS and supplier Lorberg establish Raywood. Does not authorize reuse for the separate misclassified Fraxinus americana Raywood record.",
+        "targetPlantId": "plant-138cb9bcaeeb45"
+      }
+    ],
+    "plant-33ea6223ae519a": [
+      {
+        "name": "Tilia x europaea 'Pallida'",
+        "evidenceUrls": [
+          "https://innocentiemangonipiante.it/en/tilia-x-europaea-pallida/"
+        ],
+        "reason": "Scoped orthographic normalization europea Palida to x europaea Pallida, preserving the complete named selection. Original Combinatie source 1. Offer for trees row20 and Offer request3 row17 identify europea Palida. Nursery primary catalogue gives exact hybrid and cultivar. No conversion to generic Tilia or other cultivar.",
+        "targetPlantId": "plant-44efd7cccf671a"
+      }
+    ],
+    "plant-d8dfb013fd1c3f": [
+      {
+        "name": "Photinia x fraseri 'Red Robin'",
+        "evidenceUrls": [
+          "https://innocentiemangonipiante.it/en/photinia-x-fraseri-red-robin/"
+        ],
+        "reason": "Original source B18 is Photinia fasserii Red Robin P 15 20/30, with stored potSize P15. Thus trailing P is a pot-size fragment, not a cultivar word. Scoped correction fasserii to x fraseri retains Red Robin unchanged. Image remains plant-level catalogue reference, not proof of exact P15 size.",
+        "targetPlantId": "plant-3a1aeb3df1ce96"
+      }
+    ],
+    "plant-7e01e6cb52d3de": [
+      {
+        "name": "Catalpa bignonioides 'Nana'",
+        "evidenceUrls": [
+          "https://www.esveld.nl/catalnl/heesters.htm",
+          "https://www.lorberg.com/en-gb/article/503/catalpa-bignonioides-nana"
+        ],
+        "reason": "Primary Esveld nursery catalogue explicitly equates Catalpa bignonioides Globosa = Catalpa bignonioides Nana. Own archived Tender1 row41 also carries supplier note br; nana. This is an evidenced full cultivar synonym, not generic spherical-form inference.",
+        "targetPlantId": "plant-5b3ddc482feec1"
+      }
+    ],
+    "plant-ade2ce47351665": [
+      {
+        "name": "Sorbus intermedia",
+        "evidenceUrls": [
+          "https://www.ebben.nl/en/treeebb/sointerm-sorbus-intermedia/"
+        ],
+        "reason": "Ebben primary nursery explicitly lists Sorbus scandica as synonym of Sorbus intermedia. Photo itself is from allowed LVE (not Ebben). LVE heading and product JSON-LD associate this exact photograph with Sorbus intermedia; viewed whole multi-stem fruiting tree with nursery watermark."
+      }
+    ],
+    "plant-2b63609672e071": [
+      {
+        "name": "Rhododendron Japanische Azalee 'Maruschka'",
+        "evidenceUrls": [
+          "https://www.rhs.org.uk/plants/135542/rhododendron-maruschka-ea/details"
+        ],
+        "reason": "RHS accepts Rhododendron Maruschka (evergreen azalea) and lists Rhododendron japonica Maruska as synonym. LVE titles the same full cultivar as Rhododendron Japanische Azalee Maruschka (German Japanese azalea group). Cultivar Maruschka retained verbatim. Viewed red azalea flowers and dark leaves, genuine LVE photo with watermark."
+      }
+    ],
+    "plant-b3d791a8261438": [
+      {
+        "name": "Ulmus 'New Horizon' (S) Resista (R)",
+        "evidenceUrls": [
+          "https://www.arbor.be/ulmus-resista",
+          "https://www.lorberg.com/en-gb/article/2477/ulmus-new-horizon-s-resista-r"
+        ],
+        "reason": "Arbor primary RESISTA page explicitly lists New Horizon as one of its separate RESISTA cultivars. Lorberg product heading is Ulmus New Horizon -S- RESISTA -R-; S/R are trademark/protection markers, not cultivar words. Complete New Horizon preserved. Viewed full nursery row of labelled product trees; image file includes New-Horizon. No pairing with the separate Rebona/Rebella/Fiorente cultivars."
+      }
+    ],
+    "plant-2d6ea78c9fc019": [
+      {
+        "name": "Ulmus 'New Horizon' (S) Resista (R)",
+        "evidenceUrls": [
+          "https://www.arbor.be/ulmus-resista",
+          "https://www.lorberg.com/en-gb/article/2477/ulmus-new-horizon-s-resista-r"
+        ],
+        "reason": "Arbor primary RESISTA page explicitly lists New Horizon as one of its separate RESISTA cultivars. Lorberg product heading is Ulmus New Horizon -S- RESISTA -R-; S/R are trademark/protection markers, not cultivar words. Complete New Horizon preserved. Viewed full nursery row of labelled product trees; image file includes New-Horizon. No pairing with the separate Rebona/Rebella/Fiorente cultivars."
+      }
+    ],
+    "plant-1d63d032975002": [
+      {
+        "name": "x Cupressocyparis leylandii",
+        "evidenceUrls": [
+          "https://catalogue.vannuccipiante.it/data/species/4005840.json"
+        ],
+        "reason": "Exact botanical identity reviewed against linked primary sources; full cultivar is retained and original catalogue name remains unchanged."
+      }
+    ],
+    "plant-bde223e31460f3": [
+      {
+        "name": "Ceanothus thyrsiflorus 'Repens'",
+        "evidenceUrls": [
+          "https://www.rhs.org.uk/plants/94754/ceanothus-thyrsiflorus-var-repens/details",
+          "https://catalogue.vannuccipiante.it/data/species/4016928.json"
+        ],
+        "reason": "Exact botanical identity reviewed against linked primary sources; full cultivar is retained and original catalogue name remains unchanged."
+      }
+    ],
+    "plant-aaebb1c1960940": [
+      {
+        "name": "Cornus florida ‘Rubra’",
+        "evidenceUrls": [
+          "https://www.rhs.org.uk/plants/89706/cornus-florida-f-rubra/details",
+          "https://catalogue.vannuccipiante.it/data/species/4005310.json"
+        ],
+        "reason": "Exact botanical identity reviewed against linked primary sources; full cultivar is retained and original catalogue name remains unchanged."
+      }
+    ],
+    "plant-1f509f3c339c01": [
+      {
+        "name": "Prunus domestica 'Stanley'",
+        "evidenceUrls": [
+          "https://catalogue.vannuccipiante.it/data/species/4016482.json"
+        ],
+        "reason": "Exact botanical identity reviewed against linked primary sources; full cultivar is retained and original catalogue name remains unchanged."
+      }
+    ],
+    "plant-fbd63e50cb51f6": [
+      {
+        "name": "Populus nigra ‘Italica’ (P. nigra ‘Pyramidalis’)",
+        "evidenceUrls": [
+          "https://catalogue.vannuccipiante.it/data/species/4012760.json"
+        ],
+        "reason": "Exact botanical identity reviewed against linked primary sources; full cultivar is retained and original catalogue name remains unchanged."
+      }
+    ],
+    "plant-8761ba73111180": [
+      {
+        "name": "Fagus sylvatica ‘Dawyck Gold’",
+        "evidenceUrls": [
+          "https://catalogue.vannuccipiante.it/data/species/4007240.json"
+        ],
+        "reason": "Exact cultivar/species and specifically pictured growth form manually reviewed; this alias must not broaden automatic discovery or image reuse.",
+        "manualPhotoOnly": true
+      }
+    ],
+    "plant-3093991375a270": [
+      {
+        "name": "Fagus sylvatica ‘Dawyck Purple’",
+        "evidenceUrls": [
+          "https://catalogue.vannuccipiante.it/data/species/4007250.json"
+        ],
+        "reason": "Exact cultivar/species and specifically pictured growth form manually reviewed; this alias must not broaden automatic discovery or image reuse.",
+        "manualPhotoOnly": true
+      }
+    ],
+    "plant-512dcc509b276f": [
+      {
+        "name": "Prunus cerasifera ‘Pissardii’ (P. cerasifera ‘Atropurpurea’)",
+        "evidenceUrls": [
+          "https://catalogue.vannuccipiante.it/data/species/4012910.json"
+        ],
+        "reason": "Exact botanical identity reviewed against linked primary sources; full cultivar is retained and original catalogue name remains unchanged."
+      }
+    ],
+    "plant-b6576634224b1c": [
+      {
+        "name": "Prunus serrulata ‘Kiku-shidare-zakura’",
+        "evidenceUrls": [
+          "https://www.rhs.org.uk/plants/60881/prunus-kiku-shidare-zakura/details",
+          "https://catalogue.vannuccipiante.it/data/species/4013110.json"
+        ],
+        "reason": "Exact botanical identity reviewed against linked primary sources; full cultivar is retained and original catalogue name remains unchanged."
+      }
+    ],
+    "plant-c56754d2b73252": [
+      {
+        "name": "Taxus baccata",
+        "evidenceUrls": [
+          "https://www.lorberg.com/en-gb/article/2534/taxus-baccata",
+          "https://mehri-garden.hu/novenyek.html"
+        ],
+        "reason": "Exact cultivar/species and specifically pictured growth form manually reviewed; this alias must not broaden automatic discovery or image reuse.",
+        "manualPhotoOnly": true
+      }
+    ],
+    "plant-c8e469c1c612b4": [
+      {
+        "name": "Quercus imbricaria",
+        "evidenceUrls": [
+          "https://www.willaert.be/nl/plant/quercus-imbricaria/QUIMBRIC/"
+        ],
+        "reason": "Scoped typo correction: lowercase l in lmbricaria is corrected to botanical imbricaria, without changing genus or any cultivar. Live official Willaert plant page h1 Quercus imbricaria and bounded gallery img alt prove exact source. Viewed real green leaf closeup."
+      }
+    ],
+    "plant-2ebeb0e8ff455f": [
+      {
+        "name": "Chamaecyparis lawsonia 'Alumii'",
+        "evidenceUrls": [
+          "https://www.lve-baumschule.de/chamaecyparis-lawsonia-alumii/6353240"
+        ],
+        "reason": "Reviewed exact botanical-name synonym or spelling correction; cultivar retained."
+      }
+    ],
+    "plant-955c2408fc889c": [],
+    "plant-ab8a023e09f885": [
+      {
+        "name": "Teucrium fruticans",
+        "evidenceUrls": [
+          "https://catalogue.vannuccipiante.it/en/collezione-generale/teucrium/-/fruticans/4015060",
+          "https://catalogue.vannuccipiante.it/data/species/4015060.json"
+        ],
+        "reason": "Exact cultivar/species and specifically pictured growth form manually reviewed; this alias must not broaden automatic discovery or image reuse.",
+        "manualPhotoOnly": true
+      }
+    ],
+    "plant-3f2ccbb8f11141": [
+      {
+        "name": "Berberis thumbergii 'Erecta'",
+        "evidenceUrls": [
+          "https://www.rhs.org.uk/plants/99973/berberis-thunbergii-erecta/details"
+        ],
+        "reason": "Scoped nursery species typo thumbergii corrected to thunbergii; RHS exact cultivar plus nursery green upright description agree."
+      }
+    ],
+    "plant-de609ad6a8d046": [
+      {
+        "name": "Carpinus betulus 'Fastigiata'",
+        "evidenceUrls": [
+          "https://catalogue.vannuccipiante.it/data/species/4003890.json"
+        ],
+        "reason": "Exact cultivar/species and specifically pictured growth form manually reviewed; this alias must not broaden automatic discovery or image reuse.",
+        "manualPhotoOnly": true
+      }
+    ],
+    "plant-f45db48e72b497": [
+      {
+        "name": "BAMBUSA fargesia nitida ‘Black Pearl’",
+        "evidenceUrls": [
+          "https://innocentiemangonipiante.it/en/bambusa-fargesia-nitida-black-pearl/",
+          "https://www.rhs.org.uk/plants/351706/fargesia-nitida-black-pearl/details"
+        ],
+        "reason": "Nursery places Bambusa umbrella label before complete exact Fargesia nitida Black Pearl name"
+      }
+    ],
+    "plant-a3569ab7034ab7": [
+      {
+        "name": "Hosta x fortunei 'Fire and Ice'",
+        "evidenceUrls": [
+          "https://www.lorberg.com/en-gb/article/2710/hosta-x-fortunei-fire-and-ice",
+          "https://www.hostaregistrar.org/search_item/1764"
+        ],
+        "reason": "Plant-specific photo alias only: original plantaginea assignment is wrong; unique registered Hosta Fire and Ice cultivar confirmed by AHS registry, nursery uses same full cultivar under fortunei. No public plant/offer values changed."
+      }
+    ],
+    "plant-ea9d1ba6a468c5": [
+      {
+        "name": "Acer platanoides 'Globosum'",
+        "evidenceUrls": [
+          "https://epa.oszk.hu/02400/02451/00098/pdf/EPA02451_Erdeszettorteneti_Kozlemenyek_85_2012_062-084.pdf",
+          "https://innocentiemangonipiante.it/en/acer-platanoides-globosum/"
+        ],
+        "reason": "Primary forestry-history publication Erdeszettorteneti Kozlemenyek 85 (2012), printed p74, explicitly maps historical Acer platanoides globosa hort. to Acer platanoides L. Globosum. Original printed page rendered and visually checked, including surrounding Keresd park nomenclature list. Scoped full cultivar synonym; own Marina Dorcol rows9/66 preserve Globosa. Does not map any other species Globosa to this cultivar.",
+        "targetPlantId": "plant-acer-platanoides-globosum"
+      }
+    ],
+    "plant-7e0b0ea97d6cd5": [
+      {
+        "name": "Pinus mugo 'Mughus'",
+        "evidenceUrls": [
+          "https://plodovyi.ru/products/sosna-gornaya-mugus-sajenec-c3-100750",
+          "https://www.rhs.org.uk/plants/331802/pinus-mughus/details",
+          "https://innocentiemangonipiante.it/en/pinus-mugo-mughus/"
+        ],
+        "reason": "Scoped spelling normalization Mugus to Mughus. Primary nursery Plodovyi same single product explicitly uses Pinus mugo Mughus in description and Pinus mugo var. mugus in its Latin-name field; RHS confirms accepted spelling Mughus. Original Tender1 row73 says Pinus mugo Mugus. Complete selection retained; no use of Pumilio or generic mountain-pine photos. External nursery is identity evidence only; photo remains existing I&M exact Mughus catalogue asset.",
+        "targetPlantId": "plant-dedd338dd3e783"
+      }
+    ],
+    "plant-ea2791c468e4c5": [
+      {
+        "name": "Prunus cerasifera 'Pissardii'",
+        "evidenceUrls": [
+          "https://www.rhs.org.uk/plants/97220/prunus-pissardii/details",
+          "https://catalogue.vannuccipiante.it/data/species/4012910.json",
+          "https://www.vannuccipiante.it/healthy_plants/prunus-cerasifera-pissardii/"
+        ],
+        "reason": "RHS explicitly identifies Prunus pissardii as cherry plum Pissardii and lists Prunus cerasifera Atropurpurea as synonym; Vannucci product4012910 independently names Pissardii (P.cerasifera Atropurpurea), with photo filename spelling pissardi. Scoped own archive spelling pisardi/pisardii corrected to Pissardii; explicit Atropurpurea, where present, is retained as the same full synonym. No substitution with distinct Nigra cultivar. Reuses previously verified Vannucci exact Pissardii photo.",
+        "targetPlantId": "plant-ce3fc8d22cadc1"
+      }
+    ],
+    "plant-e4aa3716894a85": [
+      {
+        "name": "Prunus cerasifera 'Pissardii'",
+        "evidenceUrls": [
+          "https://www.rhs.org.uk/plants/97220/prunus-pissardii/details",
+          "https://catalogue.vannuccipiante.it/data/species/4012910.json",
+          "https://www.vannuccipiante.it/healthy_plants/prunus-cerasifera-pissardii/"
+        ],
+        "reason": "RHS explicitly identifies Prunus pissardii as cherry plum Pissardii and lists Prunus cerasifera Atropurpurea as synonym; Vannucci product4012910 independently names Pissardii (P.cerasifera Atropurpurea), with photo filename spelling pissardi. Scoped own archive spelling pisardi/pisardii corrected to Pissardii; explicit Atropurpurea, where present, is retained as the same full synonym. No substitution with distinct Nigra cultivar. Reuses previously verified Vannucci exact Pissardii photo.",
+        "targetPlantId": "plant-ce3fc8d22cadc1"
+      }
+    ],
+    "plant-49cddc8d28d2e6": [
+      {
+        "name": "Pinus sylvestris 'Watereri'",
+        "evidenceUrls": [
+          "https://www.lorberg.com/en-gb/article/1354/pinus-sylvestris-watereri"
+        ],
+        "reason": "Exact cultivar/species and specifically pictured growth form manually reviewed; this alias must not broaden automatic discovery or image reuse.",
+        "manualPhotoOnly": true
+      }
+    ],
+    "plant-df0b4015a5afd0": [
+      {
+        "name": "Pinus sylvestris",
+        "evidenceUrls": [
+          "https://cdn.paris.fr/eqpts-prod/2024/08/30/ddd0d9dd97711977506868b503128bc4.pdf",
+          "https://www.lorberg.com/en-gb/article/1303/pinus-sylvestris"
+        ],
+        "reason": "Exact cultivar/species and specifically pictured growth form manually reviewed; this alias must not broaden automatic discovery or image reuse.",
+        "manualPhotoOnly": true
+      }
+    ],
+    "plant-bd6d032ea834e7": [
+      {
+        "name": "Syringa hybr. 'Josee'",
+        "evidenceUrls": [
+          "https://edelflieder.info/p/syringa-meyeri-josee",
+          "https://haeussermann.com/shop/heckenpflanzen/syringa-meyeri-josee/",
+          "https://www.internationallilacsociety.org/wp-content/uploads/2019/08/1980-Lilacs-Proceedings-Vol.-9.pdf",
+          "https://www.rhs.org.uk/plants/243675/syringa-jos%C3%A9e-morjos-060f/details"
+        ],
+        "reason": "Scoped complete cultivar identity bridge: primary specialist nursery Edelflieder titles exact Syringa meyeri JOSEE and explicitly labels origin Hybride (Syringa microphylla JOSEE). Original 1978 registration, published in International Lilac Society Proceedings 1980, identifies Josee/MORjos060F as (S.velutina x S.microphylla) x S.meyeri. RHS accepts hybrid Josee/Morjos060f. Willaert bounded product gallery is exact Josee hybrid. Thus meyeri here is the nursery trade placement of the same complete hybrid cultivar, not authorization to substitute other meyeri cultivars or generic lilacs. Original catalog name and offer parameters remain unchanged."
+      }
+    ],
+    "plant-9ccb151e993cb3": [
+      {
+        "name": "Fraxinus excelsior 'Nana'",
+        "evidenceUrls": [
+          "https://www.lve-baumschule.de/fraxinus-excelsior-nana/6353718",
+          "https://strassenbaumliste.galk.de/detail.php?id=59",
+          "https://www.plantencollecties.nl/collecties/fraxinus-2/"
+        ],
+        "reason": "Reviewed exact botanical-name synonym or spelling correction; cultivar retained."
+      }
+    ],
+    "plant-0d4b1c3e4d42ba": [
+      {
+        "name": "Fagus sylvatica ‘Dawyck Purple’",
+        "evidenceUrls": [
+          "https://www.rhs.org.uk/plants/329072/fagus-sylvatica-purpurea-fastigiata/details",
+          "https://innocentiemangonipiante.it/en/fagus-sylvatica-dawyck-purple/"
+        ],
+        "reason": "RHS explicitly confirms Purpurea Fastigiata as a synonym of Dawyck Purple. The already verified Innocenti and Mangoni Dawyck Purple catalogue photograph is reused for this exact cultivar; it is a plant reference, not evidence of offer size or delivery form. The separate feathered form retains its separately reviewed photograph."
       }
     ]
   },

@@ -13,6 +13,13 @@
   },
   "sources": [
     {
+      "nurseryId": "vannucci-piante",
+      "pageHosts": ["catalogue.vannuccipiante.it"],
+      "imageHosts": ["catalogue.vannuccipiante.it"],
+      "imagePathPrefixes": {"catalogue.vannuccipiante.it": ["/images/"]},
+      "reviewedSourceEvidence": ["https://www.vannuccipiante.it/catalogue/", "https://catalogue.vannuccipiante.it/"]
+    },
+    {
       "nurseryId": "volentis",
       "pageHosts": ["portal.volentis.com"],
       "imageHosts": ["cdn.volentis.com"],
