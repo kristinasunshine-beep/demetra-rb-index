@@ -30,6 +30,13 @@ for(const name of book.SheetNames)for(const [address,cell] of Object.entries(boo
 const resultPrice=preserved.Sheets[book.SheetNames[0]][XLSX.utils.encode_cell({r:1,c:originalColumns+2})];
 assert.equal(resultPrice.v,80.5);assert.equal(resultPrice.t,'n');assert.equal(resultPrice.z,'#,##0.00 "€"');
 const supplier=preserved.Sheets[book.SheetNames[0]][XLSX.utils.encode_cell({r:1,c:originalColumns+1})];assert(!supplier.z.includes('€'),'Supplier name must not receive currency format');
+// Output layout only: all source sheet values, formulas and prices remain unchanged.
+const sourceStyles=await after.file('xl/styles.xml').async('string');
+const xfs=sourceStyles.match(/<cellXfs\\b[^>]*>([\\s\\S]*?)<\\/cellXfs>/)?.[1]||'';
+assert.match(xfs,/wrapText="1"/,'added recommendation columns should use wrapped text');
+assert.match(xfs,/<alignment[^>]*wrapText="1"[^>]*\\/><protection/,'wrap alignment must precede protection in valid Excel styles');
+const extendedWidth=outputSheet.match(/<col\\b[^>]*min="\\d+"[^>]*width="(\\d+)"/g)||[];
+assert.ok(extendedWidth.length>0,'added recommendation columns have explicit width');
 const fallback=await Excel.build(template,[{name:'Spisak',processed:true,headerRow:0,originalColumns:1,columns:7,rows:[['Biljka',...headers],['Acer',...values]]},{name:'Promenjen redosled',processed:true,headerRow:0,originalColumns:1,columns:3,rows:[['Biljka','Najniža nabavna cena (€)','Spisak rasadnika'],['Acer',80.5,'A']]}],Zip);
 const fallbackZip=await Zip.loadAsync(fallback),fallbackWorkbook=await fallbackZip.file('xl/workbook.xml').async('string');
 assert(/<workbook\b[^>]*xmlns:r="http:\/\/schemas.openxmlformats.org\/officeDocument\/2006\/relationships"/.test(fallbackWorkbook),'Every r:id has a root namespace declaration');
