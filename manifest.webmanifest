@@ -1,0 +1,39 @@
+{
+  "id": "./",
+  "name": "DEMETRA RB INDEX",
+  "short_name": "DEMETRA RB",
+  "description": "Botanički indeks i projektantski alati: pretraga biljaka, preporuka rasadnika i ponude.",
+  "lang": "sr-Latn",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#151918",
+  "theme_color": "#151918",
+  "orientation": "any",
+  "icons": [
+    {
+      "src": "./assets/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./assets/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./assets/icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "./assets/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

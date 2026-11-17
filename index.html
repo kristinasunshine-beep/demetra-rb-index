@@ -7,7 +7,12 @@
     <meta name="theme-color" content="#161a19">
     <meta name="description" content="Unesite početak latinskog naziva. Pronađite biljku i otvorite njen digitalni zapis.">
     <title>demetra rb index</title>
-    <link rel="icon" href="data:,">
+    <link rel="icon" href="./assets/icons/icon.svg" type="image/svg+xml">
+    <link rel="icon" href="./assets/icons/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="./assets/icons/apple-touch-icon.png" sizes="180x180">
+    <link rel="manifest" href="./manifest.webmanifest">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <style>
 :root {
   --paper: #f7f7f2;
@@ -839,6 +844,7 @@ body[data-view="search"] .search-field:focus-within .search-icon { color:var(--a
       <link rel="stylesheet" href="./assets/moja-ponuda.css">
       <link rel="stylesheet" href="./assets/brza-preporuka.css?v=auto-20261113">
       <link rel="stylesheet" href="./assets/control-room.css?v=02u-20261116">
+    <link rel="stylesheet" href="./assets/control-room-mobile-outline.css?v=02v-20261117">
   </head>
   <body class="control-room" data-view="search">
     <a class="skip-link" href="#main">Pređi na sadržaj</a>
@@ -1899,5 +1905,13 @@ const recommendationApp = window.DemetraRecommendation?.create({
 init();
 
     </script>
-  </body>
+  <script>
+if ('serviceWorker' in navigator && location.protocol === 'https:') {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./service-worker.js').catch(error =>
+      console.warn('PWA nije registrovana:', error));
+  });
+}
+</script>
+</body>
 </html>

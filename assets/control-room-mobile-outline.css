@@ -1,0 +1,24 @@
+/* DEMETRA RB / Mobile-only editorial outline typography (02V).
+   Desktop headline and the rest of the UI remain untouched. */
+@media screen and (max-width: 760px) {
+  body.control-room[data-view="search"] .search-intro h1 em {
+    font-family: "Arial Narrow", "Roboto Condensed", "Helvetica Neue Condensed", "Arial", sans-serif;
+    font-weight: 800;
+    font-stretch: condensed;
+    font-style: normal;
+    font-size: clamp(43px, 10.8vw, 63px);
+    line-height: .96;
+    letter-spacing: -.055em;
+    -webkit-text-stroke: 1.25px var(--ink);
+    transform: scaleX(.84);
+    transform-origin: left center;
+    width: max-content;
+    max-width: 118%;
+  }
+}
+@media screen and (max-width: 420px) {
+  body.control-room[data-view="search"] .search-intro h1 em {
+    font-size: clamp(42px, 10.7vw, 49px);
+    letter-spacing: -.06em;
+  }
+}
