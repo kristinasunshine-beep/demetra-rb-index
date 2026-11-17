@@ -46,7 +46,7 @@ const compact={name:'Brzi pregled',quickSummary:true,addedSheet:true,processed:t
   rows:[compactHeaders,['Acer campestre','Rasadnik A',80.5,'Arhiva · proveriti',
     'Visina: 250 cm (traženo 300 cm)','Rasadnik B',95,'Rasadnik C',110]]};
 const compactBytes=await Excel.build(template,[compact,...sheets.map(x=>({...x,processed:false}))],Zip,()=>{},original);
-const compactBook=XLSX.read(compactBytes,{type:'array',cellStyles:true});
+const compactBook=XLSX.read(compactBytes,{type:'array',cellStyles:true,cellDates:true});
 assert.equal(compactBook.SheetNames[0],'Brzi pregled','brief supplier/price overview must be first Excel tab');
 assert.deepEqual(compactBook.Sheets['Brzi pregled'].A2.v,'Acer campestre');
 assert.deepEqual(compactBook.Sheets['Brzi pregled'].B2.v,'Rasadnik A');
