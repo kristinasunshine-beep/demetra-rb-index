@@ -51,12 +51,13 @@ test('Offline shell does not cache catalog JSON, user quotes or archived prices'
   assert.doesNotMatch(service,/\.put\(/);
 });
 
-test('Final approved PWA tile uses the original frame green with high-contrast ring',()=>{
+test('Final approved PWA tile uses the original frame green without a decorative ring',()=>{
   for(const file of ['assets/icons/icon.svg','assets/icons/icon-maskable.svg']){
     const svg=txt(file);
     assert.match(svg,/<rect[^>]*fill="#606763"/,'exact original square stroke HEX');
-    assert.match(svg,/<circle[^>]*stroke="#FAF9F3"/,'light circle legible over green');
+    assert.doesNotMatch(svg,/<circle[^>]*cx="256"[^>]*cy="256"/,'no extra decorative circle around tree');
     assert.match(svg,/<g[^>]*stroke="#F9583B"/,'original coral plant symbol');
+    assert.match(svg,/<circle cx="16" cy="12" r="8.5"\/>/,'original circular treetop remains');
     assert.doesNotMatch(svg,/fill="#151918"/,'dark background removed');
   }
   const manifest=JSON.parse(txt('manifest.webmanifest'));
