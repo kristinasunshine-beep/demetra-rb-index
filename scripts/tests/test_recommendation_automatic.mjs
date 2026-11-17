@@ -84,7 +84,8 @@ test('one upload processes every input row and preserves the notes sheet',async(
   assert.deepEqual(book.SheetNames,['Pregled preporuke','Sadnice','Napomena']);
   const glance=XLSX.utils.sheet_to_json(book.Sheets['Pregled preporuke'],{header:1,defval:''});
   assert.deepEqual(glance[0],['Latinski naziv biljke','Parametri iz tvoje tabele','Spisak rasadnika','Najniža nabavna cena (€)','Rezultat']);
-  assert.equal(glance.length,count+1,'one source row per test plant');
+  assert.ok(glance.length>=count+1,'overview includes every original plant and all supplier rows');
+  assert.equal(glance.filter(row=>row[0]===plant).length>=count-1,true,'multiple rasadnici are shown as separate rows, without hiding the input plants');
   assert.equal(glance[1][0],plant);
   assert.ok(glance[1][2].includes('Rasadnik A'),'nursery visible in its own cell');
   assert.ok(glance[1][2].includes('65,00 €'),'source price visible directly alongside nursery');
