@@ -135,6 +135,12 @@ body.control-room .offer-visual{background:#E7EBE4;border-right:1px solid var(--
 body.control-room .offer-photo,body.control-room .plant-photo{border:0;background:#E7EBE4;overflow:hidden;margin:0;padding:0;min-height:245px;height:100%;aspect-ratio:auto}
 body.control-room .offer-photo img,body.control-room .plant-photo img{display:block;width:100%;height:100%;min-height:245px;object-fit:cover;object-position:center}
 body.control-room .plant-photo:empty{display:none}
+body.control-room .detail-hero.with-photo{display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:28px;align-items:center}
+body.control-room .detail-hero.with-photo .plant-photo{height:240px;min-height:0}
+body.control-room .detail-hero.with-photo .plant-photo img{height:100%;min-height:0;object-fit:contain}
+@media(max-width:760px){
+ body.control-room .detail-hero.with-photo{grid-template-columns:minmax(0,1fr);gap:20px}
+}
 body.control-room .supplier-variants{padding:0;border:0;margin:0}
 body.control-room .supplier-variants>summary{cursor:pointer;padding:15px 20px;background:#F4F6F1;border-top:1px solid var(--line);font:12px var(--mono);color:#475C4C}
 body.control-room .supplier-variants>summary:hover{background:#EDEFEA}

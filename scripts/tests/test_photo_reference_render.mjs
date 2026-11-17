@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -79,7 +80,35 @@ function requiredClass(markup, token) {
 function articles(markup) {
   return [...markup.matchAll(/<article\b[^>]*data-offer-id="([^"]+)"[\s\S]*?<\/article>/g)];
 }
-function assertOfferImage(markup, expectedImage, referenceFallback = false) {
+function hiddenOfferIds(markup) {
+  const hidden = new Set(), detailStack = [];
+  for (const [tag] of markup.matchAll(/<\/?(?:details|article)\b[^>]*>/g)) {
+    if (/^<\/details\b/.test(tag)) detailStack.pop();
+    else if (/^<details\b/.test(tag)) detailStack.push(!!detailStack.at(-1) ||
+      attribute(tag, 'class').split(/\s+/).includes('supplier-variants'));
+    else if (/^<article\b/.test(tag) && detailStack.at(-1)) hidden.add(attribute(tag, 'data-offer-id'));
+  }
+  return hidden;
+}
+function normalizedImage(value) {
+  const url = new URL(value.replace(/&amp;/g, '&'), document.baseURI);
+  url.hash = '';
+  return url.href;
+}
+let imageContentHashes = new Map();
+function photographIdentity(value) {
+  const url = normalizedImage(value);
+  return imageContentHashes.get(url) || url;
+}
+function assertUniqueImages(markup) {
+  const sources = tags(markup, 'img').map(match => normalizedImage(attribute(match[0], 'src')));
+  assert.equal(new Set(sources).size, sources.length,
+    'A photograph must appear only once across the whole plant card, including hidden variants');
+  assert.equal(new Set(sources.map(photographIdentity)).size, sources.length,
+    'Identical image bytes under different filenames must appear only once in a plant card');
+  return sources;
+}
+function assertOfferImage(markup, expectedImage) {
   requiredClass(markup, 'offer-card');
   const body = requiredClass(markup, 'offer-card-body');
   const details = requiredClass(markup, 'offer-details');
@@ -88,31 +117,44 @@ function assertOfferImage(markup, expectedImage, referenceFallback = false) {
   assert.equal(images.length, expectedImage ? 1 : 0, 'An offer must show exactly its expected image');
   assert.equal(classTags(markup, 'offer-visual').length, expectedImage ? 1 : 0, 'Unexpected .offer-visual container');
   assert.equal(classTags(markup, 'offer-photo').length, expectedImage ? 1 : 0, 'Unexpected .offer-photo container');
-  assert.equal(classTags(markup, 'record-photo-reference').length, referenceFallback ? 1 : 0,
-    'Only a plant-reference fallback has the photograph-of-species label');
+  assert.equal(classTags(markup, 'record-photo-reference').length, 0,
+    'A shared plant reference must never be copied into an offer');
   assert.equal(classTags(markup, 'empty-image').length, 0, 'Missing photographs must not leave placeholders');
   assert.equal(attribute(body[0], 'class').split(/\s+/).includes('without-photo'), !expectedImage);
   if (expectedImage) {
-    assert.equal(attribute(images[0][0], 'src'), new URL(expectedImage, document.baseURI).href,
-      'The image must belong to this offer or its exact plant');
+    assert.equal(normalizedImage(attribute(images[0][0], 'src')), normalizedImage(expectedImage),
+      'The image must belong to this exact offer');
     const visual = requiredClass(markup, 'offer-visual');
     assert(visual.index < images[0].index && images[0].index < details.index,
       'The photograph belongs in the offer visual before its details');
   }
 }
-function assertRecordLayout(markup) {
-  requiredClass(markup, 'detail-body');
+function assertRecordLayout(markup, expectedReference = '') {
+  const body = requiredClass(markup, 'detail-body');
   const hero = requiredClass(markup, 'detail-hero');
-  assert(attribute(hero[0], 'class').split(/\s+/).includes('without-photo'));
-  assert.equal(classTags(markup, 'plant-photo').length, 0, 'Photos belong to offers, not the record heading');
+  const heroClasses = attribute(hero[0], 'class').split(/\s+/);
+  assert.equal(heroClasses.includes('without-photo'), !expectedReference);
+  assert.equal(heroClasses.includes('with-photo'), !!expectedReference);
+  assert.equal(classTags(markup, 'plant-photo').length, expectedReference ? 1 : 0,
+    'The exact plant reference appears once in the record heading');
+  const heroImages = tags(markup.slice(hero.index, body.index), 'img');
+  assert.equal(heroImages.length, expectedReference ? 1 : 0);
+  if (expectedReference) {
+    const holder = requiredClass(markup, 'plant-photo');
+    assert(hero.index < holder.index && holder.index < body.index,
+      'The shared photograph belongs in the plant heading, outside every offer');
+    assert.equal(normalizedImage(attribute(heroImages[0][0], 'src')), normalizedImage(expectedReference),
+      'The heading photograph must belong to the exact plant');
+  }
+  assertUniqueImages(markup);
 }
 
 const reference = render();
 assert(reference.includes('src="https://example.test/demetra-rb-index/assets/biljke/reference-0123456789abcdef.jpg"'));
 assert.equal((reference.match(/<img\b/g) || []).length, 1);
-assertRecordLayout(reference);
+assertRecordLayout(reference, photo.image);
 const referenceArticle = articles(reference)[0][0];
-assertOfferImage(referenceArticle, photo.image, true);
+assertOfferImage(referenceArticle, '');
 assert(!reference.includes('Referentna fotografija'));
 assert(!reference.includes('Autor:'));
 assert(!reference.includes('commons.wikimedia.org'));
@@ -129,7 +171,8 @@ const supplier = render({ offerChanges: { image: 'assets/biljke/supplier.jpg',
   imageSourceUrl: 'https://example.org/nursery/acer', imageKind: 'Kataloška fotografija rasadnika' } });
 assert(supplier.includes('assets/biljke/supplier.jpg'));
 assert(!supplier.includes('Kataloška fotografija rasadnika'));
-assert.equal((supplier.match(/reference-0123456789abcdef\.jpg/g) || []).length, 0);
+assertRecordLayout(supplier, photo.image);
+assert.equal(tags(supplier, 'img').length, 2, 'A different original offer photo remains beside its offer');
 const supplierArticle = supplier.match(/<article\b[\s\S]*?<\/article>/)[0];
 assertOfferImage(supplierArticle, 'assets/biljke/supplier.jpg');
 assert(supplierArticle.includes('assets/biljke/supplier.jpg'));
@@ -161,12 +204,17 @@ assertOfferImage(articles(ownWithRejectedReference)[0][0], 'assets/biljke/suppli
 
 const empty = render({ offers: [] });
 assert(empty.includes('Ponude rasadnika za ovu biljku još nisu unete.'));
-assert.equal(tags(empty, 'img').length, 0);
+assertRecordLayout(empty, photo.image);
+assert.equal(tags(empty, 'img').length, 1, 'A known plant photograph remains visible without offers');
 assert.equal(articles(empty).length, 0);
 const review = render({ offerChanges: { recordStatus: 'needs_review' } });
 assert(review.includes('Tačnost podataka'));
-assert.equal(tags(review, 'img').length, 0);
+assertRecordLayout(review, photo.image);
+assert.equal(tags(review, 'img').length, 1);
 assert.equal(articles(review).length, 0);
+const emptyWithoutPhoto = render({ offers: [], plantChanges: { photo: null } });
+assertRecordLayout(emptyWithoutPhoto);
+assert.equal(tags(emptyWithoutPhoto, 'img').length, 0);
 const missing = render({ plantChanges: { photo: null } });
 assert(!missing.includes('<img'));
 assert(!missing.includes('Fotografija nije dostupna u obrađenom izvoru'));
@@ -177,20 +225,135 @@ const multipleSuppliers = render({
   offers: [offer, { ...offer, id: 'offer-a2', circumference: '18–20' },
     { ...offer, id: 'offer-b', nurseryId: 'nursery-b', image: 'assets/biljke/lorberg.jpg' }]
 });
-assert.equal((multipleSuppliers.match(/reference-0123456789abcdef\.jpg/g) || []).length, 2,
-  'Each offer without its own image receives the photograph of the same plant.');
+assertRecordLayout(multipleSuppliers, photo.image);
+assert.equal((multipleSuppliers.match(/reference-0123456789abcdef\.jpg/g) || []).length, 1,
+  'All variants share a single plant photograph in the heading.');
 const supplierArticles = [...multipleSuppliers.matchAll(/<article\b[^>]*data-offer-id="([^"]+)"[\s\S]*?<\/article>/g)];
 assert.equal(supplierArticles.length, 3);
 for (const [markup, id] of supplierArticles) {
-  assertOfferImage(markup, id === 'offer-b' ? 'assets/biljke/lorberg.jpg' : photo.image, id !== 'offer-b');
+  assertOfferImage(markup, id === 'offer-b' ? 'assets/biljke/lorberg.jpg' : '');
 }
 for (const noOffers of [empty, review]) {
-  assertRecordLayout(noOffers);
+  assertRecordLayout(noOffers, photo.image);
   assert.equal(classTags(noOffers, 'offer-visual').length, 0);
   assert.equal(classTags(noOffers, 'empty-image').length, 0);
 }
 
-// The fallback is linked by plant identity, never borrowed from a similar cultivar.
+// Deduplicate original photographs across suppliers and collapsed variants,
+// while preserving every distinct original with the offer that supplied it.
+const repeatedOptions = {
+  nurseries: [{ id: 'nursery-a', name: 'Arbor' }, { id: 'nursery-b', name: 'Lorberg' }],
+  offers: [
+    { ...offer, image: 'assets/biljke/supplier.jpg' },
+    { ...offer, id: 'offer-a2', image: 'https://EXAMPLE.test:443/demetra-rb-index/assets/biljke/../biljke/supplier.jpg#detail' },
+    { ...offer, id: 'offer-a3', image: 'https://example.org/plant.jpg?view=front&size=large' },
+    { ...offer, id: 'offer-b', nurseryId: 'nursery-b', image: 'https://example.test/demetra-rb-index/assets/biljke/supplier.jpg' },
+    { ...offer, id: 'offer-b2', nurseryId: 'nursery-b', image: 'https://example.org/plant.jpg?view=back&size=large' },
+    { ...offer, id: 'offer-b3', nurseryId: 'nursery-b', image: 'https://example.org/plant.jpg?view=front&size=large' }
+  ]
+};
+const repeated = render(repeatedOptions);
+assertRecordLayout(repeated, photo.image);
+assert.equal(classTags(repeated, 'supplier-variants').length, 2);
+const repeatedExpected = new Map([
+  ['offer-a', 'assets/biljke/supplier.jpg'], ['offer-a2', ''],
+  ['offer-a3', 'https://example.org/plant.jpg?view=front&size=large'], ['offer-b', ''],
+  ['offer-b2', 'https://example.org/plant.jpg?view=back&size=large'], ['offer-b3', '']
+]);
+for (const [markup, id] of articles(repeated)) assertOfferImage(markup, repeatedExpected.get(id));
+assert.equal(tags(repeated, 'img').length, 4,
+  'One shared reference and three different originals are displayed, including collapsed variants');
+const withoutReference = render({ ...repeatedOptions, plantChanges: { photo: null } });
+assertRecordLayout(withoutReference);
+assert.equal(tags(withoutReference, 'img').length, 3, 'Original deduplication also works without a shared reference');
+for (const [markup, id] of articles(withoutReference)) assertOfferImage(markup, repeatedExpected.get(id));
+
+const heroDuplicate = render({ offers: [
+  { ...offer, image: photo.image },
+  { ...offer, id: 'offer-a2', image: new URL(photo.image, document.baseURI).href + '#same-photo' }
+] });
+assertRecordLayout(heroDuplicate, photo.image);
+assert.equal(tags(heroDuplicate, 'img').length, 1, 'The heading takes precedence over matching offer images');
+for (const [markup] of articles(heroDuplicate)) assertOfferImage(markup, '');
+const embedded = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aQy8AAAAASUVORK5CYII=';
+const repeatedEmbedded = render({ plantChanges: { photo: null }, offers: [
+  { ...offer, image: embedded }, { ...offer, id: 'offer-a2', image: embedded }
+] });
+assertRecordLayout(repeatedEmbedded);
+assert.equal(tags(repeatedEmbedded, 'img').length, 1, 'Imported embedded originals are deduplicated too');
+
+const visiblePriority = render({
+  nurseries: repeatedOptions.nurseries,
+  offers: [{ ...offer, image: 'assets/biljke/first-original.jpg' },
+    { ...offer, id: 'offer-a2', image: 'assets/biljke/other-original.jpg' },
+    { ...offer, id: 'offer-b', nurseryId: 'nursery-b', image: 'assets/biljke/other-original.jpg' }]
+});
+assertRecordLayout(visiblePriority, photo.image);
+assert(hiddenOfferIds(visiblePriority).has('offer-a2'));
+for (const [markup, id] of articles(visiblePriority)) {
+  assertOfferImage(markup, id === 'offer-a' ? 'assets/biljke/first-original.jpg' :
+    id === 'offer-b' ? 'assets/biljke/other-original.jpg' : '');
+}
+
+// Different filenames can hold exactly the same photograph. The content map
+// must suppress those copies without hiding genuinely different originals.
+const fixtureIdentities = { schemaVersion: 1, identities: {
+  [photo.image]: 'a'.repeat(64),
+  'assets/biljke/copy-of-reference.jpg': 'a'.repeat(64),
+  'assets/biljke/another-original.jpg': 'b'.repeat(64),
+  'assets/biljke/copy-of-original.jpg': 'b'.repeat(64)
+} };
+context.identitiesJSON = JSON.stringify(fixtureIdentities);
+run('setPhotoIdentities(JSON.parse(identitiesJSON));');
+imageContentHashes = new Map(Object.entries(fixtureIdentities.identities).map(([path, hash]) =>
+  [normalizedImage(path), 'sha256:' + hash]));
+const sameBytes = render({ offers: [
+  { ...offer, image: 'assets/biljke/copy-of-reference.jpg' },
+  { ...offer, id: 'offer-a2', image: 'assets/biljke/another-original.jpg' },
+  { ...offer, id: 'offer-a3', image: 'assets/biljke/copy-of-original.jpg' }
+] });
+assertRecordLayout(sameBytes, photo.image);
+assert.equal(tags(sameBytes, 'img').length, 2);
+for (const [markup, id] of articles(sameBytes)) {
+  assertOfferImage(markup, id === 'offer-a2' ? 'assets/biljke/another-original.jpg' : '');
+}
+assert.throws(() => assertUniqueImages(sameBytes + '<img src="assets/biljke/copy-of-reference.jpg">'),
+  /Identical image bytes/);
+const sameBytesPriority = render({ plantChanges: { photo: null }, nurseries: repeatedOptions.nurseries,
+  offers: [offer, { ...offer, id: 'offer-a2', image: 'assets/biljke/another-original.jpg' },
+    { ...offer, id: 'offer-b', nurseryId: 'nursery-b', image: 'assets/biljke/copy-of-original.jpg' }]
+});
+assertRecordLayout(sameBytesPriority);
+for (const [markup, id] of articles(sameBytesPriority)) {
+  assertOfferImage(markup, id === 'offer-b' ? 'assets/biljke/copy-of-original.jpg' : '');
+}
+run('setPhotoIdentities({schemaVersion: 1, identities: {}});');
+imageContentHashes = new Map();
+
+// Reopening a card starts a fresh set. A previous plant must never consume
+// the photographs of another plant, even when the stored URL is shared.
+context.inputJSON = JSON.stringify(fixture(repeatedOptions));
+run('state.catalog = validateImport(JSON.parse(inputJSON)).data; renderRecord(plantById("plant-a"));');
+const firstOpening = elements.get('plant-dialog-content').innerHTML;
+run('renderRecord(plantById("plant-a"));');
+assert.equal(elements.get('plant-dialog-content').innerHTML, firstOpening,
+  'Reopening the same plant must restore all unique photographs');
+const sharedAcrossPlants = {
+  plants: [{ id: 'plant-a', latinName: "Acer campestre 'Elsrijk'", photo },
+    { id: 'plant-b', latinName: "Acer campestre 'Elsrijk'", photo }],
+  offers: [offer, { ...offer, id: 'offer-other', plantId: 'plant-b' }]
+};
+context.inputJSON = JSON.stringify(fixture(sharedAcrossPlants));
+run('state.catalog = validateImport(JSON.parse(inputJSON)).data;');
+for (const id of ['plant-a', 'plant-b', 'plant-a']) {
+  context.plantId = id;
+  run('renderRecord(plantById(plantId));');
+  const markup = elements.get('plant-dialog-content').innerHTML;
+  assertRecordLayout(markup, photo.image);
+  assert.equal(tags(markup, 'img').length, 1, 'Photo deduplication is scoped to each rendered card');
+}
+
+// The shared photograph is linked by plant identity, never borrowed from a similar cultivar.
 const otherPhoto = { image: 'assets/biljke/reference-fedcba9876543210.jpg',
   sourceUrl: 'https://www.arbor.be/plants/acer-campestre-elegant' };
 const cultivars = {
@@ -203,17 +366,20 @@ const cultivars = {
 for (const [id, image] of [['plant-a', photo.image], ['plant-b', otherPhoto.image], ['plant-c', '']]) {
   const markup = render(cultivars, id), shown = articles(markup);
   assert.equal(shown.length, 1);
-  assertOfferImage(shown[0][0], image, !!image);
+  assertRecordLayout(markup, image);
+  assertOfferImage(shown[0][0], '');
   assert.equal(tags(markup, 'img').length, image ? 1 : 0);
 }
 
 // Presentation class additions are harmless; missing containers, wrong plants,
 // and repeated images must still make the verification fail.
-assertOfferImage(referenceArticle.replace('class="offer-card-body"', 'class="layout offer-card-body compact"'), photo.image, true);
-assert.throws(() => assertRecordLayout(reference.replace('class="detail-body"', 'class="detail-body-missing"')), /detail-body/);
-assert.throws(() => assertOfferImage(referenceArticle.replace('class="offer-visual"', 'class="offer-visual-missing"'), photo.image, true), /offer-visual/);
-assert.throws(() => assertOfferImage(referenceArticle.replace(photo.image, otherPhoto.image), photo.image, true), /exact plant/);
-assert.throws(() => assertOfferImage(referenceArticle.replace('</article>', '<img src="extra.jpg"></article>'), photo.image, true), /expected image/);
+assertOfferImage(supplierArticle.replace('class="offer-card-body"', 'class="layout offer-card-body compact"'), 'assets/biljke/supplier.jpg');
+assert.throws(() => assertRecordLayout(reference.replace('class="detail-body"', 'class="detail-body-missing"'), photo.image), /detail-body/);
+assert.throws(() => assertOfferImage(supplierArticle.replace('class="offer-visual"', 'class="offer-visual-missing"'), 'assets/biljke/supplier.jpg'), /offer-visual/);
+assert.throws(() => assertRecordLayout(reference.replace(photo.image, otherPhoto.image), photo.image), /exact plant/);
+assert.throws(() => assertOfferImage(supplierArticle.replace('assets/biljke/supplier.jpg', otherPhoto.image), 'assets/biljke/supplier.jpg'), /exact offer/);
+assert.throws(() => assertOfferImage(referenceArticle.replace('</article>', '<img src="extra.jpg"></article>'), ''), /expected image/);
+assert.throws(() => assertUniqueImages(reference + '<img src="' + photo.image + '">'), /only once/);
 
 const escaped = render({ photoChanges: { ...legacyPhoto, author: '<img src=x onerror=alert(1)>',
   license: '<script>alert(1)</script>' } });
@@ -242,6 +408,34 @@ const [plantData, nurseryData, offerData] = await Promise.all(
   ['biljke.json', 'rasadnici.json', 'kataloske-stavke.json'].map(async name =>
     JSON.parse(await readFile(root + '/data/' + name, 'utf8')))
 );
+const identityData = JSON.parse(await readFile(root + '/assets/photo-identities.json', 'utf8'));
+assert.equal(identityData.schemaVersion, 1);
+assert(identityData.identities && typeof identityData.identities === 'object');
+const localImagePaths = [...new Set([
+  ...plantData.plants.map(plant => plant.photo?.image),
+  ...offerData.offers.map(offer => offer.image)
+].filter(path => typeof path === 'string' && /^assets\/biljke\/[a-zA-Z0-9_-]+\.(?:jpg|jpeg|png|webp)$/i.test(path)))];
+// Hash the real file bytes independently: trusting the supplied identity map
+// alone could let a missing or stale entry hide a duplicate from this test.
+const actualHashes = new Map(await Promise.all(localImagePaths.map(async path =>
+  [path, createHash('sha256').update(await readFile(root + '/' + path)).digest('hex')])));
+const pathsByHash = new Map();
+for (const [path, hash] of actualHashes) {
+  if (!pathsByHash.has(hash)) pathsByHash.set(hash, []);
+  pathsByHash.get(hash).push(path);
+}
+for (const [path, hash] of Object.entries(identityData.identities)) {
+  assert.equal(actualHashes.get(path), hash, 'The content identity must match an actual catalog image: ' + path);
+}
+const duplicateContentGroups = [...pathsByHash.values()].filter(paths => paths.length > 1);
+for (const paths of duplicateContentGroups) {
+  for (const path of paths) assert.equal(identityData.identities[path], actualHashes.get(path),
+    'Every filename for identical image bytes must be covered by the public map: ' + path);
+}
+imageContentHashes = new Map([...actualHashes].map(([path, hash]) =>
+  [normalizedImage(path), 'sha256:' + hash]));
+context.identitiesJSON = JSON.stringify(identityData);
+run('setPhotoIdentities(JSON.parse(identitiesJSON));');
 context.inputJSON = JSON.stringify({ schemaVersion: 1, sourcePolicy: offerData.sourcePolicy,
   plants: plantData.plants, nurseries: nurseryData.nurseries, offers: offerData.offers,
   updatedAt: offerData.updatedAt });
@@ -249,12 +443,12 @@ run('state.catalog = validateImport(JSON.parse(inputJSON)).data;');
 const offerById = new Map(offerData.offers.map(item => [item.id, item]));
 const activeOffers = offerData.offers.filter(item => !['needs_review', 'superseded'].includes(item.recordStatus));
 const seenOfferIds = new Set();
-let cardsChecked = 0, offersChecked = 0, supplierImagesChecked = 0, referenceFallbacksChecked = 0;
+let cardsChecked = 0, offersChecked = 0, supplierImagesChecked = 0, sharedReferencesChecked = 0;
+let repeatedOriginalsSuppressed = 0, collapsedVariantGroupsChecked = 0;
 for (const plant of plantData.plants) {
   context.plantId = plant.id;
   run('renderRecord(plantById(plantId));');
   const markup = elements.get('plant-dialog-content').innerHTML;
-  assertRecordLayout(markup);
   const displayed = articles(markup);
   assert.deepEqual(displayed.map(([, id]) => id).sort(),
     activeOffers.filter(item => item.plantId === plant.id).map(item => item.id).sort(),
@@ -262,22 +456,39 @@ for (const plant of plantData.plants) {
   const referenceHost = plant.photo ? new URL(plant.photo.sourceUrl).hostname : '';
   const allowedReference = plant.photo && !plant.photo.matchLevel &&
     !['commons.wikimedia.org', 'www.gbif.org', 'gbif.org'].includes(referenceHost) ? plant.photo.image : '';
-  let expectedImages = 0;
+  assertRecordLayout(markup, allowedReference);
+  collapsedVariantGroupsChecked += classTags(markup, 'supplier-variants').length;
+  const expectedSources = new Map(allowedReference ?
+    [[photographIdentity(allowedReference), normalizedImage(allowedReference)]] : []);
+  const hidden = hiddenOfferIds(markup), expectedByOffer = new Map();
+  // Main offers are visible before expansion, so they have priority over a
+  // matching photograph in any supplier's collapsed additional variants.
+  const visibleFirst = [...displayed.filter(([, id]) => !hidden.has(id)),
+    ...displayed.filter(([, id]) => hidden.has(id))];
+  for (const [, id] of visibleFirst) {
+    const original = offerById.get(id).image;
+    const key = original ? photographIdentity(original) : '';
+    if (key && !expectedSources.has(key)) {
+      expectedByOffer.set(id, original);
+      expectedSources.set(key, normalizedImage(original));
+    }
+  }
+  if (allowedReference) sharedReferencesChecked++;
   for (const [article, id] of displayed) {
     const source = offerById.get(id);
     assert(source, 'Unknown displayed offer: ' + id);
     assert.equal(source.plantId, plant.id, 'An offer must stay with its own plant: ' + id);
     assert(!seenOfferIds.has(id), 'Offer rendered more than once: ' + id);
-    const expectedImage = source.image || allowedReference;
-    assertOfferImage(article, expectedImage, !!expectedImage && !source.image);
-    if (expectedImage) expectedImages++;
-    if (source.image) supplierImagesChecked++;
-    else if (expectedImage) referenceFallbacksChecked++;
+    const expectedImage = expectedByOffer.get(id) || '';
+    assertOfferImage(article, expectedImage);
+    if (expectedImage) {
+      supplierImagesChecked++;
+    } else if (source.image) repeatedOriginalsSuppressed++;
     seenOfferIds.add(id);
     offersChecked++;
   }
-  assert.equal(tags(markup, 'img').length, expectedImages,
-    'No additional or cross-plant image may appear outside the offers: ' + plant.latinName);
+  assert.deepEqual(assertUniqueImages(markup).sort(), [...expectedSources.values()].sort(),
+    'Only this plant reference and its distinct original offer photographs may appear: ' + plant.latinName);
   cardsChecked++;
 }
 assert.equal(offersChecked, activeOffers.length);
@@ -303,9 +514,14 @@ context.failedPhoto = {closest: selector => selector === '.offer-visual' ? visua
 run('hideFailedPhoto(failedPhoto)');
 assert(visualRemoved && offerClasses.has('without-photo'));
 
-console.log(JSON.stringify({ ok: true, referenceFallbackPerOffer: true,
-  supplierPhotosTakePriority: true, samePlantAndCultivarOnly: true,
-  cardsChecked, offersChecked, supplierImagesChecked, referenceFallbacksChecked,
+console.log(JSON.stringify({ ok: true, sharedReferenceOnceInHeading: true,
+  distinctSupplierPhotosPreserved: true, samePlantAndCultivarOnly: true,
+  cardsChecked, offersChecked, supplierImagesChecked, sharedReferencesChecked,
+  repeatedOriginalsSuppressed, collapsedVariantGroupsChecked,
+  uniqueImageSourcesPerCard: true, normalizedUrlsDeduplicated: true,
+  localImageFilesHashed: actualHashes.size, duplicateContentGroupsChecked: duplicateContentGroups.length,
+  uniqueImageContentPerCard: true, visibleOriginalsTakePriority: true,
+  reopenedCardsRestoreImages: true, referencesVisibleWithoutOffers: true,
   allActiveOffersChecked: true, compactPhotoRecordsSupported: true,
   publicTechnicalPhotoMetadataHidden: true, unsafeLegacyReferencesHidden: true,
   emptyRecordsHaveNoPhotoPlaceholder: true, malformedContainersRejected: true,

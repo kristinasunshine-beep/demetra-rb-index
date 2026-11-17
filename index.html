@@ -843,7 +843,7 @@ body[data-view="search"] .search-field:focus-within .search-icon { color:var(--a
 </style>
       <link rel="stylesheet" href="./assets/moja-ponuda.css">
       <link rel="stylesheet" href="./assets/brza-preporuka.css?v=auto-20261113">
-      <link rel="stylesheet" href="./assets/control-room.css?v=restored-20261117">
+      <link rel="stylesheet" href="./assets/control-room.css?v=photo-dedup-20261117">
     <link rel="stylesheet" href="./assets/control-room-mobile-outline.css?v=02w-20261117">
   </head>
   <body class="control-room" data-view="search">
@@ -1374,13 +1374,35 @@ function imageMarkup(value, alt) {
   return src ? '<img src="' + escapeHTML(src) + '" alt="' + escapeHTML(alt) + '" loading="lazy" data-catalog-image>' : '';
 }
 
-function referencePhotoMarkup(plant) {
+function setPhotoIdentities(value) {
+  state.photoIdentities = new Map();
+  if (value?.schemaVersion !== 1 || !value.identities || typeof value.identities !== 'object') return;
+  for (const [path, hash] of Object.entries(value.identities)) {
+    if (/^assets\/biljke\/[a-zA-Z0-9_-]+\.(?:jpg|jpeg|png|webp)$/i.test(path) && /^[0-9a-f]{64}$/.test(hash)) {
+      state.photoIdentities.set(imageURL(path), 'sha256:' + hash);
+    }
+  }
+}
+
+function uniquePhoto(value, shownPhotos) {
+  const src = imageURL(value);
+  if (!src) return '';
+  const key = new URL(src, document.baseURI);
+  key.hash = '';
+  const identity = state.photoIdentities?.get(key.href) || key.href;
+  if (shownPhotos.has(identity)) return '';
+  shownPhotos.add(identity);
+  return src;
+}
+
+function referencePhotoMarkup(plant, shownPhotos = new Set()) {
   const photo = plant.photo;
   if (!photo || !imageURL(photo.image)) return '';
   // Legacy references that need attribution or show only a cultivar's parent
   // species cannot be displayed as an unlabelled exact photograph.
   if (photo.matchLevel || /(?:commons\.wikimedia\.org|(?:^|\/)www\.gbif\.org)/i.test(photo.sourceUrl || '')) return '';
-  return '<div class="plant-photo">' + imageMarkup(photo.image, plant.latinName) + '</div>';
+  const src = uniquePhoto(photo.image, shownPhotos);
+  return src ? '<div class="plant-photo">' + imageMarkup(src, plant.latinName) + '</div>' : '';
 }
 
 function formattedDate(value) {
@@ -1590,7 +1612,7 @@ function offerParameters(offer) {
   ];
 }
 
-function renderOffer(offer, plant, nursery) {
+function renderOffer(offer, plant, nursery, photoValue = offer.image) {
   const measurements = offerParameters(offer);
   const dataNotes = visibleDataNotes(offer);
   const priceNote = visiblePriceNote(offer);
@@ -1601,15 +1623,12 @@ function renderOffer(offer, plant, nursery) {
   const sourceTiming = [offer.sourceDate ? 'Datum izvora: ' + formattedDate(offer.sourceDate) :
     offer.sourcePeriod ? 'Period izvora: ' + offer.sourcePeriod : 'Datum objave nije naveden',
     offer.checkedAt ? 'Provereno: ' + formattedDate(offer.checkedAt) : ''].filter(Boolean).join(' · ');
-  const referenceAllowed = !!(plant.photo && !plant.photo.matchLevel && !/(?:commons\.wikimedia\.org|(?:^|\/)www\.gbif\.org)/i.test(plant.photo.sourceUrl || ''));
-  const photoValue = offer.image || (referenceAllowed ? plant.photo.image : '');
   const supplierPhoto = imageURL(photoValue);
-  const photoMarkup = supplierPhoto ? '<div class="offer-photo">' + imageMarkup(photoValue, plant.latinName + (offer.image ? ' — ' + nursery.name : ' — fotografija vrste')) + '</div>' : '';
-  const photoSource = supplierPhoto && !offer.image ? '<div class="record-photo-reference">Fotografija vrste</div>' : '';
+  const photoMarkup = supplierPhoto ? '<div class="offer-photo">' + imageMarkup(photoValue, plant.latinName + ' — ' + nursery.name) + '</div>' : '';
 
   return '<article class="offer-card" data-offer-id="' + escapeHTML(offer.id) + '">' +
     '<div class="offer-card-body' + (supplierPhoto ? '' : ' without-photo') + '">' +
-    (photoMarkup ? '<div class="offer-visual">' + photoMarkup + photoSource + '</div>' : '') +
+    (photoMarkup ? '<div class="offer-visual">' + photoMarkup + '</div>' : '') +
     '<div class="offer-details"><div class="offer-topline"><span class="availability">' +
     escapeHTML(offer.availability || 'Dostupnost nije navedena') + '</span>' +
     (offer.demo || nursery.demo ? '<span class="demo-badge">Demo ponuda</span>' : '') +
@@ -1657,22 +1676,31 @@ function renderEmptyRecord(plant) {
 
 function renderRecord(plant) {
   const offers = offersFor(plant.id);
-  const plantPhoto = referencePhotoMarkup(plant);
   const nurseryIds = [...new Set(offers.map((offer) => offer.nurseryId))].sort((left, right) =>
     (nurseryById(left)?.name || '').localeCompare(nurseryById(right)?.name || '')
   );
+  const groups = nurseryIds.map(id => offers.filter(offer => offer.nurseryId === id));
+  const shownPhotos = new Set();
+  const plantPhoto = referencePhotoMarkup(plant, shownPhotos);
+  const offerPhotos = new Map();
+  // A photo shared with a collapsed variant belongs to a visible offer first.
+  // Keep this plan local to the record so reopening any plant restores its photos.
+  for (const offer of [...groups.map(variants => variants[0]), ...groups.flatMap(variants => variants.slice(1))]) {
+    const src = uniquePhoto(offer.image, shownPhotos);
+    if (src) offerPhotos.set(offer.id, src);
+  }
   $('plant-dialog-content').innerHTML =
     '<div class="dialog-topline detail-topline"><span class="dialog-topline-label">' + escapeHTML(plant.latinName) + '</span>' +
     '<div class="detail-topline-actions"><button type="button" class="record-quote-link" data-action="open-my-quote">Moja ponuda <span class="record-quote-count" aria-hidden="true">(0)</span> ↗</button><button type="button" class="icon-button" data-action="close-record" aria-label="Zatvori zapis i vrati se na pretragu">' +
     closeIcon + '</button></div></div>' +
-    '<div class="detail-hero without-photo"><div class="detail-hero-copy"><p class="category-label">' +
+    '<div class="detail-hero ' + (plantPhoto ? 'with-photo' : 'without-photo') + '"><div class="detail-hero-copy"><p class="category-label">' +
     escapeHTML(plant.category || 'Biljka') + (plant.demo ? ' · DEMO ZAPIS' : '') +
     '</p><h2 id="plant-detail-title">' + escapeHTML(plant.latinName) + '</h2>' +
     '<p class="detail-common">' + domesticMarkup(plant, 'detail-common-text') + '</p>' +
     (plant.description ? '<p class="detail-description">' + escapeHTML(plant.description) + '</p>' : '') +
     (plant.synonyms?.length ? '<p class="detail-synonyms">Drugi nazivi: ' + escapeHTML(plant.synonyms.join(' · ')) + '</p>' : '') +
     '<div class="detail-meta"><span>' + escapeHTML(nurseryCountLabel(nurseryIds.length) + ' · ' + offerCountLabel(offers.length)) +
-    '</span></div></div></div><div class="detail-body">' +
+    '</span></div></div>' + plantPhoto + '</div><div class="detail-body">' +
     '<details class="record-extra-info"><summary>Dodatni podaci o biljci</summary>' +
     '<p><strong>Kategorija:</strong> ' + escapeHTML(plant.category || 'Biljka') + '</p>' +
     '<p><strong>Srpski naziv:</strong> ' + escapeHTML(domesticLabel(plant).name || 'Nije potvrđen') +
@@ -1681,14 +1709,14 @@ function renderRecord(plant) {
     (plant.synonyms?.length ? '<p><strong>Drugi nazivi:</strong> ' + escapeHTML(plant.synonyms.join(' · ')) + '</p>' : '') +
     '<p>' + escapeHTML(nurseryCountLabel(nurseryIds.length) + ' · ' + offerCountLabel(offers.length)) + '</p></details>' +
     '<h3 class="section-label">Kataloški zapisi rasadnika</h3>' +
-    (offers.length ? nurseryIds.map((nurseryId) => {
+    (offers.length ? nurseryIds.map((nurseryId, groupIndex) => {
       const nursery = nurseryById(nurseryId) || { id: nurseryId, name: 'Rasadnik nije naveden', country: '' };
-      const variants = offers.filter((offer) => offer.nurseryId === nurseryId);
+      const variants = groups[groupIndex];
       return '<section class="supplier-group"><div class="supplier-group-heading"><h3>' +
         escapeHTML(nursery.name) + '</h3><span class="supplier-country">' +
         escapeHTML(nursery.country || '') + '</span></div>' +
-        renderOffer(variants[0], plant, nursery) +
-        (variants.length > 1 ? '<details class="supplier-variants"><summary>Prikaži ostale varijante (' + (variants.length - 1) + ')</summary>' + variants.slice(1).map((offer) => renderOffer(offer, plant, nursery)).join('') + '</details>' : '') +
+        renderOffer(variants[0], plant, nursery, offerPhotos.get(variants[0].id) || '') +
+        (variants.length > 1 ? '<details class="supplier-variants"><summary>Prikaži ostale varijante (' + (variants.length - 1) + ')</summary>' + variants.slice(1).map((offer) => renderOffer(offer, plant, nursery, offerPhotos.get(offer.id) || '')).join('') + '</details>' : '') +
         '</section>';
     }).join('') : renderEmptyRecord(plant)) +
     '</div>';
@@ -1869,17 +1897,20 @@ async function init() {
   document.title = 'demetra rb index';
   input.setAttribute('aria-busy', 'true');
   try {
-    const [plants, nurseries, offers] = await Promise.all(
-      ['biljke.json', 'rasadnici.json', 'kataloske-stavke.json'].map(async (name) => {
+    const [plants, nurseries, offers, photoIdentities] = await Promise.all([
+      ...['biljke.json', 'rasadnici.json', 'kataloske-stavke.json'].map(async (name) => {
         const response = await fetch(new URL('./data/' + name, document.baseURI), { cache: 'no-store' });
         if (!response.ok) throw new Error('Katalog nije dostupan.');
         return response.json();
-      })
-    );
+      }),
+      fetch(new URL('./assets/photo-identities.json', document.baseURI), { cache: 'no-store' })
+        .then(response => response.ok ? response.json() : null).catch(() => null)
+    ]);
     const result = validateImport({ schemaVersion: 1, sourcePolicy: offers.sourcePolicy,
       plants: plants.plants, nurseries: nurseries.nurseries,
       offers: offers.offers, favorites: [], updatedAt: offers.updatedAt });
     state.catalog = freezeDeep(result.data);
+    setPhotoIdentities(photoIdentities);
     quoteApp?.refresh();
     input.removeAttribute('aria-busy');
     if (input.value.trim()) updateSearch();

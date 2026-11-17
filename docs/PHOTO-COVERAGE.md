@@ -13,13 +13,15 @@ Repozitorijum mora dozvoljavati Actions upis na `main`, a Pages treba da ostane 
 
 ## Kako bira fotografiju
 
-Postojeće ispravne fotografije se zadržavaju. Za biljke koje čekaju sliku redosled je: **rasadnik iz ponude → drugi odobreni rasadnik → Wikimedia Commons → GBIF**. Paket koristi postojeća pravila rasadničkih izvora i uključenu foto konfiguraciju; nije potrebno ručno povezivanje svake biljke.
+Postojeće ispravne fotografije iz dozvoljenih izvora se zadržavaju. Za biljke koje čekaju sliku redosled je: **fotografija iz dostavljene ponude → zvanični katalog odgovarajućeg rasadnika → zvanični katalog drugog odobrenog rasadnika iz ponuda**. Rasadnik mora biti zastupljen u dostavljenim ponudama. Commons, GBIF, opšti pretraživači slika i rasadnici bez ponude nisu izvori fotografija. Paket koristi pravila rasadničkih izvora i uključenu foto konfiguraciju; nije potrebno ručno povezivanje svake biljke.
 
 Pre mrežne pretrage automatski se obnavljaju pouzdane veze sa fotografijama iz ranije arhive projekta. Moraju se poklopiti tačna biljka, rasadnik, lokalna putanja i izvorna stranica, a završni deo URL-a mora odgovarati punom botaničkom nazivu. Ako je ista slika nejasno povezana sa različitim kultivarima, odbacuju se sve sporne veze. Ovo je obnova postojeće arhivske evidencije, bez tvrdnje da je udaljeni izvor ponovo potvrđen.
 
 Traži se pun botanički naziv, uključujući kultivar. Fotografija vrste ne zamenjuje automatski fotografiju njenog kultivara. Približan naziv, nejasan identitet ili nepodržana prava korišćenja ostavljaju biljku u spisku za dopunu. Slika se pre povezivanja proverava i čuva lokalno u `assets/biljke/`.
 
-Javne kartice prikazuju fotografiju bez dodatnog foto panela, tehničkih oznaka, autora, licence ili izvornog URL-a. Podaci biljke čuvaju putanju slike i izvorni URL; dokazi pretrage ostaju u zasebnoj evidenciji. Rasadničke fotografije koriste već uspostavljena pravila izvora u ovom katalogu; ta oznaka nije nova pravna provera dozvole. Commons/GBIF automatski dopunjuju samo fotografije sa izričitom podržanom CC0 ili public-domain oznakom konkretnog medija, bez obaveze navođenja autora na kartici. Ranije reference koje su bile samo primer vrste za kultivar ili zahtevale javnu atribuciju ne pretvaraju se u potvrđene slike kultivara.
+Javne kartice prikazuju fotografiju bez dodatnog foto panela, tehničkih oznaka, autora, licence ili izvornog URL-a. Podaci biljke čuvaju putanju slike i izvorni URL; dokazi pretrage ostaju u zasebnoj evidenciji. Rasadničke fotografije koriste već uspostavljena pravila izvora u ovom katalogu; ta oznaka nije nova pravna provera dozvole. Ranije reference iz nedozvoljenih izvora ili primeri vrste za kultivar ne pretvaraju se u potvrđene slike kultivara.
+
+Ista fotografija prikazuje se jednom na celoj kartici biljke, uključujući sve ponude i njihove varijante. Referenca se prikazuje u zaglavlju biljke, a različite originalne fotografije uz odgovarajuće ponude. `scripts/build_photo_identities.py` pri svakoj objavi obnavlja javnu mapu `assets/photo-identities.json`: različite lokalne putanje sa potpuno istim sadržajem dobijaju isti SHA-256 identitet. Postojeće fotografije i podaci ponuda ostaju neizmenjeni.
 
 ## Izveštaj i nastavak
 
@@ -27,7 +29,7 @@ Javne kartice prikazuju fotografiju bez dodatnog foto panela, tehničkih oznaka,
 | --- | --- |
 | `docs/photo-coverage.json` | Stvarna pokrivenost celog kataloga i biljke koje još čekaju fotografiju. |
 | `docs/full-photo-state.json` | Sačuvan red pretrage, pokušaji i nastavak narednog prolaza. |
-| `docs/full-photo-manifest.json` | Izvori, potvrde identiteta, postojeće rasadničko pravilo ili potvrđena otvorena licenca medija. |
+| `docs/full-photo-manifest.json` | Izvori, potvrde identiteta i pravila korišćenja dozvoljenih rasadničkih fotografija. |
 | `docs/photo-pipeline-report.json` | Rezultat poslednje obrade i eventualne greške. |
 
 Jedan prolaz osvežava indeks do 3 minuta, zatim obrađuje fotografije do 20 minuta uz najviše 2.500 zahteva. Koristi do osam paralelnih pretraga, uz najviše dva istovremena zahteva ka istom izvoru. Potvrđeni kandidati se čuvaju za nastavak. Svaki prolaz obuhvata ceo katalog u izveštaju; pretrage koje nisu stale u budžet nastavljaju se iz sačuvanog reda. Biljke za koje odgovarajuća slika nije pronađena ponovo dolaze na red nakon jednog dana. Zadržan je postojeći dnevni raspored u **04:23 UTC** (05:23 zimi, 06:23 leti po srednjoevropskom vremenu). Moguće je i ručno ponovno pokretanje.

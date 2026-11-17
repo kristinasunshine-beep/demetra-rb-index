@@ -78,6 +78,9 @@ jobs:
       - name: Primeni pravila izvora na sve biljke
         run: python scripts/full_photo_coverage.py --audit-only
 
+      - name: Prepoznaj iste fotografije pod razlicitim imenima
+        run: python scripts/build_photo_identities.py
+
       - name: Proveri katalog, kultivare i javne kartice
         shell: bash
         run: |
@@ -148,6 +151,7 @@ jobs:
       - name: Proveri dopunjen katalog
         run: |
           set -euo pipefail
+          python scripts/build_photo_identities.py
           node scripts/check-catalog.mjs
           python scripts/photo_source_policy.py
           python scripts/full_photo_coverage.py --validate-only
@@ -198,6 +202,7 @@ jobs:
             docs/photo-discovery-state.json \
             docs/photo-coverage.json \
             docs/photo-pipeline-report.json \
+            assets/photo-identities.json \
             assets/biljke; do
             if [[ -e "$path" ]]; then
               git add -- "$path"

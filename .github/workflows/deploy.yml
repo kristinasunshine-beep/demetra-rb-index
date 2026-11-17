@@ -48,10 +48,16 @@ jobs:
       - name: Vrati proverene fotografije pre objave
         run: python scripts/repair_photo_asset_paths.py
 
+      - name: Proveri i obnovi identitete istih fotografija
+        run: |
+          python -m unittest discover -s scripts/tests -p 'test_photo_identities.py'
+          python scripts/build_photo_identities.py
+
       - name: Proveri katalog i povezane fajlove
         run: |
           node scripts/currency-normalization.mjs --repo . --check
           node scripts/check-catalog.mjs
+          node scripts/tests/test_photo_reference_render.mjs
           node --test scripts/tests/test_my_quote.mjs
           node --test scripts/tests/test_quick_recommendation.mjs scripts/tests/test_folder_price_refresh.mjs scripts/tests/test_prepare_morning_prices.mjs scripts/tests/test_recommendation_excel_preservation.mjs scripts/tests/test_recommendation_automatic.mjs scripts/tests/test_currency_normalization.mjs
           python -m unittest discover -s scripts/tests -p 'test_source_panel_semantics.py'
