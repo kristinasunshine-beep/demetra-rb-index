@@ -104,7 +104,7 @@ test('Nearest same-species sources rank by dimensional fit, not by lowest archiv
   const conservative=Core.recommend(catalog,{...request,preferences:'I. klasa'},{tenderMode:true});
   assert.equal(conservative.bestCandidate.id,'close');
   assert.equal(conservative.values[2],'','historical candidate must not become a verified purchase price');
-  assert.equal(conservative.alternatives,undefined,'existing delivery alternative semantic is preserved');
+  assert.equal(conservative.alternatives,false,'delivery alternatives flag remains a boolean');
   assert.equal(conservative.nearbyOffers[0].id,'close');
 });
 test('Tender choice with two acceptable delivery forms retains the existing boolean flag',()=>{
