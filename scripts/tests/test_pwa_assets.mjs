@@ -23,6 +23,19 @@ test('PWA icons are real installable raster resources in the repo',()=>{
   }
   assert.ok(buffer('assets/icons/favicon.ico').subarray(0,4).equals(Buffer.from([0,0,1,0])));
 });
+test('Browser favicon is separate white/coral art, never the green PWA tile',()=>{
+  const favicon=txt('assets/icons/favicon.svg');
+  const mobile=txt('assets/icons/icon.svg');
+  const html=txt('index.html');
+  assert.match(favicon,/<rect[^>]*fill="#FFFFFF"/);
+  assert.match(favicon,/<g[^>]*stroke="#F9583B"/);
+  assert.doesNotMatch(favicon,/#606763|stroke="#FAF9F3"/);
+  assert.match(mobile,/<rect[^>]*fill="#606763"/);
+  assert.match(html,/rel="icon" href="\.\/assets\/icons\/favicon\.svg/);
+  assert.match(html,/rel="apple-touch-icon" href="\.\/assets\/icons\/apple-touch-icon\.png/);
+  const bg=readFileSync(resolve(root,'assets/icons/favicon-32.png'));
+  assert.equal(bg.subarray(0,8).toString('hex'),'89504e470d0a1a0a');
+});
 test('Manifest remains scoped to GitHub Pages project path',()=>{
   const manifest=JSON.parse(txt('manifest.webmanifest'));
   assert.equal(manifest.start_url,'./');
