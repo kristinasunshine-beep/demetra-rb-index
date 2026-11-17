@@ -38,6 +38,35 @@ const extra={name:'Preporuka bez zaglavlja',processed:true,addedSheet:true,heade
 const addedBytes=await Excel.build(template,[...sheets.map(s=>({...s,processed:false})),extra],Zip,()=>{},original),addedZip=await Zip.loadAsync(addedBytes),addedBook=XLSX.read(addedBytes,{type:'array',cellStyles:true});
 assert.deepEqual(addedBook.SheetNames,[...book.SheetNames,extra.name]);assert.equal(addedBook.Sheets[extra.name].A2.v,'Acer campestre');assert.equal(addedBook.Sheets[extra.name].E2.v,80.5);assert.equal(addedBook.Sheets[extra.name].E2.z,'#,##0.00 "€"');
 for(const name of Object.keys(before.files).filter(name=>/^xl\/worksheets\//.test(name)&&!before.files[name].dir))assert.equal(await addedZip.file(name).async('string'),await before.file(name).async('string'),'Headerless export changed original worksheet '+name);
+// Quick preview is a separate, first-visible sheet. Each supplier/price is
+// its own Excel cell rather than many lines crammed into a single offer field.
+const compactHeaders=['Biljka','Najbliži rasadnik','Cena izvora (€)','Status cene','Razlike / provera','Drugi rasadnik','Cena 2 (€)','Treći rasadnik','Cena 3 (€)'];
+const compact={name:'Brzi pregled',quickSummary:true,addedSheet:true,processed:true,
+  headerRow:0,originalColumns:9,columns:9,
+  rows:[compactHeaders,['Acer campestre','Rasadnik A',80.5,'Arhiva · proveriti',
+    'Visina: 250 cm (traženo 300 cm)','Rasadnik B',95,'Rasadnik C',110]]};
+const compactBytes=await Excel.build(template,[compact,...sheets.map(x=>({...x,processed:false}))],Zip,()=>{},original);
+const compactBook=XLSX.read(compactBytes,{type:'array',cellStyles:true,cellDates:true});
+assert.equal(compactBook.SheetNames[0],'Brzi pregled','brief supplier/price overview must be first Excel tab');
+assert.deepEqual(compactBook.Sheets['Brzi pregled'].A2.v,'Acer campestre');
+assert.deepEqual(compactBook.Sheets['Brzi pregled'].B2.v,'Rasadnik A');
+assert.equal(compactBook.Sheets['Brzi pregled'].C2.v,80.5);
+assert.equal(compactBook.Sheets['Brzi pregled'].C2.z,'#,##0.00 "€"','primary price must be a numeric Euro cell');
+assert.equal(compactBook.Sheets['Brzi pregled'].G2.v,95);
+assert.equal(compactBook.Sheets['Brzi pregled'].G2.z,'#,##0.00 "€"','second price gets the same numeric formatting');
+assert.equal(compactBook.Sheets['Brzi pregled'].I2.v,110);
+assert.equal(compactBook.Sheets['Brzi pregled'].E2.v,'Visina: 250 cm (traženo 300 cm)');
+for(const name of book.SheetNames)for(const [address,c] of Object.entries(book.Sheets[name])){
+  if(address.startsWith('!'))continue;
+  if(c.v instanceof Date)assert.equal(compactBook.Sheets[name][address]?.v?.getTime?.(),c.v.getTime(),'original date preserved in '+name+' '+address);
+  else assert.deepEqual(compactBook.Sheets[name][address]?.v,c.v,'original cell preserved in '+name+' '+address);
+  assert.equal(compactBook.Sheets[name][address]?.f,c.f,'original formula preserved in '+name+' '+address);
+}
+const fallbackCompact=await Excel.build(template,[compact],Zip);
+const compactFresh=XLSX.read(fallbackCompact,{type:'array',cellStyles:true});
+assert.equal(compactFresh.SheetNames[0],'Brzi pregled');
+assert.equal(compactFresh.Sheets['Brzi pregled'].C2.z,'#,##0.00 "€"','CSV/TSV exports use Euro pricing');
+
 const originalFormula=Object.entries(source).find(([address,c])=>!address.startsWith('!')&&c.f);assert(originalFormula,'Source must contain actual formulas');assert.equal(addedBook.Sheets[book.SheetNames[0]][originalFormula[0]].f,originalFormula[1].f);
 // A native Excel table must include added results so sorting never detaches them from their plants.
 const tableBase=await Excel.build(template,[{name:'Biljke',processed:false,headerRow:0,originalColumns:2,columns:2,rows:[['Naziv','Obim'],['Acer campestre','18-20']]}],Zip),tableZip=await Zip.loadAsync(tableBase);
