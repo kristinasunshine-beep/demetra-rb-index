@@ -417,31 +417,3 @@ body.control-room .header-actions :is(a,button)[aria-expanded="true"] > .nav-num
     font-size: 10px;
   }
 }
-
-/* 02Z — Brza preporuka: one glance, one nursery + one price per plant.
-   Original offer details remain accessible in the expandable disclosure and XLSX. */
-body.control-room .recommend-table-wrap{overflow-x:auto;max-height:660px}
-body.control-room .recommend-table{table-layout:fixed;width:100%;font-size:13px}
-body.control-room .recommend-table th:first-child{width:30%}
-body.control-room .recommend-table th:nth-child(2){width:53%}
-body.control-room .recommend-table th:last-child{width:17%}
-body.control-room .recommend-table :is(td,th){padding:15px 17px;vertical-align:middle}
-body.control-room .recommend-table td:first-child,
-body.control-room .recommend-table td:nth-child(2),
-body.control-room .recommend-table td:last-child{min-width:0}
-body.control-room .recommend-table .recommend-plant strong{font-weight:650;overflow-wrap:anywhere}
-body.control-room .recommend-table .recommend-one-line{display:flex;align-items:baseline;justify-content:space-between;gap:18px;min-width:0;white-space:nowrap}
-body.control-room .recommend-table .recommend-nursery{font-weight:650;overflow:hidden;text-overflow:ellipsis;min-width:0}
-body.control-room .recommend-table .recommend-candidate-price{flex:none;font:700 15px/1.35 var(--sans);color:var(--ink);font-variant-numeric:tabular-nums}
-body.control-room .recommend-table .recommend-result-flag{color:#69746D;font:600 10px/1.4 var(--mono);white-space:normal}
-body.control-room .recommend-table .recommend-detail{margin-top:6px;color:#59695d;font:11px/1.55 var(--sans)}
-body.control-room .recommend-table .recommend-detail summary{cursor:pointer;display:list-item;list-style:revert;color:#69766B;font:11px var(--mono)}
-body.control-room .recommend-table .recommend-detail :is(p,.recommend-alt){overflow-wrap:anywhere;white-space:normal;margin:9px 0}
-body.control-room .recommend-table .recommend-alt{display:flex;gap:16px;justify-content:space-between}
-body.control-room .recommend-table .recommend-alt span:last-child{white-space:nowrap}
-body.control-room .recommend-table .recommend-unknown{color:#8B948E}
-@media(max-width:760px){
- body.control-room .recommend-table{min-width:510px}
- body.control-room .recommend-table :is(td,th){padding:12px 10px}
- body.control-room .recommend-table .recommend-candidate-price{font-size:13px}
-}
