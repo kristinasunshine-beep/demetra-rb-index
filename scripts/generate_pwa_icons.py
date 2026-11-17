@@ -8,7 +8,7 @@ import cairosvg
 ROOT=Path(__file__).resolve().parents[1]
 ICONS=ROOT / 'assets' / 'icons'
 SIZE_NAMES={
-  32:'favicon-32.png',48:'icon-48.png',72:'icon-72.png',
+  48:'icon-48.png',72:'icon-72.png',
   96:'icon-96.png',128:'icon-128.png',144:'icon-144.png',
   152:'icon-152.png',180:'apple-touch-icon.png',192:'icon-192.png',
   256:'icon-256.png',384:'icon-384.png',512:'icon-512.png'
@@ -23,15 +23,17 @@ def save_png(source,size,path):
 def main():
     primary=ICONS/'icon.svg'
     maskable=ICONS/'icon-maskable.svg'
-    assert primary.is_file() and maskable.is_file()
+    favicon=ICONS/'favicon.svg'
+    assert primary.is_file() and maskable.is_file() and favicon.is_file()
     for size,name in SIZE_NAMES.items():
         save_png(primary,size,name)
     save_png(maskable,512,'icon-maskable-512.png')
-    render(primary,64).save(ICONS/'favicon.ico',format='ICO',sizes=[(16,16),(32,32),(48,48),(64,64)])
+    save_png(favicon,32,'favicon-32.png')
+    render(favicon,64).save(ICONS/'favicon.ico',format='ICO',sizes=[(16,16),(32,32),(48,48),(64,64)])
     for size,name in SIZE_NAMES.items():
         with Image.open(ICONS/name) as image:
             assert image.size==(size,size) and image.mode=='RGB',name
-    for fname in ('icon-maskable-512.png','favicon.ico'):
+    for fname in ('icon-maskable-512.png','favicon-32.png','favicon.ico'):
         assert (ICONS/fname).stat().st_size>100,fname
-    print(f'Generated {len(SIZE_NAMES)+2} branded PWA icon assets')
+    print(f'Generated {len(SIZE_NAMES)+3} branded PWA icon assets')
 if __name__=='__main__': main()
