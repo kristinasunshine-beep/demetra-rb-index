@@ -58,7 +58,8 @@ assert.equal(compactBook.Sheets['Brzi pregled'].I2.v,110);
 assert.equal(compactBook.Sheets['Brzi pregled'].E2.v,'Visina: 250 cm (traženo 300 cm)');
 for(const name of book.SheetNames)for(const [address,c] of Object.entries(book.Sheets[name])){
   if(address.startsWith('!'))continue;
-  assert.equal(compactBook.Sheets[name][address]?.v,c.v,'original cell preserved in '+name+' '+address);
+  if(c.v instanceof Date)assert.equal(compactBook.Sheets[name][address]?.v?.getTime?.(),c.v.getTime(),'original date preserved in '+name+' '+address);
+  else assert.deepEqual(compactBook.Sheets[name][address]?.v,c.v,'original cell preserved in '+name+' '+address);
   assert.equal(compactBook.Sheets[name][address]?.f,c.f,'original formula preserved in '+name+' '+address);
 }
 const fallbackCompact=await Excel.build(template,[compact],Zip);
