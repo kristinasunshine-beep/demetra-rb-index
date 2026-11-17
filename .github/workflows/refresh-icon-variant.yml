@@ -1,0 +1,33 @@
+name: Regenerate adjusted deep-green app icons
+on:
+  push:
+    branches: [fix/favicon-white-separate-from-pwa-20261117]
+    paths:
+      - 'assets/icons/icon.svg'
+      - 'assets/icons/icon-maskable.svg'
+      - '.github/workflows/refresh-icon-variant.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  icons:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Generate approved variants
+        run: |
+          python -m pip install --quiet 'cairosvg>=2.7,<3' 'pillow>=11,<13'
+          python scripts/generate_pwa_icons.py
+      - name: Commit raster assets
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add assets/icons/*.png assets/icons/favicon.ico
+          if ! git diff --cached --quiet; then
+            git commit -m 'build(pwa): update deep-green mobile icon PNG variants'
+            git push
+          fi
