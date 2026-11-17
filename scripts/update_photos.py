@@ -126,7 +126,7 @@ def fetch_resource(url, *, hosts, max_bytes, timeout, kind, path_prefixes=None):
     request = Request(url, headers={
         "User-Agent": "DemetraPhotoBot/1.0 (https://github.com/kristinasunshine-beep/demetra-rb-index)",
         "Accept": ("application/json" if kind == "api" else
-                   "text/html,application/xhtml+xml" if kind == "page" else
+                   "text/html,application/xhtml+xml,application/xml,text/xml,text/plain;q=0.9" if kind == "page" else
                    "image/jpeg,image/png,image/webp,image/avif,image/gif"),
         "Accept-Encoding": "identity",
     })

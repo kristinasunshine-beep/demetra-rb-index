@@ -9,6 +9,7 @@ import tempfile
 from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
+from urllib.error import HTTPError
 
 from PIL import Image
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
@@ -94,6 +95,32 @@ class DynamicIntegrationTests(unittest.TestCase):
         with self.assertRaisesRegex(PhotoError,'disallowed'):
             manager.find(PLANT,{'nurseryId':'willaert','name':NAME,'tier':0})
 
+    def test_robots_error_keeps_actual_url_status_and_is_not_a_plant_query_failure(self):
+        calls=[]
+        def fetch(url,**kwargs):
+            calls.append(url)
+            raise PhotoError('http_error','Source returned HTTP 406.')
+        session=pipeline.ParallelSession(10,10,fetch)
+        manager=pipeline.DynamicCatalogues(session,POLICIES,{})
+        query='https://www.willaert.be/nl/plantengids?ajax=1&search=Seiryu'
+        for _ in range(2):
+            with self.assertRaises(PhotoError) as caught:
+                manager.find(PLANT,{'nurseryId':'willaert','name':NAME,'tier':0})
+            failure=pipeline.error_record(query,caught.exception)
+            self.assertEqual(failure['source'],'https://www.willaert.be/robots.txt')
+            self.assertEqual(failure['httpStatus'],406)
+            self.assertEqual(failure['requestedSource'],query)
+        self.assertEqual(calls,['https://www.willaert.be/robots.txt'])
+        self.assertEqual(session.source_health['www.willaert.be']['requests'],1)
+
+    def test_robot_crawl_delay_and_request_rate_increase_source_pacing(self):
+        session=pipeline.ParallelSession(10,30,lambda url,**kw:FetchResult(search_xml(),url,'text/xml'))
+        manager=pipeline.DynamicCatalogues(session,POLICIES,{'nurseries':{'willaert':{'robots':{
+            'www.willaert.be':['User-agent: *','Crawl-delay: 2','Request-rate: 1/5']}}}})
+        manager.find(PLANT,{'nurseryId':'willaert','name':NAME,'tier':0})
+        self.assertEqual(session.host_intervals['www.willaert.be'],5)
+        self.assertEqual(session.source_health['www.willaert.be']['requestIntervalSeconds'],5)
+
     def test_manager_revalidates_wrong_cultivar_and_external_image(self):
         raw={'nurseryId':'willaert','matchedName':NAME,
              'sourceUrl':'https://www.willaert.be/nl/plant/seiryu/id/',
@@ -111,6 +138,110 @@ class DynamicIntegrationTests(unittest.TestCase):
         raw['imageUrl']='https://unapproved.example/seiryu.jpg'
         with self.assertRaises(PhotoError) as caught:manager.find(PLANT,item)
         self.assertEqual(caught.exception.code,'outside_offer_nurseries')
+
+
+class WillaertSourceRecoveryTests(unittest.TestCase):
+    def setUp(self):
+        self.now=0.0; self.waits=[]; self.calls=[]
+
+    def sleep(self,seconds):
+        self.waits.append(seconds); self.now+=seconds
+
+    def session(self,fetch,budget=10,seconds=60):
+        return pipeline.ParallelSession(budget,seconds,fetch,clock=lambda:self.now,
+                                       sleeper=self.sleep,jitter=lambda:0.1)
+
+    def request(self,session,path='one'):
+        return session.get('https://www.willaert.be/'+path,hosts=['www.willaert.be'],
+                           max_bytes=100,timeout=10,kind='page')
+
+    def failure(self,status,retry=None):
+        headers={} if retry is None else {'Retry-After':str(retry)}
+        try:raise HTTPError('https://www.willaert.be/one',status,'source error',headers,None)
+        except HTTPError as cause:
+            raise PhotoError('http_error','Source returned HTTP '+str(status)+'.') from cause
+
+    def test_live_like_503_recovers_once_and_keeps_exact_http_diagnostics(self):
+        def fetch(url,**kwargs):
+            self.calls.append((url,self.now))
+            if len(self.calls)==1:self.failure(503,2)
+            return FetchResult(b'<xmlresponse/>',url,'text/xml')
+        session=self.session(fetch)
+        self.request(session)
+        health=session.source_health['www.willaert.be']
+        self.assertEqual(session.requests,2)
+        self.assertGreaterEqual(self.calls[1][1]-self.calls[0][1],2)
+        self.assertEqual(health['httpErrors'],{'503':1})
+        self.assertEqual(health['retries'],1)
+        self.assertEqual(health['succeeded'],1)
+        self.assertFalse(health['stopped'])
+
+    def test_429_obeys_retry_after_but_never_long_or_missing_delay(self):
+        for retry in (None,120):
+            self.calls=[]
+            def blocked(url,**kwargs):
+                self.calls.append(url);self.failure(429,retry)
+            session=self.session(blocked)
+            with self.assertRaises(PhotoError):self.request(session)
+            with self.assertRaises(PhotoError) as caught:self.request(session,'two')
+            self.assertEqual(self.calls,['https://www.willaert.be/one'])
+            record=pipeline.error_record('https://www.willaert.be/two',caught.exception)
+            self.assertEqual(record['reason'],'source_unavailable')
+            self.assertEqual(record['httpStatus'],429)
+            self.assertEqual(record['source'],'https://www.willaert.be/one')
+            self.assertTrue(record['sourceUnavailable'])
+        self.calls=[]
+        def recovered(url,**kwargs):
+            self.calls.append(self.now)
+            if len(self.calls)==1:self.failure(429,3)
+            return FetchResult(b'ok',url,'text/html')
+        session=self.session(recovered)
+        self.request(session)
+        self.assertGreaterEqual(self.calls[1]-self.calls[0],3)
+
+    def test_403_is_not_retried_or_evaded(self):
+        def denied(url,**kwargs):
+            self.calls.append(url);self.failure(403,1)
+        session=self.session(denied)
+        with self.assertRaises(PhotoError):self.request(session)
+        with self.assertRaises(PhotoError):self.request(session,'other-endpoint')
+        self.assertEqual(len(self.calls),1)
+        self.assertEqual(session.source_health['www.willaert.be']['retries'],0)
+
+    def test_persistent_502_is_bounded_and_stops_host_for_run(self):
+        def down(url,**kwargs):
+            self.calls.append(url);self.failure(502)
+        session=self.session(down)
+        with self.assertRaises(PhotoError):self.request(session)
+        with self.assertRaises(PhotoError):self.request(session,'two')
+        self.assertEqual(len(self.calls),3)
+        self.assertEqual(session.source_health['www.willaert.be']['httpErrors'],{'502':3})
+
+    def test_requests_are_paced_and_cache_does_not_spend_request_budget(self):
+        def fetch(url,**kwargs):
+            self.calls.append(self.now);return FetchResult(b'ok',url,'text/html')
+        session=self.session(fetch)
+        self.request(session);self.request(session);self.request(session,'two')
+        self.assertEqual(len(self.calls),2)
+        self.assertGreaterEqual(self.calls[1]-self.calls[0],1)
+
+    def test_retry_cannot_exceed_deadline_or_global_request_budget(self):
+        def down(url,**kwargs):
+            self.calls.append(url);self.failure(503,2)
+        session=self.session(down,seconds=1)
+        with self.assertRaises(pipeline.core.Exhausted):self.request(session)
+        self.assertEqual(self.waits,[])
+        self.assertEqual(len(self.calls),1)
+        self.calls=[]
+        session=self.session(down,budget=1)
+        with self.assertRaises(pipeline.core.Exhausted):self.request(session)
+        self.assertEqual(len(self.calls),1)
+        self.assertEqual(self.waits,[])
+
+    def test_retry_after_date_and_bad_headers(self):
+        for value,expected in [('Wed, 21 Oct 2015 07:28:00 GMT',10),('nonsense',None),('NaN',None),('inf',None)]:
+            try:self.failure(503,value)
+            except PhotoError as exc:self.assertEqual(pipeline.retry_after_seconds(exc,1445412470),expected)
 
 
 class DynamicRunTests(unittest.TestCase):

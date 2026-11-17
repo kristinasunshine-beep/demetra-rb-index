@@ -9,14 +9,18 @@ import argparse
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import copy
 from datetime import datetime, timezone
+from email.utils import parsedate_to_datetime
 import hashlib
 from io import BytesIO
 import json
 import os
+import random
+import re
 from pathlib import Path
 import threading
 import time
 from urllib.parse import urlsplit
+from urllib.robotparser import RobotFileParser
 from PIL import Image, UnidentifiedImageError
 
 import full_photo_coverage as core
@@ -111,6 +115,12 @@ class DynamicCatalogues:
             raise PhotoError('outside_offer_nurseries', 'Dynamic catalogue is not configured for this offer nursery.')
         host = urlsplit(module.search_url(name)).hostname
         rules = self.robots(nid, host)
+        if nid=='willaert':
+            robot=RobotFileParser(); robot.parse(rules.splitlines() if isinstance(rules,str) else rules)
+            delay=robot.crawl_delay('DemetraPhotoBot') or 0
+            rate=robot.request_rate('DemetraPhotoBot')
+            if rate and rate.requests>0:delay=max(delay,rate.seconds/rate.requests)
+            self.session.set_host_interval(host,delay)
         rows = module.candidates(name, fetcher=self.fetcher_for(nid), robots_rules=rules)
         result = []
         for row in rows:
@@ -128,36 +138,115 @@ class DynamicCatalogues:
         return result
 
 
+def error_record(source, exc):
+    """Keep the actual failed URL/status, not an invented failure for each plant."""
+    record={'source':getattr(exc,'source_url',source),'reason':getattr(exc,'code','source_error'),
+            'detail':str(exc)[:500]}
+    status=getattr(exc,'http_status',None)
+    if status is not None:record['httpStatus']=status
+    if record['source']!=source:record['requestedSource']=source
+    if getattr(exc,'source_failure_cached',False):record['sourceUnavailable']=True
+    return record
+
+
+def http_status(exc):
+    cause=getattr(exc,'__cause__',None)
+    status=getattr(cause,'code',None)
+    if isinstance(status,int):return status
+    match=re.search(r'\bHTTP (\d{3})\b',str(exc))
+    return int(match.group(1)) if match else None
+
+
+def retry_after_seconds(exc, now=None):
+    headers=getattr(getattr(exc,'__cause__',None),'headers',None)
+    value=headers.get('Retry-After') if headers else None
+    if value is None:return None
+    try:
+        seconds=float(value)
+    except (TypeError,ValueError):
+        try:seconds=parsedate_to_datetime(value).timestamp()-(time.time() if now is None else now)
+        except (TypeError,ValueError,OverflowError):return None
+    return max(0,seconds) if seconds<float('inf') else None
+
+
 class ParallelSession:
-    def __init__(self,budget,seconds,fetcher=fetch_resource):
-        self.budget=budget; self.deadline=time.monotonic()+seconds; self.requests=0
+    def __init__(self,budget,seconds,fetcher=fetch_resource,*,clock=time.monotonic,sleeper=time.sleep,jitter=None):
+        self.clock=clock; self.sleeper=sleeper; self.jitter=jitter or (lambda:random.uniform(0,0.25))
+        self.budget=budget; self.deadline=clock()+seconds; self.requests=0
         self.fetcher=fetcher; self.lock=threading.Lock(); self.hosts={}; self.failed={}; self.cache={}
+        self.last_request={}; self.source_health={}; self.host_intervals={}
+
+    def set_host_interval(self,host,seconds):
+        with self.lock:self.host_intervals[host]=max(self.host_intervals.get(host,0),seconds)
+
+    def _pause(self,seconds):
+        if seconds<=0:return
+        if self.clock()+seconds>=self.deadline:
+            raise core.Exhausted('budget_exhausted','Source cooldown exceeds the remaining time; resume next run.')
+        self.sleeper(seconds)
+
+    def _cached_failure(self,host):
+        original=self.failed[host]
+        exc=PhotoError('source_unavailable','No new request: source stopped after '+str(original))
+        exc.source_url=getattr(original,'source_url','https://'+host+'/')
+        exc.http_status=getattr(original,'http_status',None)
+        exc.source_failure_cached=True
+        return exc
 
     def get(self,url,**kwargs):
         check_url(url,kwargs['hosts'],kwargs.get('path_prefixes'))
         host=urlsplit(url).hostname
+        paced=host in willaert_photo_catalog.PAGE_HOSTS
         with self.lock:
-            semaphore=self.hosts.setdefault(host,threading.Semaphore(2))
+            semaphore=self.hosts.setdefault(host,threading.Semaphore(1 if paced else 2))
         with semaphore:
             with self.lock:
                 if url in self.cache:return self.cache[url]
-                if host in self.failed:raise self.failed[host]
-                if self.requests>=self.budget or time.monotonic()>=self.deadline:
-                    raise core.Exhausted('budget_exhausted','Saved candidates resume on the next run.')
-                self.requests+=1
-            kwargs['timeout']=min(kwargs['timeout'],max(1,int(self.deadline-time.monotonic())))
-            try:
-                result=self.fetcher(url,**kwargs)
-                check_url(result.url,kwargs['hosts'],kwargs.get('path_prefixes'))
-                if len(result.body)>kwargs['max_bytes']:raise PhotoError('response_too_large','Oversize response.')
-                if kwargs['kind']=='page' and result.content_type in ('text/html','application/xhtml+xml') and core.blocked_html(result.body.decode('utf8','replace')):
-                    raise PhotoError('site_blocked','Source refused access.')
-                with self.lock:self.cache[url]=result
-                return result
-            except PhotoError as exc:
-                if exc.code in ('download_failed','site_blocked') or any(x in str(exc) for x in ('HTTP 403','HTTP 429','HTTP 503')):
-                    with self.lock:self.failed[host]=exc
-                raise
+                if host in self.failed:raise self._cached_failure(host)
+                health=self.source_health.setdefault(host,{'requests':0,'succeeded':0,'retries':0,'httpErrors':{},'stopped':False})
+                interval=max(willaert_photo_catalog.REQUEST_INTERVAL_SECONDS,self.host_intervals.get(host,0)) if paced else 0
+                if paced:health['requestIntervalSeconds']=interval
+            attempts=willaert_photo_catalog.TRANSIENT_MAX_ATTEMPTS if paced else 1
+            for attempt in range(attempts):
+                if paced:
+                    self._pause(max(0,self.last_request.get(host,-float('inf'))+interval-self.clock()))
+                with self.lock:
+                    if self.requests>=self.budget or self.clock()>=self.deadline:
+                        raise core.Exhausted('budget_exhausted','Saved candidates resume on the next run.')
+                    self.requests+=1; health['requests']+=1; self.last_request[host]=self.clock()
+                request_args={**kwargs,'timeout':min(kwargs['timeout'],max(1,int(self.deadline-self.clock())))}
+                try:
+                    result=self.fetcher(url,**request_args)
+                    check_url(result.url,kwargs['hosts'],kwargs.get('path_prefixes'))
+                    if len(result.body)>kwargs['max_bytes']:raise PhotoError('response_too_large','Oversize response.')
+                    if kwargs['kind']=='page' and result.content_type in ('text/html','application/xhtml+xml') and core.blocked_html(result.body.decode('utf8','replace')):
+                        raise PhotoError('site_blocked','Source refused access.')
+                    with self.lock:
+                        self.cache[url]=result; health['succeeded']+=1
+                    return result
+                except PhotoError as exc:
+                    status=http_status(exc)
+                    exc.source_url=url; exc.http_status=status
+                    with self.lock:
+                        if status is not None:health['httpErrors'][str(status)]=health['httpErrors'].get(str(status),0)+1
+                        health['lastFailure']=error_record(url,exc)
+                    wait=retry_after_seconds(exc)
+                    # Never retry access denial. A 429 requires the source's
+                    # explicit Retry-After; long waits defer to the next run.
+                    transient=status in (500,502,503,504) or (status==429 and wait is not None)
+                    can_retry=(paced and transient and attempt+1<attempts and
+                               (wait is None or wait<=willaert_photo_catalog.MAX_RETRY_AFTER_SECONDS))
+                    if can_retry:
+                        with self.lock:
+                            if self.requests>=self.budget:
+                                raise core.Exhausted('budget_exhausted','Request budget ended before a source retry; resume next run.')
+                        delay=max(wait or 0,2**attempt)+self.jitter()
+                        self._pause(delay)
+                        with self.lock:health['retries']+=1
+                        continue
+                    if exc.code in ('download_failed','site_blocked') or status in (403,429,503) or (paced and transient):
+                        with self.lock:self.failed[host]=exc; health['stopped']=True
+                    raise
 
 
 def run(root,*,workers=8,request_budget=2500,max_seconds=1200,cache_dir=None,fetcher=fetch_resource,plant_ids=None):
@@ -260,7 +349,7 @@ def run(root,*,workers=8,request_budget=2500,max_seconds=1200,cache_dir=None,fet
                             return result
                         except PhotoError as exc:
                             if isinstance(exc,core.Exhausted):raise
-                            errors.append({'source':candidate['sourceUrl'],'reason':exc.code})
+                            errors.append(error_record(candidate['sourceUrl'],exc))
                     entry['nextCandidate']=pos+1
                     continue
                 excluded=set(manifest.get('excludedImageUrls',[]))
@@ -278,11 +367,11 @@ def run(root,*,workers=8,request_budget=2500,max_seconds=1200,cache_dir=None,fet
                                             'image_too_small','placeholder_image','image_identity_conflict'):
                             raise
                         excluded.add(candidate['imageUrl'])
-                        errors.append({'source':item['pageUrl'],'reason':exc.code})
+                        errors.append(error_record(item['pageUrl'],exc))
                 entry['nextCandidate']=pos+1
             except core.Exhausted:return None,None,errors+[{'reason':'budget_exhausted'}]
             except (PhotoError,OSError,ValueError) as exc:
-                errors.append({'source':item['pageUrl'],'reason':getattr(exc,'code','source_error')})
+                errors.append(error_record(item['pageUrl'],exc))
                 entry['nextCandidate']=pos+1
         if stop==len(candidates):entry['nextCandidate']=0
         return None,None,errors
@@ -321,7 +410,8 @@ def run(root,*,workers=8,request_budget=2500,max_seconds=1200,cache_dir=None,fet
     core.protect(before,data)
     for name,body in original.items():
         if ((root/name).read_bytes() if (root/name).exists() else None)!=body:raise PhotoError('concurrent_edit','Catalogue changed during lookup: '+name)
-    report={'schemaVersion':2,'status':'partial','requests':session.requests,'workers':workers,'events':events,'coverage':core.inventory(root,plants,offers,pending),'nonPhotoDataUnchanged':True}
+    report={'schemaVersion':2,'status':'partial','requests':session.requests,'workers':workers,'events':events,
+            'sourceHealth':session.source_health,'coverage':core.inventory(root,plants,offers,pending),'nonPhotoDataUnchanged':True}
     report['status']=report['coverage']['status']
     report['newlyVerified']=sum(bool(p.get('photo')) and not old.get('photo') for p,old in zip(plants,before['plants']))
     report['refreshCandidates']=len(refresh)

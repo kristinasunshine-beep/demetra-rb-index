@@ -20,6 +20,11 @@ GUIDE = BASE + '/nl/plantengids'
 PAGE_HOSTS = {'www.willaert.be'}
 IMAGE_HOSTS = PAGE_HOSTS
 IMAGE_PREFIXES = {'www.willaert.be': ['/websites/1/uploads/image/PRODUCTIMAGES/']}
+# The public guide is a shared ASP.NET endpoint. Keep its traffic serial and
+# paced even when the rest of the nursery search runs in parallel.
+REQUEST_INTERVAL_SECONDS = 1.0
+TRANSIENT_MAX_ATTEMPTS = 3
+MAX_RETRY_AFTER_SECONDS = 30.0
 _FORMATTING_CACHE = weakref.WeakKeyDictionary()
 _FORMATTING_LOCK = threading.Lock()
 
