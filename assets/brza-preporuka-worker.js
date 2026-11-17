@@ -1,8 +1,52 @@
 'use strict';
-importScripts('vendor/xlsx-0.20.3.full.min.js','vendor/jszip-3.10.1.min.js','brza-preporuka-core.js?v=archive-20261116','recommendation-excel.js?v=readable-20261117');
+importScripts('vendor/xlsx-0.20.3.full.min.js','vendor/jszip-3.10.1.min.js','brza-preporuka-core.js?v=archive-20261116','recommendation-excel.js?v=mirror-panel-20261117');
 const Core=self.DemetraRecommendCore;
 let sheets=[],results=null,originalWorkbook=null;
 function send(type,data={}){postMessage({type,...data});}
+
+const OVERVIEW_HEADERS=[
+  'Latinski naziv biljke',
+  'Parametri iz tvoje tabele',
+  'Spisak rasadnika',
+  'Najniža nabavna cena (€)',
+  'Rezultat'
+];
+function conciseParameters(request){
+  const fields=[
+    ['height','Visina'],['circumference','Obim'],['crownWidth','Krošnja'],
+    ['rootType','Isporuka'],['potSize','Saksija'],['transplantCount','Presađivanja'],
+    ['quantity','Količina'],['unit','Jed. mere']
+  ];
+  const known=fields.flatMap(([key,label])=>String(request[key]??'').trim()?
+    [label+': '+String(request[key]).trim()]:[]);
+  if(known.length)return known.join(' · ');
+  const fallback=String(request.preferences||request.sourceDescription||'').trim();
+  return fallback.length>125?fallback.slice(0,122)+'…':fallback;
+}
+function overviewStatus(result,supplier){
+  if(!result.recognized)return result.candidates?.length?'Proveriti botanički naziv':'Biljka nije prepoznata';
+  if(supplier?.historical||result.archival||/ARHIVA/i.test(String(supplier?.name||'')))
+    return 'Arhivski izvor · proveriti';
+  if(result.status==='matched')
+    return /arhiv|dostupnost nije|prover/i.test(result.message||'')?
+      'Ponuda · proveriti aktuelnost':'Ponuda sa odgovarajućim parametrima';
+  return result.suppliers?.length?'Ponude · potrebna provera':'Nema potvrđene ponude';
+}
+function overviewItems(request,result){
+  const plant=[request.name,request.cultivar].filter(Boolean).join(' ');
+  const params=conciseParameters(request);
+  const suppliers=result.suppliers?.length?result.suppliers:[null];
+  return suppliers.map((supplier,index)=>{
+    const sourcePrice=Number.isFinite(supplier?.price)?
+      supplier.price.toLocaleString('sr-Latn-RS',{minimumFractionDigits:2,maximumFractionDigits:2})+' €':'';
+    const nursery=supplier?
+      supplier.name+(sourcePrice?' — '+sourcePrice:' — cena nije navedena'):'—';
+    return [plant,params,nursery,
+      index===0&&result.status==='matched'&&Number.isFinite(result.price)?result.price:'',
+      overviewStatus(result,supplier)];
+  });
+}
+
 function cellValue(cell){return cell?.v??(cell?.f?'Formula bez sačuvane vrednosti':'');}
 function readRows(sheet){
   const dense=sheet['!data'];let maxRow=-1,maxColumn=-1;
@@ -21,6 +65,7 @@ self.onmessage=async({data})=>{try{
     sheets=book.SheetNames.map(name=>({name,...readRows(book.Sheets[name])}));
     const index=Core.makeIndex(data.catalog);let matched=0,unmatched=0,processed=0,recognized=0,archival=0;const preview=[];
     results=[];const addedSheets=[],names=new Set(sheets.map(s=>s.name));
+    const overviewRows=[OVERVIEW_HEADERS.slice()];
     for(let i=0;i<sheets.length;i++){
       const original=sheets[i],config=Core.detectSheet(original.rows,index,original.name);let sheet={...original,rows:original.rows.map(row=>row.slice()),processed:false};results.push(sheet);
       if(!config?.enabled)continue;
@@ -38,6 +83,7 @@ self.onmessage=async({data})=>{try{
         const tender=Boolean((config.hasHeader && headers.some(h=>/izvorni opis stavke|dodatni uslovi iz troskovnika|dodatni uvjeti iz troskovnika|zahtevane karakteristike|zahtijevane karakteristike/i.test(Core.norm(h)))) || /\b(?:balirano|balled)\s+ili\s+/i.test(String(request.rootType||'')));
         const result=Core.recommend(index,request,{currency:'EUR',tenderMode:tender}),outRow=config.hasHeader===false?r+1:r;
         result.values.forEach((v,c)=>{sheet.rows[outRow][sheet.originalColumns+c]=v;});
+        if(result.status!=='empty')overviewRows.push(...overviewItems(request,result));
         if(result.status!=='empty'){
           processed++;if(result.status==='matched')matched++;else unmatched++;if(result.recognized)recognized++;if(result.archival)archival++;
           if(preview.length<40)preview.push({sheet:original.name,row:r+1,name:[request.name,request.cultivar].filter(Boolean).join(' '),parameters:original.rows[r].flatMap((value,c)=>c!==config.map.name&&String(value??'').trim()?[{label:headers[c],value:value instanceof Date?value.toISOString().slice(0,10):String(value)}]:[]),...result});
@@ -46,6 +92,13 @@ self.onmessage=async({data})=>{try{
       }
     }
     results.push(...addedSheets);
+    if(overviewRows.length>1){
+      let overviewName='Pregled preporuke',ordinal=2;
+      while(names.has(overviewName))overviewName='Pregled preporuke '+ordinal++;
+      results.unshift({name:overviewName,overview:true,addedSheet:true,
+        processed:true,headerRow:0,originalColumns:OVERVIEW_HEADERS.length,
+        columns:OVERVIEW_HEADERS.length,rows:overviewRows});
+    }
     send('results',{matched,unmatched,processed,recognized,archival,preview});
   }else if(data.type==='export'){
     if(!results)throw new Error('Prvo pokreni poređenje.');
