@@ -1,6 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="DEMETRA RB — koralno drvce u svetlom kružnom okviru na zelenosivoj pozadini">
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="DEMETRA RB — uvećano koralnocrveno drvce na zelenosivoj pozadini">
 <rect width="512" height="512" fill="#606763"/>
-<circle cx="256" cy="256" r="156" fill="none" stroke="#FAF9F3" stroke-width="10"/>
 <g transform="translate(84.8 95.5) scale(10.7)" fill="none" stroke="#F9583B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
 <circle cx="16" cy="12" r="8.5"/>
 <path d="M16 8v17m0-9c6-8 10-4 5 0-3 3-5 3-5 3m0-2c-5-8-10-4-5 0 3 3 5 3 5 3M8 26h16"/>
