@@ -12,14 +12,14 @@
   body.control-room[data-view="search"] .search-intro h1 em {
     display: block;
     font-family: "DEMETRA Mobile Outline", "Arial Narrow", "Arial", sans-serif;
-    font-size: clamp(48px, 13.5vw, 74px);
+    font-size: clamp(50px, 13.2vw, 72px);
     line-height: .96;
     font-weight: 600;
     font-style: normal;
-    letter-spacing: -.006em;
+    letter-spacing: .012em;
     color: transparent;
     -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 1.25px var(--ink);
+    -webkit-text-stroke: 1.2px var(--ink);
     transform: none;
     width: auto;
     max-width: 100%;
@@ -28,8 +28,8 @@
 }
 @media screen and (max-width: 420px) {
   body.control-room[data-view="search"] .search-intro h1 em {
-    font-size: clamp(44px, 12.8vw, 54px);
-    letter-spacing: -.012em;
-    -webkit-text-stroke: 1.15px var(--ink);
+    font-size: clamp(47px, 12.5vw, 53px);
+    letter-spacing: .008em;
+    -webkit-text-stroke: 1.1px var(--ink);
   }
 }
