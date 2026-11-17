@@ -25,15 +25,15 @@
           // One clean nursery–price line. Supporting evidence stays hidden until requested.
           el('recommend-results-body').innerHTML=data.preview.map(r=>{
             const candidate=r.bestCandidate||null;
-            const verified=r.status==='matched'&&candidate?.currentPrice&&!r.requiresReview;
+            const verified=r.status==='matched'&&candidate?.currentPrice&&candidate.id===r.offerId&&!r.requiresReview;
             const archival=candidate&&(candidate.historical||!candidate.currentPrice);
             const price=candidate&&Number.isFinite(candidate.price)?euros(candidate.price):'Cena nije navedena';
-            const tag=verified?'Potvrđeno':candidate?(archival?'Arhiva · proveriti':'Proveriti uslove'):r.candidates?.length?'Proveri naziv':'Bez izvora';
+            const tag=verified?'Cena proverena':candidate?(archival?'Arhiva · proveriti':'Proveriti uslove'):r.candidates?.length?'Proveri naziv':'Bez izvora';
             const headline=candidate
               ?'<strong class="recommend-nursery">'+escape(candidate.nursery)+'</strong>'+
                 '<strong class="recommend-candidate-price">'+escape(price)+'</strong>'
               :'<span class="recommend-unknown">—</span>';
-            const extra=(r.alternatives||[]).slice(1).map(a=>
+            const extra=(r.nearbyOffers||[]).slice(1).map(a=>
               '<div class="recommend-alt"><span>'+escape(a.nursery)+'</span><span>'+
               escape(Number.isFinite(a.price)?euros(a.price):'Cena nije navedena')+'</span></div>').join('');
             const mismatch=candidate?(candidate.differences||[]).concat(
