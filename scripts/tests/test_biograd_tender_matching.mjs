@@ -85,3 +85,31 @@ test('A current truly verified plant can still be matched if qualitative risks a
   assert.equal(result.status,'matched');
   assert.equal(result.price,120);
 });
+
+test('Nearest same-species sources rank by dimensional fit, not by lowest archival price',()=>{
+  const plants=[{id:'p1',latinName:'Cupressus sempervirens',synonyms:[]},{id:'p2',latinName:"Cupressus sempervirens 'Stricta'",synonyms:[]}];
+  const offers=[
+    {id:'too-short',plantId:'p1',nurseryId:'n1',height:'100-150 cm',rootType:'Kontejner',price:10,currency:'EUR',sourceCurrency:'EUR',sourceAmount:10,priceKind:'historical'},
+    {id:'close',plantId:'p1',nurseryId:'n2',height:'300-350 cm',rootType:'Kontejner',price:200,currency:'EUR',sourceCurrency:'EUR',sourceAmount:200,priceKind:'historical'},
+    {id:'unknown-size',plantId:'p1',nurseryId:'n3',rootType:'Kontejner',price:30,currency:'EUR',sourceCurrency:'EUR',sourceAmount:30,priceKind:'historical'},
+    {id:'cultivar',plantId:'p2',nurseryId:'n4',height:'300-350 cm',rootType:'Kontejner',price:1,currency:'EUR',sourceCurrency:'EUR',sourceAmount:1,priceKind:'historical'}
+  ];
+  const catalog=Core.makeIndex({plants,nurseries:['n1','n2','n3','n4'].map(id=>({id,name:id})),offers});
+  const request={name:'Cupressus sempervirens',height:'300-350 cm',rootType:'Kontejner'};
+  const ranked=Core.nearestOffers(catalog,request,3);
+  assert.equal(ranked[0].id,'close','closest matching dimensions beats cheaper wrong dimensions');
+  assert.ok(ranked.every(r=>r.id!=='cultivar'),'cultivar substitution is forbidden');
+  assert.equal(ranked[0].historical,true,'historical source still clearly identified');
+  assert.equal(ranked[0].currentPrice,false,'not an actual verified price');
+  const conservative=Core.recommend(catalog,{...request,preferences:'I. klasa'},{tenderMode:true});
+  assert.equal(conservative.bestCandidate.id,'close');
+  assert.equal(conservative.values[2],'','historical candidate must not become a verified purchase price');
+  assert.equal(conservative.alternatives,undefined,'existing delivery alternative semantic is preserved');
+  assert.equal(conservative.nearbyOffers[0].id,'close');
+});
+test('Tender choice with two acceptable delivery forms retains the existing boolean flag',()=>{
+  const row=Core.requestFromRow(cases[3],config.map,config.headers);
+  const result=Core.recommend(index,row,{tenderMode:true});
+  assert.equal(result.alternatives,true,'delivery-forms ambiguity is still tracked');
+  assert.ok(Array.isArray(result.nearbyOffers),'closest supplier candidates remain a separate field');
+});
