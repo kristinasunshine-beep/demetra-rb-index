@@ -37,10 +37,12 @@ self.onmessage=async({data})=>{try{
         if(original.rows[r].includes('Formula bez sačuvane vrednosti'))request._validationError='Formula u izvornoj tabeli nema sačuvanu vrednost za poređenje.';
         const tender=Boolean((config.hasHeader && headers.some(h=>/izvorni opis stavke|dodatni uslovi iz troskovnika|dodatni uvjeti iz troskovnika|zahtevane karakteristike|zahtijevane karakteristike/i.test(Core.norm(h)))) || /\b(?:balirano|balled)\s+ili\s+/i.test(String(request.rootType||'')));
         const result=Core.recommend(index,request,{currency:'EUR',tenderMode:tender}),outRow=config.hasHeader===false?r+1:r;
+        const nearest=result.bestCandidate || Core.nearestOffers(index,request,3)[0] || null;
+        const nearby=result.alternatives || Core.nearestOffers(index,request,3);
         result.values.forEach((v,c)=>{sheet.rows[outRow][sheet.originalColumns+c]=v;});
         if(result.status!=='empty'){
           processed++;if(result.status==='matched')matched++;else unmatched++;if(result.recognized)recognized++;if(result.archival)archival++;
-          if(preview.length<40)preview.push({sheet:original.name,row:r+1,name:[request.name,request.cultivar].filter(Boolean).join(' '),parameters:original.rows[r].flatMap((value,c)=>c!==config.map.name&&String(value??'').trim()?[{label:headers[c],value:value instanceof Date?value.toISOString().slice(0,10):String(value)}]:[]),...result});
+          if(preview.length<40)preview.push({sheet:original.name,row:r+1,name:[request.name,request.cultivar].filter(Boolean).join(' '),parameters:original.rows[r].flatMap((value,c)=>c!==config.map.name&&String(value??'').trim()?[{label:headers[c],value:value instanceof Date?value.toISOString().slice(0,10):String(value)}]:[]),...result,bestCandidate:nearest,alternatives:nearby});
         }
         if(r%200===0){send('progress',{message:`Obrađeno ${processed.toLocaleString('sr-Latn-RS')} stavki…`,processed});await new Promise(resolve=>setTimeout(resolve,0));}
       }
