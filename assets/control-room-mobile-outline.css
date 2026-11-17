@@ -8,7 +8,7 @@
   font-weight: 600;
   font-display: swap;
 }
-@media screen and (max-width:760px) {
+@media screen and (max-width: 760px) {
   body.control-room[data-view="search"] .search-intro h1 em {
     display: block;
     font-family: "DEMETRA Mobile Outline", "Arial Narrow", "Arial", sans-serif;
@@ -26,7 +26,7 @@
     white-space: nowrap;
   }
 }
-@media screen and (max-width:420px) {
+@media screen and (max-width: 420px) {
   body.control-room[data-view="search"] .search-intro h1 em {
     font-size: clamp(44px, 12.8vw, 54px);
     letter-spacing: -.012em;
