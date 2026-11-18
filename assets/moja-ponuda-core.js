@@ -251,20 +251,22 @@
     // A 16.5-character width wraps the original phrase in two natural lines.
     main = setColumnWidth(main, 5, 16.5);
     const meta = quote.meta;
-    const date = Math.round((Date.parse(meta.date + 'T00:00:00Z') - Date.UTC(1899, 11, 30)) / 86400000);
+    const offerDate = meta.date.split('-').reverse().join('.') + '.';
     const fields = {
       A4: meta.description, A5: meta.number ? 'Ponuda br. ' + meta.number : 'PONUDA',
-      A7: 'Ponudu izradio/la: ' + meta.preparedBy, A9: 'Kontakt: ' + meta.preparedPhone,
-      A11: 'U Beogradu, ' + meta.date.split('-').reverse().join('.') + '.', C11: '', C14: meta.client, C15: meta.address, C16: meta.city, C17: meta.email,
-      G17: meta.phone, C18: meta.taxId, G18: meta.registration, A21: meta.note
+      A9: 'Ponudu izradio/la: ' + meta.preparedBy, A11: 'Br. tel.: ' + meta.preparedPhone,
+      A13: 'U Beogradu, ' + offerDate,
+      G9: meta.client, G10: meta.address, G11: meta.city, G12: meta.email,
+      G13: meta.phone, G14: meta.taxId, G15: meta.registration, A21: meta.note
     };
     for (const [ref, value] of Object.entries(fields)) main = replaceCell(main, ref, value);
     for (const [number, values, widths, minimum] of [
-      [4,[meta.description],[95],25], [7,[fields.A7],[95],19], [9,[fields.A9],[95],19],
-      [14,[meta.client],[120],22], [15,[meta.address],[120],22], [16,[meta.city],[120],22],
-      [17,[meta.email,meta.phone],[65,25],22], [18,[meta.taxId,meta.registration],[65,25],22],
-      [21,[meta.note],[160],24]
-    ]) main=rowHeight(main,number,lineHeight(values,widths,minimum));
+      [4, [meta.description], [95], 25], [9, [fields.A9, fields.G9], [95, 35], 34],
+      [10, [meta.address], [35], 23], [11, [fields.A11, fields.G11], [95, 35], 23],
+      [12, [meta.email], [35], 23], [13, [fields.A13, fields.G13], [95, 35], 23],
+      [14, [meta.taxId], [35], 23], [15, [meta.registration], [35], 23],
+      [21, [meta.note], [160], 24]
+    ]) main = rowHeight(main, number, lineHeight(values, widths, minimum));
     const cols = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
     const styles = rowStyles(main, 23, cols), sumStyles = rowStyles(main, 24, cols);
     let rows = '';

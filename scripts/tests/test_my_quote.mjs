@@ -105,7 +105,15 @@ assert(sheet.includes('<f>ROUND(F23*G23,2)</f><v>37.5</v>'));
 assert(sheet.includes('<f>ROUND(F24*G24,2)</f><v>40</v>'));
 assert(sheet.includes('<f>SUM(H23:H24)</f><v>77.5</v>'));
 assert(sheet.includes('001234567')&&sheet.includes('00123456'));
-for(const label of ['Ime i prezime / naziv firme','Adresa','Grad i poštanski broj','Telefon','Ponuda biljaka i sadnog materijala','R.br.'])assert(sheet.includes(label),'Header label disappeared: '+label);
+assert(sheet.includes('U Beogradu, 11.11.2026.'),'Date directly next to city');
+assert(sheet.includes('<mergeCell ref="E4:I4"')&&sheet.includes('<mergeCell ref="E8:I8"'),'Company directly below accreditation marks');
+assert(sheet.includes('<mergeCell ref="E9:F9"')&&sheet.includes('<mergeCell ref="G9:I9"'),'Investor opposite preparer');
+for(const [ref,value] of Object.entries({G9:'Primer investitora',G10:'Primer adrese 1',G14:'001234567',G15:'00123456'})){
+  const found=sheet.match(new RegExp('<c\\b(?=[^>]*\\br="' + ref + '")[^>]*>[\\s\\S]*?<\\/c>'))?.[0];
+  assert(found&&found.includes(value),'Investor field '+ref);
+}
+
+for(const label of ['Investitor / kontakt:','Adresa:','Grad i poštanski broj:','Br. tel.:','Matični broj:','Ponuda biljaka i sadnog materijala','R.br.'])assert(sheet.includes(label),'Header label disappeared: '+label);
 assert(sheet.includes('HYPERLINK')&&!sheet.includes('<f>HYPERLINK'));
 assert(sheet.includes(Core.xmlEscape(first.offerId))===false,'Technical offer IDs are not public workbook fields.');
 for(const item of quote.items)for(const [label,value] of item.parameters){
