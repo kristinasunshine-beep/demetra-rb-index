@@ -101,9 +101,17 @@ assert(unitColumn,'Unit column E must be explicitly sized');
 assert(Number(unitColumn.match(/\bwidth="([\d.]+)"/)?.[1])>=16,'Unit width must fit full words instead of single letters');
 assert(sheet.includes('Jed.')||sheet.includes('Jed'), 'Original unit heading must remain unchanged');
 assert(sheet.includes('customHeight="1"'),'Rows must retain custom height for wrapped text');
-assert(sheet.includes('<f>ROUND(F23*G23,2)</f><v>37.5</v>'));
-assert(sheet.includes('<f>ROUND(F24*G24,2)</f><v>40</v>'));
-assert(sheet.includes('<f>SUM(H23:H24)</f><v>77.5</v>'));
+const tableHeader=sheet.match(/<row\b[^>]*\br="18"[^>]*>[\s\S]*?<\/row>/)?.[0]||'';
+const firstPlant=sheet.match(/<row\b[^>]*\br="19"[^>]*>[\s\S]*?<\/row>/)?.[0]||'';
+assert(tableHeader.includes('Biljka')&&tableHeader.includes('Parametri sadnice'),
+  'Plant table header must move to row 18.');
+assert(firstPlant.includes(first.latinName),'First plant must start directly at row 19.');
+for(const number of [23,24]) assert(!sheet.includes('<row r="'+number+'"'),
+  'No abandoned header rows or whitespace should remain after moving the table.');
+
+assert(sheet.includes('<f>ROUND(F19*G19,2)</f><v>37.5</v>'));
+assert(sheet.includes('<f>ROUND(F20*G20,2)</f><v>40</v>'));
+assert(sheet.includes('<f>SUM(H19:H20)</f><v>77.5</v>'));
 assert(sheet.includes('001234567')&&sheet.includes('00123456'));
 assert(sheet.includes('U Beogradu, 11.11.2026.'),'Date directly next to city');
 assert(sheet.includes('<mergeCell ref="E4:I4"')&&sheet.includes('<mergeCell ref="E8:I8"'),'Company directly below accreditation marks');
@@ -134,8 +142,8 @@ assert.equal(Core.summarize(mixed).amount,null);
 assert.deepEqual(Core.summarize(mixed).totals.map(t=>[t.currency,t.amount]),[['EUR',37.5],['RSD',40]]);
 const mixedFile=await Zip.loadAsync(await Core.buildXlsx(template,mixed,Zip));
 const mixedXml=await mixedFile.file('xl/worksheets/sheet1.xml').async('string');
-assert(mixedXml.includes('SUMIFS(H23:H24,I23:I24,&quot;EUR&quot;)'));
-assert(mixedXml.includes('SUMIFS(H23:H24,I23:I24,&quot;RSD&quot;)'));
+assert(mixedXml.includes('SUMIFS(H19:H20,I19:I20,&quot;EUR&quot;)'));
+assert(mixedXml.includes('SUMIFS(H19:H20,I19:I20,&quot;RSD&quot;)'));
 const testDir=process.env.DEMETRA_QUOTE_TEST_OUTPUT;
 if(testDir){await mkdir(testDir,{recursive:true});await writeFile(resolve(testDir,'provera-moja-ponuda.xlsx'),bytes);}
 console.log(JSON.stringify({ok:true,selectableVariants:snapshots.length,hiddenOffersRejected:offers.offers.length-valid.length,
