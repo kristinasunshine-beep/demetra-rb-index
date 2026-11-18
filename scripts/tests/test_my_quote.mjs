@@ -105,7 +105,8 @@ const tableHeader=sheet.match(/<row\b[^>]*\br="18"[^>]*>[\s\S]*?<\/row>/)?.[0]||
 const firstPlant=sheet.match(/<row\b[^>]*\br="19"[^>]*>[\s\S]*?<\/row>/)?.[0]||'';
 assert(tableHeader.includes('Biljka')&&tableHeader.includes('Parametri sadnice'),
   'Plant table header must move to row 18.');
-assert(firstPlant.includes(first.latinName),'First plant must start directly at row 19.');
+assert(firstPlant.includes('r="B19"') && firstPlant.includes(Core.xmlEscape(first.latinName)),
+  'First plant must start directly at row 19.');
 for(const number of [23,24]) assert(!sheet.includes('<row r="'+number+'"'),
   'No abandoned header rows or whitespace should remain after moving the table.');
 
