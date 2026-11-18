@@ -1,29 +1,89 @@
-/* Mobile outline: preserve the original headline's typeface and proportions.
-   Prevent crossed contours by removing aggressive negative tracking. */
+/* Mobile outline + compact botanical record / 2026-11-18.
+   Keep the ORIGINAL font, glyph proportions and weights. Prevent crossings
+   by removing the excessively negative tracking from all outlined headings. */
 @media screen and (max-width:760px) {
-  body.control-room[data-view="search"] .search-intro h1 em {
+  body.control-room[data-view="search"] .search-intro h1 em,
+  body.control-room .recommend-titlebar h1 span.outline,
+  body.control-room .quote-titlebar h1 span.outline {
     display:block;
     font-family:var(--sans);
-    font-weight:730;
-    font-style:normal;
+    font-weight:inherit;
     font-stretch:normal;
-    font-size:inherit;
-    line-height:1.03;
-    letter-spacing:.025em;
+    font-style:normal;
     font-kerning:none;
+    font-variant-ligatures:none;
+    letter-spacing:.012em;
+    line-height:1.07;
     color:transparent;
     -webkit-text-fill-color:transparent;
-    -webkit-text-stroke:1.1px var(--ink);
+    -webkit-text-stroke:1.05px var(--ink);
     paint-order:stroke fill;
+    text-shadow:none;
     max-width:100%;
     white-space:normal;
     overflow-wrap:normal;
     transform:none;
   }
+
+  /* A native input cannot wrap. Keep the input fully editable and show
+     the full, multiline name directly underneath whenever it is long. */
+  body.control-room[data-view="search"] .long-query-preview:not([hidden]) {
+    display:block;
+    margin-top:10px;
+    padding:11px 12px;
+    border:1px solid #57695e;
+    background:#263a30;
+    color:#f5f8f1;
+    font:600 15px/1.5 var(--sans);
+    letter-spacing:0;
+    overflow-wrap:anywhere;
+    word-break:normal;
+    white-space:normal;
+    width:100%;
+    box-sizing:border-box;
+  }
+  body.control-room[data-view="search"] .search-popup .suggestion-name {
+    white-space:normal;
+    overflow-wrap:anywhere;
+  }
+
+  /* Actual offer-record <dl> inside every digital plant card.
+     Force the compact grid over historical mobile one-column overrides. */
+  body.control-room .offer-card-body .offer-details > dl.measurements {
+    display:grid !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    column-gap:7px;
+    row-gap:7px;
+    padding:10px 11px;
+    margin:0;
+    width:100%;
+    align-items:stretch;
+  }
+  body.control-room .offer-card-body .offer-details > dl.measurements > .measurement {
+    min-width:0;
+    padding:9px 10px;
+    border:1px solid #dae4d9;
+    background:#f7f9f5;
+    box-sizing:border-box;
+  }
+  body.control-room .offer-card-body .offer-details > dl.measurements > .measurement dt {
+    font:500 10px/1.35 var(--mono);
+    overflow-wrap:anywhere;
+    margin:0 0 5px;
+  }
+  body.control-room .offer-card-body .offer-details > dl.measurements > .measurement dd {
+    font:600 13px/1.4 var(--sans);
+    overflow-wrap:anywhere;
+    margin:0;
+  }
 }
-@media screen and (max-width:420px) {
-  body.control-room[data-view="search"] .search-intro h1 em {
-    letter-spacing:.015em;
-    -webkit-text-stroke:1px var(--ink);
+@media screen and (min-width:430px) and (max-width:760px) {
+  body.control-room .offer-card-body .offer-details > dl.measurements {
+    grid-template-columns:repeat(3,minmax(0,1fr)) !important;
+  }
+}
+@media screen and (max-width:359px) {
+  body.control-room .offer-card-body .offer-details > dl.measurements > .measurement {
+    padding:8px 7px;
   }
 }

@@ -843,8 +843,8 @@ body[data-view="search"] .search-field:focus-within .search-icon { color:var(--a
 </style>
       <link rel="stylesheet" href="./assets/moja-ponuda.css">
       <link rel="stylesheet" href="./assets/brza-preporuka.css?v=auto-20261113">
-      <link rel="stylesheet" href="./assets/control-room.css?v=photo-dedup-20261117">
-    <link rel="stylesheet" href="./assets/control-room-mobile-outline.css?v=02w-20261117">
+      <link rel="stylesheet" href="./assets/control-room.css?v=mobile-r3-20261118">
+    <link rel="stylesheet" href="./assets/control-room-mobile-outline.css?v=mobile-r3-20261118">
   </head>
   <body class="control-room" data-view="search">
     <a class="skip-link" href="#main">Pređi na sadržaj</a>
@@ -897,6 +897,7 @@ body[data-view="search"] .search-field:focus-within .search-icon { color:var(--a
               <button id="clear-search" type="button" class="icon-button clear-search" data-action="clear-search" aria-label="Obriši pretragu" hidden><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M6 18 18 6"/></svg></button>
               <button id="search-go" type="button" class="search-go search-only" data-action="search-go" aria-label="Pronađi biljku"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M8 31 31 8M9 8h22v22"/></svg></button>
             </div>
+            <div id="long-query-preview" class="long-query-preview" aria-label="Pun naziv biljke u pretrazi" hidden></div>
             <div id="search-popup" class="search-popup" hidden></div>
           </div>
           <div class="nursery-select-wrap">
@@ -1478,7 +1479,19 @@ function handleSearchInput(event) {
   updateSearch();
 }
 
+function syncLongQueryPreview() {
+  const preview = $('long-query-preview');
+  if (!preview) return;
+  const fullName = input.value.trim();
+  // Native single-line search inputs scroll their content: expose an accessible,
+  // wrapping copy of long botanical names without shrinking the typeface.
+  const show = window.matchMedia('(max-width: 760px)').matches && fullName.length >= 24;
+  preview.hidden = !show;
+  preview.textContent = show ? fullName : '';
+}
+
 function updateSearch() {
+  syncLongQueryPreview();
   state.query = input.value;
   $('clear-search').hidden = !state.query;
   if (!state.query.trim()) {
@@ -1758,6 +1771,7 @@ function openRecord(id) {
   }
   state.selectedPlantId = id;
   input.value = plant.latinName;
+  syncLongQueryPreview();
   state.query = plant.latinName;
   $('clear-search').hidden = false;
   closeSuggestions();
@@ -1813,6 +1827,7 @@ function handleRoute() {
 
 input.addEventListener('input', handleSearchInput);
 input.addEventListener('compositionend', handleSearchInput);
+window.addEventListener('resize', syncLongQueryPreview, { passive:true });
 input.addEventListener('focus', () => {
   if (!dialog.open && state.query.trim() && !state.popupOpen) updateSearch();
 });
@@ -1840,6 +1855,7 @@ input.addEventListener('keydown', (event) => {
 
 $('clear-search').addEventListener('click', () => {
   input.value = '';
+  syncLongQueryPreview();
   state.query = '';
   $('clear-search').hidden = true;
   closeSuggestions();
@@ -1939,7 +1955,7 @@ init();
   <script>
 if ('serviceWorker' in navigator && location.protocol === 'https:') {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./service-worker.js').catch(error =>
+    navigator.serviceWorker.register('./service-worker.js', { updateViaCache:'none' }).then(registration => registration.update()).catch(error =>
       console.warn('PWA nije registrovana:', error));
   });
 }
