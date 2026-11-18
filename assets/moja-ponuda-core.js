@@ -190,6 +190,49 @@
     return /<dimension\b/.test(xml) ? xml.replace(/<dimension\b[^>]*\/>/, dimension) :
       xml.replace('<sheetViews',dimension+'<sheetViews');
   }
+  // The source workbook contains an obsolete contact block in rows 16–19.
+  // Keep the memorandum, logo/accreditation rows and the two active contact
+  // columns (through row 15), then move the table title, optional note and
+  // table header from rows 20–22 to rows 16–18. Plant data begins at row 19.
+  function compactQuoteHeader(xml) {
+    const match = xml.match(/<sheetData\\b[^>]*>([\\s\\S]*?)<\\/sheetData>/);
+    if (!match) throw new Error('Nedostaje sadržaj Excel obrasca.');
+    const rows = [...match[1].matchAll(/<row\\b[^>]*(?:\\/?>|>[\\s\\S]*?<\\/row>)/g)]
+      .map(([source]) => ({ source, number: Number(source.match(/\\br="(\\d+)"/)?.[1]) }));
+    const byNumber = new Map(rows.map(row => [row.number, row.source]));
+    for (const number of [20, 21, 22]) if (!byNumber.has(number)) {
+      throw new Error('Nedostaje naslov ili zaglavlje Excel tabele.');
+    }
+    const move = (source, from, to) => source
+      .replace(new RegExp('(<row\\\\b[^>]*\\\\br=")' + from + '(")'), '$1' + to + '$2')
+      .replace(new RegExp('(\\\\br=")([A-Z]{1,3})' + from + '(")', 'g'),
+        (_, prefix, column, suffix) => prefix + column + to + suffix);
+    const compact = rows.filter(row => row.number >= 1 && row.number <= 15)
+      .map(row => row.source)
+      .concat([move(byNumber.get(20), 20, 16), move(byNumber.get(21), 21, 17),
+        move(byNumber.get(22), 22, 18)]).join('');
+    xml = xml.replace(/<sheetData\\b[^>]*>[\\s\\S]*?<\\/sheetData>/,
+      '<sheetData>' + compact + '</sheetData>');
+    // Reposition the table's merged title/note/header cells, but discard
+    // merges belonging to the deleted, duplicated contact-information block.
+    return xml.replace(/<mergeCells\\b[^>]*>[\\s\\S]*?<\\/mergeCells>/, section => {
+      const kept = [];
+      for (const [tag] of section.matchAll(/<mergeCell\\b[^>]*\\bref="[^"]+"[^>]*\\/>/g)) {
+        const ref = tag.match(/\\bref="([A-Z]+)(\\d+):([A-Z]+)(\\d+)"/);
+        if (!ref) continue;
+        const first = Number(ref[2]), last = Number(ref[4]);
+        if (first <= 15 && last <= 15) kept.push(tag);
+        else if (first >= 20 && last <= 22) {
+          const relocate = number => number - 4;
+          kept.push(tag.replace(ref[0], 'ref="' + ref[1] + relocate(first) +
+            ':' + ref[3] + relocate(last) + '"'));
+        }
+      }
+      return kept.length ? '<mergeCells count="' + kept.length + '">' +
+        kept.join('') + '</mergeCells>' : '';
+    });
+  }
+
   // Make the "Jed." (unit) column wide enough for ordinary Serbian words.
   // Do not alter unit data, formulas, template colors or the other eight columns.
   // Split any template <col> group that spans E so no adjacent widths change.
@@ -265,29 +308,30 @@
       [10, [meta.address], [35], 23], [11, [fields.A11, fields.G11], [95, 35], 23],
       [12, [meta.email], [35], 23], [13, [fields.A13, fields.G13], [95, 35], 23],
       [14, [meta.taxId], [35], 23], [15, [meta.registration], [35], 23],
-      [21, [meta.note], [160], 24]
+      [21, [meta.note], [160], meta.note.trim() ? 24 : 8]
     ]) main = rowHeight(main, number, lineHeight(values, widths, minimum));
     const cols = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
     const styles = rowStyles(main, 23, cols), sumStyles = rowStyles(main, 24, cols);
+    main = compactQuoteHeader(main);
     let rows = '';
     quote.items.forEach((item, index) => {
-      const number = index + 23, result = total.rows[index];
+      const number = index + 19, result = total.rows[index];
       const values = [index + 1, item.latinName, compactParameters(item), item.nursery, item.unit,
         result.quantity.value, result.price.value, result.amount, item.currency];
       const height = lineHeight(values, [5, 28, 45, 22, 16, 11, 14, 15, 7], 60);
       rows += `<row r="${number}" ht="${height}" customHeight="1">` + values.map((value, column) =>
         cell(cols[column] + number, value, styles[column], column === 7 ? `ROUND(F${number}*G${number},2)` : '')).join('') + '</row>';
     });
-    const lastData = 22 + quote.items.length, lastRow = lastData + total.totals.length;
+    const lastData = 18 + quote.items.length, lastRow = lastData + total.totals.length;
     total.totals.forEach((subtotal,index)=>{
       const sumRow = lastData + index + 1;
-      const formula = total.totals.length === 1 ? `SUM(H23:H${lastData})` :
-        `SUMIFS(H23:H${lastData},I23:I${lastData},"${subtotal.currency}")`;
+      const formula = total.totals.length === 1 ? `SUM(H19:H${lastData})` :
+        `SUMIFS(H19:H${lastData},I19:I${lastData},"${subtotal.currency}")`;
       rows += `<row r="${sumRow}" ht="30" customHeight="1">` + cell('G' + sumRow, 'UKUPNO', sumStyles[6]) +
         cell('H' + sumRow, subtotal.amount, sumStyles[7], formula) + cell('I' + sumRow,subtotal.currency,sumStyles[8]) + '</row>';
     });
-    main = replaceRows(main, 23, rows, 'I', lastRow);
-    main = main.replace(/sqref="F23"/g, `sqref="F23:F${lastData}"`).replace(/sqref="G23"/g, `sqref="G23:G${lastData}"`);
+    main = replaceRows(main, 19, rows, 'I', lastRow);
+    main = main.replace(/sqref="F23"/g, `sqref="F19:F${lastData}"`).replace(/sqref="G23"/g, `sqref="G19:G${lastData}"`);
     zip.file('xl/worksheets/sheet1.xml', main);
     let workbook = spreadsheetXml(await zip.file('xl/workbook.xml').async('string'));
     const calc = '<calcPr calcId="191029" fullCalcOnLoad="1" forceFullCalc="1" calcMode="auto"/>';
