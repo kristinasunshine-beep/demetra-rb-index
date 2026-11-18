@@ -195,37 +195,35 @@
   // columns (through row 15), then move the table title, optional note and
   // table header from rows 20–22 to rows 16–18. Plant data begins at row 19.
   function compactQuoteHeader(xml) {
-    const match = xml.match(/<sheetData\\b[^>]*>([\\s\\S]*?)<\\/sheetData>/);
+    const match = xml.match(/<sheetData\b[^>]*>([\s\S]*?)<\/sheetData>/);
     if (!match) throw new Error('Nedostaje sadržaj Excel obrasca.');
-    const rows = [...match[1].matchAll(/<row\\b[^>]*(?:\\/?>|>[\\s\\S]*?<\\/row>)/g)]
-      .map(([source]) => ({ source, number: Number(source.match(/\\br="(\\d+)"/)?.[1]) }));
+    const rows = [...match[1].matchAll(/<row\b[^>]*(?:\/>|>[\s\S]*?<\/row>)/g)]
+      .map(([source]) => ({ source, number: Number(source.match(/\br="(\d+)"/)?.[1]) }));
     const byNumber = new Map(rows.map(row => [row.number, row.source]));
     for (const number of [20, 21, 22]) if (!byNumber.has(number)) {
       throw new Error('Nedostaje naslov ili zaglavlje Excel tabele.');
     }
     const move = (source, from, to) => source
-      .replace(new RegExp('(<row\\\\b[^>]*\\\\br=")' + from + '(")'), '$1' + to + '$2')
-      .replace(new RegExp('(\\\\br=")([A-Z]{1,3})' + from + '(")', 'g'),
+      .replace(new RegExp('(<row\\b[^>]*\\br=")' + from + '(")'), '$1' + to + '$2')
+      .replace(new RegExp('(\\br=")([A-Z]{1,3})' + from + '(")', 'g'),
         (_, prefix, column, suffix) => prefix + column + to + suffix);
     const compact = rows.filter(row => row.number >= 1 && row.number <= 15)
       .map(row => row.source)
       .concat([move(byNumber.get(20), 20, 16), move(byNumber.get(21), 21, 17),
         move(byNumber.get(22), 22, 18)]).join('');
-    xml = xml.replace(/<sheetData\\b[^>]*>[\\s\\S]*?<\\/sheetData>/,
+    xml = xml.replace(/<sheetData\b[^>]*>[\s\S]*?<\/sheetData>/,
       '<sheetData>' + compact + '</sheetData>');
-    // Reposition the table's merged title/note/header cells, but discard
-    // merges belonging to the deleted, duplicated contact-information block.
-    return xml.replace(/<mergeCells\\b[^>]*>[\\s\\S]*?<\\/mergeCells>/, section => {
+    // Preserve only existing company and repositioned table merges.
+    return xml.replace(/<mergeCells\b[^>]*>[\s\S]*?<\/mergeCells>/, section => {
       const kept = [];
-      for (const [tag] of section.matchAll(/<mergeCell\\b[^>]*\\bref="[^"]+"[^>]*\\/>/g)) {
-        const ref = tag.match(/\\bref="([A-Z]+)(\\d+):([A-Z]+)(\\d+)"/);
+      for (const [tag] of section.matchAll(/<mergeCell\b[^>]*\bref="[^"]+"[^>]*\/>/g)) {
+        const ref = tag.match(/\bref="([A-Z]+)(\d+):([A-Z]+)(\d+)"/);
         if (!ref) continue;
         const first = Number(ref[2]), last = Number(ref[4]);
         if (first <= 15 && last <= 15) kept.push(tag);
         else if (first >= 20 && last <= 22) {
-          const relocate = number => number - 4;
-          kept.push(tag.replace(ref[0], 'ref="' + ref[1] + relocate(first) +
-            ':' + ref[3] + relocate(last) + '"'));
+          kept.push(tag.replace(ref[0], 'ref="' + ref[1] + (first - 4) +
+            ':' + ref[3] + (last - 4) + '"'));
         }
       }
       return kept.length ? '<mergeCells count="' + kept.length + '">' +
