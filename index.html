@@ -867,6 +867,24 @@ body[data-view="search"] .search-field:focus-within .search-icon { color:var(--a
         body.control-room[data-view="search"] .search-intro h1 em { white-space:nowrap; }
       }
     </style>
+    <!-- Headline-only typography refinement: compact second row, shared right edge. -->
+    <style id="demetra-search-headline-alignment">
+      body.control-room[data-view="search"] #search-heading {
+        display:flex;
+        flex-direction:column;
+        align-items:flex-end;
+        width:max-content;
+        max-width:100%;
+        text-align:right;
+      }
+      body.control-room[data-view="search"] #search-heading > :is(span,em) {
+        display:block;
+        white-space:nowrap;
+      }
+      body.control-room[data-view="search"] #search-heading > em {
+        letter-spacing:-.1165em !important;
+      }
+    </style>
   </head>
   <body class="control-room" data-view="search">
     <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none">
