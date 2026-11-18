@@ -10,15 +10,22 @@ test('Mobile font, long names, parameter grid and cache invalidation are present
   const sw = read('service-worker.js');
   assert.match(html, /id="long-query-preview"/);
   assert.match(html, /function syncLongQueryPreview\(\)/);
-  assert.match(html, /mobile-r4-20261118/);
+  assert.match(html, /outline-r6-20261118/);
   assert.ok(css.includes("recommend-titlebar h1 span.outline"));
-  assert.ok(css.includes("letter-spacing:.055em"));
+  assert.ok(css.includes("letter-spacing:-.055em !important"));
   assert.match(html, /id="mobile-outline-no-crossing"/);
-  assert.ok(html.includes("letter-spacing:.055em !important"));
+  assert.ok(html.includes("letter-spacing:-.055em !important"));
+  assert.ok(html.includes('id="demetra-mobile-union-outline"'));
+  assert.ok(html.includes('operator="erode" radius="1"'));
+  assert.ok(html.includes('operator="out" result="clean-contour"'));
+  assert.ok(html.includes('-webkit-text-stroke:0 !important'));
+  assert.ok(css.includes('filter:url("#demetra-mobile-union-outline")'));
+  assert.ok(!html.includes('letter-spacing:.055em !important'));
+  assert.ok(!css.includes('letter-spacing:.055em;'));
   assert.match(css, /quote-titlebar h1 span\.outline/);
   assert.match(css, /grid-template-columns:repeat\(2,minmax\(0,1fr\)\) !important/);
   assert.match(css, /grid-template-columns:repeat\(3,minmax\(0,1fr\)\) !important/);
-  assert.match(sw, /demetra-rb-pwa-shell-07-quote-mobile-r5-20261118/);
+  assert.match(sw, /demetra-rb-pwa-shell-08-outline-r6-20261118/);
   assert.match(sw, /cache:'reload'/);
 });
 
