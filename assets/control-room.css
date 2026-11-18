@@ -423,3 +423,70 @@ body.control-room .header-actions :is(a,button)[aria-expanded="true"] > .nav-num
     font-size: 10px;
   }
 }
+
+
+/* Mobile-only usability: full-width taxon input and compact parameter cards. */
+@media screen and (max-width:760px) {
+ body.control-room[data-view="search"] .search-field {
+   display:grid;
+   grid-template-columns:minmax(0,1fr) 46px;
+   position:relative;
+   min-height:0;
+ }
+ body.control-room[data-view="search"] .search-field:before { display:none; }
+ body.control-room[data-view="search"] #plant-search {
+   display:block;
+   grid-column:1;
+   width:100%;
+   min-width:0;
+   max-width:100%;
+   height:68px;
+   padding:12px 6px 12px 0;
+   font-size:clamp(16px,4.2vw,24px);
+   letter-spacing:-.025em;
+   text-overflow:clip;
+ }
+ body.control-room[data-view="search"] #search-go {
+   grid-column:2;
+   grid-row:1;
+   width:42px;
+   min-width:42px;
+   height:44px;
+   margin:12px 0;
+   flex-basis:auto;
+ }
+ body.control-room[data-view="search"] .clear-search {
+   top:0;
+   right:46px;
+   transform:translateY(17px);
+ }
+ body.control-room .offer-details>.measurements,
+ body.control-room .offer-card-body.without-photo .measurements {
+   display:grid;
+   grid-template-columns:repeat(2,minmax(0,1fr));
+   gap:6px;
+   padding:10px;
+ }
+ body.control-room .offer-details>.measurements .measurement,
+ body.control-room .offer-card-body.without-photo .measurements .measurement {
+   min-width:0;
+   padding:9px 8px;
+   border:1px solid var(--line);
+   background:#F8F9F5;
+ }
+ body.control-room .measurement dt { font-size:10px;line-height:1.3; }
+ body.control-room .measurement dd { font-size:13px;line-height:1.4;overflow-wrap:anywhere; }
+ body.control-room .search-popup .suggestion-name { white-space:normal;overflow-wrap:anywhere; }
+}
+@media screen and (min-width:480px) and (max-width:760px) {
+ body.control-room .offer-details>.measurements,
+ body.control-room .offer-card-body.without-photo .measurements {
+   grid-template-columns:repeat(3,minmax(0,1fr));
+ }
+}
+@media screen and (max-width:420px) {
+ body.control-room .offer-details>.measurements,
+ body.control-room .offer-card-body.without-photo .measurements {
+   grid-template-columns:repeat(2,minmax(0,1fr));
+ }
+}
