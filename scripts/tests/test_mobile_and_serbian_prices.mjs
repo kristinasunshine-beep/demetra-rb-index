@@ -11,10 +11,10 @@ test('Mobile font, long names, parameter grid and cache invalidation are present
   assert.match(html, /id="long-query-preview"/);
   assert.match(html, /function syncLongQueryPreview\(\)/);
   assert.match(html, /mobile-r4-20261118/);
-  assert.match(css, /recommend-titlebar h1 span\\.outline/);
-  assert.match(css, /letter-spacing:\\.055em/);
+  assert.ok(css.includes("recommend-titlebar h1 span.outline"));
+  assert.ok(css.includes("letter-spacing:.055em"));
   assert.match(html, /id="mobile-outline-no-crossing"/);
-  assert.match(html, /letter-spacing:\\.055em !important/);
+  assert.ok(html.includes("letter-spacing:.055em !important"));
   assert.match(css, /quote-titlebar h1 span\.outline/);
   assert.match(css, /grid-template-columns:repeat\(2,minmax\(0,1fr\)\) !important/);
   assert.match(css, /grid-template-columns:repeat\(3,minmax\(0,1fr\)\) !important/);
