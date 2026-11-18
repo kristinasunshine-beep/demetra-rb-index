@@ -1,4 +1,4 @@
-/* Mobile outline + compact botanical record / 2026-11-18.
+/* Mobile outline + compact botanical record / 2026-11-18 r4.
    Keep the ORIGINAL font, glyph proportions and weights. Prevent crossings
    by removing the excessively negative tracking from all outlined headings. */
 @media screen and (max-width:760px) {
@@ -12,7 +12,7 @@
     font-style:normal;
     font-kerning:none;
     font-variant-ligatures:none;
-    letter-spacing:.012em;
+    letter-spacing:.055em;
     line-height:1.07;
     color:transparent;
     -webkit-text-fill-color:transparent;
