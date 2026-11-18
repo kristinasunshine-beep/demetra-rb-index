@@ -10,12 +10,15 @@ test('Mobile font, long names, parameter grid and cache invalidation are present
   const sw = read('service-worker.js');
   assert.match(html, /id="long-query-preview"/);
   assert.match(html, /function syncLongQueryPreview\(\)/);
-  assert.match(html, /mobile-r3-20261118/);
-  assert.match(css, /recommend-titlebar h1 span\.outline/);
+  assert.match(html, /mobile-r4-20261118/);
+  assert.match(css, /recommend-titlebar h1 span\\.outline/);
+  assert.match(css, /letter-spacing:\\.055em/);
+  assert.match(html, /id="mobile-outline-no-crossing"/);
+  assert.match(html, /letter-spacing:\\.055em !important/);
   assert.match(css, /quote-titlebar h1 span\.outline/);
   assert.match(css, /grid-template-columns:repeat\(2,minmax\(0,1fr\)\) !important/);
   assert.match(css, /grid-template-columns:repeat\(3,minmax\(0,1fr\)\) !important/);
-  assert.match(sw, /demetra-rb-pwa-shell-05-mobile-r3-20261118/);
+  assert.match(sw, /demetra-rb-pwa-shell-06-mobile-r4-20261118/);
   assert.match(sw, /cache:'reload'/);
 });
 
