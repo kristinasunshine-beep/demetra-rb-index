@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-17T11:48:45.822Z",
+  "updatedAt": "2026-11-18T08:31:00Z",
   "sourcePolicy": {
     "nonPhoto": "rasadnici-ponude-zip",
     "onlineUpdates": [
@@ -352485,7 +352485,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "",
-      "price": 4500,
+      "price": 38.26,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -352502,7 +352502,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-1f3d729fc0efb0",
         "file": "Rasadnici ponude/Srbija/Žića/Zelenilo Pančevo/Demetra za tender cene.pdf",
@@ -352609,7 +352609,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 4500,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 4500,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-ba93ccc044cbd8",
@@ -352621,7 +352630,7 @@
       "rootBall": "min. 50 cm",
       "potSize": "",
       "rootType": "saržija/žica",
-      "price": 20000,
+      "price": 170.04,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -352638,7 +352647,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-83368850bc6a22",
         "file": "Rasadnici ponude/Srbija/Žića/173885330726576.pdf",
@@ -352729,7 +352738,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 20000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 20000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-87b2e8d6ee6ace",
@@ -352741,7 +352759,7 @@
       "rootBall": "min. 55 cm",
       "potSize": "",
       "rootType": "saržija/žica",
-      "price": 18000,
+      "price": 153.03,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -352758,7 +352776,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-83368850bc6a22",
         "file": "Rasadnici ponude/Srbija/Žića/173885330726576.pdf",
@@ -352849,7 +352867,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 18000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 18000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-18736d753c2972",
@@ -352861,7 +352888,7 @@
       "rootBall": "min. 50 cm",
       "potSize": "",
       "rootType": "saržija/žica",
-      "price": 12000,
+      "price": 102.02,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -352878,7 +352905,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-83368850bc6a22",
         "file": "Rasadnici ponude/Srbija/Žića/173885330726576.pdf",
@@ -352969,7 +352996,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 12000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 12000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-2a6e16c93fff19",
@@ -352981,7 +353017,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "",
-      "price": 18000,
+      "price": 153.03,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -352998,7 +353034,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-1f3d729fc0efb0",
         "file": "Rasadnici ponude/Srbija/Žića/Zelenilo Pančevo/Demetra za tender cene.pdf",
@@ -353103,7 +353139,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 18000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 18000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-e021a1448ebaee",
@@ -353378,7 +353423,7 @@
       "rootBall": "min. 50 cm",
       "potSize": "",
       "rootType": "saržija/žica",
-      "price": 22000,
+      "price": 187.04,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -353395,7 +353440,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-83368850bc6a22",
         "file": "Rasadnici ponude/Srbija/Žića/173885330726576.pdf",
@@ -353486,7 +353531,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 22000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 22000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-d3439ee8bac0e4",
@@ -353598,7 +353652,7 @@
       "rootBall": "",
       "potSize": "3–5 L",
       "rootType": "Kontejner",
-      "price": 900,
+      "price": 7.65,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -353615,7 +353669,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-83368850bc6a22",
         "file": "Rasadnici ponude/Srbija/Žića/173885330726576.pdf",
@@ -353723,7 +353777,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 900,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 900,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-914294b3fd9b28",
@@ -353735,7 +353798,7 @@
       "rootBall": "min. 40 cm",
       "potSize": "",
       "rootType": "saržija",
-      "price": 10000,
+      "price": 85.02,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -353752,7 +353815,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-83368850bc6a22",
         "file": "Rasadnici ponude/Srbija/Žića/173885330726576.pdf",
@@ -353843,7 +353906,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 10000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 10000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-ef5bda3e22ea51",
@@ -353954,7 +354026,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "",
-      "price": 3000,
+      "price": 25.51,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -353971,7 +354043,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-1f3d729fc0efb0",
         "file": "Rasadnici ponude/Srbija/Žića/Zelenilo Pančevo/Demetra za tender cene.pdf",
@@ -354052,7 +354124,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 3000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 3000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-358b998b76aaf0",
@@ -354064,7 +354145,7 @@
       "rootBall": "min. 45 cm",
       "potSize": "",
       "rootType": "saržija",
-      "price": 8000,
+      "price": 68.02,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -354081,7 +354162,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-83368850bc6a22",
         "file": "Rasadnici ponude/Srbija/Žića/173885330726576.pdf",
@@ -354172,7 +354253,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 8000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 8000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-fca67dffb98a57",
@@ -354184,7 +354274,7 @@
       "rootBall": "",
       "potSize": "2–3 L",
       "rootType": "Kontejner",
-      "price": 600,
+      "price": 5.1,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -354201,7 +354291,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-83368850bc6a22",
         "file": "Rasadnici ponude/Srbija/Žića/173885330726576.pdf",
@@ -354309,7 +354399,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 600,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 600,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-70126272d6a4ad",
@@ -354321,7 +354420,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "saržija/žica",
-      "price": 20000,
+      "price": 170.04,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -354338,7 +354437,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-83368850bc6a22",
         "file": "Rasadnici ponude/Srbija/Žića/173885330726576.pdf",
@@ -354456,7 +354555,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 20000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 20000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-7c2105a8958140",
@@ -354468,7 +354576,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "saržija/žica",
-      "price": 20000,
+      "price": 170.04,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -354485,7 +354593,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-83368850bc6a22",
         "file": "Rasadnici ponude/Srbija/Žića/173885330726576.pdf",
@@ -354603,7 +354711,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 20000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 20000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-6624be0cfecccb",
@@ -354615,7 +354732,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "",
-      "price": 7000,
+      "price": 59.51,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -354632,7 +354749,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-399eaf37529a88",
         "file": "Rasadnici ponude/Srbija/Žića/upit demetra dejana.pdf",
@@ -354745,7 +354862,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 7000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 7000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-8bbab092b714a8",
@@ -354757,7 +354883,7 @@
       "rootBall": "min. 30 cm",
       "potSize": "",
       "rootType": "saržija",
-      "price": 2000,
+      "price": 17.0,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -354774,7 +354900,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-83368850bc6a22",
         "file": "Rasadnici ponude/Srbija/Žića/173885330726576.pdf",
@@ -354865,7 +354991,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 2000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 2000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-dec076a2ee8b2d",
@@ -354951,7 +355086,7 @@
       "rootBall": "",
       "potSize": "5–7,5 L",
       "rootType": "Kontejner",
-      "price": 5000,
+      "price": 42.51,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -354968,7 +355103,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-83368850bc6a22",
         "file": "Rasadnici ponude/Srbija/Žića/173885330726576.pdf",
@@ -355076,7 +355211,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 5000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 5000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-f9859e6bacb683",
@@ -355088,7 +355232,7 @@
       "rootBall": "min. 40 cm",
       "potSize": "",
       "rootType": "saržija",
-      "price": 2000,
+      "price": 17.0,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -355105,7 +355249,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-83368850bc6a22",
         "file": "Rasadnici ponude/Srbija/Žića/173885330726576.pdf",
@@ -355196,7 +355340,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 2000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 2000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-a63a40a12d7009",
@@ -355208,7 +355361,7 @@
       "rootBall": "min. 40 cm",
       "potSize": "",
       "rootType": "saržija",
-      "price": 1500,
+      "price": 12.75,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -355225,7 +355378,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-83368850bc6a22",
         "file": "Rasadnici ponude/Srbija/Žića/173885330726576.pdf",
@@ -355321,7 +355474,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 1500,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 1500,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-b10d1e056de6af",
@@ -355411,7 +355573,7 @@
       "rootBall": "min. 45 cm",
       "potSize": "",
       "rootType": "saržija",
-      "price": 12000,
+      "price": 102.02,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -355428,7 +355590,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-83368850bc6a22",
         "file": "Rasadnici ponude/Srbija/Žića/173885330726576.pdf",
@@ -355519,7 +355681,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 12000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 12000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-f0c3c54574daa6",
@@ -355531,7 +355702,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "",
-      "price": 4500,
+      "price": 38.26,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -355548,7 +355719,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-1f3d729fc0efb0",
         "file": "Rasadnici ponude/Srbija/Žića/Zelenilo Pančevo/Demetra za tender cene.pdf",
@@ -355655,7 +355826,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 4500,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 4500,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-cecef7b27b628f",
@@ -355667,7 +355847,7 @@
       "rootBall": "min. 50 cm",
       "potSize": "",
       "rootType": "saržija/žica",
-      "price": 18000,
+      "price": 153.03,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -355684,7 +355864,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-83368850bc6a22",
         "file": "Rasadnici ponude/Srbija/Žića/173885330726576.pdf",
@@ -355775,7 +355955,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 18000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 18000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-d5cd1852be6cd2",
@@ -355787,7 +355976,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "",
-      "price": 4000,
+      "price": 34.01,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -355804,7 +355993,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-1f3d729fc0efb0",
         "file": "Rasadnici ponude/Srbija/Žića/Zelenilo Pančevo/Demetra za tender cene.pdf",
@@ -355911,7 +356100,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 4000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 4000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-3746b6ea34532a",
@@ -358321,7 +358519,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "",
-      "price": 4500,
+      "price": 38.26,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -358338,7 +358536,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-1f3d729fc0efb0",
         "file": "Rasadnici ponude/Srbija/Žića/Zelenilo Pančevo/Demetra za tender cene.pdf",
@@ -358445,7 +358643,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 4500,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 4500,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-cd3daf19a16355",
@@ -358457,7 +358664,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "",
-      "price": 4000,
+      "price": 34.01,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -358474,7 +358681,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-1f3d729fc0efb0",
         "file": "Rasadnici ponude/Srbija/Žića/Zelenilo Pančevo/Demetra za tender cene.pdf",
@@ -358581,7 +358788,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 4000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 4000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-115b2e299e2081",
@@ -358593,7 +358809,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "",
-      "price": 7000,
+      "price": 59.51,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -358610,7 +358826,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-1f3d729fc0efb0",
         "file": "Rasadnici ponude/Srbija/Žića/Zelenilo Pančevo/Demetra za tender cene.pdf",
@@ -358717,7 +358933,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 7000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 7000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-eb87b6c70dfc7c",
@@ -358729,7 +358954,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "",
-      "price": 4500,
+      "price": 38.26,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -358746,7 +358971,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-1f3d729fc0efb0",
         "file": "Rasadnici ponude/Srbija/Žića/Zelenilo Pančevo/Demetra za tender cene.pdf",
@@ -358853,7 +359078,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 4500,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 4500,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-7e4f7cdfa95c17",
@@ -358865,7 +359099,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "",
-      "price": 4000,
+      "price": 34.01,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -358882,7 +359116,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-1f3d729fc0efb0",
         "file": "Rasadnici ponude/Srbija/Žića/Zelenilo Pančevo/Demetra za tender cene.pdf",
@@ -358989,7 +359223,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 4000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 4000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-6ff60e240bd316",
@@ -359001,7 +359244,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "",
-      "price": 40000,
+      "price": 340.08,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -359018,7 +359261,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-1f3d729fc0efb0",
         "file": "Rasadnici ponude/Srbija/Žića/Zelenilo Pančevo/Demetra za tender cene.pdf",
@@ -359125,7 +359368,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 40000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 40000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-c203161cb6651e",
@@ -359137,7 +359389,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "",
-      "price": 25000,
+      "price": 212.55,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -359154,7 +359406,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-1f3d729fc0efb0",
         "file": "Rasadnici ponude/Srbija/Žića/Zelenilo Pančevo/Demetra za tender cene.pdf",
@@ -359259,7 +359511,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 25000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 25000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-a61c9e288538b7",
@@ -359271,7 +359532,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "",
-      "price": 25000,
+      "price": 212.55,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -359288,7 +359549,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-1f3d729fc0efb0",
         "file": "Rasadnici ponude/Srbija/Žića/Zelenilo Pančevo/Demetra za tender cene.pdf",
@@ -359393,7 +359654,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 25000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 25000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-5837ef50eecb07",
@@ -359405,7 +359675,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "",
-      "price": 4500,
+      "price": 38.26,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -359422,7 +359692,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-1f3d729fc0efb0",
         "file": "Rasadnici ponude/Srbija/Žića/Zelenilo Pančevo/Demetra za tender cene.pdf",
@@ -359529,7 +359799,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 4500,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 4500,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-b482619f320dc3",
@@ -359541,7 +359820,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "",
-      "price": 20000,
+      "price": 170.04,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -359558,7 +359837,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-1f3d729fc0efb0",
         "file": "Rasadnici ponude/Srbija/Žića/Zelenilo Pančevo/Demetra za tender cene.pdf",
@@ -359665,7 +359944,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 20000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 20000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-dc50b84338c1fe",
@@ -359677,7 +359965,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "",
-      "price": 4500,
+      "price": 38.26,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -359694,7 +359982,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-1f3d729fc0efb0",
         "file": "Rasadnici ponude/Srbija/Žića/Zelenilo Pančevo/Demetra za tender cene.pdf",
@@ -359801,7 +360089,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 4500,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 4500,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-d6533f036fb23a",
@@ -359813,7 +360110,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "",
-      "price": 60000,
+      "price": 510.12,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -359830,7 +360127,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-1f3d729fc0efb0",
         "file": "Rasadnici ponude/Srbija/Žića/Zelenilo Pančevo/Demetra za tender cene.pdf",
@@ -359935,7 +360232,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 60000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 60000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-cb4ec293f59c7d",
@@ -359947,7 +360253,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "",
-      "price": 4500,
+      "price": 38.26,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -359964,7 +360270,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-1f3d729fc0efb0",
         "file": "Rasadnici ponude/Srbija/Žića/Zelenilo Pančevo/Demetra za tender cene.pdf",
@@ -360045,7 +360351,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 4500,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 4500,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-01e84272d2fc75",
@@ -360131,7 +360446,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "Goli koren",
-      "price": 300,
+      "price": 2.55,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -360148,7 +360463,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-1f3d729fc0efb0",
         "file": "Rasadnici ponude/Srbija/Žića/Zelenilo Pančevo/Demetra za tender cene.pdf",
@@ -360229,7 +360544,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 300,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 300,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-608d963291b8e7",
@@ -360241,7 +360565,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "",
-      "price": 4000,
+      "price": 34.01,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -360258,7 +360582,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-1f3d729fc0efb0",
         "file": "Rasadnici ponude/Srbija/Žića/Zelenilo Pančevo/Demetra za tender cene.pdf",
@@ -360339,7 +360663,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 4000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 4000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-c71b12a141e5dc",
@@ -360427,7 +360760,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "",
-      "price": 8000,
+      "price": 68.02,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -360444,7 +360777,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-1f3d729fc0efb0",
         "file": "Rasadnici ponude/Srbija/Žića/Zelenilo Pančevo/Demetra za tender cene.pdf",
@@ -360525,7 +360858,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 8000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 8000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-b321da28820eb7",
@@ -360537,7 +360879,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "",
-      "price": 4000,
+      "price": 34.01,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -360554,7 +360896,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-1f3d729fc0efb0",
         "file": "Rasadnici ponude/Srbija/Žića/Zelenilo Pančevo/Demetra za tender cene.pdf",
@@ -360635,7 +360977,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 4000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 4000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-a148ec3cdc718d",
@@ -360647,7 +360998,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "",
-      "price": 15000,
+      "price": 127.53,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -360664,7 +361015,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-1f3d729fc0efb0",
         "file": "Rasadnici ponude/Srbija/Žića/Zelenilo Pančevo/Demetra za tender cene.pdf",
@@ -360745,7 +361096,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 15000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 15000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-15bf1ad5bb549b",
@@ -360757,7 +361117,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "",
-      "price": 35000,
+      "price": 297.57,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -360774,7 +361134,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-1f3d729fc0efb0",
         "file": "Rasadnici ponude/Srbija/Žića/Zelenilo Pančevo/Demetra za tender cene.pdf",
@@ -360855,7 +361215,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 35000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 35000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-219b703fd7b259",
@@ -360867,7 +361236,7 @@
       "rootBall": "",
       "potSize": "2–3 L",
       "rootType": "Kontejner",
-      "price": 400,
+      "price": 3.4,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -360884,7 +361253,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-1f3d729fc0efb0",
         "file": "Rasadnici ponude/Srbija/Žića/Zelenilo Pančevo/Demetra za tender cene.pdf",
@@ -360982,7 +361351,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 400,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 400,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-3c5915cc505a7f",
@@ -360994,7 +361372,7 @@
       "rootBall": "",
       "potSize": "2–3 L",
       "rootType": "Kontejner",
-      "price": 400,
+      "price": 3.4,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -361011,7 +361389,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-1f3d729fc0efb0",
         "file": "Rasadnici ponude/Srbija/Žića/Zelenilo Pančevo/Demetra za tender cene.pdf",
@@ -361109,7 +361487,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 400,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 400,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-f3373492ef7a8a",
@@ -361202,7 +361589,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "",
-      "price": 2800,
+      "price": 23.81,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -361219,7 +361606,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-399eaf37529a88",
         "file": "Rasadnici ponude/Srbija/Žića/upit demetra dejana.pdf",
@@ -361300,7 +361687,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 2800,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 2800,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-2ab6fa6468c10e",
@@ -361312,7 +361708,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "",
-      "price": 1000,
+      "price": 8.5,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -361329,7 +361725,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-399eaf37529a88",
         "file": "Rasadnici ponude/Srbija/Žića/upit demetra dejana.pdf",
@@ -361426,7 +361822,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 1000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 1000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-1c221a58a0e478",
@@ -361438,7 +361843,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "",
-      "price": 1000,
+      "price": 8.5,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -361455,7 +361860,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-399eaf37529a88",
         "file": "Rasadnici ponude/Srbija/Žića/upit demetra dejana.pdf",
@@ -361552,7 +361957,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 1000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 1000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-dbe1ab37f16025",
@@ -414889,7 +415303,7 @@
       "rootBall": "min. 55 cm",
       "potSize": "",
       "rootType": "saržija/žica",
-      "price": 16000,
+      "price": 136.03,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -414906,7 +415320,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-83368850bc6a22",
         "file": "Rasadnici ponude/Srbija/Žića/173885330726576.pdf",
@@ -414997,7 +415411,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 16000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 16000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "offer-pdf-8b67e96fc9a2b73880fd",
@@ -415009,7 +415432,7 @@
       "rootBall": "min. 50 cm",
       "potSize": "",
       "rootType": "saržija/žica",
-      "price": 15000,
+      "price": 127.53,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -415026,7 +415449,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-83368850bc6a22",
         "file": "Rasadnici ponude/Srbija/Žića/173885330726576.pdf",
@@ -415117,7 +415540,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 15000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 15000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "offer-pdf-5c4736c7c3e3e0014c52",
@@ -415129,7 +415561,7 @@
       "rootBall": "min. 45 cm",
       "potSize": "",
       "rootType": "saržija",
-      "price": 12000,
+      "price": 102.02,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -415146,7 +415578,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-83368850bc6a22",
         "file": "Rasadnici ponude/Srbija/Žića/173885330726576.pdf",
@@ -415237,7 +415669,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 12000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 12000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "offer-pdf-71a2f3cf657c1ffa4b3a",
@@ -415249,7 +415690,7 @@
       "rootBall": "min. 55 cm",
       "potSize": "",
       "rootType": "saržija/žica",
-      "price": 20000,
+      "price": 170.04,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -415266,7 +415707,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-83368850bc6a22",
         "file": "Rasadnici ponude/Srbija/Žića/173885330726576.pdf",
@@ -415357,7 +415798,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 20000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 20000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "offer-pdf-051a1dbb97c96c1b47b8",
@@ -415369,7 +415819,7 @@
       "rootBall": "min. 50 cm",
       "potSize": "",
       "rootType": "saržija/žica",
-      "price": 10000,
+      "price": 85.02,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -415386,7 +415836,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-83368850bc6a22",
         "file": "Rasadnici ponude/Srbija/Žića/173885330726576.pdf",
@@ -415504,7 +415954,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 10000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 10000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "offer-pdf-b667997a7ab6ab6eaf79",
@@ -415516,7 +415975,7 @@
       "rootBall": "min. 45 cm",
       "potSize": "",
       "rootType": "saržija",
-      "price": 15000,
+      "price": 127.53,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -415533,7 +415992,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-83368850bc6a22",
         "file": "Rasadnici ponude/Srbija/Žića/173885330726576.pdf",
@@ -415624,7 +416083,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 15000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 15000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "offer-pdf-1b113a18090880886d74",
@@ -415636,7 +416104,7 @@
       "rootBall": "min. 40 cm",
       "potSize": "",
       "rootType": "saržija",
-      "price": 12000,
+      "price": 102.02,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -415653,7 +416121,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-83368850bc6a22",
         "file": "Rasadnici ponude/Srbija/Žića/173885330726576.pdf",
@@ -415744,7 +416212,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 12000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 12000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "offer-pdf-207c493b0d325796dfca",
@@ -415756,7 +416233,7 @@
       "rootBall": "min. 40 cm",
       "potSize": "",
       "rootType": "saržija",
-      "price": 12000,
+      "price": 102.02,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -415773,7 +416250,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-83368850bc6a22",
         "file": "Rasadnici ponude/Srbija/Žića/173885330726576.pdf",
@@ -415864,7 +416341,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 12000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 12000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "offer-pdf-d7ee1a80e9872009e7a5",
@@ -415876,7 +416362,7 @@
       "rootBall": "min. 45 cm",
       "potSize": "",
       "rootType": "saržija",
-      "price": 20000,
+      "price": 170.04,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -415893,7 +416379,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-83368850bc6a22",
         "file": "Rasadnici ponude/Srbija/Žića/173885330726576.pdf",
@@ -415984,7 +416470,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 20000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 20000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "offer-pdf-dcdf36e0da7a00ca9386",
@@ -415996,7 +416491,7 @@
       "rootBall": "min. 40 cm",
       "potSize": "",
       "rootType": "saržija",
-      "price": 3000,
+      "price": 25.51,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -416013,7 +416508,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-83368850bc6a22",
         "file": "Rasadnici ponude/Srbija/Žića/173885330726576.pdf",
@@ -416105,7 +416600,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 3000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 3000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "offer-pdf-97337a68b798375f1689",
@@ -416117,7 +416621,7 @@
       "rootBall": "min. 55 cm",
       "potSize": "",
       "rootType": "saržija/žica",
-      "price": 20000,
+      "price": 170.04,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -416134,7 +416638,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-83368850bc6a22",
         "file": "Rasadnici ponude/Srbija/Žića/173885330726576.pdf",
@@ -416225,7 +416729,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 20000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 20000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "offer-pdf-31130fef793743bf5e71",
@@ -416237,7 +416750,7 @@
       "rootBall": "min. 60 cm",
       "potSize": "",
       "rootType": "saržija/žica",
-      "price": 20000,
+      "price": 170.04,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -416254,7 +416767,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-83368850bc6a22",
         "file": "Rasadnici ponude/Srbija/Žića/173885330726576.pdf",
@@ -416345,7 +416858,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 20000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 20000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "offer-pdf-805061b3201218264004",
@@ -416357,7 +416879,7 @@
       "rootBall": "min. 55 cm",
       "potSize": "",
       "rootType": "saržija/žica",
-      "price": 25000,
+      "price": 212.55,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -416374,7 +416896,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-83368850bc6a22",
         "file": "Rasadnici ponude/Srbija/Žića/173885330726576.pdf",
@@ -416465,7 +416987,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 25000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 25000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "offer-pdf-dc6bf05a8be60eda217f",
@@ -416950,7 +417481,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "",
-      "price": 5500,
+      "price": 46.76,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -416967,7 +417498,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-399eaf37529a88",
         "file": "Rasadnici ponude/Srbija/Žića/upit demetra dejana.pdf",
@@ -417048,7 +417579,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 5500,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 5500,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "offer-pdf-1a4dbfa3de0fa286f7a2",
@@ -417060,7 +417600,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "",
-      "price": 5500,
+      "price": 46.76,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -417077,7 +417617,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-399eaf37529a88",
         "file": "Rasadnici ponude/Srbija/Žića/upit demetra dejana.pdf",
@@ -417158,7 +417698,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 5500,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 5500,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "offer-pdf-cb05ad4b3a3e634b20b2",
@@ -417170,7 +417719,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "",
-      "price": 5500,
+      "price": 46.76,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -417187,7 +417736,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-399eaf37529a88",
         "file": "Rasadnici ponude/Srbija/Žića/upit demetra dejana.pdf",
@@ -417268,7 +417817,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 5500,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 5500,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "offer-pdf-892ce12359762bdfd01f",
@@ -417280,7 +417838,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "",
-      "price": 5500,
+      "price": 46.76,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -417297,7 +417855,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-399eaf37529a88",
         "file": "Rasadnici ponude/Srbija/Žića/upit demetra dejana.pdf",
@@ -417378,7 +417936,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 5500,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 5500,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "offer-pdf-2905b27968cf70bb511d",
@@ -417390,7 +417957,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "",
-      "price": 6000,
+      "price": 51.01,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -417407,7 +417974,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-399eaf37529a88",
         "file": "Rasadnici ponude/Srbija/Žića/upit demetra dejana.pdf",
@@ -417488,7 +418055,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 6000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 6000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "offer-pdf-59491ebd2c6180bb7634",
@@ -417500,7 +418076,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "",
-      "price": 4500,
+      "price": 38.26,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -417517,7 +418093,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-1f3d729fc0efb0",
         "file": "Rasadnici ponude/Srbija/Žića/Zelenilo Pančevo/Demetra za tender cene.pdf",
@@ -417624,7 +418200,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 4500,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 4500,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "offer-pdf-b64a9597f6a33ffaf28a",
@@ -417636,7 +418221,7 @@
       "rootBall": "",
       "potSize": "",
       "rootType": "",
-      "price": 12000,
+      "price": 102.02,
       "currency": "EUR",
       "unit": "kom",
       "priceKind": "historical",
@@ -417653,7 +418238,7 @@
       "imageKind": "Kataloška fotografija rasadnika",
       "imageSourceUrl": "",
       "demo": false,
-      "currencyStatus": "owner_confirmed",
+      "currencyStatus": "converted",
       "priceEvidence": {
         "sourceId": "src-1f3d729fc0efb0",
         "file": "Rasadnici ponude/Srbija/Žića/Zelenilo Pančevo/Demetra za tender cene.pdf",
@@ -417734,7 +418319,16 @@
         "sourceDocumentStatesCurrency": false
       },
       "sourceAmount": 12000,
-      "sourceCurrency": "EUR"
+      "sourceCurrency": "RSD",
+      "priceConversion": {
+        "status": "converted",
+        "fromCurrency": "RSD",
+        "toCurrency": "EUR",
+        "originalAmount": 12000,
+        "rate": 117.6203,
+        "rateDate": "2026-11-13",
+        "sourceUrl": "https://webappcenter.nbs.rs/ExchangeRateWebApp/ExchangeRate/CurrentMiddleRate"
+      }
     },
     {
       "id": "record-volentis-40d284cc6bead2d0f8",
