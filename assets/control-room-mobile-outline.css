@@ -1,35 +1,29 @@
-/* DEMETRA RB / 02W — true condensed outline typography on mobile only.
-   Uses Barlow Condensed SemiBold already installed in the project.
-   Desktop headline and all other typography remain unchanged. */
-@font-face {
-  font-family: "DEMETRA Mobile Outline";
-  src: url("../fonts/BarlowCondensed-SemiBold.ttf") format("truetype");
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-}
-@media screen and (max-width: 760px) {
+/* Mobile outline: preserve the original headline's typeface and proportions.
+   Prevent crossed contours by removing aggressive negative tracking. */
+@media screen and (max-width:760px) {
   body.control-room[data-view="search"] .search-intro h1 em {
-    display: block;
-    font-family: "DEMETRA Mobile Outline", "Arial Narrow", "Arial", sans-serif;
-    font-size: clamp(50px, 13.2vw, 72px);
-    line-height: .96;
-    font-weight: 600;
-    font-style: normal;
-    letter-spacing: .012em;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-    -webkit-text-stroke: 1.2px var(--ink);
-    transform: none;
-    width: auto;
-    max-width: 100%;
-    white-space: nowrap;
+    display:block;
+    font-family:var(--sans);
+    font-weight:730;
+    font-style:normal;
+    font-stretch:normal;
+    font-size:inherit;
+    line-height:1.03;
+    letter-spacing:.025em;
+    font-kerning:none;
+    color:transparent;
+    -webkit-text-fill-color:transparent;
+    -webkit-text-stroke:1.1px var(--ink);
+    paint-order:stroke fill;
+    max-width:100%;
+    white-space:normal;
+    overflow-wrap:normal;
+    transform:none;
   }
 }
-@media screen and (max-width: 420px) {
+@media screen and (max-width:420px) {
   body.control-room[data-view="search"] .search-intro h1 em {
-    font-size: clamp(47px, 12.5vw, 53px);
-    letter-spacing: .008em;
-    -webkit-text-stroke: 1.1px var(--ink);
+    letter-spacing:.015em;
+    -webkit-text-stroke:1px var(--ink);
   }
 }
