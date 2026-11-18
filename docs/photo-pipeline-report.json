@@ -1,13 +1,13 @@
 {
   "schemaVersion": 2,
   "status": "partial",
-  "requests": 486,
+  "requests": 594,
   "workers": 8,
   "events": [],
   "sourceHealth": {
     "portal.volentis.com": {
-      "requests": 118,
-      "succeeded": 117,
+      "requests": 121,
+      "succeeded": 120,
       "retries": 0,
       "httpErrors": {
         "404": 1
@@ -21,51 +21,51 @@
       }
     },
     "www.willaert.be": {
-      "requests": 111,
-      "succeeded": 111,
+      "requests": 117,
+      "succeeded": 117,
       "retries": 0,
       "httpErrors": {},
       "stopped": false,
       "requestIntervalSeconds": 1.0
     },
     "catalogue.vannuccipiante.it": {
-      "requests": 3,
-      "succeeded": 3,
-      "retries": 0,
-      "httpErrors": {},
-      "stopped": false
-    },
-    "smitsbv.nl": {
-      "requests": 20,
-      "succeeded": 20,
+      "requests": 4,
+      "succeeded": 4,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "webshop.vannuccipiante.it": {
-      "requests": 32,
-      "succeeded": 32,
+      "requests": 19,
+      "succeeded": 19,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": false
+    },
+    "smitsbv.nl": {
+      "requests": 49,
+      "succeeded": 49,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "www.lorberg.com": {
-      "requests": 68,
-      "succeeded": 68,
+      "requests": 49,
+      "succeeded": 49,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "www.lve-baumschule.de": {
-      "requests": 36,
-      "succeeded": 36,
+      "requests": 11,
+      "succeeded": 11,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "innocentiemangonipiante.it": {
-      "requests": 97,
-      "succeeded": 97,
+      "requests": 223,
+      "succeeded": 223,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
@@ -80,7 +80,7 @@
   },
   "coverage": {
     "schemaVersion": 2,
-    "checkedAt": "2026-11-18T13:19:01Z",
+    "checkedAt": "2026-11-18T23:03:32Z",
     "status": "partial",
     "plants": 619,
     "plantsInventoried": 619,
