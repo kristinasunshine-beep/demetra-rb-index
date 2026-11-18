@@ -1,6 +1,7 @@
-/* Mobile outline + compact botanical record / 2026-11-18 r4.
-   Keep the ORIGINAL font, glyph proportions and weights. Prevent crossings
-   by removing the excessively negative tracking from all outlined headings. */
+/* Mobile union-outline typography / 2026-11-18 r6.
+   Same original font, glyph widths and weight. An SVG alpha-mask filter
+   first merges filled glyphs, THEN draws a clean inside-only silhouette
+   edge: no interior strokes from colliding letters. */
 @media screen and (max-width:760px) {
   body.control-room[data-view="search"] .search-intro h1 em,
   body.control-room .recommend-titlebar h1 span.outline,
@@ -12,12 +13,12 @@
     font-style:normal;
     font-kerning:none;
     font-variant-ligatures:none;
-    letter-spacing:.055em;
+    letter-spacing:-.055em !important;
     line-height:1.07;
-    color:transparent;
-    -webkit-text-fill-color:transparent;
-    -webkit-text-stroke:1.05px var(--ink);
-    paint-order:stroke fill;
+    color:var(--ink) !important;
+    -webkit-text-fill-color:var(--ink) !important;
+    -webkit-text-stroke:0 !important;
+    filter:url("#demetra-mobile-union-outline");
     text-shadow:none;
     max-width:100%;
     white-space:normal;
