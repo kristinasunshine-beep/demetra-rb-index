@@ -843,8 +843,30 @@ body[data-view="search"] .search-field:focus-within .search-icon { color:var(--a
 </style>
       <link rel="stylesheet" href="./assets/moja-ponuda.css">
       <link rel="stylesheet" href="./assets/brza-preporuka.css?v=auto-20261113">
-      <link rel="stylesheet" href="./assets/control-room.css?v=mobile-r3-20261118">
-    <link rel="stylesheet" href="./assets/control-room-mobile-outline.css?v=mobile-r3-20261118">
+      <link rel="stylesheet" href="./assets/control-room.css?v=mobile-r4-20261118">
+    <link rel="stylesheet" href="./assets/control-room-mobile-outline.css?v=mobile-r4-20261118">
+    <!-- Critical typography fix: kept inline because some installed PWAs retain a stale external stylesheet. -->
+    <style id="mobile-outline-no-crossing">
+      @media screen and (max-width:760px) {
+        body.control-room[data-view="search"] .search-intro h1 em,
+        body.control-room .recommend-titlebar h1 span.outline,
+        body.control-room .quote-titlebar h1 span.outline {
+          font-family:inherit;
+          font-weight:inherit;
+          font-kerning:none;
+          font-variant-ligatures:none;
+          font-stretch:normal;
+          letter-spacing:.055em !important;
+          color:transparent;
+          -webkit-text-fill-color:transparent;
+          -webkit-text-stroke:1.05px var(--ink);
+          text-shadow:none;
+        }
+        body.control-room[data-view="search"] .search-intro h1 em {
+          white-space:nowrap;
+        }
+      }
+    </style>
   </head>
   <body class="control-room" data-view="search">
     <a class="skip-link" href="#main">Pređi na sadržaj</a>
