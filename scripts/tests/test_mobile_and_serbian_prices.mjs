@@ -18,8 +18,25 @@ test('Mobile font, long names, parameter grid and cache invalidation are present
   assert.match(css, /quote-titlebar h1 span\.outline/);
   assert.match(css, /grid-template-columns:repeat\(2,minmax\(0,1fr\)\) !important/);
   assert.match(css, /grid-template-columns:repeat\(3,minmax\(0,1fr\)\) !important/);
-  assert.match(sw, /demetra-rb-pwa-shell-06-mobile-r4-20261118/);
+  assert.match(sw, /demetra-rb-pwa-shell-07-quote-mobile-r5-20261118/);
   assert.match(sw, /cache:'reload'/);
+});
+
+test('Quote mobile nursery labels keep whole words and quantity heading is concise', () => {
+  const html = read('index.html');
+  const js = read('assets/moja-ponuda.js');
+  const css = read('assets/control-room.css');
+  assert.ok(js.includes('<span class="quote-nursery-name">'));
+  assert.ok(js.includes('<small class="quote-nursery-country">'));
+  assert.ok(js.includes('<span>Količina</span>'));
+  assert.ok(!js.includes('<span>Količina (${escape(item.unit)})</span>'));
+  assert.ok(css.includes('Mobile quote nursery labels: full-width words'));
+  assert.ok(css.includes('body.control-room .quote-item .quote-nursery'));
+  assert.ok(css.includes('grid-template-columns:minmax(0,1fr);'));
+  assert.ok(css.includes('overflow-wrap:normal;'));
+  assert.ok(css.includes('word-break:normal;'));
+  assert.ok(html.includes('moja-ponuda.js?v=quote-mobile-r5-20261118'));
+  assert.ok(html.includes('control-room.css?v=quote-mobile-r5-20261118'));
 });
 
 test('All 97 priced Žiča and Topalović offers retain audited RSD to EUR conversions', () => {
