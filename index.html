@@ -844,8 +844,9 @@ body[data-view="search"] .search-field:focus-within .search-icon { color:var(--a
       <link rel="stylesheet" href="./assets/moja-ponuda.css">
       <link rel="stylesheet" href="./assets/brza-preporuka.css?v=auto-20261113">
       <link rel="stylesheet" href="./assets/control-room.css?v=quote-mobile-r5-20261118">
-    <link rel="stylesheet" href="./assets/control-room-mobile-outline.css?v=mobile-r4-20261118">
-    <!-- Critical typography fix: kept inline because some installed PWAs retain a stale external stylesheet. -->
+    <link rel="stylesheet" href="./assets/control-room-mobile-outline.css?v=outline-r6-20261118">
+    <!-- Mobile-only union outline: source glyphs render together before their contour,
+         so touching letter edges cannot create internal crossing strokes. -->
     <style id="mobile-outline-no-crossing">
       @media screen and (max-width:760px) {
         body.control-room[data-view="search"] .search-intro h1 em,
@@ -856,19 +857,28 @@ body[data-view="search"] .search-field:focus-within .search-icon { color:var(--a
           font-kerning:none;
           font-variant-ligatures:none;
           font-stretch:normal;
-          letter-spacing:.055em !important;
-          color:transparent;
-          -webkit-text-fill-color:transparent;
-          -webkit-text-stroke:1.05px var(--ink);
+          letter-spacing:-.055em !important;
+          color:var(--ink) !important;
+          -webkit-text-fill-color:var(--ink) !important;
+          -webkit-text-stroke:0 !important;
+          filter:url("#demetra-mobile-union-outline");
           text-shadow:none;
         }
-        body.control-room[data-view="search"] .search-intro h1 em {
-          white-space:nowrap;
-        }
+        body.control-room[data-view="search"] .search-intro h1 em { white-space:nowrap; }
       }
     </style>
   </head>
   <body class="control-room" data-view="search">
+    <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none">
+      <defs>
+        <filter id="demetra-mobile-union-outline" x="-5%" y="-15%" width="110%" height="130%" color-interpolation-filters="sRGB">
+          <feMorphology in="SourceAlpha" operator="erode" radius="1" result="inner-silhouette"/>
+          <feComposite in="SourceAlpha" in2="inner-silhouette" operator="out" result="clean-contour"/>
+          <feFlood flood-color="#161A19" result="contour-ink"/>
+          <feComposite in="contour-ink" in2="clean-contour" operator="in"/>
+        </filter>
+      </defs>
+    </svg>
     <a class="skip-link" href="#main">Pređi na sadržaj</a>
     <header class="app-header">
       <div class="header-inner">
