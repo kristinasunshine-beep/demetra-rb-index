@@ -255,7 +255,7 @@
     const fields = {
       A4: meta.description, A5: meta.number ? 'Ponuda br. ' + meta.number : 'PONUDA',
       A7: 'Ponudu izradio/la: ' + meta.preparedBy, A9: 'Kontakt: ' + meta.preparedPhone,
-      C11: date, C14: meta.client, C15: meta.address, C16: meta.city, C17: meta.email,
+      A11: 'U Beogradu, ' + meta.date.split('-').reverse().join('.') + '.', C11: '', C14: meta.client, C15: meta.address, C16: meta.city, C17: meta.email,
       G17: meta.phone, C18: meta.taxId, G18: meta.registration, A21: meta.note
     };
     for (const [ref, value] of Object.entries(fields)) main = replaceCell(main, ref, value);
