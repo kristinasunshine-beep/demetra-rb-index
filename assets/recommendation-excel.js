@@ -4,6 +4,13 @@
   function col(index){let s='';for(let n=index+1;n;n=Math.floor((n-1)/26))s=String.fromCharCode(65+(n-1)%26)+s;return s;}
   function normalizeXml(s){const found=s.match(/xmlns:([\w]+)="(http:\/\/schemas\.openxmlformats\.org\/spreadsheetml\/2006\/main|http:\/\/purl\.oclc\.org\/ooxml\/spreadsheetml\/main)"/);if(!found)return s;const [,prefix,namespace]=found;return s.replace(found[0],s.includes(`xmlns="${namespace}"`)?'':`xmlns="${namespace}"`).replace(new RegExp('<(\\/?)'+prefix+':','g'),'<$1');}
   function cell(ref,value,style){const a=` r="${ref}" s="${style}"`;if(value===null||value===undefined||value==='')return `<c${a}/>`;if(value instanceof Date)return `<c${a}><v>${value.getTime()/86400000+25569}</v></c>`;if(typeof value==='number'&&Number.isFinite(value))return `<c${a}><v>${value}</v></c>`;if(typeof value==='boolean')return `<c${a} t="b"><v>${value?1:0}</v></c>`;return `<c${a} t="inlineStr"><is><t xml:space="preserve">${xml(value)}</t></is></c>`;}
+  function plantCardCell(ref,url,style){
+    const link=String(url??'');
+    if(!/^https:\/\/kristinasunshine-beep\.github\.io\/demetra-rb-index\/#plant=[A-Za-z0-9%._~-]+$/.test(link))
+      return cell(ref,url,style);
+    return '<c r="'+ref+'" s="'+style+'" t="str"><f>HYPERLINK(&quot;'+xml(link)+
+      '&quot;,&quot;Otvori digitalnu karticu&quot;)</f><v>Otvori digitalnu karticu</v></c>';
+  }
   const attr=(s,name)=>s.match(new RegExp('(?:^|\\s)'+name+'="([^"]*)"'))?.[1];
   const decode=s=>String(s||'').replace(/&#(x[\da-f]+|\d+);|&(amp|lt|gt|quot|apos);/gi,(_,number,name)=>number?String.fromCodePoint(number[0].toLowerCase()==='x'?parseInt(number.slice(1),16):Number(number)):({amp:'&',lt:'<',gt:'>',quot:'"',apos:"'"}[name]));
   function setAttr(tag,name,value){const re=new RegExp('\\s'+name+'="[^"]*"');return re.test(tag)?tag.replace(re,` ${name}="${xml(value)}"`):tag.replace(/(\/?>)/,` ${name}="${xml(value)}"$1`);}
@@ -32,14 +39,14 @@
   }
   function resultHeader(sheet,column){return String(sheet.rows[sheet.headerRow]?.[column]||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();}
   function isPriceColumn(sheet,column){return sheet.processed&&column>=sheet.originalColumns&&/\bcena\b/.test(resultHeader(sheet,column));}
-  const overviewWidths=[34,43,48,24,40];
+  const overviewWidths=[34,43,48,24,40,28];
   function overviewWidth(column){return overviewWidths[column]||25;}
   function resultWidth(sheet,offset){const header=resultHeader(sheet,sheet.originalColumns+offset);if(/spisak rasadnika/.test(header))return 44;if(/rasadnik/.test(header))return 32;if(/\bcena\b/.test(header))return 21;if(/parametri/.test(header))return 42;if(/rezultat/.test(header))return 50;if(/datum/.test(header))return 20;if(/valuta/.test(header))return 14;return 26;}
   function resolveSheetPath(target){const parts=(target.startsWith('/')?target.slice(1):'xl/'+target).split('/'),out=[];for(const part of parts){if(part==='..')out.pop();else if(part&&part!=='.')out.push(part);}return out.join('/');}
   function addedSheetXml(sheet,styles){
     let rows='',widths='';
     for(let c=0;c<sheet.originalColumns;c++)widths+=`<col min="${c+1}" max="${c+1}" width="${sheet.overview?overviewWidth(c):Math.min(48,Math.max(22,String(sheet.rows[sheet.headerRow]?.[c]||'').length+3))}" customWidth="1"/>`;
-    for(let r=0;r<sheet.rows.length;r++){let cells='';for(let c=0;c<sheet.originalColumns;c++){const value=sheet.rows[r]?.[c];if(value===null||value===undefined||value==='')continue;cells+=cell(col(c)+(r+1),value,r===sheet.headerRow?styles.resultHeader:value instanceof Date?styles.date:styles.text);}const height=sheet.overview?(r===sheet.headerRow?46:42):r===sheet.headerRow?42:Math.min(409,Math.max(28,...sheet.rows[r].slice(0,sheet.originalColumns).map((v,c)=>String(v??'').split('\n').reduce((n,line)=>n+Math.max(1,Math.ceil(line.length/(Math.min(48,Math.max(22,String(sheet.rows[sheet.headerRow]?.[c]||'').length+3))-2))),0)*13+10)));rows+=`<row r="${r+1}" ht="${height}" customHeight="1">${cells}</row>`;}
+    for(let r=0;r<sheet.rows.length;r++){let cells='';for(let c=0;c<sheet.originalColumns;c++){const value=sheet.rows[r]?.[c];if(value===null||value===undefined||value==='')continue;cells+=(sheet.overview&&r!==sheet.headerRow&&c===5?plantCardCell(col(c)+(r+1),value,styles.text):cell(col(c)+(r+1),value,r===sheet.headerRow?styles.resultHeader:value instanceof Date?styles.date:styles.text));}const height=sheet.overview?(r===sheet.headerRow?46:42):r===sheet.headerRow?42:Math.min(409,Math.max(28,...sheet.rows[r].slice(0,sheet.originalColumns).map((v,c)=>String(v??'').split('\n').reduce((n,line)=>n+Math.max(1,Math.ceil(line.length/(Math.min(48,Math.max(22,String(sheet.rows[sheet.headerRow]?.[c]||'').length+3))-2))),0)*13+10)));rows+=`<row r="${r+1}" ht="${height}" customHeight="1">${cells}</row>`;}
     return `<?xml version="1.0" encoding="UTF-8" standalone="yes"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><sheetViews><sheetView workbookViewId="0" showGridLines="0"><pane ySplit="${sheet.headerRow+1}" topLeftCell="A${sheet.headerRow+2}" activePane="bottomLeft" state="frozen"/></sheetView></sheetViews><sheetFormatPr defaultRowHeight="28"/><cols>${widths}</cols><sheetData>${rows}</sheetData></worksheet>`;
   }
   async function extendSourceTables(zip,entry,sheet){
@@ -131,7 +138,7 @@
         const values=rows[r]||[];let cells='';
         for(let c=0;c<values.length;c++){const value=values[c];if(value===undefined||value===null||value==='')continue;const header=sheet.processed&&r===sheet.headerRow;
           const chosen=header?(sheet.overview?styles.resultHeader:c>=sheet.originalColumns?styles.resultHeader:styles.header):value instanceof Date?styles.date:sheet.overview&&c===3&&typeof value==='number'?styles.price:isPriceColumn(sheet,c)?styles.price:styles.text;
-          cells+=cell(col(c)+(r+1),value,chosen);
+          cells+=(sheet.overview&&r!==sheet.headerRow&&c===5?plantCardCell(col(c)+(r+1),value,styles.text):cell(col(c)+(r+1),value,chosen));
         }
         const height=sheet.overview?(r===sheet.headerRow?46:42):sheet.processed&&r===sheet.headerRow?42:Math.min(409,Math.max(28,...values.map((v,c)=>String(v??'').split('\n').reduce((n,line)=>n+Math.max(1,Math.ceil(line.length/(sheet.processed&&c>=sheet.originalColumns?resultWidth(sheet,c-sheet.originalColumns)-2:Math.min(40,Math.max(16,String(rows[sheet.headerRow]?.[c]??'').length+3))-2))),0)*13+10)));
         data+=`<row r="${r+1}" ht="${height}" customHeight="1">${cells}</row>`;
