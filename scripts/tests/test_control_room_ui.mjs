@@ -50,3 +50,17 @@ test('Search, all supplier offers, images and quote/Excel modules remain wired',
   assert.match(css,/\.offer-pricing \.quote-add/);
   assert.match(css,/@media\(max-width:760px\)/);
 });
+
+test('The opening sidebar shows only its three workspaces; Back and Home remain in inner views', async () => {
+  const [html,quote,rec] = await Promise.all([
+    read('index.html'),read('assets/moja-ponuda.js'),read('assets/brza-preporuka.js')
+  ]);
+  const sidebar = html.match(/<nav class="header-actions"[^>]*>([\s\S]*?)<\/nav>/)?.[1] || '';
+  assert(!sidebar.includes('Nazad'), 'Back must not appear on the opening panel');
+  assert(!sidebar.includes('⌂ Početna'), 'Home must not be duplicated on the opening panel');
+  assert(sidebar.includes('Pretraga') && sidebar.includes('Brza preporuka') && sidebar.includes('Moja ponuda'));
+  assert(html.includes('window.DemetraNavigation={back:navigateBack,home:navigateHome,openPlant:navigateToCard}'));
+  assert(html.includes('data-action="record-back"') && html.includes('data-action="record-home"'));
+  assert(quote.includes('data-quote-action="back"') && quote.includes('data-quote-action="home"'));
+  assert(rec.includes('id="recommend-back"') && rec.includes('id="recommend-home"'));
+});
