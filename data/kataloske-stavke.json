@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-20T09:49:03.769Z",
+  "updatedAt": "2026-11-20T10:42:22.889Z",
   "sourcePolicy": {
     "nonPhoto": "rasadnici-ponude-zip",
     "onlineUpdates": [
@@ -464908,6 +464908,419 @@
           ]
         }
       ]
+    },
+    {
+      "id": "record-1fb62e9bb29ac23b09ce",
+      "plantId": "plant-b3d791a8261438",
+      "nurseryId": "arbor",
+      "seedlingType": "standard",
+      "seedlingTypeCode": "STD",
+      "circumference": "45–50",
+      "height": "",
+      "crownWidth": "",
+      "rootBall": "",
+      "potSize": "",
+      "rootType": "Busen (RB)",
+      "price": 1500,
+      "currency": "EUR",
+      "sourceAmount": 1500,
+      "sourceCurrency": "EUR",
+      "currencyStatus": "stated",
+      "unit": "kom",
+      "priceKind": "historical",
+      "priceNote": "Ponuda od 22.04.2026, važila do 22.05.2026. Današnja cena i dostupnost nisu potvrđene.",
+      "taxStatus": "PDV 0% prema izvornoj ponudi",
+      "availability": "Arhivska ponuda — današnja dostupnost nije potvrđena",
+      "source": "Arbor Nurseries · ponuda S2526-03894",
+      "sourceUrl": "",
+      "sourceDate": "2026-04-22",
+      "sourcePeriod": "Belgrade Autumn 2026",
+      "sourceValidUntil": "2026-05-22",
+      "validUntil": "2026-05-22",
+      "checkedAt": "",
+      "specification": "Ulmus Resista New Horizon 45-50 STD RB",
+      "image": "",
+      "imageKind": "",
+      "imageSourceUrl": "",
+      "demo": false,
+      "recordStatus": "active",
+      "dataOrigin": "rasadnici-ponude-zip",
+      "sourceEvidence": {
+        "sourcePath": "Belgija/Arbor/Offerte - S2526-03894 (2).pdf",
+        "sourceFile": "Offerte - S2526-03894 (2).pdf",
+        "sourceSha256": "810eaa1d1aeb0bd394c95b8798fffad1d4352cf54c61ce8df219139476cfdfe9",
+        "sourceType": "private_business_folder",
+        "page": 1,
+        "row": 1
+      },
+      "priceEvidence": {
+        "sourceFile": "Offerte - S2526-03894 (2).pdf",
+        "sourceSha256": "810eaa1d1aeb0bd394c95b8798fffad1d4352cf54c61ce8df219139476cfdfe9",
+        "documentNumber": "S2526-03894",
+        "page": 1,
+        "row": 1,
+        "description": "Ulmus Resista New Horizon 45-50 STD RB",
+        "priceColumn": "Unit Price",
+        "amount": 1500,
+        "rawUnitPrice": "1,500.00",
+        "currency": "EUR",
+        "currencyEvidence": "EUR sign in Amount column and Total Amount",
+        "vatRate": 0,
+        "sourceDate": "2026-04-22",
+        "validUntil": "2026-05-22",
+        "extractionMethod": "PDF text extraction and visual verification against original row",
+        "matchedName": "Ulmus Resista New Horizon",
+        "sourceUnit": "Units",
+        "quotedQuantity": 130,
+        "matchingRule": "Exact canonical name or hybrid marker normalization; complete quoted variant"
+      },
+      "sourceCurrencyEvidence": {
+        "origin": "original_offer_currency",
+        "reference": "priceEvidence.currencyEvidence",
+        "sourceSha256": "810eaa1d1aeb0bd394c95b8798fffad1d4352cf54c61ce8df219139476cfdfe9",
+        "sourceDocumentStatesCurrency": true
+      },
+      "measurementEvidence": {
+        "sourcePath": "Belgija/Arbor/Offerte - S2526-03894 (2).pdf",
+        "sourceFile": "Offerte - S2526-03894 (2).pdf",
+        "sourceSha256": "810eaa1d1aeb0bd394c95b8798fffad1d4352cf54c61ce8df219139476cfdfe9",
+        "sourceType": "private_business_folder",
+        "page": 1,
+        "row": 1,
+        "rules": {
+          "circumference": "range_immediately_before_STD",
+          "rootType": "explicit_RB"
+        },
+        "rawSpecification": "Ulmus Resista New Horizon 45-50 STD RB"
+      },
+      "measurementNote": "Jedinice dužine nisu navedene u izvoru.",
+      "transplantCount": null,
+      "transplantNote": "",
+      "additionalParameters": [],
+      "dataAccuracyNote": "Visina nije navedena u ponudi. Obim 45–50 nije visina sadnice.",
+      "priceRefresh": {
+        "status": "verified",
+        "checkedAt": "2026-11-20T10:42:22.889Z",
+        "sourceSha256": "810eaa1d1aeb0bd394c95b8798fffad1d4352cf54c61ce8df219139476cfdfe9"
+      }
+    },
+    {
+      "id": "record-2d973d2ade8f252d34de",
+      "plantId": "plant-8c2ae8ac7ff3af",
+      "nurseryId": "arbor",
+      "seedlingType": "multistem",
+      "seedlingTypeCode": "MULTISTEM",
+      "circumference": "min 20/25",
+      "height": "600–700",
+      "crownWidth": "400/500",
+      "rootBall": "",
+      "potSize": "",
+      "rootType": "Busen (RB)",
+      "price": 1800,
+      "currency": "EUR",
+      "sourceAmount": 1800,
+      "sourceCurrency": "EUR",
+      "currencyStatus": "stated",
+      "unit": "kom",
+      "priceKind": "historical",
+      "priceNote": "Ponuda od 22.04.2026, važila do 22.05.2026. Današnja cena i dostupnost nisu potvrđene.",
+      "taxStatus": "PDV 0% prema izvornoj ponudi",
+      "availability": "Arhivska ponuda — današnja dostupnost nije potvrđena",
+      "source": "Arbor Nurseries · ponuda S2526-03894",
+      "sourceUrl": "",
+      "sourceDate": "2026-04-22",
+      "sourcePeriod": "Belgrade Autumn 2026",
+      "sourceValidUntil": "2026-05-22",
+      "validUntil": "2026-05-22",
+      "checkedAt": "",
+      "specification": "Platanus acerifolia MULTISTEM 600-700 RB Ref: UMBRELLA SHAPE; Crown width 400/500; min 3-5 stems; Circumference min 20/25",
+      "image": "",
+      "imageKind": "",
+      "imageSourceUrl": "",
+      "demo": false,
+      "recordStatus": "active",
+      "dataOrigin": "rasadnici-ponude-zip",
+      "sourceEvidence": {
+        "sourcePath": "Belgija/Arbor/Offerte - S2526-03894 (2).pdf",
+        "sourceFile": "Offerte - S2526-03894 (2).pdf",
+        "sourceSha256": "810eaa1d1aeb0bd394c95b8798fffad1d4352cf54c61ce8df219139476cfdfe9",
+        "sourceType": "private_business_folder",
+        "page": 1,
+        "row": 2
+      },
+      "priceEvidence": {
+        "sourceFile": "Offerte - S2526-03894 (2).pdf",
+        "sourceSha256": "810eaa1d1aeb0bd394c95b8798fffad1d4352cf54c61ce8df219139476cfdfe9",
+        "documentNumber": "S2526-03894",
+        "page": 1,
+        "row": 2,
+        "description": "Platanus acerifolia MULTISTEM 600-700 RB",
+        "priceColumn": "Unit Price",
+        "amount": 1800,
+        "rawUnitPrice": "1,800.00",
+        "currency": "EUR",
+        "currencyEvidence": "EUR sign in Amount column and Total Amount",
+        "vatRate": 0,
+        "sourceDate": "2026-04-22",
+        "validUntil": "2026-05-22",
+        "extractionMethod": "PDF text extraction and visual verification against original row",
+        "matchedName": "Platanus x acerifolia",
+        "sourceUnit": "Units",
+        "quotedQuantity": 3,
+        "matchingRule": "Exact canonical name or hybrid marker normalization; complete quoted variant"
+      },
+      "sourceCurrencyEvidence": {
+        "origin": "original_offer_currency",
+        "reference": "priceEvidence.currencyEvidence",
+        "sourceSha256": "810eaa1d1aeb0bd394c95b8798fffad1d4352cf54c61ce8df219139476cfdfe9",
+        "sourceDocumentStatesCurrency": true
+      },
+      "measurementEvidence": {
+        "sourcePath": "Belgija/Arbor/Offerte - S2526-03894 (2).pdf",
+        "sourceFile": "Offerte - S2526-03894 (2).pdf",
+        "sourceSha256": "810eaa1d1aeb0bd394c95b8798fffad1d4352cf54c61ce8df219139476cfdfe9",
+        "sourceType": "private_business_folder",
+        "page": 1,
+        "row": 2,
+        "rules": {
+          "height": "explicit_MULTISTEM_height_and_h_annotation",
+          "crownWidth": "explicit_Crown_width",
+          "circumference": "explicit_Circumference_min",
+          "rootType": "explicit_RB"
+        },
+        "rawSpecification": "Platanus acerifolia MULTISTEM 600-700 RB Ref: UMBRELLA SHAPE; Crown width 400/500; min 3-5 stems; Circumference min 20/25"
+      },
+      "measurementNote": "Jedinice dužine nisu navedene u izvoru.",
+      "transplantCount": null,
+      "transplantNote": "",
+      "additionalParameters": [
+        {
+          "label": "Oblik krošnje",
+          "value": "Kišobran (UMBRELLA SHAPE)"
+        },
+        {
+          "label": "Broj stabala",
+          "value": "Min. 3–5 prema ponudi"
+        }
+      ],
+      "dataAccuracyNote": "Mere su prenete prema oznakama u ponudi. Broj stabala nije broj presađivanja.",
+      "priceRefresh": {
+        "status": "verified",
+        "checkedAt": "2026-11-20T10:42:22.889Z",
+        "sourceSha256": "810eaa1d1aeb0bd394c95b8798fffad1d4352cf54c61ce8df219139476cfdfe9"
+      }
+    },
+    {
+      "id": "record-6595da7da8976c301ac9",
+      "plantId": "plant-8c2ae8ac7ff3af",
+      "nurseryId": "arbor",
+      "seedlingType": "multistem",
+      "seedlingTypeCode": "MULTISTEM",
+      "circumference": "min 20/25",
+      "height": "700–800",
+      "crownWidth": "400/500",
+      "rootBall": "",
+      "potSize": "",
+      "rootType": "Busen (RB)",
+      "price": 2700,
+      "currency": "EUR",
+      "sourceAmount": 2700,
+      "sourceCurrency": "EUR",
+      "currencyStatus": "stated",
+      "unit": "kom",
+      "priceKind": "historical",
+      "priceNote": "Ponuda od 22.04.2026, važila do 22.05.2026. Današnja cena i dostupnost nisu potvrđene.",
+      "taxStatus": "PDV 0% prema izvornoj ponudi",
+      "availability": "Arhivska ponuda — današnja dostupnost nije potvrđena",
+      "source": "Arbor Nurseries · ponuda S2526-03894",
+      "sourceUrl": "",
+      "sourceDate": "2026-04-22",
+      "sourcePeriod": "Belgrade Autumn 2026",
+      "sourceValidUntil": "2026-05-22",
+      "validUntil": "2026-05-22",
+      "checkedAt": "",
+      "specification": "Platanus acerifolia MULTISTEM 700-800 RB Ref: UMBRELLA SHAPE; Crown width 400/500; min 3-5 stems; Circumference min 20/25",
+      "image": "",
+      "imageKind": "",
+      "imageSourceUrl": "",
+      "demo": false,
+      "recordStatus": "active",
+      "dataOrigin": "rasadnici-ponude-zip",
+      "sourceEvidence": {
+        "sourcePath": "Belgija/Arbor/Offerte - S2526-03894 (2).pdf",
+        "sourceFile": "Offerte - S2526-03894 (2).pdf",
+        "sourceSha256": "810eaa1d1aeb0bd394c95b8798fffad1d4352cf54c61ce8df219139476cfdfe9",
+        "sourceType": "private_business_folder",
+        "page": 1,
+        "row": 3
+      },
+      "priceEvidence": {
+        "sourceFile": "Offerte - S2526-03894 (2).pdf",
+        "sourceSha256": "810eaa1d1aeb0bd394c95b8798fffad1d4352cf54c61ce8df219139476cfdfe9",
+        "documentNumber": "S2526-03894",
+        "page": 1,
+        "row": 3,
+        "description": "Platanus acerifolia MULTISTEM 700-800 RB",
+        "priceColumn": "Unit Price",
+        "amount": 2700,
+        "rawUnitPrice": "2,700.00",
+        "currency": "EUR",
+        "currencyEvidence": "EUR sign in Amount column and Total Amount",
+        "vatRate": 0,
+        "sourceDate": "2026-04-22",
+        "validUntil": "2026-05-22",
+        "extractionMethod": "PDF text extraction and visual verification against original row",
+        "matchedName": "Platanus x acerifolia",
+        "sourceUnit": "Units",
+        "quotedQuantity": 3,
+        "matchingRule": "Exact canonical name or hybrid marker normalization; complete quoted variant"
+      },
+      "sourceCurrencyEvidence": {
+        "origin": "original_offer_currency",
+        "reference": "priceEvidence.currencyEvidence",
+        "sourceSha256": "810eaa1d1aeb0bd394c95b8798fffad1d4352cf54c61ce8df219139476cfdfe9",
+        "sourceDocumentStatesCurrency": true
+      },
+      "measurementEvidence": {
+        "sourcePath": "Belgija/Arbor/Offerte - S2526-03894 (2).pdf",
+        "sourceFile": "Offerte - S2526-03894 (2).pdf",
+        "sourceSha256": "810eaa1d1aeb0bd394c95b8798fffad1d4352cf54c61ce8df219139476cfdfe9",
+        "sourceType": "private_business_folder",
+        "page": 1,
+        "row": 3,
+        "rules": {
+          "height": "explicit_MULTISTEM_height_and_h_annotation",
+          "crownWidth": "explicit_Crown_width",
+          "circumference": "explicit_Circumference_min",
+          "rootType": "explicit_RB"
+        },
+        "rawSpecification": "Platanus acerifolia MULTISTEM 700-800 RB Ref: UMBRELLA SHAPE; Crown width 400/500; min 3-5 stems; Circumference min 20/25"
+      },
+      "measurementNote": "Jedinice dužine nisu navedene u izvoru.",
+      "transplantCount": null,
+      "transplantNote": "",
+      "additionalParameters": [
+        {
+          "label": "Oblik krošnje",
+          "value": "Kišobran (UMBRELLA SHAPE)"
+        },
+        {
+          "label": "Broj stabala",
+          "value": "Min. 3–5 prema ponudi"
+        }
+      ],
+      "dataAccuracyNote": "Mere su prenete prema oznakama u ponudi. Broj stabala nije broj presađivanja.",
+      "priceRefresh": {
+        "status": "verified",
+        "checkedAt": "2026-11-20T10:42:22.889Z",
+        "sourceSha256": "810eaa1d1aeb0bd394c95b8798fffad1d4352cf54c61ce8df219139476cfdfe9"
+      }
+    },
+    {
+      "id": "record-6db3587b33894421b9c9",
+      "plantId": "plant-65d6c4007d282d",
+      "nurseryId": "arbor",
+      "seedlingType": "multistem",
+      "seedlingTypeCode": "MULTISTEM",
+      "circumference": "min 15/20",
+      "height": "500–600",
+      "crownWidth": "200/300",
+      "rootBall": "",
+      "potSize": "",
+      "rootType": "Busen (RB)",
+      "price": 680,
+      "currency": "EUR",
+      "sourceAmount": 680,
+      "sourceCurrency": "EUR",
+      "currencyStatus": "stated",
+      "unit": "kom",
+      "priceKind": "historical",
+      "priceNote": "Ponuda od 22.04.2026, važila do 22.05.2026. Današnja cena i dostupnost nisu potvrđene.",
+      "taxStatus": "PDV 0% prema izvornoj ponudi",
+      "availability": "Arhivska ponuda — današnja dostupnost nije potvrđena",
+      "source": "Arbor Nurseries · ponuda S2526-03894",
+      "sourceUrl": "",
+      "sourceDate": "2026-04-22",
+      "sourcePeriod": "Belgrade Autumn 2026",
+      "sourceValidUntil": "2026-05-22",
+      "validUntil": "2026-05-22",
+      "checkedAt": "",
+      "specification": "Prunus serrulata Kanzan MULTISTEM 500-600 RB Ref: UMBRELLA SHAPE; Crown width 200/300; min 3-5 stems; Circumference min 15/20",
+      "image": "",
+      "imageKind": "",
+      "imageSourceUrl": "",
+      "demo": false,
+      "recordStatus": "active",
+      "dataOrigin": "rasadnici-ponude-zip",
+      "sourceEvidence": {
+        "sourcePath": "Belgija/Arbor/Offerte - S2526-03894 (2).pdf",
+        "sourceFile": "Offerte - S2526-03894 (2).pdf",
+        "sourceSha256": "810eaa1d1aeb0bd394c95b8798fffad1d4352cf54c61ce8df219139476cfdfe9",
+        "sourceType": "private_business_folder",
+        "page": 1,
+        "row": 4
+      },
+      "priceEvidence": {
+        "sourceFile": "Offerte - S2526-03894 (2).pdf",
+        "sourceSha256": "810eaa1d1aeb0bd394c95b8798fffad1d4352cf54c61ce8df219139476cfdfe9",
+        "documentNumber": "S2526-03894",
+        "page": 1,
+        "row": 4,
+        "description": "Prunus serrulata Kanzan MULTISTEM 500-600 RB",
+        "priceColumn": "Unit Price",
+        "amount": 680,
+        "rawUnitPrice": "680.00",
+        "currency": "EUR",
+        "currencyEvidence": "EUR sign in Amount column and Total Amount",
+        "vatRate": 0,
+        "sourceDate": "2026-04-22",
+        "validUntil": "2026-05-22",
+        "extractionMethod": "PDF text extraction and visual verification against original row",
+        "matchedName": "Prunus serrulata 'Kanzan'",
+        "sourceUnit": "Units",
+        "quotedQuantity": 26,
+        "matchingRule": "Exact canonical name or hybrid marker normalization; complete quoted variant"
+      },
+      "sourceCurrencyEvidence": {
+        "origin": "original_offer_currency",
+        "reference": "priceEvidence.currencyEvidence",
+        "sourceSha256": "810eaa1d1aeb0bd394c95b8798fffad1d4352cf54c61ce8df219139476cfdfe9",
+        "sourceDocumentStatesCurrency": true
+      },
+      "measurementEvidence": {
+        "sourcePath": "Belgija/Arbor/Offerte - S2526-03894 (2).pdf",
+        "sourceFile": "Offerte - S2526-03894 (2).pdf",
+        "sourceSha256": "810eaa1d1aeb0bd394c95b8798fffad1d4352cf54c61ce8df219139476cfdfe9",
+        "sourceType": "private_business_folder",
+        "page": 1,
+        "row": 4,
+        "rules": {
+          "height": "explicit_MULTISTEM_height_and_h_annotation",
+          "crownWidth": "explicit_Crown_width",
+          "circumference": "explicit_Circumference_min",
+          "rootType": "explicit_RB"
+        },
+        "rawSpecification": "Prunus serrulata Kanzan MULTISTEM 500-600 RB Ref: UMBRELLA SHAPE; Crown width 200/300; min 3-5 stems; Circumference min 15/20"
+      },
+      "measurementNote": "Jedinice dužine nisu navedene u izvoru.",
+      "transplantCount": null,
+      "transplantNote": "",
+      "additionalParameters": [
+        {
+          "label": "Oblik krošnje",
+          "value": "Kišobran (UMBRELLA SHAPE)"
+        },
+        {
+          "label": "Broj stabala",
+          "value": "Min. 3–5 prema ponudi"
+        }
+      ],
+      "dataAccuracyNote": "Mere su prenete prema oznakama u ponudi. Broj stabala nije broj presađivanja.",
+      "priceRefresh": {
+        "status": "verified",
+        "checkedAt": "2026-11-20T10:42:22.889Z",
+        "sourceSha256": "810eaa1d1aeb0bd394c95b8798fffad1d4352cf54c61ce8df219139476cfdfe9"
+      }
     }
   ]
 }
