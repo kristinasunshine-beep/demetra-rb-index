@@ -1,13 +1,13 @@
 {
   "schemaVersion": 2,
   "status": "partial",
-  "requests": 493,
+  "requests": 532,
   "workers": 8,
   "events": [],
   "sourceHealth": {
     "portal.volentis.com": {
-      "requests": 119,
-      "succeeded": 118,
+      "requests": 117,
+      "succeeded": 116,
       "retries": 0,
       "httpErrors": {
         "404": 1
@@ -21,63 +21,58 @@
       }
     },
     "www.willaert.be": {
-      "requests": 116,
-      "succeeded": 116,
+      "requests": 113,
+      "succeeded": 113,
       "retries": 0,
       "httpErrors": {},
       "stopped": false,
       "requestIntervalSeconds": 1.0
     },
     "catalogue.vannuccipiante.it": {
-      "requests": 4,
-      "succeeded": 4,
+      "requests": 3,
+      "succeeded": 3,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "webshop.vannuccipiante.it": {
-      "requests": 23,
-      "succeeded": 23,
+      "requests": 30,
+      "succeeded": 30,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "smitsbv.nl": {
-      "requests": 19,
-      "succeeded": 18,
+      "requests": 26,
+      "succeeded": 26,
       "retries": 0,
       "httpErrors": {},
-      "stopped": true,
-      "lastFailure": {
-        "source": "https://smitsbv.nl/en/products/hamamelis-intermedia-westerstede/",
-        "reason": "download_failed",
-        "detail": "[Errno 104] Connection reset by peer"
-      }
+      "stopped": false
     },
     "www.lorberg.com": {
-      "requests": 38,
-      "succeeded": 38,
+      "requests": 60,
+      "succeeded": 60,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "www.lve-baumschule.de": {
-      "requests": 13,
-      "succeeded": 13,
+      "requests": 32,
+      "succeeded": 32,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "innocentiemangonipiante.it": {
-      "requests": 160,
-      "succeeded": 160,
+      "requests": 149,
+      "succeeded": 149,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "www.vannuccipiante.it": {
-      "requests": 1,
-      "succeeded": 1,
+      "requests": 2,
+      "succeeded": 2,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
@@ -85,7 +80,7 @@
   },
   "coverage": {
     "schemaVersion": 2,
-    "checkedAt": "2026-11-19T17:31:50Z",
+    "checkedAt": "2026-11-20T01:53:12Z",
     "status": "partial",
     "plants": 619,
     "plantsInventoried": 619,
