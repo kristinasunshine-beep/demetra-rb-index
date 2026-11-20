@@ -99,6 +99,22 @@ const unitColumn = [...sheet.matchAll(/<col\b[^>]*\/>/g)].find(([tag])=>{
 })?.[0];
 assert(unitColumn,'Unit column E must be explicitly sized');
 assert(Number(unitColumn.match(/\bwidth="([\d.]+)"/)?.[1])>=16,'Unit width must fit full words instead of single letters');
+
+const a4Columns = [...sheet.matchAll(/<col\b[^>]*\/>/g)].map(([tag]) => ({
+  min: Number(tag.match(/\bmin="(\d+)"/)?.[1]),
+  max: Number(tag.match(/\bmax="(\d+)"/)?.[1]),
+  width: Number(tag.match(/\bwidth="([\d.]+)"/)?.[1]),
+  hidden: /\bhidden="1"/.test(tag)
+})).filter(col => col.min <= 9 && col.max >= 1 && !col.hidden);
+assert.equal(a4Columns.length,9,'All nine printable columns must have a specified A4 width');
+assert.deepEqual(a4Columns.map(col=>col.width),[4,17.5,16.5,11,16.5,8,11.5,12.5,2]);
+const printableA4MM = 210 - 2*0.25*25.4;
+const approximateExcelWidthMM = a4Columns.reduce((sum,col)=>sum + col.width*7 + 5,0)*25.4/96;
+assert(approximateExcelWidthMM <= printableA4MM,
+  'The worksheet must be designed for physical portrait A4, not merely shrunk by print settings');
+assert(approximateExcelWidthMM > printableA4MM*0.94,
+  'The visible table should occupy the printable A4 width instead of leaving a large empty margin');
+
 assert(sheet.includes('Jed.')||sheet.includes('Jed'), 'Original unit heading must remain unchanged');
 assert(sheet.includes('customHeight="1"'),'Rows must retain custom height for wrapped text');
 assert(sheet.includes('orientation="portrait"')&&sheet.includes('paperSize="9"'),'Excel must print on portrait A4');

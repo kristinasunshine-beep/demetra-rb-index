@@ -290,9 +290,14 @@
     // The template's former 6-character unit column broke "jedinica iz
     // cenovnika" into fragments, sometimes leaving a single letter on a line.
     // A 16.5-character width wraps the original phrase in two natural lines.
-    main = setColumnWidth(main, 5, 16.5);
-    main = setColumnWidth(main, 8, 18);
-    main = setColumnWidth(main, 9, 2.2);
+    // A4 portrait has 210 x 297 mm. With 6.35 mm side margins the
+    // printable width is 197.3 mm; all nine visible columns must fit it
+    // without shrinking the original 10 pt typography to microscopic size.
+    // Keep all cell/merge/drawing anchors: only their physical widths change.
+    const a4PortraitWidths = [4, 17.5, 16.5, 11, 16.5, 8, 11.5, 12.5, 2];
+    a4PortraitWidths.forEach((width, index) => {
+      main = setColumnWidth(main, index + 1, width);
+    });
     const meta = quote.meta;
     const offerDate = meta.date.split('-').reverse().join('.') + '.';
     const fields = {
@@ -304,11 +309,11 @@
     };
     for (const [ref, value] of Object.entries(fields)) main = replaceCell(main, ref, value);
     for (const [number, values, widths, minimum] of [
-      [4, [meta.description], [95], 25], [9, [fields.A9, fields.G9], [95, 35], 34],
-      [10, [meta.address], [35], 23], [11, [fields.A11, fields.G11], [95, 35], 23],
-      [12, [meta.email], [35], 23], [13, [fields.A13, fields.G13], [95, 35], 23],
-      [14, [meta.taxId], [35], 23], [15, [meta.registration], [35], 23],
-      [21, [meta.note], [160], meta.note.trim() ? 24 : 8]
+      [4, [meta.description], [49], 25], [9, [fields.A9, fields.G9], [49, 26], 34],
+      [10, [meta.address], [26], 23], [11, [fields.A11, fields.G11], [49, 26], 23],
+      [12, [meta.email], [26], 23], [13, [fields.A13, fields.G13], [49, 26], 23],
+      [14, [meta.taxId], [26], 23], [15, [meta.registration], [26], 23],
+      [21, [meta.note], [95], meta.note.trim() ? 24 : 8]
     ]) main = rowHeight(main, number, lineHeight(values, widths, minimum));
     const cols = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
     const allCols = cols.concat('I');
@@ -321,7 +326,7 @@
       const number = index + 19, result = total.rows[index];
       const values = [index + 1, item.latinName, compactParameters(item), item.nursery, item.unit,
         result.quantity.value, result.price.value, result.amount];
-      const height = lineHeight(values, [5, 28, 45, 22, 16, 11, 14, 21], 60);
+      const height = lineHeight(values, [4, 17, 16, 10, 16, 8, 11, 14], 60);
       rows += '<row r="'+number+'" ht="'+height+'" customHeight="1">' + values.map((value, column) =>
         cell(cols[column] + number, value, styles[column], column === 7 ? 'ROUND(F'+number+'*G'+number+',2)' : '')).join('') +
         cell('J'+number, item.currency, '4') + '</row>';
