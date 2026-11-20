@@ -127,3 +127,31 @@ test('a formula without a cached value receives an explicit result instead of di
   assert.equal(result.processed,1);assert.equal(result.needsData,1);assert.equal(result.matched,0);
   assert.match(result.preview[0].message,/formula.*sačuvanu vrednost/i);
 });
+
+test('Plant specifications sheet drives procurement search instead of duplicated calculation rows',async()=>{
+  const headers=['ID stavke','Dionica','Grupa','Izvorni naziv','Naziv za pretragu','Veličina i posuda','JM','Količina','Izvorni opis','Izvorna ćelija'];
+  const source=[
+    ['Sadni materijal iz važećeg priloga'],[],[],[],
+    headers,
+    ['D1-129','DIONICA-1','Drveće',plant,plant,'visina 300/350 cm, standard, kontejnirano','kom',25,plant+'; visina 300/350 cm, standard, kontejnirano','DIONICA-1!B129:F129'],
+    ['D1-131','DIONICA-1','Drveće',plant,plant,'visina 400cm, kontejnirano, 3x presađivano','kom',151,plant+'; visina 400cm, kontejnirano, 3x presađivano','DIONICA-1!B131:F131'],
+    ['D1-150','DIONICA-1','Travnjak sa semenom','Travnjak sa semenom','Travnjak sa semenom','seme, 25–30 g/m²','m²',170,null,null]
+  ];
+  const calc=[['ID stavke','Biljka / rad','JM','Količina'],['D1-129',plant,'kom',25],['D1-131',plant,'kom',151]];
+  const input=workbook([['Kalkulacija',calc],['Specifikacije',source],['Napomena',[['Zadrži original']]]]);
+  const instance=worker(),result=await instance.process(input);
+  assert.equal(result.processed,2,'Repeated calculations and the lawn row are not additional plant requests');
+  assert.equal(result.matched,1,'A specified Standard 300–350 plant finds exact nursery offers');
+  assert.equal(result.needsData,1,'400 cm was extracted but no Standard/Multistem form was specified');
+  assert.equal(result.preview[0].parameters.find(v=>v.label==='Visina')?.value,'300/350 cm');
+  assert.equal(result.preview[1].parameters.find(v=>v.label==='Visina')?.value,'400cm');
+  assert.equal(result.preview[1].parameters.find(v=>v.label==='Tip sadnice')?.value,'Nije potvrđen');
+  const output=await instance.download(),book=XLSX.read(output,{type:'array'});
+  const overview=XLSX.utils.sheet_to_json(book.Sheets['Pregled preporuke'],{header:1,defval:''});
+  assert.equal(overview.length,3);
+  assert.match(overview[1][1],/Visina: 300\/350 cm/);
+  assert.match(overview[2][1],/Visina: 400cm/);
+  assert.equal(overview[1][2].startsWith('Rasadnik A'),true);
+  assert.equal(overview[2][2],'—','No nursery may be recommended without confirmed plant form');
+  assert.deepEqual(XLSX.utils.sheet_to_json(book.Sheets.Kalkulacija,{header:1,defval:''}),calc);
+});
