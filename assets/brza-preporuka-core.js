@@ -360,7 +360,52 @@
     return {status:'unmatched',recognized:true,archival:true,plantId,price:null,suppliers,message,
       values:[detailed.join('\n'),'','', 'Arhivski parametri nisu potvrda tražene specifikacije.','',message]};
   }
+  // Brza preporuka: botanical identity + form + ONE relevant measure.
+  // Preserve all other submitted parameters as evidence, never use them as
+  // unrequested substitutions or artificial rejection criteria.
+  function recommendQuick(index,input,options={}){
+    const requested={...input}, found=findPlant(index,requested.name,requested.cultivar);
+    const fail=(message, recognized=false, plantId=null)=>({
+      status:'unmatched',recognized,plantId,price:null,suppliers:[],message,
+      values:['','','','','',message]
+    });
+    if(!String(requested.name??'').trim())return {status:'empty',message:'',values:Array(EXTRA_HEADERS.length).fill('')};
+    if(found.error)return fail(found.error);
+    if(requested._validationError)return fail(requested._validationError,true,found.id);
+    const parsed=parsePreferences([found.remainder,requested.preferences,
+      descriptionRequirements(requested.sourceDescription,requested)].filter(Boolean).join('; '));
+    const select=(key)=> {
+      const a=String(requested[key]??'').trim(),b=String(parsed.fields[key]??'').trim();
+      if(a&&b&&!sameRequirement(key,a,b))return {error:'Sukobljeni zahtevi za '+(FIELDS.find(field=>field[0]===key)?.[1]||key)+'.'};
+      return {value:a||b};
+    };
+    const formValue=select('seedlingType');
+    if(formValue.error)return fail(formValue.error,true,found.id);
+    const plantForm=form(formValue.value);
+    if(plantForm!=='standard'&&plantForm!=='multistem')
+      return fail('Navedi tip sadnice: Standard ili Multistem. Bez potvrđenog tipa nema automatske preporuke.',true,found.id);
+    const measureField=plantForm==='standard'?'height':'circumference';
+    const measure=select(measureField);
+    if(measure.error)return fail(measure.error,true,found.id);
+    if(!String(measure.value??'').trim()||!parseMeasure(measure.value,measureField)?.valid)
+      return fail('Za '+(plantForm==='standard'?'Standard je obavezna visina':'Multistem je obavezan obim')+
+        ' sadnice, naveden kao precizna mera ili opseg.',true,found.id);
+    const targetValue=measure.value;
+    const allowed=newestVariants((index.byPlant.get(found.id)||[]).filter(offer=>{
+      const offeredForm=form(offeredValue(offer,'seedlingType')||offer.seedlingTypeCode||'');
+      return offeredForm===plantForm&&sameRequirement(measureField,targetValue,offeredValue(offer,measureField));
+    }));
+    if(!allowed.length)return historicalReference(index,found.id,
+      'Nema sadnice sa potpuno istim tipom i '+(plantForm==='standard'?'visinom':'obimom')+'.');
+    const narrowed={...index,byPlant:new Map(index.byPlant)};
+    narrowed.byPlant.set(found.id,allowed);
+    const precise={name:requested.name,cultivar:requested.cultivar,seedlingType:plantForm};
+    precise[measureField]=targetValue;
+    if(String(requested.quantity??'').trim())precise.quantity=requested.quantity;
+    const result=recommend(narrowed,precise,options);
+    return {...result,plantId:found.id,requestedForm:plantForm,primaryMeasure:measureField};
+  }
   function supplierList(index,offers){const groups=new Map();for(const offer of offers){if(!groups.has(offer.nurseryId))groups.set(offer.nurseryId,[]);groups.get(offer.nurseryId).push(offer);}return [...groups].map(([nurseryId,rows])=>{const prices=rows.filter(o=>euroPrice(o)!==null&&o.price>0).map(o=>o.price);return {nurseryId,name:index.nurseries.get(nurseryId)?.name||nurseryId,price:prices.length?Math.min(...prices):null,currency:'EUR',offerIds:rows.map(o=>o.id)};}).sort((a,b)=>(a.price??Infinity)-(b.price??Infinity)||a.name.localeCompare(b.name));}
   function supplierText(suppliers){return suppliers.map(s=>s.name+' — '+(s.price===null?'cena u EUR nije navedena':s.price.toLocaleString('sr-Latn-RS',{minimumFractionDigits:2,maximumFractionDigits:2})+' €')).join('\n');}
-  return {FIELDS,EXTRA_HEADERS,norm,headerField,detectHeader,detectSheet,form,rootType,unit,taxGroup,parseMeasure,measureMatches,makeIndex,findPlant,parsePreferences,requestFromRow,newestVariants,parameters,recommend,recommendTender,nameSuggestions,euroPrice};
+  return {FIELDS,EXTRA_HEADERS,norm,headerField,detectHeader,detectSheet,form,rootType,unit,taxGroup,parseMeasure,measureMatches,makeIndex,findPlant,parsePreferences,requestFromRow,newestVariants,parameters,recommend,recommendQuick,recommendTender,nameSuggestions,euroPrice};
 });
