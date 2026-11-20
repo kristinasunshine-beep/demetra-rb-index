@@ -1,5 +1,5 @@
 'use strict';
-importScripts('vendor/xlsx-0.20.3.full.min.js','vendor/jszip-3.10.1.min.js','brza-preporuka-core.js?v=archive-20261116','recommendation-excel.js?v=mirror-panel-20261117');
+importScripts('vendor/xlsx-0.20.3.full.min.js','vendor/jszip-3.10.1.min.js','brza-preporuka-core.js?v=exact-20261120','recommendation-excel.js?v=mirror-panel-20261117');
 const Core=self.DemetraRecommendCore;
 let sheets=[],results=null,originalWorkbook=null;
 function send(type,data={}){postMessage({type,...data});}
@@ -13,13 +13,13 @@ const OVERVIEW_HEADERS=[
 ];
 function conciseParameters(request){
   const fields=[
-    ['height','Visina'],['circumference','Obim'],['crownWidth','Krošnja'],
+    ['seedlingType','Tip sadnice'],['height','Visina'],['circumference','Obim'],['crownWidth','Krošnja'],
     ['rootType','Isporuka'],['potSize','Saksija'],['transplantCount','Presađivanja'],
     ['quantity','Količina'],['unit','Jed. mere']
   ];
   const known=fields.flatMap(([key,label])=>String(request[key]??'').trim()?
     [label+': '+String(request[key]).trim()]:[]);
-  if(known.length)return known.join(' · ');
+  if(known.length)return [known.join(' · '),String(request.preferences||'').trim(),String(request.sourceDescription||'').trim()].filter(Boolean).join(' · ');
   const fallback=String(request.preferences||request.sourceDescription||'').trim();
   return fallback.length>125?fallback.slice(0,122)+'…':fallback;
 }
@@ -80,8 +80,7 @@ self.onmessage=async({data})=>{try{
         if(!original.rows[r]?.some(value=>String(value??'').trim()))continue;
         const request=Core.requestFromRow(original.rows[r],config.map,headers);
         if(original.rows[r].includes('Formula bez sačuvane vrednosti'))request._validationError='Formula u izvornoj tabeli nema sačuvanu vrednost za poređenje.';
-        const tender=Boolean((config.hasHeader && headers.some(h=>/izvorni opis stavke|dodatni uslovi iz troskovnika|dodatni uvjeti iz troskovnika|zahtevane karakteristike|zahtijevane karakteristike/i.test(Core.norm(h)))) || /\b(?:balirano|balled)\s+ili\s+/i.test(String(request.rootType||'')));
-        const result=Core.recommend(index,request,{currency:'EUR',tenderMode:tender}),outRow=config.hasHeader===false?r+1:r;
+        const result=Core.recommendQuick(index,request,{currency:'EUR'}),outRow=config.hasHeader===false?r+1:r;
         result.values.forEach((v,c)=>{sheet.rows[outRow][sheet.originalColumns+c]=v;});
         if(result.status!=='empty')overviewRows.push(...overviewItems(request,result));
         if(result.status!=='empty'){
