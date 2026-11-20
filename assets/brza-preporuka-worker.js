@@ -13,20 +13,19 @@ const OVERVIEW_HEADERS=[
   'Digitalna kartica'
 ];
 function conciseParameters(request){
-  const fields=[
-    ['seedlingType','Tip sadnice'],['height','Visina'],['circumference','Obim'],
-    ['crownWidth','Širina krošnje'],['potSize','Saksija'],['rootType','Isporuka'],
-    ['rootBall','Busen'],['stemDiameter','Prečnik sadnice'],['potDiameter','Prečnik saksije'],
-    ['clearStemHeight','Visina do krošnje'],['transplantCount','Presađivanja'],
-    ['quantity','Količina'],['unit','Jed. mere'],['currency','Valuta izvornog zahteva']
-  ];
-  const known=fields.flatMap(([key,label])=>String(request[key]??'').trim()?
-    [label+': '+String(request[key]).trim()]:[]);
-  if(known.length)return [known.join(' · '),String(request.preferences||'').trim(),String(request.sourceDescription||'').trim()].filter(Boolean).join(' · ');
-  const fallback=String(request.preferences||request.sourceDescription||'').trim();
-  return fallback.length>125?fallback.slice(0,122)+'…':fallback;
+  const parsed=Core.parsePreferences([request.preferences,request.sourceDescription].filter(Boolean).join('; '));
+  const fields={...parsed.fields,...request};
+  const kind=Core.form(fields.seedlingType||'');
+  const parts=[];
+  if(kind==='standard'||kind==='multistem'){
+    parts.push('Tip: '+(kind==='standard'?'Standard':'Multistem'));
+    const field=kind==='standard'?'height':'circumference';
+    if(String(fields[field]??'').trim())parts.push((field==='height'?'Visina: ':'Obim: ')+fields[field]);
+  }
+  return parts.join(' · ')||'Potrebna provera tipa sadnice i dimenzija';
 }
 function overviewStatus(result,supplier){
+  if(result.status==='needs_data')return 'Nedostaju tip sadnice ili odgovarajuća mera · proveriti izvor';
   if(!result.recognized)return result.candidates?.length?'Proveriti botanički naziv':'Biljka nije prepoznata';
   if(supplier?.historical||result.archival||/ARHIVA/i.test(String(supplier?.name||'')))
     return 'Arhivski izvor · proveriti';
@@ -67,7 +66,7 @@ self.onmessage=async({data})=>{try{
     const book=XLSX.read(input,{type:'array',dense:true,cellDates:true,cellNF:true,bookVBA:false,raw:/\.(csv|tsv)$/i.test(data.file.name)});
     if(/\.xlsx$/i.test(data.file.name))originalWorkbook=input;
     sheets=book.SheetNames.map(name=>({name,...readRows(book.Sheets[name])}));
-    const index=Core.makeIndex(data.catalog);let matched=0,unmatched=0,processed=0,recognized=0,archival=0;const preview=[];
+    const index=Core.makeIndex(data.catalog);let matched=0,unmatched=0,processed=0,recognized=0,archival=0,needsData=0,notFound=0;const preview=[];
     results=[];const addedSheets=[],names=new Set(sheets.map(s=>s.name));
     const overviewRows=[OVERVIEW_HEADERS.slice()];
     for(let i=0;i<sheets.length;i++){
@@ -88,8 +87,27 @@ self.onmessage=async({data})=>{try{
         result.values.forEach((v,c)=>{sheet.rows[outRow][sheet.originalColumns+c]=v;});
         if(result.status!=='empty')overviewRows.push(...overviewItems(request,result));
         if(result.status!=='empty'){
-          processed++;if(result.status==='matched')matched++;else unmatched++;if(result.recognized)recognized++;if(result.archival)archival++;
-          if(preview.length<40)preview.push({sheet:original.name,row:r+1,name:request.cultivar&&!Core.norm(request.name).endsWith(' '+Core.norm(request.cultivar))?request.name+' '+request.cultivar:request.name,parameters:original.rows[r].flatMap((value,c)=>c!==config.map.name&&String(value??'').trim()?[{label:headers[c],value:value instanceof Date?value.toISOString().slice(0,10):String(value)}]:[]),...result});
+          processed++;
+          if(result.status==='matched')matched++;
+          else if(result.status==='needs_data')needsData++;
+          else if(result.status==='not_found')notFound++;
+          else unmatched++;
+          if(result.recognized)recognized++;
+          if(result.archival)archival++;
+          if(preview.length<40) {
+            const originalText=[request.preferences,request.sourceDescription].filter(Boolean).join('; ');
+            const parsed=Core.parsePreferences(originalText);
+            const values={...parsed.fields,...request};
+            const form=Core.form(values.seedlingType||'');
+            const relevant=form==='standard'?'height':form==='multistem'?'circumference':null;
+            const parameters=[
+              ...(form==='standard'||form==='multistem'?[{label:'Tip sadnice',value:form==='standard'?'Standard':'Multistem'}]:[]),
+              ...(relevant&&String(values[relevant]??'').trim()?[{label:relevant==='height'?'Visina':'Obim',value:String(values[relevant])}]:[])
+            ];
+            preview.push({sheet:original.name,row:r+1,
+              name:request.cultivar&&!Core.norm(request.name).endsWith(' '+Core.norm(request.cultivar))?request.name+' '+request.cultivar:request.name,
+              parameters,...result});
+          }
         }
         if(r%200===0){send('progress',{message:`Obrađeno ${processed.toLocaleString('sr-Latn-RS')} stavki…`,processed});await new Promise(resolve=>setTimeout(resolve,0));}
       }
@@ -102,7 +120,7 @@ self.onmessage=async({data})=>{try{
         processed:true,headerRow:0,originalColumns:OVERVIEW_HEADERS.length,
         columns:OVERVIEW_HEADERS.length,rows:overviewRows});
     }
-    send('results',{matched,unmatched,processed,recognized,archival,preview});
+    send('results',{matched,unmatched,needsData,notFound,processed,recognized,archival,preview});
   }else if(data.type==='export'){
     if(!results)throw new Error('Prvo pokreni poređenje.');
     send('progress',{message:'Pripremam novu Excel tabelu…'});
