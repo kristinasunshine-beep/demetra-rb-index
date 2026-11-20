@@ -95,37 +95,37 @@ assert.equal(zip.file('xl/worksheets/sheet2.xml'),null,'Removed worksheet must n
 const unitColumn = [...sheet.matchAll(/<col\b[^>]*\/>/g)].find(([tag])=>{
   const min=Number(tag.match(/\bmin="(\d+)"/)?.[1]);
   const max=Number(tag.match(/\bmax="(\d+)"/)?.[1]);
-  return min<=5&&max>=5;
+  return min<=7&&max>=7;
 })?.[0];
-assert(unitColumn,'Unit column E must be explicitly sized');
-assert(Number(unitColumn.match(/\bwidth="([\d.]+)"/)?.[1])>=16,'Unit width must fit full words instead of single letters');
+assert(unitColumn,'Unit column G must be explicitly sized');
+assert(Number(unitColumn.match(/\bwidth="([\d.]+)"/)?.[1])>=14,'Unit width must fit full words instead of single letters');
 
 const a4Columns = [...sheet.matchAll(/<col\b[^>]*\/>/g)].map(([tag]) => ({
   min: Number(tag.match(/\bmin="(\d+)"/)?.[1]),
   max: Number(tag.match(/\bmax="(\d+)"/)?.[1]),
   width: Number(tag.match(/\bwidth="([\d.]+)"/)?.[1]),
   hidden: /\bhidden="1"/.test(tag)
-})).filter(col => col.min <= 9 && col.max >= 1 && !col.hidden);
-assert.equal(a4Columns.length,9,'All nine printable columns must have a specified A4 width');
-assert.deepEqual(a4Columns.map(col=>col.width),[4,17.5,16.5,11,16.5,8,11.5,12.5,2]);
-const printableA4MM = 210 - 2*0.25*25.4;
+})).filter(col => col.min <= 10 && col.max >= 1 && !col.hidden);
+assert.equal(a4Columns.length,10,'All ten printable columns must have a specified A4 width');
+assert.deepEqual(a4Columns.map(col=>col.width),[4.5,13,13,18,18,20,14,9,14,16]);
+const printableA4MM = 297 - 2*0.25*25.4;
 const approximateExcelWidthMM = a4Columns.reduce((sum,col)=>sum + col.width*7 + 5,0)*25.4/96;
 assert(approximateExcelWidthMM <= printableA4MM,
-  'The worksheet must be designed for physical portrait A4, not merely shrunk by print settings');
+  'The worksheet must be designed for physical landscape A4, not merely shrunk by print settings');
 assert(approximateExcelWidthMM > printableA4MM*0.94,
   'The visible table should occupy the printable A4 width instead of leaving a large empty margin');
 
 assert(sheet.includes('Jed.')||sheet.includes('Jed'), 'Original unit heading must remain unchanged');
 assert(sheet.includes('customHeight="1"'),'Rows must retain custom height for wrapped text');
-assert(sheet.includes('orientation="portrait"')&&sheet.includes('paperSize="9"'),'Excel must print on portrait A4');
+assert(sheet.includes('orientation="landscape"')&&sheet.includes('paperSize="9"'),'Excel must print on landscape A4');
 assert(sheet.includes('fitToWidth="1"')&&sheet.includes('fitToHeight="0"'),'Fit to one A4 page wide');
 assert(!sheet.includes('Valuta'),'No visible currency column');
-assert(sheet.includes('<mergeCell ref="H18:I18"')&&sheet.includes('<mergeCell ref="H19:I19"'),'Amount cell must span currency-free area');
-const totalStyle=Number(sheet.match(/<c r="H21" s="(\d+)"/)?.[1]);
+assert(sheet.includes('<mergeCell ref="B18:C18"')&&sheet.includes('<mergeCell ref="D19:E19"'),'Names and parameters must use their two-column areas');
+const totalStyle=Number(sheet.match(/<c r="J21" s="(\d+)"/)?.[1]);
 assert(Number.isInteger(totalStyle),'Total formula must have currency style');
 const styleXml=await zip.file('xl/styles.xml').async('string');
 assert(styleXml.includes('&quot;EUR&quot;'),'Currency must be formatted into the total');
-assert(workbook.includes('_xlnm.Print_Area')&&workbook.includes("'Moja ponuda'!$A$1:$I$21"),
+assert(workbook.includes('_xlnm.Print_Area')&&workbook.includes("'Moja ponuda'!$A$1:$J$21"),
   'A4 print area must end after totals, without the hidden currency column');
 
 const tableHeader=sheet.match(/<row\b[^>]*\br="18"[^>]*>[\s\S]*?<\/row>/)?.[0]||'';
@@ -137,13 +137,13 @@ assert(firstPlant.includes('r="B19"') && firstPlant.includes(Core.xmlEscape(firs
 for(const number of [23,24]) assert(!sheet.includes('<row r="'+number+'"'),
   'No abandoned header rows or whitespace should remain after moving the table.');
 
-assert(sheet.includes('<f>ROUND(F19*G19,2)</f><v>37.5</v>'));
-assert(sheet.includes('<f>ROUND(F20*G20,2)</f><v>40</v>'));
-assert(sheet.includes('<f>SUM(H19:H20)</f><v>77.5</v>'));
+assert(sheet.includes('<f>ROUND(H19*I19,2)</f><v>37.5</v>'));
+assert(sheet.includes('<f>ROUND(H20*I20,2)</f><v>40</v>'));
+assert(sheet.includes('<f>SUM(J19:J20)</f><v>77.5</v>'));
 assert(sheet.includes('001234567')&&sheet.includes('00123456'));
 assert(sheet.includes('U Beogradu, 11.11.2026.'),'Date directly next to city');
-assert(sheet.includes('<mergeCell ref="E4:I4"')&&sheet.includes('<mergeCell ref="E8:I8"'),'Company directly below accreditation marks');
-assert(sheet.includes('<mergeCell ref="E9:F9"')&&sheet.includes('<mergeCell ref="G9:I9"'),'Investor opposite preparer');
+assert(sheet.includes('<mergeCell ref="E4:J4"')&&sheet.includes('<mergeCell ref="E8:J8"'),'Company directly below accreditation marks');
+assert(sheet.includes('<mergeCell ref="E9:F9"')&&sheet.includes('<mergeCell ref="G9:J9"'),'Investor opposite preparer');
 for(const [ref,value] of Object.entries({G9:'Primer investitora',G10:'Primer adrese 1',G14:'001234567',G15:'00123456'})){
   const found=sheet.match(new RegExp('<c\\b(?=[^>]*\\br="' + ref + '")[^>]*>[\\s\\S]*?<\\/c>'))?.[0];
   assert(found&&found.includes(value),'Investor field '+ref);
@@ -170,10 +170,22 @@ assert.equal(Core.summarize(mixed).amount,null);
 assert.deepEqual(Core.summarize(mixed).totals.map(t=>[t.currency,t.amount]),[['EUR',37.5],['RSD',40]]);
 const mixedFile=await Zip.loadAsync(await Core.buildXlsx(template,mixed,Zip));
 const mixedXml=await mixedFile.file('xl/worksheets/sheet1.xml').async('string');
-assert(mixedXml.includes('SUMIF(J19:J20,&quot;EUR&quot;,H19:H20)'));
-assert(mixedXml.includes('r="J19"')&&mixedXml.includes('r="J20"'),'Currency retained only in hidden data');
-assert(mixedXml.includes('SUMIF(J19:J20,&quot;RSD&quot;,H19:H20)'));
+assert(mixedXml.includes('SUMIF(K19:K20,&quot;EUR&quot;,J19:J20)'));
+assert(mixedXml.includes('r="K19"')&&mixedXml.includes('r="K20"'),'Currency retained only in hidden data');
+assert(mixedXml.includes('SUMIF(K19:K20,&quot;RSD&quot;,J19:J20)'));
 assert(!mixedXml.includes('Valuta'),'Visible currency column title must be removed');
+// A saved offer date must not leak into the current download filename.
+assert.equal(Core.filename({number:'',date:'2026-11-11'},new Date(2026,10,20,12)),'Demetra-RB-ponuda-2026-11-20.xlsx');
+assert.equal(Core.filename({number:'01/26',date:'2026-11-11'},new Date(2026,10,21,0,1)),'Demetra-RB-ponuda-2026-11-21-01-26.xlsx');
+// Descriptions longer than Excel's row-height limit continue visibly.
+const extended={...quote,items:[{...quote.items[0],parameters:[['Opis',longParameter]]}]};
+const extendedZip=await Zip.loadAsync(await Core.buildXlsx(template,extended,Zip));
+const extendedXml=await extendedZip.file('xl/worksheets/sheet1.xml').async('string');
+const descriptions=[...extendedXml.matchAll(/<c r="D(\d+)" s="\d+" t="inlineStr"><is><t[^>]*>([\s\S]*?)<\/t><\/is><\/c>/g)].filter(m=>Number(m[1])>=19).map(m=>m[2]).join('');
+assert.equal(descriptions,Core.xmlEscape(Core.compactParameters(extended.items[0])),'Continuation rows preserve the entire description');
+assert([...extendedXml.matchAll(/<row\b[^>]*\bht="([\d.]+)"/g)].every(m=>Number(m[1])<=400),'No row exceeds the readable Excel height');
+assert(extendedXml.includes('KRAJ'),'The end of the long description is retained');
+assert(extendedXml.includes('SUM(J19:J'),'Totals include continued rows without counting a plant twice');
 const testDir=process.env.DEMETRA_QUOTE_TEST_OUTPUT;
 if(testDir){await mkdir(testDir,{recursive:true});await writeFile(resolve(testDir,'provera-moja-ponuda.xlsx'),bytes);}
 console.log(JSON.stringify({ok:true,selectableVariants:snapshots.length,hiddenOffersRejected:offers.offers.length-valid.length,

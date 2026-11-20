@@ -275,6 +275,22 @@
       .reduce((sum, part) => sum + Math.max(1, Math.ceil(part.length / widths[index])), 0)));
     return Math.min(400, Math.max(min, lines * 13 + 12));
   }
+  function readableChunks(value, width, maxLines) {
+    const text = String(value), chunks = [];
+    let start = 0, lines = 1, column = 0;
+    for (let index = 0; index < text.length; index++) {
+      if (text[index] === '\n') { lines++; column = 0; }
+      else if (++column >= width) { lines++; column = 0; }
+      if (lines > maxLines) {
+        const space = text.lastIndexOf(' ', index);
+        const cut = space > start && index - space < width ? space : index;
+        chunks.push(text.slice(start,cut));
+        start = cut; index = cut - 1; lines = 1; column = 0;
+      }
+    }
+    chunks.push(text.slice(start));
+    return chunks;
+  }
   function rowHeight(xml, number, height) {
     return xml.replace(new RegExp('<row\\b(?=[^>]*\\br="' + number + '")[^>]*>'),tag=>{
       tag=tag.replace(/\sht="[^"]*"/,'').replace(/\scustomHeight="[^"]*"/,'');
@@ -287,15 +303,9 @@
     if (!total.ready) throw new Error('Popunite ispravnu količinu i cenu za svaku stavku pre preuzimanja.');
     const zip = await Zip.loadAsync(template, { checkCRC32: true });
     let main = spreadsheetXml(await zip.file('xl/worksheets/sheet1.xml').async('string'));
-    // The template's former 6-character unit column broke "jedinica iz
-    // cenovnika" into fragments, sometimes leaving a single letter on a line.
-    // A 16.5-character width wraps the original phrase in two natural lines.
-    // A4 portrait has 210 x 297 mm. With 6.35 mm side margins the
-    // printable width is 197.3 mm; all nine visible columns must fit it
-    // without shrinking the original 10 pt typography to microscopic size.
-    // Keep all cell/merge/drawing anchors: only their physical widths change.
-    const a4PortraitWidths = [4, 17.5, 16.5, 11, 16.5, 8, 11.5, 12.5, 2];
-    a4PortraitWidths.forEach((width, index) => {
+    // A–J uses the printable landscape width; keep the 10 pt body readable.
+    const tableWidths = [4.5, 13, 13, 18, 18, 20, 14, 9, 14, 16];
+    tableWidths.forEach((width, index) => {
       main = setColumnWidth(main, index + 1, width);
     });
     const meta = quote.meta;
@@ -319,57 +329,77 @@
     const allCols = cols.concat('I');
     const styles = rowStyles(main, 23, allCols), sumStyles = rowStyles(main, 24, allCols);
     const totalStyles = await currencyTotalStyles(zip, total.totals, sumStyles[7]);
+    const headerStyles = rowStyles(main, 22, allCols);
     main = compactQuoteHeader(main);
-    main = replaceCell(main, 'I18', ''); // Hide the old "Valuta" heading, preserving header geometry.
-    let rows = '';
+    // Ten physical columns, eight semantic fields: name B:C, parameters D:E.
+    const tableColumns = ['A', 'B', 'D', 'F', 'G', 'H', 'I', 'J'];
+    const headers = ['R.br.', 'Biljka', 'Parametri sadnice', 'Rasadnik', 'Jed.', 'Količina', 'Cena', 'Iznos'];
+    main = main.replace(/<row\b[^>]*\br="18"[^>]*>[\s\S]*?<\/row>/,
+      '<row r="18" ht="30" customHeight="1">' + headers.map((value, index) =>
+        cell(tableColumns[index] + '18', value, headerStyles[index])).join('') + '</row>');
+    // Compact whitespace without reducing the original 10 pt body typography.
+    for (const [row, height] of [[1,6],[2,26],[3,26],[4,lineHeight([meta.description],[46],24)],[5,lineHeight([fields.A5],[46],18)],[6,16],[7,16],[8,16],
+      [9,lineHeight([fields.A9,fields.G9],[48,44],24)],[10,lineHeight([fields.G10],[43],20)],[11,lineHeight([fields.A11,fields.G11],[46,43],20)],[12,lineHeight([fields.G12],[43],20)],[13,lineHeight([fields.A13,fields.G13],[46,43],20)],[14,lineHeight([fields.G14],[43],18)],[15,lineHeight([fields.G15],[43],18)],[16,24],[17,meta.note.trim()?lineHeight([meta.note],[130],24):6]]) {
+      main = rowHeight(main,row,height);
+    }
+    let rows = '', nextRow = 19;
     quote.items.forEach((item, index) => {
-      const number = index + 19, result = total.rows[index];
-      const values = [index + 1, item.latinName, compactParameters(item), item.nursery, item.unit,
-        result.quantity.value, result.price.value, result.amount];
-      const height = lineHeight(values, [4, 17, 16, 10, 16, 8, 11, 14], 60);
-      rows += '<row r="'+number+'" ht="'+height+'" customHeight="1">' + values.map((value, column) =>
-        cell(cols[column] + number, value, styles[column], column === 7 ? 'ROUND(F'+number+'*G'+number+',2)' : '')).join('') +
-        cell('J'+number, item.currency, '4') + '</row>';
+      const result = total.rows[index];
+      // Excel caps a row at 409 pt. Continue long descriptions in visible
+      // rows of the same table instead of clipping or shrinking the text.
+      const chunks = readableChunks(compactParameters(item), 26, 24);
+      chunks.forEach((description, part) => {
+        const number = nextRow++;
+        const values = part ? ['', '', description, '', '', '', '', ''] :
+          [index + 1, item.latinName, description, item.nursery, item.unit,
+            result.quantity.value, result.price.value, result.amount];
+        const height = lineHeight(values, [4, 25, 33, 19, 13, 8, 13, 15], 40);
+        rows += '<row r="'+number+'" ht="'+height+'" customHeight="1">' +
+          values.map((value, column) => cell(tableColumns[column] + number, value, styles[column],
+            !part && column === 7 ? 'ROUND(H'+number+'*I'+number+',2)' : '')).join('') +
+          (!part ? cell('K'+number, item.currency, '4') : '') + '</row>';
+      });
     });
-    const lastData = 18 + quote.items.length, lastRow = lastData + total.totals.length;
+    const lastData = nextRow - 1, lastRow = lastData + total.totals.length;
     total.totals.forEach((subtotal,index) => {
       const sumRow = lastData + index + 1;
-      const formula = total.totals.length === 1 ? 'SUM(H19:H'+lastData+')' :
-        'SUMIF(J19:J'+lastData+',"'+subtotal.currency+'",H19:H'+lastData+')';
+      const formula = total.totals.length === 1 ? 'SUM(J19:J'+lastData+')' :
+        'SUMIF(K19:K'+lastData+',"'+subtotal.currency+'",J19:J'+lastData+')';
       rows += '<row r="'+sumRow+'" ht="30" customHeight="1">' +
-        cell('G'+sumRow, 'UKUPNO', sumStyles[6]) +
-        cell('H'+sumRow, subtotal.amount, totalStyles[subtotal.currency], formula) + '</row>';
+        cell('I'+sumRow, 'UKUPNO', sumStyles[6]) +
+        cell('J'+sumRow, subtotal.amount, totalStyles[subtotal.currency], formula) + '</row>';
     });
-    main = replaceRows(main, 19, rows, 'J', lastRow);
-    main = main.replace(/sqref="F23"/g, 'sqref="F19:F'+lastData+'"')
-      .replace(/sqref="G23"/g, 'sqref="G19:G'+lastData+'"');
+    main = replaceRows(main, 19, rows, 'K', lastRow);
+    main = main.replace(/sqref="F23"/g, 'sqref="H19:H'+lastData+'"')
+      .replace(/sqref="G23"/g, 'sqref="I19:I'+lastData+'"');
     main = configureA4(main, lastRow);
     zip.file('xl/worksheets/sheet1.xml', main);
     let workbook = spreadsheetXml(await zip.file('xl/workbook.xml').async('string'));
     const calc = '<calcPr calcId="191029" fullCalcOnLoad="1" forceFullCalc="1" calcMode="auto"/>';
     workbook = /<calcPr\b/.test(workbook) ? workbook.replace(/<calcPr\b[^>]*\/>/, calc) : workbook.replace('</workbook>', calc + '</workbook>');
-    const printArea = '<definedNames><definedName name="_xlnm.Print_Area" localSheetId="0">\'Moja ponuda\'!$A$1:$I$' + lastRow + '</definedName></definedNames>';
+    const printArea = '<definedNames><definedName name="_xlnm.Print_Area" localSheetId="0">\'Moja ponuda\'!$A$1:$J$' + lastRow + '</definedName><definedName name="_xlnm.Print_Titles" localSheetId="0">\'Moja ponuda\'!$18:$18</definedName></definedNames>';
     workbook = workbook.replace(/<definedNames\b[^>]*>[\s\S]*?<\/definedNames>/, '')
       .replace('</sheets>', () => '</sheets>' + printArea);
     zip.file('xl/workbook.xml', workbook);
     return zip.generateAsync({ type: 'uint8array', compression: 'DEFLATE',
       mimeType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
   }
-  // A4 portrait, single page wide; the memorandum stays in its original cells.
+  // A4 landscape keeps ten columns legible at the original font size.
   function configureA4(xml, lastRow) {
     xml = xml.replace('</sheetPr>', '<pageSetUpPr fitToPage="1"/></sheetPr>');
     xml = xml.replace(/<pane\b[^>]*\/>/, '<pane ySplit="18" topLeftCell="A19" activePane="bottomLeft" state="frozen"/>');
-    xml = xml.replace('</cols>', '<col min="10" max="10" width="2" hidden="1" customWidth="1"/></cols>');
+    xml = xml.replace('</cols>', '<col min="11" max="11" width="2" hidden="1" customWidth="1"/></cols>');
     xml = xml.replace(/<mergeCells\b[^>]*>([\s\S]*?)<\/mergeCells>/, (_, body) => {
-      const additions = ['H18:I18'];
-      for (let row=19; row<=lastRow; row++) additions.push('H'+row+':I'+row);
-      const original = [...body.matchAll(/<mergeCell\b[^>]*\bref="[^"]+"[^>]*\/>/g)].map(m=>m[0]);
+      const original = [...body.matchAll(/<mergeCell\b[^>]*\bref="[^"]+"[^>]*\/>/g)].map(m=>m[0])
+        .map(tag=>tag.replace(/:I(\d+)"/, ':J$1"'));
+      const additions = [];
+      for (let row=18; row<lastRow; row++) additions.push('B'+row+':C'+row,'D'+row+':E'+row);
       return '<mergeCells count="'+(original.length+additions.length)+'">'+original.join('')+
         additions.map(ref=>'<mergeCell ref="'+ref+'"/>').join('')+'</mergeCells>';
     });
-    xml = xml.replace(/<pageMargins\b[^>]*\/>/, '<pageMargins left="0.25" right="0.25" top="0.35" bottom="0.35" header="0.15" footer="0.15"/>');
+    xml = xml.replace(/<pageMargins\b[^>]*\/>/, '<pageMargins left="0.25" right="0.25" top="0.3" bottom="0.3" header="0.15" footer="0.15"/>');
     xml = xml.replace(/<pageSetup\b[^>]*\/>/g, '');
-    return xml.replace(/<drawing\b/, '<pageSetup paperSize="9" orientation="portrait" fitToWidth="1" fitToHeight="0"/><drawing');
+    return xml.replace(/<drawing\b/, '<pageSetup paperSize="9" orientation="landscape" fitToWidth="1" fitToHeight="0"/><drawing');
   }
   // Number format keeps the total as a recalculating number, with currency
   // displayed in that same cell, never as a separate visible table column.
