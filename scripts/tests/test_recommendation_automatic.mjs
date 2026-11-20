@@ -78,7 +78,7 @@ test('one upload processes every input row and preserves the notes sheet',async(
   const notes=[['Napomena'],['Ovaj list mora ostati sačuvan.'],['00123']];
   const input=workbook([['Sadnice',rows],['Napomena',notes]]),instance=worker();
   const result=await instance.process(input);
-  assert.equal(result.processed,count);assert.equal(result.matched,count-1);assert.equal(result.unmatched,1);
+  assert.equal(result.processed,count);assert.equal(result.matched,count-1);assert.equal(result.unmatched,0);assert.equal(result.notFound,1);
   assert.equal(result.preview.length,40,'Preview limit must not limit processing or export');
   const output=await instance.download(),book=XLSX.read(output,{type:'array'});
   assert.deepEqual(book.SheetNames,['Pregled preporuke','Sadnice','Napomena']);
@@ -124,6 +124,6 @@ test('a formula without a cached value receives an explicit result instead of di
   const book=XLSX.utils.book_new(),sheet=XLSX.utils.aoa_to_sheet([['Naziv biljke','Visina (cm)'],[plant]]);
   sheet.B2={t:'n',f:'300+0'};sheet['!ref']='A1:B2';XLSX.utils.book_append_sheet(book,sheet,'Sadnice');
   const instance=worker(),result=await instance.process(XLSX.write(book,{type:'array',bookType:'xlsx'}));
-  assert.equal(result.processed,1);assert.equal(result.unmatched,1);assert.equal(result.matched,0);
+  assert.equal(result.processed,1);assert.equal(result.needsData,1);assert.equal(result.matched,0);
   assert.match(result.preview[0].message,/formula.*sačuvanu vrednost/i);
 });
