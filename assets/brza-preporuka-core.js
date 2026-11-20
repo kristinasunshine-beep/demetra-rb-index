@@ -10,7 +10,7 @@
   const GENERATED_HEADERS=EXTRA_HEADERS.concat(['Preporučeni rasadnik','Nabavna cena','Valuta cene','Jedinica cene','PDV prema ponudi','Provera izvora']).map(v=>norm(v));
   function norm(v){return String(v??'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[đĐ]/g,'dj').replace(/[×]/g,' x ').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim().replace(/\s+/g,' ');}
   const ALIASES={
-    name:['naziv','biljka','naziv biljke','naziv sadnice','naziv sadnog materijala','sadni materijal','latinski naziv','latinski naziv biljke','latinski naziv sadnice','botanicki naziv','botanicki naziv biljke','botanical name','plant name','plant','species','name','latin name','vrsta','vrsta biljke','botanischer name','bezeichnung','product'],
+    name:['naziv','biljka','naziv biljke','naziv sadnice','naziv sadnog materijala','sadni materijal','naziv za pretragu','izvorni naziv','biljka rad','latinski naziv','latinski naziv biljke','latinski naziv sadnice','botanicki naziv','botanicki naziv biljke','botanical name','plant name','plant','species','name','latin name','vrsta','vrsta biljke','botanischer name','bezeichnung','product'],
     cultivar:['kultivar','sorta','kultivar sorta','cultivar','variety'],circumference:['obim','obim sadnice','obim stabla','obim debla','opseg','opseg debla','opseg stabla','girth','circumference','stammumfang','st u'],
     height:['visina','visina sadnice','visina biljke','height','height cm','hoehe','hohe'],crownWidth:['sirina krosnje','precnik krosnje','crown width','crown spread'],
     potSize:['velicina saksije','saksija','zapremina saksije','pot','pot size','container size','litara','litres','clt'],
@@ -18,12 +18,12 @@
     transplantCount:['broj presadjivanja','presadjivanja','transplants','transplant count'],rootBall:['busen','velicina busena','rootball','root ball'],
     stemDiameter:['precnik sadnice','promjer sadnice','stem diameter','precnik debla','promjer debla'],potDiameter:['precnik saksije','promjer saksije','promjer posude','pot diameter'],clearStemHeight:['visina do krosnje','visina cistog debla','clear stem height','stem height'],
     quantity:['kolicina','qty','quantity','komada','broj komada','amount','anzahl','kol'],unit:['jed','jm','j m','jed mj','jed mere','jed mjere','jedinica','jedinica mere','jedinica mjere','unit'],
-    sourceDescription:['izvorni opis stavke','izvorni opis','original description'],
-    preferences:['preferencije','preference','preferences','zahtevi','zahtjevi','specifikacija','opis','description','specification','detalji','napomena','napomene','remarks','zahtevane karakteristike','dimenzije','velicina','size','sizes','parametri','parametri sadnice','parametri biljke','opis sadnice','opis biljke','opis stavke','dodatni uslovi iz troskovnika','dodatni uvjeti iz troskovnika','karakteristike','kvalitet','kvaliteta'],
+    sourceDescription:['izvorni opis stavke','izvorni opis','original description','izvorni opis sadnice'],
+    preferences:['preferencije','preference','preferences','zahtevi','zahtjevi','specifikacija','opis','description','specification','detalji','napomena','napomene','remarks','zahtevane karakteristike','dimenzije','velicina','velicina i posuda','velicina posuda','size','sizes','parametri','parametri sadnice','parametri biljke','opis sadnice','opis biljke','opis stavke','dodatni uslovi iz troskovnika','dodatni uvjeti iz troskovnika','karakteristike','kvalitet','kvaliteta'],
     currency:['valuta','currency']
   };
   function headerField(v){if(GENERATED_HEADERS.includes(norm(v)))return '';const n=norm(v).replace(/\b(?:cm|mm|m|lit|l|lt|ltr|litara|litre|litres|eur)\b/g,'').trim();for(const [key,list] of Object.entries(ALIASES))if(list.includes(n)||list.includes(norm(v)))return key;if(/^(?:latinski|botanicki|botanical|latin)\s+(?:naziv|name)\b/.test(n))return 'name';if(/\b(?:opis|specifikacija|specification|description|zahtevi|zahtjevi|uslovi|uvjeti|napomene?|preferencije|parametri|karakteristike)\b/.test(n))return 'preferences';return '';}
-  function headerMap(headers){const map={};headers.forEach((v,c)=>{const f=headerField(v);if(!f)return;if(map[f]===undefined)map[f]=c;else if(f==='name'){if(/latinski|botanicki|botanical|latin/.test(norm(v))&&!/latinski|botanicki|botanical|latin/.test(norm(headers[map[f]])))map[f]=c;}else map[f]=[...new Set([].concat(map[f],c))];});return map;}
+  function headerMap(headers){const map={};headers.forEach((v,c)=>{const f=headerField(v);if(!f)return;if(map[f]===undefined)map[f]=c;else if(f==='name'){const rank=name=>/naziv za pretragu/.test(norm(name))?4:/latinski|botanicki|botanical|latin/.test(norm(name))?3:/izvorni naziv/.test(norm(name))?1:2;if(rank(v)>rank(headers[map[f]]))map[f]=c;}else map[f]=[...new Set([].concat(map[f],c))];});return map;}
   function detectHeader(rows,index){
     let best={row:0,map:{},score:0,headers:[],dataStartRow:1,hasHeader:false};
     const limit=Math.min(rows.length,60);
@@ -132,7 +132,7 @@
     let s=String(value??'').trim().replace(/[–—−]/g,'-');const fields={},conflicts=[];
     const take=(key,re,transform=x=>x)=>{s=s.replace(re,(whole,v)=>{const next=transform(v||whole);if(fields[key]&&!sameRequirement(key,fields[key],next))conflicts.push(key);else fields[key]=next;return ' ';});};
     const amount='((?:>=|<=|≥|≤|>|<|min\\.?|max\\.?)?\\s*\\d+(?:[.,]\\d+)?\\s*(?:[-/]\\s*\\d+(?:[.,]\\d+)?)?\\s*(?:litara|litres|litre|ltr|lt|cm|mm|m|l)?\\s*\\+?)';
-    take('height',new RegExp('(?:\\bheight|\\bvisina(?:\\s+(?:sadnice|biljke|stabla))?|\\bh)\\s*[:=]?\\s*'+amount,'gi'));
+    take('height',new RegExp('(?:\\bheight|\\bvisin[ae](?:\\s+(?:sadnice|biljke|stabla))?|\\bh)\\s*[:=]?\\s*'+amount,'gi'));
     take('circumference',new RegExp('(?:\\b(?:obim|opseg)(?:\\s+(?:sadnice|stabla|debla))?|\\bgirth|\\bcircumference)\\s*[:=]?\\s*'+amount,'gi'));
     take('crownWidth',new RegExp('(?:sirina krosnje|širina krošnje|crown width)\\s*[:=]?\\s*'+amount,'gi'));
     take('potSize',new RegExp('(?:\\bpot|\\bsaksija|\\bclt|\\bc(?=\\s*\\d))\\s*[:=]?\\s*'+amount,'gi'));
