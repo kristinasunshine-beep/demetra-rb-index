@@ -9,7 +9,8 @@ const OVERVIEW_HEADERS=[
   'Parametri iz tvoje tabele',
   'Spisak rasadnika',
   'Najniža nabavna cena (€)',
-  'Rezultat'
+  'Rezultat',
+  'Digitalna kartica'
 ];
 function conciseParameters(request){
   const fields=[
@@ -43,7 +44,8 @@ function overviewItems(request,result){
       supplier.name+(sourcePrice?' — '+sourcePrice:' — cena nije navedena'):'—';
     return [plant,params,nursery,
       index===0&&result.status==='matched'&&Number.isFinite(result.price)?result.price:'',
-      overviewStatus(result,supplier)];
+      overviewStatus(result,supplier),
+      result.plantId?'https://kristinasunshine-beep.github.io/demetra-rb-index/#plant='+encodeURIComponent(result.plantId):''];
   });
 }
 
