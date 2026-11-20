@@ -37,7 +37,8 @@ function overviewStatus(result,supplier){
 function overviewItems(request,result){
   const plant=request.cultivar&&!Core.norm(request.name).endsWith(' '+Core.norm(request.cultivar))?request.name+' '+request.cultivar:request.name;
   const params=conciseParameters(request);
-  const suppliers=result.suppliers?.length?result.suppliers:[null];
+  // An archival source is not an eligible procurement recommendation.
+  const suppliers=result.status==='matched'&&result.suppliers?.length?result.suppliers:[null];
   return suppliers.map((supplier,index)=>{
     const sourcePrice=Number.isFinite(supplier?.price)?
       supplier.price.toLocaleString('sr-Latn-RS',{minimumFractionDigits:2,maximumFractionDigits:2})+' €':'';
