@@ -1,13 +1,13 @@
 {
   "schemaVersion": 2,
   "status": "partial",
-  "requests": 454,
+  "requests": 593,
   "workers": 8,
   "events": [],
   "sourceHealth": {
     "portal.volentis.com": {
-      "requests": 112,
-      "succeeded": 111,
+      "requests": 124,
+      "succeeded": 123,
       "retries": 0,
       "httpErrors": {
         "404": 1
@@ -21,51 +21,51 @@
       }
     },
     "www.willaert.be": {
-      "requests": 110,
-      "succeeded": 110,
+      "requests": 119,
+      "succeeded": 119,
       "retries": 0,
       "httpErrors": {},
       "stopped": false,
       "requestIntervalSeconds": 1.0
     },
     "catalogue.vannuccipiante.it": {
-      "requests": 3,
-      "succeeded": 3,
+      "requests": 4,
+      "succeeded": 4,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "webshop.vannuccipiante.it": {
-      "requests": 34,
-      "succeeded": 34,
+      "requests": 14,
+      "succeeded": 14,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "smitsbv.nl": {
-      "requests": 28,
-      "succeeded": 28,
+      "requests": 26,
+      "succeeded": 26,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "www.lorberg.com": {
-      "requests": 46,
-      "succeeded": 46,
+      "requests": 51,
+      "succeeded": 51,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "www.lve-baumschule.de": {
-      "requests": 31,
-      "succeeded": 31,
+      "requests": 10,
+      "succeeded": 10,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "innocentiemangonipiante.it": {
-      "requests": 89,
-      "succeeded": 89,
+      "requests": 244,
+      "succeeded": 244,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
@@ -80,7 +80,7 @@
   },
   "coverage": {
     "schemaVersion": 2,
-    "checkedAt": "2026-11-20T11:31:14Z",
+    "checkedAt": "2026-11-20T13:19:52Z",
     "status": "partial",
     "plants": 619,
     "plantsInventoried": 619,
