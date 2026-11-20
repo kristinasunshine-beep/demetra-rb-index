@@ -17,12 +17,13 @@ function conciseParameters(request){
   const fields={...parsed.fields,...request};
   const kind=Core.form(fields.seedlingType||'');
   const parts=[];
-  if(kind==='standard'||kind==='multistem'){
-    parts.push('Tip: '+(kind==='standard'?'Standard':'Multistem'));
-    const field=kind==='standard'?'height':'circumference';
-    if(String(fields[field]??'').trim())parts.push((field==='height'?'Visina: ':'Obim: ')+fields[field]);
-  }
-  return parts.join(' · ')||'Potrebna provera tipa sadnice i dimenzija';
+  if(kind==='standard'||kind==='multistem')parts.push('Tip: '+(kind==='standard'?'Standard':'Multistem'));
+  else parts.push('Tip: nije potvrđen');
+  // Measurements are legitimate requested parameters even when plant form
+  // has not been supplied. Never hide them merely because type is missing.
+  for(const [field,label] of [['height','Visina'],['circumference','Obim']])
+    if(String(fields[field]??'').trim())parts.push(label+': '+String(fields[field]));
+  return parts.join(' · ');
 }
 function overviewStatus(result,supplier){
   if(result.status==='needs_data')return 'Nedostaju tip sadnice ili odgovarajuća mera · proveriti izvor';
@@ -68,11 +69,21 @@ self.onmessage=async({data})=>{try{
     if(/\.xlsx$/i.test(data.file.name))originalWorkbook=input;
     sheets=book.SheetNames.map(name=>({name,...readRows(book.Sheets[name])}));
     const index=Core.makeIndex(data.catalog);let matched=0,unmatched=0,processed=0,recognized=0,archival=0,needsData=0,notFound=0;const preview=[];
+    // A cost analysis workbook repeats the same plant in Kalkulacija,
+    // Specifikacije, Poređenje and Cene. Only the dedicated specifications
+    // sheet is the source of planting requirements when present.
+    const specificationSheets=new Set(sheets.filter(sheet=>{
+      const hdr=sheet.rows.slice(0,15);
+      return hdr.some(row=>row.some(v=>Core.norm(v)==='naziv za pretragu') &&
+        row.some(v=>Core.norm(v)==='velicina i posuda'));
+    }).map(sheet=>sheet.name));
+    const activeSheets=specificationSheets.size?specificationSheets:null;
+
     results=[];const addedSheets=[],names=new Set(sheets.map(s=>s.name));
     const overviewRows=[OVERVIEW_HEADERS.slice()];
     for(let i=0;i<sheets.length;i++){
       const original=sheets[i],config=Core.detectSheet(original.rows,index,original.name);let sheet={...original,rows:original.rows.map(row=>row.slice()),processed:false};results.push(sheet);
-      if(!config?.enabled)continue;
+      if(!config?.enabled || activeSheets&&!activeSheets.has(original.name))continue;
       const headers=Array.from({length:original.columns},(_,c)=>config.headers?.[c]||original.rows[config.headerRow]?.[c]||'Kolona '+XLSX.utils.encode_col(c));
       if(config.hasHeader===false){
         let name=('Preporuka '+original.name).slice(0,31),n=2;while(names.has(name))name=('Preporuka '+original.name).slice(0,27)+' '+n++;names.add(name);
@@ -83,6 +94,13 @@ self.onmessage=async({data})=>{try{
       for(let r=config.dataStartRow??config.headerRow+1;r<original.rows.length;r++){
         if(!original.rows[r]?.some(value=>String(value??'').trim()))continue;
         const request=Core.requestFromRow(original.rows[r],config.map,headers);
+        // Skip lawn seed, ancillary works and headings in dedicated botanical
+        // specification sheets; the original worksheet remains untouched.
+        if(activeSheets){
+          const group=String(original.rows[r][2]??'');
+          if(/travnjak|radovi|materijal|seme|sjeme|supstrat|đubriv|gnojiv/i.test(group))continue;
+          if(!/^[A-Z][a-z]{2,}\s+[a-z][a-z-]{2,}/.test(String(request.name??'').trim()))continue;
+        }
         if(original.rows[r].includes('Formula bez sačuvane vrednosti'))request._validationError='Formula u izvornoj tabeli nema sačuvanu vrednost za poređenje.';
         const result=Core.recommendQuick(index,request,{currency:'EUR'}),outRow=config.hasHeader===false?r+1:r;
         result.values.forEach((v,c)=>{sheet.rows[outRow][sheet.originalColumns+c]=v;});
@@ -100,10 +118,10 @@ self.onmessage=async({data})=>{try{
             const parsed=Core.parsePreferences(originalText);
             const values={...parsed.fields,...request};
             const form=Core.form(values.seedlingType||'');
-            const relevant=form==='standard'?'height':form==='multistem'?'circumference':null;
             const parameters=[
-              ...(form==='standard'||form==='multistem'?[{label:'Tip sadnice',value:form==='standard'?'Standard':'Multistem'}]:[]),
-              ...(relevant&&String(values[relevant]??'').trim()?[{label:relevant==='height'?'Visina':'Obim',value:String(values[relevant])}]:[])
+              {label:'Tip sadnice',value:form==='standard'?'Standard':form==='multistem'?'Multistem':'Nije potvrđen'},
+              ...[['height','Visina'],['circumference','Obim']].filter(([key])=>String(values[key]??'').trim())
+                .map(([key,label])=>({label,value:String(values[key])}))
             ];
             preview.push({sheet:original.name,row:r+1,
               name:request.cultivar&&!Core.norm(request.name).endsWith(' '+Core.norm(request.cultivar))?request.name+' '+request.cultivar:request.name,
