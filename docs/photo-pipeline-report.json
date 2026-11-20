@@ -1,13 +1,13 @@
 {
   "schemaVersion": 2,
   "status": "partial",
-  "requests": 593,
+  "requests": 550,
   "workers": 8,
   "events": [],
   "sourceHealth": {
     "portal.volentis.com": {
-      "requests": 124,
-      "succeeded": 123,
+      "requests": 112,
+      "succeeded": 111,
       "retries": 0,
       "httpErrors": {
         "404": 1
@@ -21,51 +21,51 @@
       }
     },
     "www.willaert.be": {
-      "requests": 119,
-      "succeeded": 119,
+      "requests": 110,
+      "succeeded": 110,
       "retries": 0,
       "httpErrors": {},
       "stopped": false,
       "requestIntervalSeconds": 1.0
     },
     "catalogue.vannuccipiante.it": {
-      "requests": 4,
-      "succeeded": 4,
+      "requests": 3,
+      "succeeded": 3,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "webshop.vannuccipiante.it": {
-      "requests": 14,
-      "succeeded": 14,
+      "requests": 18,
+      "succeeded": 18,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "smitsbv.nl": {
-      "requests": 26,
-      "succeeded": 26,
+      "requests": 49,
+      "succeeded": 49,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "www.lorberg.com": {
-      "requests": 51,
-      "succeeded": 51,
+      "requests": 73,
+      "succeeded": 73,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "www.lve-baumschule.de": {
-      "requests": 10,
-      "succeeded": 10,
+      "requests": 43,
+      "succeeded": 43,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "innocentiemangonipiante.it": {
-      "requests": 244,
-      "succeeded": 244,
+      "requests": 141,
+      "succeeded": 141,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
@@ -80,7 +80,7 @@
   },
   "coverage": {
     "schemaVersion": 2,
-    "checkedAt": "2026-11-20T13:19:52Z",
+    "checkedAt": "2026-11-20T22:48:02Z",
     "status": "partial",
     "plants": 619,
     "plantsInventoried": 619,
