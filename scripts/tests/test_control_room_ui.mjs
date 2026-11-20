@@ -64,3 +64,17 @@ test('The opening sidebar shows only its three workspaces; Back and Home remain 
   assert(quote.includes('data-quote-action="back"') && quote.includes('data-quote-action="home"'));
   assert(rec.includes('id="recommend-back"') && rec.includes('id="recommend-home"'));
 });
+
+test('Navigation and quick recommendation omit unwanted decorative arrows',async()=>{
+  const [html,recommend,css,room]=await Promise.all([
+    read('index.html'),read('assets/brza-preporuka.js'),read('assets/brza-preporuka.css'),read('assets/control-room.css')
+  ]);
+  const sidebar=html.match(/<nav class="header-actions"[^>]*>([\s\S]*?)<\/nav>/)?.[1]||'';
+  assert.match(sidebar,/<span class="nav-num">01<\/span> Pretraga/);
+  assert.match(sidebar,/<span class="nav-num">02<\/span> Brza preporuka/);
+  assert.doesNotMatch(sidebar,/<span class="nav-corner">/);
+  assert.doesNotMatch(recommend,/recommend-emblem/);
+  assert.doesNotMatch(css,/\.recommend-emblem/);
+  assert.doesNotMatch(room,/\.recommend-emblem/);
+  assert.match(room,/body\.control-room \.recommend-titlebar\{grid-template-columns:minmax\(0,1fr\)\}/);
+});
