@@ -397,10 +397,10 @@
     zip.file('xl/styles.xml',styles);
     return mapped;
   }
-  function filename(meta) {
-    const suffix = text(meta.number || meta.date, 80).normalize('NFKD').replace(/[\u0300-\u036f]/g, '')
-      .replace(/[^a-zA-Z0-9_-]+/g, '-').replace(/^-|-$/g, '') || 'ponuda';
-    return 'Demetra-RB-ponuda-' + suffix + '.xlsx';
+  function filename(meta, exportedAt = new Date()) {
+    const number = text(meta.number, 80).normalize('NFKD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-zA-Z0-9_-]+/g, '-').replace(/^-|-$/g, '');
+    return 'Demetra-RB-ponuda-' + localDate(exportedAt) + (number ? '-' + number : '') + '.xlsx';
   }
   return { VERSION, STORAGE_KEY, COMPANY, MAX_ITEMS, localDate, validDate, defaultMeta, normalizeMeta,
     emptyQuote, parseQuote, normalizeItem, addItem, refreshCatalogPrices, parseDecimal, lineResult, summarize, money,
