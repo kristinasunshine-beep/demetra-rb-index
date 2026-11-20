@@ -144,12 +144,12 @@ assert(sheet.includes('001234567')&&sheet.includes('00123456'));
 assert(sheet.includes('U Beogradu, 11.11.2026.'),'Date directly next to city');
 assert(sheet.includes('<mergeCell ref="E4:J4"')&&sheet.includes('<mergeCell ref="E8:J8"'),'Company directly below accreditation marks');
 assert(sheet.includes('<mergeCell ref="E9:F9"')&&sheet.includes('<mergeCell ref="G9:J9"'),'Investor opposite preparer');
-for(const [ref,value] of Object.entries({G9:'Primer investitora',G10:'Primer adrese 1',G14:'001234567',G15:'00123456'})){
+for(const [ref,value] of Object.entries({G9:'Primer investitora',G10:'Primer adrese 1',G12:'001234567 · 00123456'})){
   const found=sheet.match(new RegExp('<c\\b(?=[^>]*\\br="' + ref + '")[^>]*>[\\s\\S]*?<\\/c>'))?.[0];
   assert(found&&found.includes(value),'Investor field '+ref);
 }
 
-for(const label of ['Investitor / kontakt:','Adresa:','Grad i poštanski broj:','Br. tel.:','Matični broj:','Ponuda biljaka i sadnog materijala','R.br.'])assert(sheet.includes(label),'Header label disappeared: '+label);
+for(const label of ['Investitor / kontakt:','Adresa:','Kontakt:','Matični broj:','Ponuda biljaka i sadnog materijala','R.br.'])assert(sheet.includes(label),'Header label disappeared: '+label);
 assert(sheet.includes('HYPERLINK')&&!sheet.includes('<f>HYPERLINK'));
 assert(sheet.includes(Core.xmlEscape(first.offerId))===false,'Technical offer IDs are not public workbook fields.');
 for(const item of quote.items)for(const [label,value] of item.parameters){
@@ -186,6 +186,12 @@ assert.equal(descriptions,Core.xmlEscape(Core.compactParameters(extended.items[0
 assert([...extendedXml.matchAll(/<row\b[^>]*\bht="([\d.]+)"/g)].every(m=>Number(m[1])<=400),'No row exceeds the readable Excel height');
 assert(extendedXml.includes('KRAJ'),'The end of the long description is retained');
 assert(extendedXml.includes('SUM(J19:J'),'Totals include continued rows without counting a plant twice');
+const headerRows=[...sheet.matchAll(/<row\b[^>]*\br="(\d+)"[^>]*>/g)].filter(m=>Number(m[1])<18);
+const headerHeight=headerRows.reduce((sum,m)=>sum+Number(m[0].match(/\bht="([\d.]+)"/)?.[1]||0),0);
+assert(headerHeight<260,'The plant table must begin substantially higher on the page');
+for(const row of [7,13,14,15])assert(new RegExp('<row\\b(?=[^>]*\\br="'+row+'")(?=[^>]*\\bhidden="1")').test(sheet),'Unused formal row must collapse: '+row);
+assert(sheet.includes('PIB / matični broj:'),'Condensed investor identifiers retain their meaning');
+assert(sheet.includes(Core.COMPANY.email)&&sheet.includes(Core.COMPANY.website),'Company contacts remain in the compact memorandum');
 const testDir=process.env.DEMETRA_QUOTE_TEST_OUTPUT;
 if(testDir){await mkdir(testDir,{recursive:true});await writeFile(resolve(testDir,'provera-moja-ponuda.xlsx'),bytes);}
 console.log(JSON.stringify({ok:true,selectableVariants:snapshots.length,hiddenOffersRejected:offers.offers.length-valid.length,

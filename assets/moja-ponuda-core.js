@@ -293,8 +293,8 @@
   }
   function rowHeight(xml, number, height) {
     return xml.replace(new RegExp('<row\\b(?=[^>]*\\br="' + number + '")[^>]*>'),tag=>{
-      tag=tag.replace(/\sht="[^"]*"/,'').replace(/\scustomHeight="[^"]*"/,'');
-      return tag.slice(0,-1)+` ht="${height}" customHeight="1">`;
+      tag=tag.replace(/\sht="[^"]*"/,'').replace(/\scustomHeight="[^"]*"/,'').replace(/\shidden="[^"]*"/,'');
+      return tag.slice(0,-1)+` ht="${height}" customHeight="1"${height===0?' hidden="1"':''}>`;
     });
   }
   async function buildXlsx(template, quoteValue, Zip) {
@@ -310,21 +310,23 @@
     });
     const meta = quote.meta;
     const offerDate = meta.date.split('-').reverse().join('.') + '.';
+    const join = (...parts) => parts.filter(value => String(value ?? '').trim()).join(' · ');
     const fields = {
       A4: meta.description, A5: meta.number ? 'Ponuda br. ' + meta.number : 'PONUDA',
-      A9: 'Ponudu izradio/la: ' + meta.preparedBy, A11: 'Br. tel.: ' + meta.preparedPhone,
-      A13: 'U Beogradu, ' + offerDate,
-      G9: meta.client, G10: meta.address, G11: meta.city, G12: meta.email,
-      G13: meta.phone, G14: meta.taxId, G15: meta.registration, A21: meta.note
+      E4: 'Matični broj: ' + COMPANY.registration + ' · PIB: ' + COMPANY.taxId,
+      E5: COMPANY.address + ', ' + COMPANY.city,
+      E6: join('T: ' + COMPANY.phone, COMPANY.email, COMPANY.website),
+      E7: '', E8: '',
+      A8: 'U Beogradu, ' + offerDate,
+      A9: meta.preparedBy ? 'Ponudu izradio/la: ' + meta.preparedBy : '',
+      A10: meta.preparedPhone ? 'Br. tel.: ' + meta.preparedPhone : '',
+      A11: '', A12: '', A13: '',
+      G9: meta.client, G10: join(meta.address,meta.city),
+      E11: 'Kontakt:', G11: join(meta.email,meta.phone),
+      E12: 'PIB / matični broj:', G12: join(meta.taxId,meta.registration),
+      E13: '', E14: '', E15: '', G13: '', G14: '', G15: '', A21: meta.note
     };
     for (const [ref, value] of Object.entries(fields)) main = replaceCell(main, ref, value);
-    for (const [number, values, widths, minimum] of [
-      [4, [meta.description], [49], 25], [9, [fields.A9, fields.G9], [49, 26], 34],
-      [10, [meta.address], [26], 23], [11, [fields.A11, fields.G11], [49, 26], 23],
-      [12, [meta.email], [26], 23], [13, [fields.A13, fields.G13], [49, 26], 23],
-      [14, [meta.taxId], [26], 23], [15, [meta.registration], [26], 23],
-      [21, [meta.note], [95], meta.note.trim() ? 24 : 8]
-    ]) main = rowHeight(main, number, lineHeight(values, widths, minimum));
     const cols = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
     const allCols = cols.concat('I');
     const styles = rowStyles(main, 23, allCols), sumStyles = rowStyles(main, 24, allCols);
@@ -337,9 +339,20 @@
     main = main.replace(/<row\b[^>]*\br="18"[^>]*>[\s\S]*?<\/row>/,
       '<row r="18" ht="30" customHeight="1">' + headers.map((value, index) =>
         cell(tableColumns[index] + '18', value, headerStyles[index])).join('') + '</row>');
-    // Compact whitespace without reducing the original 10 pt body typography.
-    for (const [row, height] of [[1,6],[2,26],[3,26],[4,lineHeight([meta.description],[46],24)],[5,lineHeight([fields.A5],[46],18)],[6,16],[7,16],[8,16],
-      [9,lineHeight([fields.A9,fields.G9],[48,44],24)],[10,lineHeight([fields.G10],[43],20)],[11,lineHeight([fields.A11,fields.G11],[46,43],20)],[12,lineHeight([fields.G12],[43],20)],[13,lineHeight([fields.A13,fields.G13],[46,43],20)],[14,lineHeight([fields.G14],[43],18)],[15,lineHeight([fields.G15],[43],18)],[16,24],[17,meta.note.trim()?lineHeight([meta.note],[130],24):6]]) {
+    // Formal details share short lines. Empty input fields take no page space.
+    const headerHeight = (values,widths,min=18) => {
+      const lines = Math.max(...values.map((value,index)=>String(value??'').split('\n')
+        .reduce((sum,part)=>sum+Math.max(1,Math.ceil(part.length/widths[index])),0)));
+      return Math.min(400,Math.max(min,lines*12+4));
+    };
+    const contactHeight = (left,right) => left || right ? headerHeight([left,right],[46,44]) : 0;
+    for (const [row,height] of [[1,4],[2,26],[3,26],
+      [4,headerHeight([fields.A4,fields.E4],[46,85])],
+      [5,Math.max(18,headerHeight([fields.A5],[46],32)-16)],[6,18],[7,0],[8,18],
+      [9,contactHeight(fields.A9,fields.G9)],[10,contactHeight(fields.A10,fields.G10)],
+      [11,contactHeight('',fields.G11)],[12,contactHeight('',fields.G12)],
+      [13,0],[14,0],[15,0],[16,22],
+      [17,meta.note.trim()?headerHeight([meta.note],[130],22):4]]) {
       main = rowHeight(main,row,height);
     }
     let rows = '', nextRow = 19;
