@@ -911,8 +911,6 @@ body[data-view="search"] .search-field:focus-within .search-icon { color:var(--a
         <div class="rail-divider"></div>
         <div class="rail-caption">RADNI PROSTOR / NAVIGACIJA</div>
         <nav class="header-actions" aria-label="Alati kataloga">
-          <button id="demetra-step-back" type="button" class="control-nav-search" aria-label="Korak nazad">← Nazad</button>
-          <button id="demetra-go-home" type="button" class="control-nav-search" aria-label="Na početni panel">⌂ Početna</button>
           <a href="#search" class="control-nav-search is-current" data-action="navigate" data-view="search" aria-current="page"><span class="nav-num">01</span> Pretraga <span class="nav-corner">↗</span></a>
           <button id="open-quick-recommendation" type="button" class="quick-nav" aria-controls="quick-recommendation-view" aria-expanded="false"><span class="nav-num">02</span> Brza preporuka <span class="nav-corner">↗</span></button>
           <button id="open-my-quote" type="button" class="my-quote-nav" data-action="open-my-quote" aria-controls="my-quote-view" aria-expanded="false"><span class="nav-num">03</span> Moja ponuda <span id="my-quote-count" aria-hidden="true">(0)</span></button>
@@ -1885,8 +1883,6 @@ function navigateToCard(id) {
   handleRoute();
 }
 window.DemetraNavigation={back:navigateBack,home:navigateHome,openPlant:navigateToCard};
-document.getElementById('demetra-step-back').addEventListener('click',navigateBack);
-document.getElementById('demetra-go-home').addEventListener('click',navigateHome);
 document.addEventListener('click',event=>{
   const link=event.target.closest('a[href^="#plant="]');
   if(!link)return;
