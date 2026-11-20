@@ -308,35 +308,143 @@
       [14, [meta.taxId], [35], 23], [15, [meta.registration], [35], 23],
       [21, [meta.note], [160], meta.note.trim() ? 24 : 8]
     ]) main = rowHeight(main, number, lineHeight(values, widths, minimum));
-    const cols = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I'];
-    const styles = rowStyles(main, 23, cols), sumStyles = rowStyles(main, 24, cols);
+    const cols = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
+    const allCols = cols.concat('I');
+    const styles = rowStyles(main, 23, allCols), sumStyles = rowStyles(main, 24, allCols);
+    const totalStyles = await currencyTotalStyles(zip, total.totals, sumStyles[7]);
     main = compactQuoteHeader(main);
+    main = replaceCell(main, 'I18', ''); // Hide the old "Valuta" heading, preserving header geometry.
     let rows = '';
     quote.items.forEach((item, index) => {
       const number = index + 19, result = total.rows[index];
       const values = [index + 1, item.latinName, compactParameters(item), item.nursery, item.unit,
-        result.quantity.value, result.price.value, result.amount, item.currency];
-      const height = lineHeight(values, [5, 28, 45, 22, 16, 11, 14, 15, 7], 60);
-      rows += `<row r="${number}" ht="${height}" customHeight="1">` + values.map((value, column) =>
-        cell(cols[column] + number, value, styles[column], column === 7 ? `ROUND(F${number}*G${number},2)` : '')).join('') + '</row>';
+        result.quantity.value, result.price.value, result.amount];
+      const height = lineHeight(values, [5, 28, 45, 22, 16, 11, 14, 21], 60);
+      rows += '<row r="'+number+'" ht="'+height+'" customHeight="1">' + values.map((value, column) =>
+        cell(cols[column] + number, value, styles[column], column === 7 ? 'ROUND(F'+number+'*G'+number+',2)' : '')).join('') +
+        cell('J'+number, item.currency, '4') + '</row>';
     });
     const lastData = 18 + quote.items.length, lastRow = lastData + total.totals.length;
-    total.totals.forEach((subtotal,index)=>{
+    total.totals.forEach((subtotal,index) => {
       const sumRow = lastData + index + 1;
-      const formula = total.totals.length === 1 ? `SUM(H19:H${lastData})` :
-        `SUMIFS(H19:H${lastData},I19:I${lastData},"${subtotal.currency}")`;
-      rows += `<row r="${sumRow}" ht="30" customHeight="1">` + cell('G' + sumRow, 'UKUPNO', sumStyles[6]) +
-        cell('H' + sumRow, subtotal.amount, sumStyles[7], formula) + cell('I' + sumRow,subtotal.currency,sumStyles[8]) + '</row>';
+      const formula = total.totals.length === 1 ? 'SUM(H19:H'+lastData+')' :
+        'SUMIF(J19:J'+lastData+',"'+subtotal.currency+'",H19:H'+lastData+')';
+      rows += '<row r="'+sumRow+'" ht="30" customHeight="1">' +
+        cell('G'+sumRow, 'UKUPNO', sumStyles[6]) +
+        cell('H'+sumRow, subtotal.amount, totalStyles[subtotal.currency], formula) + '</row>';
     });
-    main = replaceRows(main, 19, rows, 'I', lastRow);
-    main = main.replace(/sqref="F23"/g, `sqref="F19:F${lastData}"`).replace(/sqref="G23"/g, `sqref="G19:G${lastData}"`);
+    main = replaceRows(main, 19, rows, 'J', lastRow);
+    main = main.replace(/sqref="F23"/g, 'sqref="F19:F'+lastData+'"')
+      .replace(/sqref="G23"/g, 'sqref="G19:G'+lastData+'"');
+    main = configureA4(main, lastRow);
     zip.file('xl/worksheets/sheet1.xml', main);
     let workbook = spreadsheetXml(await zip.file('xl/workbook.xml').async('string'));
     const calc = '<calcPr calcId="191029" fullCalcOnLoad="1" forceFullCalc="1" calcMode="auto"/>';
     workbook = /<calcPr\b/.test(workbook) ? workbook.replace(/<calcPr\b[^>]*\/>/, calc) : workbook.replace('</workbook>', calc + '</workbook>');
+    const printArea='<definedNames><definedName name="_xlnm.Print_Area" localSheetId="0">\'Moja ponuda\'!$A$1:$I
     zip.file('xl/workbook.xml', workbook);
     return zip.generateAsync({ type: 'uint8array', compression: 'DEFLATE',
       mimeType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+  }
+  // A4 portrait, single page wide; the memorandum stays in its original cells.
+  function configureA4(xml, lastRow) {
+    xml = xml.replace('</sheetPr>', '<pageSetUpPr fitToPage="1"/></sheetPr>');
+    xml = xml.replace(/<pane\b[^>]*\/>/, '<pane ySplit="18" topLeftCell="A19" activePane="bottomLeft" state="frozen"/>');
+    xml = xml.replace('</cols>', '<col min="10" max="10" width="2" hidden="1" customWidth="1"/></cols>');
+    xml = xml.replace(/<mergeCells\b[^>]*>([\s\S]*?)<\/mergeCells>/, (_, body) => {
+      const additions = ['H18:I18'];
+      for (let row=19; row<=lastRow; row++) additions.push('H'+row+':I'+row);
+      const original = [...body.matchAll(/<mergeCell\b[^>]*\bref="[^"]+"[^>]*\/>/g)].map(m=>m[0]);
+      return '<mergeCells count="'+(original.length+additions.length)+'">'+original.join('')+
+        additions.map(ref=>'<mergeCell ref="'+ref+'"/>').join('')+'</mergeCells>';
+    });
+    xml = xml.replace(/<pageMargins\b[^>]*\/>/, '<pageMargins left="0.25" right="0.25" top="0.35" bottom="0.35" header="0.15" footer="0.15"/>');
+    xml = xml.replace(/<pageSetup\b[^>]*\/>/g, '');
+    return xml.replace(/<drawing\b/, '<pageSetup paperSize="9" orientation="portrait" fitToWidth="1" fitToHeight="0"/><drawing');
+  }
+  // Number format keeps the total as a recalculating number, with currency
+  // displayed in that same cell, never as a separate visible table column.
+  async function currencyTotalStyles(zip, totals, baseStyle) {
+    let styles=spreadsheetXml(await zip.file('xl/styles.xml').async('string'));
+    const fmtSection=styles.match(/<numFmts\b[^>]*>([\s\S]*?)<\/numFmts>/);
+    const xfSection=styles.match(/<cellXfs\b[^>]*>([\s\S]*?)<\/cellXfs>/);
+    if (!fmtSection || !xfSection) throw new Error('Nedostaju Excel stilovi.');
+    const originals=[...xfSection[1].matchAll(/<xf\b[^>]*?(?:\/>|>[\s\S]*?<\/xf>)/g)].map(m=>m[0]);
+    const id=Math.max(163,...[...fmtSection[1].matchAll(/\bnumFmtId="(\d+)"/g)].map(m=>Number(m[1])))+1;
+    const formats=[], added=[], mapped={};
+    for (const currency of [...new Set(totals.map(t=>t.currency))]) {
+      if (!/^[A-Z]{3}$/.test(currency)) throw new Error('Nepoznata valuta u ponudi.');
+      const formatId=id+formats.length;
+      formats.push('<numFmt numFmtId="'+formatId+'" formatCode="#,##0.00 &quot;'+currency+'&quot;"/>');
+      const base=originals[Number(baseStyle)];
+      if (!base) throw new Error('Nedostaje stil ukupnog zbira.');
+      const updated=base.replace(/\bnumFmtId="\d+"/,'numFmtId="'+formatId+'"')
+        .replace(/\bapplyNumberFormat="\d+"/,'applyNumberFormat="1"');
+      mapped[currency]=originals.length+added.length;
+      added.push(updated);
+    }
+    styles=styles.replace(fmtSection[0],'<numFmts count="'+(Number(fmtSection[0].match(/\bcount="(\d+)"/)?.[1]||0)+formats.length)+'">'+fmtSection[1]+formats.join('')+'</numFmts>');
+    styles=styles.replace(xfSection[0],'<cellXfs count="'+(originals.length+added.length)+'">'+xfSection[1]+added.join('')+'</cellXfs>');
+    zip.file('xl/styles.xml',styles);
+    return mapped;
+  }
+  function filename(meta) {
+    const suffix = text(meta.number || meta.date, 80).normalize('NFKD').replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-zA-Z0-9_-]+/g, '-').replace(/^-|-$/g, '') || 'ponuda';
+    return 'Demetra-RB-ponuda-' + suffix + '.xlsx';
+  }
+  return { VERSION, STORAGE_KEY, COMPANY, MAX_ITEMS, localDate, validDate, defaultMeta, normalizeMeta,
+    emptyQuote, parseQuote, normalizeItem, addItem, refreshCatalogPrices, parseDecimal, lineResult, summarize, money,
+    compactParameters, buildXlsx, filename, xmlEscape };
+});
++lastRow+'</definedName></definedNames>';
+    workbook=workbook.replace(/<definedNames\\b[^>]*>[\\s\\S]*?<\\/definedNames>/,'')
+      .replace('</workbook>',printArea+'</workbook>');
+    zip.file('xl/workbook.xml', workbook);
+    return zip.generateAsync({ type: 'uint8array', compression: 'DEFLATE',
+      mimeType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+  }
+  // A4 portrait, single page wide; the memorandum stays in its original cells.
+  function configureA4(xml, lastRow) {
+    xml = xml.replace('</sheetPr>', '<pageSetUpPr fitToPage="1"/></sheetPr>');
+    xml = xml.replace(/<pane\b[^>]*\/>/, '<pane ySplit="18" topLeftCell="A19" activePane="bottomLeft" state="frozen"/>');
+    xml = xml.replace('</cols>', '<col min="10" max="10" width="2" hidden="1" customWidth="1"/></cols>');
+    xml = xml.replace(/<mergeCells\b[^>]*>([\s\S]*?)<\/mergeCells>/, (_, body) => {
+      const additions = ['H18:I18'];
+      for (let row=19; row<=lastRow; row++) additions.push('H'+row+':I'+row);
+      const original = [...body.matchAll(/<mergeCell\b[^>]*\bref="[^"]+"[^>]*\/>/g)].map(m=>m[0]);
+      return '<mergeCells count="'+(original.length+additions.length)+'">'+original.join('')+
+        additions.map(ref=>'<mergeCell ref="'+ref+'"/>').join('')+'</mergeCells>';
+    });
+    xml = xml.replace(/<pageMargins\b[^>]*\/>/, '<pageMargins left="0.25" right="0.25" top="0.35" bottom="0.35" header="0.15" footer="0.15"/>');
+    xml = xml.replace(/<pageSetup\b[^>]*\/>/g, '');
+    return xml.replace(/<drawing\b/, '<pageSetup paperSize="9" orientation="portrait" fitToWidth="1" fitToHeight="0"/><drawing');
+  }
+  // Number format keeps the total as a recalculating number, with currency
+  // displayed in that same cell, never as a separate visible table column.
+  async function currencyTotalStyles(zip, totals, baseStyle) {
+    let styles=spreadsheetXml(await zip.file('xl/styles.xml').async('string'));
+    const fmtSection=styles.match(/<numFmts\b[^>]*>([\s\S]*?)<\/numFmts>/);
+    const xfSection=styles.match(/<cellXfs\b[^>]*>([\s\S]*?)<\/cellXfs>/);
+    if (!fmtSection || !xfSection) throw new Error('Nedostaju Excel stilovi.');
+    const originals=[...xfSection[1].matchAll(/<xf\b[^>]*?(?:\/>|>[\s\S]*?<\/xf>)/g)].map(m=>m[0]);
+    const id=Math.max(163,...[...fmtSection[1].matchAll(/\bnumFmtId="(\d+)"/g)].map(m=>Number(m[1])))+1;
+    const formats=[], added=[], mapped={};
+    for (const currency of [...new Set(totals.map(t=>t.currency))]) {
+      if (!/^[A-Z]{3}$/.test(currency)) throw new Error('Nepoznata valuta u ponudi.');
+      const formatId=id+formats.length;
+      formats.push('<numFmt numFmtId="'+formatId+'" formatCode="#,##0.00 &quot;'+currency+'&quot;"/>');
+      const base=originals[Number(baseStyle)];
+      if (!base) throw new Error('Nedostaje stil ukupnog zbira.');
+      const updated=base.replace(/\bnumFmtId="\d+"/,'numFmtId="'+formatId+'"')
+        .replace(/\bapplyNumberFormat="\d+"/,'applyNumberFormat="1"');
+      mapped[currency]=originals.length+added.length;
+      added.push(updated);
+    }
+    styles=styles.replace(fmtSection[0],'<numFmts count="'+(Number(fmtSection[0].match(/\bcount="(\d+)"/)?.[1]||0)+formats.length)+'">'+fmtSection[1]+formats.join('')+'</numFmts>');
+    styles=styles.replace(xfSection[0],'<cellXfs count="'+(originals.length+added.length)+'">'+xfSection[1]+added.join('')+'</cellXfs>');
+    zip.file('xl/styles.xml',styles);
+    return mapped;
   }
   function filename(meta) {
     const suffix = text(meta.number || meta.date, 80).normalize('NFKD').replace(/[\u0300-\u036f]/g, '')
