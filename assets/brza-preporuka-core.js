@@ -52,6 +52,13 @@
       /^\d+(?:[.,]\d+)?$/.test(value)
     );
   }
+  function looksLikePlantRequirement(value){
+    const n=norm(value);
+    if(!n||n.length>2000)return false;
+    // Standalone quantities, price figures, codes and categories are not specs.
+    return /\b(?:standard|std|multistem|multi stem|visina|height|hohe|hoehe|obim|opseg|girth|circumference|sirina krosnje|crown width|precnik|pot|saksija|container|kontejner|wrb|busen|rootball|presadjivanja|presadjivano|transplant)\b/.test(n) ||
+      /\b(?:h|c)\s+\d+(?:\s+\d+)?\b/.test(n);
+  }
   function detectSheet(rows,index,options={}){
     const guess=detectHeader(rows,index),headers=guess.headers||[],tokens=headers.map(norm);
     const auxiliary=tokens.some(v=>/^(?:parametar|parameter|naziv parametra)$/.test(v))&&tokens.some(v=>/^(?:vrednost|vrijednost|value)$/.test(v));
@@ -63,8 +70,15 @@
       if(!ranked.length||ranked[1]&&ranked[1][1].count===ranked[0][1].count)return {headerRow:-1,map:{},headers:[],dataStartRow:0,hasHeader:false,enabled:false,reason:'List ne sadrži jednoznačno prepoznat spisak biljaka.'};
       map={name:ranked[0][0]};hasHeader=false;headerRow=-1;dataStartRow=0;effectiveHeaders=Array(rows.reduce((width,row)=>Math.max(width,row?.length||0),0)).fill('');
     }
-    const used=new Set(Object.values(map).flat());
-    const descriptions=[];for(let c=0;c<effectiveHeaders.length;c++)if(!used.has(c)&&!informationalHeader(effectiveHeaders[c])&&!isAdministrativeColumn(rows.slice(dataStartRow,dataStartRow+240),c)&&rows.slice(dataStartRow,dataStartRow+240).some(row=>String(row?.[c]??'').trim()))descriptions.push(c);
+    // Unnamed columns are NOT planting parameters: they may be IDs, costs,
+    // dionice, project categories, exchange rates or source calculations.
+    const used=new Set(Object.values(map).flat()),sample=rows.slice(dataStartRow,dataStartRow+240),descriptions=[];
+    for(let c=0;c<effectiveHeaders.length;c++){
+      if(used.has(c)||informationalHeader(effectiveHeaders[c])||isAdministrativeColumn(sample,c))continue;
+      const header=norm(effectiveHeaders[c]);
+      const explicitDescription=/\b(?:opis|specifikacija|zahtevi|zahtjevi|uslovi|uvjeti|parametri|napomena|dimenzije|karakteristike)\b/.test(header);
+      if(explicitDescription||sample.some(row=>looksLikePlantRequirement(row?.[c])))descriptions.push(c);
+    }
     if(descriptions.length)map.preferences=[...new Set([].concat(map.preferences??[],descriptions))];
     return {headerRow,map,headers:effectiveHeaders,dataStartRow,hasHeader,enabled:true};
   }
@@ -309,7 +323,7 @@
     offers=offers.filter(o=>!unavailable(o)&&o.priceRefresh?.status!=='pending'&&!(o.validUntil&&o.validUntil<now));
     offers=offers.filter(o=>{
       for(const field of MEASURES)if(String(requested[field]??'').trim()&&!measureMatches(requested[field],offeredValue(o,field),field))return false;
-      if(String(requested.seedlingType??'').trim()&&form(requested.seedlingType)!==form(o.seedlingType))return false;
+      if(String(requested.seedlingType??'').trim()&&form(requested.seedlingType)!==form(offeredValue(o,'seedlingType')||o.seedlingTypeCode||''))return false;
       if(String(requested.rootType??'').trim()&&rootType(requested.rootType)!==rootType(o.rootType))return false;
       if(String(requested.transplantCount??'').trim()&&(transplantNumber(requested.transplantCount)===null||transplantNumber(requested.transplantCount)!==transplantNumber(o.transplantCount)))return false;
       if(String(requested.unit??'').trim()&&unit(requested.unit)!==unit(o.unit))return false;
@@ -364,46 +378,50 @@
   // Preserve all other submitted parameters as evidence, never use them as
   // unrequested substitutions or artificial rejection criteria.
   function recommendQuick(index,input,options={}){
-    const requested={...input}, found=findPlant(index,requested.name,requested.cultivar);
-    const fail=(message, recognized=false, plantId=null)=>({
-      status:'unmatched',recognized,plantId,price:null,suppliers:[],message,
+    const requested={...input},found=findPlant(index,requested.name,requested.cultivar);
+    const fail=(message,recognized=false,plantId=null,status='unmatched')=>({
+      status,recognized,plantId,price:null,suppliers:[],message,
       values:['','','','','',message]
     });
-    if(!String(requested.name??'').trim())return {status:'empty',message:'',values:Array(EXTRA_HEADERS.length).fill('')};
-    if(found.error)return fail(found.error);
-    if(requested._validationError)return fail(requested._validationError,true,found.id);
+    if(!String(requested.name??'').trim())
+      return {status:'empty',message:'',values:Array(EXTRA_HEADERS.length).fill('')};
+    if(found.error)return fail(found.error,false,null,'not_found');
+    if(requested._validationError)return fail(requested._validationError,true,found.id,'needs_data');
     const parsed=parsePreferences([found.remainder,requested.preferences,
       descriptionRequirements(requested.sourceDescription,requested)].filter(Boolean).join('; '));
-    const select=(key)=> {
+    if(parsed.conflicts.some(key=>['seedlingType','height','circumference'].includes(key)))
+      return fail('Proveri protivrečne podatke o tipu ili dimenzijama sadnice.',true,found.id,'needs_data');
+    const select=key=>{
       const a=String(requested[key]??'').trim(),b=String(parsed.fields[key]??'').trim();
-      if(a&&b&&!sameRequirement(key,a,b))return {error:'Sukobljeni zahtevi za '+(FIELDS.find(field=>field[0]===key)?.[1]||key)+'.'};
+      if(a&&b&&!sameRequirement(key,a,b))
+        return {error:'Sukobljeni zahtevi za '+(FIELDS.find(field=>field[0]===key)?.[1]||key)+'.'};
       return {value:a||b};
     };
     const formValue=select('seedlingType');
-    if(formValue.error)return fail(formValue.error,true,found.id);
+    if(formValue.error)return fail(formValue.error,true,found.id,'needs_data');
     const plantForm=form(formValue.value);
     if(plantForm!=='standard'&&plantForm!=='multistem')
-      return fail('Navedi tip sadnice: Standard ili Multistem. Bez potvrđenog tipa nema automatske preporuke.',true,found.id);
+      return fail('Tip sadnice nije naveden: Standard ili Multistem. Biljka je prepoznata, ali nema dovoljno podataka za podudaranje.',true,found.id,'needs_data');
     const measureField=plantForm==='standard'?'height':'circumference';
     const measure=select(measureField);
-    if(measure.error)return fail(measure.error,true,found.id);
+    if(measure.error)return fail(measure.error,true,found.id,'needs_data');
     if(!String(measure.value??'').trim()||!parseMeasure(measure.value,measureField)?.valid)
-      return fail('Za '+(plantForm==='standard'?'Standard je obavezna visina':'Multistem je obavezan obim')+
-        ' sadnice, naveden kao precizna mera ili opseg.',true,found.id);
-    const targetValue=measure.value;
+      return fail('Za '+(plantForm==='standard'?'Standard nedostaje visina':'Multistem nedostaje obim')+
+        ' sadnice, naveden kao tačna mera ili opseg.',true,found.id,'needs_data');
     const allowed=newestVariants((index.byPlant.get(found.id)||[]).filter(offer=>{
       const offeredForm=form(offeredValue(offer,'seedlingType')||offer.seedlingTypeCode||'');
-      return offeredForm===plantForm&&sameRequirement(measureField,targetValue,offeredValue(offer,measureField));
+      return offeredForm===plantForm&&sameRequirement(measureField,measure.value,offeredValue(offer,measureField));
     }));
     if(!allowed.length)return {...historicalReference(index,found.id,
-      'Nema sadnice sa potpuno istim tipom i '+(plantForm==='standard'?'visinom':'obimom')+'.'),plantId:found.id};
+      'Nema sadnice sa potpuno istim tipom i '+(plantForm==='standard'?'visinom':'obimom')+'.'),
+      plantId:found.id,requestedForm:plantForm,primaryMeasure:measureField,primaryValue:measure.value};
     const narrowed={...index,byPlant:new Map(index.byPlant)};
     narrowed.byPlant.set(found.id,allowed);
     const precise={name:requested.name,cultivar:requested.cultivar,seedlingType:plantForm};
-    precise[measureField]=targetValue;
+    precise[measureField]=measure.value;
     if(String(requested.quantity??'').trim())precise.quantity=requested.quantity;
     const result=recommend(narrowed,precise,options);
-    return {...result,plantId:found.id,requestedForm:plantForm,primaryMeasure:measureField};
+    return {...result,plantId:found.id,requestedForm:plantForm,primaryMeasure:measureField,primaryValue:measure.value};
   }
   function supplierList(index,offers){const groups=new Map();for(const offer of offers){if(!groups.has(offer.nurseryId))groups.set(offer.nurseryId,[]);groups.get(offer.nurseryId).push(offer);}return [...groups].map(([nurseryId,rows])=>{const prices=rows.filter(o=>euroPrice(o)!==null&&o.price>0).map(o=>o.price);return {nurseryId,name:index.nurseries.get(nurseryId)?.name||nurseryId,price:prices.length?Math.min(...prices):null,currency:'EUR',offerIds:rows.map(o=>o.id)};}).sort((a,b)=>(a.price??Infinity)-(b.price??Infinity)||a.name.localeCompare(b.name));}
   function supplierText(suppliers){return suppliers.map(s=>s.name+' — '+(s.price===null?'cena u EUR nije navedena':s.price.toLocaleString('sr-Latn-RS',{minimumFractionDigits:2,maximumFractionDigits:2})+' €')).join('\n');}
