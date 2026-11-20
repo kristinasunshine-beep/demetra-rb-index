@@ -291,6 +291,8 @@
     // cenovnika" into fragments, sometimes leaving a single letter on a line.
     // A 16.5-character width wraps the original phrase in two natural lines.
     main = setColumnWidth(main, 5, 16.5);
+    main = setColumnWidth(main, 8, 18);
+    main = setColumnWidth(main, 9, 2.2);
     const meta = quote.meta;
     const offerDate = meta.date.split('-').reverse().join('.') + '.';
     const fields = {
@@ -343,7 +345,7 @@
     workbook = /<calcPr\b/.test(workbook) ? workbook.replace(/<calcPr\b[^>]*\/>/, calc) : workbook.replace('</workbook>', calc + '</workbook>');
     const printArea = '<definedNames><definedName name="_xlnm.Print_Area" localSheetId="0">\'Moja ponuda\'!$A$1:$I$' + lastRow + '</definedName></definedNames>';
     workbook = workbook.replace(/<definedNames\b[^>]*>[\s\S]*?<\/definedNames>/, '')
-      .replace('</workbook>', () => printArea + '</workbook>');
+      .replace('</sheets>', () => '</sheets>' + printArea);
     zip.file('xl/workbook.xml', workbook);
     return zip.generateAsync({ type: 'uint8array', compression: 'DEFLATE',
       mimeType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
