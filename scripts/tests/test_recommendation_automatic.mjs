@@ -15,9 +15,9 @@ const catalog={
   plants:[{id:'p1',latinName:plant,synonyms:[]}],
   nurseries:[{id:'n1',name:'Rasadnik A'},{id:'n2',name:'Rasadnik B'}],
   offers:[
-    {id:'eur',plantId:'p1',nurseryId:'n1',circumference:'18–20',height:'300–350',price:65,currency:'EUR',unit:'kom',taxStatus:'Bez PDV-a',sourceDate:'2026-11-13'},
-    {id:'wrong-size',plantId:'p1',nurseryId:'n2',circumference:'12–14',height:'300–350',price:1,currency:'EUR',unit:'kom',taxStatus:'Bez PDV-a',sourceDate:'2026-11-13'},
-    {id:'wrong-currency',plantId:'p1',nurseryId:'n2',circumference:'18–20',height:'300–350',price:2,currency:'RSD',unit:'kom',taxStatus:'Bez PDV-a',sourceDate:'2026-11-13'}
+    {id:'eur',plantId:'p1',nurseryId:'n1',seedlingType:'Standard',circumference:'18–20',height:'300–350',price:65,currency:'EUR',unit:'kom',taxStatus:'Bez PDV-a',sourceDate:'2026-11-13'},
+    {id:'wrong-size',plantId:'p1',nurseryId:'n2',seedlingType:'Standard',circumference:'12–14',height:'400–450',price:1,currency:'EUR',unit:'kom',taxStatus:'Bez PDV-a',sourceDate:'2026-11-13'},
+    {id:'wrong-currency',plantId:'p1',nurseryId:'n2',seedlingType:'Standard',circumference:'18–20',height:'300–350',price:2,currency:'RSD',unit:'kom',taxStatus:'Bez PDV-a',sourceDate:'2026-11-13'}
   ]
 };
 
@@ -72,9 +72,9 @@ function worker(){
 }
 
 test('one upload processes every input row and preserves the notes sheet',async()=>{
-  const headers=['Naziv biljke','Obim (cm)','Jedinica mere','Količina','Šifra'];
+  const headers=['Naziv biljke','Tip sadnice','Visina (cm)','Jedinica mere','Količina','Šifra'];
   const count=1205,rows=[['Spisak za proveru'],[],headers];
-  for(let i=0;i<count;i++)rows.push([i===count-1?"Acer campestre 'Pogresan kultivar'":plant,'18–20','kom',3,String(i).padStart(5,'0')]);
+  for(let i=0;i<count;i++)rows.push([i===count-1?"Acer campestre 'Pogresan kultivar'":plant,'Standard','300–350','kom',3,String(i).padStart(5,'0')]);
   const notes=[['Napomena'],['Ovaj list mora ostati sačuvan.'],['00123']];
   const input=workbook([['Sadnice',rows],['Napomena',notes]]),instance=worker();
   const result=await instance.process(input);
@@ -83,7 +83,7 @@ test('one upload processes every input row and preserves the notes sheet',async(
   const output=await instance.download(),book=XLSX.read(output,{type:'array'});
   assert.deepEqual(book.SheetNames,['Pregled preporuke','Sadnice','Napomena']);
   const glance=XLSX.utils.sheet_to_json(book.Sheets['Pregled preporuke'],{header:1,defval:''});
-  assert.deepEqual(glance[0],['Latinski naziv biljke','Parametri iz tvoje tabele','Spisak rasadnika','Najniža nabavna cena (€)','Rezultat']);
+  assert.deepEqual(glance[0],['Latinski naziv biljke','Parametri iz tvoje tabele','Spisak rasadnika','Najniža nabavna cena (€)','Rezultat','Digitalna kartica']);
   assert.ok(glance.length>=count+1,'overview includes every original plant and all supplier rows');
   assert.equal(glance.filter(row=>row[0]===plant).length>=count-1,true,'multiple rasadnici are shown as separate rows, without hiding the input plants');
   assert.equal(glance[1][0],plant);
@@ -102,7 +102,7 @@ test('one upload processes every input row and preserves the notes sheet',async(
 });
 
 test('headerless first row is processed and the source is retained beside its recommendation sheet',async()=>{
-  const rows=[[plant,'obim 18–20'],[plant,'obim 18–20']],notes=[['Napomena'],['Dva originalna reda bez zaglavlja.']];
+  const rows=[[plant,'standard; visina 300–350'],[plant,'standard; visina 300–350']],notes=[['Napomena'],['Dva originalna reda bez zaglavlja.']];
   const input=workbook([['Bez zaglavlja',rows],['Napomena',notes]]),instance=worker();
   const result=await instance.process(input);
   assert.equal(result.processed,2);assert.equal(result.matched,2);assert.equal(result.preview[0].row,1);
