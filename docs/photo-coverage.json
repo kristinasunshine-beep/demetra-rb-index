@@ -1,6 +1,6 @@
 {
   "schemaVersion": 2,
-  "checkedAt": "2026-11-20T10:09:35Z",
+  "checkedAt": "2026-11-20T11:31:14Z",
   "status": "partial",
   "plants": 619,
   "plantsInventoried": 619,
@@ -436,6 +436,6 @@
     }
   ],
   "coveragePercent": 82.71,
-  "activeOffers": 2941,
+  "activeOffers": 2945,
   "remainingOffers": 205
 }

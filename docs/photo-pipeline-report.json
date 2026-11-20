@@ -1,13 +1,13 @@
 {
   "schemaVersion": 2,
   "status": "partial",
-  "requests": 599,
+  "requests": 454,
   "workers": 8,
   "events": [],
   "sourceHealth": {
     "portal.volentis.com": {
-      "requests": 122,
-      "succeeded": 121,
+      "requests": 112,
+      "succeeded": 111,
       "retries": 0,
       "httpErrors": {
         "404": 1
@@ -21,51 +21,51 @@
       }
     },
     "www.willaert.be": {
-      "requests": 115,
-      "succeeded": 115,
+      "requests": 110,
+      "succeeded": 110,
       "retries": 0,
       "httpErrors": {},
       "stopped": false,
       "requestIntervalSeconds": 1.0
     },
     "catalogue.vannuccipiante.it": {
-      "requests": 4,
-      "succeeded": 4,
+      "requests": 3,
+      "succeeded": 3,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "webshop.vannuccipiante.it": {
-      "requests": 14,
-      "succeeded": 14,
+      "requests": 34,
+      "succeeded": 34,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "smitsbv.nl": {
-      "requests": 42,
-      "succeeded": 42,
+      "requests": 28,
+      "succeeded": 28,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "www.lorberg.com": {
-      "requests": 83,
-      "succeeded": 83,
+      "requests": 46,
+      "succeeded": 46,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "www.lve-baumschule.de": {
-      "requests": 19,
-      "succeeded": 19,
+      "requests": 31,
+      "succeeded": 31,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "innocentiemangonipiante.it": {
-      "requests": 199,
-      "succeeded": 199,
+      "requests": 89,
+      "succeeded": 89,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
@@ -80,7 +80,7 @@
   },
   "coverage": {
     "schemaVersion": 2,
-    "checkedAt": "2026-11-20T10:09:35Z",
+    "checkedAt": "2026-11-20T11:31:14Z",
     "status": "partial",
     "plants": 619,
     "plantsInventoried": 619,
@@ -516,7 +516,7 @@
       }
     ],
     "coveragePercent": 82.71,
-    "activeOffers": 2941,
+    "activeOffers": 2945,
     "remainingOffers": 205
   },
   "nonPhotoDataUnchanged": true,
