@@ -148,10 +148,11 @@ test('Plant specifications sheet drives procurement search instead of duplicated
   assert.equal(result.preview[1].parameters.find(v=>v.label==='Tip sadnice')?.value,'Nije potvrđen');
   const output=await instance.download(),book=XLSX.read(output,{type:'array'});
   const overview=XLSX.utils.sheet_to_json(book.Sheets['Pregled preporuke'],{header:1,defval:''});
-  assert.equal(overview.length,3);
+  assert.equal(overview.length,4,'Two matching suppliers plus one unresolved plant');
   assert.match(overview[1][1],/Visina: 300\/350 cm/);
-  assert.match(overview[2][1],/Visina: 400cm/);
+  assert.match(overview[3][1],/Visina: 400cm/);
   assert.equal(overview[1][2].startsWith('Rasadnik A'),true);
-  assert.equal(overview[2][2],'—','No nursery may be recommended without confirmed plant form');
+  assert.equal(overview[2][2].startsWith('Rasadnik B'),true,'All matching nurseries remain visible');
+  assert.equal(overview[3][2],'—','No nursery may be recommended without confirmed plant form');
   assert.deepEqual(XLSX.utils.sheet_to_json(book.Sheets.Kalkulacija,{header:1,defval:''}),calc);
 });
