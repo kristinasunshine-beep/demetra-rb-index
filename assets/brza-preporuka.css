@@ -23,3 +23,8 @@
 
 /* Automatic recommendation result. */
 .recommend-progress{display:flex;align-items:center;gap:20px}.recommend-progress .recommend-status{flex:1}.recommend-parameters{min-width:250px;max-width:420px;overflow-wrap:anywhere}.recommend-parameters>div+div{margin-top:5px}.recommend-parameters span{color:#738267}.recommend-table td:nth-child(3){min-width:180px}.recommend-table td:nth-child(3)>div+div{margin-top:12px}.recommend-table td:nth-child(3) small{margin-top:1px}.recommend-price small{white-space:normal;min-width:150px}
+
+/* Result-card navigation uses the existing Demetra typographic hierarchy. */
+.recommend-navigation,.quote-navigation{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
+.recommend-plant-link{color:#244f8a;font-weight:650;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}
+.recommend-plant-link:hover,.recommend-plant-link:focus-visible{color:#193d2c;text-decoration-thickness:2px}
