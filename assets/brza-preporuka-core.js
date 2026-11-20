@@ -395,8 +395,8 @@
       const offeredForm=form(offeredValue(offer,'seedlingType')||offer.seedlingTypeCode||'');
       return offeredForm===plantForm&&sameRequirement(measureField,targetValue,offeredValue(offer,measureField));
     }));
-    if(!allowed.length)return historicalReference(index,found.id,
-      'Nema sadnice sa potpuno istim tipom i '+(plantForm==='standard'?'visinom':'obimom')+'.');
+    if(!allowed.length)return {...historicalReference(index,found.id,
+      'Nema sadnice sa potpuno istim tipom i '+(plantForm==='standard'?'visinom':'obimom')+'.'),plantId:found.id};
     const narrowed={...index,byPlant:new Map(index.byPlant)};
     narrowed.byPlant.set(found.id,allowed);
     const precise={name:requested.name,cultivar:requested.cultivar,seedlingType:plantForm};
