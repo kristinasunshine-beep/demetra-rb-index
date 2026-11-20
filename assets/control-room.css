@@ -153,12 +153,13 @@ body.control-room .record-photo-reference{font:10px/1.4 var(--mono);color:#586E5
 /* Brza preporuka: original Excel worker and mapping result remain live. */
 body.control-room .recommend-view,body.control-room .my-quote-view{font-family:var(--sans);color:var(--ink)}
 body.control-room .recommend-titlebar,body.control-room .quote-titlebar{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(230px,.7fr);gap:25px;align-items:end;margin:0 0 30px}
+body.control-room .recommend-titlebar{grid-template-columns:minmax(0,1fr)}
 body.control-room .recommend-eyebrow{font:11px var(--mono);letter-spacing:.7px;color:#607163}
 body.control-room .recommend-eyebrow:before{content:"";display:inline-block;width:22px;height:1px;vertical-align:middle;background:var(--accent);margin-right:8px}
 body.control-room .recommend-titlebar h1,body.control-room .quote-titlebar h1{font:730 clamp(47px,6.2vw,92px)/.94 var(--sans);letter-spacing:-.085em;text-transform:uppercase;color:var(--ink);margin:15px 0}
 body.control-room .recommend-titlebar h1::first-letter,body.control-room .quote-titlebar h1::first-letter{text-transform:uppercase}
 body.control-room .recommend-lead{font:14px/1.7 var(--sans);color:#3E5141;max-width:480px;letter-spacing:-.2px}
-body.control-room .recommend-emblem{font:70px var(--sans);color:var(--accent);text-align:right}
+
 body.control-room .recommend-upload{background:var(--ink);border:1px solid var(--ink);color:#fff;display:flex;flex-direction:column;align-items:flex-start;text-align:left;padding:30px 35px;margin-top:20px;gap:12px;min-height:290px;justify-content:center}
 body.control-room .recommend-upload-icon{font:54px/1 var(--sans);color:var(--accent);margin:0}
 body.control-room .recommend-upload h2{font:650 clamp(28px,3vw,42px) var(--sans);letter-spacing:-1.5px;margin:2px 0 0}
