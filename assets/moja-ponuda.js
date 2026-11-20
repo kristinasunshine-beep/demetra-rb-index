@@ -35,7 +35,7 @@
     function fieldMarkup([key,label,type,placeholder]) {
       return `<label class="quote-field"><span>${label}</span><input type="${type}" id="quote-${key}" data-quote-meta="${key}" value="${escape(quote.meta[key])}" placeholder="${placeholder}" maxlength="500" autocomplete="off"></label>`;
     }
-    root.innerHTML = `<div class="quote-titlebar"><div><button type="button" class="quote-back" data-quote-action="back">← Nazad na katalog</button><p class="recommend-eyebrow">03 / PONUDA ZA INVESTITORA</p><h1 id="quote-heading" tabindex="-1"><span>MOJA</span><span class="outline">PONUDA.</span></h1></div><button type="button" class="quote-download" id="quote-download">Preuzmi Excel <span aria-hidden="true">↓</span></button></div>
+    root.innerHTML = `<div class="quote-titlebar"><div><div class="quote-navigation"><button type="button" class="quote-back" data-quote-action="back">← Korak nazad</button><button type="button" class="quote-back" data-quote-action="home">⌂ Početna</button></div><p class="recommend-eyebrow">03 / PONUDA ZA INVESTITORA</p><h1 id="quote-heading" tabindex="-1"><span>MOJA</span><span class="outline">PONUDA.</span></h1></div><button type="button" class="quote-download" id="quote-download">Preuzmi Excel <span aria-hidden="true">↓</span></button></div>
       <section class="quote-letterhead" aria-label="Zaglavlje ponude"><div class="quote-logos"><img class="quote-company-logo" src="${escape(asset('demetra-memorandum-logo.png'))}" alt="Originalni logotip DEMETRA RB"><img class="quote-standards" src="${escape(asset('demetra-memorandum-standardi.jpg'))}" alt="Znaci iz memoranduma: AQRA 45001:2018, NAC, ISO 14001:2015 i ISO 9001:2015"></div>
       <div class="quote-company"><div><p id="quote-description">${escape(quote.meta.description)}</p><a href="mailto:office@demetrarb.com">office@demetrarb.com</a><br><a href="https://demetrarb.com/BG/" target="_blank" rel="noopener noreferrer">demetrarb.com/BG/</a></div><p>Matični broj: <strong>06517293</strong><br>PIB: <strong>101713319</strong><br>Zarija Vujoševića 80<br>11070 Novi Beograd<br>+381 11 3112798</p></div>
       <details class="quote-header-fields"><summary>Podaci za zaglavlje ponude <span>Broj, datum i investitor</span></summary><form id="quote-meta-form" novalidate><div class="quote-field-grid">${fields.map(fieldMarkup).join('')}<label class="quote-field quote-field-wide"><span>Opis delatnosti</span><input data-quote-meta="description" maxlength="500" value="${escape(quote.meta.description)}"></label><label class="quote-field quote-field-wide"><span>Napomena uz ponudu</span><textarea data-quote-meta="note" maxlength="4000" rows="2">${escape(quote.meta.note)}</textarea></label></div></form></details></section>
@@ -129,7 +129,7 @@
       syncCatalogPrices(); opened = true; config.onOpen?.(); renderItems();
       root.hidden = false; main.hidden = true; document.body.dataset.view = 'quote';
       document.title = 'Moja ponuda · demetra rb index';
-      history.replaceState(null,'','#moja-ponuda'); syncButtons(); toast.hidden = true;
+      if(location.hash!=='#moja-ponuda')history.pushState({demetraNav:true},'','#moja-ponuda'); syncButtons(); toast.hidden = true;
       el('quote-heading').focus({preventScroll:true}); window.scrollTo({top:0,behavior:'instant'});
     }
     function back() {
@@ -181,7 +181,12 @@
       }
       if (target.dataset.quoteAction === 'dismiss-toast') { toast.hidden = true; return; }
       if (!root.contains(target)) return;
-      if (target.dataset.quoteAction === 'back') back();
+      if (target.dataset.quoteAction === 'back') {
+        if(window.DemetraNavigation)window.DemetraNavigation.back();else back();
+      }
+      if (target.dataset.quoteAction === 'home') {
+        if(window.DemetraNavigation)window.DemetraNavigation.home();else back();
+      }
       if (target.dataset.quoteRemove) {
         const index = quote.items.findIndex(item=>item.offerId===target.dataset.quoteRemove);
         if (index < 0) return;
