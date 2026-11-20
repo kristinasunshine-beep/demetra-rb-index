@@ -14,9 +14,11 @@ const OVERVIEW_HEADERS=[
 ];
 function conciseParameters(request){
   const fields=[
-    ['seedlingType','Tip sadnice'],['height','Visina'],['circumference','Obim'],['crownWidth','Krošnja'],
-    ['rootType','Isporuka'],['potSize','Saksija'],['transplantCount','Presađivanja'],
-    ['quantity','Količina'],['unit','Jed. mere']
+    ['seedlingType','Tip sadnice'],['height','Visina'],['circumference','Obim'],
+    ['crownWidth','Širina krošnje'],['potSize','Saksija'],['rootType','Isporuka'],
+    ['rootBall','Busen'],['stemDiameter','Prečnik sadnice'],['potDiameter','Prečnik saksije'],
+    ['clearStemHeight','Visina do krošnje'],['transplantCount','Presađivanja'],
+    ['quantity','Količina'],['unit','Jed. mere'],['currency','Valuta izvornog zahteva']
   ];
   const known=fields.flatMap(([key,label])=>String(request[key]??'').trim()?
     [label+': '+String(request[key]).trim()]:[]);
@@ -34,7 +36,7 @@ function overviewStatus(result,supplier){
   return result.suppliers?.length?'Ponude · potrebna provera':'Nema potvrđene ponude';
 }
 function overviewItems(request,result){
-  const plant=[request.name,request.cultivar].filter(Boolean).join(' ');
+  const plant=request.cultivar&&!Core.norm(request.name).endsWith(' '+Core.norm(request.cultivar))?request.name+' '+request.cultivar:request.name;
   const params=conciseParameters(request);
   const suppliers=result.suppliers?.length?result.suppliers:[null];
   return suppliers.map((supplier,index)=>{
@@ -87,7 +89,7 @@ self.onmessage=async({data})=>{try{
         if(result.status!=='empty')overviewRows.push(...overviewItems(request,result));
         if(result.status!=='empty'){
           processed++;if(result.status==='matched')matched++;else unmatched++;if(result.recognized)recognized++;if(result.archival)archival++;
-          if(preview.length<40)preview.push({sheet:original.name,row:r+1,name:[request.name,request.cultivar].filter(Boolean).join(' '),parameters:original.rows[r].flatMap((value,c)=>c!==config.map.name&&String(value??'').trim()?[{label:headers[c],value:value instanceof Date?value.toISOString().slice(0,10):String(value)}]:[]),...result});
+          if(preview.length<40)preview.push({sheet:original.name,row:r+1,name:request.cultivar&&!Core.norm(request.name).endsWith(' '+Core.norm(request.cultivar))?request.name+' '+request.cultivar:request.name,parameters:original.rows[r].flatMap((value,c)=>c!==config.map.name&&String(value??'').trim()?[{label:headers[c],value:value instanceof Date?value.toISOString().slice(0,10):String(value)}]:[]),...result});
         }
         if(r%200===0){send('progress',{message:`Obrađeno ${processed.toLocaleString('sr-Latn-RS')} stavki…`,processed});await new Promise(resolve=>setTimeout(resolve,0));}
       }
