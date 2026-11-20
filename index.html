@@ -840,6 +840,10 @@ body[data-view="search"] .search-field:focus-within .search-icon { color:var(--a
   .offer-card-body.without-photo .measurement dd:not(.missing) { font-size:14px; }
 }
 
+<style>
+  .detail-topline-actions{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:8px}
+  .detail-topline-actions .record-quote-link{white-space:nowrap}
+  @media(max-width:550px){.detail-topline-actions{gap:5px}.detail-topline-actions .record-quote-link{font-size:10px;padding:7px 5px}}
 </style>
       <link rel="stylesheet" href="./assets/moja-ponuda.css">
       <link rel="stylesheet" href="./assets/brza-preporuka.css?v=exact-links-20261120">
@@ -1756,7 +1760,7 @@ function renderRecord(plant) {
   }
   $('plant-dialog-content').innerHTML =
     '<div class="dialog-topline detail-topline"><span class="dialog-topline-label">' + escapeHTML(plant.latinName) + '</span>' +
-    '<div class="detail-topline-actions"><button type="button" class="record-quote-link" data-action="open-my-quote">Moja ponuda <span class="record-quote-count" aria-hidden="true">(0)</span> ↗</button><button type="button" class="icon-button" data-action="close-record" aria-label="Zatvori zapis i vrati se na pretragu">' +
+    '<div class="detail-topline-actions"><button type="button" class="record-quote-link" data-action="record-back">← Nazad</button><button type="button" class="record-quote-link" data-action="record-home">⌂ Početna</button><button type="button" class="record-quote-link" data-action="open-my-quote">Moja ponuda <span class="record-quote-count" aria-hidden="true">(0)</span> ↗</button><button type="button" class="icon-button" data-action="close-record" aria-label="Zatvori zapis i vrati se na pretragu">' +
     closeIcon + '</button></div></div>' +
     '<div class="detail-hero ' + (plantPhoto ? 'with-photo' : 'without-photo') + '"><div class="detail-hero-copy"><p class="category-label">' +
     escapeHTML(plant.category || 'Biljka') + (plant.demo ? ' · DEMO ZAPIS' : '') +
@@ -1951,6 +1955,8 @@ document.addEventListener('click', (event) => {
   closeSuggestions();
 });
 dialog.addEventListener('click', (event) => {
+  if (event.target.closest('[data-action="record-back"]')) { navigateBack(); return; }
+  if (event.target.closest('[data-action="record-home"]')) { navigateHome(); return; }
   if (event.target.closest('[data-action="close-record"]')) { dialog.close(); return; }
   if (event.target !== dialog) return;
   const bounds = dialog.getBoundingClientRect();
