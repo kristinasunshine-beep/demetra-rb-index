@@ -101,6 +101,17 @@ assert(unitColumn,'Unit column E must be explicitly sized');
 assert(Number(unitColumn.match(/\bwidth="([\d.]+)"/)?.[1])>=16,'Unit width must fit full words instead of single letters');
 assert(sheet.includes('Jed.')||sheet.includes('Jed'), 'Original unit heading must remain unchanged');
 assert(sheet.includes('customHeight="1"'),'Rows must retain custom height for wrapped text');
+assert(sheet.includes('orientation="portrait"')&&sheet.includes('paperSize="9"'),'Excel must print on portrait A4');
+assert(sheet.includes('fitToWidth="1"')&&sheet.includes('fitToHeight="0"'),'Fit to one A4 page wide');
+assert(!sheet.includes('Valuta'),'No visible currency column');
+assert(sheet.includes('<mergeCell ref="H18:I18"')&&sheet.includes('<mergeCell ref="H19:I19"'),'Amount cell must span currency-free area');
+const totalStyle=Number(sheet.match(/<c r="H21" s="(\d+)"/)?.[1]);
+assert(Number.isInteger(totalStyle),'Total formula must have currency style');
+const styleXml=await zip.file('xl/styles.xml').async('string');
+assert(styleXml.includes('&quot;EUR&quot;'),'Currency must be formatted into the total');
+assert(workbook.includes('_xlnm.Print_Area')&&workbook.includes("'Moja ponuda'!$A$1:$I$21"),
+  'A4 print area must end after totals, without the hidden currency column');
+
 const tableHeader=sheet.match(/<row\b[^>]*\br="18"[^>]*>[\s\S]*?<\/row>/)?.[0]||'';
 const firstPlant=sheet.match(/<row\b[^>]*\br="19"[^>]*>[\s\S]*?<\/row>/)?.[0]||'';
 assert(tableHeader.includes('Biljka')&&tableHeader.includes('Parametri sadnice'),
@@ -143,8 +154,10 @@ assert.equal(Core.summarize(mixed).amount,null);
 assert.deepEqual(Core.summarize(mixed).totals.map(t=>[t.currency,t.amount]),[['EUR',37.5],['RSD',40]]);
 const mixedFile=await Zip.loadAsync(await Core.buildXlsx(template,mixed,Zip));
 const mixedXml=await mixedFile.file('xl/worksheets/sheet1.xml').async('string');
-assert(mixedXml.includes('SUMIFS(H19:H20,I19:I20,&quot;EUR&quot;)'));
-assert(mixedXml.includes('SUMIFS(H19:H20,I19:I20,&quot;RSD&quot;)'));
+assert(mixedXml.includes('SUMIF(J19:J20,&quot;EUR&quot;,H19:H20)'));
+assert(mixedXml.includes('r="J19"')&&mixedXml.includes('r="J20"'),'Currency retained only in hidden data');
+assert(mixedXml.includes('SUMIF(J19:J20,&quot;RSD&quot;,H19:H20)'));
+assert(!mixedXml.includes('Valuta'),'Visible currency column title must be removed');
 const testDir=process.env.DEMETRA_QUOTE_TEST_OUTPUT;
 if(testDir){await mkdir(testDir,{recursive:true});await writeFile(resolve(testDir,'provera-moja-ponuda.xlsx'),bytes);}
 console.log(JSON.stringify({ok:true,selectableVariants:snapshots.length,hiddenOffersRejected:offers.offers.length-valid.length,
