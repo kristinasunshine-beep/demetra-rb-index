@@ -846,8 +846,8 @@ body[data-view="search"] .search-field:focus-within .search-icon { color:var(--a
   @media(max-width:550px){.detail-topline-actions{gap:5px}.detail-topline-actions .record-quote-link{font-size:10px;padding:7px 5px}}
 </style>
       <link rel="stylesheet" href="./assets/moja-ponuda.css">
-      <link rel="stylesheet" href="./assets/brza-preporuka.css?v=clean-nav-20261120">
-      <link rel="stylesheet" href="./assets/control-room.css?v=clean-nav-20261120">
+      <link rel="stylesheet" href="./assets/brza-preporuka.css?v=candidates-20261121">
+      <link rel="stylesheet" href="./assets/control-room.css?v=candidates-20261121">
     <link rel="stylesheet" href="./assets/control-room-mobile-outline.css?v=outline-r6-20261118">
     <!-- Mobile-only union outline: source glyphs render together before their contour,
          so touching letter edges cannot create internal crossing strokes. -->
@@ -1854,8 +1854,8 @@ function returnToSearch() {
 function submitSearch(useActiveSuggestion = true) {
   if (!input.value.trim()) { input.focus(); return; }
   if (!state.popupOpen || state.query !== input.value) updateSearch();
-  const exact=state.catalog?.plants.find(p=>normalize(p.latinName)===normalize(input.value));
-  if(exact){openRecord(exact.id);return;}
+  const exactInput=state.catalog?.plants.filter(p=>normalize(p.latinName)===normalize(input.value))||[];
+  if(exactInput.length===1){openRecord(exactInput[0].id);return;}
   if (!state.catalog || !state.suggestions.length) { input.focus(); return; }
   if (useActiveSuggestion && state.activeIndex >= 0) {
     openRecord(state.suggestions[state.activeIndex].id);
