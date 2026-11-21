@@ -1,5 +1,5 @@
 'use strict';
-importScripts('vendor/xlsx-0.20.3.full.min.js','vendor/jszip-3.10.1.min.js','brza-preporuka-core.js?v=rank-params-r1-20261121','recommendation-excel.js?v=portrait-export-r2-20261121');
+importScripts('vendor/xlsx-0.20.3.full.min.js','vendor/jszip-3.10.1.min.js','brza-preporuka-core.js?v=rank-params-r1-20261121','recommendation-excel.js?v=portrait-export-r2-20261121','moja-ponuda-core.js?v=shared-report-r1-20261121');
 const Core=self.DemetraRecommendCore;
 let sheets=[],results=null,originalWorkbook=null;
 function send(type,data={}){postMessage({type,...data});}
@@ -141,6 +141,14 @@ self.onmessage=async({data})=>{try{
     if(!results)throw new Error('Prvo pokreni poređenje.');
     send('progress',{message:'Pripremam novu Excel tabelu…'});
     const response=await fetch(data.templateUrl,{cache:'no-store'});if(!response.ok)throw new Error('Excel obrazac trenutno nije dostupan.');
+    if(data.sharedTemplateUrl){
+      const shared=await fetch(data.sharedTemplateUrl,{cache:'no-store'});if(!shared.ok)throw new Error('Zajednički Excel obrazac trenutno nije dostupan.');
+      const overview=results.find(sheet=>sheet.overview);
+      if(!overview)throw new Error('Nema stavki za izvoz.');
+      const output=await self.DemetraQuoteCore.buildXlsx(await shared.arrayBuffer(),null,JSZip,overview.rows.slice(1));
+      const bytes=output.buffer.slice(output.byteOffset,output.byteOffset+output.byteLength);
+      postMessage({type:'download',bytes},[bytes]);return;
+    }
     const bytes=await self.DemetraRecommendationExcel.build(await response.arrayBuffer(),results,JSZip,(sheet,row,total)=>{if(row%2000===0)send('progress',{message:`Pakujem list ${sheet+1}: ${row.toLocaleString('sr-Latn-RS')} / ${total.toLocaleString('sr-Latn-RS')} redova…`});},originalWorkbook);
     postMessage({type:'download',bytes},[bytes]);
   }
