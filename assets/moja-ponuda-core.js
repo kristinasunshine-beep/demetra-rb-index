@@ -298,10 +298,12 @@
       return tag.slice(0,-1)+` ht="${height}" customHeight="1"${height===0?' hidden="1"':''}>`;
     });
   }
-  async function buildXlsx(template, quoteValue, Zip) {
-    const quote = parseQuote(quoteValue), total = summarize(quote);
+  async function buildXlsx(template, quoteValue, Zip, recommendationRows = null) {
+    const recommendation = Array.isArray(recommendationRows);
+    const quote = recommendation ? emptyQuote() : parseQuote(quoteValue), total = summarize(quote);
+    if (recommendation && !recommendationRows.length) throw new Error('Nema stavki za izvoz.');
     if (!validDate(quote.meta.date)) throw new Error('Unesite ispravan datum ponude.');
-    if (!total.ready) throw new Error('Popunite ispravnu količinu i cenu za svaku stavku pre preuzimanja.');
+    if (!recommendation && !total.ready) throw new Error('Popunite ispravnu količinu i cenu za svaku stavku pre preuzimanja.');
     const zip = await Zip.loadAsync(template, { checkCRC32: true });
     let main = spreadsheetXml(await zip.file('xl/worksheets/sheet1.xml').async('string'));
     // Portrait A4: compact memorandum and six visible table fields.
@@ -313,7 +315,7 @@
     const offerDate = meta.date.split('-').reverse().join('.') + '.';
     const join = (...parts) => parts.filter(value => String(value ?? '').trim()).join(' · ');
     const fields = {
-      A4: meta.description, A5: meta.number ? 'Ponuda br. ' + meta.number : 'PONUDA',
+      A4: meta.description, A5: recommendation ? 'BRZA PREPORUKA' : (meta.number ? 'Ponuda br. ' + meta.number : 'PONUDA'),
       E4: 'Matični broj: ' + COMPANY.registration + ' · PIB: ' + COMPANY.taxId,
       E5: COMPANY.address + ', ' + COMPANY.city,
       E6: join('T: ' + COMPANY.phone, COMPANY.email, COMPANY.website),
@@ -331,13 +333,13 @@
     const cols = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];
     const allCols = cols.concat('I');
     const styles = rowStyles(main, 23, allCols), sumStyles = rowStyles(main, 24, allCols);
-    const totalStyles = await currencyTotalStyles(zip, total.totals, sumStyles[7]);
+    const totalStyles = await currencyTotalStyles(zip, recommendation ? [{currency:'EUR'}] : total.totals, recommendation ? styles[6] : sumStyles[7]);
     const headerStyles = rowStyles(main, 22, allCols);
     main = compactQuoteHeader(main);
     // Quantity and currency remain internal, excluded from the printed document.
     const tableColumns = ['A', 'B', 'D', 'G', 'H', 'J'];
     const fieldStyles = [0,1,2,4,6,7];
-    const headers = ['R.br.', 'Biljka', 'Parametri sadnice', 'Jed.', 'Cena', 'Iznos'];
+    const headers = recommendation ? ['R.br.', 'Biljka', 'Parametri sadnice / rezultat', 'Rasadnik', 'Nabavna cena', 'Digitalna kartica'] : ['R.br.', 'Biljka', 'Parametri sadnice', 'Jed.', 'Cena', 'Iznos'];
     main = main.replace(/<row\b[^>]*\br="18"[^>]*>[\s\S]*?<\/row>/,
       '<row r="18" ht="30" customHeight="1">' + headers.map((value, index) =>
         cell(tableColumns[index] + '18', value, headerStyles[fieldStyles[index]])).join('') + '</row>');
@@ -358,7 +360,22 @@
       main = rowHeight(main,row,height);
     }
     let rows = '', nextRow = 19;
-    quote.items.forEach((item, index) => {
+    if (recommendation) recommendationRows.forEach((row,index) => {
+      const [plant, requested, nursery, price, result, url] = row;
+      const description = [cleanNote(requested),cleanNote(result)].filter(Boolean).join('\n');
+      readableChunks(description,29,24).forEach((part,chunk) => {
+        const number = nextRow++;
+        const link = !chunk && /^https:\/\/kristinasunshine-beep\.github\.io\/demetra-rb-index\/#plant=[A-Za-z0-9%._~-]+$/.test(String(url||''));
+        const values=chunk?['','',part,'','','']:[index+1,plant,part,nursery,Number.isFinite(price)?price:'',link?'Otvori karticu':''];
+        const height=lineHeight(values,[4,21,29,12,13,15],30);
+        rows += '<row r="'+number+'" ht="'+height+'" customHeight="1">'+values.map((value,column)=>{
+          const ref=tableColumns[column]+number;
+          if(column===5 && link) return '<c r="'+ref+'" s="'+styles[1]+'" t="str"><f>HYPERLINK(&quot;'+xmlEscape(url)+'&quot;,&quot;Otvori karticu&quot;)</f><v>Otvori karticu</v></c>';
+          return cell(ref,value,column===4?totalStyles.EUR:column===5?styles[1]:styles[fieldStyles[column]]);
+        }).join('')+'</row>';
+      });
+    });
+    else quote.items.forEach((item, index) => {
       const result = total.rows[index];
       // Excel caps a row at 409 pt. Continue long descriptions in visible
       // rows of the same table instead of clipping or shrinking the text.
@@ -374,7 +391,7 @@
           (!part ? cell('K'+number, item.currency, '4')+cell('L'+number,result.quantity.value,'4') : '') + '</row>';
       });
     });
-    const lastData = nextRow - 1, lastRow = lastData + total.totals.length;
+    const lastData = nextRow - 1, lastRow = lastData + (recommendation ? 0 : total.totals.length);
     total.totals.forEach((subtotal,index) => {
       const sumRow = lastData + index + 1;
       const formula = total.totals.length === 1 ? 'SUM(J19:J'+lastData+')' :
@@ -386,7 +403,8 @@
     main = replaceRows(main, 19, rows, 'L', lastRow);
     main = main.replace(/sqref="F23"/g, 'sqref="L19:L'+lastData+'"')
       .replace(/sqref="G23"/g, 'sqref="H19:H'+lastData+'"');
-    main = configureA4(main, lastRow);
+    if (recommendation) main = main.replace(/<dataValidations\b[^>]*>[\s\S]*?<\/dataValidations>/g,'');
+    main = configureA4(main, lastRow, recommendation);
     zip.file('xl/worksheets/sheet1.xml', main);
     let drawing=await zip.file('xl/drawings/drawing1.xml').async('string');
     drawing=drawing.replace(/<xdr:ext cx="3048000" cy="471488"\s*\/>/,'<xdr:ext cx="2400000" cy="371250"/>');
@@ -399,12 +417,13 @@
     const printArea = '<definedNames><definedName name="_xlnm.Print_Area" localSheetId="0">\'Moja ponuda\'!$A$1:$J$' + lastRow + '</definedName><definedName name="_xlnm.Print_Titles" localSheetId="0">\'Moja ponuda\'!$18:$18</definedName></definedNames>';
     workbook = workbook.replace(/<definedNames\b[^>]*>[\s\S]*?<\/definedNames>/, '')
       .replace('</sheets>', () => '</sheets>' + printArea);
+    if(recommendation) workbook=workbook.replace(/name="Moja ponuda"/g,'name="Brza preporuka"').replace(/'Moja ponuda'!/g,"'Brza preporuka'!");
     zip.file('xl/workbook.xml', workbook);
     return zip.generateAsync({ type: 'uint8array', compression: 'DEFLATE',
       mimeType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
   }
   // A4 portrait with hidden internal quantity and currency.
-  function configureA4(xml, lastRow) {
+  function configureA4(xml, lastRow, recommendation = false) {
     xml = xml.replace('</sheetPr>', '<pageSetUpPr fitToPage="1"/></sheetPr>');
     xml = xml.replace(/<pane\b[^>]*\/>/, '<pane ySplit="18" topLeftCell="A19" activePane="bottomLeft" state="frozen"/>');
     xml = xml.replace('</cols>', '<col min="11" max="12" width="2" hidden="1" customWidth="1"/></cols>');
@@ -412,8 +431,8 @@
       const original = [...body.matchAll(/<mergeCell\b[^>]*\bref="[^"]+"[^>]*\/>/g)].map(m=>m[0])
         .map(tag=>tag.replace(/:I(\d+)"/, ':J$1"'));
       const additions = [];
-      for (let row=18; row<lastRow; row++) additions.push('B'+row+':C'+row,'D'+row+':F'+row,'H'+row+':I'+row);
-      additions.push('H'+lastRow+':I'+lastRow);
+      for (let row=18; row<lastRow+(recommendation?1:0); row++) additions.push('B'+row+':C'+row,'D'+row+':F'+row,'H'+row+':I'+row);
+      if(!recommendation) additions.push('H'+lastRow+':I'+lastRow);
       return '<mergeCells count="'+(original.length+additions.length)+'">'+original.join('')+
         additions.map(ref=>'<mergeCell ref="'+ref+'"/>').join('')+'</mergeCells>';
     });
