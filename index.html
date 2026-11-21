@@ -998,10 +998,10 @@ body[data-view="search"] .search-field:focus-within .search-icon { color:var(--a
     <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="false"></div>
     <noscript><p class="noscript-notice">Za korišćenje kataloga potrebno je uključiti JavaScript u pregledaču.</p></noscript>
     <script src="./assets/narodni-nazivi.js?v=20261116"></script>
-    <script src="./assets/moja-ponuda-core.js?v=portrait-client-r2-20261121"></script>
+    <script src="./assets/moja-ponuda-core.js?v=no-tax-r1-20261121"></script>
     <script src="./assets/moja-ponuda.js?v=history-20261120"></script>
-    <script src="./assets/brza-preporuka-core.js?v=pdf-final-20261121"></script>
-    <script src="./assets/brza-preporuka.js?v=portrait-export-r2-20261121"></script>
+    <script src="./assets/brza-preporuka-core.js?v=no-tax-r1-20261121"></script>
+    <script src="./assets/brza-preporuka.js?v=no-tax-r1-20261121"></script>
     <script type="module">
 // BEGIN CATALOG CORE
 const {validateImport,searchPlants,normalize}=(()=>{
@@ -1235,7 +1235,6 @@ function validateOffer(item, index, plantIds, nurseryIds) {
       rate: item.priceConversion.rate, rateDate: item.priceConversion.rateDate
     } : undefined,
     unit: textValue(item.unit, `${label}, jedinica`, { max: 30, fallback: 'kom' }),
-    taxStatus: textValue(item.taxStatus, `${label}, PDV`, { max: 100, fallback: 'Nije navedeno' }),
     availability: textValue(item.availability, `${label}, dostupnost`, { max: 150, fallback: 'U katalogu — proveriti' }),
     source: textValue(item.source, `${label}, izvor`, { max: 2000 }),
     sourceDate: dateValue(item.sourceDate, `${label}, datum izvora`),
@@ -1482,8 +1481,12 @@ function formattedPrice(offer) {
   return new Intl.NumberFormat('sr-Latn-RS', { style: 'currency', currency: 'EUR', maximumFractionDigits: 2 }).format(amount);
 }
 
+// Source records remain unchanged; suppress tax clauses in public displays.
+function withoutTaxClauses(value) {
+  return String(value??'').split(/(?<=[.!?;·])\s+|\r?\n/).filter(part=>!/\b(?:pdv|vat|mwst|btw|iva)\b|porez na dodatu vrednost/i.test(part)).join(' ').trim();
+}
 function visiblePriceNote(offer) {
-  let note = offer.priceNote || '';
+  let note = withoutTaxClauses(offer.priceNote);
   if (catalogEuroPrice(offer) !== null) {
     for (const phrase of ["Valuta nije navedena u izvornom cenovniku; iznos je prenet bez konverzije.", "Valuta nije navedena; iznos nije konvertovan.", "Valuta nije navedena u izvoru."]) note = note.replaceAll(phrase, '');
   }
@@ -1616,6 +1619,10 @@ function visibleAdditionalParameters(offer) {
   const known = [offer.circumference, offer.height, offer.crownWidth, offer.rootBall,
     ...named.flatMap(parameter => parameter.value.split(/[;·]/))].filter(Boolean);
   return (offer.additionalParameters || []).flatMap(parameter => {
+    if (!withoutTaxClauses(parameter.label)) return [];
+    const value=withoutTaxClauses(parameter.value);
+    if (!value) return [];
+    parameter={...parameter,value};
     if (!generic(parameter.label)) return [parameter];
     const remaining = parameter.value.split(/[;·]/).map(value => value.trim()).filter(Boolean)
       .filter(value => !known.some(item => sameMeasurement(value, item)));
@@ -1635,7 +1642,7 @@ function visibleDataNotes(offer) {
   // Only rewrite known redundant clauses after matching their own displayed value.
   // Source conflicts, requested alternatives, prices and dates remain intact; raw notes stay in the data.
   return [...new Set([offer.dataAccuracyNote, offer.measurementNote].filter(Boolean).map(original => {
-    let note = original.replace(/(Obim sadnice|Visina sadnice|Širina krošnje|Veličina busena|Veličina saksije) u ponudi:\s*(.+?)(?:\.(?=\s|$)|$)/g,
+    let note = withoutTaxClauses(original).replace(/(Obim sadnice|Visina sadnice|Širina krošnje|Veličina busena|Veličina saksije) u ponudi:\s*(.+?)(?:\.(?=\s|$)|$)/g,
       (text, label, value) => sameMeasurement(value, fields[label]) ? '' : text);
     note = note.replace(/(?:Doslovna neklasifikovana|Neoznačena) mera iz izvora: (.+?)\.(?=\s|$)/g,
       (text, value) => displayed(value) ? 'Vrsta ove mere nije navedena u izvoru.' : text);
@@ -1707,8 +1714,7 @@ function renderOffer(offer, plant, nursery, photoValue = offer.image) {
       escapeHTML(value || 'Nije navedeno') + '</dd></div>'
     ).join('') + '</dl><div class="offer-pricing"><div class="price-caption">' + priceLabel + '</div>' +
     '<div class="offer-price"><strong>' + escapeHTML(formattedPrice(offer)) +
-    '</strong><small>' + escapeHTML((hasPrice ? '/ ' + (offer.unit || 'kom') + ' · ' : '') +
-      (offer.taxStatus || 'PDV nije naveden')) + '</small></div>' +
+    '</strong>' + (hasPrice ? '<small>' + escapeHTML('/ ' + (offer.unit || 'kom')) + '</small>' : '') + '</div>' +
     (priceNote ? '<p class="image-kind">' + escapeHTML(priceNote) + '</p>' : '') +
     '<button type="button" class="quote-add" data-action="add-to-quote" data-offer-id="' + escapeHTML(offer.id) + '">Dodaj u moju ponudu</button></div></div></div>' +
     '<div class="offer-footer"><div class="offer-source"><strong>' +
@@ -1805,7 +1811,7 @@ function makeQuoteItem(offerId) {
     details: [
       ['Kategorija', plant.category], ['Opis biljke', plant.description],
       ['Drugi nazivi', (plant.synonyms || []).join('; ')], ['Izvorna oznaka tipa', offer.seedlingTypeCode],
-      ['Dostupnost', offer.availability], ['PDV', offer.taxStatus],
+      ['Dostupnost', offer.availability],
       ['Vrsta cene', offer.priceKind === 'historical' ? 'Cena iz arhivirane ponude' : 'Nabavna cena iz ponude'],
       ['Napomena o ceni', visiblePriceNote(offer)], ['Napomene o podacima', visibleDataNotes(offer).join(' ')],
       ['Izvor', offer.source], ['Datum izvora', offer.sourceDate], ['Period izvora', offer.sourcePeriod],
