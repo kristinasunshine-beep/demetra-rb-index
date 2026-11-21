@@ -1759,7 +1759,7 @@ function renderRecord(plant) {
   }
   $('plant-dialog-content').innerHTML =
     '<div class="dialog-topline detail-topline"><span class="dialog-topline-label">' + escapeHTML(plant.latinName) + '</span>' +
-    '<div class="detail-topline-actions"><button type="button" class="record-quote-link" data-action="record-back">← Nazad</button><button type="button" class="record-quote-link" data-action="record-home">⌂ Početna</button><button type="button" class="record-quote-link" data-action="open-my-quote">Moja ponuda <span class="record-quote-count" aria-hidden="true">(0)</span> ↗</button><button type="button" class="icon-button" data-action="close-record" aria-label="Zatvori zapis i vrati se na pretragu">' +
+    '<div class="detail-topline-actions"><button type="button" class="record-quote-link" data-action="record-home">⌂ Početna</button><button type="button" class="record-quote-link" data-action="open-my-quote">Moja ponuda <span class="record-quote-count" aria-hidden="true">(0)</span> ↗</button><button type="button" class="icon-button" data-action="close-record" aria-label="Zatvori digitalnu karticu">' +
     closeIcon + '</button></div></div>' +
     '<div class="detail-hero ' + (plantPhoto ? 'with-photo' : 'without-photo') + '"><div class="detail-hero-copy"><p class="category-label">' +
     escapeHTML(plant.category || 'Biljka') + (plant.demo ? ' · DEMO ZAPIS' : '') +
@@ -1954,7 +1954,6 @@ document.addEventListener('click', (event) => {
   closeSuggestions();
 });
 dialog.addEventListener('click', (event) => {
-  if (event.target.closest('[data-action="record-back"]')) { navigateBack(); return; }
   if (event.target.closest('[data-action="record-home"]')) { navigateHome(); return; }
   if (event.target.closest('[data-action="close-record"]')) { dialog.close(); return; }
   if (event.target !== dialog) return;
