@@ -1,5 +1,5 @@
 /* DEMETRA RB app-shell offline support. Prices, catalog JSON and personal quotes are NOT cached. */
-const CACHE = 'demetra-rb-rank-params-r1-20261121';
+const CACHE = 'demetra-rb-shared-report-r1-20261121';
 const SHELL = ['./', './index.html', './manifest.webmanifest', './assets/control-room.css', './assets/control-room-mobile-outline.css', './assets/icons/icon.svg', './assets/icons/icon-192.png', './assets/icons/icon-512.png', './assets/icons/icon-maskable-512.png'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(SHELL.map(url => new Request(url, {cache:'reload'})))).then(() => self.skipWaiting()));
