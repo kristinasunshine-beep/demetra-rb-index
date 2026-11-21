@@ -1,5 +1,5 @@
 /* DEMETRA RB app-shell offline support. Prices, catalog JSON and personal quotes are NOT cached. */
-const CACHE = 'demetra-rb-shared-report-r1-20261121';
+const CACHE = 'demetra-rb-pwa-shell-08-outline-r6-20261118-shared-report-home-r3-20261121';
 const SHELL = ['./', './index.html', './manifest.webmanifest', './assets/control-room.css', './assets/control-room-mobile-outline.css', './assets/icons/icon.svg', './assets/icons/icon-192.png', './assets/icons/icon-512.png', './assets/icons/icon-maskable-512.png'];
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(SHELL.map(url => new Request(url, {cache:'reload'})))).then(() => self.skipWaiting()));
@@ -14,7 +14,7 @@ self.addEventListener('fetch', event => {
   // Never put current or archival prices, dynamic catalog entries, exports or private quotes into SW cache.
   if (url.pathname.includes('/data/') || /\.(?:json|xlsx|xls|csv|zip)$/i.test(url.pathname)) return;
   if (req.mode === 'navigate') {
-    event.respondWith(fetch(req).catch(() => caches.match('./index.html')));
+    event.respondWith(fetch(new Request(req, {cache:'reload'})).catch(() => caches.match('./index.html')));
     return;
   }
   const pathSuffixes = SHELL.filter(path => path !== './').map(path => path.replace(/^\.\//, ''));
