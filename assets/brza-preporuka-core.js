@@ -342,15 +342,15 @@
     if(!offers.length)return historicalReference(index,found.id,'Za ove parametre nema potvrđene cene u valuti '+currency+'.',suppliers);
     const tax=new Set(offers.map(o=>taxGroup(o.taxStatus))),units=new Set(offers.map(o=>unit(o.unit)));
     // A price per pack, a gross amount and an unknown tax basis cannot silently win over a net unit price.
-    if(tax.size>1||units.size>1)return historicalReference(index,found.id,'Cene nisu uporedive: '+[tax.size>1?'različit ili nepoznat PDV':'',units.size>1?'različite jedinice mere':''].filter(Boolean).join('; ')+'.',suppliers);
+    if(tax.size>1||units.size>1)return historicalReference(index,found.id,'Cene nisu uporedive: '+[tax.size>1?'različita ili nepoznata osnova cene':'',units.size>1?'različite jedinice mere':''].filter(Boolean).join('; ')+'.',suppliers);
     offers.sort((a,b)=>a.price-b.price||(index.nurseries.get(a.nurseryId)?.name||'').localeCompare(index.nurseries.get(b.nurseryId)?.name||'')||a.id.localeCompare(b.id));
     const best=offers[0],supplier=index.nurseries.get(best.nurseryId)?.name||best.nurseryId;
     const ties=offers.filter(o=>o.price===best.price),names=[...new Set(ties.map(o=>index.nurseries.get(o.nurseryId)?.name||o.nurseryId))];
     let message='Najniža evidentirana cena za tražene parametre.';
     if(best.priceKind==='historical'||!best.priceRefresh?.checkedAt)message+=' Cena iz arhive; aktuelan lager nije potvrđen.';
-    if(tax.has('unspecified'))message+=' PDV nije naveden u izvoru.';
+    
     if(names.length>1)message+=' Ista cena: '+names.join(', ')+'.';
-    if(best.unit)message+=' Jedinica cene: '+best.unit+'.';if(best.taxStatus&&taxGroup(best.taxStatus)!=='unspecified')message+=' '+best.taxStatus+'.';
+    if(best.unit)message+=' Jedinica cene: '+best.unit+'.';
     return {status:'matched',recognized:true,offerId:best.id,plantId:found.id,price:best.price,currency,supplier,suppliers,message,
       values:[supplierText(suppliers),supplier,best.price,parameters(best),dateValue(best),message]};
   }
@@ -370,7 +370,7 @@
         '; izvor: '+(o.source||o.id)+(dateValue(o)?'; datum: '+dateValue(o):'');
     });
     const message='Biljka je prepoznata u indeksu. Postoje arhivski zapisi, ali nema potvrđene uporedive ponude za tražene parametre. '+reason+
-      ' Arhivske cene nisu preporučene nabavne cene; proveriti specifikaciju, dostupnost i PDV.';
+      ' Arhivske cene nisu preporučene nabavne cene; proveriti specifikaciju i dostupnost.';
     const suppliers=archived.map(o=>({
       name:(index.nurseries.get(o.nurseryId)?.name||o.nurseryId)+' · ARHIVA',
       price:euroPrice(o),nurseryId:o.nurseryId,offerIds:[o.id],
@@ -568,7 +568,7 @@
         // Use a dedicated name cell only when it contains a botanical name
         // and not a combined description. Keep an unknown cultivar intact.
         const cell=row.find(v=>botanical.test(v)&&!notName.test(v)&&v.search(boundary)<0);
-        if(cell&&row.filter(Boolean).length>1){
+        if(cell&&row.filter(Boolean).length>1&&norm(cell)===norm(name)){
           name=cell;
           spec=row.slice(row.indexOf(cell)+1).filter(Boolean).join(' ');
         }

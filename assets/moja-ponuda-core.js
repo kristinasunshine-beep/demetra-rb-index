@@ -32,16 +32,18 @@
   function normalizeMeta(value) {
     const result = defaultMeta();
     if (plain(value)) for (const key of Object.keys(result)) {
-      if (typeof value[key] === 'string') result[key] = text(value[key], key === 'note' ? 4000 : 500);
+      if (typeof value[key] === 'string') result[key] = key === 'note' ? cleanNote(text(value[key],4000)) : text(value[key],500);
     }
     return result;
   }
+  const taxText = value => /\b(?:pdv|vat|mwst|btw|iva)\b|porez na dodatu vrednost/i.test(String(value??''));
+  const cleanNote = value => String(value??'').split(/(?<=[.!?;·])\s+|\r?\n/).filter(part=>!taxText(part)).join('\n').trim();
   function pairs(value) {
     if (!Array.isArray(value) || value.length > 150) throw new Error('Neispravni parametri stavke.');
     return value.map(pair => {
       if (!Array.isArray(pair) || pair.length !== 2) throw new Error('Neispravan parametar stavke.');
       return [text(pair[0], 200), typeof pair[1] === 'number' && Number.isFinite(pair[1]) ? pair[1] : text(pair[1])];
-    });
+    }).filter(([label,value])=>!taxText(label)&&!taxText(value));
   }
   function normalizeItem(value) {
     if (!plain(value) || !value.offerId || !value.plantId || !value.latinName) throw new Error('Neispravna stavka ponude.');
@@ -55,7 +57,7 @@
       sourcePrice: value.sourcePrice === null || value.sourcePrice === undefined ? null : Number(value.sourcePrice),
       parameters: pairs(value.parameters || []), details: pairs(value.details || []),
       quantity: text(value.quantity ?? '1', 40), price: text(value.price ?? value.sourcePrice ?? '', 40),
-      note: text(value.note, 4000), priceEdited: value.priceEdited === true
+      note: cleanNote(text(value.note, 4000)), priceEdited: value.priceEdited === true
     };
     if (!/^[A-Z]{3}$/.test(item.currency) || !/^[A-Z]{3}$/.test(item.sourcePriceCurrency)) throw new Error('Valuta stavke nije ispravna.');
     if (item.sourcePrice !== null && (!Number.isFinite(item.sourcePrice) || item.sourcePrice < 0)) {
@@ -143,11 +145,11 @@
   }
   function money(value, currency = 'EUR') { return new Intl.NumberFormat('sr-Latn-RS', { style: 'currency', currency }).format(value); }
   function compactParameters(item) {
-    const available = item.parameters.filter(([label, value]) => !/\b(?:PDV|VAT)\b/i.test(label+' '+value) && value !== '' && value !== null &&
+    const available = item.parameters.filter(([label, value]) => !taxText(label+' '+value) && value !== '' && value !== null &&
       !/^nije navedeno|^nepoznat/i.test(String(value)));
     const lines = available.length ? available.map(([label,value]) => `${label}: ${value}`) :
       ['Parametri nisu navedeni u katalogu.'];
-    const note=String(item.note||'').split('\n').filter(line=>!/\b(?:PDV|VAT)\b/i.test(line)).join('\n').trim();
+    const note=cleanNote(item.note);
     if (note) lines.push('Napomena: ' + note);
     return lines.join('\n');
   }

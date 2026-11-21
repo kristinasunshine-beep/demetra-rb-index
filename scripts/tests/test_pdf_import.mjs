@@ -19,3 +19,5 @@ test('PDF real text layout retains empty column positions',async()=>{
  assert.deepEqual(rows[2],['','','300–350']);
  assert.match(C.pdfPlantRows(rows,index)[1][1],/visina 300–350 cm/);
 });
+
+test('OCR split cultivar stays attached to botanical name',()=>{const rows=C.pdfPlantRows([["Acer campestre","'Elsrijk'"],["Standard;","visina","300-350","cm"]],index);assert.equal(C.recommendQuick(index,{name:rows[1][0],preferences:rows[1][1]}).status,'matched');});
