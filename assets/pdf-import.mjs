@@ -11,7 +11,7 @@ export function layoutRows(items,previous=null){
     if(!String(item.str??'').trim())continue;
     const x=item.x??item.transform?.[4],y=item.y??item.transform?.[5],width=item.width||0;
     if(!Number.isFinite(x)||!Number.isFinite(y))continue;
-    let line=lines.find(l=>Math.abs(l.y-y)<3);
+    let line=lines.find(l=>Math.abs(l.y-y)<6);
     if(!line){line={y,items:[]};lines.push(line);}line.items.push({str:item.str.trim(),x,width});
   }
   const rows=[];let columns=previous;
@@ -69,7 +69,7 @@ export async function extractPdfRows(bytes,{signal,onProgress=()=>{}}={}){
         await page.render({canvasContext:canvas.getContext('2d'),viewport}).promise;
         const recognized=await ocr.recognize(canvas,{}, {text:true,blocks:true});
         const words=(recognized.data.blocks||[]).flatMap(b=>(b.paragraphs||[]).flatMap(p=>(p.lines||[]).flatMap(l=>l.words||[])));
-        items=words.map(w=>({str:w.text,x:w.bbox.x0/2.5,y:(canvas.height-w.bbox.y1)/2.5,width:(w.bbox.x1-w.bbox.x0)/2.5}));
+        items=words.map(w=>({str:w.text,x:w.bbox.x0/2.5,y:(canvas.height-(w.bbox.y0+w.bbox.y1)/2)/2.5,width:(w.bbox.x1-w.bbox.x0)/2.5}));
         if(!items.length&&recognized.data.text?.trim())for(const line of recognized.data.text.split(/\r?\n/))if(line.trim())rows.push([line.trim()]);
         canvas.width=canvas.height=0;
       }
