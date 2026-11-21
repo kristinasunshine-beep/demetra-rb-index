@@ -30,3 +30,5 @@
 .recommend-plant-link:hover,.recommend-plant-link:focus-visible{color:#193d2c;text-decoration-thickness:2px}
 
 .recommend-plant-link,.recommend-plant-link:hover,.recommend-plant-link:focus-visible{color:inherit;text-decoration:none;overflow-wrap:normal;word-break:normal}.recommend-plant-link:hover{color:#e84d30}.recommend-table .candidate-note{color:#8a5429;font-size:10px}.recommend-table td:nth-child(3),.recommend-table td:nth-child(4){vertical-align:top}.recommend-table td:nth-child(4){white-space:nowrap}
+
+.recommend-plant-link{outline-offset:4px}.recommend-plant-link:focus-visible{outline:2px solid currentColor}
