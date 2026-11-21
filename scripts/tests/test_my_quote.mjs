@@ -98,7 +98,7 @@ const unitColumn = [...sheet.matchAll(/<col\b[^>]*\/>/g)].find(([tag])=>{
   return min<=7&&max>=7;
 })?.[0];
 assert(unitColumn,'Unit column G must be explicitly sized');
-assert(Number(unitColumn.match(/\bwidth="([\d.]+)"/)?.[1])>=14,'Unit width must fit full words instead of single letters');
+assert(Number(unitColumn.match(/\bwidth="([\d.]+)"/)?.[1])>=12,'Unit width must fit full words instead of single letters');
 
 const a4Columns = [...sheet.matchAll(/<col\b[^>]*\/>/g)].map(([tag]) => ({
   min: Number(tag.match(/\bmin="(\d+)"/)?.[1]),
@@ -107,20 +107,20 @@ const a4Columns = [...sheet.matchAll(/<col\b[^>]*\/>/g)].map(([tag]) => ({
   hidden: /\bhidden="1"/.test(tag)
 })).filter(col => col.min <= 10 && col.max >= 1 && !col.hidden);
 assert.equal(a4Columns.length,10,'All ten printable columns must have a specified A4 width');
-assert.deepEqual(a4Columns.map(col=>col.width),[4.5,13,13,18,18,20,14,9,14,16]);
-const printableA4MM = 297 - 2*0.25*25.4;
+assert.deepEqual(a4Columns.map(col=>col.width),[4.5,11,11,11,10,10,12,7,7,15]);
+const printableA4MM = 210 - 2*0.25*25.4;
 const approximateExcelWidthMM = a4Columns.reduce((sum,col)=>sum + col.width*7 + 5,0)*25.4/96;
 assert(approximateExcelWidthMM <= printableA4MM,
-  'The worksheet must be designed for physical landscape A4, not merely shrunk by print settings');
+  'The worksheet must be designed for physical portrait A4, not merely shrunk by print settings');
 assert(approximateExcelWidthMM > printableA4MM*0.94,
   'The visible table should occupy the printable A4 width instead of leaving a large empty margin');
 
 assert(sheet.includes('Jed.')||sheet.includes('Jed'), 'Original unit heading must remain unchanged');
 assert(sheet.includes('customHeight="1"'),'Rows must retain custom height for wrapped text');
-assert(sheet.includes('orientation="landscape"')&&sheet.includes('paperSize="9"'),'Excel must print on landscape A4');
+assert(sheet.includes('orientation="portrait"')&&sheet.includes('paperSize="9"'),'Excel must print on portrait A4');
 assert(sheet.includes('fitToWidth="1"')&&sheet.includes('fitToHeight="0"'),'Fit to one A4 page wide');
 assert(!sheet.includes('Valuta'),'No visible currency column');
-assert(sheet.includes('<mergeCell ref="B18:C18"')&&sheet.includes('<mergeCell ref="D19:E19"'),'Names and parameters must use their two-column areas');
+assert(sheet.includes('<mergeCell ref="B18:C18"')&&sheet.includes('<mergeCell ref="D19:F19"'),'Names and parameters must use their two-column areas');
 const totalStyle=Number(sheet.match(/<c r="J21" s="(\d+)"/)?.[1]);
 assert(Number.isInteger(totalStyle),'Total formula must have currency style');
 const styleXml=await zip.file('xl/styles.xml').async('string');
@@ -129,6 +129,9 @@ assert(workbook.includes('_xlnm.Print_Area')&&workbook.includes("'Moja ponuda'!$
   'A4 print area must end after totals, without the hidden currency column');
 
 const tableHeader=sheet.match(/<row\b[^>]*\br="18"[^>]*>[\s\S]*?<\/row>/)?.[0]||'';
+assert(!/<t[^>]*>(?:Rasadnik|Količina)<\/t>/.test(sheet),'Supplier and quantity excluded');
+assert(!/\bPDV\b/.test(sheet),'VAT text excluded');
+assert(sheet.includes('min="11" max="12" width="2" hidden="1"'),'Internal quantity and currency hidden');
 const firstPlant=sheet.match(/<row\b[^>]*\br="19"[^>]*>[\s\S]*?<\/row>/)?.[0]||'';
 assert(tableHeader.includes('Biljka')&&tableHeader.includes('Parametri sadnice'),
   'Plant table header must move to row 18.');
@@ -137,8 +140,8 @@ assert(firstPlant.includes('r="B19"') && firstPlant.includes(Core.xmlEscape(firs
 for(const number of [23,24]) assert(!sheet.includes('<row r="'+number+'"'),
   'No abandoned header rows or whitespace should remain after moving the table.');
 
-assert(sheet.includes('<f>ROUND(H19*I19,2)</f><v>37.5</v>'));
-assert(sheet.includes('<f>ROUND(H20*I20,2)</f><v>40</v>'));
+assert(sheet.includes('<f>ROUND(L19*H19,2)</f><v>37.5</v>'));
+assert(sheet.includes('<f>ROUND(L20*H20,2)</f><v>40</v>'));
 assert(sheet.includes('<f>SUM(J19:J20)</f><v>77.5</v>'));
 assert(sheet.includes('001234567')&&sheet.includes('00123456'));
 assert(sheet.includes('U Beogradu, 11.11.2026.'),'Date directly next to city');
@@ -153,7 +156,7 @@ for(const label of ['Investitor / kontakt:','Adresa:','Kontakt:','Matični broj:
 assert(sheet.includes('HYPERLINK')&&!sheet.includes('<f>HYPERLINK'));
 assert(sheet.includes(Core.xmlEscape(first.offerId))===false,'Technical offer IDs are not public workbook fields.');
 for(const item of quote.items)for(const [label,value] of item.parameters){
-  if(value!==''&&value!==null&&!/^nije navedeno|^nepoznat/i.test(String(value)))
+  if(value!==''&&value!==null&&!/\b(?:PDV|VAT)\b/i.test(label+' '+value)&&!/^nije navedeno|^nepoznat/i.test(String(value)))
     assert(sheet.includes(Core.xmlEscape(String(value))),label+' must survive in the main worksheet');
 }
 const longParameter='Dodatni podatak '.repeat(80)+'KRAJ';

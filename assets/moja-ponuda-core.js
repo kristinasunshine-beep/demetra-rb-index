@@ -143,13 +143,12 @@
   }
   function money(value, currency = 'EUR') { return new Intl.NumberFormat('sr-Latn-RS', { style: 'currency', currency }).format(value); }
   function compactParameters(item) {
-    const tax = item.details.find(([label])=>label==='PDV')?.[1] || 'Nije navedeno u izvornoj ponudi';
-    const available = item.parameters.filter(([, value]) => value !== '' && value !== null &&
+    const available = item.parameters.filter(([label, value]) => !/\b(?:PDV|VAT)\b/i.test(label+' '+value) && value !== '' && value !== null &&
       !/^nije navedeno|^nepoznat/i.test(String(value)));
     const lines = available.length ? available.map(([label,value]) => `${label}: ${value}`) :
       ['Parametri nisu navedeni u katalogu.'];
-    lines.push('PDV: ' + tax);
-    if (item.note) lines.push('Napomena: ' + item.note);
+    const note=String(item.note||'').split('\n').filter(line=>!/\b(?:PDV|VAT)\b/i.test(line)).join('\n').trim();
+    if (note) lines.push('Napomena: ' + note);
     return lines.join('\n');
   }
   const xmlEscape = value => String(value ?? '').replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/g, '').replace(/[&<>"']/g,
@@ -303,8 +302,8 @@
     if (!total.ready) throw new Error('Popunite ispravnu količinu i cenu za svaku stavku pre preuzimanja.');
     const zip = await Zip.loadAsync(template, { checkCRC32: true });
     let main = spreadsheetXml(await zip.file('xl/worksheets/sheet1.xml').async('string'));
-    // A–J uses the printable landscape width; keep the 10 pt body readable.
-    const tableWidths = [4.5, 13, 13, 18, 18, 20, 14, 9, 14, 16];
+    // Portrait A4: compact memorandum and six visible table fields.
+    const tableWidths = [4.5, 11, 11, 11, 10, 10, 12, 7, 7, 15];
     tableWidths.forEach((width, index) => {
       main = setColumnWidth(main, index + 1, width);
     });
@@ -333,22 +332,23 @@
     const totalStyles = await currencyTotalStyles(zip, total.totals, sumStyles[7]);
     const headerStyles = rowStyles(main, 22, allCols);
     main = compactQuoteHeader(main);
-    // Ten physical columns, eight semantic fields: name B:C, parameters D:E.
-    const tableColumns = ['A', 'B', 'D', 'F', 'G', 'H', 'I', 'J'];
-    const headers = ['R.br.', 'Biljka', 'Parametri sadnice', 'Rasadnik', 'Jed.', 'Količina', 'Cena', 'Iznos'];
+    // Quantity and currency remain internal, excluded from the printed document.
+    const tableColumns = ['A', 'B', 'D', 'G', 'H', 'J'];
+    const fieldStyles = [0,1,2,4,6,7];
+    const headers = ['R.br.', 'Biljka', 'Parametri sadnice', 'Jed.', 'Cena', 'Iznos'];
     main = main.replace(/<row\b[^>]*\br="18"[^>]*>[\s\S]*?<\/row>/,
       '<row r="18" ht="30" customHeight="1">' + headers.map((value, index) =>
-        cell(tableColumns[index] + '18', value, headerStyles[index])).join('') + '</row>');
+        cell(tableColumns[index] + '18', value, headerStyles[fieldStyles[index]])).join('') + '</row>');
     // Formal details share short lines. Empty input fields take no page space.
     const headerHeight = (values,widths,min=18) => {
       const lines = Math.max(...values.map((value,index)=>String(value??'').split('\n')
         .reduce((sum,part)=>sum+Math.max(1,Math.ceil(part.length/widths[index])),0)));
       return Math.min(400,Math.max(min,lines*12+4));
     };
-    const contactHeight = (left,right) => left || right ? headerHeight([left,right],[46,44]) : 0;
+    const contactHeight = (left,right) => left || right ? headerHeight([left,right],[37,40]) : 0;
     for (const [row,height] of [[1,4],[2,26],[3,26],
-      [4,headerHeight([fields.A4,fields.E4],[46,85])],
-      [5,Math.max(18,headerHeight([fields.A5],[46],32)-16)],[6,18],[7,0],[8,18],
+      [4,headerHeight([fields.A4,fields.E4],[37,61])],
+      [5,Math.max(18,headerHeight([fields.A5],[37],32)-16)],[6,headerHeight([fields.E6],[61])],[7,0],[8,18],
       [9,contactHeight(fields.A9,fields.G9)],[10,contactHeight(fields.A10,fields.G10)],
       [11,contactHeight('',fields.G11)],[12,contactHeight('',fields.G12)],
       [13,0],[14,0],[15,0],[16,22],
@@ -360,17 +360,16 @@
       const result = total.rows[index];
       // Excel caps a row at 409 pt. Continue long descriptions in visible
       // rows of the same table instead of clipping or shrinking the text.
-      const chunks = readableChunks(compactParameters(item), 26, 24);
+      const chunks = readableChunks(compactParameters(item), 29, 24);
       chunks.forEach((description, part) => {
         const number = nextRow++;
-        const values = part ? ['', '', description, '', '', '', '', ''] :
-          [index + 1, item.latinName, description, item.nursery, item.unit,
-            result.quantity.value, result.price.value, result.amount];
-        const height = lineHeight(values, [4, 25, 33, 19, 13, 8, 13, 15], 40);
+        const values = part ? ['', '', description, '', '', ''] :
+          [index + 1, item.latinName, description, item.unit,result.price.value,result.amount];
+        const height = lineHeight(values, [4, 21, 29, 12, 13, 15], 30);
         rows += '<row r="'+number+'" ht="'+height+'" customHeight="1">' +
-          values.map((value, column) => cell(tableColumns[column] + number, value, styles[column],
-            !part && column === 7 ? 'ROUND(H'+number+'*I'+number+',2)' : '')).join('') +
-          (!part ? cell('K'+number, item.currency, '4') : '') + '</row>';
+          values.map((value, column) => cell(tableColumns[column] + number, value, styles[fieldStyles[column]],
+            !part && column === 5 ? 'ROUND(L'+number+'*H'+number+',2)' : '')).join('') +
+          (!part ? cell('K'+number, item.currency, '4')+cell('L'+number,result.quantity.value,'4') : '') + '</row>';
       });
     });
     const lastData = nextRow - 1, lastRow = lastData + total.totals.length;
@@ -379,14 +378,19 @@
       const formula = total.totals.length === 1 ? 'SUM(J19:J'+lastData+')' :
         'SUMIF(K19:K'+lastData+',"'+subtotal.currency+'",J19:J'+lastData+')';
       rows += '<row r="'+sumRow+'" ht="30" customHeight="1">' +
-        cell('I'+sumRow, 'UKUPNO', sumStyles[6]) +
+        cell('H'+sumRow, 'UKUPNO', sumStyles[6]) +
         cell('J'+sumRow, subtotal.amount, totalStyles[subtotal.currency], formula) + '</row>';
     });
-    main = replaceRows(main, 19, rows, 'K', lastRow);
-    main = main.replace(/sqref="F23"/g, 'sqref="H19:H'+lastData+'"')
-      .replace(/sqref="G23"/g, 'sqref="I19:I'+lastData+'"');
+    main = replaceRows(main, 19, rows, 'L', lastRow);
+    main = main.replace(/sqref="F23"/g, 'sqref="L19:L'+lastData+'"')
+      .replace(/sqref="G23"/g, 'sqref="H19:H'+lastData+'"');
     main = configureA4(main, lastRow);
     zip.file('xl/worksheets/sheet1.xml', main);
+    let drawing=await zip.file('xl/drawings/drawing1.xml').async('string');
+    drawing=drawing.replace(/<xdr:ext cx="3048000" cy="471488"\s*\/>/,'<xdr:ext cx="2400000" cy="371250"/>');
+    drawing=drawing.replace(/<xdr:ext cx="3114675" cy="562928"\s*\/>/,'<xdr:ext cx="2700000" cy="487980"/>');
+    drawing=drawing.replace(/(<xdr:col>4<\/xdr:col><xdr:colOff>)0(<\/xdr:colOff>)/,(_,a,b)=>a+'1047750'+b);
+    zip.file('xl/drawings/drawing1.xml',drawing);
     let workbook = spreadsheetXml(await zip.file('xl/workbook.xml').async('string'));
     const calc = '<calcPr calcId="191029" fullCalcOnLoad="1" forceFullCalc="1" calcMode="auto"/>';
     workbook = /<calcPr\b/.test(workbook) ? workbook.replace(/<calcPr\b[^>]*\/>/, calc) : workbook.replace('</workbook>', calc + '</workbook>');
@@ -397,22 +401,23 @@
     return zip.generateAsync({ type: 'uint8array', compression: 'DEFLATE',
       mimeType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
   }
-  // A4 landscape keeps ten columns legible at the original font size.
+  // A4 portrait with hidden internal quantity and currency.
   function configureA4(xml, lastRow) {
     xml = xml.replace('</sheetPr>', '<pageSetUpPr fitToPage="1"/></sheetPr>');
     xml = xml.replace(/<pane\b[^>]*\/>/, '<pane ySplit="18" topLeftCell="A19" activePane="bottomLeft" state="frozen"/>');
-    xml = xml.replace('</cols>', '<col min="11" max="11" width="2" hidden="1" customWidth="1"/></cols>');
+    xml = xml.replace('</cols>', '<col min="11" max="12" width="2" hidden="1" customWidth="1"/></cols>');
     xml = xml.replace(/<mergeCells\b[^>]*>([\s\S]*?)<\/mergeCells>/, (_, body) => {
       const original = [...body.matchAll(/<mergeCell\b[^>]*\bref="[^"]+"[^>]*\/>/g)].map(m=>m[0])
         .map(tag=>tag.replace(/:I(\d+)"/, ':J$1"'));
       const additions = [];
-      for (let row=18; row<lastRow; row++) additions.push('B'+row+':C'+row,'D'+row+':E'+row);
+      for (let row=18; row<lastRow; row++) additions.push('B'+row+':C'+row,'D'+row+':F'+row,'H'+row+':I'+row);
+      additions.push('H'+lastRow+':I'+lastRow);
       return '<mergeCells count="'+(original.length+additions.length)+'">'+original.join('')+
         additions.map(ref=>'<mergeCell ref="'+ref+'"/>').join('')+'</mergeCells>';
     });
     xml = xml.replace(/<pageMargins\b[^>]*\/>/, '<pageMargins left="0.25" right="0.25" top="0.3" bottom="0.3" header="0.15" footer="0.15"/>');
     xml = xml.replace(/<pageSetup\b[^>]*\/>/g, '');
-    return xml.replace(/<drawing\b/, '<pageSetup paperSize="9" orientation="landscape" fitToWidth="1" fitToHeight="0"/><drawing');
+    return xml.replace(/<drawing\b/, '<pageSetup paperSize="9" orientation="portrait" fitToWidth="1" fitToHeight="0"/><drawing');
   }
   // Number format keeps the total as a recalculating number, with currency
   // displayed in that same cell, never as a separate visible table column.
