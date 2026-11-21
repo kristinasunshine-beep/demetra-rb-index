@@ -8,7 +8,7 @@ const OVERVIEW_HEADERS=[
   'Latinski naziv biljke',
   'Parametri iz tvoje tabele',
   'Spisak rasadnika',
-  'Najniža nabavna cena (€)',
+  'Nabavna cena (€)',
   'Rezultat',
   'Digitalna kartica'
 ];
@@ -36,7 +36,7 @@ function overviewStatus(result,supplier){
   return result.suppliers?.length?'Ponude · potrebna provera':'Nema potvrđene ponude';
 }
 function overviewItems(request,result){
-  const plant=request.cultivar&&!Core.norm(request.name).endsWith(' '+Core.norm(request.cultivar))?request.name+' '+request.cultivar:request.name;
+  const plant=result.canonicalName||(request.cultivar&&!Core.norm(request.name).endsWith(' '+Core.norm(request.cultivar))?request.name+' '+request.cultivar:request.name);
   const params=(result.requestedParameters||[]).map(p=>p.label+': '+p.value).join(' · ')||conciseParameters(request);
   // An archival source is not an eligible procurement recommendation.
   const suppliers=result.suppliers?.length?result.suppliers:[null];
