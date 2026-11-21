@@ -510,27 +510,34 @@
   function pdfPlantRows(lines,index){
     const rows=Array.isArray(lines)?lines:[];
     const header=detectHeader(rows,index);
-    if(header.hasHeader&&Object.keys(header.map).length>=2)
-      return rows;
-    const known=new Map([...index.names].filter(([,ids])=>ids.size===1));
+    if(header.hasHeader&&Object.keys(header.map).length>=2)return rows;
     const starts=[];let current=null;
     for(const row of rows){
-      const text=(Array.isArray(row)?row:[row]).map(v=>String(v??'')).join(' ').trim();
+      const cells=(Array.isArray(row)?row:[row]).map(v=>String(v??'').trim()).filter(Boolean);
+      const text=cells.join(' ').trim();
       if(!text)continue;
-      const tokens=[...text.matchAll(/[\p{L}\p{N}]+/gu)];
-      let hit=null;
-      for(let i=0;i<Math.min(tokens.length,10)&&!hit;i++){
-        for(let n=Math.min(12,tokens.length-i);n>=2;n--){
-          const key=norm(text.slice(tokens[i].index,tokens[i+n-1].index+tokens[i+n-1][0].length));
-          if(!known.has(key))continue;
-          const suffix=text.slice(tokens[i+n-1].index+tokens[i+n-1][0].length).trim();
-          // Do not silently replace an unknown quoted cultivar with its species.
-          if(/^['‘’"]\s*[\p{L}]/u.test(suffix)&&n===2)continue;
-          hit={id:[...known.get(key)][0],suffix};break;
+      // Keep the complete botanical name, including an unknown cultivar.
+      // Split only at a recognizable planting parameter, not at a species prefix.
+      const start=text.match(/(?:^|\s)([\p{Lu}][\p{Ll}]{2,}\s+(?:[×x]\s+)?[\p{Ll}][\p{Ll}-]{2,})/u);
+      if(start&&!/^(?:Tip sadnice|Visina sadnice|Obim sadnice|Širina krošnje|Latinski naziv|Naziv biljke|Broj presađivanja|Način isporuke)(?:\b|$)/i.test(start[1])){
+        const tail=text.slice(start.index+(start[0].length-start[1].length));
+        // A known full name may include digits in its cultivar: test full
+        // cells first, then detect the boundary with labelled specifications.
+        let name='',spec='';
+        const fieldAt=tail.search(/\s+(?:(?:[;,]\s*)?(?:standard|std|multistem|multi[- ]stem|visin[ae]|height|obim|opseg|girth|circumference|saksija|pot|clt|container|kontejner\w*|kontejnirano|wrb|h\s*[:=]?\s*\d|c\s*[:=]?\s*\d|širina\s+krošnje)\b|\d+(?:[.,]\d+)?\s*[-/]\s*\d)/i);
+        if(fieldAt>=0){name=tail.slice(0,fieldAt).replace(/[;,:\s]+$/,'');spec=tail.slice(fieldAt).trim();}
+        else{name=tail.replace(/[;,:\s]+$/,'');}
+        // Handle actual segmented table cells; preserve unmatched names.
+        const cell=cells.find(v=>/^[\p{Lu}][\p{Ll}]{2,}\s+(?:[×x]\s+)?[\p{Ll}][\p{Ll}-]{2,}/u.test(v));
+        if(cell&&cells.length>1&&!looksLikePlantRequirement(cell)&&!/\s\d/.test(cell)){
+          name=cell;spec=cells.slice(cells.indexOf(cell)+1).join(' ');
         }
-      }
-      if(hit){
-        current=[index.plants.get(hit.id).latinName,hit.suffix];
+        // An explicitly declared form followed by a bare CM measure has a
+        // known primary dimension; do not infer a dimension from a price or quantity.
+        spec=spec.replace(/\b(standard|std|multistem|multi[- ]stem)\s*[:;,]?\s*(\d+(?:[.,]\d+)?(?:\s*[-–—/]\s*\d+(?:[.,]\d+)?)?\s*(?:cm|mm|m))\b/gi,
+          (_,type,measure)=>type+'; '+(/^(?:standard|std)$/i.test(type)?'visina ':'obim ')+measure);
+        const found=findPlant(index,name);
+        current=[found.id?index.plants.get(found.id).latinName:name,spec];
         starts.push(current);
       }else if(current&&looksLikePlantRequirement(text))current[1]+='; '+text;
     }
