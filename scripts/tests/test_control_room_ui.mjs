@@ -61,9 +61,9 @@ test('The opening sidebar shows only its three workspaces; Back and Home remain 
   assert(sidebar.includes('Pretraga') && sidebar.includes('Brza preporuka') && sidebar.includes('Moja ponuda'));
   assert(html.includes('window.DemetraNavigation={back:navigateBack,home:navigateHome,openPlant:navigateToCard}'));
   assert(!html.includes('data-action="record-back"'), 'Plant card must not duplicate the close action');
-  assert(html.includes('data-action="record-home"') && html.includes('data-action="close-record"'));
-  assert(quote.includes('data-quote-action="back"') && quote.includes('data-quote-action="home"'));
-  assert(rec.includes('id="recommend-back"') && rec.includes('id="recommend-home"'));
+  assert(!html.includes('data-action="record-home"') && html.includes('data-action="close-record"'));
+  assert(!quote.includes('data-quote-action="back"') && !quote.includes('data-quote-action="home"'));
+  assert(!rec.includes('id="recommend-back"') && !rec.includes('id="recommend-home"'));
 });
 
 test('Navigation and quick recommendation omit unwanted decorative arrows',async()=>{
@@ -79,3 +79,5 @@ test('Navigation and quick recommendation omit unwanted decorative arrows',async
   assert.doesNotMatch(room,/\.recommend-emblem/);
   assert.match(room,/body\.control-room \.recommend-titlebar\{grid-template-columns:minmax\(0,1fr\)\}/);
 });
+
+test('Variant selector keeps approved dark green with white text',async()=>{const style=await read('assets/control-room.css');assert.match(style,/supplier-variants > summary\{background:#203E2D!important;color:#FFFFFF!important/);assert.doesNotMatch(style,/supplier-variants>summary\{background:#FA593B/);});
