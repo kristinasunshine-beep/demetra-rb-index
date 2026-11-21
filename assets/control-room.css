@@ -514,3 +514,8 @@ body.control-room .header-actions :is(a,button)[aria-expanded="true"] > .nav-num
     white-space:nowrap;
   }
 }
+
+/* R7: prominent variant toggle and compact mobile record toolbar */
+body.control-room .supplier-variants>summary{background:#FA593B;color:#161A19;font-weight:700}
+body.control-room .supplier-variants>summary:hover{background:#E84D30;color:#161A19}
+@media(max-width:760px){body.control-room .detail-topline{display:flex;align-items:center;justify-content:flex-end;gap:8px;min-height:0}body.control-room .detail-topline .dialog-topline-label,body.control-room .detail-topline [data-action="record-back"],body.control-room .detail-topline [data-action="record-home"]{display:none!important}body.control-room .detail-topline-actions{flex:0 1 auto;min-width:0;flex-wrap:nowrap;gap:8px}body.control-room .detail-hero h2{word-break:normal;overflow-wrap:normal;white-space:normal}}
