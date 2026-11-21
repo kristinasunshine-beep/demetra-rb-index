@@ -70,6 +70,15 @@ jobs:
             cp "$model" "$V/lang/"
           done
 
+      - name: Testiraj PDF tekst i skenirani dokument u Chromiumu
+        run: |
+          node --test scripts/tests/test_pdf_import.mjs
+          python -m pip install --quiet reportlab pillow
+          python scripts/tests/build_pdf_fixtures.py
+          npm install --prefix "$RUNNER_TEMP/demetra-browser" --no-save --no-package-lock playwright@1.51.1
+          "$RUNNER_TEMP/demetra-browser/node_modules/.bin/playwright" install --with-deps chromium
+          PDF_PLAYWRIGHT_PATH="$RUNNER_TEMP/demetra-browser/node_modules/playwright" node scripts/tests/test_pdf_browser.mjs
+
       - name: Proveri katalog i povezane fajlove
         run: |
           node scripts/currency-normalization.mjs --repo . --check
