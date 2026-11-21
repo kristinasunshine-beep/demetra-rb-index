@@ -132,6 +132,11 @@
     let s=String(value??'').trim().replace(/[–—−]/g,'-');const fields={},conflicts=[];
     const take=(key,re,transform=x=>x)=>{s=s.replace(re,(whole,v)=>{const next=transform(v||whole);if(fields[key]&&!sameRequirement(key,fields[key],next))conflicts.push(key);else fields[key]=next;return ' ';});};
     const amount='((?:>=|<=|≥|≤|>|<|min\\.?|max\\.?)?\\s*\\d+(?:[.,]\\d+)?\\s*(?:[-/]\\s*\\d+(?:[.,]\\d+)?)?\\s*(?:litara|litres|litre|ltr|lt|cm|mm|m|l)?\\s*\\+?)';
+    // More specific labels must be consumed before generic height/pot labels.
+    take('clearStemHeight',new RegExp('(?:visina do krošnje|visina do krosnje|visina čistog debla|visina cistog debla|clear stem height)\\s*[:=]?\\s*'+amount,'gi'));
+    take('potDiameter',new RegExp('(?:prečnik saksije|precnik saksije|promjer posude|pot diameter)\\s*[:=]?\\s*'+amount,'gi'));
+    take('stemDiameter',new RegExp('(?:prečnik sadnice|precnik sadnice|prečnik debla|precnik debla|stem diameter)\\s*[:=]?\\s*'+amount,'gi'));
+    take('rootBall',new RegExp('(?:veličina busena|velicina busena|busen|root ball|rootball)\\s*[:=]?\\s*'+amount,'gi'));
     take('height',new RegExp('(?:\\bheight|\\bvisin[ae](?:\\s+(?:sadnice|biljke|stabla))?|\\bh)\\s*[:=]?\\s*'+amount,'gi'));
     take('circumference',new RegExp('(?:\\b(?:obim|opseg)(?:\\s+(?:sadnice|stabla|debla))?|\\bgirth|\\bcircumference)\\s*[:=]?\\s*'+amount,'gi'));
     take('crownWidth',new RegExp('(?:sirina krosnje|širina krošnje|crown width)\\s*[:=]?\\s*'+amount,'gi'));
@@ -507,41 +512,72 @@
   function parametersForCandidate(offer){return parameters(offer);}
   // PDF rows: reconstruct table cells when headings are readable, otherwise
   // use the original text lines and a known botanical name as a record anchor.
+  // PDF rows contain original text cells in reading order, with blank
+  // cells retained where a table header defined physical column positions.
   function pdfPlantRows(lines,index){
-    const rows=Array.isArray(lines)?lines:[];
-    const header=detectHeader(rows,index);
-    if(header.hasHeader&&Object.keys(header.map).length>=2)return rows;
-    const starts=[];let current=null;
-    for(const row of rows){
-      const cells=(Array.isArray(row)?row:[row]).map(v=>String(v??'').trim()).filter(Boolean);
-      const text=cells.join(' ').trim();
-      if(!text)continue;
-      // Keep the complete botanical name, including an unknown cultivar.
-      // Split only at a recognizable planting parameter, not at a species prefix.
-      const start=text.match(/(?:^|\s)([\p{Lu}][\p{Ll}]{2,}\s+(?:[×x]\s+)?[\p{Ll}][\p{Ll}-]{2,})/u);
-      if(start&&!/^(?:Tip sadnice|Visina sadnice|Obim sadnice|Širina krošnje|Latinski naziv|Naziv biljke|Broj presađivanja|Način isporuke)(?:\b|$)/i.test(start[1])){
-        const tail=text.slice(start.index+(start[0].length-start[1].length));
-        // A known full name may include digits in its cultivar: test full
-        // cells first, then detect the boundary with labelled specifications.
-        let name='',spec='';
-        const fieldAt=tail.search(/\s+(?:(?:[;,]\s*)?(?:standard|std|multistem|multi[- ]stem|visin[ae]|height|obim|opseg|girth|circumference|saksija|pot|clt|container|kontejner\w*|kontejnirano|wrb|h\s*[:=]?\s*\d|c\s*[:=]?\s*\d|širina\s+krošnje)\b|\d+(?:[.,]\d+)?\s*[-/]\s*\d)/i);
-        if(fieldAt>=0){name=tail.slice(0,fieldAt).replace(/[;,:\s]+$/,'');spec=tail.slice(fieldAt).trim();}
-        else{name=tail.replace(/[;,:\s]+$/,'');}
-        // Handle actual segmented table cells; preserve unmatched names.
-        const cell=cells.find(v=>/^[\p{Lu}][\p{Ll}]{2,}\s+(?:[×x]\s+)?[\p{Ll}][\p{Ll}-]{2,}/u.test(v));
-        if(cell&&cells.length>1&&!looksLikePlantRequirement(cell)&&!/\s\d/.test(cell)){
-          name=cell;spec=cells.slice(cells.indexOf(cell)+1).join(' ');
-        }
-        // An explicitly declared form followed by a bare CM measure has a
-        // known primary dimension; do not infer a dimension from a price or quantity.
-        spec=spec.replace(/\b(standard|std|multistem|multi[- ]stem)\s*[:;,]?\s*(\d+(?:[.,]\d+)?(?:\s*[-–—/]\s*\d+(?:[.,]\d+)?)?\s*(?:cm|mm|m))\b/gi,
-          (_,type,measure)=>type+'; '+(/^(?:standard|std)$/i.test(type)?'visina ':'obim ')+measure);
-        const found=findPlant(index,name);
-        current=[found.id?index.plants.get(found.id).latinName:name,spec];
-        starts.push(current);
-      }else if(current&&looksLikePlantRequirement(text))current[1]+='; '+text;
+    const input=Array.isArray(lines)?lines:[];
+    const result=[['Latinski naziv','Parametri sadnice','Kultivar','Izvorni opis stavke']];
+    let current=null, columns=null;
+    const boundary=/\s+(?:(?:[;,]\s*)?(?:standard|std|multistem|multi[- ]stem|visin[ae]|height|obim|opseg|girth|circumference|saksija|pot|clt|container|kontejner\w*|kontejnirano|wrb|busen|širina\s+krošnje|sirina\s+krosnje|prečnik|precnik|presađivanja|presadjivanja|h\s*[:=]?\s*\d|c\s*[:=]?\s*\d)\b|\d+(?:[.,]\d+)?\s*[-/]\s*\d)/i;
+    const botanical=/^[\p{Lu}][\p{Ll}]{2,}\s+(?:[×x]\s+)?[\p{Ll}][\p{Ll}-]{2,}/u;
+    const notName=/^(?:standard|std|multistem|multi stem|visin[ae]|height|obim|opseg|girth|circumference|saksija|pot|clt|container|kontejner\w*|wrb|busen|sirina|prečnik|precnik|presadjivanja|presađivanja|tip|naziv|latinski|botanicki|botanički|broj|nacin|način|izvorni|ukupno|napomena|sadni materijal|ponuda|strana|stranica|radovi|drvece|drveće|zbunje|žbunje)\b/i;
+    const clean=v=>String(v??'').trim();
+    const explicitMeasure=spec=>spec.replace(/\b(standard|std|multistem|multi[- ]stem)\s*[:;,]?\s*(\d+(?:[.,]\d+)?(?:\s*[-–—/]\s*\d+(?:[.,]\d+)?)?\s*(?:cm|mm|m))\b/gi,(_,type,measure)=>type+'; '+(/^(?:standard|std)$/i.test(type)?'visina ':'obim ')+measure);
+    const labels={seedlingType:'tip sadnice',height:'visina',circumference:'obim',crownWidth:'širina krošnje',potSize:'saksija',rootType:'način isporuke',transplantCount:'broj presađivanja',rootBall:'busen',stemDiameter:'prečnik sadnice',potDiameter:'prečnik saksije',clearStemHeight:'visina do krošnje'};
+    function header(row){
+      const keys=row.map(headerField);
+      return keys.includes('name')&&keys.some(k=>k&&k!=='name')?row.slice():null;
     }
-    return [['Latinski naziv','Parametri sadnice'],...starts];
+    function append(name,spec,cv='',raw=''){
+      const found=findPlant(index,name,cv);
+      current=[found.id?index.plants.get(found.id).latinName:name,explicitMeasure(spec),found.id?'':cv,raw];
+      result.push(current);
+    }
+    function addContinuation(text,raw){
+      if(!current||!text)return;
+      current[1]=[current[1],explicitMeasure(text)].filter(Boolean).join('; ');
+      current[3]=[current[3],raw].filter(Boolean).join('\n');
+    }
+    for(const entry of input){
+      const row=(Array.isArray(entry)?entry:[entry]).map(clean);
+      const text=row.filter(Boolean).join(' ');
+      if(!text)continue;
+      const hdr=header(row);
+      if(hdr){columns=hdr;continue;}
+      if(columns&&row.length===columns.length){
+        const map=headerMap(columns);
+        const req=requestFromRow(row,map,columns);
+        const spec=[];
+        for(const [key,label] of Object.entries(labels)){
+          const val=clean(req[key]);if(!val)continue;
+          spec.push(key==='seedlingType'||key==='rootType'?val:key==='transplantCount'?val+'x presađivano':label+' '+val);
+        }
+        for(const key of ['preferences','sourceDescription'])if(req[key])spec.push(clean(req[key]));
+        if(req.name&&!notName.test(req.name)){
+          append(clean(req.name),spec.join('; '),clean(req.cultivar),text);
+          continue;
+        }
+        if(!req.name&&spec.length){addContinuation(spec.join('; '),text);continue;}
+      }
+      const first=text.replace(/^\s*(?:\d+(?:[.\-/]\d+)*[.)]?\s+)?/,'').trim();
+      const hit=botanical.test(first)&&!notName.test(first);
+      if(hit){
+        const split=first.search(boundary);
+        let name=split<0?first:first.slice(0,split).replace(/[;,:\s]+$/,'');
+        let spec=split<0?'':first.slice(split).trim();
+        // Use a dedicated name cell only when it contains a botanical name
+        // and not a combined description. Keep an unknown cultivar intact.
+        const cell=row.find(v=>botanical.test(v)&&!notName.test(v)&&v.search(boundary)<0);
+        if(cell&&row.filter(Boolean).length>1){
+          name=cell;
+          spec=row.slice(row.indexOf(cell)+1).filter(Boolean).join(' ');
+        }
+        append(name,spec,'',text);
+      }else if(current&&looksLikePlantRequirement(text)){
+        addContinuation(text,text);
+      }
+    }
+    return result;
   }
   function supplierList(index,offers){const groups=new Map();for(const offer of offers){if(!groups.has(offer.nurseryId))groups.set(offer.nurseryId,[]);groups.get(offer.nurseryId).push(offer);}return [...groups].map(([nurseryId,rows])=>{const prices=rows.filter(o=>euroPrice(o)!==null&&o.price>0).map(o=>o.price);return {nurseryId,name:index.nurseries.get(nurseryId)?.name||nurseryId,price:prices.length?Math.min(...prices):null,currency:'EUR',offerIds:rows.map(o=>o.id)};}).sort((a,b)=>(a.price??Infinity)-(b.price??Infinity)||a.name.localeCompare(b.name));}
   function supplierText(suppliers){return suppliers.map(s=>s.name+' — '+(s.price===null?'cena u EUR nije navedena':s.price.toLocaleString('sr-Latn-RS',{minimumFractionDigits:2,maximumFractionDigits:2})+' €')).join('\n');}
