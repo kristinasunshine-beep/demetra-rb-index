@@ -450,7 +450,12 @@
   }
   function recommendQuick(index,input,options={}){
     const found=findPlant(index,input.name,input.cultivar);
-    const parameters=requestedParameters(index,input);
+    const parameters=requestedParameters(index,input).filter(p=>{
+      const val=String(p.value??'').trim();
+      if(!val||/^(?:nije|nepoznat|unknown|unspecified|n a|none|-)$/i.test(norm(val))||/^(?:nije navedeno|nepoznat)/i.test(val))return false;
+      if(MEASURES.includes(p.key))return Boolean(parseMeasure(val,p.key)?.valid);
+      return true;
+    });
     if(!found.id)return {...recommendQuickExact(index,input,options),requestedParameters:parameters};
     const original=index.byPlant.get(found.id)||[];
     const today=options.today||new Date().toISOString().slice(0,10);
@@ -459,53 +464,45 @@
     const narrowed={...index,byPlant:new Map(index.byPlant)};
     narrowed.byPlant.set(found.id,available);
     const exact=recommendQuickExact(narrowed,input,options);
-    const formParam=parameters.find(p=>p.key==='seedlingType');
-    const kind=form(formParam?.value);
-    const primary=kind==='standard'?'height':kind==='multistem'?'circumference':'';
     const compare=(offer,param)=>{
       const supplied=offeredValue(offer,param.key)||(param.key==='seedlingType'?offer.seedlingTypeCode:'');
-      if(!String(supplied??'').trim())return 'unknown';
-      if(!String(param.value??'').trim())return 'unknown';
-      if(param.key==='seedlingType')return form(supplied)===form(param.value)?'match':'different';
+      if(!String(supplied??'').trim()||/^(?:nije navedeno|nepoznat|unknown|unspecified)/i.test(String(supplied)))return 'unknown';
       return sameRequirement(param.key,param.value,supplied)?'match':'different';
     };
-    const rank=offer=>{
+    // Equal weight per distinct, genuinely supplied botanical parameter.
+    // Never substitute another taxon or pool parameters from different variants.
+    const ranked=available.map(offer=>{
       const evaluated=parameters.map(p=>({...p,result:compare(offer,p)}));
-      const critical=evaluated.filter(p=>p.key==='seedlingType'||p.key===primary);
-      // Rank dimensions and form before price. Non-identical specifications
-      // are potential candidates only and are never treated as confirmed.
-      const score=critical.reduce((total,p)=>total+(p.result==='match'?20:p.result==='different'?-20:0),0)+
-        evaluated.filter(p=>p.result==='match').length;
-      return {offer,score,evaluated};
-    };
-    const ranked=available.map(rank).sort((a,b)=>b.score-a.score||a.offer.price-b.offer.price);
-    const groups=new Map();
-    for(const item of ranked){
-      if(!groups.has(item.offer.nurseryId))groups.set(item.offer.nurseryId,item);
-    }
-    const candidates=[...groups.values()].map(({offer,evaluated})=>({
+      return {offer,evaluated,count:evaluated.filter(p=>p.result==='match').length};
+    }).filter(r=>r.count>=1).sort((a,b)=>b.count-a.count||euroPrice(a.offer)-euroPrice(b.offer)||
+      String(a.offer.nurseryId).localeCompare(String(b.offer.nurseryId))||String(a.offer.id).localeCompare(String(b.offer.id)));
+    const exactIds=new Set(exact.status==='matched'?exact.suppliers.flatMap(s=>s.offerIds||[]):[]);
+    const candidates=ranked.map(({offer,evaluated,count})=>({
       nurseryId:offer.nurseryId,name:index.nurseries.get(offer.nurseryId)?.name||offer.nurseryId,
       price:euroPrice(offer),currency:'EUR',offerIds:[offer.id],
+      matchCount:count,requestedCount:parameters.length,
       matchedParameters:evaluated.filter(p=>p.result==='match').map(p=>p.label),
       differentParameters:evaluated.filter(p=>p.result==='different').map(p=>p.label),
+      unknownParameters:evaluated.filter(p=>p.result==='unknown').map(p=>p.label),
       offeredParameters:parametersForCandidate(offer),
       historical:offer.priceKind==='historical'||!offer.priceRefresh?.checkedAt,
-      candidate:true
+      candidate:!(exactIds.has(offer.id)&&count===parameters.length)
     }));
     const result={...exact,plantId:found.id,requestedParameters:parameters,
-      canonicalName:index.plants.get(found.id)?.latinName||input.name};
-    if(exact.status==='matched'){
-      const exactIds=new Set(exact.suppliers.flatMap(o=>o.offerIds||[]));
-      result.suppliers=exact.suppliers.map(s=>{
-        const offer=ranked.find(r=>exactIds.has(r.offer.id)&&r.offer.nurseryId===s.nurseryId&&r.offer.price===s.price);
-        return {...s,historical:offer?offer.offer.priceKind==='historical'||!offer.offer.priceRefresh?.checkedAt:false};
-      });
-    }
-    if(exact.status!=='matched'){
-      result.suppliers=candidates;
-      result.values=[candidates.map(c=>c.name+' — '+c.price.toFixed(2)+' € · kandidat'+(c.historical?' · arhivska/evidentirana cena':'')+'; '+c.offeredParameters).join('\n'),
-        '','','','',exact.message];
-      if(candidates.length)result.message=exact.message+' Prikazani su potencijalni kandidati; potrebno je proveriti specifikaciju.';
+      canonicalName:index.plants.get(found.id)?.latinName||input.name,suppliers:candidates};
+    const top=candidates[0],confirmed=candidates.find(s=>!s.candidate);
+    const summary=candidates.map(s=>s.name+' — '+s.price.toFixed(2)+' € · '+s.matchCount+'/'+s.requestedCount+' parametara'+(s.historical?' · proveriti aktuelnost':'')+'; '+s.offeredParameters).join('\n');
+    if(confirmed){
+      const best=ranked.find(r=>r.offer.id===confirmed.offerIds[0]).offer;
+      result.status='matched';result.price=confirmed.price;result.supplier=confirmed.name;result.offerId=best.id;
+      result.message='Potpuno podudaranje. Ponude su rangirane prema broju poklopljenih parametara, zatim prema ceni.';
+      result.values=[summary,confirmed.name,confirmed.price,parametersForCandidate(best),dateValue(best),result.message];
+    }else{
+      result.status=exact.status==='needs_data'?'needs_data':'unmatched';
+      result.price=null;result.supplier=null;result.offerId=null;
+      result.message=top?'Potencijalni kandidati: rangirano po broju poklopljenih parametara, zatim po ceni.':'Nema ponude sa najmanje jednim poklopljenim parametrom. '+exact.message;
+      if(input._validationError)result.message=input._validationError+' '+result.message;
+      result.values=[summary,'','','','',result.message];
     }
     return result;
   }

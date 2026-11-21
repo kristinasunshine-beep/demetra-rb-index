@@ -79,7 +79,7 @@ test('one upload processes every input row and preserves the notes sheet',async(
   const input=workbook([['Sadnice',rows],['Napomena',notes]]),instance=worker();
   const result=await instance.process(input);
   assert.equal(result.processed,count);assert.equal(result.matched,count-1);assert.equal(result.unmatched,0);assert.equal(result.notFound,1);
-  assert.equal(result.preview.length,40,'Preview limit must not limit processing or export');
+  assert.equal(result.preview.length,count,'All input rows must be available through paginated review');
   const output=await instance.download(),book=XLSX.read(output,{type:'array'});
   assert.deepEqual(book.SheetNames,['Pregled preporuke','Sadnice','Napomena']);
   const glance=XLSX.utils.sheet_to_json(book.Sheets['Pregled preporuke'],{header:1,defval:''});
@@ -152,8 +152,29 @@ test('Plant specifications sheet drives procurement search instead of duplicated
   assert.match(overview[1][1],/Visina sadnice: 300\/350 cm/);
   const candidate=overview.find(row=>String(row[1]).includes('400cm'));
   assert.ok(candidate);
-  assert.equal(candidate[2],'Rasadnik A');
-  assert.equal(candidate[3],65);
-  assert.match(candidate[4],/Potencijalni kandidat/);
+  assert.equal(candidate[2],'—');
+  assert.equal(candidate[3],'');
+  assert.match(candidate[4],/Nedostaju|proveriti/);
   assert.deepEqual(XLSX.utils.sheet_to_json(book.Sheets.Kalkulacija,{header:1,defval:''}),calc);
+});
+
+test('rank by number of matching botanical fields, then by price; keep all eligible variants',()=>{
+  const C=require(resolve(assets,'brza-preporuka-core.js'));
+  const req={name:plant,seedlingType:'standard',height:'300-350',potSize:'50 L'};
+  const base={plantId:'p1',nurseryId:'n1',currency:'EUR',unit:'kom',seedlingType:'standard',height:'300-350',potSize:'50 L'};
+  const offers=[
+    {...base,id:'full-expensive',price:120},
+    {...base,id:'two-cheap',price:20,potSize:'70 L'},
+    {...base,id:'two-next',price:30,height:'400-450'},
+    {...base,id:'one',price:5,height:'500-550',potSize:'90 L'},
+    {...base,id:'zero',price:2,seedlingType:'multistem',height:'500-550',potSize:'90 L'},
+    {...base,id:'full-placeholder',price:1,nurseryId:'n2'},
+    {...base,id:'other-plant',plantId:'other',price:3}
+  ];
+  const idx=C.makeIndex({...catalog,plants:[...catalog.plants,{id:'other',latinName:'Tilia cordata'}],offers});
+  const r=C.recommendQuick(idx,req);
+  assert.deepEqual(r.suppliers.map(s=>[s.offerIds[0],s.matchCount,s.price]),[['full-expensive',3,120],['two-cheap',2,20],['two-next',2,30],['one',1,5]]);
+  assert.equal(r.suppliers[0].candidate,false);assert(r.suppliers.slice(1).every(s=>s.candidate));assert.equal(r.price,120);
+  assert.equal(C.recommendQuick(idx,{name:plant}).suppliers.length,0);
+  assert.equal(C.recommendQuick(idx,{name:plant,height:'999'}).suppliers.length,0);
 });

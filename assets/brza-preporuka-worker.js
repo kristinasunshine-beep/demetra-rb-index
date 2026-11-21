@@ -1,5 +1,5 @@
 'use strict';
-importScripts('vendor/xlsx-0.20.3.full.min.js','vendor/jszip-3.10.1.min.js','brza-preporuka-core.js?v=no-tax-r1-20261121','recommendation-excel.js?v=portrait-export-r2-20261121');
+importScripts('vendor/xlsx-0.20.3.full.min.js','vendor/jszip-3.10.1.min.js','brza-preporuka-core.js?v=rank-params-r1-20261121','recommendation-excel.js?v=portrait-export-r2-20261121');
 const Core=self.DemetraRecommendCore;
 let sheets=[],results=null,originalWorkbook=null;
 function send(type,data={}){postMessage({type,...data});}
@@ -41,13 +41,11 @@ function overviewItems(request,result){
   // An archival source is not an eligible procurement recommendation.
   const suppliers=result.suppliers?.length?result.suppliers:[null];
   return suppliers.map((supplier,index)=>{
-    const sourcePrice=Number.isFinite(supplier?.price)?
-      supplier.price.toLocaleString('sr-Latn-RS',{minimumFractionDigits:2,maximumFractionDigits:2})+' €':'';
     const nursery=supplier?
       supplier.name:'—';
     return [plant,params,nursery,
       Number.isFinite(supplier?.price)?supplier.price:'',
-      (supplier&&result.status!=='matched'?'Potencijalni kandidat · '+(supplier.offeredParameters||'')+(supplier.historical?' · proveriti aktuelnost':''):overviewStatus(result,supplier)),
+      (supplier?`${supplier.matchCount}/${supplier.requestedCount} · ${supplier.candidate?'Potencijalni kandidat':'Tačno podudaranje'}${supplier.matchedParameters.length?' · Poklopljeno: '+supplier.matchedParameters.join(', '):''}${supplier.offeredParameters?' · Ponuđeno: '+supplier.offeredParameters:''}${supplier.historical?' · Proveriti aktuelnost cene':''}`:overviewStatus(result,supplier)),
       result.plantId?'https://kristinasunshine-beep.github.io/demetra-rb-index/#plant='+encodeURIComponent(result.plantId):''];
   });
 }
@@ -120,7 +118,7 @@ self.onmessage=async({data})=>{try{
           else unmatched++;
           if(result.recognized)recognized++;
           if(result.archival)archival++;
-          if(preview.length<40) {
+          {
             const parameters=result.requestedParameters||[];
             preview.push({sheet:original.name,row:r+1,
               name:request.cultivar&&!Core.norm(request.name).endsWith(' '+Core.norm(request.cultivar))?request.name+' '+request.cultivar:request.name,
