@@ -377,7 +377,7 @@
   // Brza preporuka: botanical identity + form + ONE relevant measure.
   // Preserve all other submitted parameters as evidence, never use them as
   // unrequested substitutions or artificial rejection criteria.
-  function recommendQuick(index,input,options={}){
+  function recommendQuickExact(index,input,options={}){
     const requested={...input},found=findPlant(index,requested.name,requested.cultivar);
     const fail=(message,recognized=false,plantId=null,status='unmatched')=>({
       status,recognized,plantId,price:null,suppliers:[],message,
@@ -423,7 +423,120 @@
     const result=recommend(narrowed,precise,options);
     return {...result,plantId:found.id,requestedForm:plantForm,primaryMeasure:measureField,primaryValue:measure.value};
   }
+  // Public index: remove unusable placeholder offers, but retain original
+  // source data in the repository for audit. A species with a valid variant stays.
+  function validPurchasePrice(offer){
+    const price=euroPrice(offer);
+    return Number.isFinite(price)&&price>0&&price!==1;
+  }
+  function cleanCatalog(catalog){
+    const offers=catalog.offers.filter(o=>validPurchasePrice(o)&&!['needs_review','superseded'].includes(o.recordStatus));
+    const ids=new Set(offers.map(o=>o.plantId));
+    return {...catalog,offers,plants:catalog.plants.filter(p=>ids.has(p.id))};
+  }
+  function requestedParameters(index,input){
+    const found=findPlant(index,input.name,input.cultivar);
+    const parsed=parsePreferences([found.remainder,input.preferences,
+      descriptionRequirements(input.sourceDescription,input)].filter(Boolean).join('; '));
+    const values={...parsed.fields};
+    for(const [key] of FIELDS)if(String(input[key]??'').trim())values[key]=input[key];
+    const fields=FIELDS.filter(([key])=>!['name','cultivar','preferences','sourceDescription','quantity','unit','currency'].includes(key));
+    return fields.filter(([key])=>String(values[key]??'').trim()).map(([key,label])=>({key,label,value:String(values[key])}));
+  }
+  function recommendQuick(index,input,options={}){
+    const found=findPlant(index,input.name,input.cultivar);
+    const parameters=requestedParameters(index,input);
+    if(!found.id)return {...recommendQuickExact(index,input,options),requestedParameters:parameters};
+    const original=index.byPlant.get(found.id)||[];
+    const today=options.today||new Date().toISOString().slice(0,10);
+    const available=newestVariants(original.filter(o=>(o.parameterRole||o.sourceEvidence?.parameterRole)!=='requested'))
+      .filter(o=>validPurchasePrice(o)&&!unavailable(o)&&o.priceRefresh?.status!=='pending'&&!(o.validUntil&&o.validUntil<today));
+    const narrowed={...index,byPlant:new Map(index.byPlant)};
+    narrowed.byPlant.set(found.id,available);
+    const exact=recommendQuickExact(narrowed,input,options);
+    const formParam=parameters.find(p=>p.key==='seedlingType');
+    const kind=form(formParam?.value);
+    const primary=kind==='standard'?'height':kind==='multistem'?'circumference':'';
+    const compare=(offer,param)=>{
+      const supplied=offeredValue(offer,param.key)||(param.key==='seedlingType'?offer.seedlingTypeCode:'');
+      if(!String(supplied??'').trim())return 'unknown';
+      if(!String(param.value??'').trim())return 'unknown';
+      if(param.key==='seedlingType')return form(supplied)===form(param.value)?'match':'different';
+      return sameRequirement(param.key,param.value,supplied)?'match':'different';
+    };
+    const rank=offer=>{
+      const evaluated=parameters.map(p=>({...p,result:compare(offer,p)}));
+      const critical=evaluated.filter(p=>p.key==='seedlingType'||p.key===primary);
+      // Rank dimensions and form before price. Non-identical specifications
+      // are potential candidates only and are never treated as confirmed.
+      const score=critical.reduce((total,p)=>total+(p.result==='match'?20:p.result==='different'?-20:0),0)+
+        evaluated.filter(p=>p.result==='match').length;
+      return {offer,score,evaluated};
+    };
+    const ranked=available.map(rank).sort((a,b)=>b.score-a.score||a.offer.price-b.offer.price);
+    const groups=new Map();
+    for(const item of ranked){
+      if(!groups.has(item.offer.nurseryId))groups.set(item.offer.nurseryId,item);
+    }
+    const candidates=[...groups.values()].map(({offer,evaluated})=>({
+      nurseryId:offer.nurseryId,name:index.nurseries.get(offer.nurseryId)?.name||offer.nurseryId,
+      price:euroPrice(offer),currency:'EUR',offerIds:[offer.id],
+      matchedParameters:evaluated.filter(p=>p.result==='match').map(p=>p.label),
+      differentParameters:evaluated.filter(p=>p.result==='different').map(p=>p.label),
+      offeredParameters:parametersForCandidate(offer),
+      historical:offer.priceKind==='historical'||!offer.priceRefresh?.checkedAt,
+      candidate:true
+    }));
+    const result={...exact,plantId:found.id,requestedParameters:parameters,
+      canonicalName:index.plants.get(found.id)?.latinName||input.name};
+    if(exact.status==='matched'){
+      const exactIds=new Set(exact.suppliers.flatMap(o=>o.offerIds||[]));
+      result.suppliers=exact.suppliers.map(s=>{
+        const offer=ranked.find(r=>exactIds.has(r.offer.id)&&r.offer.nurseryId===s.nurseryId&&r.offer.price===s.price);
+        return {...s,historical:offer?offer.offer.priceKind==='historical'||!offer.offer.priceRefresh?.checkedAt:false};
+      });
+    }
+    if(exact.status!=='matched'){
+      result.suppliers=candidates;
+      result.values=[candidates.map(c=>c.name+' — '+c.price.toFixed(2)+' € · kandidat'+(c.historical?' · arhivska/evidentirana cena':'')+'; '+c.offeredParameters).join('\n'),
+        '','','','',exact.message];
+      if(candidates.length)result.message=exact.message+' Prikazani su potencijalni kandidati; potrebno je proveriti specifikaciju.';
+    }
+    return result;
+  }
+  function parametersForCandidate(offer){return parameters(offer);}
+  // PDF rows: reconstruct table cells when headings are readable, otherwise
+  // use the original text lines and a known botanical name as a record anchor.
+  function pdfPlantRows(lines,index){
+    const rows=Array.isArray(lines)?lines:[];
+    const header=detectHeader(rows,index);
+    if(header.hasHeader&&Object.keys(header.map).length>=2)
+      return rows;
+    const known=new Map([...index.names].filter(([,ids])=>ids.size===1));
+    const starts=[];let current=null;
+    for(const row of rows){
+      const text=(Array.isArray(row)?row:[row]).map(v=>String(v??'')).join(' ').trim();
+      if(!text)continue;
+      const tokens=[...text.matchAll(/[\p{L}\p{N}]+/gu)];
+      let hit=null;
+      for(let i=0;i<Math.min(tokens.length,10)&&!hit;i++){
+        for(let n=Math.min(12,tokens.length-i);n>=2;n--){
+          const key=norm(text.slice(tokens[i].index,tokens[i+n-1].index+tokens[i+n-1][0].length));
+          if(!known.has(key))continue;
+          const suffix=text.slice(tokens[i+n-1].index+tokens[i+n-1][0].length).trim();
+          // Do not silently replace an unknown quoted cultivar with its species.
+          if(/^['‘’"]\s*[\p{L}]/u.test(suffix)&&n===2)continue;
+          hit={id:[...known.get(key)][0],suffix};break;
+        }
+      }
+      if(hit){
+        current=[index.plants.get(hit.id).latinName,hit.suffix];
+        starts.push(current);
+      }else if(current&&looksLikePlantRequirement(text))current[1]+='; '+text;
+    }
+    return [['Latinski naziv','Parametri sadnice'],...starts];
+  }
   function supplierList(index,offers){const groups=new Map();for(const offer of offers){if(!groups.has(offer.nurseryId))groups.set(offer.nurseryId,[]);groups.get(offer.nurseryId).push(offer);}return [...groups].map(([nurseryId,rows])=>{const prices=rows.filter(o=>euroPrice(o)!==null&&o.price>0).map(o=>o.price);return {nurseryId,name:index.nurseries.get(nurseryId)?.name||nurseryId,price:prices.length?Math.min(...prices):null,currency:'EUR',offerIds:rows.map(o=>o.id)};}).sort((a,b)=>(a.price??Infinity)-(b.price??Infinity)||a.name.localeCompare(b.name));}
   function supplierText(suppliers){return suppliers.map(s=>s.name+' — '+(s.price===null?'cena u EUR nije navedena':s.price.toLocaleString('sr-Latn-RS',{minimumFractionDigits:2,maximumFractionDigits:2})+' €')).join('\n');}
-  return {FIELDS,EXTRA_HEADERS,norm,headerField,detectHeader,detectSheet,form,rootType,unit,taxGroup,parseMeasure,measureMatches,makeIndex,findPlant,parsePreferences,requestFromRow,newestVariants,parameters,recommend,recommendQuick,recommendTender,nameSuggestions,euroPrice};
+  return {FIELDS,EXTRA_HEADERS,norm,headerField,detectHeader,detectSheet,form,rootType,unit,taxGroup,parseMeasure,measureMatches,makeIndex,findPlant,parsePreferences,requestFromRow,newestVariants,parameters,recommend,recommendQuick,recommendTender,nameSuggestions,euroPrice,cleanCatalog,requestedParameters,pdfPlantRows,validPurchasePrice};
 });
