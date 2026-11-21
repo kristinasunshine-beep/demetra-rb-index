@@ -43,7 +43,7 @@ test('Quote mobile nursery labels keep whole words and quantity heading is conci
   assert.ok(css.includes('overflow-wrap:normal;'));
   assert.ok(css.includes('word-break:normal;'));
   assert.ok(html.includes('moja-ponuda.js?v=history-20261120'));
-  assert.ok(html.includes('control-room.css?v=clean-nav-20261120'));
+  assert.ok(html.includes('control-room.css?v=candidates-20261121'));
 });
 
 test('All 97 priced Žiča and Topalović offers retain audited RSD to EUR conversions', () => {
