@@ -1,5 +1,5 @@
 'use strict';
-importScripts('vendor/xlsx-0.20.3.full.min.js','vendor/jszip-3.10.1.min.js','brza-preporuka-core.js?v=source-specs-r2-20261120','recommendation-excel.js?v=plant-links-20261120');
+importScripts('vendor/xlsx-0.20.3.full.min.js','vendor/jszip-3.10.1.min.js','brza-preporuka-core.js?v=candidates-20261121','recommendation-excel.js?v=plant-links-20261120');
 const Core=self.DemetraRecommendCore;
 let sheets=[],results=null,originalWorkbook=null;
 function send(type,data={}){postMessage({type,...data});}
@@ -37,21 +37,33 @@ function overviewStatus(result,supplier){
 }
 function overviewItems(request,result){
   const plant=request.cultivar&&!Core.norm(request.name).endsWith(' '+Core.norm(request.cultivar))?request.name+' '+request.cultivar:request.name;
-  const params=conciseParameters(request);
+  const params=(result.requestedParameters||[]).map(p=>p.label+': '+p.value).join(' · ')||conciseParameters(request);
   // An archival source is not an eligible procurement recommendation.
-  const suppliers=result.status==='matched'&&result.suppliers?.length?result.suppliers:[null];
+  const suppliers=result.suppliers?.length?result.suppliers:[null];
   return suppliers.map((supplier,index)=>{
     const sourcePrice=Number.isFinite(supplier?.price)?
       supplier.price.toLocaleString('sr-Latn-RS',{minimumFractionDigits:2,maximumFractionDigits:2})+' €':'';
     const nursery=supplier?
-      supplier.name+(sourcePrice?' — '+sourcePrice:' — cena nije navedena'):'—';
+      supplier.name:'—';
     return [plant,params,nursery,
-      index===0&&result.status==='matched'&&Number.isFinite(result.price)?result.price:'',
-      overviewStatus(result,supplier),
+      Number.isFinite(supplier?.price)?supplier.price:'',
+      (supplier&&result.status!=='matched'?'Potencijalni kandidat · '+(supplier.offeredParameters||'')+(supplier.historical?' · proveriti aktuelnost':''):overviewStatus(result,supplier)),
       result.plantId?'https://kristinasunshine-beep.github.io/demetra-rb-index/#plant='+encodeURIComponent(result.plantId):''];
   });
 }
 
+async function readPdfRows(input){
+  const pdfjs=await import('https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.min.mjs');
+  pdfjs.GlobalWorkerOptions.workerSrc='https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs';
+  const doc=await pdfjs.getDocument({data:new Uint8Array(input),isEvalSupported:false}).promise;
+  const rows=[];
+  for(let n=1;n<=doc.numPages;n++){
+    const page=await doc.getPage(n),content=await page.getTextContent(),lines=[];
+    for(const item of content.items){if(!item.str?.trim())continue;const y=item.transform[5];let line=lines.find(l=>Math.abs(l.y-y)<3);if(!line){line={y,items:[]};lines.push(line);}line.items.push(item);}
+    for(const line of lines.sort((a,b)=>b.y-a.y))rows.push(line.items.sort((a,b)=>a.transform[4]-b.transform[4]).map(i=>i.str));
+  }
+  return rows;
+}
 function cellValue(cell){return cell?.v??(cell?.f?'Formula bez sačuvane vrednosti':'');}
 function readRows(sheet){
   const dense=sheet['!data'];let maxRow=-1,maxColumn=-1;
@@ -65,10 +77,17 @@ self.onmessage=async({data})=>{try{
   if(data.type==='process'){
     results=null;originalWorkbook=null;send('progress',{message:'Čitam Excel tabelu…'});
     const input=await data.file.arrayBuffer();
-    const book=XLSX.read(input,{type:'array',dense:true,cellDates:true,cellNF:true,bookVBA:false,raw:/\.(csv|tsv)$/i.test(data.file.name)});
-    if(/\.xlsx$/i.test(data.file.name))originalWorkbook=input;
-    sheets=book.SheetNames.map(name=>({name,...readRows(book.Sheets[name])}));
-    const index=Core.makeIndex(data.catalog);let matched=0,unmatched=0,processed=0,recognized=0,archival=0,needsData=0,notFound=0;const preview=[];
+    const index=Core.makeIndex(data.catalog);
+    if(/\.pdf$/i.test(data.file.name)){
+      const rows=Core.pdfPlantRows(await readPdfRows(input),index);
+      if(rows.length<2)throw new Error('PDF nema prepoznatljiv tekst biljaka. Za skenirani dokument potreban je OCR.');
+      sheets=[{name:'PDF specifikacija',rows,columns:Math.max(...rows.map(r=>r.length))}];
+    }else{
+      const book=XLSX.read(input,{type:'array',dense:true,cellDates:true,cellNF:true,bookVBA:false,raw:/\.(csv|tsv)$/i.test(data.file.name)});
+      if(/\.xlsx$/i.test(data.file.name))originalWorkbook=input;
+      sheets=book.SheetNames.map(name=>({name,...readRows(book.Sheets[name])}));
+    }
+    let matched=0,unmatched=0,processed=0,recognized=0,archival=0,needsData=0,notFound=0;const preview=[];
     // A cost analysis workbook repeats the same plant in Kalkulacija,
     // Specifikacije, Poređenje and Cene. Only the dedicated specifications
     // sheet is the source of planting requirements when present.
@@ -114,15 +133,7 @@ self.onmessage=async({data})=>{try{
           if(result.recognized)recognized++;
           if(result.archival)archival++;
           if(preview.length<40) {
-            const originalText=[request.preferences,request.sourceDescription].filter(Boolean).join('; ');
-            const parsed=Core.parsePreferences(originalText);
-            const values={...parsed.fields,...request};
-            const form=Core.form(values.seedlingType||'');
-            const parameters=[
-              {label:'Tip sadnice',value:form==='standard'?'Standard':form==='multistem'?'Multistem':'Nije potvrđen'},
-              ...[['height','Visina'],['circumference','Obim']].filter(([key])=>String(values[key]??'').trim())
-                .map(([key,label])=>({label,value:String(values[key])}))
-            ];
+            const parameters=result.requestedParameters||[];
             preview.push({sheet:original.name,row:r+1,
               name:request.cultivar&&!Core.norm(request.name).endsWith(' '+Core.norm(request.cultivar))?request.name+' '+request.cultivar:request.name,
               parameters,...result});
