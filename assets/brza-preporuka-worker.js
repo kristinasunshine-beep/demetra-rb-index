@@ -1,5 +1,5 @@
 'use strict';
-importScripts('vendor/xlsx-0.20.3.full.min.js','vendor/jszip-3.10.1.min.js','brza-preporuka-core.js?v=candidates-20261121','recommendation-excel.js?v=plant-links-20261120');
+importScripts('vendor/xlsx-0.20.3.full.min.js','vendor/jszip-3.10.1.min.js','brza-preporuka-core.js?v=pdf-final-20261121','recommendation-excel.js?v=plant-links-20261120');
 const Core=self.DemetraRecommendCore;
 let sheets=[],results=null,originalWorkbook=null;
 function send(type,data={}){postMessage({type,...data});}
@@ -52,18 +52,6 @@ function overviewItems(request,result){
   });
 }
 
-async function readPdfRows(input){
-  const pdfjs=await import('https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.min.mjs');
-  pdfjs.GlobalWorkerOptions.workerSrc='https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/build/pdf.worker.min.mjs';
-  const doc=await pdfjs.getDocument({data:new Uint8Array(input),isEvalSupported:false}).promise;
-  const rows=[];
-  for(let n=1;n<=doc.numPages;n++){
-    const page=await doc.getPage(n),content=await page.getTextContent(),lines=[];
-    for(const item of content.items){if(!item.str?.trim())continue;const y=item.transform[5];let line=lines.find(l=>Math.abs(l.y-y)<3);if(!line){line={y,items:[]};lines.push(line);}line.items.push(item);}
-    for(const line of lines.sort((a,b)=>b.y-a.y))rows.push(line.items.sort((a,b)=>a.transform[4]-b.transform[4]).map(i=>i.str));
-  }
-  return rows;
-}
 function cellValue(cell){return cell?.v??(cell?.f?'Formula bez sačuvane vrednosti':'');}
 function readRows(sheet){
   const dense=sheet['!data'];let maxRow=-1,maxColumn=-1;
@@ -76,11 +64,11 @@ function readRows(sheet){
 self.onmessage=async({data})=>{try{
   if(data.type==='process'){
     results=null;originalWorkbook=null;send('progress',{message:'Čitam Excel tabelu…'});
-    const input=await data.file.arrayBuffer();
+    const input=data.pdfRows?null:await data.file.arrayBuffer();
     const index=Core.makeIndex(data.catalog);
     if(/\.pdf$/i.test(data.file.name)){
-      const rows=Core.pdfPlantRows(await readPdfRows(input),index);
-      if(rows.length<2)throw new Error('PDF nema prepoznatljiv tekst biljaka. Za skenirani dokument potreban je OCR.');
+      const rows=Core.pdfPlantRows(data.pdfRows||[],index);
+      if(rows.length<2)throw new Error('U PDF dokumentu nisu prepoznate biljke. Proveri čitljivost i botaničke nazive.');
       sheets=[{name:'PDF specifikacija',rows,columns:Math.max(...rows.map(r=>r.length))}];
     }else{
       const book=XLSX.read(input,{type:'array',dense:true,cellDates:true,cellNF:true,bookVBA:false,raw:/\.(csv|tsv)$/i.test(data.file.name)});

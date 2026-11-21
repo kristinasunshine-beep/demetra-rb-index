@@ -53,6 +53,23 @@ jobs:
           python -m unittest discover -s scripts/tests -p 'test_photo_identities.py'
           python scripts/build_photo_identities.py
 
+      - name: Pripremi lokalni PDF i OCR runtime
+        run: |
+          npm install --prefix "$RUNNER_TEMP/demetra-pdf" --no-save --no-package-lock --ignore-scripts pdfjs-dist@4.10.38 tesseract.js@6.0.1 tesseract.js-core@6.0.0 @tesseract.js-data/eng@1.0.0 @tesseract.js-data/srp_latn@1.0.0
+          P="$RUNNER_TEMP/demetra-pdf/node_modules"
+          V="assets/vendor/pdf-runtime"
+          mkdir -p "$V"/{pdfjs,tesseract,tesseract-core,lang}
+          cp "$P/pdfjs-dist/build/pdf.min.mjs" "$P/pdfjs-dist/build/pdf.worker.min.mjs" "$V/pdfjs/"
+          cp -R "$P/pdfjs-dist/cmaps" "$P/pdfjs-dist/standard_fonts" "$V/"
+          if [[ -d "$P/pdfjs-dist/wasm" ]]; then cp -R "$P/pdfjs-dist/wasm" "$V/"; fi
+          cp "$P/tesseract.js/dist/tesseract.min.js" "$P/tesseract.js/dist/worker.min.js" "$V/tesseract/"
+          cp "$P/tesseract.js-core/"*.wasm* "$V/tesseract-core/"
+          for lang in eng srp_latn; do
+            model=$(find "$P/@tesseract.js-data/$lang" -name "$lang.traineddata.gz" | head -1)
+            test -n "$model"
+            cp "$model" "$V/lang/"
+          done
+
       - name: Proveri katalog i povezane fajlove
         run: |
           node scripts/currency-normalization.mjs --repo . --check

@@ -5,9 +5,9 @@
   const euros=value=>new Intl.NumberFormat('sr-Latn-RS',{style:'currency',currency:'EUR'}).format(value);
   function create(config){
     const root=document.getElementById('quick-recommendation-view'),nav=document.getElementById('open-quick-recommendation');
-    let worker=null,opened=false,filename='',busy=false,hasResult=false,generation=0;
+    let pdfAbort=null,worker=null,opened=false,filename='',busy=false,hasResult=false,generation=0;
     root.innerHTML=`<div class="recommend-titlebar"><div><div class="recommend-navigation"><button class="quote-back" id="recommend-back" type="button">← Korak nazad</button><button class="quote-back" id="recommend-home" type="button">⌂ Početna</button></div><p class="recommend-eyebrow">IZBOR IZ DEMETRA RB INDEXA</p><h1 id="recommend-heading" tabindex="-1"><span>BRZA</span><span class="outline">PREPORUKA.</span></h1><p class="recommend-lead">Dodaj spisak biljaka. Preuzmi Excel sa odgovarajućim rasadnicima i najnižim nabavnim cenama.</p></div></div>
-      <div class="recommend-upload" id="recommend-drop"><div class="recommend-upload-icon" aria-hidden="true">+</div><h2>Prevuci Excel ili PDF dokument ovde</h2><p>Sistem sam prepoznaje biljke i njihove parametre i odmah pronalazi ponude.</p><label class="recommend-action" for="recommend-file">Izaberi Excel ili PDF<input id="recommend-file" type="file" accept=".xlsx,.xls,.xlsm,.xlsb,.ods,.csv,.tsv,.pdf,application/pdf" class="sr-only"></label><small>Svi podaci iz tvoje tabele ostaju sačuvani u rezultatu.</small></div>
+      <div class="recommend-upload" id="recommend-drop"><div class="recommend-upload-icon" aria-hidden="true">+</div><h2>Prevuci Excel ili PDF dokument ovde</h2><p>Sistem sam prepoznaje biljke i njihove parametre i odmah pronalazi ponude.</p><label class="recommend-action" for="recommend-file">Izaberi Excel ili PDF<input id="recommend-file" type="file" accept=".xlsx,.xls,.xlsm,.xlsb,.ods,.csv,.tsv,.pdf,application/pdf" class="sr-only"></label><small>Excel listovi ostaju sačuvani; iz PDF-a se izdvajaju tekst i specifikacije.</small></div>
       <div class="recommend-progress"><p class="recommend-status" id="recommend-status" role="status" aria-live="polite"></p><button class="recommend-cancel" id="recommend-cancel" type="button" hidden>Prekini obradu</button></div>
       <section id="recommend-results" class="recommend-panel" hidden><div class="recommend-panel-title"><div><p class="recommend-eyebrow">PREPORUKA JE SPREMNA</p><h2 id="recommend-result-heading"></h2></div><button class="recommend-action" type="button" id="recommend-download">Preuzmi Excel <span aria-hidden="true">↓</span></button></div><p id="recommend-result-counts" class="recommend-hint"></p><div class="recommend-table-wrap"><table class="recommend-table"><thead><tr><th>Latinski naziv biljke</th><th>Parametri iz tvoje tabele</th><th>Spisak rasadnika</th><th>Nabavna cena</th><th>Rezultat</th></tr></thead><tbody id="recommend-results-body"></tbody></table></div><p id="recommend-preview-note" class="recommend-hint"></p></section>`;
     const el=id=>root.querySelector('#'+id);
@@ -15,7 +15,7 @@
     function setBusy(value){busy=value;root.setAttribute('aria-busy',String(value));el('recommend-download').disabled=value||!hasResult;el('recommend-cancel').hidden=!value;el('recommend-file').disabled=value;}
     function ensureWorker(){
       if(worker)return worker;
-      const workerUrl=assets.workerSource?URL.createObjectURL(new Blob([assets.workerSource],{type:'text/javascript'})):new URL('./assets/brza-preporuka-worker.js?v=candidates-20261121',document.baseURI);
+      const workerUrl=assets.workerSource?URL.createObjectURL(new Blob([assets.workerSource],{type:'text/javascript'})):new URL('./assets/brza-preporuka-worker.js?v=pdf-final-20261121',document.baseURI);
       worker=new Worker(workerUrl);if(assets.workerSource)URL.revokeObjectURL(workerUrl);
       worker.onmessage=({data})=>{
         if(data.type==='progress')status(data.message);
@@ -43,13 +43,19 @@
         let catalog=config.getCatalog();
         for(let i=0;!catalog&&i<240;i++){await new Promise(resolve=>setTimeout(resolve,250));if(current!==generation)return;catalog=config.getCatalog();}
         if(!catalog)throw new Error('Katalog trenutno nije dostupan. Pokušaj ponovo kada se učita stranica.');
-        if(current===generation)ensureWorker().postMessage({type:'process',file,catalog});
+        let pdfRows=null;
+        if(/\.pdf$/i.test(file.name)){
+          pdfAbort=new AbortController();
+          const module=await import(new URL('./assets/pdf-import.mjs?v=pdf-final-20261121',document.baseURI).href);
+          pdfRows=await module.extractPdfRows(await file.arrayBuffer(),{signal:pdfAbort.signal,onProgress:message=>{if(current===generation)status(message);}});
+        }
+        if(current===generation)ensureWorker().postMessage({type:'process',file,catalog,pdfRows});
       }catch(error){if(current===generation){setBusy(false);status(error.message,true);}}
     }
     el('recommend-file').addEventListener('change',e=>{const file=e.target.files[0];e.target.value='';read(file);});
     const drop=el('recommend-drop');drop.addEventListener('dragover',e=>{e.preventDefault();if(!busy)drop.classList.add('is-dragging');});drop.addEventListener('dragleave',()=>drop.classList.remove('is-dragging'));drop.addEventListener('drop',e=>{e.preventDefault();drop.classList.remove('is-dragging');read(e.dataTransfer.files[0]);});
     el('recommend-download').addEventListener('click',()=>{if(!hasResult||busy)return;setBusy(true);ensureWorker().postMessage({type:'export',templateUrl:assets.templateUrl||new URL('./assets/brza-preporuka-template.xlsx',document.baseURI).href});});
-    el('recommend-cancel').addEventListener('click',()=>{generation++;worker?.terminate();worker=null;hasResult=false;setBusy(false);el('recommend-file').value='';status('Obrada je prekinuta.');});
+    el('recommend-cancel').addEventListener('click',()=>{generation++;pdfAbort?.abort();pdfAbort=null;worker?.terminate();worker=null;hasResult=false;setBusy(false);el('recommend-file').value='';status('Obrada je prekinuta.');});
     function hide(){opened=false;root.hidden=true;nav.setAttribute('aria-expanded','false');}
     function open(){opened=true;config.onOpen?.();root.hidden=false;document.getElementById('main').hidden=true;nav.setAttribute('aria-expanded','true');document.body.dataset.view='recommendation';document.title='Brza preporuka · demetra rb index';if(location.hash!=='#brza-preporuka')history.pushState({demetraNav:true},'','#brza-preporuka');el('recommend-heading').focus({preventScroll:true});window.scrollTo({top:0,behavior:'instant'});}
     el('recommend-back').addEventListener('click',()=>{if(window.DemetraNavigation)window.DemetraNavigation.back();else config.onClose?.();});
