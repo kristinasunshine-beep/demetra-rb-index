@@ -141,7 +141,12 @@ test('Plant specifications sheet drives procurement search instead of duplicated
   const input=workbook([['Kalkulacija',calc],['Specifikacije',source],['Napomena',[['Zadrži original']]]]);
   const instance=worker(),result=await instance.process(input);
   assert.equal(result.processed,2,'Repeated calculations and the lawn row are not additional plant requests');
-  assert.equal(result.matched,1,'A specified Standard 300–350 plant finds exact nursery offers');
+  assert.equal(result.matched,0,'A missing requested delivery type cannot count as an exact match');
+  assert.equal(result.unmatched,1);
+  assert.equal(result.preview[0].suppliers[0].price,65);
+  assert.equal(result.preview[0].suppliers[0].candidate,true);
+  assert.equal(result.preview[0].suppliers[0].matchCount,2);
+  assert.equal(result.preview[0].suppliers[0].requestedCount,3);
   assert.equal(result.needsData,1,'400 cm was extracted but no Standard/Multistem form was specified');
   assert.equal(result.preview[0].parameters.find(v=>v.key==='height')?.value,'300/350 cm');
   assert.equal(result.preview[1].parameters.find(v=>v.key==='height')?.value,'400cm');

@@ -78,5 +78,5 @@ if(process.env.DEMETRA_EXCEL_QA_OUTPUT){await mkdir(process.env.DEMETRA_EXCEL_QA
 console.log(JSON.stringify({ok:true,unchangedPackageParts:unchanged,onlySourceStylesAndProcessedSheetExtended:true,originalCellsFormulasFormatsPreserved:true,mergesAndLogosPreserved:true,fallbackRelationshipNamespaceValid:true,currencyFollowsHeader:true,headerlessOriginalPreserved:true,nativeTableIncludesResults:true}));
 
 const portraitZip=await Zip.loadAsync(overviewBytes);
-const overviewSheets=await Promise.all(Object.keys(portraitZip.files).filter(k=>/^xl\/worksheets\/sheet\d+\.xml$/.test(k)).map(k=>portraitZip.file(k).async('string')));
+const overviewSheets=await Promise.all(Object.keys(portraitZip.files).filter(k=>/^xl\/worksheets\/(?:sheet|recommendation)\d+\.xml$/.test(k)).map(k=>portraitZip.file(k).async('string')));
 assert(overviewSheets.some(x=>x.includes('orientation="portrait"')&&x.includes('paperSize="9"')&&x.includes('fitToPage="1"')&&x.includes('r="1" ht="30"')),'Recommendation overview must start at row 1 and print as portrait A4');

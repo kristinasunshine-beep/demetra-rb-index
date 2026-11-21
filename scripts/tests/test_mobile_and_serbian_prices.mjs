@@ -67,3 +67,14 @@ test('All 97 priced Žiča and Topalović offers retain audited RSD to EUR conve
   assert.ok(picea, 'Picea abies must exist');
   assert.ok(priced.some(o => o.plantId === picea.id), 'Picea abies RSD conversion missing');
 });
+
+
+test('One Home button and no redundant Back button on platform subviews', () => {
+  const html=read('index.html'), quote=read('assets/moja-ponuda.js'), recommendation=read('assets/brza-preporuka.js');
+  assert.ok(html.includes('data-action="record-home"'));
+  assert.ok(!html.includes('data-action="record-back"'));
+  assert.ok(quote.includes('data-quote-action="home"'));
+  assert.ok(!quote.includes('← Korak nazad'));
+  assert.ok(recommendation.includes('id="recommend-home"'));
+  assert.ok(!recommendation.includes('id="recommend-back"'));
+});
