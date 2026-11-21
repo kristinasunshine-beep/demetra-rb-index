@@ -15,7 +15,7 @@
     function setBusy(value){busy=value;root.setAttribute('aria-busy',String(value));el('recommend-download').disabled=value||!hasResult;el('recommend-cancel').hidden=!value;el('recommend-file').disabled=value;}
     function ensureWorker(){
       if(worker)return worker;
-      const workerUrl=assets.workerSource?URL.createObjectURL(new Blob([assets.workerSource],{type:'text/javascript'})):new URL('./assets/brza-preporuka-worker.js?v=pdf-final-20261121',document.baseURI);
+      const workerUrl=assets.workerSource?URL.createObjectURL(new Blob([assets.workerSource],{type:'text/javascript'})):new URL('./assets/brza-preporuka-worker.js?v=portrait-export-r2-20261121',document.baseURI);
       worker=new Worker(workerUrl);if(assets.workerSource)URL.revokeObjectURL(workerUrl);
       worker.onmessage=({data})=>{
         if(data.type==='progress')status(data.message);
@@ -46,7 +46,7 @@
         let pdfRows=null;
         if(/\.pdf$/i.test(file.name)){
           pdfAbort=new AbortController();
-          const module=await import(new URL('./assets/pdf-import.mjs?v=pdf-final-20261121',document.baseURI).href);
+          const module=await import(new URL('./assets/pdf-import.mjs?v=ocr-lines-r2-20261121',document.baseURI).href);
           pdfRows=await module.extractPdfRows(await file.arrayBuffer(),{signal:pdfAbort.signal,onProgress:message=>{if(current===generation)status(message);}});
         }
         if(current===generation)ensureWorker().postMessage({type:'process',file,catalog,pdfRows});

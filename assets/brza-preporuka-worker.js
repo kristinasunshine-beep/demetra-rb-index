@@ -1,5 +1,5 @@
 'use strict';
-importScripts('vendor/xlsx-0.20.3.full.min.js','vendor/jszip-3.10.1.min.js','brza-preporuka-core.js?v=pdf-final-20261121','recommendation-excel.js?v=plant-links-20261120');
+importScripts('vendor/xlsx-0.20.3.full.min.js','vendor/jszip-3.10.1.min.js','brza-preporuka-core.js?v=pdf-final-20261121','recommendation-excel.js?v=portrait-export-r2-20261121');
 const Core=self.DemetraRecommendCore;
 let sheets=[],results=null,originalWorkbook=null;
 function send(type,data={}){postMessage({type,...data});}
