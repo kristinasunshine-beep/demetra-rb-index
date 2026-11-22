@@ -6,7 +6,7 @@ import {createRequire} from 'node:module';
 const require=createRequire(import.meta.url);
 const {chromium}=require(process.env.PDF_PLAYWRIGHT_PATH);
 const root=resolve('.');
-const mime={'.html':'text/html','.mjs':'text/javascript','.js':'text/javascript','.wasm':'application/wasm','.pdf':'application/pdf','.json':'application/json'};
+const mime={'.html':'text/html','.css':'text/css','.mjs':'text/javascript','.js':'text/javascript','.wasm':'application/wasm','.pdf':'application/pdf','.json':'application/json'};
 const server=createServer((req,res)=>{try{const path=resolve(root,'.'+new URL(req.url,'http://localhost').pathname);if(!path.startsWith(root+'/'))throw Error('path');res.setHeader('Content-Type',mime[extname(path)]||'application/octet-stream');res.end(readFileSync(path));}catch{res.statusCode=404;res.end();}});
 await new Promise(r=>server.listen(0,'127.0.0.1',r));
 const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
@@ -28,4 +28,18 @@ try{
  });
  console.log(JSON.stringify(output));
  for(const r of output)assert.ok(r.match.includes('matched'),r.path+': '+JSON.stringify(r));
+ for(const width of [390,1440]){
+   await page.setViewportSize({width,height:900});
+   const colors=await page.evaluate(()=>{
+     document.body.classList.add('control-room');
+     const group=document.createElement('details');group.className='supplier-variants';
+     group.innerHTML='<summary>Prikaži ostale varijante (2)</summary><div>Test</div>';
+     document.body.append(group);const summary=group.firstElementChild;
+     const get=()=>{const s=getComputedStyle(summary);return [s.backgroundColor,s.color];};
+     const closed=get();group.open=true;const opened=get();group.remove();
+     return {closed,opened};
+   });
+   assert.deepEqual(colors.closed,['rgb(95, 119, 74)','rgb(255, 255, 255)'],'Closed selector '+width);
+   assert.deepEqual(colors.opened,colors.closed,'Open selector '+width);
+ }
 }finally{await browser.close();server.close();}

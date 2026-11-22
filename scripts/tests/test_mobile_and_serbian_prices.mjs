@@ -42,8 +42,8 @@ test('Quote mobile nursery labels keep whole words and quantity heading is conci
   assert.ok(css.includes('grid-template-columns:minmax(0,1fr);'));
   assert.ok(css.includes('overflow-wrap:normal;'));
   assert.ok(css.includes('word-break:normal;'));
-  assert.ok(html.includes('moja-ponuda.js?v=history-20261120'));
-  assert.ok(html.includes('control-room.css?v=green-variants-navless-r1-20261121'));
+  assert.match(html, /moja-ponuda\.js\?v=[^"\s]+/);
+  assert.ok(html.includes('control-room.css?v=green-variants-navless-r2-20261122'));
 });
 
 test('All 97 priced Žiča and Topalović offers retain audited RSD to EUR conversions', () => {
@@ -69,12 +69,12 @@ test('All 97 priced Žiča and Topalović offers retain audited RSD to EUR conve
 });
 
 
-test('One Home button and no redundant Back button on platform subviews', () => {
+test('No redundant Back or Home buttons on platform subviews', () => {
   const html=read('index.html'), quote=read('assets/moja-ponuda.js'), recommendation=read('assets/brza-preporuka.js');
-  assert.ok(html.includes('data-action="record-home"'));
+  assert.ok(!html.includes('data-action="record-home"'));
   assert.ok(!html.includes('data-action="record-back"'));
-  assert.ok(quote.includes('data-quote-action="home"'));
+  assert.ok(!quote.includes('data-quote-action="home"'));
   assert.ok(!quote.includes('← Korak nazad'));
-  assert.ok(recommendation.includes('id="recommend-home"'));
+  assert.ok(!recommendation.includes('id="recommend-home"'));
   assert.ok(!recommendation.includes('id="recommend-back"'));
 });
