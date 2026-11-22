@@ -210,7 +210,7 @@ body.control-room .quote-total>strong{font:690 36px/1.1 var(--sans);letter-spaci
 body.control-room .quote-total>span{font:11px var(--mono)}
 body.control-room .quote-summary-status,body.control-room .quote-summary p{font-size:11px}
 body.control-room .quote-empty{background:#FAFCF9;border:1px dashed #AABCAA}
-body.control-room .quote-empty button{background:var(--accent);color:var(--ink);font:11px var(--mono)}
+body.control-room .quote-empty button{background:var(--accent);color:#FFFFFF;font:11px var(--mono)}
 body.control-room .quote-clear{font:11px var(--mono);color:#687A6C}
 body.control-room .quote-item .quote-mobile-label{font:11px var(--mono)}
 /* at 1100 px and below, keep the navigation visible without covering the tools */
