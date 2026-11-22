@@ -125,7 +125,7 @@ body.control-room .offer-price{display:block;margin:0}
 body.control-room .offer-price strong{font:670 31px/1.1 var(--sans);letter-spacing:-1.2px}
 body.control-room .offer-price small{display:block;font:11px/1.6 var(--mono);color:#768779;margin-top:10px}
 body.control-room .offer-pricing .image-kind{font:11px/1.5 var(--sans);color:#6D7E70;margin-top:10px}
-body.control-room .offer-pricing .quote-add{background:var(--accent);color:var(--ink);margin-top:21px;border:0;width:100%;padding:13px 8px;font:700 11px/1.45 var(--mono)}
+body.control-room .offer-pricing .quote-add{background:var(--accent);color:#FFFFFF;margin-top:21px;border:0;width:100%;padding:13px 8px;font:700 11px/1.45 var(--mono)}
 body.control-room .offer-pricing .quote-add:hover{background:#FF795D}
 body.control-room .offer-pricing .quote-add.is-added{background:#DEE8D9;color:#324638}
 body.control-room .offer-footer{display:block;padding:16px 20px;background:#FBFBF8;border-top:1px solid var(--line)}
