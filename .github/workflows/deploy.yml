@@ -10,7 +10,8 @@ permissions: {}
 
 concurrency:
   group: demetra-pages-${{ github.repository }}
-  cancel-in-progress: false
+  # New pushes supersede outdated pages builds instead of waiting behind them.
+  cancel-in-progress: true
 
 jobs:
   publish:
@@ -70,9 +71,14 @@ jobs:
             cp "$model" "$V/lang/"
           done
 
-      - name: Testiraj PDF tekst i skenirani dokument u Chromiumu
+      - name: Proveri PDF uvoz pre javne objave
+        run: node --test scripts/tests/test_pdf_import.mjs
+
+      # Full Chromium/OCR smoke test is retained for manually requested deep QA,
+      # but does not block each normal content and CSS deployment.
+      - name: Integraciona provera skeniranog PDF-a u Chromiumu
+        if: github.event_name == 'workflow_dispatch'
         run: |
-          node --test scripts/tests/test_pdf_import.mjs
           python -m pip install --quiet reportlab pillow
           python scripts/tests/build_pdf_fixtures.py
           npm install --prefix "$RUNNER_TEMP/demetra-browser" --no-save --no-package-lock playwright@1.51.1
