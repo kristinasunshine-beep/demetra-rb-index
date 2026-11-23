@@ -344,6 +344,15 @@ const nativeEuro=render({price:5800,currency:'EUR',sourceAmount:5800,sourceCurre
   ]);
   assert(menu.includes('class="supplier-offer-picker"'));
   assert(menu.includes('<summary class="offer-picker-trigger"'));
+  assert(menu.includes('class="offer-picker-title">Izaberi ponudu</strong>'));
+  assert(menu.includes('class="offer-picker-supplier">Arbor Nurseries</span>'));
+  assert(menu.includes('class="offer-picker-count">2 ponude</span>'));
+  const collapsed=menu.split('</summary>')[0];
+  assert(!collapsed.includes('offer-picker-choice-content'), 'Only title, supplier and count are visible before opening');
+  assert(!collapsed.includes('400–500'), 'Do not duplicate selected measurements above the menu');
+  assert(!collapsed.includes('220 €'), 'Price belongs in an expanded option, not the title');
+  assert(menu.includes('class="offer-picker-option-index"'));
+  assert(menu.includes('class="offer-picker-measures"'));
   assert(menu.includes('class="offer-picker-price"'));
   assert(menu.includes('class="offer-picker-date"'));
   assert.equal((menu.match(/data-offer-picker-item/g)||[]).length,2);
@@ -352,6 +361,8 @@ const nativeEuro=render({price:5800,currency:'EUR',sourceAmount:5800,sourceCurre
   assert(!menu.includes('<select'),'Native single-line options must be replaced');
   assert(html.includes("event.key==='Escape'") && html.includes("event.key==='ArrowDown'"));
   assert(html.includes("scrollIntoView({behavior:'smooth',block:'start'})"));
+  assert(!html.includes("const summaryContent=picker.querySelector"),
+    'Selecting an offer may not reintroduce the duplicated preview above its menu');
 }
 
     
