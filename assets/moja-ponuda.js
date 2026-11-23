@@ -88,7 +88,7 @@
     }
     function renderItems() {
       el('quote-items').innerHTML = quote.items.length ? quote.items.map(rowMarkup).join('') :
-        '<div class="quote-empty"><span aria-hidden="true">+</span><h3>Izaberi biljke za svoju ponudu</h3><p>Otvori karticu biljke, pronađi odgovarajuću ponudu rasadnika i izaberi „Dodaj u moju ponudu“.</p><button type="button" data-quote-action="back">Pronađi biljku →</button></div>';
+        '<div class="quote-empty"><span aria-hidden="true">+</span><h3>Izaberi biljke za svoju ponudu</h3><p>Otvori karticu biljke, pronađi odgovarajuću ponudu rasadnika i izaberi „Dodaj u moju ponudu“.</p><button type="button" data-quote-action="find-plant">Pronađi biljku →</button></div>';
       updateTotals(); syncButtons();
     }
     function updateTotals() {
@@ -181,8 +181,15 @@
       }
       if (target.dataset.quoteAction === 'dismiss-toast') { toast.hidden = true; return; }
       if (!root.contains(target)) return;
-      if (target.dataset.quoteAction === 'back') {
-        if(window.DemetraNavigation)window.DemetraNavigation.back();else back();
+      if (target.dataset.quoteAction === 'find-plant') {
+        // This is a search shortcut, not a history-back control.
+        // Always restore the searchable workspace, regardless of the previous URL.
+        if (window.DemetraNavigation?.home) window.DemetraNavigation.home();
+        else back();
+        const search = document.getElementById('plant-search');
+        search?.scrollIntoView({behavior:'instant',block:'center'});
+        search?.focus({preventScroll:true});
+        return;
       }
       if (target.dataset.quoteRemove) {
         const index = quote.items.findIndex(item=>item.offerId===target.dataset.quoteRemove);
