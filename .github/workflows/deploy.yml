@@ -137,6 +137,11 @@ jobs:
           path: ${{ runner.temp }}/demetra-pages
           retention-days: 1
 
+      # The uploaded Pages artifact can take a few seconds to become visible to
+      # the deployment API; allow GitHub artifact indexing to complete.
+      - name: Sačekaj registraciju Pages paketa
+        run: sleep 20
+
       - name: Objavi sajt
         id: deployment
         uses: actions/deploy-pages@v5.0.1
