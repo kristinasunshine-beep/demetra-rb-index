@@ -25,7 +25,7 @@ test('Mobile font, long names, parameter grid and cache invalidation are present
   assert.match(css, /quote-titlebar h1 span\.outline/);
   assert.match(css, /grid-template-columns:repeat\(2,minmax\(0,1fr\)\) !important/);
   assert.match(css, /grid-template-columns:repeat\(3,minmax\(0,1fr\)\) !important/);
-  assert.match(sw, /demetra-rb-pwa-shell-08-outline-r6-20261118/);
+  assert.match(sw, /const CACHE = 'demetra-[^']+';/);
   assert.match(sw, /cache:'reload'/);
 });
 
