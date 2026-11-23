@@ -29,7 +29,7 @@
     el('recommend-next-page').addEventListener('click',()=>{if((pageIndex+1)*40<rankedResults.length){pageIndex++;renderRankedPage();}});
     function ensureWorker(){
       if(worker)return worker;
-      const workerUrl=assets.workerSource?URL.createObjectURL(new Blob([assets.workerSource],{type:'text/javascript'})):new URL('./assets/brza-preporuka-worker.js?v=latin-pass-r1-20261123',document.baseURI);
+      const workerUrl=assets.workerSource?URL.createObjectURL(new Blob([assets.workerSource],{type:'text/javascript'})):new URL('./assets/brza-preporuka-worker.js?v=botanical-only-r2-20261123',document.baseURI);
       worker=new Worker(workerUrl);if(assets.workerSource)URL.revokeObjectURL(workerUrl);
       worker.onmessage=({data})=>{
         if(data.type==='progress')status(data.message);
