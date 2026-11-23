@@ -580,3 +580,21 @@ body.control-room .record-offer-pickers .supplier-offer-picker select {
     font-size:15px;
   }
 }
+
+/* Primary variant decision: noticeably stronger outline across all viewports. */
+body.control-room .record-offer-pickers .supplier-offer-picker {
+  border:4px solid #3F6041;
+  padding:13px 16px 15px;
+  background:transparent;
+  box-shadow:0 0 0 1px #B4C5AE;
+}
+body.control-room .record-offer-pickers .supplier-offer-picker select {
+  border:2px solid #708B6F;
+  min-height:42px;
+  background:#FFFFFF;
+  font-size:13px;
+  font-weight:600;
+  cursor:pointer;
+}
+body.control-room .record-offer-pickers .supplier-offer-picker:focus-within {border-color:#203E2D}
+body.control-room article.offer-card[data-deduplicated="true"] {display:none!important}
