@@ -254,3 +254,52 @@ test('PDF initial recognition exports only canonical Latin name and recorded pla
   assert.equal(rows[0].length,2);
   assert(book.SheetNames.includes('Pregled preporuke'));
 });
+
+test('Excel input excludes tender comments and column captions from preview and all generated sheets',async()=>{
+  const prose='Za D6-136, D6-171 i D6-172 izdvojen je samo sadni materijal uz izvornu površinu. Te cene nisu cene kompletnih kombinovanih stavki tendera.';
+  const src=[
+    ['Latinski naziv biljke','Tip sadnice','Visina (cm)'],
+    [prose,'',''],
+    ['Biljka / sadni materijal','',''],
+    ['Biljka sadni materijal','',''],
+    ['Latinski naziv biljke','',''],
+    [plant,'Standard','300–350'],
+    ['Fraxinus ornus','Standard','300–350']
+  ];
+  const instance=worker(),result=await instance.process(workbook([['Biljke',src]]));
+  assert.equal(result.processed,2);
+  assert.deepEqual(result.preview.map(r=>r.canonicalName),[plant,'Fraxinus ornus']);
+  const book=XLSX.read(await instance.download(),{type:'array'});
+  for(const name of ['Pregled preporuke','Prepoznate biljke']){
+    const rows=XLSX.utils.sheet_to_json(book.Sheets[name],{header:1,defval:''});
+    const text=JSON.stringify(rows);
+    assert(!text.includes('Za D6-136'));
+    assert(!text.includes('Biljka / sadni materijal'));
+    assert(!text.includes('Biljka sadni materijal'));
+    assert(text.includes('Fraxinus ornus'));
+  }
+  assert.equal(XLSX.utils.sheet_to_json(book.Sheets['Prepoznate biljke'],{header:1,defval:''}).length,3);
+});
+test('Headerless Excel excludes tender notes and preserves unknown botanical names',async()=>{
+  const text='Za D6-136, D6-171 i D6-172 izdvojen je samo sadni materijal';
+  const rows=[[text,''],['Biljka / sadni materijal',''],[plant,'Standard; visina 300–350'],['Tamarix gallica','Standard; visina 300–350']];
+  const instance=worker();
+  const result=await instance.process(workbook([['Bez zaglavlja',rows]]));
+  assert.equal(result.processed,2);
+  assert.deepEqual(result.preview.map(r=>r.canonicalName),[plant,'Tamarix gallica']);
+});
+test('PDF-to-Excel excludes tender prose, even inside mapped Latin name columns',async()=>{
+  const prose='Za D6-136, D6-171 i D6-172 izdvojen je samo sadni materijal uz izvornu površinu.';
+  const instance=worker();
+  const result=await instance.processPdf([
+    ['Latinski naziv','Tip sadnice','Visina (cm)'],
+    [prose,'',''],
+    ['Biljka / sadni materijal','',''],
+    ['"Acer campestre Elsrijk"','Standard','300–350'],
+    ['Celtis australis','Standard','300–350']
+  ]);
+  assert.equal(result.processed,2);
+  const book=XLSX.read(await instance.download(),{type:'array'});
+  const recognized=XLSX.utils.sheet_to_json(book.Sheets['Prepoznate biljke'],{header:1,defval:''});
+  assert.deepEqual(recognized.map(r=>r[0]),['Latinski naziv biljke',plant,'Celtis australis']);
+});
