@@ -38,9 +38,11 @@
   }
   function informationalHeader(value){return GENERATED_HEADERS.includes(norm(value))||/^(?:r b|r br|rb|redni broj|broj|id|sifra|oznaka|code|dionica|deonica|lokacija|grupa biljaka|kategorija|grupa|izvor|source|izvorni dokument|dokument|domaci naziv|narodni naziv|srpski naziv|hrvatski naziv|common name|cena|cijena|jedinicna cena|jedinicna cijena|nabavna cena|ukupno|iznos|total|price|rasadnik|dobavljac|supplier)(?:\s+(?:eur|euro|evra|evro|pdv|sa pdv|bez pdv))?$/.test(norm(value));}
   function looksBotanical(value){
-    // Recognize unmatched Latin species names in headerless spreadsheets so they
-    // are reported as missing, rather than silently leaving the sheet unprocessed.
-    return /^[A-Z][a-z]{2,}\s+[a-z][a-z-]{2,}(?:\s+(?:['‘’][^'‘’]+['‘’]|×\s+[a-z-]+))?$/.test(String(value??'').trim());
+    // Accept the full Latin genus + species + possible multi-word cultivar,
+    // whether quotes surround the cultivar, whole name, or neither. This
+    // identifies source rows only: actual catalog matching remains exact.
+    const v=String(value??'').trim().replace(/^[\\s"'“”‘’«»]+|[\\s"'“”‘’«»]+$/g,'').trim();
+    return /^[A-Z][a-z]{2,}\s+(?:(?:×|x)\s+)?[a-z][a-z-]{2,}(?:\s+['"‘’“”]?[A-Za-z0-9][A-Za-z0-9'-]*['"‘’“”]?){0,6}$/.test(v);
   }
   function isAdministrativeColumn(rows,column){
     const values=rows.map(row=>String(row?.[column]??'').trim()).filter(Boolean);
@@ -448,15 +450,23 @@
     const fields=FIELDS.filter(([key])=>!['name','cultivar','preferences','sourceDescription','quantity','unit','currency'].includes(key));
     return fields.filter(([key])=>String(values[key]??'').trim()).map(([key,label])=>({key,label,value:String(values[key])}));
   }
+  function recognizeSourceRow(index,input){
+    const original=String(input?.name??'').trim(),cv=String(input?.cultivar??'').trim();
+    const found=findPlant(index,original,cv);
+    const latinName=found.id?index.plants.get(found.id).latinName:
+      (cv&&!norm(original).endsWith(' '+norm(cv))?[original,cv].filter(Boolean).join(' '):original);
+    return {latinName,plantId:found.id||null,parameters:requestedParameters(index,input)};
+  }
   function recommendQuick(index,input,options={}){
+    const recognizedSource=recognizeSourceRow(index,input);
     const found=findPlant(index,input.name,input.cultivar);
-    const parameters=requestedParameters(index,input).filter(p=>{
+    const parameters=recognizedSource.parameters.filter(p=>{
       const val=String(p.value??'').trim();
       if(!val||/^(?:nije|nepoznat|unknown|unspecified|n a|none|-)$/i.test(norm(val))||/^(?:nije navedeno|nepoznat)/i.test(val))return false;
       if(MEASURES.includes(p.key))return Boolean(parseMeasure(val,p.key)?.valid);
       return true;
     });
-    if(!found.id)return {...recommendQuickExact(index,input,options),requestedParameters:parameters};
+    if(!found.id)return {...recommendQuickExact(index,input,options),canonicalName:recognizedSource.latinName,requestedParameters:parameters};
     const original=index.byPlant.get(found.id)||[];
     const today=options.today||new Date().toISOString().slice(0,10);
     const available=newestVariants(original.filter(o=>(o.parameterRole||o.sourceEvidence?.parameterRole)!=='requested'))
@@ -489,7 +499,7 @@
       candidate:!(exactIds.has(offer.id)&&count===parameters.length)
     }));
     const result={...exact,plantId:found.id,requestedParameters:parameters,
-      canonicalName:index.plants.get(found.id)?.latinName||input.name,suppliers:candidates};
+      canonicalName:recognizedSource.latinName,suppliers:candidates};
     const top=candidates[0],confirmed=candidates.find(s=>!s.candidate);
     const summary=candidates.map(s=>s.name+' — '+s.price.toFixed(2)+' € · '+s.matchCount+'/'+s.requestedCount+' parametara'+(s.historical?' · proveriti aktuelnost':'')+'; '+s.offeredParameters).join('\n');
     if(confirmed){
@@ -578,5 +588,5 @@
   }
   function supplierList(index,offers){const groups=new Map();for(const offer of offers){if(!groups.has(offer.nurseryId))groups.set(offer.nurseryId,[]);groups.get(offer.nurseryId).push(offer);}return [...groups].map(([nurseryId,rows])=>{const prices=rows.filter(o=>euroPrice(o)!==null&&o.price>0).map(o=>o.price);return {nurseryId,name:index.nurseries.get(nurseryId)?.name||nurseryId,price:prices.length?Math.min(...prices):null,currency:'EUR',offerIds:rows.map(o=>o.id)};}).sort((a,b)=>(a.price??Infinity)-(b.price??Infinity)||a.name.localeCompare(b.name));}
   function supplierText(suppliers){return suppliers.map(s=>s.name+' — '+(s.price===null?'cena u EUR nije navedena':s.price.toLocaleString('sr-Latn-RS',{minimumFractionDigits:2,maximumFractionDigits:2})+' €')).join('\n');}
-  return {FIELDS,EXTRA_HEADERS,norm,headerField,detectHeader,detectSheet,form,rootType,unit,taxGroup,parseMeasure,measureMatches,makeIndex,findPlant,parsePreferences,requestFromRow,newestVariants,parameters,recommend,recommendQuick,recommendTender,nameSuggestions,euroPrice,cleanCatalog,requestedParameters,pdfPlantRows,validPurchasePrice};
+  return {FIELDS,EXTRA_HEADERS,norm,headerField,detectHeader,detectSheet,form,rootType,unit,taxGroup,parseMeasure,measureMatches,makeIndex,findPlant,parsePreferences,requestFromRow,newestVariants,parameters,recommend,recommendQuick,recommendTender,nameSuggestions,euroPrice,cleanCatalog,requestedParameters,recognizeSourceRow,pdfPlantRows,validPurchasePrice};
 });
