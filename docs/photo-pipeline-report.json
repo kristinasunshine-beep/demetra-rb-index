@@ -1,13 +1,13 @@
 {
   "schemaVersion": 2,
   "status": "partial",
-  "requests": 550,
+  "requests": 505,
   "workers": 8,
   "events": [],
   "sourceHealth": {
     "portal.volentis.com": {
-      "requests": 121,
-      "succeeded": 120,
+      "requests": 112,
+      "succeeded": 111,
       "retries": 0,
       "httpErrors": {
         "404": 1
@@ -21,63 +21,58 @@
       }
     },
     "www.willaert.be": {
-      "requests": 117,
-      "succeeded": 117,
+      "requests": 110,
+      "succeeded": 110,
       "retries": 0,
       "httpErrors": {},
       "stopped": false,
       "requestIntervalSeconds": 1.0
     },
     "catalogue.vannuccipiante.it": {
-      "requests": 4,
-      "succeeded": 4,
+      "requests": 3,
+      "succeeded": 3,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "webshop.vannuccipiante.it": {
-      "requests": 19,
-      "succeeded": 19,
+      "requests": 27,
+      "succeeded": 27,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "smitsbv.nl": {
-      "requests": 68,
-      "succeeded": 68,
+      "requests": 27,
+      "succeeded": 27,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "www.lorberg.com": {
-      "requests": 49,
-      "succeeded": 49,
+      "requests": 72,
+      "succeeded": 72,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "www.lve-baumschule.de": {
-      "requests": 14,
-      "succeeded": 14,
+      "requests": 35,
+      "succeeded": 35,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "innocentiemangonipiante.it": {
-      "requests": 157,
-      "succeeded": 155,
+      "requests": 117,
+      "succeeded": 117,
       "retries": 0,
       "httpErrors": {},
-      "stopped": true,
-      "lastFailure": {
-        "source": "https://innocentiemangonipiante.it/juniperus-horizontalis-blue-chip/",
-        "reason": "download_failed",
-        "detail": "The read operation timed out"
-      }
+      "stopped": false
     },
     "www.vannuccipiante.it": {
-      "requests": 1,
-      "succeeded": 1,
+      "requests": 2,
+      "succeeded": 2,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
@@ -85,7 +80,7 @@
   },
   "coverage": {
     "schemaVersion": 2,
-    "checkedAt": "2026-11-22T16:32:45Z",
+    "checkedAt": "2026-11-23T01:02:55Z",
     "status": "partial",
     "plants": 619,
     "plantsInventoried": 619,
