@@ -9,7 +9,7 @@ on:
       - 'scripts/update_exchange_rates.mjs'
   workflow_dispatch:
   schedule:
-    - cron: '35 7 * * *'
+    - cron: '35 7 * * 1-5'
 
 permissions:
   contents: read
