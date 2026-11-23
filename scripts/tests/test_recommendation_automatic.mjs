@@ -61,6 +61,14 @@ function worker(){
       assert(messages.every(m=>['progress','results'].includes(m.type)),'No loaded/mapping intermediate response is allowed');
       return result;
     },
+    async processPdf(pdfRows){
+      commands.push('process');
+      await context.onmessage({data:{type:'process',file:{name:'plants.pdf'},pdfRows,catalog:structuredClone(catalog)}});
+      assert.equal(messages.filter(m=>m.type==='error').length,0,JSON.stringify(messages.filter(m=>m.type==='error')));
+      const result=messages.findLast(m=>m.type==='results');
+      assert(result,'PDF import must yield results');
+      return result;
+    },
     async download(){
       commands.push('export');
       await context.onmessage({data:{type:'export',templateUrl:'test-template.xlsx'}});
@@ -219,4 +227,30 @@ test('Excel recognition ignores quotation marks but retains precise cultivar ide
     assert(!/ABC|Količina|Cena|200|205|209/.test(row.join(' ')));
   }
   assert.equal(recognized[4][0],"Acer campestre 'Pogresan kultivar'");
+});
+
+test('PDF initial recognition exports only canonical Latin name and recorded plant parameters',async()=>{
+  const instance=worker();
+  const result=await instance.processPdf([
+    ['Latinski naziv','Tip sadnice','Visina (cm)','Obim (cm)'],
+    ['"Acer campestre Elsrijk"','Standard','300–350','18–20'],
+    ["Acer campestre 'Elsrijk'",'Standard','300–350','18–20'],
+    ['Acer campestre Wrong','Standard','300–350','18–20']
+  ]);
+  assert.equal(result.processed,3);
+  assert.equal(result.recognized,2);
+  assert.equal(result.notFound,1);
+  const book=XLSX.read(await instance.download(),{type:'array'});
+  const rows=XLSX.utils.sheet_to_json(book.Sheets['Prepoznate biljke'],{header:1,defval:''});
+  assert.equal(rows.length,4);
+  assert.equal(rows[1][0],plant);
+  assert.equal(rows[2][0],plant);
+  assert.equal(rows[3][0],'Acer campestre Wrong');
+  for(const row of rows.slice(1)){
+    assert.match(row[1],/Tip sadnice: Standard/);
+    assert.match(row[1],/Visina sadnice: 300–350/);
+    assert.match(row[1],/Obim sadnice: 18–20/);
+  }
+  assert.equal(rows[0].length,2);
+  assert(book.SheetNames.includes('Pregled preporuke'));
 });
