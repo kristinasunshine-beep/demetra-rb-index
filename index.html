@@ -1942,8 +1942,10 @@ function renderRecord(plant) {
     // Keep each supplier's name attached to its own selector.
     (offers.length ? '<div class="record-offer-pickers">' + nurseryIds.map((nurseryId, groupIndex) => {
       const variants=displayGroups[groupIndex].visible;
-      if (variants.length < 2) return '';
-      return offerPickerMarkup(nurseryById(nurseryId) || {name:'Rasadnik nije naveden'}, variants);
+      // Every supplier with at least one offer gets the same selector,
+      // even when there is only a single distinct variant.
+      return variants.length ? offerPickerMarkup(
+        nurseryById(nurseryId) || {name:'Rasadnik nije naveden'}, variants) : '';
     }).join('') + '</div>' : '') +
     '<h3 class="section-label">Kataloški zapisi rasadnika</h3>' +
     (offers.length ? nurseryIds.map((nurseryId, groupIndex) => {
