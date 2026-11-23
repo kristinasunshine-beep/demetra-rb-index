@@ -849,7 +849,7 @@ body[data-view="search"] .search-field:focus-within .search-icon { color:var(--a
 </style>
       <link rel="stylesheet" href="./assets/moja-ponuda.css">
       <link rel="stylesheet" href="./assets/brza-preporuka.css?v=page-nav-fix-20261123">
-      <link rel="stylesheet" href="./assets/control-room.css?v=bold-picker-dedup-20261123">
+      <link rel="stylesheet" href="./assets/control-room.css?v=bold-picker-dedup-r2-20261123">
     <link rel="stylesheet" href="./assets/control-room-mobile-outline.css?v=outline-r6-20261118">
     <!-- Mobile-only union outline: source glyphs render together before their contour,
          so touching letter edges cannot create internal crossing strokes. -->
@@ -1691,7 +1691,7 @@ function offerParameters(offer) {
   ];
 }
 
-function renderOffer(offer, plant, nursery, photoValue = offer.image, deduplicated = false) {
+function renderOffer(offer, plant, nursery, photoValue = offer.image) {
   const measurements = offerParameters(offer);
   const dataNotes = visibleDataNotes(offer);
   const priceNote = visiblePriceNote(offer);
@@ -1705,8 +1705,7 @@ function renderOffer(offer, plant, nursery, photoValue = offer.image, deduplicat
   const supplierPhoto = imageURL(photoValue);
   const photoMarkup = supplierPhoto ? '<div class="offer-photo">' + imageMarkup(photoValue, plant.latinName + ' — ' + nursery.name) + '</div>' : '';
 
-  return '<article class="offer-card" data-offer-id="' + escapeHTML(offer.id) + '"' +
-    (deduplicated ? ' data-deduplicated="true" hidden aria-hidden="true"' : '') + '>' +
+  return '<article class="offer-card" data-offer-id="' + escapeHTML(offer.id) + '">' +
     '<div class="offer-card-body' + (supplierPhoto ? '' : ' without-photo') + '">' +
     (photoMarkup ? '<div class="offer-visual">' + photoMarkup + '</div>' : '') +
     '<div class="offer-details"><div class="offer-topline"><span class="availability">' +
@@ -1923,7 +1922,7 @@ function renderRecord(plant) {
         renderOffer(variants[0], plant, nursery, offerPhotos.get(variants[0].id) || '') +
         (variants.length > 1 ? '<details class="supplier-variants"><summary>Prikaži ostale varijante (' + (variants.length - 1) + ')</summary>' + variants.slice(1).map((offer) => renderOffer(offer, plant, nursery, offerPhotos.get(offer.id) || '')).join('') + '</details>' : '') +
         // Auditable source articles remain in the DOM but never appear as duplicated cards.
-        suppressed.map(offer=>renderOffer(offer, plant, nursery, '', true)).join('') +
+        suppressed.map(offer=>'<div class="deduplicated-offer" hidden aria-hidden="true">' + renderOffer(offer, plant, nursery, '') + '</div>').join('') +
         '</section>';
     }).join('') : renderEmptyRecord(plant)) +
     '</div>';
