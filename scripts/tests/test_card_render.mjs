@@ -321,6 +321,6 @@ const nativeEuro=render({price:5800,currency:'EUR',sourceAmount:5800,sourceCurre
   assert.deepEqual(seen.visible.map(x=>x.id),['new','other']);
   assert.deepEqual(seen.suppressed.map(x=>x.id),['old']);
   assert.equal(dedupe(entries.map(x=>({...x,image:x.id+'.jpg'}))).visible.length,3);
-  assert(html.includes('data-deduplicated="true"'));
+  assert(html.includes('class="deduplicated-offer" hidden aria-hidden="true"'));
   assert(html.includes('displayGroups[groupIndex].visible'));
 }
