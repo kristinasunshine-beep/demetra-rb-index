@@ -862,3 +862,17 @@ body.control-room .offer-picker-option.is-selected .offer-picker-option-indicato
   body.control-room .offer-picker-date{font-size:9px}
   body.control-room .offer-picker-menu-hint{font-size:8px}
 }
+
+/* A calm, prominent source date is the only footer text for botanical offers. */
+body.control-room .offer-footer{
+  display:flex;align-items:center;justify-content:flex-start;
+  padding:11px 20px 12px;background:#FBFBF8;border-top:1px solid var(--line);
+}
+body.control-room .offer-source-date{
+  display:inline-block;font:700 13px/1.45 var(--sans);color:#304B37;
+  font-variant-numeric:tabular-nums;letter-spacing:0;
+}
+@media(max-width:760px){
+  body.control-room .offer-footer{padding:10px 15px}
+  body.control-room .offer-source-date{font-size:12px}
+}
