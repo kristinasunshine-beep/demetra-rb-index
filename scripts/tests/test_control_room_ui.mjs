@@ -81,3 +81,15 @@ test('Navigation and quick recommendation omit unwanted decorative arrows',async
 });
 
 test('Variant selector keeps approved dark green with white text',async()=>{const style=await read('assets/control-room.css');assert.match(style,/supplier-variants > summary\{background:#203E2D!important;color:#FFFFFF!important/);assert.doesNotMatch(style,/supplier-variants>summary\{background:#FA593B/);});
+
+test('The empty quote Find plant shortcut navigates directly to the search bar, never browser history',async()=>{
+  const [html,quote]=await Promise.all([read('index.html'),read('assets/moja-ponuda.js')]);
+  assert.match(quote,/data-quote-action="find-plant">Pronađi biljku/);
+  assert.match(quote,/target\.dataset\.quoteAction === 'find-plant'/);
+  assert.match(quote,/DemetraNavigation\.home\(\)/);
+  assert.match(quote,/getElementById\('plant-search'\)/);
+  assert.match(quote,/search\?\.scrollIntoView/);
+  assert.match(quote,/search\?\.focus\(\{preventScroll:true\}\)/);
+  assert.doesNotMatch(quote,/data-quote-action="back"/);
+  assert.match(html,/moja-ponuda\.js\?v=quote-find-searchbar-20261123/);
+});
