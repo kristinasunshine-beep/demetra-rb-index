@@ -364,7 +364,7 @@ export async function verifyPanels(root) {
     // record must have a selectable menu, even for its single offer.
     const supplierCount = new Set(active.filter(offer => offer.plantId === plant.id)
       .map(offer => offer.nurseryId)).size;
-    const pickerCount = (markup.match(/<details class="supplier-offer-picker"\b/g) || []).length;
+    const pickerCount = (markup.match(/<details class="supplier-offer-picker"(?:\s|>)/g) || []).length;
     assert.equal(pickerCount, supplierCount,
       plant.id + ': svakoj rasadničkoj ponudi pripada padajući meni.');
     const cards = [...markup.matchAll(/<article class="offer-card" data-offer-id="([^"]+)">[\s\S]*?<\/article>/g)];
