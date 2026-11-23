@@ -528,83 +528,53 @@ body.control-room details.supplier-variants > summary::marker{color:#FFFFFF!impo
 body.control-room details.supplier-variants > summary::-webkit-details-marker{color:#FFFFFF!important}
 
 
-/* Priority nursery dimensions: same hierarchy on every botanical record,
-   regardless of supplier, source image, variant expansion or viewport. */
-body.control-room .offer-details>.measurements .measurement--priority,
-body.control-room .offer-card-body.without-photo .measurements .measurement--priority {
-  background:#E2ECD9;
-  border:1px solid #B9CDAE;
-  border-left:3px solid #5F774A;
-  border-bottom:1px solid #B9CDAE;
-  padding:10px 12px;
-  min-width:0;
-}
+
+/* Dimensional hierarchy: typographic emphasis only. No special fill or border.
+   The class is applied only when the field contains an actual numeric measurement. */
 body.control-room .measurements .measurement--priority dt {
   font:700 12px/1.4 var(--sans);
-  color:#35523A;
   letter-spacing:0;
-  margin-bottom:6px;
 }
 body.control-room .measurements .measurement--priority dd,
 body.control-room .offer-card-body.without-photo .measurements .measurement--priority dd:not(.missing) {
-  font:750 18px/1.35 var(--sans);
-  color:#1B3D28;
-  overflow-wrap:anywhere;
-}
-body.control-room .measurements .measurement--priority dd.missing {
-  font:650 13px/1.4 var(--sans);
-  color:#6B786B;
+  font:700 16px/1.45 var(--sans);
 }
 
-/* The same emphasis follows selected plants into My Quote. */
+/* My Quote and Quick Recommendation use the same restrained emphasis. */
 body.control-room .quote-quick-params .quote-quick-param--priority {
-  display:inline-block;
-  padding:3px 7px;
-  background:#E2ECD9;
-  border-left:3px solid #5F774A;
-  color:#1B3D28;
-  font:750 12px/1.5 var(--sans);
-}
-body.control-room .quote-parameters dl>div.quote-parameter--priority {
-  background:#E2ECD9;
-  border:1px solid #B9CDAE;
-  border-left:3px solid #5F774A;
-  padding:9px 11px;
-  margin-top:5px;
+  font:700 12px/1.5 var(--sans);
 }
 body.control-room .quote-parameters .quote-parameter--priority dt {
-  font:700 12px/1.4 var(--sans);
-  color:#35523A;
+  font:700 11px/1.45 var(--sans);
 }
 body.control-room .quote-parameters .quote-parameter--priority dd {
-  font:750 16px/1.4 var(--sans);
-  color:#1B3D28;
+  font:700 14px/1.45 var(--sans);
 }
-
-/* Recognition/recommendation table reflects the same dimensions. */
 body.control-room .recommend-parameters>div.recommend-parameter--priority {
-  background:#E2ECD9;
-  border:1px solid #B9CDAE;
-  border-left:3px solid #5F774A;
-  padding:7px 9px;
-  color:#1B3D28;
-  font:750 13px/1.45 var(--sans);
+  font:700 12px/1.45 var(--sans);
 }
 
-@media(max-width:760px) {
-  body.control-room .offer-details>.measurements .measurement--priority,
-  body.control-room .offer-card-body.without-photo .measurements .measurement--priority {
-    padding:9px 8px;
-  }
-  body.control-room .measurements .measurement--priority dt {
-    font-size:11px;
-  }
-  body.control-room .measurements .measurement--priority dd,
-  body.control-room .offer-card-body.without-photo .measurements .measurement--priority dd:not(.missing) {
-    font-size:16px;
-  }
+/* Supplier-specific selectors live directly below the extra plant information. */
+body.control-room .record-offer-pickers {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));
+  gap:11px;
+  margin:6px 0 20px;
 }
-@media(max-width:420px) {
+body.control-room .record-offer-pickers:empty {display:none}
+body.control-room .record-offer-pickers .supplier-offer-picker {
+  margin:0;
+  padding:12px 14px;
+  border:1px solid var(--line);
+  background:transparent;
+  min-width:0;
+}
+body.control-room .record-offer-pickers .supplier-offer-picker select {
+  width:100%;
+  min-width:0;
+}
+@media(max-width:760px){
+  body.control-room .measurements .measurement--priority dt {font-size:11px}
   body.control-room .measurements .measurement--priority dd,
   body.control-room .offer-card-body.without-photo .measurements .measurement--priority dd:not(.missing) {
     font-size:15px;
