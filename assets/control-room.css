@@ -526,3 +526,87 @@ body.control-room details.supplier-variants > summary:hover,body.control-room de
 body.control-room details.supplier-variants[open] > summary{background:#5F774A!important;color:#FFFFFF!important}
 body.control-room details.supplier-variants > summary::marker{color:#FFFFFF!important}
 body.control-room details.supplier-variants > summary::-webkit-details-marker{color:#FFFFFF!important}
+
+
+/* Priority nursery dimensions: same hierarchy on every botanical record,
+   regardless of supplier, source image, variant expansion or viewport. */
+body.control-room .offer-details>.measurements .measurement--priority,
+body.control-room .offer-card-body.without-photo .measurements .measurement--priority {
+  background:#E2ECD9;
+  border:1px solid #B9CDAE;
+  border-left:3px solid #5F774A;
+  border-bottom:1px solid #B9CDAE;
+  padding:10px 12px;
+  min-width:0;
+}
+body.control-room .measurements .measurement--priority dt {
+  font:700 12px/1.4 var(--sans);
+  color:#35523A;
+  letter-spacing:0;
+  margin-bottom:6px;
+}
+body.control-room .measurements .measurement--priority dd,
+body.control-room .offer-card-body.without-photo .measurements .measurement--priority dd:not(.missing) {
+  font:750 18px/1.35 var(--sans);
+  color:#1B3D28;
+  overflow-wrap:anywhere;
+}
+body.control-room .measurements .measurement--priority dd.missing {
+  font:650 13px/1.4 var(--sans);
+  color:#6B786B;
+}
+
+/* The same emphasis follows selected plants into My Quote. */
+body.control-room .quote-quick-params .quote-quick-param--priority {
+  display:inline-block;
+  padding:3px 7px;
+  background:#E2ECD9;
+  border-left:3px solid #5F774A;
+  color:#1B3D28;
+  font:750 12px/1.5 var(--sans);
+}
+body.control-room .quote-parameters dl>div.quote-parameter--priority {
+  background:#E2ECD9;
+  border:1px solid #B9CDAE;
+  border-left:3px solid #5F774A;
+  padding:9px 11px;
+  margin-top:5px;
+}
+body.control-room .quote-parameters .quote-parameter--priority dt {
+  font:700 12px/1.4 var(--sans);
+  color:#35523A;
+}
+body.control-room .quote-parameters .quote-parameter--priority dd {
+  font:750 16px/1.4 var(--sans);
+  color:#1B3D28;
+}
+
+/* Recognition/recommendation table reflects the same dimensions. */
+body.control-room .recommend-parameters>div.recommend-parameter--priority {
+  background:#E2ECD9;
+  border:1px solid #B9CDAE;
+  border-left:3px solid #5F774A;
+  padding:7px 9px;
+  color:#1B3D28;
+  font:750 13px/1.45 var(--sans);
+}
+
+@media(max-width:760px) {
+  body.control-room .offer-details>.measurements .measurement--priority,
+  body.control-room .offer-card-body.without-photo .measurements .measurement--priority {
+    padding:9px 8px;
+  }
+  body.control-room .measurements .measurement--priority dt {
+    font-size:11px;
+  }
+  body.control-room .measurements .measurement--priority dd,
+  body.control-room .offer-card-body.without-photo .measurements .measurement--priority dd:not(.missing) {
+    font-size:16px;
+  }
+}
+@media(max-width:420px) {
+  body.control-room .measurements .measurement--priority dd,
+  body.control-room .offer-card-body.without-photo .measurements .measurement--priority dd:not(.missing) {
+    font-size:15px;
+  }
+}
