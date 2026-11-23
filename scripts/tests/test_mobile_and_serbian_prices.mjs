@@ -43,7 +43,12 @@ test('Quote mobile nursery labels keep whole words and quantity heading is conci
   assert.ok(css.includes('overflow-wrap:normal;'));
   assert.ok(css.includes('word-break:normal;'));
   assert.match(html, /moja-ponuda\.js\?v=[^"\s]+/);
-  assert.ok(html.includes('control-room.css?v=green-variants-navless-r2-20261122'));
+  // Verify the actual versioned stylesheet reference, not an obsolete cache token.
+  // Cache tokens intentionally change whenever a styling fix is deployed.
+  const stylesheet = html.match(/<link\s+rel="stylesheet"\s+href="\.\/assets\/control-room\.css\?v=([^"]+)"\s*\/?\s*>/);
+  assert.ok(stylesheet, 'Control Room stylesheet must remain linked with a cache-busting version');
+  assert.ok(stylesheet[1].length > 0, 'CSS cache-busting version cannot be empty');
+  assert.ok(css.includes('.measurement--priority'), 'Important plant dimensions must remain highlighted');
 });
 
 test('Existing and newly added Žiča and Topalović offers retain audited RSD to EUR conversions', () => {
