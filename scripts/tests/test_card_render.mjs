@@ -268,3 +268,37 @@ const nativeEuro=render({price:5800,currency:'EUR',sourceAmount:5800,sourceCurre
     all.indexOf('record-offer-pickers') < all.indexOf('Kataloški zapisi rasadnika'),
     'Supplier variant controls must be located below extra plant data');
 }
+
+test('Numeric fallback for dropdown without circumference or height',()=>{
+  const source = html.match(/function offerDimensionMetric\(value\) \{[\s\S]*?\n\}\n[\s\S]*?function offerChoiceLabel\(offer\) \{[\s\S]*?\n\}/)?.[0];
+  assert(source,'Dropdown metric parsing, sorting and fallback labels are defined');
+  const make=new Function(source+'; return {compareOfferDimensions,offerDropdownMeasurements};')();
+  const rank=(rows)=>rows.slice().sort(make.compareOfferDimensions).map(x=>x.id);
+  assert.deepEqual(rank([
+    {id:'woodbox-new',rootType:'Drvena kutija (WOODBOX)',price:850,sourceDate:'2026-04-15'},
+    {id:'pot-180',potSize:'180 L',price:1050,sourceDate:'2025-11-27'},
+    {id:'pot-500',potSize:'500 L',price:450,sourceDate:'2025-11-27'},
+    {id:'woodbox-old',rootType:'Drvena kutija (WOODBOX)',price:850,sourceDate:'2025-11-27'}
+  ]),['pot-500','pot-180','woodbox-new','woodbox-old']);
+  assert.deepEqual(rank([
+    {id:'h400',height:'400 cm',potSize:'500 L'},
+    {id:'c20',circumference:'20–25 cm',height:'100 cm'},
+    {id:'p500',potSize:'500 L'},
+    {id:'p1200',potSize:'1200 L'},
+    {id:'w',rootType:'WOODBOX'}
+  ]),['c20','h400','p1200','p500','w']);
+  assert.deepEqual(rank([
+    {id:'radius',rootBall:'100 cm',price:9999},
+    {id:'pot',potSize:'600 L',price:1},
+    {id:'letters',rootType:'WOODBOX',price:10000}
+  ]),['radius','pot','letters']);
+  assert.deepEqual(rank([
+    {id:'higher',potSize:'C50'},
+    {id:'lower',potSize:'C35'},
+    {id:'letter',rootType:'WOODBOX'}
+  ]),['higher','lower','letter']);
+  const onlyText=make.offerDropdownMeasurements({rootType:'WOODBOX',potSize:'Nije navedeno'});
+  assert.equal(onlyText.length,1);
+  assert.equal(onlyText[0].metric,null);
+  assert(!/price|sourceDate/.test(make.compareOfferDimensions.toString()));
+});
