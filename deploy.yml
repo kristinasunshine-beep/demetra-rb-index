@@ -1,0 +1,135 @@
+name: Objavi Demetra katalog
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  workflow_call:
+
+permissions: {}
+
+concurrency:
+  group: demetra-pages-${{ github.repository }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Preuzmi najnoviji main
+        uses: actions/checkout@v7.0.1
+        with:
+          ref: main
+          persist-credentials: false
+
+      - name: Pripremi Node
+        uses: actions/setup-node@v7.1.0
+        with:
+          node-version: '24'
+          package-manager-cache: false
+
+      - name: Pripremi Python za oporavak fotografija
+        uses: actions/setup-python@v7.0.0
+        with:
+          python-version: '3.13'
+
+      - name: Vrati proverene fotografije pre objave
+        run: python scripts/repair_photo_asset_paths.py
+
+      - name: Proveri i obnovi identitete istih fotografija
+        run: |
+          python -m unittest discover -s scripts/tests -p 'test_photo_identities.py'
+          python scripts/build_photo_identities.py
+
+      - name: Pripremi lokalni PDF i OCR runtime
+        run: |
+          npm install --prefix "$RUNNER_TEMP/demetra-pdf" --no-save --no-package-lock --ignore-scripts pdfjs-dist@4.10.38 tesseract.js@6.0.1 tesseract.js-core@6.0.0 @tesseract.js-data/eng@1.0.0 @tesseract.js-data/srp_latn@1.0.0
+          P="$RUNNER_TEMP/demetra-pdf/node_modules"
+          V="assets/vendor/pdf-runtime"
+          mkdir -p "$V"/{pdfjs,tesseract,tesseract-core,lang}
+          cp "$P/pdfjs-dist/build/pdf.min.mjs" "$P/pdfjs-dist/build/pdf.worker.min.mjs" "$V/pdfjs/"
+          cp -R "$P/pdfjs-dist/cmaps" "$P/pdfjs-dist/standard_fonts" "$V/"
+          if [[ -d "$P/pdfjs-dist/wasm" ]]; then cp -R "$P/pdfjs-dist/wasm" "$V/"; fi
+          cp "$P/tesseract.js/dist/tesseract.min.js" "$P/tesseract.js/dist/worker.min.js" "$V/tesseract/"
+          cp "$P/tesseract.js-core/"*.wasm* "$V/tesseract-core/"
+          for lang in eng srp_latn; do
+            model=$(find "$P/@tesseract.js-data/$lang" -name "$lang.traineddata.gz" | head -1)
+            test -n "$model"
+            cp "$model" "$V/lang/"
+          done
+
+      - name: Testiraj PDF tekst i skenirani dokument u Chromiumu
+        run: |
+          node --test scripts/tests/test_pdf_import.mjs
+          python -m pip install --quiet reportlab pillow
+          python scripts/tests/build_pdf_fixtures.py
+          npm install --prefix "$RUNNER_TEMP/demetra-browser" --no-save --no-package-lock playwright@1.51.1
+          "$RUNNER_TEMP/demetra-browser/node_modules/.bin/playwright" install --with-deps chromium
+          PDF_PLAYWRIGHT_PATH="$RUNNER_TEMP/demetra-browser/node_modules/playwright" node scripts/tests/test_pdf_browser.mjs
+
+      - name: Proveri katalog i povezane fajlove
+        run: |
+          node scripts/currency-normalization.mjs --repo . --check
+          node scripts/check-catalog.mjs
+          node scripts/tests/test_offer_discoverability.mjs
+          node scripts/tests/test_archive_coverage.mjs
+          node --test scripts/tests/test_mobile_and_serbian_prices.mjs
+          node scripts/tests/test_photo_reference_render.mjs
+          node --test scripts/tests/test_my_quote.mjs
+          node --test scripts/tests/test_quick_recommendation.mjs scripts/tests/test_folder_price_refresh.mjs scripts/tests/test_prepare_morning_prices.mjs scripts/tests/test_recommendation_excel_preservation.mjs scripts/tests/test_recommendation_automatic.mjs scripts/tests/test_currency_normalization.mjs
+          python -m unittest discover -s scripts/tests -p 'test_source_panel_semantics.py'
+          python -m unittest discover -s scripts/tests -p 'test_recover_arbor_catalog.py'
+          python scripts/photo_source_policy.py
+
+      - name: Pripremi PWA ikonice za javnu objavu
+        run: |
+          python -m pip install --quiet 'cairosvg>=2.7,<3' 'pillow>=11,<13'
+          python scripts/generate_pwa_icons.py
+
+      - name: Pripremi GitHub Pages
+        uses: actions/configure-pages@v6.0.0
+
+      - name: Izdvoji samo javne fajlove sajta
+        shell: bash
+        env:
+          PAGES_UPLOAD_DIR: ${{ runner.temp }}/demetra-pages
+        run: |
+          set -euo pipefail
+
+          mkdir -p "$PAGES_UPLOAD_DIR/data"
+
+          cp -- index.html "$PAGES_UPLOAD_DIR/"
+          cp -- manifest.webmanifest service-worker.js "$PAGES_UPLOAD_DIR/"
+          cp -- data/biljke.json data/rasadnici.json data/kataloske-stavke.json "$PAGES_UPLOAD_DIR/data/"
+          if [[ -f data/price-sync-status.json ]]; then
+            cp -- data/price-sync-status.json "$PAGES_UPLOAD_DIR/data/"
+          fi
+          cp -- data/exchange-rates.json "$PAGES_UPLOAD_DIR/data/"
+
+          for directory in assets fonts; do
+            if [[ -d "$directory" ]]; then
+              cp -R -- "$directory" "$PAGES_UPLOAD_DIR/$directory"
+            fi
+          done
+
+      - name: Prenesi fajlove za objavljivanje
+        uses: actions/upload-pages-artifact@v5.0.0
+        with:
+          path: ${{ runner.temp }}/demetra-pages
+          retention-days: 1
+
+      - name: Objavi sajt
+        id: deployment
+        uses: actions/deploy-pages@v5.0.1

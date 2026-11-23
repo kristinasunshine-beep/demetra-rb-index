@@ -844,6 +844,8 @@ body[data-view="search"] .search-field:focus-within .search-icon { color:var(--a
   .detail-topline-actions{display:flex;align-items:center;justify-content:flex-end;flex-wrap:wrap;gap:8px}
   .detail-topline-actions .record-quote-link{white-space:nowrap}
   @media(max-width:550px){.detail-topline-actions{gap:5px}.detail-topline-actions .record-quote-link{font-size:10px;padding:7px 5px}}
+
+.supplier-offer-picker{display:block;padding:12px 20px;font-size:12px}.supplier-offer-picker select{display:block;width:100%;margin-top:6px;padding:10px;border:1px solid #cbd5c5;border-radius:12px;background:var(--paper,#f6f5ef);color:inherit;font:inherit}.offer-card{scroll-margin-top:16px}
 </style>
       <link rel="stylesheet" href="./assets/moja-ponuda.css">
       <link rel="stylesheet" href="./assets/brza-preporuka.css?v=candidates-20261121">
@@ -1403,7 +1405,9 @@ function countLabel(count, one, few, many) {
 
 const offerCountLabel = (count) => countLabel(count, 'kataloški zapis', 'kataloška zapisa', 'kataloških zapisa');
 const nurseryCountLabel = (count) => countLabel(count, 'rasadnik', 'rasadnika', 'rasadnika');
-const plantById = (id) => state.catalog?.plants.find((plant) => plant.id === id);
+// Reviewed supplier identity: RESISTA is the series; New Horizon is the cultivar.
+// https://www.arbor.be/ulmus-resista — preserve old shared links after consolidation.
+const plantById = (id) => state.catalog?.plants.find((plant) => plant.id === (id === 'plant-b3d791a8261438' ? 'plant-2d6ea78c9fc019' : id));
 const nurseryById = (id) => state.catalog?.nurseries.find((nursery) => nursery.id === id);
 const offersFor = (id) => state.catalog.offers.filter((offer) =>
   offer.plantId === id && !['needs_review', 'superseded'].includes(offer.recordStatus)).sort((a, b) => {
@@ -1748,6 +1752,18 @@ function renderEmptyRecord(plant) {
         escapeHTML(item.latinName) + ' — ' + escapeHTML(domesticLabel(item).name) + '</a>').join(' · ') + '.</p>' : '') + '</div>';
 }
 
+function offerChoiceLabel(offer) {
+  const parts = [];
+  if (offer.circumference) parts.push('Obim ' + offer.circumference);
+  if (offer.height) parts.push('Visina ' + offer.height);
+  if (offer.crownWidth) parts.push('Krošnja ' + offer.crownWidth);
+  if (offer.potSize) parts.push('Saksija ' + offer.potSize);
+  if (offer.rootType) parts.push(offer.rootType);
+  parts.push(formattedPrice(offer));
+  if (offer.sourceDate) parts.push(new Date(offer.sourceDate + 'T00:00:00').toLocaleDateString('sr-Latn-RS'));
+  return parts.join(' · ');
+}
+
 function renderRecord(plant) {
   const offers = offersFor(plant.id);
   const nurseryIds = [...new Set(offers.map((offer) => offer.nurseryId))].sort((left, right) =>
@@ -1789,6 +1805,7 @@ function renderRecord(plant) {
       return '<section class="supplier-group"><div class="supplier-group-heading"><h3>' +
         escapeHTML(nursery.name) + '</h3><span class="supplier-country">' +
         escapeHTML(nursery.country || '') + '</span></div>' +
+        (variants.length > 1 ? '<label class="supplier-offer-picker">Izaberi ponudu <select aria-label="Izaberi ponudu: ' + escapeHTML(nursery.name) + '" data-offer-picker="true">' + variants.map(offer => '<option value="' + escapeHTML(offer.id) + '">' + escapeHTML(offerChoiceLabel(offer)) + '</option>').join('') + '</select></label>' : '') +
         renderOffer(variants[0], plant, nursery, offerPhotos.get(variants[0].id) || '') +
         (variants.length > 1 ? '<details class="supplier-variants"><summary>Prikaži ostale varijante (' + (variants.length - 1) + ')</summary>' + variants.slice(1).map((offer) => renderOffer(offer, plant, nursery, offerPhotos.get(offer.id) || '')).join('') + '</details>' : '') +
         '</section>';
@@ -1844,6 +1861,19 @@ function openRecord(id) {
   const recordHash='#plant='+encodeURIComponent(id);
   if(location.hash!==recordHash)history.pushState({demetraNav:true},'',recordHash);
 }
+
+function bindOfferPicker() {
+$('plant-dialog-content').addEventListener('change', (event) => {
+  if (event.target?.dataset?.offerPicker !== 'true') return;
+  const article = [...$('plant-dialog-content').querySelectorAll('article[data-offer-id]')].find(item => item.dataset.offerId === event.target.value);
+  if (!article) return;
+  const group = article.closest('details.supplier-variants');
+  if (group) group.open = true;
+  article.scrollIntoView({behavior:'smooth', block:'start'});
+});
+}
+bindOfferPicker();
+
 
 function returnToSearch() {
   recommendationApp?.hide();
