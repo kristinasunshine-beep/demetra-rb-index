@@ -353,3 +353,45 @@ const nativeEuro=render({price:5800,currency:'EUR',sourceAmount:5800,sourceCurre
   assert(html.includes("event.key==='Escape'") && html.includes("event.key==='ArrowDown'"));
   assert(html.includes("scrollIntoView({behavior:'smooth',block:'start'})"));
 }
+
+    
+// The selector is universal: one supplier with one offer, two suppliers with
+// one offer apiece, and a supplier with multiple variants must all render it.
+{
+  const pickerCount=markup=>(markup.match(/<details class="supplier-offer-picker"\b/g)||[]).length;
+  const entryCount=markup=>(markup.match(/data-offer-picker-item\b/g)||[]).length;
+  const one=render({circumference:'',height:'',potSize:'',rootType:'Kontejner'});
+  assert.equal(pickerCount(one),1,'A single listed nursery offer needs a dropdown');
+  assert.equal(entryCount(one),1,'A one-offer dropdown must contain its real offer');
+  assert(one.includes('data-current-offer-id="offer-a"'),'The sole variant must be selected');
+
+  const twoSuppliers=fixture({},{nurseries:[
+    {id:'nursery-a',name:'Arbor',demo:false},
+    {id:'nursery-b',name:'Topalović',demo:false}
+  ],offers:[
+    {...baseOffer,id:'offer-a',nurseryId:'nursery-a'},
+    {...baseOffer,id:'offer-b',nurseryId:'nursery-b',price:290}
+  ]});
+  context.inputJSON=JSON.stringify(twoSuppliers);
+  run('state.catalog=validateImport(JSON.parse(inputJSON)).data;renderRecord(plantById("plant-a"));');
+  const both=elements.get('plant-dialog-content').innerHTML;
+  assert.equal(pickerCount(both),2,'Each of two suppliers with one offer gets its own picker');
+  assert.equal(entryCount(both),2,'Every supplier picker lists its sole offer');
+  assert(both.includes('data-current-offer-id="offer-a"'));
+  assert(both.includes('data-current-offer-id="offer-b"'));
+
+  const multi=fixture({},{offers:[
+    {...baseOffer,id:'offer-a',circumference:'30–35'},
+    {...baseOffer,id:'offer-b',circumference:'20–25',price:380}
+  ]});
+  context.inputJSON=JSON.stringify(multi);
+  run('state.catalog=validateImport(JSON.parse(inputJSON)).data;renderRecord(plantById("plant-a"));');
+  const multiple=elements.get('plant-dialog-content').innerHTML;
+  assert.equal(pickerCount(multiple),1);
+  assert.equal(entryCount(multiple),2,'All distinct offers remain selectable');
+
+  context.inputJSON=JSON.stringify(fixture({},{offers:[]}));
+  run('state.catalog=validateImport(JSON.parse(inputJSON)).data;renderRecord(plantById("plant-a"));');
+  assert.equal(pickerCount(elements.get('plant-dialog-content').innerHTML),0,
+    'Do not render empty nonfunctional dropdowns for plants with no offers');
+}
