@@ -601,150 +601,264 @@ body.control-room article.offer-card[data-deduplicated="true"] {display:none!imp
 
 body.control-room .deduplicated-offer,body.control-room .deduplicated-offer[hidden]{display:none!important}
 
-/* Botanical variant menu — structured typographic hierarchy, accessible actions.
-   Floating list on desktop; flowing list on compact screens. */
+/* Supplier offer selector / revision 02: title-only collapsed, expanded card choices.
+   Keep the menu in normal flow; it must never overlay the plant's other cards. */
 body.control-room .record-offer-pickers {
-  overflow:visible;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,350px),1fr));
   align-items:start;
-  margin:8px 0 22px;
-  gap:14px;
+  gap:16px;
+  margin:8px 0 24px;
+  overflow:visible;
 }
 body.control-room .record-offer-pickers .supplier-offer-picker {
-  position:relative;
-  display:block;
-  isolation:isolate;
-  z-index:1;
   min-width:0;
   margin:0;
-  padding:12px;
-  border:3px solid #44644B;
+  padding:0;
+  border:3px solid #355640;
   background:#FFFFFF;
-  box-shadow:0 2px 0 rgba(32,62,45,.12);
+  box-shadow:0 2px 0 rgba(32,62,45,.10);
 }
 body.control-room .record-offer-pickers .supplier-offer-picker[open] {
-  z-index:15;
-  border-color:#203E2D;
-  box-shadow:0 12px 32px rgba(29,52,36,.13);
+  border-color:#284A35;
+  box-shadow:0 7px 22px rgba(24,45,31,.10);
 }
-body.control-room .offer-picker-heading {
-  display:block;
-  margin:1px 3px 10px;
-  font:600 11px/1.4 var(--sans);
-  letter-spacing:.02em;
-  color:#536B57;
-}
-body.control-room .offer-picker-heading strong {font-weight:750;color:#203E2D}
-body.control-room .offer-picker-heading>span {padding:0 5px;color:#92A08E}
 body.control-room .record-offer-pickers .offer-picker-trigger {
-  position:relative;
-  display:block;
-  min-height:66px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  width:100%;
+  min-height:74px;
+  padding:17px 21px;
   margin:0;
-  padding:11px 38px 11px 12px;
+  border:0;
+  background:#F4F7F1;
+  color:#203E2D;
   cursor:pointer;
-  border:1px solid #BCCCB8;
-  background:#F8FAF6;
-  color:#223529;
   list-style:none;
 }
-body.control-room .offer-picker-trigger::marker {content:""}
-body.control-room .offer-picker-trigger::-webkit-details-marker{display:none}
-body.control-room .offer-picker-trigger:hover {background:#F0F5EE}
-body.control-room .offer-picker-chevron {
-  position:absolute;right:16px;top:50%;
-  width:9px;height:9px;
-  border-right:2px solid #38533E;border-bottom:2px solid #38533E;
-  transform:translateY(-70%) rotate(45deg);
-  transition:transform .15s ease;
+body.control-room .record-offer-pickers .offer-picker-trigger::-webkit-details-marker {display:none}
+body.control-room .record-offer-pickers .offer-picker-trigger::marker {content:""}
+body.control-room .record-offer-pickers .offer-picker-trigger:hover,
+body.control-room .record-offer-pickers .offer-picker-trigger:focus-visible {
+  background:#E9F0E5;
 }
-body.control-room .supplier-offer-picker[open] .offer-picker-chevron {
-  transform:translateY(-25%) rotate(225deg);
+body.control-room .supplier-offer-picker[open] .offer-picker-trigger {
+  background:#E8EFE4;
+  border-bottom:1px solid #C6D5C4;
 }
-body.control-room .offer-picker-choice-content {
-  display:flex;align-items:center;justify-content:space-between;
-  gap:16px;min-width:0;width:100%;
+body.control-room .offer-picker-title-group {
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  min-width:0;
 }
-body.control-room .offer-picker-main {display:flex;flex-direction:column;gap:5px;min-width:0;flex:1}
-body.control-room .offer-picker-measures {
-  display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 16px;min-width:0;
+body.control-room .offer-picker-title {
+  font:750 18px/1.2 var(--sans);
+  letter-spacing:-.025em;
+  color:#203E2D;
 }
-body.control-room .offer-picker-measure {
-  display:inline-flex;align-items:baseline;gap:6px;min-width:0;
+body.control-room .offer-picker-supplier {
+  font:500 12px/1.45 var(--sans);
+  color:#637366;
+  overflow-wrap:anywhere;
 }
-body.control-room .offer-picker-measure small {
-  font:500 11px/1.3 var(--sans);color:#57675A;
+body.control-room .offer-picker-trigger-meta {
+  display:flex;
+  flex:0 0 auto;
+  align-items:center;
+  gap:19px;
 }
-body.control-room .offer-picker-measure strong {
-  font:750 15px/1.3 var(--sans);color:#203E2D;
-  font-variant-numeric:tabular-nums;
-}
-body.control-room .offer-picker-delivery,
-body.control-room .offer-picker-fallback {
-  font:500 11px/1.4 var(--sans);color:#66776B;
-}
-body.control-room .offer-picker-side {
-  flex:0 0 auto;display:flex;flex-direction:column;gap:3px;
-  align-items:flex-end;max-width:36%;
-}
-body.control-room .offer-picker-price {
-  font:750 13px/1.3 var(--sans);color:#263E2C;
-  white-space:nowrap;font-variant-numeric:tabular-nums;
-}
-body.control-room .offer-picker-date {
-  font:500 10px/1.4 var(--mono);color:#7D887E;
+body.control-room .offer-picker-count {
+  display:inline-block;
+  padding:6px 10px;
+  background:#FFFFFF;
+  color:#42604B;
+  border:1px solid #C3D1C0;
+  font:700 11px/1.3 var(--sans);
   white-space:nowrap;
 }
+body.control-room .offer-picker-chevron {
+  width:10px;
+  height:10px;
+  flex:0 0 auto;
+  border-right:2px solid #355640;
+  border-bottom:2px solid #355640;
+  transform:rotate(45deg) translateY(-2px);
+  transition:transform .17s ease;
+}
+body.control-room .supplier-offer-picker[open] .offer-picker-chevron {
+  transform:rotate(225deg) translate(-2px,-1px);
+}
 body.control-room .offer-picker-menu {
-  position:absolute;top:calc(100% - 1px);left:-3px;right:-3px;
-  z-index:5;
-  max-height:min(55vh,420px);
-  overflow-y:auto;overscroll-behavior:contain;
+  position:static;
+  max-height:min(65vh,570px);
+  overflow-y:auto;
+  overscroll-behavior:contain;
+  margin:0;
+  border:0;
   background:#FFFFFF;
-  border:3px solid #203E2D;border-top:1px solid #D3DDD0;
-  box-shadow:0 18px 30px rgba(24,45,31,.2);
+  box-shadow:none;
 }
 body.control-room .offer-picker-menu-hint {
-  display:flex;justify-content:space-between;gap:12px;
-  margin:0;padding:11px 14px;
-  font:600 9px/1.3 var(--mono);letter-spacing:.08em;
-  color:#839084;background:#F5F7F3;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px 19px 11px;
+  background:#FFFFFF;
+  border-bottom:1px solid #DAE2D6;
+  color:#788878;
+  font:700 9px/1.4 var(--mono);
+  letter-spacing:.085em;
 }
+body.control-room .offer-picker-options {display:grid;gap:0}
 body.control-room .offer-picker-option {
-  display:block;width:100%;margin:0;min-height:65px;
-  padding:12px 15px;text-align:left;
-  background:#FFFFFF;color:#223529;
-  border:0;border-bottom:1px solid #E5EAE2;
+  display:grid;
+  grid-template-columns:36px minmax(0,1fr) 12px;
+  align-items:center;
+  gap:12px;
+  width:100%;
+  min-height:93px;
+  padding:14px 17px;
+  margin:0;
+  border:0;
+  border-bottom:1px solid #E2E8DF;
   border-left:4px solid transparent;
   border-radius:0!important;
+  background:#FFFFFF;
+  color:#203E2D;
+  text-align:left;
   cursor:pointer;
+  transition:background-color .12s ease;
 }
-body.control-room .offer-picker-option:last-child{border-bottom:0}
+body.control-room .offer-picker-option:last-child {border-bottom:0}
 body.control-room .offer-picker-option:hover,
-body.control-room .offer-picker-option:focus-visible {
-  background:#F2F6EF;
-}
+body.control-room .offer-picker-option:focus-visible {background:#F0F5EC}
 body.control-room .offer-picker-option.is-selected {
-  background:#EDF3E8;border-left-color:#5F774A;
+  background:#EFF5EA;
+  border-left-color:#55744D;
 }
 body.control-room .offer-picker-option:focus-visible {
-  outline:2px solid #4E6B4C;outline-offset:-3px;
+  outline:2px solid #426744;
+  outline-offset:-3px;
 }
-@media(max-width:760px) {
-  body.control-room .record-offer-pickers{grid-template-columns:minmax(0,1fr);gap:12px}
-  body.control-room .record-offer-pickers .supplier-offer-picker{padding:10px;border-width:3px}
-  body.control-room .offer-picker-choice-content{gap:8px}
-  body.control-room .offer-picker-measures{gap:5px 10px}
-  body.control-room .offer-picker-measure strong{font-size:14px}
-  body.control-room .offer-picker-menu {
-    position:static;max-height:min(53vh,370px);
-    margin:10px -10px -10px;
-    border:0;border-top:1px solid #C9D5C4;
-    box-shadow:none;
-  }
+body.control-room .offer-picker-option-index {
+  align-self:start;
+  margin-top:3px;
+  color:#859789;
+  font:700 11px/1.5 var(--mono);
+  font-variant-numeric:tabular-nums;
+}
+body.control-room .offer-picker-choice-content {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  min-width:0;
+  width:100%;
+}
+body.control-room .offer-picker-main {
+  flex:1 1 auto;
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  gap:11px;
+}
+body.control-room .offer-picker-measures {
+  display:flex;
+  flex-wrap:wrap;
+  align-items:flex-start;
+  gap:9px 20px;
+}
+body.control-room .offer-picker-measure {
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+  min-width:65px;
+}
+body.control-room .offer-picker-measure small,
+body.control-room .offer-picker-delivery small,
+body.control-room .offer-picker-price-label {
+  display:block;
+  font:700 9px/1.2 var(--mono);
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:#829083;
+}
+body.control-room .offer-picker-measure strong {
+  font:750 17px/1.2 var(--sans);
+  font-variant-numeric:tabular-nums;
+  color:#254830;
+  white-space:nowrap;
+}
+body.control-room .offer-picker-delivery {
+  display:flex;
+  gap:7px;
+  align-items:baseline;
+  font:500 11px/1.3 var(--sans);
+  color:#68776C;
+}
+body.control-room .offer-picker-fallback {
+  font:600 12px/1.3 var(--sans);
+  color:#657366;
+}
+body.control-room .offer-picker-side {
+  flex:0 0 125px;
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+  align-items:flex-end;
+  text-align:right;
+}
+body.control-room .offer-picker-price {
+  color:#203E2D;
+  font:750 17px/1.2 var(--sans);
+  font-variant-numeric:tabular-nums;
+  white-space:nowrap;
+}
+body.control-room .offer-picker-date {
+  font:500 10px/1.35 var(--mono);
+  color:#7C897E;
+}
+body.control-room .offer-picker-option-indicator {
+  width:9px;
+  height:9px;
+  border-right:2px solid #BBC9B9;
+  border-top:2px solid #BBC9B9;
+  transform:rotate(45deg);
+}
+body.control-room .offer-picker-option.is-selected .offer-picker-option-indicator {
+  width:10px;
+  height:6px;
+  border-top:0;
+  border-right:2px solid #456645;
+  border-bottom:2px solid #456645;
+  transform:rotate(45deg) translateY(-2px);
+}
+@media(max-width:760px){
+  body.control-room .record-offer-pickers{grid-template-columns:minmax(0,1fr)}
+  body.control-room .record-offer-pickers .offer-picker-trigger{padding:15px 14px;min-height:67px}
+  body.control-room .offer-picker-title{font-size:16px}
+  body.control-room .offer-picker-option{grid-template-columns:25px minmax(0,1fr) 10px;gap:8px;padding:13px 10px}
+  body.control-room .offer-picker-choice-content{gap:10px}
+  body.control-room .offer-picker-measures{gap:8px 13px}
+  body.control-room .offer-picker-measure strong{font-size:15px}
+  body.control-room .offer-picker-side{flex-basis:90px}
+  body.control-room .offer-picker-price{font-size:14px}
+  body.control-room .offer-picker-menu-hint{padding:10px 12px}
 }
 @media(max-width:420px){
+  body.control-room .offer-picker-count{padding:5px 7px;font-size:10px}
+  body.control-room .offer-picker-trigger-meta{gap:12px}
+  body.control-room .offer-picker-option{grid-template-columns:20px minmax(0,1fr);gap:8px}
+  body.control-room .offer-picker-option-indicator{display:none}
   body.control-room .offer-picker-choice-content{align-items:flex-start}
-  body.control-room .offer-picker-side{max-width:40%}
-  body.control-room .offer-picker-date{white-space:normal;text-align:right}
-  body.control-room .offer-picker-option{padding:12px 9px}
+  body.control-room .offer-picker-measures{gap:8px}
+  body.control-room .offer-picker-measure{min-width:55px}
+  body.control-room .offer-picker-measure strong{font-size:14px}
+  body.control-room .offer-picker-side{flex-basis:78px}
+  body.control-room .offer-picker-price{font-size:13px}
+  body.control-room .offer-picker-date{font-size:9px}
+  body.control-room .offer-picker-menu-hint{font-size:8px}
 }
