@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-06T00:00:00.000Z",
+  "updatedAt": "2026-11-23T07:40:33.337Z",
   "plants": [
     {
       "id": "plant-abies-concolor",
@@ -8893,6 +8893,26 @@
         "image": "assets/biljke/reference-c9d679f7f8f1c946b44dd400.jpg",
         "sourceUrl": "https://innocentiemangonipiante.it/en/zelkova-serrata-green-vase/"
       }
+    },
+    {
+      "id": "plant-503652fb6d0737",
+      "latinName": "Pinus parviflora",
+      "commonName": "",
+      "category": "Četinari",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-25179d8f9775b1",
+      "latinName": "Juniperus media 'Mint Julep'",
+      "commonName": "",
+      "category": "Četinari",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
     }
   ]
 }
