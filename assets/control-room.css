@@ -598,3 +598,5 @@ body.control-room .record-offer-pickers .supplier-offer-picker select {
 }
 body.control-room .record-offer-pickers .supplier-offer-picker:focus-within {border-color:#203E2D}
 body.control-room article.offer-card[data-deduplicated="true"] {display:none!important}
+
+body.control-room .deduplicated-offer,body.control-room .deduplicated-offer[hidden]{display:none!important}
