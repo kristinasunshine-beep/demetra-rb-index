@@ -1,5 +1,5 @@
 'use strict';
-importScripts('vendor/xlsx-0.20.3.full.min.js','vendor/jszip-3.10.1.min.js','brza-preporuka-core.js?v=latin-pass-r1-20261123','recommendation-excel.js?v=portrait-export-r2-20261121','moja-ponuda-core.js?v=shared-report-r1-20261121');
+importScripts('vendor/xlsx-0.20.3.full.min.js','vendor/jszip-3.10.1.min.js','brza-preporuka-core.js?v=botanical-only-r2-20261123','recommendation-excel.js?v=portrait-export-r2-20261121','moja-ponuda-core.js?v=shared-report-r1-20261121');
 const Core=self.DemetraRecommendCore;
 let sheets=[],results=null,originalWorkbook=null,recognitionRows=null;
 function send(type,data={}){postMessage({type,...data});}
@@ -148,6 +148,10 @@ self.onmessage=async({data})=>{try{
       for(let r=config.dataStartRow??config.headerRow+1;r<original.rows.length;r++){
         if(!original.rows[r]?.some(value=>String(value??'').trim()))continue;
         const request=Core.requestFromRow(original.rows[r],config.map,headers);
+        // First-pass hard gate: source records and preview/export must only
+        // contain Latin botanical names, including genuine unindexed taxa.
+        // Skip tender notes, explanatory prose, category labels and headers.
+        if(!Core.isBotanicalSource(index,request))continue;
         // Skip lawn seed, ancillary works and headings in dedicated botanical
         // specification sheets; the original worksheet remains untouched.
         if(activeSheets){
@@ -156,7 +160,7 @@ self.onmessage=async({data})=>{try{
           if(!/^[A-Z][a-z]{2,}\s+[a-z][a-z-]{2,}/.test(String(request.name??'').trim()))continue;
         }
         if(original.rows[r].includes('Formula bez sačuvane vrednosti'))request._validationError='Formula u izvornoj tabeli nema sačuvanu vrednost za poređenje.';
-        if(String(request.name??'').trim())recognitionRows.push(recognitionRow(request,index));
+        recognitionRows.push(recognitionRow(request,index));
         const result=Core.recommendQuick(index,request,{currency:'EUR'}),outRow=config.hasHeader===false?r+1:r;
         result.values.forEach((v,c)=>{sheet.rows[outRow][sheet.originalColumns+c]=v;});
         if(result.status!=='empty')overviewRows.push(...overviewItems(request,result));
