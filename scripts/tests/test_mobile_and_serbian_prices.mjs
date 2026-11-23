@@ -46,12 +46,12 @@ test('Quote mobile nursery labels keep whole words and quantity heading is conci
   assert.ok(html.includes('control-room.css?v=green-variants-navless-r2-20261122'));
 });
 
-test('All 97 priced Žiča and Topalović offers retain audited RSD to EUR conversions', () => {
+test('Existing and newly added Žiča and Topalović offers retain audited RSD to EUR conversions', () => {
   const catalog = JSON.parse(read('data/kataloske-stavke.json'));
   const plants = JSON.parse(read('data/biljke.json'));
   const serbian = catalog.offers.filter(o => ['rasadnik-zica', 'topalovic-unresolved'].includes(o.nurseryId));
   const priced = serbian.filter(o => typeof o.price === 'number');
-  assert.equal(priced.length, 97, 'Unexpected count of priced Serbian offers');
+  assert.ok(priced.length >= 97, 'The original priced Serbian offers must remain covered as the catalog grows');
   for (const offer of priced) {
     assert.equal(offer.sourceCurrency, 'RSD', offer.id);
     assert.equal(offer.currency, 'EUR', offer.id);
@@ -78,3 +78,4 @@ test('No redundant Back or Home buttons on platform subviews', () => {
   assert.ok(!recommendation.includes('id="recommend-home"'));
   assert.ok(!recommendation.includes('id="recommend-back"'));
 });
+

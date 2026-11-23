@@ -5,6 +5,7 @@ import {fileURLToPath} from 'node:url';
 import {isDeepStrictEqual} from 'node:util';
 import {refreshFolder} from './refresh_folder_prices.mjs';
 import {getSourcePrice} from './currency-normalization.mjs';
+import {auditArchiveCoverage} from './audit_archive_coverage.mjs';
 
 const repository='kristinasunshine-beep/demetra-rb-index';
 const priceFields=['price','currency','currencyStatus','currencyEvidence','sourceAmount','sourceCurrency','sourceCurrencyEvidence','priceConversion','priceEvidence'];
@@ -70,8 +71,20 @@ export async function prepareMorningPrices({work,source,fetchImpl=fetch}){
     const before=JSON.parse(original),after=JSON.parse(await fs.readFile(path.join(dataDir,'kataloske-stavke.json'),'utf8'));
     const preservation=preserveMorningPriceScope(before,after,report);
     if(await fs.readFile(path.join(dataDir,'exchange-rates.json'),'utf8')!==rateSnapshot.text)throw new Error('Jutarnja provera ne sme da promeni potvrđeni kurs.');
-    await fs.writeFile(path.join(dataDir,'kataloske-stavke.json'),JSON.stringify(after,null,2)+'\n');
-    const manifest={preparedAt:new Date().toISOString(),repository,baseCommit:head.object.sha,files:['data/kataloske-stavke.json','data/price-sync-status.json'],readOnlySnapshotFiles:['data/exchange-rates.json'],verified:report.verified,changed:report.updated,pending:report.pending.length,newSources:report.newFiles.length,exchangeRateDate:JSON.parse(rateSnapshot.text).rateDate,preservation,published:false};
+    // Keep a single JSON file uploadable in GitHub's browser after the archive grows.
+    const prettyCatalog=JSON.stringify(after,null,2)+'\n';
+    const catalogText=Buffer.byteLength(prettyCatalog)>20*1024*1024?JSON.stringify(after)+'\n':prettyCatalog;
+    await fs.writeFile(path.join(dataDir,'kataloske-stavke.json'),catalogText);
+    const archiveReview=await auditArchiveCoverage({source,catalog:after,ledgerFile:path.join(work,'archive-review-ledger.json')});
+    await fs.writeFile(path.join(work,'archive-coverage-report.json'),JSON.stringify(archiveReview,null,2)+'\n');
+    report.archiveCoverage={complete:archiveReview.catalogReviewComplete,unreviewedFiles:archiveReview.unreviewedFiles.length,uniqueDocuments:archiveReview.uniqueDocuments,reportFile:'archive-coverage-report.json'};
+    await fs.writeFile(path.join(work,'last-price-report.json'),JSON.stringify(report,null,2)+'\n');
+    const statusPath=path.join(dataDir,'price-sync-status.json');
+    const publicStatus=JSON.parse(await fs.readFile(statusPath,'utf8'));
+    publicStatus.catalogReviewComplete=archiveReview.catalogReviewComplete;
+    publicStatus.unreviewedSourceFiles=archiveReview.unreviewedFiles.length;
+    await fs.writeFile(statusPath,JSON.stringify(publicStatus,null,2)+'\n');
+    const manifest={archiveCoverage:report.archiveCoverage,preparedAt:new Date().toISOString(),repository,baseCommit:head.object.sha,files:['data/kataloske-stavke.json','data/price-sync-status.json'],readOnlySnapshotFiles:['data/exchange-rates.json'],verified:report.verified,changed:report.updated,pending:report.pending.length,newSources:report.newFiles.length,exchangeRateDate:JSON.parse(rateSnapshot.text).rateDate,preservation,published:false};
     await fs.writeFile(path.join(work,'prepared-update.json'),JSON.stringify(manifest,null,2)+'\n');
     return manifest;
   }finally{await lock.close();await fs.unlink(lockFile);}
@@ -84,3 +97,4 @@ if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.ur
   if(args.includes('--publish'))throw new Error('Ova skripta samo priprema podatke. Objavite već pregledane datoteke povezanim GitHub pristupom, uz proveru baseCommit.');
   console.log(JSON.stringify(await prepareMorningPrices({work:get('--work'),source:get('--source')||process.env.DEMETRA_SOURCE_FOLDER}),null,2));
 }
+

@@ -458,9 +458,45 @@ def supplier_parameters(offer, text, candidate, additional, unresolved):
     # Arbor's explicit STD and MULTISTEM grammar; special topiary dimensions
     # are not mislabelled as the whole plant's height.
     if nursery == 'arbor':
+        # In the stockbook's two-axis standard grammar the first class is
+        # girth and the second is overall height, e.g. 40-45 500+ STD. Do
+        # not let the nearest number before STD replace the girth class.
+        standard_pairs = list(re.finditer(
+            rf'(?<![\w])(?P<girth>{range_only})\s+'
+            rf'(?P<height>\d{{3,4}}\s*[-–—/]\s*\d{{3,4}}|\d{{3,4}}\s*\+)\s+STD\b',
+            text, FLAGS))
+        for m in standard_pairs:
+            add('circumference', m['girth'], m.group(), 'arbor_STD_separate_girth')
+            if (re.search(r'\b(?:GLOBUS|GLOBOSA|GLOBE|NANA|YOUNGII)\b', text, FLAGS)
+                    and not re.search(r'\bSTEM\s*\d', text, FLAGS)):
+                # A grafted globose form can give a stem/grade size here.
+                # Preserve its reviewed secondary STD label without choosing
+                # whole-plant height (the original Globus review does so).
+                extra('Oznaka veličine uz STD', format_size(m['height']), m.group(),
+                      'arbor_grafted_STD_secondary_size_without_axis')
+            else:
+                add('height', m['height'], m.group(), 'arbor_STD_separate_height')
         for m in re.finditer(rf'(?<![\w])(?P<size>{measure})\s+(?:1/2\s+)?STD\b', text, FLAGS):
+            if any(pair.start() <= m.start() < pair.end() for pair in standard_pairs):
+                continue
             if not re.fullmatch(r'1\s*/\s*2', m['size']):
                 add('circumference', m['size'], m.group(), 'arbor_STD_girth_class')
+        # BLOCKONSTEM is a single form code. Its following STD class is
+        # girth, just as in the spaced BLOCK ON STEM spelling.
+        for m in re.finditer(rf'\bBLOCK\s*ON\s*STEM\s*(?P<size>{range_only})\s+STD\b', text, FLAGS):
+            add('circumference', m['size'], m.group(), 'arbor_block_on_stem_STD_girth')
+        # H/L on a natural multistem describe separate overall height and
+        # width. H/L on a pleached/roof/box panel remain shaped dimensions.
+        if (re.search(r'\bMULTI[ -]*STEM\b', text, FLAGS) and
+                not re.search(r'\b(?:PLEACHED|ROOF|ARCH|SCREEN|BOX|BLOCK|UMBRELLA)\b', text, FLAGS)):
+            for m in re.finditer(
+                    rf'(?<!\w)H\s*(?P<height>{SIZE_RANGE})(?:\s*(?P<height_unit>cm|mm|m)\b)?'
+                    rf'\s*[x×]?\s*L\s*(?P<width>{SIZE_RANGE})(?:\s*(?P<width_unit>cm|mm|m)\b)?',
+                    text, FLAGS):
+                add('height', m['height'] + (' ' + m['height_unit'] if m['height_unit'] else ''),
+                    m.group(), 'arbor_natural_multistem_explicit_H_L_height')
+                add('crownWidth', m['width'] + (' ' + m['width_unit'] if m['width_unit'] else ''),
+                    m.group(), 'arbor_natural_multistem_explicit_H_L_width')
         for m in re.finditer(r'\b1/2\s+STD\b', text, FLAGS):
             extra('Forma sadnice', 'Polustandard (1/2 STD)', m.group(), 'half_standard_form_not_girth')
         m = re.search(rf'\bMULTI[ -]*STEM\s+(?P<size>{measure})\s+(?=C\s*\d|RB\b|WRB\b|WOODBOX\b|AIRPOT\b)', text, FLAGS)
@@ -489,6 +525,11 @@ def supplier_parameters(offer, text, candidate, additional, unresolved):
     for pattern in [rf'\b(?:STEM|Sth\.?|STH|stamhoogte)\s*(?P<size>{SIZE_RANGE})(?:\s*(?P<unit>cm|m))?',
                     rf'(?P<size>{SIZE_RANGE})\s*(?P<unit>cm|m)\s*(?:stem|stam)\b']:
         for m in re.finditer(pattern, text, FLAGS):
+            # ON STEM names a form; the next 40-45 STD is not clear-stem
+            # height. A distinct labelled STEM200 still supplies that height.
+            if (nursery == 'arbor' and re.search(r'\bON\s*$', text[:m.start()], FLAGS)
+                    and re.match(r'\s*STD\b', text[m.end():], FLAGS)):
+                continue
             extra('Visina čistog debla', format_size(m['size']) + (' ' + m['unit'] if m['unit'] else ''), m.group(), 'explicit_clear_stem_height')
     if re.search(r'\b(?:PLEACHED|ROOF|ARCH|SCREEN|BOX)\b', text, FLAGS):
         for m in re.finditer(r'(?<!\w)H\s*\d+(?:[.,]\d+)?(?:\s*[xX.]?\s*L\s*\d+(?:[.,]\d+)?)(?!\d)', text, FLAGS):
@@ -603,7 +644,7 @@ def extract_offer_parameters(offer):
                     continue
                 if field == 'height':
                     # A crown panel or clear-stem dimension is not overall height.
-                    if re.search(r'(?:trunk|stem|clear|mature|max\.?|maximum|crown|canopy|stablo|deblo)\s*$', prefix, FLAGS):
+                    if re.search(r'\b(?:trunk|stem|clear|mature|max\.?|maximum|crown|canopy|stablo|deblo)\s*$', prefix, FLAGS):
                         result['unresolved'].append({'field': field, 'reason': 'different_height_kind', 'raw': m.group(),
                                                      'message': 'Ovo je posebna visina stabla, krošnje ili odrasle biljke; nije visina cele sadnice.'})
                         continue

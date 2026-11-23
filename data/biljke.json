@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-23T07:40:33.337Z",
+  "updatedAt": "2026-11-23T10:39:47.128Z",
   "plants": [
     {
       "id": "plant-abies-concolor",
@@ -8421,7 +8421,9 @@
       "category": "Drveće",
       "description": "",
       "synonyms": [],
-      "searchAliases": [],
+      "searchAliases": [
+        "Tilia argentea"
+      ],
       "demo": false,
       "photo": {
         "image": "assets/biljke/reference-f079fbbf3ecb50eb54d414e0.jpg",
@@ -8517,7 +8519,10 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [
-        "Ulmus New Horizon"
+        "Ulmus New Horizon",
+        "Ulmus Resista New Horizon",
+        "Ulmus Resista 'New Horizon'",
+        "Ulmus resista New Horizon"
       ],
       "demo": false,
       "photo": {
@@ -8550,23 +8555,6 @@
       "synonyms": [],
       "searchAliases": [],
       "demo": false
-    },
-    {
-      "id": "plant-b3d791a8261438",
-      "latinName": "Ulmus Resista New Horizon",
-      "commonName": "",
-      "category": "Biljka",
-      "description": "",
-      "synonyms": [],
-      "searchAliases": [
-        "Ulmus Resista 'New Horizon'",
-        "Ulmus resista New Horizon"
-      ],
-      "demo": false,
-      "photo": {
-        "image": "assets/biljke/reference-66edb842f95bad39019e0bab.jpg",
-        "sourceUrl": "https://www.lorberg.com/en-gb/article/2477/ulmus-new-horizon-s-resista-r"
-      }
     },
     {
       "id": "plant-8b35bc8a4e1800",
@@ -8886,7 +8874,8 @@
       "synonyms": [],
       "searchAliases": [
         "Zelkova serrata GREEN VASE",
-        "Zelkova serrata Green Vase"
+        "Zelkova serrata Green Vase",
+        "Zelkova serrata 'Flekova'"
       ],
       "demo": false,
       "photo": {
@@ -8917,6 +8906,36 @@
         "image": "assets/biljke/reference-4d126bfee5ac368c49b2a1c1.jpg",
         "sourceUrl": "https://www.lorberg.com/de-de/juniperus-media-mint-julep"
       }
+    },
+    {
+      "id": "plant-c8c2d1601295b9",
+      "latinName": "Albizia julibrissin var. rosea",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-0c220a398ee800",
+      "latinName": "Acer campestre 'Huibers Elegant'",
+      "commonName": "",
+      "category": "Lišćari",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-259dea89900283",
+      "latinName": "Hydrangea macrophylla",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
     }
   ]
 }

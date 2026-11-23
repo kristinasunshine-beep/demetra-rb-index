@@ -48,20 +48,22 @@ test('Manifest remains scoped to GitHub Pages project path',()=>{
 });
 test('Mobile outline rule cannot modify desktop and does not touch existing search behavior',()=>{
   const css=txt('assets/control-room-mobile-outline.css');
-  assert.match(css,/@media screen and \(max-width: 760px\)/);
+  assert.match(css,/@media screen and \(max-width:\s*760px\)/);
   assert.match(css,/\.search-intro h1 em/);
   assert.doesNotMatch(css,/#plant-search|\.offer-pricing|\.quote-item/);
   const html=txt('index.html');
   assert.match(html,/rel="manifest" href="\.\/manifest\.webmanifest"/);
   assert.match(html,/control-room-mobile-outline\.css/);
-  assert.match(html,/navigator\.serviceWorker\.register\('\.\/service-worker\.js'\)/);
+  assert.match(html,/navigator\.serviceWorker\.register\('\.\/service-worker\.js'(?:\s*,[^)]*)?\)/);
 });
 test('Offline shell does not cache catalog JSON, user quotes or archived prices',()=>{
   const service=txt('service-worker.js');
   assert.match(service,/pathname\.includes\('\/data\/'\)/);
   assert.match(service,/xlsx\|xls\|csv/);
-  assert.match(service,/fetch\(req\)\.catch/);
-  assert.doesNotMatch(service,/\.put\(/);
+  assert.match(service,/cache:'reload'/);
+  const dataGuard=service.indexOf("url.pathname.includes('/data/')");
+  assert.ok(dataGuard>=0 && dataGuard<service.indexOf('cache.put'), 'Catalog requests exit before shell assets can be cached');
+  assert.match(service,/if \(url\.pathname\.includes\('\/data\/'\)[^\n]+return;/);
 });
 
 test('PWA tile matches #151918 pixel sample from user photo without any decorative border',()=>{
@@ -77,11 +79,12 @@ test('PWA tile matches #151918 pixel sample from user photo without any decorati
   assert.equal(manifest.background_color,'#151918');
   assert.equal(manifest.theme_color,'#151918');
 });
-test('Mobile outline is real condensed font, not distorted Arial',()=>{
+test('Mobile outline retains original font and merges glyph contours without horizontal distortion',()=>{
   const css=txt('assets/control-room-mobile-outline.css');
-  assert.match(css,/BarlowCondensed-SemiBold\.ttf/);
-  assert.match(css,/font-family: "DEMETRA Mobile Outline"/);
-  assert.match(css,/transform: none/);
+  assert.match(css,/font-family:\s*var\(--sans\)/);
+  assert.match(css,/filter:url\("#demetra-mobile-union-outline"\)/);
+  assert.match(css,/transform:\s*none/);
   assert.match(css,/@media screen and \(max-width:\s*760px\)/);
   assert.ok(statSync(resolve(root,'fonts/BarlowCondensed-SemiBold.ttf')).size>50000);
 });
+

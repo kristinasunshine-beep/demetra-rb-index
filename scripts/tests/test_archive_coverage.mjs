@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';import fs from 'node:fs/promises';import os from 'node:os';import path from 'node:path';import {createHash} from 'node:crypto';import {auditArchiveCoverage} from '../audit_archive_coverage.mjs';
+const root=await fs.mkdtemp(path.join(os.tmpdir(),'demetra-archive-'));
+try{
+ await fs.writeFile(path.join(root,'old.pdf'),'two priced rows');const sha=createHash('sha256').update('two priced rows').digest('hex');
+ const catalog={offers:[{id:'one-row',sourceEvidence:{sourceSha256:sha,page:1,row:1}}]};
+ let r=await auditArchiveCoverage({source:root,catalog});assert.equal(r.catalogReviewComplete,false);assert.equal(r.unreviewedFiles[0].linkedOffers,1);
+ const ledgerFile=path.join(root,'review.json');const review={sha256:sha,reviewedAt:'2026-11-23',disposition:'reconciled',allRowsReviewed:true,rows:[{row:1,disposition:'represented',offerIds:['one-row']},{row:2,disposition:'pending'}]};
+ await fs.writeFile(ledgerFile,JSON.stringify({scopeFingerprint:createHash('sha256').update('[]').digest('hex'),documents:[review]}));r=await auditArchiveCoverage({source:root,catalog,ledgerFile});assert.equal(r.catalogReviewComplete,false);
+ review.rows[1].disposition='added';review.rows[1].offerIds=['second-row'];await fs.writeFile(ledgerFile,JSON.stringify({scopeFingerprint:createHash('sha256').update('[]').digest('hex'),documents:[review]}));r=await auditArchiveCoverage({source:root,catalog,ledgerFile});assert.equal(r.catalogReviewComplete,false,'Unpublished prepared additions cannot close coverage');catalog.offers.push({id:'second-row',sourceEvidence:{sourceSha256:sha,page:1,row:2}});await fs.writeFile(ledgerFile,JSON.stringify({scopeFingerprint:createHash('sha256').update('[]').digest('hex'),documents:[review]}));r=await auditArchiveCoverage({source:root,catalog,ledgerFile});assert.equal(r.catalogReviewComplete,true);
+ await fs.copyFile(path.join(root,'old.pdf'),path.join(root,'renamed.pdf'));r=await auditArchiveCoverage({source:root,catalog,ledgerFile});assert.equal(r.catalogReviewComplete,true);assert.equal(r.uniqueDocuments,1);assert.equal(r.duplicateFiles,1);catalog.offers[0].plantId='newly-approved-plant';r=await auditArchiveCoverage({source:root,catalog,ledgerFile});assert.equal(r.catalogReviewComplete,false,'Changed scope requires renewed source row matching');delete catalog.offers[0].plantId;
+ await fs.writeFile(path.join(root,'old.pdf'),'changed source row');r=await auditArchiveCoverage({source:root,catalog,ledgerFile});assert.equal(r.catalogReviewComplete,false);assert.equal(r.unreviewedFiles.length,1);
+ console.log(JSON.stringify({passed:true,knownSourceDoesNotMeanAllRowsReviewed:true,unresolvedRowsBlockCompletion:true,renamedCopiesDeduplicated:true,changedHashRequiresReview:true}));
+}finally{assert(path.resolve(root).startsWith(path.join(os.tmpdir(),'demetra-archive-')));await fs.rm(root,{recursive:true,force:true});}
+

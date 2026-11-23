@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-11-23T09:46:20.013Z",
+  "links": [
+    {
+      "oldPlantId": "plant-b3d791a8261438",
+      "canonicalPlantId": "plant-2d6ea78c9fc019",
+      "canonicalName": "Ulmus 'New Horizon'",
+      "formerName": "Ulmus Resista New Horizon",
+      "reason": "Same New Horizon cultivar; RESISTA is the elm series brand. Supplier expressly lists Ulmus New Horizon within RESISTA.",
+      "sourceUrl": "https://www.arbor.be/ulmus-resista",
+      "samePhotoSource": "https://www.lorberg.com/en-gb/article/2477/ulmus-new-horizon-s-resista-r",
+      "offerIdsPreserved": [
+        "record-1d28592626d790",
+        "record-54a562911d87b4",
+        "record-8c2fb35f6823c8",
+        "record-e8a95842d008ce",
+        "record-3a715466971102",
+        "record-defa7792675ccd",
+        "record-776b9160802f78",
+        "record-1bb1f85ce130b3",
+        "record-6057bf0ae15034",
+        "offer-pdf-97337a68b798375f1689",
+        "record-1fb62e9bb29ac23b09ce"
+      ],
+      "pricesUnchanged": true
+    }
+  ],
+  "sourceLabelsClarified": 125,
+  "acceptedSynonyms": [
+    {
+      "sourceName": "Zelkova serrata 'Flekova'",
+      "canonicalPlantId": "plant-c780fe1ca2ecb2",
+      "sourceUrl": "https://www.ebben.nl/en/treeebb/zesfleko-zelkova-serrata-flekova/"
+    },
+    {
+      "sourceName": "Tilia argentea",
+      "canonicalPlantId": "plant-tilia-tomentosa",
+      "sourceUrl": "https://www.ebben.nl/en/treeebb/titoment-tilia-tomentosa/"
+    }
+  ]
+}

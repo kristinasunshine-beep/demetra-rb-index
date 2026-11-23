@@ -429,7 +429,6 @@
       "plant-b272f5ab1c029d",
       "plant-b31ab73e8f982d",
       "plant-b35f577a88766f",
-      "plant-b3d791a8261438",
       "plant-b3ec587a9a14bd",
       "plant-b4ef8b5da580a2",
       "plant-b50f4e6010238c",
@@ -623,7 +622,10 @@
       "plant-tilia-cordata",
       "plant-tilia-tomentosa",
       "plant-503652fb6d0737",
-      "plant-25179d8f9775b1"
+      "plant-25179d8f9775b1",
+      "plant-c8c2d1601295b9",
+      "plant-0c220a398ee800",
+      "plant-259dea89900283"
     ],
     "allowedNurseryIds": [
       "arbor",
@@ -649,7 +651,8 @@
       "vivers-planas",
       "volentis",
       "willaert",
-      "zelena-plocica"
+      "zelena-plocica",
+      "van-den-berk"
     ]
   },
   "sources": [

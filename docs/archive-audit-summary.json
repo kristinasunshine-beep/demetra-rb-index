@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "preparedAt": "2026-11-23T10:39:47.128Z",
+  "repository": "kristinasunshine-beep/demetra-rb-index",
+  "baseCommit": "07a833fe6b1c10be17aea12b04b00ce296f7342f",
+  "publicationState": "prepared_awaiting_explicit_code_publication_approval",
+  "published": false,
+  "archive": {
+    "filesInspected": 204,
+    "filesFound": 204,
+    "uniqueDocuments": 199,
+    "duplicateFiles": 5,
+    "fullyReconciledFiles": 181,
+    "filesRequiringEvidence": 23,
+    "catalogReviewComplete": false
+  },
+  "catalog": {
+    "plants": 623,
+    "nurseries": 25,
+    "totalOffers": 4685,
+    "activeOffers": 4553,
+    "pricedActiveOffers": 4012,
+    "originalOfferIdsRetained": 3114,
+    "addedOffers": 1571,
+    "addedPlants": 3,
+    "mergedDuplicatePlants": 1,
+    "addedNurseries": 1,
+    "restoredMissingPrices": 1,
+    "existingNumericalPricesChanged": 0
+  },
+  "ulmus": {
+    "canonicalName": "Ulmus 'New Horizon'",
+    "canonicalPlantId": "plant-2d6ea78c9fc019",
+    "redirectedAliasId": "plant-b3d791a8261438",
+    "cause": "RESISTA trade series and cultivar were split into separate plant cards; the requested quotation was already present in collapsed nursery variants.",
+    "quotation": "S2526-02377",
+    "sourceDate": "2026-01-20",
+    "validUntil": "2026-02-19",
+    "offerId": "record-776b9160802f78",
+    "girth": "30–35",
+    "unitPriceEUR": 660,
+    "notCurrentStockConfirmation": true
+  },
+  "safeguards": [
+    "Source file hash and row/cell identity, including renamed copies",
+    "Active published offer IDs required to close source rows",
+    "Changed catalog scope invalidates earlier coverage",
+    "Exact supplier, cultivar, dimensions, unit and source currency",
+    "Existing user exclusions, hidden records and original prices preserved",
+    "Unknown precise date stays blank; unknown identity/currency stays pending"
+  ],
+  "unresolved": {
+    "netherlandsRows": 41,
+    "otherCustomerPricedRows": 17,
+    "otherBroadStockRows": 3046,
+    "meaning": "Source documents have been inspected. These rows remain unimported where exact identity, currency, supplier, price tier or conditions are not adequately established. Counts refer to source rows, not necessarily distinct plants. Paired source formats are not imported twice."
+  },
+  "preserved": {
+    "originalBusinessFilesReadOnly": true,
+    "originalsIncludedInPackage": false,
+    "existingPhotosAndAssetsUnchanged": true,
+    "exchangeRatesUnchanged": true,
+    "exchangeRateDate": "2026-11-13",
+    "onlinePricesUsed": false
+  }
+}

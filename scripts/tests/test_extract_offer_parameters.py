@@ -218,6 +218,73 @@ class ExtractOfferParametersTests(unittest.TestCase):
         self.assertEqual(extras['Visina čistog debla'], '220')
         self.assertEqual(extras['Dimenzije oblikovane krošnje'], 'H420L250')
 
+    def test_arbor_on_stem_form_never_turns_STD_girth_into_clear_stem_height(self):
+        for text, girth in [
+                ('Carpinus betulus BLOCK ON STEM 40-45 STD WOODBOX', '40–45'),
+                ('Fagus sylvatica BLOCK ON STEM60-70 STD AIRPOT', '60–70'),
+                ('Fagus sylvatica BLOCKONSTEM60-70 STD AIRPOT', '60–70')]:
+            with self.subTest(text=text):
+                r = extract_offer_parameters(offer(text))
+                self.assertEqual(r['set']['circumference'], girth)
+                self.assertNotIn('height', r['set'])
+                self.assertFalse(any(p['label'] == 'Visina čistog debla'
+                                     for p in r['additionalParameters']))
+        r = extract_offer_parameters(offer('Carpinus betulus BLOCK ON STEM 40-45 STD STEM220 C130L'))
+        self.assertEqual(r['set']['circumference'], '40–45')
+        self.assertEqual([p['value'] for p in r['additionalParameters']
+                          if p['label'] == 'Visina čistog debla'], ['220'])
+
+    def test_arbor_paired_standard_girth_and_total_height_keep_all_three_axes(self):
+        for text, girth, height, stem in [
+                ('Cedrus atlantica Glauca 40-45 500+ STD STEM200 WOODBOX', '40–45', '500+', '200'),
+                ('Acer 30-35 400-500 STD STEM220 C130L', '30–35', '400–500', '220')]:
+            with self.subTest(text=text):
+                source = offer(text)
+                before = copy.deepcopy(source)
+                r = extract_offer_parameters(source)
+                self.assertEqual(source, before)
+                self.assertEqual(r['set']['circumference'], girth)
+                self.assertEqual(r['set']['height'], height)
+                self.assertEqual(r['evidence']['height']['unitStatus'], 'not_stated')
+                self.assertNotIn('cm', r['set']['circumference'])
+                stems = [p['value'] for p in r['additionalParameters']
+                         if p['label'] == 'Visina čistog debla']
+                self.assertEqual(stems, [stem] if stem else [])
+                self.assertFalse(any(p['reason'] == 'multiple_parameter_values'
+                                     for p in r['unresolved']))
+        r = extract_offer_parameters(offer('Cedrus 40-45 500+ STD C130L', nurseryId='unknown'))
+        self.assertNotIn('circumference', r['set'])
+        self.assertNotIn('height', r['set'])
+
+    def test_arbor_grafted_globus_secondary_STD_grade_keeps_unknown_axis(self):
+        r = extract_offer_parameters(offer('Ginkgo biloba Globus 20-25 150+ STD C130L'))
+        self.assertEqual(r['set']['circumference'], '20–25')
+        self.assertNotIn('height', r['set'])
+        self.assertTrue(any(p['label'] == 'Oznaka veličine uz STD' and p['value'] == '150+'
+                            for p in r['additionalParameters']))
+
+    def test_arbor_natural_multistem_explicit_H_L_are_total_height_and_crown_width(self):
+        for text in [
+                'Acer palmatum MULTISTEM H400-500 L400-500 C500L',
+                'Acer palmatum MULTISTEM H400-500L400-500 C500L',
+                'Acer palmatum H400-500 L400-500 MULTISTEM C500L']:
+            with self.subTest(text=text):
+                r = extract_offer_parameters(offer(text))
+                self.assertEqual(r['set']['height'], '400–500')
+                self.assertEqual(r['set']['crownWidth'], '400–500')
+                self.assertNotIn('circumference', r['set'])
+                self.assertFalse(any(p['reason'] == 'different_height_kind'
+                                     for p in r['unresolved']))
+        r = extract_offer_parameters(offer('Acer MULTISTEM H400-500 cm L3-4 m C500L'))
+        self.assertEqual(r['set']['height'], '400–500 cm')
+        self.assertEqual(r['set']['crownWidth'], '3–4 m')
+        for text in ['Acer PLEACHED MULTISTEM H400-500 L400-500 C500L',
+                     'Acer ROOF MULTISTEM H400-500 L400-500 C500L']:
+            with self.subTest(text=text):
+                r = extract_offer_parameters(offer(text))
+                self.assertNotIn('height', r['set'])
+                self.assertNotIn('crownWidth', r['set'])
+
     def test_unclassified_range_remains_explicit_in_main_panel_payload(self):
         r = extract_offer_parameters(offer('Plant; DIMENZIJE: 150-200x300-350', nurseryId='lorberg'))
         self.assertNotIn('height', r['set'])

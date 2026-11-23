@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-09T10:18:58Z",
+  "updatedAt": "2026-11-23T10:39:47.128Z",
   "nurseries": [
     {
       "id": "vannucci-piante",
@@ -263,6 +263,25 @@
         "quoteReference": "42418134",
         "issuerEvidence": "Baumschule Lorenz von Ehren GmbH & Co. KG je naveden u zaglavlju ponude.",
         "issuer": "Baumschule Lorenz von Ehren GmbH & Co. KG"
+      }
+    },
+    {
+      "id": "van-den-berk",
+      "name": "Van den Berk Nurseries",
+      "country": "Holandija",
+      "website": "https://www.vdberk.com/",
+      "contact": "",
+      "demo": false,
+      "verificationStatus": "verified",
+      "catalogueAccess": "public_assortment_quote_on_request",
+      "sourceEvidence": {
+        "sourcePath": "Acer camp. i pl/Van den Berk/van_den_Berk_Offer_3061180.pdf",
+        "sourceSha256": "f76f35a1c45d00bc161b4660a8a3b7c6f32f84f7f3f5870cdaa19d079ccc940c",
+        "page": 1,
+        "issuer": "Boomkwekerij Gebr. Van den Berk B.V.",
+        "websitePrinted": "www.vdberk.com",
+        "quoteReference": "3061180",
+        "sourceDate": "2026-02-20"
       }
     }
   ]
