@@ -67,7 +67,7 @@ export async function prepareMorningPrices({work,source,fetchImpl=fetch}){
     for(const snapshot of snapshots)await fs.writeFile(path.join(dataDir,snapshot.name),snapshot.text);
     const original=snapshots.find(s=>s.name==='kataloske-stavke.json').text;
     const rateSnapshot=snapshots.find(s=>s.name==='exchange-rates.json');
-    const {report}=await refreshFolder({source,repo:run,stateFile:path.join(work,'private-price-state.json'),reportFile:path.join(work,'last-price-report.json'),apply:true});
+    const {report}=await refreshFolder({source,repo:run,stateFile:path.join(work,'private-price-state.json'),reportFile:path.join(work,'last-price-report.json'),apply:true,euroInputsOnly:true});
     const before=JSON.parse(original),after=JSON.parse(await fs.readFile(path.join(dataDir,'kataloske-stavke.json'),'utf8'));
     const preservation=preserveMorningPriceScope(before,after,report);
     if(await fs.readFile(path.join(dataDir,'exchange-rates.json'),'utf8')!==rateSnapshot.text)throw new Error('Jutarnja provera ne sme da promeni potvrđeni kurs.');

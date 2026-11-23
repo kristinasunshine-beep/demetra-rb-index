@@ -45,7 +45,7 @@ async function writeJson(file,value){
   try{const handle=await fs.open(file,'w');try{await handle.writeFile(text);await handle.sync();}finally{await handle.close();}}
   catch(error){if(previous)await fs.writeFile(file,previous);throw error;}
 }
-export async function refreshFolder({source,repo=scriptRoot,stateFile,reportFile,apply=false,now=new Date().toISOString()}){
+export async function refreshFolder({source,repo=scriptRoot,stateFile,reportFile,apply=false,euroInputsOnly=false,now=new Date().toISOString()}){
   if(!source||!stateFile||!reportFile)throw new Error('Potrebni su izvorni folder, lokalna evidencija i izveštaj.');
   const document=JSON.parse(await fs.readFile(path.join(repo,'data/kataloske-stavke.json'),'utf8'));
   if(document.sourcePolicy?.nonPhoto!=='rasadnici-ponude-zip')throw new Error('Nepodržano pravilo izvora.');
@@ -104,6 +104,8 @@ export async function refreshFolder({source,repo=scriptRoot,stateFile,reportFile
       }catch(error){if(!unchanged||error.code==='SOURCE_CURRENCY_CONFLICT'){pending(offer,error.message,location.file);continue;}rowRecord=null;}
     }else if(!unchanged){pending(offer,'Izmenjen PDF, slika ili prilog bez potvrđene ćelije: potrebna je provera sadržaja.',location.file);continue;}
     const sourceChanged=!unchanged&&(newAmount!==original.amount||newCurrency!==original.currency);
+    // Future inputs must already be EUR. Preserve archived RSD amounts and proofs.
+    if(euroInputsOnly&&sourceChanged&&newCurrency!=='EUR'){pending(offer,'Novi ili promenjeni unos mora biti u EUR; automatsko preračunavanje je isključeno.',location.file);continue;}
     if(sourceChanged){
       const before=original.amount;
       offer.priceRefresh={...(offer.priceRefresh||{}),originalAmount:offer.priceRefresh?.originalAmount??before,changedAt:now,previousAmount:before};
