@@ -21,3 +21,17 @@ test('PDF real text layout retains empty column positions',async()=>{
 });
 
 test('OCR split cultivar stays attached to botanical name',()=>{const rows=C.pdfPlantRows([["Acer campestre","'Elsrijk'"],["Standard;","visina","300-350","cm"]],index);assert.equal(C.recommendQuick(index,{name:rows[1][0],preferences:rows[1][1]}).status,'matched');});
+
+test('PDF botanical identity is invariant to straight or curly quotation marks',()=>{
+  for(const name of ["Acer campestre 'Elsrijk'",'Acer campestre Elsrijk','Acer campestre “Elsrijk”','"Acer campestre Elsrijk"']){
+    const rows=C.pdfPlantRows([[name],['Standard; visina 300-350 cm']],index);
+    const first=rows[1];
+    const recognized=C.recognizeSourceRow(index,{name:first[0],preferences:first[1]});
+    assert.equal(recognized.plantId,'a',name);
+    assert.equal(recognized.latinName,"Acer campestre 'Elsrijk'");
+    assert.equal(recognized.parameters.length,2);
+  }
+  const unknown=C.recognizeSourceRow(index,{name:'Acer campestre Unknown',preferences:'visina 300-350 cm'});
+  assert.equal(unknown.plantId,null);
+  assert.equal(unknown.latinName,'Acer campestre Unknown');
+});

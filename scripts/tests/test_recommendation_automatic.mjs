@@ -81,7 +81,15 @@ test('one upload processes every input row and preserves the notes sheet',async(
   assert.equal(result.processed,count);assert.equal(result.matched,count-1);assert.equal(result.unmatched,0);assert.equal(result.notFound,1);
   assert.equal(result.preview.length,count,'All input rows must be available through paginated review');
   const output=await instance.download(),book=XLSX.read(output,{type:'array'});
-  assert.deepEqual(book.SheetNames,['Pregled preporuke','Sadnice','Napomena']);
+  assert.deepEqual(book.SheetNames,['Pregled preporuke','Sadnice','Napomena','Prepoznate biljke']);
+  const recognized=XLSX.utils.sheet_to_json(book.Sheets['Prepoznate biljke'],{header:1,defval:''});
+  assert.deepEqual(recognized[0],['Latinski naziv biljke','Prepoznati parametri sadnice']);
+  assert.equal(recognized.length,count+1);
+  assert.equal(recognized[1][0],plant);
+  assert.match(recognized[1][1],/Tip sadnice: Standard/);
+  assert.match(recognized[1][1],/Visina sadnice: 300–350/);
+  assert(!recognized[1].join(' ').includes('Količina'));
+  assert.equal(recognized.at(-1)[0],"Acer campestre 'Pogresan kultivar'");
   const glance=XLSX.utils.sheet_to_json(book.Sheets['Pregled preporuke'],{header:1,defval:''});
   assert.deepEqual(glance[0],['Latinski naziv biljke','Parametri iz tvoje tabele','Spisak rasadnika','Nabavna cena (€)','Rezultat','Digitalna kartica']);
   assert.ok(glance.length>=count+1,'overview includes every original plant and all supplier rows');
@@ -107,11 +115,11 @@ test('headerless first row is processed and the source is retained beside its re
   const result=await instance.process(input);
   assert.equal(result.processed,2);assert.equal(result.matched,2);assert.equal(result.preview[0].row,1);
   const output=await instance.download(),book=XLSX.read(output,{type:'array'});
-  assert.equal(book.SheetNames.length,4);
+  assert.equal(book.SheetNames.length,5);
   assert.equal(book.SheetNames[0],'Pregled preporuke');
   assert.deepEqual(XLSX.utils.sheet_to_json(book.Sheets['Bez zaglavlja'],{header:1,defval:''}),rows);
   assert.deepEqual(XLSX.utils.sheet_to_json(book.Sheets.Napomena,{header:1,defval:''}),notes);
-  const added=book.SheetNames.find(name=>!['Pregled preporuke','Bez zaglavlja','Napomena'].includes(name));assert(added);
+  const added=book.SheetNames.find(name=>!['Pregled preporuke','Bez zaglavlja','Napomena','Prepoznate biljke'].includes(name));assert(added);
   const results=XLSX.utils.sheet_to_json(book.Sheets[added],{header:1,defval:''});
   assert.equal(results.length,3);assert.equal(results[1][0],plant);assert.equal(results[2][0],plant);
   const priceColumn=results[0].indexOf('Najniža nabavna cena (€)');assert(priceColumn>=2);
@@ -182,4 +190,33 @@ test('rank by number of matching botanical fields, then by price; keep all eligi
   assert.equal(r.suppliers[0].candidate,false);assert(r.suppliers.slice(1).every(s=>s.candidate));assert.equal(r.price,120);
   assert.equal(C.recommendQuick(idx,{name:plant}).suppliers.length,0);
   assert.equal(C.recommendQuick(idx,{name:plant,height:'999'}).suppliers.length,0);
+});
+
+test('Excel recognition ignores quotation marks but retains precise cultivar identity and all original botanical fields',async()=>{
+  const inputRows=[
+    ['Latinski naziv biljke','Tip sadnice','Visina (cm)','Obim (cm)','Veličina saksije','Količina','Cena','Šifra'],
+    [plant,'Standard','300–350','18–20','50 L',11,200,'ABC-1'],
+    ['Acer campestre Elsrijk','Standard','300–350','18–20','50 L',17,205,'ABC-2'],
+    ['"Acer campestre Elsrijk"','Standard','300–350','18–20','50 L',19,209,'ABC-3'],
+    ["Acer campestre 'Pogresan kultivar'",'Standard','300–350','18–20','50 L',23,50,'ABC-4']
+  ];
+  const instance=worker();
+  const result=await instance.process(workbook([['Ulaz',inputRows]]));
+  assert.equal(result.processed,4);
+  assert.equal(result.recognized,3);
+  assert.equal(result.notFound,1);
+  const output=await instance.download();
+  const book=XLSX.read(output,{type:'array'});
+  const recognized=XLSX.utils.sheet_to_json(book.Sheets['Prepoznate biljke'],{header:1,defval:''});
+  assert.deepEqual(recognized[0],['Latinski naziv biljke','Prepoznati parametri sadnice']);
+  assert.equal(recognized.length,5);
+  for(const row of recognized.slice(1,4)){
+    assert.equal(row[0],plant);
+    assert.match(row[1],/Tip sadnice: Standard/);
+    assert.match(row[1],/Visina sadnice: 300–350/);
+    assert.match(row[1],/Obim sadnice: 18–20/);
+    assert.match(row[1],/Veličina saksije: 50 L/);
+    assert(!/ABC|Količina|Cena|200|205|209/.test(row.join(' ')));
+  }
+  assert.equal(recognized[4][0],"Acer campestre 'Pogresan kultivar'");
 });
