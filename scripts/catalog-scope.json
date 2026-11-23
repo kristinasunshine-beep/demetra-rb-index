@@ -14671,6 +14671,32 @@
           "rawNameSha256": "0eed36e2210f32d3a5c9b5153802a1645f5dd56e9c06f54e76ce391a543a5355"
         }
       ]
+    },
+    {
+      "id": "plant-503652fb6d0737",
+      "latinName": "Pinus parviflora",
+      "offerEvidence": [
+        {
+          "id": "occ-8e1cc81355c50aad5ba3",
+          "sourceId": "src-7c5f05886ef469",
+          "page": 1,
+          "row": 4,
+          "rawNameSha256": "31bbbf98bf24e5854a53d3630cd5ca97b5050327086bf7ea7846b24c8c4abc9d"
+        }
+      ]
+    },
+    {
+      "id": "plant-25179d8f9775b1",
+      "latinName": "Juniperus media 'Mint Julep'",
+      "offerEvidence": [
+        {
+          "id": "occ-0def67c4ec790180ffd2",
+          "sourceId": "src-2011c2c4d4c006",
+          "page": 3,
+          "row": 15,
+          "rawNameSha256": "ca9f715a155e31504539f3a4958241e431f0015435d27448715542162bbb2d78"
+        }
+      ]
     }
   ],
   "sources": [
@@ -15212,6 +15238,16 @@
     {
       "id": "src-399eaf37529a88",
       "sha256": "88d52aa2d9d768c2bff881669a9bf673b76c33ed10209d417175114a59f716d5",
+      "kind": "private_offer"
+    },
+    {
+      "id": "src-7c5f05886ef469",
+      "sha256": "7c5f05886ef469a289af1b27279eea7532acd4a9934e2fd16b842606a431dc46",
+      "kind": "private_offer"
+    },
+    {
+      "id": "src-2011c2c4d4c006",
+      "sha256": "2011c2c4d4c006ef704c94b65367fc5ecb8d22a53777ab5e1eb0702e2994c19b",
       "kind": "private_offer"
     }
   ],
