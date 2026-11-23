@@ -325,15 +325,22 @@ export async function verifyPanels(root) {
       }
       checkedSourceRegressions.add(offer.id);
     }
-    const footer = markup.split('<div class="offer-footer">')[1] || '';
-    assert(!footer.includes('Specifikacija izvora:') && !footer.includes('Napomena o presađivanju:'),
-      label + 'specifikacija i presađivanje ne smeju ostati izdvojeni u fusnoti.');
-    const noteRegression = noteRegressions.get(offer.id);
-    if (noteRegression) {
-      if (noteRegression.absent) assert(!noteRegression.absent.test(footer),
-        label + 'mera iz glavnog panela ne sme ponovo biti u redundantnoj napomeni.');
-      for (const text of noteRegression.retained) assert(footer.includes(esc(text)),
-        label + 'napomena mora sačuvati kontekst izvora: ' + text);
+    // Every active card shows exactly one field at its base: date of source.
+    const footer=markup.match(/<div class="offer-footer">([\s\S]*?)<\/div>/)?.[1];
+    if (offer.sourceDate) {
+      assert(footer,label+'datum izvora mora ostati vidljiv.');
+      const expected=new Date(offer.sourceDate).toLocaleDateString('sr-Latn-RS');
+      assert.equal(footer,'<time class="offer-source-date" datetime="'+esc(offer.sourceDate)+
+        '">Datum izvora: '+esc(expected)+'</time>',label+'dozvoljen je samo datum izvora.');
+    } else assert.equal(footer,undefined,label+'ne sme se prikazati izmišljeni datum.');
+    const noteRegression=noteRegressions.get(offer.id);
+    if(noteRegression) {
+      context.offerId=offer.id;
+      const normalized=JSON.parse(run('JSON.stringify(visibleDataNotes(state.catalog.offers.find(x=>x.id===offerId)))')).join(' ');
+      if(noteRegression.absent) assert(!noteRegression.absent.test(normalized),
+        label+'interne napomene ne ponavljaju mere prikazane u panelu.');
+      for (const text of noteRegression.retained) assert(normalized.includes(text),
+        label+'kontekst izvora mora ostati zabeležen interno: '+text);
       checkedNoteRegressions.add(offer.id);
     }
     if (correctedMeasurementNotes.has(offer.id)) {
