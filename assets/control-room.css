@@ -520,7 +520,7 @@ body.control-room details.supplier-variants > summary{background:#5F774A!importa
 body.control-room details.supplier-variants > summary:hover,body.control-room details.supplier-variants > summary:focus-visible,body.control-room details.supplier-variants > summary:active{background:#5F774A!important;color:#FFFFFF!important}
 @media(max-width:760px){body.control-room .detail-topline{display:flex;align-items:center;justify-content:flex-end;gap:8px;min-height:0}body.control-room .detail-topline .dialog-topline-label,body.control-room .detail-topline [data-action="record-back"],body.control-room .detail-topline [data-action="record-home"]{display:none!important}body.control-room .detail-topline-actions{flex:0 1 auto;min-width:0;flex-wrap:nowrap;gap:8px}body.control-room .detail-hero h2{word-break:normal;overflow-wrap:normal;white-space:normal}}
 
-@media(max-width:760px){body.control-room .recommend-navigation,body.control-room .quote-navigation{display:none}}
+@media(max-width:760px){body.control-room .quote-navigation{display:none}}
 
 /* Keep the approved green/white variant control in every responsive layout. */
 body.control-room details.supplier-variants[open] > summary{background:#5F774A!important;color:#FFFFFF!important}
