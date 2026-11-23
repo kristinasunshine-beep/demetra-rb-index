@@ -235,3 +235,36 @@ const euroPrice=render(converted);assert(euroPrice.includes('49,31')&&euroPrice.
 assert(render({...converted,price:5800}).includes('Cena nije navedena'),'A relabelled RSD amount must not become EUR');
 assert(render({...converted,priceConversion:{...converted.priceConversion,rate:0}}).includes('Cena nije navedena'));
 const nativeEuro=render({price:5800,currency:'EUR',sourceAmount:5800,sourceCurrency:'EUR'});assert(nativeEuro.includes('5.800,00')&&nativeEuro.includes('€'),'A genuine large EUR price must not be divided by an exchange rate');
+
+// The dropdown orders genuine circumferences (then heights) descending,
+// independent of prices, source publication dates and original offer order.
+{
+  const source = html.match(/function offerDimensionMetric\(value\) \{[\s\S]*?\n\}\nfunction compareOfferDimensions\(a, b\) \{[\s\S]*?\n\}/)?.[0];
+  assert(source,'Dimension-based ordering functions must be present in the app');
+  const compare = new Function(source+'; return compareOfferDimensions;')();
+  const sort = offers => offers.slice().sort(compare).map(o => o.id);
+  assert.deepEqual(sort([
+    {id:'smaller-newer',circumference:'18–20',height:'700 cm',price:10,sourceDate:'2026-11-23'},
+    {id:'large-older',circumference:'30–35 cm',height:'450 cm',price:999,sourceDate:'2020-01-01'},
+    {id:'middle',circumference:'20–25',height:'1000 cm',price:1,sourceDate:'2026-11-22'},
+    {id:'unknown',circumference:'Nije navedeno',height:'Nije navedeno'}
+  ]),['large-older','middle','smaller-newer','unknown']);
+  assert.deepEqual(sort([
+    {id:'low',height:'300–350 cm'},{id:'high',height:'6–7 m'},
+    {id:'empty',height:'Nije navedeno'}, {id:'mid',height:'550–600 cm'}
+  ]),['high','mid','low','empty']);
+  assert.deepEqual(sort([
+    {id:'lower',circumference:'20–25',height:'300 cm'},
+    {id:'higher',circumference:'20–25',height:'400–450 cm'},
+    {id:'other',circumference:'20–30',height:'100 cm'}
+  ]),['other','higher','lower']);
+  assert(html.includes('offers.filter(offer => offer.nurseryId === id).sort(compareOfferDimensions)'));
+  const rendered=render({height:'Nije navedeno',circumference:'18–20'});
+  assert(!/measurement--priority[^>]*><dt>Visina sadnice/.test(rendered),'Missing height must not be highlighted');
+  assert(/measurement--priority[^>]*><dt>Obim sadnice/.test(rendered),'Numeric circumference must be highlighted');
+  const all=render({height:'400–450 cm',circumference:'20–25'});
+  assert(/measurement--priority[^>]*><dt>Visina sadnice/.test(all));
+  assert(all.indexOf('Dodatni podaci o biljci') < all.indexOf('record-offer-pickers') &&
+    all.indexOf('record-offer-pickers') < all.indexOf('Kataloški zapisi rasadnika'),
+    'Supplier variant controls must be located below extra plant data');
+}
