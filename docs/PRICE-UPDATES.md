@@ -4,10 +4,10 @@ Od 23.11.2026. novi ulazi i buduća automatska ažuriranja cena koriste EUR.
 Automatsko preuzimanje NBS kursa i periodično preračunavanje su isključeni.
 GitHub nema ovlašćenje da prepisuje cenu samo zato što se kurs promenio.
 
-Jutarnji postupak radi od ponedeljka do petka u 07:00 po lokalnom vremenu
+Jutarnji postupak radi od ponedeljka do petka u 08:45 po lokalnom vremenu
 Europe/Budapest. Poslovni računar, aplikacija i odobreni poslovni folder moraju
 biti dostupni. GitHub radnim danima proverava objavljenu potvrdu pregleda;
-njegov workflow ima samo dozvolu za čitanje. Fotografska pretraga ima nezavisan
+njegov workflow ima samo dozvolu za čitanje. GitHub potvrda pokreće se u 09:15 UTC\n(10:15 zimi, 11:15 leti po lokalnom vremenu), posle jutarnje poslovne obrade. Fotografska pretraga ima nezavisan
 raspored i nastavlja da radi na GitHub-u i kada poslovni računar nije uključen.
 
 Provera poredi isti rasadnik, biljku/kultivar, sve mere, jedinicu i izvornu cenu.
