@@ -849,7 +849,7 @@ body[data-view="search"] .search-field:focus-within .search-icon { color:var(--a
 </style>
       <link rel="stylesheet" href="./assets/moja-ponuda.css">
       <link rel="stylesheet" href="./assets/brza-preporuka.css?v=page-nav-fix-20261123">
-      <link rel="stylesheet" href="./assets/control-room.css?v=dimensional-sort-and-type-r2-20261123">
+      <link rel="stylesheet" href="./assets/control-room.css?v=dimension-fallback-r3-20261123">
     <link rel="stylesheet" href="./assets/control-room-mobile-outline.css?v=outline-r6-20261118">
     <!-- Mobile-only union outline: source glyphs render together before their contour,
          so touching letter edges cannot create internal crossing strokes. -->
@@ -1762,31 +1762,81 @@ function offerDimensionMetric(value) {
   const multiplier = /mm\b/i.test(raw) ? 0.1 : /(?<![a-z])m\b/i.test(raw) ? 100 : 1;
   return [Math.max(...matches) * multiplier, Math.min(...matches) * multiplier];
 }
-function compareOfferDimensions(a, b) {
-  for (const field of ['circumference', 'height']) {
-    const left = offerDimensionMetric(a[field]);
-    const right = offerDimensionMetric(b[field]);
-    // Offer with an actual measurement comes before offers missing this axis.
-    if (left === null || right === null) {
-      if (left !== right) return left === null ? 1 : -1;
-      continue;
-    }
-    if (left[0] !== right[0]) return right[0] - left[0];
-    if (left[1] !== right[1]) return right[1] - left[1];
+// The order of parameters is intentional: circumference and height lead;
+// subsequent real plant-size fields fill the gap when either is absent.
+// Price, date, availability and record metadata are NEVER sort keys.
+function offerDropdownMeasurements(offer) {
+  const fields = [
+    ['Obim', offer.circumference],
+    ['Visina', offer.height],
+    ['Krošnja', offer.crownWidth],
+    ['Busen', offer.rootBall],
+    ['Saksija', offer.potSize],
+  ];
+  // Retain explicitly named dimensions that are not part of the common fields.
+  for (const extra of (offer.additionalParameters || [])) {
+    if (!extra || !/(?:dimenzij|visina|obim|širina|sirina|prečnik|precnik|veličina|velicina)/i.test(String(extra.label || ''))) continue;
+    fields.push([String(extra.label), extra.value]);
   }
-  // Neither date nor price may affect dimension-based ordering.
-  return String(a.id ?? '').localeCompare(String(b.id ?? ''));
+  // A numerical container/delivery code is more informative than a bare word.
+  fields.push(['Presađivanja', offer.transplantCount]);
+  fields.push(['Način isporuke', offer.rootType]);
+  return fields.map(([label, value], priority) => {
+    const raw = String(value ?? '').trim();
+    if (!raw || /^(?:nije\s+navedeno|nepoznat(?:o)?|bez\s+podataka|—|-)$/i.test(raw)) return null;
+    return {label, value:raw, priority, metric:offerDimensionMetric(raw)};
+  }).filter(Boolean);
+}
+function compareOfferDimensions(a, b) {
+  const aFields = offerDropdownMeasurements(a);
+  const bFields = offerDropdownMeasurements(b);
+  const aNumeric = aFields.filter(field => field.metric !== null);
+  const bNumeric = bFields.filter(field => field.metric !== null);
+  // Any actual numeric plant parameter outranks a purely lettered code.
+  if (!aNumeric.length && bNumeric.length) return 1;
+  if (aNumeric.length && !bNumeric.length) return -1;
+  if (aNumeric.length && bNumeric.length) {
+    // Compare same kinds of dimensions before moving to the next available kind.
+    const firstA = aNumeric[0], firstB = bNumeric[0];
+    if (firstA.priority !== firstB.priority) return firstA.priority - firstB.priority;
+    if (firstA.metric[0] !== firstB.metric[0]) return firstB.metric[0] - firstA.metric[0];
+    if (firstA.metric[1] !== firstB.metric[1]) return firstB.metric[1] - firstA.metric[1];
+    // Equal leading ranges: compare the next numerical measurement, if recorded.
+    for (let i=1; i<Math.max(aNumeric.length,bNumeric.length); i++) {
+      const left=aNumeric[i],right=bNumeric[i];
+      if (!left || !right) {
+        if (left !== right) return left ? -1 : 1;
+        continue;
+      }
+      if (left.priority !== right.priority) return left.priority-right.priority;
+      if (left.metric[0] !== right.metric[0]) return right.metric[0]-left.metric[0];
+      if (left.metric[1] !== right.metric[1]) return right.metric[1]-left.metric[1];
+    }
+  }
+  // With no numbers, group the meaningful lettered parameter labels last.
+  const textA=aFields.filter(f=>f.metric===null).map(f=>f.value).join(' · ');
+  const textB=bFields.filter(f=>f.metric===null).map(f=>f.value).join(' · ');
+  const lexical=textB.localeCompare(textA,'sr-Latn',{numeric:true});
+  return lexical || String(a.id ?? '').localeCompare(String(b.id ?? ''));
 }
 
 function offerChoiceLabel(offer) {
-  const parts = [];
-  if (offer.circumference) parts.push('Obim ' + offer.circumference);
-  if (offer.height) parts.push('Visina ' + offer.height);
-  if (offer.crownWidth) parts.push('Krošnja ' + offer.crownWidth);
-  if (offer.potSize) parts.push('Saksija ' + offer.potSize);
-  if (offer.rootType) parts.push(offer.rootType);
+  const fields = offerDropdownMeasurements(offer);
+  const numeric = fields.filter(f=>f.metric !== null);
+  const text = fields.filter(f=>f.metric === null);
+  // Keep existing circumference/height visible; otherwise show the NEXT
+  // actual dimensional parameter (pot, root ball, crown, etc.).
+  const parts = numeric.map(f=>f.label + ' ' + f.value);
+  // A supplier code may help distinguish equal dimensions, but not sort them.
+  const delivery = text.find(f=>f.label==='Način isporuke') ||
+    text.find(f=>f.label!=='Presađivanja');
+  if (delivery) parts.push(delivery.label==='Način isporuke'?delivery.value:delivery.label+' '+delivery.value);
+  if (!parts.length) {
+    const fallback=text[0];
+    if (fallback) parts.push(fallback.label==='Način isporuke'?fallback.value:fallback.label+' '+fallback.value);
+  }
   parts.push(formattedPrice(offer));
-  if (offer.sourceDate) parts.push(new Date(offer.sourceDate + 'T00:00:00').toLocaleDateString('sr-Latn-RS'));
+  if (offer.sourceDate) parts.push(new Date(offer.sourceDate+'T00:00:00').toLocaleDateString('sr-Latn-RS'));
   return parts.join(' · ');
 }
 
