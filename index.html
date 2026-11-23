@@ -849,7 +849,7 @@ body[data-view="search"] .search-field:focus-within .search-icon { color:var(--a
 </style>
       <link rel="stylesheet" href="./assets/moja-ponuda.css">
       <link rel="stylesheet" href="./assets/brza-preporuka.css?v=page-nav-fix-20261123">
-      <link rel="stylesheet" href="./assets/control-room.css?v=bold-picker-dedup-r2-20261123">
+      <link rel="stylesheet" href="./assets/control-room.css?v=offer-menu-design-r1-20261123">
     <link rel="stylesheet" href="./assets/control-room-mobile-outline.css?v=outline-r6-20261118">
     <!-- Mobile-only union outline: source glyphs render together before their contour,
          so touching letter edges cannot create internal crossing strokes. -->
@@ -1863,6 +1863,45 @@ function uniqueDisplayVariants(variants) {
     suppressed:variants.filter(offer=>!keep.has(offer.id))};
 }
 
+// A structured, keyboard-accessible menu keeps size parameters prominent while
+// showing price and source date separately, without changing the existing order.
+function offerPickerChoiceMarkup(offer) {
+  const fields=offerDropdownMeasurements(offer);
+  const numeric=fields.filter(field=>field.metric !== null);
+  const text=fields.filter(field=>field.metric === null);
+  const dimensions=numeric.slice(0,3);
+  const summary=dimensions.length ? dimensions : text.slice(0,1);
+  const measurements=summary.map(field=>
+    '<span class="offer-picker-measure"><small>'+escapeHTML(field.label)+'</small><strong>'+
+    escapeHTML(field.value)+'</strong></span>').join('');
+  const delivery=text.find(field=>field.label==='Način isporuke');
+  const deliveryText=delivery && !summary.includes(delivery)?delivery.value:'';
+  const sourceDate=offer.sourceDate ? formattedDate(offer.sourceDate):'Datum nije naveden';
+  return '<span class="offer-picker-choice-content">'+
+    '<span class="offer-picker-main">'+
+      '<span class="offer-picker-measures">'+(measurements||'<span class="offer-picker-fallback">Parametri nisu navedeni</span>')+'</span>'+
+      (deliveryText?'<span class="offer-picker-delivery">'+escapeHTML(deliveryText)+'</span>':'')+
+    '</span>'+
+    '<span class="offer-picker-side"><strong class="offer-picker-price">'+
+      escapeHTML(formattedPrice(offer))+'</strong>'+
+      '<small class="offer-picker-date">'+escapeHTML(sourceDate)+'</small></span>'+
+    '</span>';
+}
+function offerPickerMarkup(nursery,variants){
+  const current=variants[0];
+  return '<details class="supplier-offer-picker" data-current-offer-id="'+escapeHTML(current.id)+'">'+
+    '<span class="offer-picker-heading">Izaberi ponudu <span aria-hidden="true">/</span> <strong>'+
+      escapeHTML(nursery.name)+'</strong></span>'+
+    '<summary class="offer-picker-trigger" aria-label="Izaberi ponudu rasadnika '+escapeHTML(nursery.name)+'">'+
+      offerPickerChoiceMarkup(current)+'<span class="offer-picker-chevron" aria-hidden="true"></span></summary>'+
+    '<div class="offer-picker-menu" role="group" aria-label="Dostupne varijante · '+escapeHTML(nursery.name)+'">'+
+      '<p class="offer-picker-menu-hint">DIMENZIJE <span>CENA / DATUM IZVORA</span></p>'+
+      variants.map((offer,i)=>'<button type="button" class="offer-picker-option'+(i===0?' is-selected':'')+
+        '" data-offer-picker-item data-offer-id="'+escapeHTML(offer.id)+'" aria-pressed="'+(i===0?'true':'false')+'">'+
+        offerPickerChoiceMarkup(offer)+'</button>').join('')+
+    '</div></details>';
+}
+
 function renderRecord(plant) {
   const offers = offersFor(plant.id);
   const nurseryIds = [...new Set(offers.map((offer) => offer.nurseryId))].sort((left, right) =>
@@ -1902,14 +1941,9 @@ function renderRecord(plant) {
     // Variant pickers immediately follow “Dodatni podaci o biljci”.
     // Keep each supplier's name attached to its own selector.
     (offers.length ? '<div class="record-offer-pickers">' + nurseryIds.map((nurseryId, groupIndex) => {
-      const variants = displayGroups[groupIndex].visible;
+      const variants=displayGroups[groupIndex].visible;
       if (variants.length < 2) return '';
-      const nursery = nurseryById(nurseryId) || {name: 'Rasadnik nije naveden'};
-      return '<label class="supplier-offer-picker">Izaberi ponudu · ' + escapeHTML(nursery.name) +
-        '<select aria-label="Izaberi ponudu: ' + escapeHTML(nursery.name) +
-        '" data-offer-picker="true">' + variants.map(offer =>
-          '<option value="' + escapeHTML(offer.id) + '">' + escapeHTML(offerChoiceLabel(offer)) +
-          '</option>').join('') + '</select></label>';
+      return offerPickerMarkup(nurseryById(nurseryId) || {name:'Rasadnik nije naveden'}, variants);
     }).join('') + '</div>' : '') +
     '<h3 class="section-label">Kataloški zapisi rasadnika</h3>' +
     (offers.length ? nurseryIds.map((nurseryId, groupIndex) => {
@@ -1978,14 +2012,65 @@ function openRecord(id) {
 }
 
 function bindOfferPicker() {
-$('plant-dialog-content').addEventListener('change', (event) => {
-  if (event.target?.dataset?.offerPicker !== 'true') return;
-  const article = [...$('plant-dialog-content').querySelectorAll('article[data-offer-id]')].find(item => item.dataset.offerId === event.target.value);
-  if (!article) return;
-  const group = article.closest('details.supplier-variants');
-  if (group) group.open = true;
-  article.scrollIntoView({behavior:'smooth', block:'start'});
-});
+  const root=$('plant-dialog-content');
+  function focusOffer(offerId) {
+    const article=[...root.querySelectorAll('article[data-offer-id]')]
+      .find(item=>item.dataset.offerId===offerId && !item.closest('.deduplicated-offer'));
+    if(!article)return;
+    const group=article.closest('details.supplier-variants');
+    if(group)group.open=true;
+    article.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  root.addEventListener('click',event=>{
+    const choice=event.target.closest('button[data-offer-picker-item]');
+    if(!choice || !root.contains(choice))return;
+    const picker=choice.closest('details.supplier-offer-picker');
+    if(!picker)return;
+    picker.dataset.currentOfferId=choice.dataset.offerId;
+    const summaryContent=picker.querySelector('.offer-picker-trigger .offer-picker-choice-content');
+    const choiceContent=choice.querySelector('.offer-picker-choice-content');
+    if(summaryContent && choiceContent) summaryContent.innerHTML=choiceContent.innerHTML;
+    picker.querySelectorAll('button[data-offer-picker-item]').forEach(option=>{
+      const selected=option===choice;
+      option.classList.toggle('is-selected',selected);
+      option.setAttribute('aria-pressed',String(selected));
+    });
+    picker.open=false;
+    focusOffer(choice.dataset.offerId);
+  });
+  // Native details/summary provide Enter and Space. Add arrow navigation
+  // for faster keyboard selection, and Escape to dismiss.
+  root.addEventListener('keydown',event=>{
+    const picker=event.target.closest('details.supplier-offer-picker');
+    if(!picker)return;
+    const trigger=picker.querySelector('.offer-picker-trigger');
+    const options=[...picker.querySelectorAll('button[data-offer-picker-item]')];
+    if(event.key==='Escape' && picker.open){
+      picker.open=false;trigger?.focus();event.preventDefault();return;
+    }
+    if(!['ArrowDown','ArrowUp','Home','End'].includes(event.key))return;
+    const index=options.indexOf(event.target.closest('button[data-offer-picker-item]'));
+    if(index<0 && event.target!==trigger)return;
+    event.preventDefault();
+    picker.open=true;
+    const target=event.key==='Home'?0:event.key==='End'?options.length-1:
+      index<0?(event.key==='ArrowDown'?0:options.length-1):
+      (index+(event.key==='ArrowDown'?1:-1)+options.length)%options.length;
+    options[target]?.focus();
+  });
+  // Only one menu should overlay plant records at a time.
+  root.addEventListener('toggle',event=>{
+    const picker=event.target;
+    if(!picker.matches?.('details.supplier-offer-picker') || !picker.open)return;
+    root.querySelectorAll('details.supplier-offer-picker[open]').forEach(other=>{
+      if(other!==picker)other.open=false;
+    });
+  },true);
+  document.addEventListener('click',event=>{
+    root.querySelectorAll('details.supplier-offer-picker[open]').forEach(picker=>{
+      if(!picker.contains(event.target))picker.open=false;
+    });
+  });
 }
 bindOfferPicker();
 
