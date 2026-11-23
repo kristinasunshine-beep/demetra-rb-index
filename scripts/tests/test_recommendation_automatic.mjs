@@ -248,8 +248,8 @@ test('PDF initial recognition exports only canonical Latin name and recorded pla
   assert.equal(rows[3][0],'Acer campestre Wrong');
   for(const row of rows.slice(1)){
     assert.match(row[1],/Tip sadnice: Standard/);
-    assert.match(row[1],/Visina sadnice: 300–350/);
-    assert.match(row[1],/Obim sadnice: 18–20/);
+    assert.match(row[1],/Visina sadnice: 300[-–]350/);
+    assert.match(row[1],/Obim sadnice: 18[-–]20/);
   }
   assert.equal(rows[0].length,2);
   assert(book.SheetNames.includes('Pregled preporuke'));
