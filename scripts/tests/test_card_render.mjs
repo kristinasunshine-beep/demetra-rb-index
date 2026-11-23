@@ -269,7 +269,8 @@ const nativeEuro=render({price:5800,currency:'EUR',sourceAmount:5800,sourceCurre
     'Supplier variant controls must be located below extra plant data');
 }
 
-test('Numeric fallback for dropdown without circumference or height',()=>{
+// Regression checks run in the existing synchronous card-render test harness.
+{
   const source = html.match(/function offerDimensionMetric\(value\) \{[\s\S]*?\n\}\n[\s\S]*?function offerChoiceLabel\(offer\) \{[\s\S]*?\n\}/)?.[0];
   assert(source,'Dropdown metric parsing, sorting and fallback labels are defined');
   const make=new Function(source+'; return {compareOfferDimensions,offerDropdownMeasurements};')();
@@ -301,4 +302,4 @@ test('Numeric fallback for dropdown without circumference or height',()=>{
   assert.equal(onlyText.length,1);
   assert.equal(onlyText[0].metric,null);
   assert(!/price|sourceDate/.test(make.compareOfferDimensions.toString()));
-});
+}
