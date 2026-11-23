@@ -324,3 +324,32 @@ const nativeEuro=render({price:5800,currency:'EUR',sourceAmount:5800,sourceCurre
   assert(html.includes('class="deduplicated-offer" hidden aria-hidden="true"'));
   assert(html.includes('displayGroups[groupIndex].visible'));
 }
+
+// The bespoke offer dropdown has separate size, pricing, and date columns
+// while keeping the original quantity/ranking rules and preserving keyboard use.
+{
+  const source=html.match(/function offerPickerChoiceMarkup\(offer\) \{[\s\S]*?\n\}\nfunction offerPickerMarkup\(nursery,variants\)\{[\s\S]*?\n\}/)?.[0];
+  assert(source,'Structured variant picker render functions exist');
+  const make=new Function(
+    'const offerDropdownMeasurements=offer=>['+
+    '{label:"Visina",value:offer.height,metric:[500,400]},'+
+    '{label:"Saksija",value:offer.potSize,metric:[110,110]},'+
+    '{label:"Način isporuke",value:offer.rootType,metric:null}];'+
+    'const escapeHTML=s=>String(s);const formattedDate=s=>s;'+
+    'const formattedPrice=o=>o.price+" €";'+source+
+    ';return offerPickerMarkup;')();
+  const menu=make({name:'Arbor Nurseries'},[
+    {id:'a',height:'400–500',potSize:'110 L',rootType:'Kontejner',price:220,sourceDate:'2026-04-15'},
+    {id:'b',height:'150–200',potSize:'85 L',rootType:'Kontejner',price:40,sourceDate:'2025-11-27'}
+  ]);
+  assert(menu.includes('class="supplier-offer-picker"'));
+  assert(menu.includes('<summary class="offer-picker-trigger"'));
+  assert(menu.includes('class="offer-picker-price"'));
+  assert(menu.includes('class="offer-picker-date"'));
+  assert.equal((menu.match(/data-offer-picker-item/g)||[]).length,2);
+  assert.equal((menu.match(/aria-pressed="true"/g)||[]).length,1);
+  assert(menu.includes('Visina') && menu.includes('400–500'));
+  assert(!menu.includes('<select'),'Native single-line options must be replaced');
+  assert(html.includes("event.key==='Escape'") && html.includes("event.key==='ArrowDown'"));
+  assert(html.includes("scrollIntoView({behavior:'smooth',block:'start'})"));
+}
