@@ -8991,7 +8991,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-adca02fd637c49df8e1cd284.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/hydrangea-macrophylla/"
+      }
     }
   ]
 }

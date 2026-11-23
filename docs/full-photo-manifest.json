@@ -12952,6 +12952,28 @@
       "sha256": "09f08c60714f09eec81c8eb206ca9772490485be47965f5db4272fdeaa29fb13",
       "checkedAt": "2026-11-23T10:51:10Z",
       "matchLevel": "exact"
+    },
+    "plant-259dea89900283": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "innocenti-mangoni",
+      "imageUrl": "https://innocentiemangonipiante.it/wp-content/uploads/2023/06/1641223465.jpg",
+      "sourceUrl": "https://innocentiemangonipiante.it/en/hydrangea-macrophylla/",
+      "matchedName": "Hydrangea macrophylla",
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Hydrangea macrophylla"
+      },
+      "imageHosts": [
+        "innocentiemangonipiante.it"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "hydrangea macrophylla",
+      "latinName": "Hydrangea macrophylla",
+      "image": "assets/biljke/reference-adca02fd637c49df8e1cd284.jpg",
+      "sha256": "adca02fd637c49df8e1cd284a2d6886442bcab997489e1c756bfec4df252aaac",
+      "checkedAt": "2026-11-23T15:01:32Z",
+      "matchLevel": "exact"
     }
   },
   "retiredReferences": {

@@ -1,13 +1,13 @@
 {
   "schemaVersion": 2,
   "status": "partial",
-  "requests": 547,
+  "requests": 501,
   "workers": 8,
   "events": [],
   "sourceHealth": {
     "portal.volentis.com": {
-      "requests": 130,
-      "succeeded": 129,
+      "requests": 107,
+      "succeeded": 106,
       "retries": 0,
       "httpErrors": {
         "404": 1
@@ -20,27 +20,13 @@
         "httpStatus": 404
       }
     },
-    "webshop.vannuccipiante.it": {
-      "requests": 50,
-      "succeeded": 50,
-      "retries": 0,
-      "httpErrors": {},
-      "stopped": false
-    },
     "www.willaert.be": {
-      "requests": 118,
-      "succeeded": 118,
+      "requests": 106,
+      "succeeded": 106,
       "retries": 0,
       "httpErrors": {},
       "stopped": false,
       "requestIntervalSeconds": 1.0
-    },
-    "cdn.volentis.com": {
-      "requests": 1,
-      "succeeded": 1,
-      "retries": 0,
-      "httpErrors": {},
-      "stopped": false
     },
     "catalogue.vannuccipiante.it": {
       "requests": 4,
@@ -50,36 +36,36 @@
       "stopped": false
     },
     "www.vdberk.com": {
-      "requests": 33,
-      "succeeded": 33,
-      "retries": 0,
-      "httpErrors": {},
-      "stopped": false
-    },
-    "smitsbv.nl": {
-      "requests": 20,
-      "succeeded": 20,
-      "retries": 0,
-      "httpErrors": {},
-      "stopped": false
-    },
-    "www.lorberg.com": {
-      "requests": 76,
-      "succeeded": 76,
+      "requests": 9,
+      "succeeded": 9,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "innocentiemangonipiante.it": {
-      "requests": 87,
-      "succeeded": 87,
+      "requests": 177,
+      "succeeded": 177,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
-    "www.lve-baumschule.de": {
-      "requests": 26,
-      "succeeded": 26,
+    "webshop.vannuccipiante.it": {
+      "requests": 8,
+      "succeeded": 8,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": false
+    },
+    "smitsbv.nl": {
+      "requests": 21,
+      "succeeded": 21,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": false
+    },
+    "www.lorberg.com": {
+      "requests": 57,
+      "succeeded": 57,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
@@ -91,9 +77,9 @@
       "httpErrors": {},
       "stopped": false
     },
-    "www.ebben.nl": {
-      "requests": 1,
-      "succeeded": 1,
+    "www.lve-baumschule.de": {
+      "requests": 11,
+      "succeeded": 11,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
@@ -101,11 +87,11 @@
   },
   "coverage": {
     "schemaVersion": 2,
-    "checkedAt": "2026-11-23T10:52:23Z",
+    "checkedAt": "2026-11-23T15:06:27Z",
     "status": "partial",
     "plants": 623,
     "plantsInventoried": 623,
-    "plantsWithPhoto": 526,
+    "plantsWithPhoto": 527,
     "plantsWithoutPhoto": [
       {
         "plantId": "plant-9030e7f16d3409",
@@ -490,17 +476,13 @@
       {
         "plantId": "plant-c8c2d1601295b9",
         "latinName": "Albizia julibrissin var. rosea"
-      },
-      {
-        "plantId": "plant-259dea89900283",
-        "latinName": "Hydrangea macrophylla"
       }
     ],
-    "coveragePercent": 84.43,
+    "coveragePercent": 84.59,
     "activeOffers": 4553,
-    "remainingOffers": 213
+    "remainingOffers": 212
   },
   "nonPhotoDataUnchanged": true,
-  "newlyVerified": 14,
+  "newlyVerified": 1,
   "refreshCandidates": 0
 }
