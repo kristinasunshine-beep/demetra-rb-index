@@ -303,3 +303,24 @@ const nativeEuro=render({price:5800,currency:'EUR',sourceAmount:5800,sourceCurre
   assert.equal(onlyText[0].metric,null);
   assert(!/price|sourceDate/.test(make.compareOfferDimensions.toString()));
 }
+
+// The same supplier's duplicated presentation must display once while retaining
+// original source records for provenance and possible pre-existing quotations.
+{
+  const fragment=html.match(/function displayOfferKey\(offer\) \{[\s\S]*?\n\}\nfunction uniqueDisplayVariants\(variants\) \{[\s\S]*?\n\}/)?.[0];
+  assert(fragment,'Visual duplicate filter must exist');
+  const dedupe=new Function('const offerParameters = o => [['+
+    '"Visina sadnice",o.height],["Obim sadnice",o.circumference],["Saksija",o.potSize],["Isporuka",o.rootType]];'+
+    'const catalogEuroPrice = o => o.price;'+fragment+';return uniqueDisplayVariants;')();
+  const entries=[
+    {id:'old',plantId:'plant-a',nurseryId:'nursery-a',height:'40–60',potSize:'7.5 L',rootType:'Kontejner',price:6.8,sourceDate:'2025-11-27'},
+    {id:'new',plantId:'plant-a',nurseryId:'nursery-a',height:'40–60',potSize:'7.5 L',rootType:'Kontejner',price:6.8,sourceDate:'2026-04-15'},
+    {id:'other',plantId:'plant-a',nurseryId:'nursery-a',height:'60–80',potSize:'7.5 L',rootType:'Kontejner',price:6.8}
+  ];
+  const seen=dedupe(entries);
+  assert.deepEqual(seen.visible.map(x=>x.id),['new','other']);
+  assert.deepEqual(seen.suppressed.map(x=>x.id),['old']);
+  assert.equal(dedupe(entries.map(x=>({...x,image:x.id+'.jpg'}))).visible.length,3);
+  assert(html.includes('data-deduplicated="true"'));
+  assert(html.includes('displayGroups[groupIndex].visible'));
+}
