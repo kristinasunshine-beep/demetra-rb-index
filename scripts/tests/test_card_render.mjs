@@ -128,9 +128,9 @@ const offeredSize = render({ circumference: '', dataAccuracyNote: offeredSizeNot
 assert(offeredSize.includes('<dt>Ponuđena veličina (izvorna oznaka)</dt><dd>30–40</dd>'));
 assert(!offeredSize.includes('<dt>Dimenzija iz ponude</dt>'));
 assert.equal([...offeredSize.matchAll(/30[–-]40/g)].length, 1);
-assert(offeredSize.includes('Ponuđena je sorta Globosa; veličina je preneta iz F10;'));
-assert(offeredSize.includes('tražena sorta Silver Globus i veličina 40/60 nisu preneti na ovu alternativu.'));
-assert(offeredSize.includes('Vrsta mere i njena jedinica nisu navedene.'));
+assert(!offeredSize.includes('Ponuđena je sorta Globosa; veličina je preneta iz F10;'));
+assert(!offeredSize.includes('tražena sorta Silver Globus i veličina 40/60 nisu preneti na ovu alternativu.'));
+assert(!offeredSize.includes('Vrsta mere i njena jedinica nisu navedene.'));
 assert.equal(run('state.catalog.offers[0].dataAccuracyNote'), offeredSizeNote);
 const countIsNotDimension = render({ circumference: '',
   additionalParameters: [{ label: 'Broj etaža', value: '3' }, { label: 'Dimenzija iz ponude', value: '3' }] });
@@ -164,25 +164,31 @@ const noteCases = [
     absent: /20[–/-]25/, retained: 'Jedinica nije navedena.' }
 ];
 for (const example of noteCases) {
-  const markup = render({ ...example.fields, measurementNote: example.note });
-  const footer = markup.split('<div class="offer-footer">')[1];
-  assert(!example.absent.test(footer), 'Ponovljena mera je ostala u fusnoti: ' + example.note);
-  assert(footer.includes(example.retained), 'Izgubljeno je objašnjenje izvora: ' + example.note);
-  assert.equal(run('state.catalog.offers[0].measurementNote'), example.note);
+  const markup=render({...example.fields,measurementNote:example.note});
+  const footer=markup.match(/<div class="offer-footer">([\s\S]*?)<\/div>/)?.[1] || '';
+  assert(footer.includes('Datum izvora:') && !footer.includes(example.retained),
+    'Only the exact source date belongs in the visible footer');
+  const normalized=JSON.parse(run('JSON.stringify(visibleDataNotes(state.catalog.offers[0]))')).join(' ');
+  assert(!example.absent.test(normalized),'Normalized private note must not duplicate shown measures');
+  assert(normalized.includes(example.retained),'Original interpretation stays intact internally');
+  assert.equal(run('state.catalog.offers[0].measurementNote'),example.note);
 }
 const containerNote = 'Mere i oznaka clt3 preneti su iz odštampanog reda upita. Ćelija jedinične cene je prazna; nula u koloni Ukupno nije jedinična cena. Ponuđena raspoloživost ove stavke nije potvrđena.';
 const container = render({ potSize: 'clt3', dataAccuracyNote: containerNote });
 assert.equal([...container.matchAll(/clt3/g)].length, 1);
-assert(container.includes('Mere i oznaka kontejnera preneti su iz odštampanog reda upita.'));
-assert(container.includes('Ćelija jedinične cene je prazna; nula u koloni Ukupno nije jedinična cena.'));
-assert(container.includes('Ponuđena raspoloživost ove stavke nije potvrđena.'));
+assert(!container.includes('Mere i oznaka kontejnera preneti su iz odštampanog reda upita.'));
+assert(!container.includes('Ćelija jedinične cene je prazna; nula u koloni Ukupno nije jedinična cena.'));
+assert(!container.includes('Ponuđena raspoloživost ove stavke nije potvrđena.'));
 assert.equal(run('state.catalog.offers[0].dataAccuracyNote'), containerNote);
 const conflictNote = 'Fascikla nosi oznaku 30-35, dok naziv same fotografije glasi 25-30HO DRKL; razlika nije prećutno usklađena.';
-assert(render({ circumference: '25–30', dataAccuracyNote: conflictNote }).includes(conflictNote));
+assert(!render({ circumference: '25–30', dataAccuracyNote: conflictNote }).includes(conflictNote));
+assert.equal(run('state.catalog.offers[0].dataAccuracyNote'),conflictNote);
 const undisplayedNote = 'Doslovna neklasifikovana mera iz izvora: 18 cm.';
-assert(render({ circumference: '', height: '18 mm', measurementNote: undisplayedNote }).includes(undisplayedNote));
+assert(!render({ circumference: '', height: '18 mm', measurementNote: undisplayedNote }).includes(undisplayedNote));
+assert.equal(run('state.catalog.offers[0].measurementNote'),undisplayedNote);
 const unrelatedNumbers = 'Ponuđeno 20 je iz D16; cena je 20 EUR, provera je 20. 2. 2026.';
-assert(render({ circumference: '20', measurementNote: unrelatedNumbers }).includes(unrelatedNumbers));
+assert(!render({ circumference: '20', measurementNote: unrelatedNumbers }).includes(unrelatedNumbers));
+assert.equal(run('state.catalog.offers[0].measurementNote'),unrelatedNumbers);
 const additional = render({ additionalParameters: [
   { label: 'Visina čistog debla', value: '220 cm' },
   { label: 'Dimenzije panela', value: '150 × 180 cm' },
@@ -194,7 +200,8 @@ assert(additional.includes('<dt>&lt;img src=x&gt;</dt><dd>&lt;script&gt;alert(1)
 assert(!additional.includes('<img src=x>') && !additional.includes('<script>alert(1)</script>'));
 const escaped = render({ dataAccuracyNote: '<img src=x onerror=alert(1)>' });
 assert(!escaped.includes('<img src=x'));
-assert(escaped.includes('&lt;img src=x'));
+assert(!escaped.includes('&lt;img src=x'));
+assert.equal(run('state.catalog.offers[0].dataAccuracyNote'),'<img src=x onerror=alert(1)>');
 const review = render({ recordStatus: 'needs_review',
   sourceEvidence: { sourceFile: 'ponuda<1>.pdf' },
   dataAccuracyNote: 'Cena i mere zamene nisu pripisane traženoj biljci.' });
@@ -405,4 +412,19 @@ const nativeEuro=render({price:5800,currency:'EUR',sourceAmount:5800,sourceCurre
   run('state.catalog=validateImport(JSON.parse(inputJSON)).data;renderRecord(plantById("plant-a"));');
   assert.equal(pickerCount(elements.get('plant-dialog-content').innerHTML),0,
     'Do not render empty nonfunctional dropdowns for plants with no offers');
+}
+
+// Shared card footer contract: actual date only; metadata remains in the catalog.
+{
+ const card=render({source:'Internal supplier provenance',sourceDate:'2026-04-15',
+    sourceUrl:'https://example.test/internal',dataAccuracyNote:'Private note 1234',
+    measurementNote:'Private measurement 5678'});
+ const footer=card.match(/<div class="offer-footer">([\s\S]*?)<\/div>/)?.[1];
+ assert.equal(footer,'<time class="offer-source-date" datetime="2026-04-15">Datum izvora: 15. 4. 2026.</time>');
+ for(const privateText of ['Internal supplier provenance','example.test/internal','Private note 1234','Private measurement 5678'])
+   assert(!card.includes(privateText),'No footnote metadata visible: '+privateText);
+ assert.equal(run('state.catalog.offers[0].dataAccuracyNote'),'Private note 1234');
+ assert.equal(run('state.catalog.offers[0].sourceUrl'),'https://example.test/internal');
+ const unknown=render({sourceDate:'',sourcePeriod:'2025',checkedAt:'2026-04-16'});
+ assert(!unknown.includes('<div class="offer-footer">'),'Never infer a source date');
 }
