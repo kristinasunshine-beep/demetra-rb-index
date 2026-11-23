@@ -566,7 +566,7 @@
         }
         if(!req.name&&spec.length){addContinuation(spec.join('; '),text);continue;}
       }
-      const first=text.replace(/^\s*(?:\d+(?:[.\-/]\d+)*[.)]?\s+)?/,'').trim();
+      const first=text.replace(/^\s*(?:\d+(?:[.\-/]\d+)*[.)]?\s+)?/,'').trim().replace(/^[“”"'‘’«»]+|[“”"'‘’«»]+$/g,'').trim();
       const hit=botanical.test(first)&&!notName.test(first);
       if(hit){
         const split=first.search(boundary);
