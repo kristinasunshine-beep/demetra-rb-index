@@ -849,7 +849,7 @@ body[data-view="search"] .search-field:focus-within .search-icon { color:var(--a
 </style>
       <link rel="stylesheet" href="./assets/moja-ponuda.css">
       <link rel="stylesheet" href="./assets/brza-preporuka.css?v=page-nav-fix-20261123">
-      <link rel="stylesheet" href="./assets/control-room.css?v=priority-dimensions-r1-20261123">
+      <link rel="stylesheet" href="./assets/control-room.css?v=dimensional-sort-and-type-r2-20261123">
     <link rel="stylesheet" href="./assets/control-room-mobile-outline.css?v=outline-r6-20261118">
     <!-- Mobile-only union outline: source glyphs render together before their contour,
          so touching letter edges cannot create internal crossing strokes. -->
@@ -1001,9 +1001,9 @@ body[data-view="search"] .search-field:focus-within .search-icon { color:var(--a
     <noscript><p class="noscript-notice">Za korišćenje kataloga potrebno je uključiti JavaScript u pregledaču.</p></noscript>
     <script src="./assets/narodni-nazivi.js?v=20261116"></script>
     <script src="./assets/moja-ponuda-core.js?v=shared-report-r1-20261121"></script>
-    <script src="./assets/moja-ponuda.js?v=quote-find-searchbar-20261123"></script>
+    <script src="./assets/moja-ponuda.js?v=numeric-dimensions-r2-20261123"></script>
     <script src="./assets/brza-preporuka-core.js?v=botanical-only-r2-20261123"></script>
-    <script src="./assets/brza-preporuka.js?v=priority-dimensions-r1-20261123"></script>
+    <script src="./assets/brza-preporuka.js?v=numeric-dimensions-r2-20261123"></script>
     <script type="module">
 // BEGIN CATALOG CORE
 const {validateImport,searchPlants,normalize}=(()=>{
@@ -1713,7 +1713,7 @@ function renderOffer(offer, plant, nursery, photoValue = offer.image) {
     (offer.demo || nursery.demo ? '<span class="demo-badge">Demo ponuda</span>' : '') +
     '</div><dl class="measurements">' +
     measurements.map(([label, value, fullWidth]) =>
-      '<div class="measurement' + (/^(Obim|Visina) sadnice$/.test(label) ? ' measurement--priority' : '') + '"' + (fullWidth ? ' style="grid-column:1 / -1"' : '') + '><dt>' + escapeHTML(label) + '</dt><dd' +
+      '<div class="measurement' + (/^(Obim|Visina) sadnice$/.test(label) && offerDimensionMetric(value) !== null ? ' measurement--priority' : '') + '"' + (fullWidth ? ' style="grid-column:1 / -1"' : '') + '><dt>' + escapeHTML(label) + '</dt><dd' +
       (!value || /nije|nepoznat/i.test(value) ? ' class="missing"' : '') + '>' +
       escapeHTML(value || 'Nije navedeno') + '</dd></div>'
     ).join('') + '</dl><div class="offer-pricing"><div class="price-caption">' + priceLabel + '</div>' +
@@ -1752,6 +1752,32 @@ function renderEmptyRecord(plant) {
         escapeHTML(item.latinName) + ' — ' + escapeHTML(domesticLabel(item).name) + '</a>').join(' · ') + '.</p>' : '') + '</div>';
 }
 
+// Sort variants by the largest confirmed dimensions, not price or source date.
+// Ranges compare on the upper endpoint and then lower endpoint; unknowns are last.
+function offerDimensionMetric(value) {
+  const raw = String(value ?? '').trim();
+  if (!raw || /nije\s+naved|nepoznat|bez\s+podat/i.test(raw)) return null;
+  const matches = [...raw.matchAll(/\d+(?:[.,]\d+)?/g)].map(hit => Number(hit[0].replace(',', '.')));
+  if (!matches.length || !matches.every(Number.isFinite)) return null;
+  const multiplier = /mm\b/i.test(raw) ? 0.1 : /(?<![a-z])m\b/i.test(raw) ? 100 : 1;
+  return [Math.max(...matches) * multiplier, Math.min(...matches) * multiplier];
+}
+function compareOfferDimensions(a, b) {
+  for (const field of ['circumference', 'height']) {
+    const left = offerDimensionMetric(a[field]);
+    const right = offerDimensionMetric(b[field]);
+    // Offer with an actual measurement comes before offers missing this axis.
+    if (left === null || right === null) {
+      if (left !== right) return left === null ? 1 : -1;
+      continue;
+    }
+    if (left[0] !== right[0]) return right[0] - left[0];
+    if (left[1] !== right[1]) return right[1] - left[1];
+  }
+  // Neither date nor price may affect dimension-based ordering.
+  return String(a.id ?? '').localeCompare(String(b.id ?? ''));
+}
+
 function offerChoiceLabel(offer) {
   const parts = [];
   if (offer.circumference) parts.push('Obim ' + offer.circumference);
@@ -1769,7 +1795,7 @@ function renderRecord(plant) {
   const nurseryIds = [...new Set(offers.map((offer) => offer.nurseryId))].sort((left, right) =>
     (nurseryById(left)?.name || '').localeCompare(nurseryById(right)?.name || '')
   );
-  const groups = nurseryIds.map(id => offers.filter(offer => offer.nurseryId === id));
+  const groups = nurseryIds.map(id => offers.filter(offer => offer.nurseryId === id).sort(compareOfferDimensions));
   const shownPhotos = new Set();
   const plantPhoto = referencePhotoMarkup(plant, shownPhotos);
   const offerPhotos = new Map();
@@ -1798,6 +1824,18 @@ function renderRecord(plant) {
     (plant.description ? '<p><strong>Opis:</strong> ' + escapeHTML(plant.description) + '</p>' : '') +
     (plant.synonyms?.length ? '<p><strong>Drugi nazivi:</strong> ' + escapeHTML(plant.synonyms.join(' · ')) + '</p>' : '') +
     '<p>' + escapeHTML(nurseryCountLabel(nurseryIds.length) + ' · ' + offerCountLabel(offers.length)) + '</p></details>' +
+    // Variant pickers immediately follow “Dodatni podaci o biljci”.
+    // Keep each supplier's name attached to its own selector.
+    (offers.length ? '<div class="record-offer-pickers">' + nurseryIds.map((nurseryId, groupIndex) => {
+      const variants = groups[groupIndex];
+      if (variants.length < 2) return '';
+      const nursery = nurseryById(nurseryId) || {name: 'Rasadnik nije naveden'};
+      return '<label class="supplier-offer-picker">Izaberi ponudu · ' + escapeHTML(nursery.name) +
+        '<select aria-label="Izaberi ponudu: ' + escapeHTML(nursery.name) +
+        '" data-offer-picker="true">' + variants.map(offer =>
+          '<option value="' + escapeHTML(offer.id) + '">' + escapeHTML(offerChoiceLabel(offer)) +
+          '</option>').join('') + '</select></label>';
+    }).join('') + '</div>' : '') +
     '<h3 class="section-label">Kataloški zapisi rasadnika</h3>' +
     (offers.length ? nurseryIds.map((nurseryId, groupIndex) => {
       const nursery = nurseryById(nurseryId) || { id: nurseryId, name: 'Rasadnik nije naveden', country: '' };
@@ -1805,7 +1843,6 @@ function renderRecord(plant) {
       return '<section class="supplier-group"><div class="supplier-group-heading"><h3>' +
         escapeHTML(nursery.name) + '</h3><span class="supplier-country">' +
         escapeHTML(nursery.country || '') + '</span></div>' +
-        (variants.length > 1 ? '<label class="supplier-offer-picker">Izaberi ponudu <select aria-label="Izaberi ponudu: ' + escapeHTML(nursery.name) + '" data-offer-picker="true">' + variants.map(offer => '<option value="' + escapeHTML(offer.id) + '">' + escapeHTML(offerChoiceLabel(offer)) + '</option>').join('') + '</select></label>' : '') +
         renderOffer(variants[0], plant, nursery, offerPhotos.get(variants[0].id) || '') +
         (variants.length > 1 ? '<details class="supplier-variants"><summary>Prikaži ostale varijante (' + (variants.length - 1) + ')</summary>' + variants.slice(1).map((offer) => renderOffer(offer, plant, nursery, offerPhotos.get(offer.id) || '')).join('') + '</details>' : '') +
         '</section>';
