@@ -358,7 +358,7 @@ const nativeEuro=render({price:5800,currency:'EUR',sourceAmount:5800,sourceCurre
 // The selector is universal: one supplier with one offer, two suppliers with
 // one offer apiece, and a supplier with multiple variants must all render it.
 {
-  const pickerCount=markup=>(markup.match(/<details class="supplier-offer-picker"\b/g)||[]).length;
+  const pickerCount=markup=>(markup.match(/<details class="supplier-offer-picker"(?:\s|>)/g)||[]).length;
   const entryCount=markup=>(markup.match(/data-offer-picker-item\b/g)||[]).length;
   const one=render({circumference:'',height:'',potSize:'',rootType:'Kontejner'});
   assert.equal(pickerCount(one),1,'A single listed nursery offer needs a dropdown');
