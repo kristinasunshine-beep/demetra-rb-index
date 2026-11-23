@@ -849,7 +849,7 @@ body[data-view="search"] .search-field:focus-within .search-icon { color:var(--a
 </style>
       <link rel="stylesheet" href="./assets/moja-ponuda.css">
       <link rel="stylesheet" href="./assets/brza-preporuka.css?v=page-nav-fix-20261123">
-      <link rel="stylesheet" href="./assets/control-room.css?v=offer-menu-design-r1-20261123">
+      <link rel="stylesheet" href="./assets/control-room.css?v=offer-title-first-r2-20261123">
     <link rel="stylesheet" href="./assets/control-room-mobile-outline.css?v=outline-r6-20261118">
     <!-- Mobile-only union outline: source glyphs render together before their contour,
          so touching letter edges cannot create internal crossing strokes. -->
@@ -1867,38 +1867,56 @@ function uniqueDisplayVariants(variants) {
 // showing price and source date separately, without changing the existing order.
 function offerPickerChoiceMarkup(offer) {
   const fields=offerDropdownMeasurements(offer);
-  const numeric=fields.filter(field=>field.metric !== null);
-  const text=fields.filter(field=>field.metric === null);
-  const dimensions=numeric.slice(0,3);
-  const summary=dimensions.length ? dimensions : text.slice(0,1);
-  const measurements=summary.map(field=>
-    '<span class="offer-picker-measure"><small>'+escapeHTML(field.label)+'</small><strong>'+
-    escapeHTML(field.value)+'</strong></span>').join('');
-  const delivery=text.find(field=>field.label==='Način isporuke');
-  const deliveryText=delivery && !summary.includes(delivery)?delivery.value:'';
-  const sourceDate=offer.sourceDate ? formattedDate(offer.sourceDate):'Datum nije naveden';
+  const numeric=fields.filter(field=>field.metric !== null).slice(0,3);
+  const lettered=fields.filter(field=>field.metric === null);
+  const shown=numeric.length ? numeric : lettered.slice(0,1);
+  const measures=shown.map(field=>
+    '<span class="offer-picker-measure"><small>'+escapeHTML(field.label)+'</small>'+
+    '<strong>'+escapeHTML(field.value)+'</strong></span>').join('');
+  const delivery=lettered.find(field=>field.label==='Način isporuke');
+  const deliveryText=delivery && !shown.includes(delivery) ? delivery.value : '';
+  const sourceDate=offer.sourceDate ? formattedDate(offer.sourceDate) : 'Nije naveden';
   return '<span class="offer-picker-choice-content">'+
     '<span class="offer-picker-main">'+
-      '<span class="offer-picker-measures">'+(measurements||'<span class="offer-picker-fallback">Parametri nisu navedeni</span>')+'</span>'+
-      (deliveryText?'<span class="offer-picker-delivery">'+escapeHTML(deliveryText)+'</span>':'')+
+      '<span class="offer-picker-measures">'+
+        (measures || '<span class="offer-picker-fallback">Parametri nisu navedeni</span>')+
+      '</span>'+
+      (deliveryText ? '<span class="offer-picker-delivery"><small>Isporuka</small>'+
+        escapeHTML(deliveryText)+'</span>' : '')+
     '</span>'+
-    '<span class="offer-picker-side"><strong class="offer-picker-price">'+
-      escapeHTML(formattedPrice(offer))+'</strong>'+
-      '<small class="offer-picker-date">'+escapeHTML(sourceDate)+'</small></span>'+
-    '</span>';
+    '<span class="offer-picker-side">'+
+      '<small class="offer-picker-price-label">Cena</small>'+
+      '<strong class="offer-picker-price">'+escapeHTML(formattedPrice(offer))+'</strong>'+
+      '<small class="offer-picker-date">Izvor: '+escapeHTML(sourceDate)+'</small>'+
+    '</span>'+
+  '</span>';
 }
 function offerPickerMarkup(nursery,variants){
-  const current=variants[0];
+  const current=variants[0],count=variants.length;
   return '<details class="supplier-offer-picker" data-current-offer-id="'+escapeHTML(current.id)+'">'+
-    '<span class="offer-picker-heading">Izaberi ponudu <span aria-hidden="true">/</span> <strong>'+
-      escapeHTML(nursery.name)+'</strong></span>'+
+    // Only the heading is visible at rest; no duplicate selected offer preview.
     '<summary class="offer-picker-trigger" aria-label="Izaberi ponudu rasadnika '+escapeHTML(nursery.name)+'">'+
-      offerPickerChoiceMarkup(current)+'<span class="offer-picker-chevron" aria-hidden="true"></span></summary>'+
+      '<span class="offer-picker-title-group">'+
+        '<strong class="offer-picker-title">Izaberi ponudu</strong>'+
+        '<span class="offer-picker-supplier">'+escapeHTML(nursery.name)+'</span>'+
+      '</span>'+
+      '<span class="offer-picker-trigger-meta">'+
+        '<span class="offer-picker-count">'+count+' '+(count===1?'ponuda':count>=2&&count<=4?'ponude':'ponuda')+'</span>'+
+        '<span class="offer-picker-chevron" aria-hidden="true"></span>'+
+      '</span>'+
+    '</summary>'+
     '<div class="offer-picker-menu" role="group" aria-label="Dostupne varijante · '+escapeHTML(nursery.name)+'">'+
-      '<p class="offer-picker-menu-hint">DIMENZIJE <span>CENA / DATUM IZVORA</span></p>'+
-      variants.map((offer,i)=>'<button type="button" class="offer-picker-option'+(i===0?' is-selected':'')+
+      '<div class="offer-picker-menu-hint"><span>VARIJANTE SADNICE</span>'+
+      '<span>DIMENZIJE · CENA · IZVOR</span></div>'+
+      '<div class="offer-picker-options">'+
+      variants.map((offer,i)=>
+        '<button type="button" class="offer-picker-option'+(i===0?' is-selected':'')+
         '" data-offer-picker-item data-offer-id="'+escapeHTML(offer.id)+'" aria-pressed="'+(i===0?'true':'false')+'">'+
-        offerPickerChoiceMarkup(offer)+'</button>').join('')+
+          '<span class="offer-picker-option-index" aria-hidden="true">'+String(i+1).padStart(2,'0')+'</span>'+
+          offerPickerChoiceMarkup(offer)+
+          '<span class="offer-picker-option-indicator" aria-hidden="true"></span>'+
+        '</button>').join('')+
+      '</div>'+
     '</div></details>';
 }
 
@@ -2029,9 +2047,7 @@ function bindOfferPicker() {
     const picker=choice.closest('details.supplier-offer-picker');
     if(!picker)return;
     picker.dataset.currentOfferId=choice.dataset.offerId;
-    const summaryContent=picker.querySelector('.offer-picker-trigger .offer-picker-choice-content');
-    const choiceContent=choice.querySelector('.offer-picker-choice-content');
-    if(summaryContent && choiceContent) summaryContent.innerHTML=choiceContent.innerHTML;
+    // The collapsed state remains title-only, even after choosing a variant.
     picker.querySelectorAll('button[data-offer-picker-item]').forEach(option=>{
       const selected=option===choice;
       option.classList.toggle('is-selected',selected);
