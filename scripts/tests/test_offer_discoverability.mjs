@@ -8,7 +8,7 @@ for(const query of ['Ulmus New Horizon',"Ulmus 'New Horizon'",'Ulmus Resista New
 assert.equal(run("plantById('plant-b3d791a8261438').id"),'plant-2d6ea78c9fc019');
 run("renderRecord(plantById('plant-b3d791a8261438'))");const markup=elements.get('plant-dialog-content').innerHTML;
 const target=o.offers.find(x=>x.id==='record-776b9160802f78');assert.equal(target.price,660);assert.equal(target.circumference,'30–35');assert.equal(target.sourceDate,'2026-01-20');assert.equal(target.priceEvidence.documentNumber,'S2526-02377');
-assert(markup.includes('<option value="record-776b9160802f78">Obim 30–35'));assert(markup.includes('660,00'));assert(markup.includes('S2526-02377'));
+assert(markup.includes('data-offer-picker-item data-offer-id="record-776b9160802f78"'), 'Existing quotation must remain selectable in the redesigned offer menu');assert(markup.includes('Obim') && markup.includes('30–35'), 'Original circumference must remain visible');assert(markup.includes('660,00'));assert(markup.includes('S2526-02377'));
 assert.equal((markup.match(/<article[^>]*data-offer-id="record-776b9160802f78"/g)||[]).length,1);
 assert.equal(o.offers.filter(x=>x.sourceEvidence?.sourceSha256==='5143e90df21bf5eea9d501626fdcc46843bab94370d39b11f70c09d2a28dd214').length,2);
 console.log(JSON.stringify({passed:true,allNewHorizonQueriesOneCard:true,oldLinksPreserved:true,exactQuotationSelectable:true,quotedPrice660NotTotal14520:true,noDuplicateSourceRows:true}));
