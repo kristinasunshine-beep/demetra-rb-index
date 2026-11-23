@@ -1,7 +1,7 @@
 'use strict';
-importScripts('vendor/xlsx-0.20.3.full.min.js','vendor/jszip-3.10.1.min.js','brza-preporuka-core.js?v=rank-params-r1-20261121','recommendation-excel.js?v=portrait-export-r2-20261121','moja-ponuda-core.js?v=shared-report-r1-20261121');
+importScripts('vendor/xlsx-0.20.3.full.min.js','vendor/jszip-3.10.1.min.js','brza-preporuka-core.js?v=latin-pass-r1-20261123','recommendation-excel.js?v=portrait-export-r2-20261121','moja-ponuda-core.js?v=shared-report-r1-20261121');
 const Core=self.DemetraRecommendCore;
-let sheets=[],results=null,originalWorkbook=null;
+let sheets=[],results=null,originalWorkbook=null,recognitionRows=null;
 function send(type,data={}){postMessage({type,...data});}
 
 const OVERVIEW_HEADERS=[
@@ -50,6 +50,55 @@ function overviewItems(request,result){
   });
 }
 
+// A dedicated initial-recognition sheet: canonical Latin botanical identity
+// plus exactly the recorded parameters from digital-card fields. No source
+// IDs, quantity, tax, prices or administrative columns are projected here.
+function recognitionRow(request,index){
+  const entry=Core.recognizeSourceRow(index,request);
+  return [entry.latinName,entry.parameters.map(p=>p.label+': '+p.value).join('\n')];
+}
+async function appendRecognizedSheet(bytes,rows){
+  if(!rows?.length)return bytes;
+  const zip=await JSZip.loadAsync(bytes,{checkCRC32:true});
+  const escape=v=>String(v??'').replace(/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/g,'')
+    .replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
+  let book=await zip.file('xl/workbook.xml').async('string');
+  let rels=await zip.file('xl/_rels/workbook.xml.rels').async('string');
+  let types=await zip.file('[Content_Types].xml').async('string');
+  const allSheets=[...book.matchAll(/<sheet\b[^>]*\bsheetId="(\d+)"[^>]*\/>/g)];
+  const sheetId=Math.max(0,...allSheets.map(m=>Number(m[1])))+1;
+  const filenames=Object.keys(zip.files).filter(v=>/^xl\/worksheets\/sheet\d+\.xml$/.test(v));
+  const number=Math.max(0,...filenames.map(v=>Number(v.match(/sheet(\d+)\.xml$/)[1])))+1;
+  const target='worksheets/sheet'+number+'.xml';
+  const file='xl/'+target;
+  const existingIds=[...rels.matchAll(/\bId="rId(\d+)"/g)].map(m=>Number(m[1]));
+  const rId='rId'+(Math.max(0,...existingIds)+1);
+  if(!book.includes('</sheets>')||!rels.includes('</Relationships>')||!types.includes('</Types>'))
+    throw new Error('Excel nema očekivanu strukturu za izdvojeni pregled biljaka.');
+  const sheetName='Prepoznate biljke';
+  book=book.replace('</sheets>','<sheet name="'+sheetName+'" sheetId="'+sheetId+'" r:id="'+rId+'"/></sheets>');
+  rels=rels.replace('</Relationships>','<Relationship Id="'+rId+'" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="'+target+'"/></Relationships>');
+  types=types.replace('</Types>','<Override PartName="/'+file+'" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/></Types>');
+  const rowXml=rows.map((values,r)=>{
+    const cells=values.map((value,c)=>'<c r="'+(c?'B':'A')+(r+1)+'" t="inlineStr"><is><t xml:space="preserve">'+escape(value)+'</t></is></c>').join('');
+    const lines=Math.max(1,...values.map(v=>String(v??'').split('\n').reduce((n,line)=>n+Math.max(1,Math.ceil(line.length/(v===values[0]?29:53))),0)));
+    return '<row r="'+(r+1)+'" ht="'+Math.min(405,Math.max(r?27:30,lines*14+8))+'" customHeight="1">'+cells+'</row>';
+  }).join('');
+  const xml='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+
+    '<worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main">'+
+    '<sheetPr><pageSetUpPr fitToPage="1"/></sheetPr>'+
+    '<dimension ref="A1:B'+rows.length+'"/>'+
+    '<sheetViews><sheetView workbookViewId="0" showGridLines="0"><pane ySplit="1" topLeftCell="A2" activePane="bottomLeft" state="frozen"/></sheetView></sheetViews>'+
+    '<sheetFormatPr defaultRowHeight="20"/><cols><col min="1" max="1" width="34" customWidth="1"/><col min="2" max="2" width="61" customWidth="1"/></cols>'+
+    '<sheetData>'+rowXml+'</sheetData><autoFilter ref="A1:B'+rows.length+'"/>'+
+    '<pageMargins left="0.25" right="0.25" top="0.25" bottom="0.3" header="0.1" footer="0.1"/>'+
+    '<pageSetup paperSize="9" orientation="portrait" fitToWidth="1" fitToHeight="0"/></worksheet>';
+  zip.file('xl/workbook.xml',book);
+  zip.file('xl/_rels/workbook.xml.rels',rels);
+  zip.file('[Content_Types].xml',types);
+  zip.file(file,xml);
+  return zip.generateAsync({type:'arraybuffer',compression:'DEFLATE'});
+}
 function cellValue(cell){return cell?.v??(cell?.f?'Formula bez sačuvane vrednosti':'');}
 function readRows(sheet){
   const dense=sheet['!data'];let maxRow=-1,maxColumn=-1;
@@ -61,7 +110,7 @@ function readRows(sheet){
 }
 self.onmessage=async({data})=>{try{
   if(data.type==='process'){
-    results=null;originalWorkbook=null;send('progress',{message:'Čitam Excel tabelu…'});
+    results=null;originalWorkbook=null;recognitionRows=[['Latinski naziv biljke','Prepoznati parametri sadnice']];send('progress',{message:'Čitam Excel tabelu…'});
     const input=data.pdfRows?null:await data.file.arrayBuffer();
     const index=Core.makeIndex(data.catalog);
     if(/\.pdf$/i.test(data.file.name)){
@@ -107,6 +156,7 @@ self.onmessage=async({data})=>{try{
           if(!/^[A-Z][a-z]{2,}\s+[a-z][a-z-]{2,}/.test(String(request.name??'').trim()))continue;
         }
         if(original.rows[r].includes('Formula bez sačuvane vrednosti'))request._validationError='Formula u izvornoj tabeli nema sačuvanu vrednost za poređenje.';
+        if(String(request.name??'').trim())recognitionRows.push(recognitionRow(request,index));
         const result=Core.recommendQuick(index,request,{currency:'EUR'}),outRow=config.hasHeader===false?r+1:r;
         result.values.forEach((v,c)=>{sheet.rows[outRow][sheet.originalColumns+c]=v;});
         if(result.status!=='empty')overviewRows.push(...overviewItems(request,result));
@@ -146,10 +196,11 @@ self.onmessage=async({data})=>{try{
       const overview=results.find(sheet=>sheet.overview);
       if(!overview)throw new Error('Nema stavki za izvoz.');
       const output=await self.DemetraQuoteCore.buildXlsx(await shared.arrayBuffer(),null,JSZip,overview.rows.slice(1));
-      const bytes=output.buffer.slice(output.byteOffset,output.byteOffset+output.byteLength);
+      const bytes=await appendRecognizedSheet(output,recognitionRows);
       postMessage({type:'download',bytes},[bytes]);return;
     }
     const bytes=await self.DemetraRecommendationExcel.build(await response.arrayBuffer(),results,JSZip,(sheet,row,total)=>{if(row%2000===0)send('progress',{message:`Pakujem list ${sheet+1}: ${row.toLocaleString('sr-Latn-RS')} / ${total.toLocaleString('sr-Latn-RS')} redova…`});},originalWorkbook);
-    postMessage({type:'download',bytes},[bytes]);
+    const withRecognition=await appendRecognizedSheet(bytes,recognitionRows);
+    postMessage({type:'download',bytes:withRecognition},[withRecognition]);
   }
 }catch(error){results=null;send('error',{message:error.message||'Tabela nije mogla da se obradi.'});}};
