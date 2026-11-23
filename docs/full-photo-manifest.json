@@ -12633,6 +12633,325 @@
       "sha256": "4d126bfee5ac368c49b2a1c13da36860a925ab2d4016f07e51a4ea5af429ba6e",
       "checkedAt": "2026-11-23T07:52:19Z",
       "matchLevel": "exact"
+    },
+    "plant-d4368472f69e93": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "van-den-berk",
+      "imageUrl": "https://www.vdberk.com/media/6120/acer-saccharinum-asplenifolium.jpg",
+      "sourceUrl": "https://www.vdberk.com/trees/acer-saccharinum-asplenifolium/",
+      "matchedName": "Acer saccharinum 'Asplenifolium'",
+      "identityEvidence": {
+        "method": "product_og_image",
+        "canonicalName": "Acer saccharinum 'Asplenifolium'"
+      },
+      "imageHosts": [
+        "www.vdberk.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "acer saccharinum asplenifolium",
+      "latinName": "Acer saccharinum 'Asplenifolium'",
+      "image": "assets/biljke/reference-e02753a905fc8685fbadcd60.jpg",
+      "sha256": "e02753a905fc8685fbadcd6083b3b0f2f753a3ed93811ff861722fad7e915bbb",
+      "checkedAt": "2026-11-23T10:48:44Z",
+      "matchLevel": "exact"
+    },
+    "plant-bb1e99b3c785e2": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "van-den-berk",
+      "imageUrl": "https://www.vdberk.com/media/11990/betula-alleghaniensis.jpg",
+      "sourceUrl": "https://www.vdberk.com/trees/betula-alleghaniensis/",
+      "matchedName": "Betula alleghaniensis",
+      "identityEvidence": {
+        "method": "product_og_image",
+        "canonicalName": "Betula alleghaniensis"
+      },
+      "imageHosts": [
+        "www.vdberk.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "betula alleghaniensis",
+      "latinName": "Betula alleghaniensis",
+      "image": "assets/biljke/reference-c2492947e6b25fe7a89c4571.jpg",
+      "sha256": "c2492947e6b25fe7a89c4571e35b21ffacd1bb8ec95aa945548ec6e728ac6e00",
+      "checkedAt": "2026-11-23T10:48:45Z",
+      "matchLevel": "exact"
+    },
+    "plant-0c220a398ee800": {
+      "nurseryId": "volentis",
+      "provider": "supplying_nursery",
+      "matchedName": "Acer campestre 'Huibers Elegant'",
+      "sourceUrl": "https://portal.volentis.com/en/offers/details/acer-campestre-huibers-elegant-fullground-feathered",
+      "imageUrl": "https://cdn.volentis.com/d/1IXV3VVoLL9NqUsVhAqaipZSkHERwITgH/acer-campestre-huibers-elegant-14-25-gev.jpg?width=600&height=350&mode=max&anchor=top",
+      "identityEvidence": {
+        "kind": "exact_named_offer_card",
+        "name": "Acer campestre 'Huibers Elegant'",
+        "pageUrl": "https://portal.volentis.com/en/offers/1?SearchText=Acer+campestre+%27Huibers+Elegant%27",
+        "detailUrl": "https://portal.volentis.com/en/offers/details/acer-campestre-huibers-elegant-fullground-feathered",
+        "imageUrl": "https://cdn.volentis.com/d/1IXV3VVoLL9NqUsVhAqaipZSkHERwITgH/acer-campestre-huibers-elegant-14-25-gev.jpg?width=600&height=350&mode=max&anchor=top",
+        "canonicalName": "Acer campestre 'Huibers Elegant'"
+      },
+      "resolver": "volentis_offer_card",
+      "canonicalName": "Acer campestre 'Huibers Elegant'",
+      "imageHosts": [
+        "cdn.volentis.com",
+        "www.volentis.com"
+      ],
+      "imagePathPrefixes": {
+        "cdn.volentis.com": [
+          "/d/"
+        ]
+      },
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "acer campestre huibers elegant",
+      "latinName": "Acer campestre 'Huibers Elegant'",
+      "image": "assets/biljke/reference-ef9c95c59c29ce7b15b77577.jpg",
+      "sha256": "ef9c95c59c29ce7b15b77577732a1eb16bf2050d9f089afecef63478c47d5a07",
+      "checkedAt": "2026-11-23T10:48:45Z",
+      "matchLevel": "exact"
+    },
+    "plant-e94badbc80f8a8": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "van-den-berk",
+      "imageUrl": "https://www.vdberk.com/media/5820/acer-pseudoplatanus-worley.jpg",
+      "sourceUrl": "https://www.vdberk.com/trees/acer-pseudoplatanus-worley/",
+      "matchedName": "Acer pseudoplatanus 'Worley'",
+      "identityEvidence": {
+        "method": "product_og_image",
+        "canonicalName": "Acer pseudoplatanus 'Worley'"
+      },
+      "imageHosts": [
+        "www.vdberk.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "acer pseudoplatanus worley",
+      "latinName": "Acer pseudoplatanus 'Worley'",
+      "image": "assets/biljke/reference-7b0b0e26f33deed3f5b4a3f4.jpg",
+      "sha256": "7b0b0e26f33deed3f5b4a3f4eecfd4b55c3b31b0ce657c522c511e5583e24613",
+      "checkedAt": "2026-11-23T10:48:50Z",
+      "matchLevel": "exact"
+    },
+    "plant-503652fb6d0737": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "van-den-berk",
+      "imageUrl": "https://www.vdberk.com/media/413490/pinus-parviflora.jpg",
+      "sourceUrl": "https://www.vdberk.com/trees/pinus-parviflora/",
+      "matchedName": "Pinus parviflora",
+      "identityEvidence": {
+        "method": "product_og_image",
+        "canonicalName": "Pinus parviflora"
+      },
+      "imageHosts": [
+        "www.vdberk.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "pinus parviflora",
+      "latinName": "Pinus parviflora",
+      "image": "assets/biljke/reference-57277e58713eff2b1139becf.jpg",
+      "sha256": "57277e58713eff2b1139becfaf06fc8afe9235ca9d1ac7e13b5f013b2145c52f",
+      "checkedAt": "2026-11-23T10:49:09Z",
+      "matchLevel": "exact"
+    },
+    "plant-7f02e51df91d38": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "van-den-berk",
+      "imageUrl": "https://www.vdberk.com/media/401390/cedrus-deodara-karl-fuchs.jpg",
+      "sourceUrl": "https://www.vdberk.com/trees/cedrus-deodara-karl-fuchs/",
+      "matchedName": "Cedrus deodara 'Karl Fuchs'",
+      "identityEvidence": {
+        "method": "product_og_image",
+        "canonicalName": "Cedrus deodara 'Karl Fuchs'"
+      },
+      "imageHosts": [
+        "www.vdberk.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "cedrus deodara karl fuchs",
+      "latinName": "Cedrus deodara 'Karl Fuchs'",
+      "image": "assets/biljke/reference-fbad9146995e8699ebc2dd04.jpg",
+      "sha256": "fbad9146995e8699ebc2dd04c0b57449cb3f8a15eda1c33430602a9cf3e8906c",
+      "checkedAt": "2026-11-23T10:49:14Z",
+      "matchLevel": "exact"
+    },
+    "plant-b96dc37004f9ff": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "van-den-berk",
+      "imageUrl": "https://www.vdberk.com/media/88355/tilia-monticola.jpg",
+      "sourceUrl": "https://www.vdberk.com/trees/tilia-monticola/",
+      "matchedName": "Tilia monticola",
+      "identityEvidence": {
+        "method": "product_og_image",
+        "canonicalName": "Tilia monticola"
+      },
+      "imageHosts": [
+        "www.vdberk.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "tilia monticola",
+      "latinName": "Tilia monticola",
+      "image": "assets/biljke/reference-485f33e9bc1f1b804c30a607.jpg",
+      "sha256": "485f33e9bc1f1b804c30a607882907ace68963d455980af072365b97e346e74a",
+      "checkedAt": "2026-11-23T10:50:27Z",
+      "matchLevel": "exact"
+    },
+    "plant-d4771d309212f6": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "van-den-berk",
+      "imageUrl": "https://www.vdberk.com/media/88630/tilia-tomentosa-szeleste.jpg",
+      "sourceUrl": "https://www.vdberk.com/trees/tilia-tomentosa-szeleste/",
+      "matchedName": "Tilia tomentosa 'Szeleste'",
+      "identityEvidence": {
+        "method": "product_og_image",
+        "canonicalName": "Tilia tomentosa 'Szeleste'"
+      },
+      "imageHosts": [
+        "www.vdberk.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "tilia tomentosa szeleste",
+      "latinName": "Tilia tomentosa 'Szeleste'",
+      "image": "assets/biljke/reference-bad80d653b5c34335fab8014.jpg",
+      "sha256": "bad80d653b5c34335fab8014a8eb480c4790132c68563bc404dd4ce0698f6ab0",
+      "checkedAt": "2026-11-23T10:50:27Z",
+      "matchLevel": "exact"
+    },
+    "plant-7b567e281367e3": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "van-den-berk",
+      "imageUrl": "https://www.vdberk.com/media/11990/betula-alleghaniensis.jpg",
+      "sourceUrl": "https://www.vdberk.com/trees/betula-alleghaniensis/",
+      "matchedName": "Betula alleghaniensis",
+      "identityEvidence": {
+        "method": "product_og_image",
+        "canonicalName": "Betula lutea"
+      },
+      "imageHosts": [
+        "www.vdberk.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "betula alleghaniensis",
+      "latinName": "Betula lutea",
+      "image": "assets/biljke/reference-c2492947e6b25fe7a89c4571.jpg",
+      "sha256": "c2492947e6b25fe7a89c4571e35b21ffacd1bb8ec95aa945548ec6e728ac6e00",
+      "checkedAt": "2026-11-23T10:50:37Z",
+      "matchLevel": "exact"
+    },
+    "plant-90434f6cca0439": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "van-den-berk",
+      "imageUrl": "https://www.vdberk.com/media/PSMENZIE/Pseudotsuga%20menziesii-s%2040-45%20ERPB%2001.jpg",
+      "sourceUrl": "https://www.vdberk.com/trees/pseudotsuga-menziesii/",
+      "matchedName": "Pseudotsuga menziesii",
+      "identityEvidence": {
+        "method": "product_og_image",
+        "canonicalName": "Pseudotsuga menziesii"
+      },
+      "imageHosts": [
+        "www.vdberk.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "pseudotsuga menziesii",
+      "latinName": "Pseudotsuga menziesii",
+      "image": "assets/biljke/reference-d62e54a99e7f155a700dbdcb.jpg",
+      "sha256": "d62e54a99e7f155a700dbdcb28bc77dcf74c8e18d64dd135eed33392f452da41",
+      "checkedAt": "2026-11-23T10:50:39Z",
+      "matchLevel": "exact"
+    },
+    "plant-293f26f1672c4f": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "van-den-berk",
+      "imageUrl": "https://www.vdberk.com/media/406640/Cupressus-sempervirens-2.jpg",
+      "sourceUrl": "https://www.vdberk.com/trees/cupressus-sempervirens/",
+      "matchedName": "Cupressus sempervirens",
+      "identityEvidence": {
+        "method": "product_og_image",
+        "canonicalName": "Cupressus sempervirens"
+      },
+      "imageHosts": [
+        "www.vdberk.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "cupressus sempervirens",
+      "latinName": "Cupressus sempervirens",
+      "image": "assets/biljke/reference-0743bc6d46103c64218ed010.jpg",
+      "sha256": "0743bc6d46103c64218ed01097f2a37a5148a51ab412e6dea73cbd97801caaca",
+      "checkedAt": "2026-11-23T10:50:58Z",
+      "matchLevel": "exact"
+    },
+    "plant-158e048d4ead5d": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "van-den-berk",
+      "imageUrl": "https://www.vdberk.com/media/401800/chamaecyparis-lawsoniana.jpg",
+      "sourceUrl": "https://www.vdberk.com/trees/chamaecyparis-lawsoniana/",
+      "matchedName": "Chamaecyparis lawsoniana",
+      "identityEvidence": {
+        "method": "product_og_image",
+        "canonicalName": "Chamaecyparis lawsoniana"
+      },
+      "imageHosts": [
+        "www.vdberk.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "chamaecyparis lawsoniana",
+      "latinName": "Chamaecyparis lawsoniana",
+      "image": "assets/biljke/reference-7745931197ce130e414eee93.jpg",
+      "sha256": "7745931197ce130e414eee932d306cb2e3b45c83cea40915c0592d48bfe99a02",
+      "checkedAt": "2026-11-23T10:51:00Z",
+      "matchLevel": "exact"
+    },
+    "plant-42ed463c83d4dc": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "van-den-berk",
+      "imageUrl": "https://www.vdberk.com/media/45900/hamamelis-intermedia.jpg",
+      "sourceUrl": "https://www.vdberk.com/trees/hamamelis-intermedia/",
+      "matchedName": "Hamamelis x intermedia",
+      "identityEvidence": {
+        "method": "product_og_image",
+        "canonicalName": "Hamamelis x intermedia"
+      },
+      "imageHosts": [
+        "www.vdberk.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "hamamelis intermedia",
+      "latinName": "Hamamelis x intermedia",
+      "image": "assets/biljke/reference-5872eb2f2f39e905c817626e.jpg",
+      "sha256": "5872eb2f2f39e905c817626e243c26a9c02ea7a8f9a76cf4bd04620b2a601d89",
+      "checkedAt": "2026-11-23T10:51:08Z",
+      "matchLevel": "exact"
+    },
+    "plant-55f453754f82bd": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "van-den-berk",
+      "imageUrl": "https://www.vdberk.com/media/7230/aesculus-indica.jpg",
+      "sourceUrl": "https://www.vdberk.com/trees/aesculus-indica/",
+      "matchedName": "Aesculus indica",
+      "identityEvidence": {
+        "method": "product_og_image",
+        "canonicalName": "Aesculus indica"
+      },
+      "imageHosts": [
+        "www.vdberk.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "aesculus indica",
+      "latinName": "Aesculus indica",
+      "image": "assets/biljke/reference-09f08c60714f09eec81c8eb2.jpg",
+      "sha256": "09f08c60714f09eec81c8eb206ca9772490485be47965f5db4272fdeaa29fb13",
+      "checkedAt": "2026-11-23T10:51:10Z",
+      "matchLevel": "exact"
     }
   },
   "retiredReferences": {

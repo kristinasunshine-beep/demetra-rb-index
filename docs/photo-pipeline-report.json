@@ -1,13 +1,13 @@
 {
   "schemaVersion": 2,
   "status": "partial",
-  "requests": 569,
+  "requests": 547,
   "workers": 8,
   "events": [],
   "sourceHealth": {
     "portal.volentis.com": {
-      "requests": 129,
-      "succeeded": 128,
+      "requests": 130,
+      "succeeded": 129,
       "retries": 0,
       "httpErrors": {
         "404": 1
@@ -20,20 +20,27 @@
         "httpStatus": 404
       }
     },
-    "www.lorberg.com": {
-      "requests": 70,
-      "succeeded": 70,
+    "webshop.vannuccipiante.it": {
+      "requests": 50,
+      "succeeded": 50,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "www.willaert.be": {
-      "requests": 119,
-      "succeeded": 119,
+      "requests": 118,
+      "succeeded": 118,
       "retries": 0,
       "httpErrors": {},
       "stopped": false,
       "requestIntervalSeconds": 1.0
+    },
+    "cdn.volentis.com": {
+      "requests": 1,
+      "succeeded": 1,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": false
     },
     "catalogue.vannuccipiante.it": {
       "requests": 4,
@@ -42,37 +49,37 @@
       "httpErrors": {},
       "stopped": false
     },
-    "innocentiemangonipiante.it": {
-      "requests": 190,
-      "succeeded": 190,
-      "retries": 0,
-      "httpErrors": {},
-      "stopped": false
-    },
-    "www.lve-baumschule.de": {
-      "requests": 12,
-      "succeeded": 12,
-      "retries": 0,
-      "httpErrors": {},
-      "stopped": false
-    },
-    "webshop.vannuccipiante.it": {
-      "requests": 14,
-      "succeeded": 14,
+    "www.vdberk.com": {
+      "requests": 33,
+      "succeeded": 33,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "smitsbv.nl": {
-      "requests": 26,
-      "succeeded": 26,
+      "requests": 20,
+      "succeeded": 20,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
-    "www.ebben.nl": {
-      "requests": 4,
-      "succeeded": 4,
+    "www.lorberg.com": {
+      "requests": 76,
+      "succeeded": 76,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": false
+    },
+    "innocentiemangonipiante.it": {
+      "requests": 87,
+      "succeeded": 87,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": false
+    },
+    "www.lve-baumschule.de": {
+      "requests": 26,
+      "succeeded": 26,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
@@ -83,15 +90,22 @@
       "retries": 0,
       "httpErrors": {},
       "stopped": false
+    },
+    "www.ebben.nl": {
+      "requests": 1,
+      "succeeded": 1,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": false
     }
   },
   "coverage": {
     "schemaVersion": 2,
-    "checkedAt": "2026-11-23T07:56:03Z",
+    "checkedAt": "2026-11-23T10:52:23Z",
     "status": "partial",
-    "plants": 621,
-    "plantsInventoried": 621,
-    "plantsWithPhoto": 513,
+    "plants": 623,
+    "plantsInventoried": 623,
+    "plantsWithPhoto": 526,
     "plantsWithoutPhoto": [
       {
         "plantId": "plant-9030e7f16d3409",
@@ -102,20 +116,8 @@
         "latinName": "Acer palmatum 'Disectum'"
       },
       {
-        "plantId": "plant-e94badbc80f8a8",
-        "latinName": "Acer pseudoplatanus 'Worley'"
-      },
-      {
         "plantId": "plant-3c4890e5846424",
         "latinName": "Acer rubrum 'Red Point'"
-      },
-      {
-        "plantId": "plant-d4368472f69e93",
-        "latinName": "Acer saccharinum 'Asplenifolium'"
-      },
-      {
-        "plantId": "plant-55f453754f82bd",
-        "latinName": "Aesculus indica"
       },
       {
         "plantId": "plant-7678bcfc643713",
@@ -148,14 +150,6 @@
       {
         "plantId": "plant-44fb474b474700",
         "latinName": "Betula alba"
-      },
-      {
-        "plantId": "plant-bb1e99b3c785e2",
-        "latinName": "Betula alleghaniensis"
-      },
-      {
-        "plantId": "plant-7b567e281367e3",
-        "latinName": "Betula lutea"
       },
       {
         "plantId": "plant-a61d5a8e74adf3",
@@ -202,14 +196,6 @@
         "latinName": "Caryopteris incana 'Pavilon Pink'"
       },
       {
-        "plantId": "plant-7f02e51df91d38",
-        "latinName": "Cedrus deodara 'Karl Fuchs'"
-      },
-      {
-        "plantId": "plant-158e048d4ead5d",
-        "latinName": "Chamaecyparis lawsoniana"
-      },
-      {
         "plantId": "plant-f3c06d6a9c2baf",
         "latinName": "Chamaecyparis lawsoniana 'Globosa'"
       },
@@ -244,10 +230,6 @@
       {
         "plantId": "plant-f25ea2bbece475",
         "latinName": "Cupressus arizonica"
-      },
-      {
-        "plantId": "plant-293f26f1672c4f",
-        "latinName": "Cupressus sempervirens"
       },
       {
         "plantId": "plant-b3ec587a9a14bd",
@@ -296,10 +278,6 @@
       {
         "plantId": "plant-dca581b8d717dc",
         "latinName": "Ginkgo biloba 'Globus'"
-      },
-      {
-        "plantId": "plant-42ed463c83d4dc",
-        "latinName": "Hamamelis x intermedia"
       },
       {
         "plantId": "plant-d1062b9945f832",
@@ -442,10 +420,6 @@
         "latinName": "Prunus subhirtella 'Pink Perfection'"
       },
       {
-        "plantId": "plant-90434f6cca0439",
-        "latinName": "Pseudotsuga menziesii"
-      },
-      {
         "plantId": "plant-0745a6109ba8ea",
         "latinName": "Pyrus communis (Williams) körte"
       },
@@ -494,14 +468,6 @@
         "latinName": "Thymus citriodorus 'Archers Gold'"
       },
       {
-        "plantId": "plant-b96dc37004f9ff",
-        "latinName": "Tilia monticola"
-      },
-      {
-        "plantId": "plant-d4771d309212f6",
-        "latinName": "Tilia tomentosa 'Szeleste'"
-      },
-      {
         "plantId": "plant-f7f4e4fe59b035",
         "latinName": "Ulmus montana 'Pyramidalis'"
       },
@@ -522,15 +488,19 @@
         "latinName": "Viola tricolor"
       },
       {
-        "plantId": "plant-503652fb6d0737",
-        "latinName": "Pinus parviflora"
+        "plantId": "plant-c8c2d1601295b9",
+        "latinName": "Albizia julibrissin var. rosea"
+      },
+      {
+        "plantId": "plant-259dea89900283",
+        "latinName": "Hydrangea macrophylla"
       }
     ],
-    "coveragePercent": 82.61,
-    "activeOffers": 2983,
-    "remainingOffers": 206
+    "coveragePercent": 84.43,
+    "activeOffers": 4553,
+    "remainingOffers": 213
   },
   "nonPhotoDataUnchanged": true,
-  "newlyVerified": 1,
+  "newlyVerified": 14,
   "refreshCandidates": 0
 }

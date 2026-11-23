@@ -524,7 +524,11 @@
       "searchAliases": [
         "Acer ps.pl. 'Worley'"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-7b0b0e26f33deed3f5b4a3f4.jpg",
+        "sourceUrl": "https://www.vdberk.com/trees/acer-pseudoplatanus-worley/"
+      }
     },
     {
       "id": "plant-940f0506bc8700",
@@ -621,7 +625,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-e02753a905fc8685fbadcd60.jpg",
+        "sourceUrl": "https://www.vdberk.com/trees/acer-saccharinum-asplenifolium/"
+      }
     },
     {
       "id": "plant-d75931aa1e87b7",
@@ -811,7 +819,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-09f08c60714f09eec81c8eb2.jpg",
+        "sourceUrl": "https://www.vdberk.com/trees/aesculus-indica/"
+      }
     },
     {
       "id": "plant-f36276709be0c4",
@@ -1191,7 +1203,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-c2492947e6b25fe7a89c4571.jpg",
+        "sourceUrl": "https://www.vdberk.com/trees/betula-alleghaniensis/"
+      }
     },
     {
       "id": "plant-7458dadf44d17a",
@@ -1239,7 +1255,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-c2492947e6b25fe7a89c4571.jpg",
+        "sourceUrl": "https://www.vdberk.com/trees/betula-alleghaniensis/"
+      }
     },
     {
       "id": "plant-45f9cecaa5f3e5",
@@ -1981,7 +2001,11 @@
       "searchAliases": [
         "Karl Fuchs"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-fbad9146995e8699ebc2dd04.jpg",
+        "sourceUrl": "https://www.vdberk.com/trees/cedrus-deodara-karl-fuchs/"
+      }
     },
     {
       "id": "plant-03332cc004a85e",
@@ -2080,7 +2104,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-7745931197ce130e414eee93.jpg",
+        "sourceUrl": "https://www.vdberk.com/trees/chamaecyparis-lawsoniana/"
+      }
     },
     {
       "id": "plant-2ebeb0e8ff455f",
@@ -2719,7 +2747,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-0743bc6d46103c64218ed010.jpg",
+        "sourceUrl": "https://www.vdberk.com/trees/cupressus-sempervirens/"
+      }
     },
     {
       "id": "plant-11060d9ab7a41d",
@@ -3823,7 +3855,11 @@
       "searchAliases": [
         "Hammamelis x intermedia"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-5872eb2f2f39e905c817626e.jpg",
+        "sourceUrl": "https://www.vdberk.com/trees/hamamelis-intermedia/"
+      }
     },
     {
       "id": "plant-531d204e47ccbb",
@@ -6996,7 +7032,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-d62e54a99e7f155a700dbdcb.jpg",
+        "sourceUrl": "https://www.vdberk.com/trees/pseudotsuga-menziesii/"
+      }
     },
     {
       "id": "plant-2523c81f647623",
@@ -8381,7 +8421,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-485f33e9bc1f1b804c30a607.jpg",
+        "sourceUrl": "https://www.vdberk.com/trees/tilia-monticola/"
+      }
     },
     {
       "id": "plant-fb17183cc97f0d",
@@ -8456,7 +8500,11 @@
       "searchAliases": [
         "Tilia tomentosa Szeleste"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-bad80d653b5c34335fab8014.jpg",
+        "sourceUrl": "https://www.vdberk.com/trees/tilia-tomentosa-szeleste/"
+      }
     },
     {
       "id": "plant-f909981347d7d7",
@@ -8891,7 +8939,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-57277e58713eff2b1139becf.jpg",
+        "sourceUrl": "https://www.vdberk.com/trees/pinus-parviflora/"
+      }
     },
     {
       "id": "plant-25179d8f9775b1",
@@ -8925,7 +8977,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-ef9c95c59c29ce7b15b77577.jpg",
+        "sourceUrl": "https://portal.volentis.com/en/offers/details/acer-campestre-huibers-elegant-fullground-feathered"
+      }
     },
     {
       "id": "plant-259dea89900283",
