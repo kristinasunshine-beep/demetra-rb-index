@@ -8912,7 +8912,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-4d126bfee5ac368c49b2a1c1.jpg",
+        "sourceUrl": "https://www.lorberg.com/de-de/juniperus-media-mint-julep"
+      }
     }
   ]
 }

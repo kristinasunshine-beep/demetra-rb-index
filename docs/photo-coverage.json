@@ -1,10 +1,10 @@
 {
   "schemaVersion": 2,
-  "checkedAt": "2026-11-23T01:02:55Z",
+  "checkedAt": "2026-11-23T07:56:03Z",
   "status": "partial",
-  "plants": 619,
-  "plantsInventoried": 619,
-  "plantsWithPhoto": 512,
+  "plants": 621,
+  "plantsInventoried": 621,
+  "plantsWithPhoto": 513,
   "plantsWithoutPhoto": [
     {
       "plantId": "plant-9030e7f16d3409",
@@ -433,9 +433,13 @@
     {
       "plantId": "plant-73e1d2d5aad5df",
       "latinName": "Viola tricolor"
+    },
+    {
+      "plantId": "plant-503652fb6d0737",
+      "latinName": "Pinus parviflora"
     }
   ],
-  "coveragePercent": 82.71,
-  "activeOffers": 2945,
-  "remainingOffers": 205
+  "coveragePercent": 82.61,
+  "activeOffers": 2983,
+  "remainingOffers": 206
 }

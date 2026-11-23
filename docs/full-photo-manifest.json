@@ -12611,6 +12611,28 @@
           "reason": "RHS explicitly confirms Purpurea Fastigiata as a synonym of Dawyck Purple. The already verified Innocenti and Mangoni Dawyck Purple catalogue photograph is reused for this exact cultivar; it is a plant reference, not evidence of offer size or delivery form. The separate feathered form retains its separately reviewed photograph."
         }
       ]
+    },
+    "plant-25179d8f9775b1": {
+      "provider": "supplying_nursery",
+      "nurseryId": "lorberg",
+      "imageUrl": "https://www.lorberg.com/content/files/5092/Juniperus-x-pfitzeriana-Mint-Julep-1200x630-proportionalbiggest.webp",
+      "sourceUrl": "https://www.lorberg.com/de-de/juniperus-media-mint-julep",
+      "matchedName": "Juniperus media 'Mint Julep'",
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Juniperus media 'Mint Julep'"
+      },
+      "imageHosts": [
+        "www.lorberg.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "juniperus media mint julep",
+      "latinName": "Juniperus media 'Mint Julep'",
+      "image": "assets/biljke/reference-4d126bfee5ac368c49b2a1c1.jpg",
+      "sha256": "4d126bfee5ac368c49b2a1c13da36860a925ab2d4016f07e51a4ea5af429ba6e",
+      "checkedAt": "2026-11-23T07:52:19Z",
+      "matchLevel": "exact"
     }
   },
   "retiredReferences": {
