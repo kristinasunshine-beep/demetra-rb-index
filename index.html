@@ -849,7 +849,7 @@ body[data-view="search"] .search-field:focus-within .search-icon { color:var(--a
 </style>
       <link rel="stylesheet" href="./assets/moja-ponuda.css">
       <link rel="stylesheet" href="./assets/brza-preporuka.css?v=page-nav-fix-20261123">
-      <link rel="stylesheet" href="./assets/control-room.css?v=green-variants-navless-r2-20261122-add-white-r2">
+      <link rel="stylesheet" href="./assets/control-room.css?v=priority-dimensions-r1-20261123">
     <link rel="stylesheet" href="./assets/control-room-mobile-outline.css?v=outline-r6-20261118">
     <!-- Mobile-only union outline: source glyphs render together before their contour,
          so touching letter edges cannot create internal crossing strokes. -->
@@ -1001,9 +1001,9 @@ body[data-view="search"] .search-field:focus-within .search-icon { color:var(--a
     <noscript><p class="noscript-notice">Za korišćenje kataloga potrebno je uključiti JavaScript u pregledaču.</p></noscript>
     <script src="./assets/narodni-nazivi.js?v=20261116"></script>
     <script src="./assets/moja-ponuda-core.js?v=shared-report-r1-20261121"></script>
-    <script src="./assets/moja-ponuda.js?v=green-variants-navless-r1-20261121"></script>
+    <script src="./assets/moja-ponuda.js?v=priority-dimensions-r1-20261123"></script>
     <script src="./assets/brza-preporuka-core.js?v=botanical-only-r2-20261123"></script>
-    <script src="./assets/brza-preporuka.js?v=page-nav-fix-20261123"></script>
+    <script src="./assets/brza-preporuka.js?v=priority-dimensions-r1-20261123"></script>
     <script type="module">
 // BEGIN CATALOG CORE
 const {validateImport,searchPlants,normalize}=(()=>{
@@ -1713,7 +1713,7 @@ function renderOffer(offer, plant, nursery, photoValue = offer.image) {
     (offer.demo || nursery.demo ? '<span class="demo-badge">Demo ponuda</span>' : '') +
     '</div><dl class="measurements">' +
     measurements.map(([label, value, fullWidth]) =>
-      '<div class="measurement"' + (fullWidth ? ' style="grid-column:1 / -1"' : '') + '><dt>' + escapeHTML(label) + '</dt><dd' +
+      '<div class="measurement' + (/^(Obim|Visina) sadnice$/.test(label) ? ' measurement--priority' : '') + '"' + (fullWidth ? ' style="grid-column:1 / -1"' : '') + '><dt>' + escapeHTML(label) + '</dt><dd' +
       (!value || /nije|nepoznat/i.test(value) ? ' class="missing"' : '') + '>' +
       escapeHTML(value || 'Nije navedeno') + '</dd></div>'
     ).join('') + '</dl><div class="offer-pricing"><div class="price-caption">' + priceLabel + '</div>' +
