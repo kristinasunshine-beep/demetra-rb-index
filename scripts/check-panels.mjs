@@ -360,6 +360,13 @@ export async function verifyPanels(root) {
     const markup = elements.get('plant-dialog-content').innerHTML;
     assert(markup.includes('<h2 id="plant-detail-title">' + esc(plant.latinName) + '</h2>'),
       plant.id + ': kartica mora prikazati naziv svoje biljke.');
+    // Global consistency: every nursery represented by at least one active
+    // record must have a selectable menu, even for its single offer.
+    const supplierCount = new Set(active.filter(offer => offer.plantId === plant.id)
+      .map(offer => offer.nurseryId)).size;
+    const pickerCount = (markup.match(/<details class="supplier-offer-picker"\b/g) || []).length;
+    assert.equal(pickerCount, supplierCount,
+      plant.id + ': svakoj rasadničkoj ponudi pripada padajući meni.');
     const cards = [...markup.matchAll(/<article class="offer-card" data-offer-id="([^"]+)">[\s\S]*?<\/article>/g)];
     assert.equal(cards.length, active.filter(offer => offer.plantId === plant.id).length,
       plant.id + ': nisu prikazane sve aktivne varijante.');
