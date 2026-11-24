@@ -351,17 +351,29 @@ const nativeEuro=render({price:5800,currency:'EUR',sourceAmount:5800,sourceCurre
   ]);
   assert(menu.includes('class="supplier-offer-picker"'));
   assert(menu.includes('<summary class="offer-picker-trigger"'));
-  assert(menu.includes('class="offer-picker-title">Izaberi ponudu</strong>'));
-  assert(menu.includes('class="offer-picker-supplier">Arbor Nurseries</span>'));
+  assert(menu.includes('class="offer-picker-title">Arbor Nurseries</strong>'));
+  assert(!menu.includes('class="offer-picker-supplier"'));
+  assert(!menu.includes('>Izaberi ponudu</strong>'));
   assert(menu.includes('class="offer-picker-count">2 ponude</span>'));
   const collapsed=menu.split('</summary>')[0];
-  assert(!collapsed.includes('offer-picker-choice-content'), 'Only title, supplier and count are visible before opening');
+  assert(!collapsed.includes('offer-picker-choice-content'), 'Only supplier name and count are visible before opening');
   assert(!collapsed.includes('400–500'), 'Do not duplicate selected measurements above the menu');
   assert(!collapsed.includes('220 €'), 'Price belongs in an expanded option, not the title');
   assert(menu.includes('class="offer-picker-option-index"'));
   assert(menu.includes('class="offer-picker-measures"'));
   assert(menu.includes('class="offer-picker-price"'));
   assert(menu.includes('class="offer-picker-date"'));
+  assert(!menu.includes('Izvor:'),'Source label must be omitted from dropdown choices');
+  assert(!menu.includes('DIMENZIJE · CENA · IZVOR'));
+  assert(menu.includes('<time class="offer-picker-date" datetime="2026-04-15">2026-04-15</time>'),
+    'Source date is a centered standalone time element');
+  assert.equal((menu.match(/class="offer-picker-quote-add"/g)||[]).length,2,
+    'Each option has a separate functional quote action');
+  assert.equal((menu.match(/data-action="add-to-quote"/g)||[]).length,2,
+    'Quote action must reuse the working add-to-quote behavior');
+  assert.equal((menu.match(/class="offer-picker-select/g)||[]).length,2);
+  assert(!/<button[^>]*data-offer-picker-item[^>]*>[\s\S]*<button[^>]*data-action="add-to-quote"/.test(menu),
+    'Quote buttons must not be nested inside option buttons');
   assert.equal((menu.match(/data-offer-picker-item/g)||[]).length,2);
   assert.equal((menu.match(/aria-pressed="true"/g)||[]).length,1);
   assert(menu.includes('Visina') && menu.includes('400–500'));
@@ -427,4 +439,16 @@ const nativeEuro=render({price:5800,currency:'EUR',sourceAmount:5800,sourceCurre
  assert.equal(run('state.catalog.offers[0].sourceUrl'),'https://example.test/internal');
  const unknown=render({sourceDate:'',sourcePeriod:'2025',checkedAt:'2026-04-16'});
  assert(!unknown.includes('<div class="offer-footer">'),'Never infer a source date');
+}
+
+// Abbreviating the Lorberg label must not change its stable nursery id.
+{
+  const supplierData=JSON.parse(await readFile(root+'/data/rasadnici.json','utf8'));
+  const lorberg=supplierData.nurseries.find(n=>n.id==='lorberg');
+  assert(lorberg && lorberg.name==='Lorberg Quality Plants GmbH & Co.');
+  assert(lorberg.website==='https://www.lorberg.com/');
+  assert(html.includes("option.closest('.offer-picker-option')?.classList.toggle"));
+  const quoteCode=await readFile(root+'/assets/moja-ponuda.js','utf8');
+  assert(quoteCode.includes("button.classList.contains('offer-picker-quote-add')"));
+  assert(quoteCode.includes("target.dataset.action === 'add-to-quote'"));
 }
