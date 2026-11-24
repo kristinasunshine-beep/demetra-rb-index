@@ -1047,30 +1047,42 @@ body.control-room .record-offer-pickers .offer-picker-count{background:#f8f8f8;b
 </style>
 
 
-<style id="restored-linear-picker-r9">
+<style id="reference-segment-picker-r10">
 body.control-room .record-offer-pickers .supplier-offer-picker,
-body.control-room .record-offer-pickers .supplier-offer-picker[open]{border:2px solid #161A19;box-shadow:none;border-radius:0}
-body.control-room .record-offer-pickers .offer-picker-title{font-weight:700}
+body.control-room .record-offer-pickers .supplier-offer-picker[open]{border:2px solid #161A19;border-radius:0;box-shadow:none}
+body.control-room .record-offer-pickers .offer-picker-trigger,
+body.control-room .record-offer-pickers .supplier-offer-picker[open] .offer-picker-trigger{background:#fff;min-height:68px;padding:16px 20px}
+body.control-room .record-offer-pickers .offer-picker-title{font:650 clamp(19px,2vw,24px)/1.25 var(--sans);letter-spacing:-.025em;color:#161A19}
+body.control-room .record-offer-pickers .offer-picker-country{font:11px var(--mono);color:#6F7B71;white-space:normal}
 body.control-room .record-offer-pickers .offer-picker-chevron{border-right:3px solid #FA593B;border-bottom:3px solid #FA593B}
-body.control-room .offer-picker-option{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"params meta";align-items:center;gap:12px;min-height:76px;background:#fbfbfb;border-bottom:1px solid #e2e2e2}
-body.control-room .offer-picker-option:hover,body.control-room .offer-picker-option:focus-within{background:#f9f9f9}
-body.control-room .offer-picker-option.is-selected{background:#f8f8f8;box-shadow:inset 3px 0 #FA593B}
-body.control-room .offer-picker-option.is-selected:hover,body.control-room .offer-picker-option.is-selected:focus-within{background:#f6f6f6}
-body.control-room .offer-picker-select{align-items:baseline;align-self:center;min-width:0;gap:12px}
-body.control-room .offer-picker-measures{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 18px}
-body.control-room .offer-picker-measure{display:inline-flex;flex-direction:row;align-items:baseline;gap:5px;min-width:0;border:0;padding:0}
-body.control-room .offer-picker-measure small{font-weight:400}
-body.control-room .offer-picker-measure .offer-cell-value{font:400 15px/1.25 var(--sans);color:#161A19;overflow-wrap:break-word}
-body.control-room .offer-picker-measure strong.offer-cell-value{font-weight:750;font-size:16px}
-body.control-room .offer-picker-ledger-meta{grid-area:meta;display:flex;align-items:baseline;gap:14px;justify-content:flex-end;min-width:0}
-body.control-room .offer-picker-date{font-weight:400;white-space:nowrap}
-body.control-room .offer-picker-price{font:900 26px/1.15 var(--sans);white-space:nowrap}
-body.control-room .offer-picker-quote-add{font-weight:500;min-width:126px}
-@container(max-width:850px){
- body.control-room .offer-picker-option{grid-template-columns:minmax(0,1fr);grid-template-areas:"params" "meta";gap:8px}
- body.control-room .offer-picker-ledger-meta{flex-wrap:wrap;justify-content:flex-end;gap:10px}
- body.control-room .offer-picker-price{font-size:23px}
- body.control-room .offer-picker-quote-add{width:auto;min-width:106px}
+body.control-room .offer-picker-options{gap:10px;padding:0;background:#fff}
+body.control-room .offer-picker-menu::before{background:#d0d0d0}
+body.control-room .offer-picker-option{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"params" "meta";gap:0;padding:12px 14px;min-height:0;border:0;background:#f0f0f0;box-shadow:none}
+body.control-room .offer-picker-option:hover,body.control-room .offer-picker-option:focus-within{background:#eaeaea}
+body.control-room .offer-picker-option.is-selected{background:#e2e2e2;box-shadow:none}
+body.control-room .offer-picker-option.is-selected:hover,body.control-room .offer-picker-option.is-selected:focus-within{background:#dedede}
+body.control-room .offer-picker-select{display:flex;align-items:stretch;align-self:stretch;gap:0;padding:0;min-height:48px}
+body.control-room .offer-picker-option-index{display:flex;align-items:center;justify-content:flex-start;flex:0 0 25px;align-self:stretch;margin:0;color:#FA593B;font:500 11px/1.25 var(--mono)}
+body.control-room .offer-picker-measures{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,120px),1fr));align-items:stretch;gap:0;flex:1}
+body.control-room .offer-picker-measure{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:5px;min-width:0;padding:4px 12px;border-left:1px solid #c9c9c9}
+body.control-room .offer-picker-measure small{font:400 10px/1.25 var(--mono);color:#555}
+body.control-room .offer-picker-measure .offer-cell-value{font:400 14px/1.25 var(--sans);color:#161A19;overflow-wrap:break-word;word-break:normal}
+body.control-room .offer-picker-measure strong.offer-cell-value{font-weight:750;font-size:17px}
+body.control-room .offer-picker-ledger-meta{grid-area:meta;display:flex;align-items:baseline;gap:10px;min-width:0;margin-top:12px;padding-top:10px;border-top:1px solid #ccc}
+body.control-room .offer-picker-date{margin-right:auto;white-space:nowrap;font-weight:400}
+body.control-room .offer-picker-price{margin-left:auto;font:900 23px/1.15 var(--sans);white-space:nowrap}
+body.control-room .offer-picker-quote-add{font-weight:500;min-width:112px;width:auto;min-height:36px;border-radius:0}
+@container(max-width:600px){
+ body.control-room .record-offer-pickers .offer-picker-trigger,
+ body.control-room .record-offer-pickers .supplier-offer-picker[open] .offer-picker-trigger{padding:12px;min-height:62px;gap:10px}
+ body.control-room .offer-picker-trigger-meta{flex-wrap:wrap;justify-content:flex-end;gap:6px 10px;max-width:48%}
+ body.control-room .offer-picker-country{flex-basis:100%;text-align:right}
+ body.control-room .offer-picker-option{padding:10px}
+ body.control-room .offer-picker-measures{grid-template-columns:repeat(auto-fit,minmax(min(100%,85px),1fr))}
+ body.control-room .offer-picker-measure{padding:5px 8px}
+ body.control-room .offer-picker-ledger-meta{gap:7px;flex-wrap:wrap}
+ body.control-room .offer-picker-price{font-size:20px}
+ body.control-room .offer-picker-quote-add{min-width:100px}
 }
 </style>
 </head>
@@ -1182,9 +1194,9 @@ body.control-room .offer-picker-quote-add{font-weight:500;min-width:126px}
     <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="false"></div>
     <noscript><p class="noscript-notice">Za korišćenje kataloga potrebno je uključiti JavaScript u pregledaču.</p></noscript>
     <script src="./assets/narodni-nazivi.js?v=20261116"></script>
-    <script src="./assets/moja-ponuda-core.js?v=shared-report-r1-20261121"></script>
+    <script src="./assets/moja-ponuda-core.js?v=height-unified-r10-20261124"></script>
     <script src="./assets/moja-ponuda.js?v=numeric-dimensions-r2-20261123"></script>
-    <script src="./assets/brza-preporuka-core.js?v=botanical-only-r2-20261123"></script>
+    <script src="./assets/brza-preporuka-core.js?v=height-unified-r10-20261124"></script>
     <script src="./assets/brza-preporuka.js?v=numeric-dimensions-r2-20261123"></script>
     <script type="module">
 // BEGIN CATALOG CORE
@@ -2072,6 +2084,7 @@ function offerPickerMarkup(nursery,variants){
     '<summary class="offer-picker-trigger" aria-label="Ponude rasadnika '+escapeHTML(nursery.name)+'">'+
       '<span class="offer-picker-title-group"><strong class="offer-picker-title">'+escapeHTML(nursery.name)+'</strong></span>'+
       '<span class="offer-picker-trigger-meta">'+
+        (nursery.country?'<span class="offer-picker-country">'+escapeHTML(nursery.country)+'</span>':'')+
         '<span class="offer-picker-count">'+countLabel(count,'ponuda','ponude','ponuda')+'</span>'+
         '<span class="offer-picker-chevron" aria-hidden="true"></span>'+
       '</span>'+
