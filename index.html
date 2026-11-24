@@ -1210,6 +1210,13 @@ function normalize(value) {
     .replace(/[‐‑‒–—]/g, '-').replace(/\s+/g, ' ').trim().toLowerCase();
 }
 
+function isStemHeightLabel(value) {
+  return /^(?:visina (?:cistog debla|do krosnje)|clear stem height|stem height)$/.test(normalize(value));
+}
+function hasMeasurementValue(value) {
+  const raw = normalize(value);
+  return !!raw && !/^(?:[-–—]+|\/|n\.?\s*a\.?|n\/a|null|undefined|nije\s+(?:naveden[oa]?|poznat[oa]?|dostupan[oa]?)(?:\s+u\s+ponudi)?|nepoznat[oa]?|bez\s+podataka)$/.test(raw);
+}
 function searchPlants(data, query, { limit = 5 } = {}) {
   const q = normalize(query);
   if (!q || !Array.isArray(data?.plants)) return [];
@@ -1472,16 +1479,10 @@ function validateOffer(item, index, plantIds, nurseryIds) {
     imageKind: textValue(item.imageKind, `${label}, tip fotografije`, { max: 100, fallback: 'Kataloška fotografija' }),
     demo: boolValue(item.demo, `${label}, demo`)
   };
-  // One canonical height field throughout the active index.
-  const stemHeightLabel = value => /^(?:visina (?:cistog debla|do krosnje)|clear stem height|stem height)$/.test(normalize(value));
-  const redundantHeight = offer.additionalParameters.find(p => stemHeightLabel(p.label));
-  if ((!offer.height || /^(?:[-–—]+|nije navedeno|nepoznato)$/i.test(offer.height.trim())) && redundantHeight && !/^(?:[-–—]+|nije navedeno|nepoznato)$/i.test(redundantHeight.value.trim())) {
-    offer.height = redundantHeight.value;
-  }
-  offer.additionalParameters = offer.additionalParameters.filter(p => !stemHeightLabel(p.label));
-  for (const key of ['dataAccuracyNote','measurementNote','specification','priceNote']) {
-    offer[key] = String(offer[key] || '').replace(/visin[aeu]\s+(?:[čc]istog\s+debla|do\s+kro[šs]nje)|clear\s+stem\s+height/gi,'Visina');
-  }
+  // Preserve explicit overall height; use stem height only if it is the sole recorded height.
+  const redundantHeight = offer.additionalParameters.find(p => isStemHeightLabel(p.label) && hasMeasurementValue(p.value));
+  if (!hasMeasurementValue(offer.height) && redundantHeight) offer.height = redundantHeight.value;
+  offer.additionalParameters = offer.additionalParameters.filter(p => !isStemHeightLabel(p.label));
   if (!plantIds.has(offer.plantId)) throw new Error(`${label}: biljka „${offer.plantId}” ne postoji.`);
   if (!nurseryIds.has(offer.nurseryId)) throw new Error(`${label}: rasadnik „${offer.nurseryId}” ne postoji.`);
   return offer;
@@ -1694,7 +1695,7 @@ function withoutTaxClauses(value) {
   return String(value??'').split(/(?<=[.!?;·])\s+|\r?\n/).filter(part=>!/\b(?:pdv|vat|mwst|btw|iva)\b|porez na dodatu vrednost/i.test(part)).join(' ').trim();
 }
 function visiblePriceNote(offer) {
-  let note = withoutTaxClauses(offer.priceNote);
+  let note = withoutTaxClauses(offer.priceNote).replace(/visin[aeu]\s+(?:[čc]istog\s+debla|do\s+kro[šs]nje)|clear\s+stem\s+height/gi, 'Visina');
   if (catalogEuroPrice(offer) !== null) {
     for (const phrase of ["Valuta nije navedena u izvornom cenovniku; iznos je prenet bez konverzije.", "Valuta nije navedena; iznos nije konvertovan.", "Valuta nije navedena u izvoru."]) note = note.replaceAll(phrase, '');
   }
@@ -1870,7 +1871,7 @@ function visibleDataNotes(offer) {
     note = note.replace(/Ponuđena je sorta ([^;]+?) sa oznakom veličine ([^;]+?) iz ([A-Z]+\d+);/g,
       (text, cultivar, value, cell) => displayed(value) ? 'Ponuđena je sorta ' + cultivar +
         '; veličina je preneta iz ' + cell + ';' : text);
-    return note.replace(/\s+/g, ' ').trim();
+    return note.replace(/visin[aeu]\s+(?:[čc]istog\s+debla|do\s+kro[šs]nje)|clear\s+stem\s+height/gi, 'Visina').replace(/\s+/g, ' ').trim();
   }).filter(Boolean))];
 }
 
@@ -1896,7 +1897,7 @@ function offerParameters(offer) {
 }
 
 function renderOffer(offer, plant, nursery, photoValue = offer.image) {
-  const measurements = offerParameters(offer);
+  const measurements = offerParameters(offer).filter(([label,value]) => !isStemHeightLabel(label) && hasMeasurementValue(value));
   const priceNote = visiblePriceNote(offer);
   const hasPrice = offer.price !== null && offer.price !== undefined && offer.price !== '';
   const priceLabel = offer.priceKind === 'historical' ? 'Cena iz arhivirane ponude' : 'Nabavna cena iz ponude';
@@ -2181,7 +2182,7 @@ function makeQuoteItem(offerId) {
     latinName: plant.latinName, commonName: plant.commonName || '', nursery: nursery.name,
     country: nursery.country || '', unit: offer.unit || 'kom', currency: 'EUR', sourcePriceCurrency: 'EUR',
     sourcePrice: price, price: price === null ? '' : String(price), priceEdited: false, quantity: '1', note: '',
-    parameters: offerParameters(offer),
+    parameters: offerParameters(offer).filter(([label,value]) => !isStemHeightLabel(label) && hasMeasurementValue(value)),
     details: [
       ['Kategorija', plant.category], ['Opis biljke', plant.description],
       ['Drugi nazivi', (plant.synonyms || []).join('; ')], ['Izvorna oznaka tipa', offer.seedlingTypeCode],

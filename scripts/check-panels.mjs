@@ -56,6 +56,13 @@ export async function verifyPanels(root) {
   let transplantValuesInMainPanel = 0;
   let additionalParametersInMainPanel = 0;
   let genericDimensionDuplicatesRemoved = 0;
+  const normalized = value => String(value ?? '').normalize('NFKD').replace(/[\u0300-\u036f]/g, '').replace(/[‐‑‒–—]/g,'-').replace(/\s+/g,' ').trim().toLowerCase();
+  const stem = label => /^(?:visina (?:cistog debla|do krosnje)|clear stem height|stem height)$/.test(normalized(label));
+  const present = value => !!normalized(value) && !/^(?:[-–—]+|\/|n\.?\s*a\.?|n\/a|null|undefined|nije\s+(?:naveden[oa]?|poznat[oa]?|dostupan[oa]?)(?:\s+u\s+ponudi)?|nepoznat[oa]?|bez\s+podataka)$/.test(normalized(value));
+  function expectedHeight(original) {
+    return present(original.height) ? original.height :
+      (original.additionalParameters || []).find(p => stem(p.label) && present(p.value))?.value || original.height;
+  }
   function expectedExtraFields(original) {
     const parts = value => {
       const compact = String(value || '').toLowerCase().replace(/\s+/g, '')
@@ -63,13 +70,14 @@ export async function verifyPanels(root) {
       const result = /^([\d.]+(?:–[\d.]+)?\+?)(cm|mm|m)?$/.exec(compact);
       return result && { range: result[1], unit: result[2] || '' };
     };
-    const namedDimensionLabels = new Set(['Visina čistog debla', 'Dimenzija oblikovane forme',
+    const namedDimensionLabels = new Set(['Dimenzija oblikovane forme',
       'Dimenzije oblikovane forme', 'Dimenzije oblikovane krošnje', 'Obim / visina iz ponude',
       'Dimenzije sadnice iz ponude', 'Visina / prečnik iz ponude', 'Ponuđena veličina (izvorna oznaka)']);
-    const typed = [...['circumference', 'height', 'crownWidth', 'rootBall'].map(key => original[key]),
+    const typed = [...['circumference', 'crownWidth', 'rootBall'].map(key => original[key]), expectedHeight(original),
       ...(original.additionalParameters || []).filter(parameter => namedDimensionLabels.has(parameter.label))
         .flatMap(parameter => parameter.value.split(/[;·]/))].map(parts).filter(Boolean);
     return (original.additionalParameters || []).flatMap(parameter => {
+      if (stem(parameter.label) || !present(parameter.value)) return [];
       if (!['Dimenzija iz ponude', 'Nerazvrstana mera iz ponude'].includes(parameter.label)) return [parameter];
       const originalValues = parameter.value.split(/[;·]/).map(value => value.trim()).filter(Boolean);
       const remaining = originalValues.filter(value => {
@@ -140,7 +148,7 @@ export async function verifyPanels(root) {
     ['record-64fdece00237f3', {
       source: 'Product: Cedrus atlantica Glauca 40-45 500+ STD STEM200 WOODBOX',
       sourceFile: 'Copy of ARBOR_2026_04_15_CONTAINERSTOCK_SALESBOOK.xlsx', sourceRow: 870,
-      fields: { 'Obim sadnice': '40–45', 'Visina sadnice': '500+', 'Visina čistog debla': '200',
+      fields: { 'Obim sadnice': '40–45', 'Visina sadnice': '500+',
         'Način isporuke': 'Drvena kutija (WOODBOX)' },
       requiredNote: 'Podaci se odnose na ovu izvornu varijantu ponude.', noGenericDimensions: true
     }],
@@ -246,18 +254,17 @@ export async function verifyPanels(root) {
     assert(panel, label + 'nedostaje glavni panel parametara.');
     const entries = [...panel.matchAll(/<dt>([^<]+)<\/dt><dd(?: class="missing")?>([\s\S]*?)<\/dd>/g)];
     const extra = expectedExtraFields(original);
-    assert.deepEqual(entries.map(entry => entry[1]), ['Tip sadnice', ...fields.map(([name]) => name),
-      'Broj presađivanja', ...extra.map(parameter => esc(parameter.label))],
-      label + 'glavni panel mora imati parametre bez duplirane sirove specifikacije ili već raspoređene mere.');
     const values = new Map(entries.map(entry => [entry[1], entry[2]]));
     const type = offer.seedlingType === 'standard' ? 'Standard' :
-      offer.seedlingType === 'multistem' ? 'Multistem' : 'Nije navedeno u ponudi';
-    assert.equal(values.get('Tip sadnice'), type, label + 'pogrešan tip sadnice.');
+      offer.seedlingType === 'multistem' ? 'Multistem' : '';
+    assert.equal(values.get('Tip sadnice'), present(type) ? type : undefined, label + 'pogrešan tip sadnice.');
+    assert.equal(offer.height, expectedHeight(original), label + 'visina mora koristiti jedinstveno polje bez gubitka izvorne visine.');
     for (const [name, field] of fields) {
-      assert.equal(values.get(name), esc(offer[field] || 'Nije navedeno'),
-        label + name + ' mora prikazati sopstvenu izvornu vrednost u glavnom panelu.');
-      if (offer[field] && !/nije|nepoznat/i.test(offer[field])) knownParameters++;
+      assert.equal(values.get(name), present(offer[field]) ? esc(offer[field]) : undefined,
+        label + name + ' mora prikazati samo stvarnu vrednost.');
+      if (present(offer[field])) knownParameters++;
     }
+    assert(!entries.some(entry => stem(entry[1]) || !present(entry[2])), label + 'zabranjeno duplirano ili prazno polje.');
     // Raw source evidence is preserved for verification, not printed as a
     // duplicate of the structured fields in the user-facing card.
     assert(!values.has('Specifikacija iz ponude'), label + 'sirova specifikacija ne sme duplirati parametre.');
@@ -272,9 +279,15 @@ export async function verifyPanels(root) {
     const transplantValue = count !== null && count !== undefined ?
       (codes.length ? String(count) + ' (' + codes.join(', ') + ')' : original.transplantNote || String(count)) :
       original.transplantNote || codes.join(', ');
-    assert.equal(values.get('Broj presađivanja'), esc(transplantValue || 'Nije navedeno'),
+    assert.equal(values.get('Broj presađivanja'), present(transplantValue) ? esc(transplantValue) : undefined,
       label + 'podatak o presađivanju mora biti u svom polju glavnog panela.');
-    if (transplantValue) transplantValuesInMainPanel++;
+    if (present(transplantValue)) transplantValuesInMainPanel++;
+    assert.deepEqual(entries.map(entry => entry[1]), [
+      ...(present(type) ? ['Tip sadnice'] : []),
+      ...fields.filter(([,field]) => present(offer[field])).map(([name]) => name),
+      ...(present(transplantValue) ? ['Broj presađivanja'] : []),
+      ...extra.map(parameter => esc(parameter.label))
+    ], label + 'glavni panel prikazuje samo stvarne, neduplirane parametre.');
     for (const parameter of extra) {
       assert.equal(values.get(esc(parameter.label)), esc(parameter.value),
         label + parameter.label + ' iz ponude mora biti u glavnom panelu.');
@@ -320,7 +333,7 @@ export async function verifyPanels(root) {
       if (regression.noGenericDimensions) assert(!values.has('Dimenzija iz ponude') && !values.has('Nerazvrstana mera iz ponude'),
         label + 'raspoređena ili isključivo tražena mera ne sme ostati kao dodatna generička dimenzija.');
       for (const [name, expected] of Object.entries(regression.fields)) {
-        assert.equal(values.get(name), esc(expected),
+        assert.equal(values.get(name), present(expected) ? esc(expected) : undefined,
           label + 'izvor „' + regression.source + '” zahteva ' + name + ': ' + expected + ' u glavnom panelu.');
       }
       checkedSourceRegressions.add(offer.id);
@@ -372,6 +385,7 @@ export async function verifyPanels(root) {
     const supplierCount = new Set(active.filter(offer => offer.plantId === plant.id)
       .map(offer => offer.nurseryId)).size;
     const pickerCount = (markup.match(/<details class="supplier-offer-picker"(?:\s|>)/g) || []).length;
+    assert(!/Visina čistog debla|Visina do krošnje/i.test(markup), plant.id + ': duplirana visina ne sme biti prikazana.');
     assert.equal(pickerCount, supplierCount,
       plant.id + ': svakoj rasadničkoj ponudi pripada padajući meni.');
     const cards = [...markup.matchAll(/<article class="offer-card" data-offer-id="([^"]+)">[\s\S]*?<\/article>/g)];
@@ -412,5 +426,5 @@ export async function verifyPanels(root) {
     reviewedNoteProvenanceChecks: checkedNoteProvenance.size,
     originalNotesPreservedInData: true,
     explicitSourceColumnsChecked,
-    allFieldsInMainPanel: true, rawSourcePreservedOnlyInData: true, pricesInPricePanel: true };
+    allPresentFieldsInMainPanel: true, rawSourcePreservedOnlyInData: true, pricesInPricePanel: true };
 }
