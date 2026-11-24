@@ -407,6 +407,7 @@ export async function verifyPanels(root) {
     const footerMark='<div class="record-footer-mark" aria-hidden="true"><div class="control-hero-mark" aria-hidden="true">'+completeMark.replace('stroke="#FA593B"','stroke="currentColor"')+'</div></div>';
     assert(markup.endsWith(footerMark),plant.id+': kompletan dekorativni znak mora biti na samom dnu kartice.');
     assert.equal((markup.match(/class="record-footer-mark"/g)||[]).length,1,plant.id+': znak se prikazuje tačno jednom.');
+    assert(!markup.includes('class="detail-common"')&&!markup.includes('class="detail-common-text"'),plant.id+': srpski naziv ne sme biti prikazan ispod latinskog naziva.');
     assert(markup.includes('<h2 id="plant-detail-title">' + esc(plant.latinName) + '</h2>'),
       plant.id + ': kartica mora prikazati naziv svoje biljke.');
     // Global consistency: every nursery represented by at least one active

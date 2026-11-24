@@ -1047,7 +1047,7 @@ body.control-room .record-offer-pickers .offer-picker-count{background:#f8f8f8;b
 </style>
 
 
-<style id="reference-segment-picker-r23">
+<style id="reference-segment-picker-r24">
 body.control-room{--index-emphasis-weight:700;--index-label-weight:400;--index-detail-size:16px;--index-key-size:20px;--index-key-line:24px}
 body.control-room .record-offer-pickers .supplier-offer-picker,
 body.control-room .record-offer-pickers .supplier-offer-picker[open]{border:3px solid #161A19;border-radius:0;box-shadow:none;padding:0}
@@ -2191,7 +2191,6 @@ function renderRecord(plant) {
     '<div class="detail-hero ' + (plantPhoto ? 'with-photo' : 'without-photo') + '"><div class="detail-hero-copy"><p class="category-label">' +
     escapeHTML(plant.category || 'Biljka') + (plant.demo ? ' · DEMO ZAPIS' : '') +
     '</p><h2 id="plant-detail-title">' + escapeHTML(plant.latinName) + '</h2>' +
-    '<p class="detail-common">' + domesticMarkup(plant, 'detail-common-text') + '</p>' +
     (plant.description ? '<p class="detail-description">' + escapeHTML(plant.description) + '</p>' : '') +
     (plant.synonyms?.length ? '<p class="detail-synonyms">Drugi nazivi: ' + escapeHTML(plant.synonyms.join(' · ')) + '</p>' : '') +
     '<div class="detail-meta"><span>' + escapeHTML(nurseryCountLabel(nurseryIds.length) + ' · ' + offerCountLabel(distinctOfferCount)) +
