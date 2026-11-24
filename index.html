@@ -1047,7 +1047,7 @@ body.control-room .record-offer-pickers .offer-picker-count{background:#f8f8f8;b
 </style>
 
 
-<style id="reference-segment-picker-r20">
+<style id="reference-segment-picker-r21">
 body.control-room{--index-emphasis-weight:700;--index-label-weight:400;--index-detail-size:16px;--index-key-size:20px;--index-key-line:24px}
 body.control-room .record-offer-pickers .supplier-offer-picker,
 body.control-room .record-offer-pickers .supplier-offer-picker[open]{border:3px solid #161A19;border-radius:0;box-shadow:none;padding:0}
@@ -1128,6 +1128,11 @@ body.control-room .offer-picker-photo{grid-area:photo;margin:5px 0 0 26px;font:4
 body.control-room .offer-picker-photo summary{cursor:pointer;width:fit-content}
 body.control-room .offer-picker-photo img{display:block;max-width:100%;max-height:230px;object-fit:contain;margin-top:6px}
 body.control-room .offer-picker-price-group{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:2px}
+/* Reuse the intro watermark dimensions, colour, transparency and responsive sizing. */
+body.control-room #plant-dialog-content{display:flex;flex-direction:column;min-height:100%}
+body.control-room .record-footer-mark{position:relative;flex:0 0 260px;min-height:260px;margin-top:auto;overflow:hidden;pointer-events:none}
+body.control-room .record-footer-mark .control-hero-mark{left:50%;right:auto;transform:translateX(-50%)}
+@media(max-width:760px){body.control-room #plant-dialog-content{min-height:100dvh}}
 </style>
 </head>
   <body class="control-room" data-view="search">
@@ -2201,7 +2206,8 @@ function renderRecord(plant) {
         nurseryById(nurseryId) || {name:'Rasadnik nije naveden'}, variants, offerPhotos) : '';
     }).join('') + '</div>' : '') +
     (!offers.length ? renderEmptyRecord(plant) : '') +
-    '</div>';
+    '</div>' +
+    '<div class="record-footer-mark" aria-hidden="true"><div class="control-hero-mark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="16" cy="12" r="8.5"/><path d="M16 8v17m0-9c6-8 10-4 5 0-3 3-5 3-5 3m0-2c-5-8-10-4-5 0 3 3 5 3 5 3"/></svg></div></div>';
 }
 
 function makeQuoteItem(offerId) {
