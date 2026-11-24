@@ -3,7 +3,7 @@
   const FIELDS=[
     ['name','Naziv biljke'],['cultivar','Kultivar / sorta'],['circumference','Obim sadnice'],['height','Visina sadnice'],
     ['crownWidth','Širina krošnje'],['potSize','Veličina saksije'],['rootType','Način isporuke'],['seedlingType','Tip sadnice'],
-    ['transplantCount','Broj presađivanja'],['rootBall','Busen'],['stemDiameter','Prečnik sadnice'],['potDiameter','Prečnik saksije'],['clearStemHeight','Visina do krošnje'],['quantity','Količina'],['unit','Jedinica mere'],
+    ['transplantCount','Broj presađivanja'],['rootBall','Busen'],['stemDiameter','Prečnik sadnice'],['potDiameter','Prečnik saksije'],['quantity','Količina'],['unit','Jedinica mere'],
     ['preferences','Ostali zahtevi'],['sourceDescription','Izvorni opis stavke'],['currency','Valuta']
   ];
   const EXTRA_HEADERS=['Spisak rasadnika','Rasadnik sa najnižom cenom','Najniža nabavna cena (€)','Ponuđeni parametri','Datum izvorne ponude','Rezultat preporuke'];
@@ -12,11 +12,11 @@
   const ALIASES={
     name:['naziv','biljka','naziv biljke','naziv sadnice','naziv sadnog materijala','sadni materijal','naziv za pretragu','izvorni naziv','biljka rad','latinski naziv','latinski naziv biljke','latinski naziv sadnice','botanicki naziv','botanicki naziv biljke','botanical name','plant name','plant','species','name','latin name','vrsta','vrsta biljke','botanischer name','bezeichnung','product'],
     cultivar:['kultivar','sorta','kultivar sorta','cultivar','variety'],circumference:['obim','obim sadnice','obim stabla','obim debla','opseg','opseg debla','opseg stabla','girth','circumference','stammumfang','st u'],
-    height:['visina','visina sadnice','visina biljke','height','height cm','hoehe','hohe'],crownWidth:['sirina krosnje','precnik krosnje','crown width','crown spread'],
+    height:['visina','visina sadnice','visina biljke','height','height cm','hoehe','hohe','visina do krosnje','visina cistog debla','clear stem height','stem height'],crownWidth:['sirina krosnje','precnik krosnje','crown width','crown spread'],
     potSize:['velicina saksije','saksija','zapremina saksije','pot','pot size','container size','litara','litres','clt'],
     rootType:['nacin isporuke','pakovanje','root type','root system','delivery','wurzel','rootball type'],seedlingType:['tip sadnice','forma','oblik','form','plant type','tip'],
     transplantCount:['broj presadjivanja','presadjivanja','transplants','transplant count'],rootBall:['busen','velicina busena','rootball','root ball'],
-    stemDiameter:['precnik sadnice','promjer sadnice','stem diameter','precnik debla','promjer debla'],potDiameter:['precnik saksije','promjer saksije','promjer posude','pot diameter'],clearStemHeight:['visina do krosnje','visina cistog debla','clear stem height','stem height'],
+    stemDiameter:['precnik sadnice','promjer sadnice','stem diameter','precnik debla','promjer debla'],potDiameter:['precnik saksije','promjer saksije','promjer posude','pot diameter'],
     quantity:['kolicina','qty','quantity','komada','broj komada','amount','anzahl','kol'],unit:['jed','jm','j m','jed mj','jed mere','jed mjere','jedinica','jedinica mere','jedinica mjere','unit'],
     sourceDescription:['izvorni opis stavke','izvorni opis','original description','izvorni opis sadnice'],
     preferences:['preferencije','preference','preferences','zahtevi','zahtjevi','specifikacija','opis','description','specification','detalji','napomena','napomene','remarks','zahtevane karakteristike','dimenzije','velicina','velicina i posuda','velicina posuda','size','sizes','parametri','parametri sadnice','parametri biljke','opis sadnice','opis biljke','opis stavke','dodatni uslovi iz troskovnika','dodatni uvjeti iz troskovnika','karakteristike','kvalitet','kvaliteta'],
@@ -149,7 +149,7 @@
     const take=(key,re,transform=x=>x)=>{s=s.replace(re,(whole,v)=>{const next=transform(v||whole);if(fields[key]&&!sameRequirement(key,fields[key],next))conflicts.push(key);else fields[key]=next;return ' ';});};
     const amount='((?:>=|<=|≥|≤|>|<|min\\.?|max\\.?)?\\s*\\d+(?:[.,]\\d+)?\\s*(?:[-/]\\s*\\d+(?:[.,]\\d+)?)?\\s*(?:litara|litres|litre|ltr|lt|cm|mm|m|l)?\\s*\\+?)';
     // More specific labels must be consumed before generic height/pot labels.
-    take('clearStemHeight',new RegExp('(?:visina do krošnje|visina do krosnje|visina čistog debla|visina cistog debla|clear stem height)\\s*[:=]?\\s*'+amount,'gi'));
+    take('height',new RegExp('(?:visina do krošnje|visina do krosnje|visina čistog debla|visina cistog debla|clear stem height)\\s*[:=]?\\s*'+amount,'gi'));
     take('potDiameter',new RegExp('(?:prečnik saksije|precnik saksije|promjer posude|pot diameter)\\s*[:=]?\\s*'+amount,'gi'));
     take('stemDiameter',new RegExp('(?:prečnik sadnice|precnik sadnice|prečnik debla|precnik debla|stem diameter)\\s*[:=]?\\s*'+amount,'gi'));
     take('rootBall',new RegExp('(?:veličina busena|velicina busena|busen|root ball|rootball)\\s*[:=]?\\s*'+amount,'gi'));
@@ -182,7 +182,7 @@
     }
     return request;
   }
-  const MEASURES=['circumference','height','crownWidth','potSize','rootBall','stemDiameter','potDiameter','clearStemHeight'];
+  const MEASURES=['circumference','height','crownWidth','potSize','rootBall','stemDiameter','potDiameter'];
   function euroPrice(offer){
     if(typeof offer.price!=='number'||!Number.isFinite(offer.price)||offer.price<0||offer.currency!=='EUR'||offer.currencyStatus==='unresolved'||offer.priceConversion?.status==='unresolved')return null;
     const source=offer.sourceCurrency||'',conversion=offer.priceConversion;
@@ -198,7 +198,7 @@
   function variantKey(o){const measureKey=k=>{const value=offeredValue(o,k),m=parseMeasure(value,k);return m?.valid?[m.op,Number(m.lo.toFixed(6)),Number(m.hi.toFixed(6))].join(':'):norm(value);};return [o.plantId,o.nurseryId,...MEASURES.map(measureKey),form(o.seedlingType),rootType(o.rootType),String(o.transplantCount??''),unit(o.unit),taxGroup(o.taxStatus)].join('|');}
   function dateValue(o){return /^\d{4}-\d{2}-\d{2}/.test(o.sourceDate||'')?o.sourceDate.slice(0,10):'';}
   function newestVariants(offers){const stamp=o=>o.priceRefresh?.status==='verified'&&/^\d{4}-\d{2}-\d{2}/.test(o.priceRefresh.changedAt||'')?o.priceRefresh.changedAt.slice(0,10):dateValue(o);const groups=new Map();for(const o of offers){const key=variantKey(o);if(!groups.has(key))groups.set(key,[]);groups.get(key).push(o);}return [...groups.values()].flatMap(rows=>{const dates=rows.map(stamp).filter(Boolean).sort();return dates.length?rows.filter(o=>stamp(o)===dates.at(-1)):rows;});}
-  function parameters(o){const labels={seedlingType:'Tip',circumference:'Obim',height:'Visina',crownWidth:'Širina krošnje',potSize:'Saksija',rootBall:'Busen',stemDiameter:'Prečnik sadnice',potDiameter:'Prečnik saksije',clearStemHeight:'Visina do krošnje',rootType:'Isporuka',transplantCount:'Presađivanja'};return Object.entries(labels).map(([k,l])=>[l,offeredValue(o,k)]).filter(([,v])=>v!==''&&v!==null&&v!==undefined).map(([l,v])=>`${l}: ${v}`).join('; ');}
+  function parameters(o){const labels={seedlingType:'Tip',circumference:'Obim',height:'Visina',crownWidth:'Širina krošnje',potSize:'Saksija',rootBall:'Busen',stemDiameter:'Prečnik sadnice',potDiameter:'Prečnik saksije',rootType:'Isporuka',transplantCount:'Presađivanja'};return Object.entries(labels).map(([k,l])=>[l,offeredValue(o,k)]).filter(([,v])=>v!==''&&v!==null&&v!==undefined).map(([l,v])=>`${l}: ${v}`).join('; ');}
   function unavailable(o){return o.available===false||/^(?:nema na stanju|nije dostupno|out of stock|sold out|unavailable|not available)\b/i.test(String(o.availability||''));}
   function descriptionRequirements(value,requested){
     let text=String(value??'').trim();const name=norm(requested.name),cultivar=norm(requested.cultivar),complete=cultivar&&!name.endsWith(' '+cultivar)?name+' '+cultivar:name;
@@ -544,7 +544,7 @@
     const notName=/^(?:standard|std|multistem|multi stem|visin[ae]|height|obim|opseg|girth|circumference|saksija|pot|clt|container|kontejner\w*|wrb|busen|sirina|prečnik|precnik|presadjivanja|presađivanja|tip|naziv|latinski|botanicki|botanički|broj|nacin|način|izvorni|ukupno|napomena|sadni materijal|ponuda|strana|stranica|radovi|drvece|drveće|zbunje|žbunje)\b/i;
     const clean=v=>String(v??'').trim();
     const explicitMeasure=spec=>spec.replace(/\b(standard|std|multistem|multi[- ]stem)\s*[:;,]?\s*(\d+(?:[.,]\d+)?(?:\s*[-–—/]\s*\d+(?:[.,]\d+)?)?\s*(?:cm|mm|m))\b/gi,(_,type,measure)=>type+'; '+(/^(?:standard|std)$/i.test(type)?'visina ':'obim ')+measure);
-    const labels={seedlingType:'tip sadnice',height:'visina',circumference:'obim',crownWidth:'širina krošnje',potSize:'saksija',rootType:'način isporuke',transplantCount:'broj presađivanja',rootBall:'busen',stemDiameter:'prečnik sadnice',potDiameter:'prečnik saksije',clearStemHeight:'visina do krošnje'};
+    const labels={seedlingType:'tip sadnice',height:'visina',circumference:'obim',crownWidth:'širina krošnje',potSize:'saksija',rootType:'način isporuke',transplantCount:'broj presađivanja',rootBall:'busen',stemDiameter:'prečnik sadnice',potDiameter:'prečnik saksije'};
     function header(row){
       const keys=row.map(headerField);
       return keys.includes('name')&&keys.some(k=>k&&k!=='name')?row.slice():null;
