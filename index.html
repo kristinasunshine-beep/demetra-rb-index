@@ -1047,7 +1047,7 @@ body.control-room .record-offer-pickers .offer-picker-count{background:#f8f8f8;b
 </style>
 
 
-<style id="reference-segment-picker-r19">
+<style id="reference-segment-picker-r20">
 body.control-room{--index-emphasis-weight:700;--index-label-weight:400;--index-detail-size:16px;--index-key-size:20px;--index-key-line:24px}
 body.control-room .record-offer-pickers .supplier-offer-picker,
 body.control-room .record-offer-pickers .supplier-offer-picker[open]{border:3px solid #161A19;border-radius:0;box-shadow:none;padding:0}
@@ -1128,7 +1128,6 @@ body.control-room .offer-picker-photo{grid-area:photo;margin:5px 0 0 26px;font:4
 body.control-room .offer-picker-photo summary{cursor:pointer;width:fit-content}
 body.control-room .offer-picker-photo img{display:block;max-width:100%;max-height:230px;object-fit:contain;margin-top:6px}
 body.control-room .offer-picker-price-group{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:2px}
-body.control-room .offer-picker-archive{font:400 10px/1.15 var(--sans);color:#68736B}
 </style>
 </head>
   <body class="control-room" data-view="search">
@@ -2151,7 +2150,7 @@ function offerPickerMarkup(nursery,variants,offerPhotos=new Map()){
           '<div class="offer-picker-ledger-meta">'+
             (offer.sourceDate?
               '<time class="offer-picker-date" datetime="'+escapeHTML(offer.sourceDate)+'">'+escapeHTML(formattedDate(offer.sourceDate))+'</time>':'')+
-            (catalogEuroPrice(offer)!==null?'<span class="offer-picker-price-group">'+(offer.priceKind==='historical'?'<small class="offer-picker-archive">Arhivska cena</small>':'')+'<strong class="offer-picker-price">'+escapeHTML(formattedPrice(offer))+'</strong></span>':'')+
+            (catalogEuroPrice(offer)!==null?'<span class="offer-picker-price-group">'+'<strong class="offer-picker-price">'+escapeHTML(formattedPrice(offer))+'</strong></span>':'')+
             '<button type="button" class="offer-picker-quote-add" data-action="add-to-quote"'+
               ' data-offer-id="'+escapeHTML(offer.id)+'" aria-label="Dodaj varijantu u Moju ponudu">'+
               'Moja ponuda</button>'+
