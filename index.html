@@ -1046,105 +1046,31 @@ body.control-room .record-offer-pickers .offer-picker-chevron{border-right-color
 body.control-room .record-offer-pickers .offer-picker-count{background:#f8f8f8;border-color:#e6e6e6}
 </style>
 
-<style id="segmented-offer-picker-r7">
-body.control-room .record-offer-pickers .offer-picker-title{font-weight:700}
-body.control-room .record-offer-pickers .offer-picker-chevron{border-right:3px solid #FA593B;border-bottom:3px solid #FA593B}
-body.control-room .record-offer-pickers .offer-picker-trigger,
-body.control-room .record-offer-pickers .offer-picker-trigger:hover,
-body.control-room .record-offer-pickers .supplier-offer-picker[open] .offer-picker-trigger{background:#fff}
-body.control-room .offer-picker-options{gap:3px;background:#fff}
-body.control-room .offer-picker-option{
- display:grid;grid-template-columns:minmax(0,1fr) 100px 125px 142px;
- grid-template-areas:"params date price quote";align-items:stretch;
- padding:0;gap:0;min-height:88px;background:#f0f0f0;border:0;
- border-bottom:1px solid #d5d5d5;box-shadow:none
-}
-body.control-room .offer-picker-option:hover,body.control-room .offer-picker-option:focus-within{background:#e9e9e9}
-body.control-room .offer-picker-option.is-selected{background:#e2e2e2;box-shadow:inset 3px 0 #FA593B}
-body.control-room .offer-picker-option.is-selected:hover,body.control-room .offer-picker-option.is-selected:focus-within{background:#dedede}
-body.control-room .offer-picker-select{display:flex;align-items:stretch;align-self:stretch;gap:0;min-height:88px;padding:0;min-width:0}
-body.control-room .offer-picker-option-index{display:flex;align-items:center;justify-content:center;flex:0 0 40px;align-self:stretch;margin:0;color:#FA593B;font:500 12px/1.2 var(--mono);border-right:1px solid #d0d0d0}
-body.control-room .offer-picker-segments{flex:1;min-width:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));align-items:stretch}
-body.control-room .offer-picker-cell{min-width:0;display:flex;flex-direction:column;justify-content:center;gap:5px;padding:12px 9px;border-right:1px solid #d0d0d0}
-body.control-room .offer-picker-cell small{color:#555;font:400 10px/1.2 var(--mono);text-transform:uppercase;letter-spacing:.035em;overflow-wrap:break-word}
-body.control-room .offer-cell-value{color:#151515;font:400 14px/1.25 var(--sans);overflow-wrap:break-word;word-break:normal}
-body.control-room .offer-picker-cell.metric .offer-cell-value{font:750 24px/1.1 var(--sans);letter-spacing:-.045em;font-variant-numeric:tabular-nums}
-body.control-room .offer-picker-cell.empty .offer-cell-value{color:#aaa;font-weight:400}
-body.control-room .offer-picker-extra{grid-column:1/-1;display:flex;flex-wrap:wrap;border-top:1px solid #d0d0d0}
-body.control-room .offer-picker-extra .offer-picker-cell{flex:0 1 25%;padding:8px 9px}
-body.control-room .offer-picker-date{display:flex;align-items:center;justify-content:center;align-self:stretch;justify-self:stretch;margin:0;padding:8px;border-right:1px solid #d0d0d0;font:400 11px/1.3 var(--mono)}
-body.control-room .offer-picker-price{display:flex;align-items:center;justify-content:flex-end;align-self:stretch;justify-self:stretch;margin:0;padding:10px;font:800 23px/1.15 var(--sans);letter-spacing:-.04em;white-space:normal;overflow-wrap:normal;border-right:1px solid #d0d0d0;text-align:right}
-body.control-room .offer-picker-quote-add{align-self:center;justify-self:stretch;margin:8px;width:auto;min-width:0;min-height:44px;padding:8px 5px;font:500 12px/1.25 var(--sans);white-space:normal}
-@container (max-width:850px){
- body.control-room .offer-picker-option{grid-template-columns: minmax(0,1fr) minmax(0,1.15fr) minmax(0,1.25fr);grid-template-areas:"params params params" "date price quote";min-height:0;gap:0}
- body.control-room .offer-picker-select{min-height:76px;border-bottom:1px solid #d0d0d0}
- body.control-room .offer-picker-price{justify-content:center;text-align:center;font-size:22px}
- body.control-room .offer-picker-date{white-space:normal}
-}
-@container (max-width:430px){
- body.control-room .offer-picker-option-index{flex-basis:26px;font-size:11px}
- body.control-room .offer-picker-cell{padding:9px 5px}
- body.control-room .offer-picker-cell small{font-size:9px}
- body.control-room .offer-cell-value{font-size:12px}
- body.control-room .offer-picker-cell.metric .offer-cell-value{font-size:19px}
- body.control-room .offer-picker-price{font-size:18px;padding:8px 4px}
- body.control-room .offer-picker-date{font-size:10px;padding:5px}
- body.control-room .offer-picker-quote-add{font-size:11px;margin:5px;padding:5px}
-}
-@container (max-width:320px){
- body.control-room .offer-picker-segments{grid-template-columns:repeat(2,minmax(0,1fr))}
- body.control-room .offer-picker-cell{border-bottom:1px solid #d0d0d0}
- body.control-room .offer-picker-extra .offer-picker-cell{flex-basis:50%}
-}
-</style>
 
-<style id="industrial-offer-picker-r8">
-body.control-room .record-offer-pickers{gap:12px}
+<style id="restored-linear-picker-r9">
 body.control-room .record-offer-pickers .supplier-offer-picker,
-body.control-room .record-offer-pickers .supplier-offer-picker[open]{border:2px solid #161A19;border-radius:0;box-shadow:none}
-body.control-room .record-offer-pickers .offer-picker-trigger,
-body.control-room .record-offer-pickers .offer-picker-trigger:hover,
-body.control-room .record-offer-pickers .supplier-offer-picker[open] .offer-picker-trigger{background:#fff;border:0;border-radius:0}
+body.control-room .record-offer-pickers .supplier-offer-picker[open]{border:2px solid #161A19;box-shadow:none;border-radius:0}
 body.control-room .record-offer-pickers .offer-picker-title{font-weight:700}
 body.control-room .record-offer-pickers .offer-picker-chevron{border-right:3px solid #FA593B;border-bottom:3px solid #FA593B}
-body.control-room .record-offer-pickers .offer-picker-count{border-radius:0;background:#fbfbfb;border:1px solid #d9d9d9}
-body.control-room .offer-picker-menu::before{height:2px;background:#161A19}
-body.control-room .offer-picker-options{gap:0;background:#fff}
-body.control-room .offer-picker-option{
- display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"params meta";
- align-items:stretch;min-height:82px;padding:0;gap:0;background:#fbfbfb;
- border:0;border-bottom:1px solid #161A19;border-radius:0!important;box-shadow:none
-}
+body.control-room .offer-picker-option{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"params meta";align-items:center;gap:12px;min-height:76px;background:#fbfbfb;border-bottom:1px solid #e2e2e2}
 body.control-room .offer-picker-option:hover,body.control-room .offer-picker-option:focus-within{background:#f9f9f9}
-body.control-room .offer-picker-option.is-selected{background:#f8f8f8;box-shadow:inset 4px 0 #FA593B}
+body.control-room .offer-picker-option.is-selected{background:#f8f8f8;box-shadow:inset 3px 0 #FA593B}
 body.control-room .offer-picker-option.is-selected:hover,body.control-room .offer-picker-option.is-selected:focus-within{background:#f6f6f6}
-body.control-room .offer-picker-select{grid-area:params;display:flex;align-items:stretch;align-self:stretch;gap:0;min-width:0;min-height:82px;padding:0;border-radius:0}
-body.control-room .offer-picker-option-index{flex:0 0 40px;align-self:stretch;margin:0;border-right:1px solid #161A19;color:#FA593B}
-body.control-room .offer-picker-segments{display:flex;flex:1;min-width:0;flex-wrap:wrap;align-items:stretch;align-content:stretch}
-body.control-room .offer-picker-cell{flex:0 1 112px;min-width:0;max-width:100%;border:0;border-right:1px solid #161A19;border-radius:0;padding:11px 10px;min-height:68px;gap:4px}
-body.control-room .offer-picker-cell small{font:400 10px/1.2 var(--mono);color:#444}
-body.control-room .offer-cell-value{font:400 14px/1.25 var(--sans);color:#161A19;overflow-wrap:break-word;word-break:normal}
-body.control-room .offer-picker-cell.metric .offer-cell-value{font:750 24px/1.1 var(--sans);letter-spacing:-.045em}
-body.control-room .offer-picker-ledger-meta{grid-area:meta;display:flex;min-width:0;align-items:stretch;border-left:1px solid #161A19}
-body.control-room .offer-picker-date{flex:0 0 98px;border:0;border-right:1px solid #161A19;padding:8px 6px;font-weight:400}
-body.control-room .offer-picker-price{flex:0 0 auto;min-width:132px;justify-content:center;text-align:center;border:0;border-right:1px solid #161A19;padding:10px 12px;font:900 29px/1.1 var(--sans);letter-spacing:-.04em;white-space:nowrap}
-body.control-room .offer-picker-quote-add{flex:0 0 126px;align-self:center;min-height:44px;margin:8px;padding:8px 5px;border-radius:0!important;font-weight:500}
-@container (max-width:850px){
- body.control-room .offer-picker-option{grid-template-columns:minmax(0,1fr);grid-template-areas:"params" "meta";min-height:0;gap:0}
- body.control-room .offer-picker-select{min-height:68px;border-bottom:1px solid #161A19}
- body.control-room .offer-picker-ledger-meta{border-left:0;flex-wrap:wrap;justify-content:flex-end}
- body.control-room .offer-picker-date{flex:1 1 88px}
- body.control-room .offer-picker-price{flex:1 1 auto;min-width:0;font-size:25px}
- body.control-room .offer-picker-quote-add{flex:0 1 126px}
- body.control-room .offer-picker-cell{flex:1 1 110px;min-height:65px;border-bottom:1px solid #161A19}
-}
-@container (max-width:430px){
- body.control-room .offer-picker-option-index{flex-basis:26px}
- body.control-room .offer-picker-cell{flex:1 1 90px;padding:9px 6px}
- body.control-room .offer-picker-cell.metric .offer-cell-value{font-size:21px}
- body.control-room .offer-picker-price{font-size:22px;padding:8px 5px}
- body.control-room .offer-picker-date{flex:1 1 68px;font-size:10px}
- body.control-room .offer-picker-quote-add{flex:0 1 106px;margin:5px;font-size:11px}
+body.control-room .offer-picker-select{align-items:baseline;align-self:center;min-width:0;gap:12px}
+body.control-room .offer-picker-measures{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 18px}
+body.control-room .offer-picker-measure{display:inline-flex;flex-direction:row;align-items:baseline;gap:5px;min-width:0;border:0;padding:0}
+body.control-room .offer-picker-measure small{font-weight:400}
+body.control-room .offer-picker-measure .offer-cell-value{font:400 15px/1.25 var(--sans);color:#161A19;overflow-wrap:break-word}
+body.control-room .offer-picker-measure strong.offer-cell-value{font-weight:750;font-size:16px}
+body.control-room .offer-picker-ledger-meta{grid-area:meta;display:flex;align-items:baseline;gap:14px;justify-content:flex-end;min-width:0}
+body.control-room .offer-picker-date{font-weight:400;white-space:nowrap}
+body.control-room .offer-picker-price{font:900 26px/1.15 var(--sans);white-space:nowrap}
+body.control-room .offer-picker-quote-add{font-weight:500;min-width:126px}
+@container(max-width:850px){
+ body.control-room .offer-picker-option{grid-template-columns:minmax(0,1fr);grid-template-areas:"params" "meta";gap:8px}
+ body.control-room .offer-picker-ledger-meta{flex-wrap:wrap;justify-content:flex-end;gap:10px}
+ body.control-room .offer-picker-price{font-size:23px}
+ body.control-room .offer-picker-quote-add{width:auto;min-width:106px}
 }
 </style>
 </head>
@@ -1534,6 +1460,16 @@ function validateOffer(item, index, plantIds, nurseryIds) {
     imageKind: textValue(item.imageKind, `${label}, tip fotografije`, { max: 100, fallback: 'Kataloška fotografija' }),
     demo: boolValue(item.demo, `${label}, demo`)
   };
+  // One canonical height field throughout the active index.
+  const stemHeightLabel = value => /^(?:visina (?:cistog debla|do krosnje)|clear stem height|stem height)$/.test(normalize(value));
+  const redundantHeight = offer.additionalParameters.find(p => stemHeightLabel(p.label));
+  if ((!offer.height || /^(?:[-–—]+|nije navedeno|nepoznato)$/i.test(offer.height.trim())) && redundantHeight && !/^(?:[-–—]+|nije navedeno|nepoznato)$/i.test(redundantHeight.value.trim())) {
+    offer.height = redundantHeight.value;
+  }
+  offer.additionalParameters = offer.additionalParameters.filter(p => !stemHeightLabel(p.label));
+  for (const key of ['dataAccuracyNote','measurementNote','specification','priceNote']) {
+    offer[key] = String(offer[key] || '').replace(/visin[aeu]\s+(?:[čc]istog\s+debla|do\s+kro[šs]nje)|clear\s+stem\s+height/gi,'Visina');
+  }
   if (!plantIds.has(offer.plantId)) throw new Error(`${label}: biljka „${offer.plantId}” ne postoji.`);
   if (!nurseryIds.has(offer.nurseryId)) throw new Error(`${label}: rasadnik „${offer.nurseryId}” ne postoji.`);
   return offer;
@@ -1850,7 +1786,7 @@ function updateSearch() {
 }
 
 const DIMENSION_PARAMETER_LABELS = new Set([
-  'Dimenzija iz ponude', 'Nerazvrstana mera iz ponude', 'Visina čistog debla',
+  'Dimenzija iz ponude', 'Nerazvrstana mera iz ponude',
   'Dimenzija oblikovane forme', 'Dimenzije oblikovane forme', 'Dimenzije oblikovane krošnje',
   'Obim / visina iz ponude', 'Dimenzije sadnice iz ponude', 'Visina / prečnik iz ponude',
   'Ponuđena veličina (izvorna oznaka)'
@@ -2118,21 +2054,17 @@ function uniqueDisplayVariants(variants) {
 // A structured, keyboard-accessible menu keeps size parameters prominent while
 // showing price and source date separately, without changing the existing order.
 function offerPickerChoiceMarkup(offer) {
-  const order=['Obim','Visina','Saksija','Način isporuke','Krošnja','Busen','Presađivanja'];
-  const rank=label=>order.includes(label)?order.indexOf(label):order.length;
-  const present=value=>{
-    const raw=String(value??'').trim();
-    return raw && !/^(?:[-–—]+|\/|n\.?\s*a\.?|n\/a|null|undefined|nije\s+(?:naveden[oa]?|poznat[oa]?|dostupan[oa]?)(?:\s+u\s+ponudi)?|nepoznat[oa]?|bez\s+podataka)$/i.test(raw);
-  };
-  const fields=offerDropdownMeasurements(offer).filter(field=>present(field.value))
-    .sort((a,b)=>rank(a.label)-rank(b.label));
+  const fields=offerDropdownMeasurements(offer).filter(field=>{
+    const label=normalize(field.label),value=normalize(field.value);
+    return !/^(?:visina (?:cistog debla|do krosnje)|clear stem height|stem height)$/.test(label)
+      && value && !/^(?:[-–—]+|\/|n\.?\s*a\.?|n\/a|null|undefined|nije\s+(?:naveden[oa]?|poznat[oa]?|dostupan[oa]?)(?:\s+u\s+ponudi)?|nepoznat[oa]?|bez\s+podataka)$/i.test(value);
+  });
   const measures=fields.map(field=>{
     const label=field.label==='Način isporuke'?'Isporuka':field.label;
-    const metric=/^(?:obim|visina)(?:\s|$)/i.test(label);
-    const tag=metric?'strong':'span';
-    return '<span class="offer-picker-cell'+(metric?' metric':'')+'"><small>'+escapeHTML(label)+'</small><'+tag+' class="offer-cell-value">'+escapeHTML(field.value)+'</'+tag+'></span>';
+    const tag=/^(?:Obim|Visina)$/.test(label)?'strong':'span';
+    return '<span class="offer-picker-measure"><small>'+escapeHTML(label)+'</small><'+tag+' class="offer-cell-value">'+escapeHTML(field.value)+'</'+tag+'></span>';
   }).join('');
-  return measures?'<span class="offer-picker-segments">'+measures+'</span>':'';
+  return measures?'<span class="offer-picker-measures">'+measures+'</span>':'';
 }
 function offerPickerMarkup(nursery,variants){
   const current=variants[0],count=variants.length;
