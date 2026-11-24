@@ -29,8 +29,14 @@ for(const offer of valid){
   assert.equal(item.sourcePrice,expectedPrice);
   assert.equal(item.currency,'EUR');assert.equal(item.sourcePriceCurrency,'EUR');
   const normalized=Core.normalizeItem(item);
-  assert(normalized.parameters.some(([key,value])=>key==='Obim sadnice'&&value===(offer.circumference||'')));
-  assert(normalized.parameters.some(([key,value])=>key==='Visina sadnice'&&value===(offer.height||'')));
+  const norm = value => String(value ?? '').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').replace(/[‐‑‒–—]/g,'-').replace(/\s+/g,' ').trim().toLowerCase();
+  const present = value => !!norm(value) && !/^(?:[-–—]+|\/|n\.?\s*a\.?|n\/a|null|undefined|nije\s+(?:naveden[oa]?|poznat[oa]?|dostupan[oa]?)(?:\s+u\s+ponudi)?|nepoznat[oa]?|bez\s+podataka)$/.test(norm(value));
+  const alias = label => /^(?:visina (?:cistog debla|do krosnje)|clear stem height|stem height)$/.test(norm(label));
+  const height = present(offer.height) ? offer.height : (offer.additionalParameters || []).find(p=>alias(p.label)&&present(p.value))?.value;
+  const parameters = new Map(normalized.parameters);
+  assert.equal(parameters.get('Obim sadnice'),present(offer.circumference)?offer.circumference:undefined,offer.id+' circumference');
+  assert.equal(parameters.get('Visina sadnice'),present(height)?height:undefined,offer.id+' canonical height');
+  assert(!normalized.parameters.some(([key,value])=>alias(key)||!present(value)),offer.id+' duplicate or empty quote parameter');
   if(expectedPrice!==null)assert(Core.lineResult(normalized).valid,'Catalog price must be usable: '+offer.id+' '+expectedPrice);
   snapshots.push(normalized);
 }
