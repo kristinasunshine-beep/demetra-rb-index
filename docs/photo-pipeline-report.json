@@ -1,13 +1,13 @@
 {
   "schemaVersion": 2,
   "status": "partial",
-  "requests": 415,
+  "requests": 498,
   "workers": 8,
   "events": [],
   "sourceHealth": {
     "portal.volentis.com": {
-      "requests": 103,
-      "succeeded": 102,
+      "requests": 111,
+      "succeeded": 110,
       "retries": 0,
       "httpErrors": {
         "404": 1
@@ -21,58 +21,65 @@
       }
     },
     "www.willaert.be": {
-      "requests": 101,
-      "succeeded": 101,
+      "requests": 107,
+      "succeeded": 107,
       "retries": 0,
       "httpErrors": {},
       "stopped": false,
       "requestIntervalSeconds": 1.0
     },
     "catalogue.vannuccipiante.it": {
-      "requests": 3,
-      "succeeded": 3,
+      "requests": 4,
+      "succeeded": 4,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "www.vdberk.com": {
+      "requests": 9,
+      "succeeded": 9,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": false
+    },
+    "webshop.vannuccipiante.it": {
       "requests": 13,
       "succeeded": 13,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
-    "webshop.vannuccipiante.it": {
-      "requests": 27,
-      "succeeded": 27,
-      "retries": 0,
-      "httpErrors": {},
-      "stopped": false
-    },
     "smitsbv.nl": {
-      "requests": 15,
-      "succeeded": 15,
+      "requests": 42,
+      "succeeded": 42,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "www.lorberg.com": {
-      "requests": 43,
-      "succeeded": 43,
-      "retries": 0,
-      "httpErrors": {},
-      "stopped": false
-    },
-    "www.lve-baumschule.de": {
-      "requests": 34,
-      "succeeded": 34,
+      "requests": 45,
+      "succeeded": 45,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "innocentiemangonipiante.it": {
-      "requests": 75,
-      "succeeded": 75,
+      "requests": 157,
+      "succeeded": 157,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": false
+    },
+    "www.lve-baumschule.de": {
+      "requests": 8,
+      "succeeded": 8,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": false
+    },
+    "www.ebben.nl": {
+      "requests": 1,
+      "succeeded": 1,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
@@ -87,7 +94,7 @@
   },
   "coverage": {
     "schemaVersion": 2,
-    "checkedAt": "2026-11-24T03:02:03Z",
+    "checkedAt": "2026-11-24T07:34:07Z",
     "status": "partial",
     "plants": 623,
     "plantsInventoried": 623,
