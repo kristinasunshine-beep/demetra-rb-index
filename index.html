@@ -1011,6 +1011,35 @@ body.control-room .record-extra-info>p{font-size:14px;line-height:1.45}
   body.control-room .offer-picker-measure strong{font-size:14px}
 }
 </style>
+
+<style id="white-baseline-offer-picker-r5">
+body.control-room .record-offer-pickers .offer-picker-title{font-weight:650}
+body.control-room .record-offer-pickers .offer-picker-trigger,
+body.control-room .record-offer-pickers .offer-picker-trigger:hover,
+body.control-room .record-offer-pickers .supplier-offer-picker[open] .offer-picker-trigger,
+body.control-room .offer-picker-option,
+body.control-room .offer-picker-option:hover,
+body.control-room .offer-picker-option:focus-within,
+body.control-room .offer-picker-option.is-selected,
+body.control-room .offer-picker-option.is-selected:hover,
+body.control-room .offer-picker-option.is-selected:focus-within{background:#fff}
+body.control-room .offer-picker-option{align-items:baseline}
+body.control-room .offer-picker-select{align-items:baseline;align-self:baseline;min-height:0;padding:0;line-height:1.25}
+body.control-room .offer-picker-option-index{color:#FA593B;font-weight:750;align-self:baseline;margin:0;line-height:1.25}
+body.control-room .offer-picker-measures{align-items:baseline}
+body.control-room .offer-picker-measure{align-items:baseline;line-height:1.25}
+body.control-room .offer-picker-measure small,body.control-room .offer-picker-measure strong{line-height:1.25}
+body.control-room .offer-picker-date,body.control-room .offer-picker-price{align-self:baseline;margin:0;line-height:1.25}
+body.control-room .offer-picker-quote-add{display:block;align-self:baseline;line-height:1.25}
+@container (min-width:851px){
+ body.control-room .offer-picker-option{grid-template-columns:minmax(0,1fr) max-content max-content max-content;grid-template-areas:"params date price quote";align-items:baseline}
+ body.control-room .offer-picker-measures{flex-wrap:wrap}
+}
+@container (max-width:850px){
+ body.control-room .offer-picker-option{align-items:baseline}
+ body.control-room .offer-picker-select,body.control-room .offer-picker-price,body.control-room .offer-picker-option-index{align-self:baseline;margin:0}
+}
+</style>
 </head>
   <body class="control-room" data-view="search">
     <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none">
