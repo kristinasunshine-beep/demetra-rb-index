@@ -1047,7 +1047,7 @@ body.control-room .record-offer-pickers .offer-picker-count{background:#f8f8f8;b
 </style>
 
 
-<style id="reference-segment-picker-r15">
+<style id="reference-segment-picker-r16">
 body.control-room .record-offer-pickers .supplier-offer-picker,
 body.control-room .record-offer-pickers .supplier-offer-picker[open]{border:3px solid #161A19;border-radius:0;box-shadow:none;padding:0}
 body.control-room .record-offer-pickers .offer-picker-trigger,
@@ -1068,16 +1068,16 @@ body.control-room .offer-picker-option.is-selected{background:#f7f7f7;box-shadow
 body.control-room .offer-picker-option.is-selected:hover,body.control-room .offer-picker-option.is-selected:focus-within{background:#f5f5f5}
 body.control-room .offer-picker-select{display:flex;align-items:stretch;align-self:stretch;gap:0;padding:0;min-width:0;min-height:0}
 body.control-room .offer-picker-option-index{display:flex;align-items:center;justify-content:flex-start;flex:0 0 26px;align-self:stretch;margin:0;color:#FA593B;font:650 13px/1.25 var(--sans)}
-body.control-room .offer-picker-measures{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));align-items:stretch;gap:0;min-width:0;flex:1}
-body.control-room .offer-picker-measure{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:2px;min-width:0;padding:0 12px;border-left:1px solid #dedede}
+body.control-room .offer-picker-measures{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));align-items:stretch;column-gap:0;row-gap:5px;min-width:0;flex:1}
+body.control-room .offer-picker-measure{display:grid;grid-template-rows:14px auto;align-items:start;align-content:start;justify-items:start;gap:2px;min-width:0;padding:0 12px;margin:0;border-left:1px solid #dedede}
 body.control-room .offer-picker-measure[data-slot="1"]{grid-column:1;grid-row:1}
 body.control-room .offer-picker-measure[data-slot="2"]{grid-column:2;grid-row:1}
 body.control-room .offer-picker-measure[data-slot="3"]{grid-column:3;grid-row:1}
 body.control-room .offer-picker-measure[data-slot="4"]{grid-column:4;grid-row:1}
-body.control-room .offer-picker-measure[data-slot="extra"]{grid-row:auto;margin-top:3px}
-body.control-room .offer-picker-measure small{font:400 12px/1.1 var(--sans);color:#555;text-transform:uppercase;letter-spacing:0}
-body.control-room .offer-picker-measure .offer-cell-value{font:400 16px/1.15 var(--sans);color:#161A19;overflow-wrap:break-word;word-break:normal}
-body.control-room .offer-picker-measure strong.offer-cell-value{font-weight:800;font-size:20px}
+body.control-room .offer-picker-measure[data-slot="extra"]{grid-row:auto;margin-top:0}
+body.control-room .offer-picker-measure small{display:block;margin:0;padding:0;font:400 12px/14px var(--sans);color:#555;text-transform:uppercase;letter-spacing:0;white-space:nowrap}
+body.control-room .offer-picker-measure .offer-cell-value{display:block;margin:0;padding:0;font:400 18px/22px var(--sans);color:#161A19;overflow-wrap:break-word;word-break:normal;align-self:start}
+body.control-room .offer-picker-measure strong.offer-cell-value{font:700 18px/22px var(--sans);letter-spacing:0}
 body.control-room .offer-picker-ledger-meta{grid-area:meta;display:flex;align-items:center;justify-content:flex-end;gap:24px;min-width:0;margin-top:7px;padding-top:6px;border-top:1px solid #dedede}
 body.control-room .offer-picker-date{margin-right:auto;white-space:nowrap;font:500 13px/1.25 var(--sans);color:#555}
 body.control-room .offer-picker-price{margin:0 0 0 auto;font:800 23px/1.15 var(--sans);letter-spacing:-.015em;white-space:nowrap}
@@ -1096,15 +1096,25 @@ body.control-room .offer-picker-quote-add.is-added,body.control-room .offer-pick
  body.control-room .offer-picker-measures{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:4px}
  body.control-room .offer-picker-measure[data-slot]{grid-column:auto;grid-row:auto;margin-top:0}
  body.control-room .offer-picker-measure{padding:0 8px}
- body.control-room .offer-picker-measure small{font-size:11px}
- body.control-room .offer-picker-measure .offer-cell-value{font-size:15px}
- body.control-room .offer-picker-measure strong.offer-cell-value{font-size:18px}
+ body.control-room .offer-picker-measure small{font-size:11px;line-height:14px}
+ body.control-room .offer-picker-measure .offer-cell-value{font-size:16px;line-height:20px}
+ body.control-room .offer-picker-measure strong.offer-cell-value{font:700 16px/20px var(--sans)}
  body.control-room .offer-picker-ledger-meta{margin-top:6px;padding-top:6px;gap:14px;flex-wrap:wrap}
  body.control-room .offer-picker-price{font-size:20px}
  body.control-room .offer-picker-quote-add{min-height:34px;font-size:12px;padding:6px 12px}
 }
 body.control-room .offer-picker-measure:has(strong.offer-cell-value) small{font-weight:400;color:#555}
 @media(prefers-reduced-motion:reduce){body.control-room .offer-picker-option::before{transition:none}}
+@supports(grid-template-rows:subgrid){
+ body.control-room .offer-picker-measures{grid-auto-rows:auto;row-gap:2px}
+ body.control-room .offer-picker-measure{grid-row:span 2;grid-template-rows:subgrid}
+ body.control-room .offer-picker-measure[data-slot="1"],body.control-room .offer-picker-measure[data-slot="2"],body.control-room .offer-picker-measure[data-slot="3"],body.control-room .offer-picker-measure[data-slot="4"]{grid-row:1 / span 2}
+ body.control-room .offer-picker-measure[data-slot="extra"]{grid-row:span 2}
+ body.control-room .offer-picker-measure small{white-space:normal;overflow-wrap:break-word}
+ @container(max-width:480px){
+  body.control-room .offer-picker-measure[data-slot]{grid-column:auto;grid-row:span 2}
+ }
+}
 </style>
 </head>
   <body class="control-room" data-view="search">
