@@ -954,6 +954,63 @@ body.control-room .offer-picker-quote-add.is-added,body.control-room .offer-pick
 }
 </style>
 
+
+<style id="large-offer-picker-r4">
+body.control-room .record-offer-pickers{grid-template-columns:minmax(0,1fr);gap:12px;margin:12px 0 24px}
+body.control-room .record-offer-pickers .supplier-offer-picker{border:1px solid #c5c5c5;min-width:0}
+body.control-room .record-offer-pickers .offer-picker-trigger,
+body.control-room .record-offer-pickers .supplier-offer-picker[open] .offer-picker-trigger{min-height:88px;padding:20px 24px;gap:18px}
+body.control-room .record-offer-pickers .offer-picker-title{font:750 clamp(21px,2.4vw,28px)/1.2 var(--sans);letter-spacing:-.035em;color:#111;overflow-wrap:break-word;word-break:normal}
+body.control-room .record-offer-pickers .offer-picker-count{font:650 13px/1.2 var(--mono);padding:7px 11px;background:#f1f1f1;color:#222;border-color:#d2d2d2}
+body.control-room .record-offer-pickers .offer-picker-chevron{width:14px;height:14px;border-width:0 2px 2px 0;margin-right:4px}
+body.control-room .record-offer-pickers .offer-picker-trigger-meta{gap:18px}
+body.control-room .record-offer-pickers .offer-picker-trigger:hover{background:#ededed}
+body.control-room .record-offer-pickers .supplier-offer-picker[open] .offer-picker-trigger{background:#ececec}
+body.control-room .offer-picker-option{grid-template-columns:minmax(0,1fr) minmax(95px,auto) minmax(110px,auto) minmax(136px,auto);gap:14px;padding:12px 16px;min-height:76px}
+body.control-room .offer-picker-option:hover,body.control-room .offer-picker-option:focus-within{background:#ededed}
+body.control-room .offer-picker-option.is-selected{background:#e5e5e5;box-shadow:inset 3px 0 #234d36}
+body.control-room .offer-picker-option.is-selected:hover,body.control-room .offer-picker-option.is-selected:focus-within{background:#dedede}
+body.control-room .offer-picker-select{min-height:44px;gap:13px}
+body.control-room .offer-picker-option-index{font-size:12px;flex-basis:25px}
+body.control-room .offer-picker-measures{gap:6px 15px}
+body.control-room .offer-picker-measure small{font-size:11px}
+body.control-room .offer-picker-measure strong{font-size:16px}
+body.control-room .offer-picker-date{font-size:12px}
+body.control-room .offer-picker-price{font-size:23px;letter-spacing:-.035em}
+body.control-room .offer-picker-quote-add{font-size:13px;min-height:44px;padding:10px 12px}
+body.control-room .supplier-group-heading h3{font-size:clamp(19px,2vw,24px);line-height:1.25;letter-spacing:-.025em}
+body.control-room .record-extra-info>summary{font-size:13px}
+body.control-room .record-extra-info>p{font-size:14px;line-height:1.45}
+@container (max-width:850px){
+  body.control-room .offer-picker-option{grid-template-columns:minmax(0,1fr) minmax(135px,30%);grid-template-areas:"params price" "date quote";gap:9px 12px;padding:12px 14px}
+  body.control-room .offer-picker-select{align-self:start;gap:9px}
+  body.control-room .offer-picker-option-index{flex-basis:21px;align-self:start;margin-top:3px}
+  body.control-room .offer-picker-price{align-self:start;margin-top:4px;font-size:21px}
+  body.control-room .offer-picker-quote-add{width:100%}
+}
+@media(max-width:760px){
+  body.control-room .record-offer-pickers{gap:10px}
+  body.control-room .record-offer-pickers .offer-picker-trigger,
+  body.control-room .record-offer-pickers .supplier-offer-picker[open] .offer-picker-trigger{min-height:76px;padding:16px 12px;gap:10px}
+  body.control-room .record-offer-pickers .offer-picker-title{font-size:21px}
+  body.control-room .record-offer-pickers .offer-picker-count{font-size:11px;padding:5px 7px}
+  body.control-room .record-offer-pickers .offer-picker-trigger-meta{gap:10px}
+  body.control-room .record-offer-pickers .offer-picker-chevron{width:11px;height:11px;margin-right:2px}
+  body.control-room .offer-picker-option{grid-template-columns:minmax(0,1fr) minmax(110px,38%);grid-template-areas:"params price" "date quote";padding:11px 10px;gap:8px}
+  body.control-room .offer-picker-measures{gap:5px 9px}
+  body.control-room .offer-picker-measure small{font-size:10px}
+  body.control-room .offer-picker-measure strong{font-size:15px}
+  body.control-room .offer-picker-price{font-size:20px}
+  body.control-room .offer-picker-quote-add{font-size:12px;min-height:44px;padding:8px 6px;width:100%}
+  body.control-room .offer-picker-date{font-size:11px}
+  body.control-room .offer-picker-option-index{font-size:11px;flex-basis:18px}
+}
+@media(max-width:360px){
+  body.control-room .record-offer-pickers .offer-picker-title{font-size:20px}
+  body.control-room .offer-picker-price{font-size:17px}
+  body.control-room .offer-picker-measure strong{font-size:14px}
+}
+</style>
 </head>
   <body class="control-room" data-view="search">
     <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none">
@@ -1996,12 +2053,7 @@ function renderRecord(plant) {
     '<div class="detail-meta"><span>' + escapeHTML(nurseryCountLabel(nurseryIds.length) + ' · ' + offerCountLabel(distinctOfferCount)) +
     '</span></div></div>' + plantPhoto + '</div><div class="detail-body">' +
     '<details class="record-extra-info"><summary>Dodatni podaci o biljci</summary>' +
-    '<p><strong>Kategorija:</strong> ' + escapeHTML(plant.category || 'Biljka') + '</p>' +
-    '<p><strong>Srpski naziv:</strong> ' + escapeHTML(domesticLabel(plant).name || 'Nije potvrđen') +
-    (domesticLabel(plant).level === 'genus' ? ' (naziv roda, ne pojedinačne vrste)' : '') + '</p>' +
-    (plant.description ? '<p><strong>Opis:</strong> ' + escapeHTML(plant.description) + '</p>' : '') +
-    (plant.synonyms?.length ? '<p><strong>Drugi nazivi:</strong> ' + escapeHTML(plant.synonyms.join(' · ')) + '</p>' : '') +
-    '<p>' + escapeHTML(nurseryCountLabel(nurseryIds.length) + ' · ' + offerCountLabel(distinctOfferCount)) + '</p></details>' +
+    '<p><strong>Srpski naziv:</strong> ' + escapeHTML(domesticLabel(plant).name || 'Nije potvrđen') + '</p></details>' +
     // Variant pickers immediately follow “Dodatni podaci o biljci”.
     // Keep each supplier's name attached to its own selector.
     (offers.length ? '<div class="record-offer-pickers">' + nurseryIds.map((nurseryId, groupIndex) => {
