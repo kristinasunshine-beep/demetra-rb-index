@@ -71027,12 +71027,12 @@
         "https://www.lve.de/robots.txt": {
           "url": "https://www.lve.de/robots.txt",
           "reason": "download_failed",
-          "at": "2026-11-23T07:51:56Z"
+          "at": "2026-11-24T09:04:44Z"
         },
         "https://www.lve.de/": {
           "url": "https://www.lve.de/",
           "reason": "download_failed",
-          "at": "2026-11-23T07:51:56Z"
+          "at": "2026-11-24T09:04:44Z"
         }
       },
       "blockedHosts": {},
@@ -71040,7 +71040,7 @@
       "lastError": {
         "url": "https://www.lve.de/",
         "reason": "download_failed",
-        "at": "2026-11-23T07:51:56Z"
+        "at": "2026-11-24T09:04:44Z"
       },
       "indexVersion": 2,
       "lastCheckedAt": "2026-11-16T11:22:39Z"
@@ -74997,12 +74997,12 @@
         "https://portal.volentis.com/robots.txt": {
           "url": "https://portal.volentis.com/robots.txt",
           "reason": "http_error",
-          "at": "2026-11-23T07:51:56Z"
+          "at": "2026-11-24T09:04:44Z"
         },
         "https://portal.volentis.com/sitemap.xml": {
           "url": "https://portal.volentis.com/sitemap.xml",
           "reason": "http_error",
-          "at": "2026-11-23T07:51:56Z"
+          "at": "2026-11-24T09:04:44Z"
         }
       },
       "blockedHosts": {},
@@ -75011,7 +75011,7 @@
       "lastError": {
         "url": "https://portal.volentis.com/sitemap.xml",
         "reason": "http_error",
-        "at": "2026-11-23T07:51:56Z"
+        "at": "2026-11-24T09:04:44Z"
       },
       "indexVersion": 2
     },
@@ -79526,5 +79526,5 @@
       "candidateFingerprint": "9ff5e9adf44fb2d599a90c73c3c0114210c6157a99da9f683f545037ad45ce50"
     }
   },
-  "updatedAt": "2026-11-23T10:48:23Z"
+  "updatedAt": "2026-11-24T09:04:44Z"
 }
