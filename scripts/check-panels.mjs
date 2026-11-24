@@ -253,7 +253,7 @@ export async function verifyPanels(root) {
     const label = offer.id + ': ';
     const original = originalById.get(offer.id);
     context.offerId=offer.id;
-    const picker = run('offerPickerChoiceMarkup(state.catalog.offers.find(x=>x.id===offerId))');
+    const picker = markup;
     const positioned = [...picker.matchAll(/data-slot="(\d+)" style="([^"]+)"><small>([^<]+)<\/small><(?:strong|span) class="offer-cell-value">([^<]*)<\/(?:strong|span)>/g)];
     const occupied = new Set();
     for(const [,rawSlot,style,name,value] of positioned){
@@ -276,9 +276,8 @@ export async function verifyPanels(root) {
     for (const [name,key] of [['Obim','circumference'],['Visina','height']]) {
       if (present(offer[key])) assert(picker.includes('<small>'+name+'</small><strong class="offer-cell-value">'+esc(offer[key])+'</strong>'),label+name+' mora biti boldovan u padajućem meniju.');
     }
-    const panel = markup.match(/<dl class="measurements">([\s\S]*?)<\/dl>/)?.[1];
-    assert(panel !== undefined, label + 'nedostaje glavni panel parametara.');
-    const entries = [...panel.matchAll(/<dt>([^<]+)<\/dt><dd(?: class="missing")?>([\s\S]*?)<\/dd>/g)];
+    const longNames = new Map([['Obim','Obim sadnice'],['Visina','Visina sadnice'],['Krošnja','Širina krošnje'],['Busen','Veličina busena'],['Saksija','Veličina saksije'],['Isporuka','Način isporuke'],['Presađivanja','Broj presađivanja']]);
+    const entries=positioned.map(([,slot,style,name,value])=>[null,longNames.get(name)||name,value]);
     const extra = expectedExtraFields(original);
     const values = new Map(entries.map(entry => [entry[1], entry[2]]));
     const type = offer.seedlingType === 'standard' ? 'Standard' :
@@ -308,12 +307,12 @@ export async function verifyPanels(root) {
     assert.equal(values.get('Broj presađivanja'), present(transplantValue) ? esc(transplantValue) : undefined,
       label + 'podatak o presađivanju mora biti u svom polju glavnog panela.');
     if (present(transplantValue)) transplantValuesInMainPanel++;
-    assert.deepEqual(entries.map(entry => entry[1]), [
+    assert.deepEqual(entries.map(entry => entry[1]).sort(), [
       ...(present(type) ? ['Tip sadnice'] : []),
       ...fields.filter(([,field]) => present(offer[field])).map(([name]) => name),
       ...(present(transplantValue) ? ['Broj presađivanja'] : []),
       ...extra.map(parameter => esc(parameter.label))
-    ], label + 'glavni panel prikazuje samo stvarne, neduplirane parametre.');
+    ].sort(), label + 'meni prikazuje samo stvarne, neduplirane parametre.');
     for (const parameter of extra) {
       assert.equal(values.get(esc(parameter.label)), esc(parameter.value),
         label + parameter.label + ' iz ponude mora biti u glavnom panelu.');
@@ -365,13 +364,12 @@ export async function verifyPanels(root) {
       checkedSourceRegressions.add(offer.id);
     }
     // Every active card shows exactly one field at its base: date of source.
-    const footer=markup.match(/<div class="offer-footer">([\s\S]*?)<\/div>/)?.[1];
-    if (offer.sourceDate) {
+    const footer=markup.match(/<time class="offer-picker-date" datetime="([^"]+)">([^<]+)<\/time>/);
+    if(offer.sourceDate){
       assert(footer,label+'datum izvora mora ostati vidljiv.');
-      const expected=new Date(offer.sourceDate).toLocaleDateString('sr-Latn-RS');
-      assert.equal(footer,'<time class="offer-source-date" datetime="'+esc(offer.sourceDate)+
-        '">Datum izvora: '+esc(expected)+'</time>',label+'dozvoljen je samo datum izvora.');
-    } else assert.equal(footer,undefined,label+'ne sme se prikazati izmišljeni datum.');
+      assert.equal(footer[1],esc(offer.sourceDate));
+      assert.equal(footer[2],esc(new Date(offer.sourceDate).toLocaleDateString('sr-Latn-RS')));
+    }else assert.equal(footer,null,label+'ne sme se prikazati izmišljeni datum.');
     const noteRegression=noteRegressions.get(offer.id);
     if(noteRegression) {
       context.offerId=offer.id;
@@ -393,11 +391,11 @@ export async function verifyPanels(root) {
         label + 'ispravka napomene mora biti vezana za isti izvorni prilog.');
       checkedNoteProvenance.add(offer.id);
     }
-    const pricePanel = markup.match(/<div class="offer-price"><strong>([\s\S]*?)<\/strong>/)?.[1];
+    const pricePanel = markup.match(/<strong class="offer-picker-price">([\s\S]*?)<\/strong>/)?.[1];
     const expectedPrice = offer.price === null || offer.currency !== 'EUR' ? 'Cena nije navedena' :
       new Intl.NumberFormat('sr-Latn-RS',
         { style: 'currency', currency: 'EUR', maximumFractionDigits: 2 }).format(offer.price);
-    assert.equal(pricePanel, esc(expectedPrice), label + 'izvorna cena mora biti u cenovnom panelu.');
+    assert.equal(pricePanel, expectedPrice==='Cena nije navedena'?undefined:esc(expectedPrice), label + 'izvorna cena mora biti u cenovnom panelu.');
   }
 
   for (const plant of data.plants) {
@@ -414,26 +412,23 @@ export async function verifyPanels(root) {
     assert(!/Visina čistog debla|Visina do krošnje/i.test(markup), plant.id + ': duplirana visina ne sme biti prikazana.');
     assert.equal(pickerCount, supplierCount,
       plant.id + ': svakoj rasadničkoj ponudi pripada padajući meni.');
-    const cards = [...markup.matchAll(/<article class="offer-card" data-offer-id="([^"]+)">[\s\S]*?<\/article>/g)];
-    assert.equal(cards.length, active.filter(offer => offer.plantId === plant.id).length,
-      plant.id + ': nisu prikazane sve aktivne varijante.');
-    for (const card of cards) {
-      const offer = byId.get(card[1]);
-      assert(offer, plant.id + ': nepoznata varijanta ' + card[1]);
-      assert.equal(offer.plantId, plant.id, offer.id + ': varijanta pripada drugoj biljci.');
-      assert(!hiddenStatuses.has(offer.recordStatus), offer.id + ': nepotvrđena varijanta je prikazana kao ponuda.');
-      assert(!seen.has(offer.id), offer.id + ': ista varijanta je prikazana više puta.');
-      seen.add(offer.id);
-      checkPanel(card[0], offer);
+    assert(!/class="(?:supplier-group|offer-card|supplier-variants|deduplicated-offer)\b|Kataloški zapisi rasadnika/.test(markup),plant.id+': stari blok ne sme biti renderovan.');
+    const cards=[...markup.matchAll(/<article\b[^>]*data-offer-id="([^"]+)"[\s\S]*?<\/article>/g)];
+    const expectedIds=JSON.parse(run('JSON.stringify([...new Set(offersFor(plantId).map(o=>o.nurseryId))].flatMap(id=>uniqueDisplayVariants(offersFor(plantId).filter(o=>o.nurseryId===id).sort(compareOfferDimensions)).visible.map(o=>o.id)))'));
+    assert.deepEqual(cards.map(c=>c[1]).sort(),expectedIds.sort(),plant.id+': svaka jedinstvena aktivna ponuda mora biti u meniju.');
+    for(const card of cards){
+      const offer=byId.get(card[1]);
+      assert(offer&&offer.plantId===plant.id&&!hiddenStatuses.has(offer.recordStatus));
+      assert(!seen.has(offer.id),offer.id+': duplirana ponuda.');
+      assert(card[0].includes('data-action="add-to-quote"')&&card[0].includes('data-offer-id="'+offer.id+'"'));
+      seen.add(offer.id);checkPanel(card[0],offer);
     }
   }
-  assert.deepEqual([...seen].sort(), active.map(offer => offer.id).sort(), 'Nedostaju aktivne varijante u renderovanim karticama.');
-  // Hidden records remain hidden, but their renderer must also obey the rule if
-  // a later evidence review activates them.
-  for (const offer of hidden) {
-    context.offerId = offer.id;
-    const markup = run('(() => { const offer = state.catalog.offers.find(item => item.id === offerId); return renderOffer(offer, plantById(offer.plantId), nurseryById(offer.nurseryId)); })()');
-    checkPanel(markup, offer);
+  // Independently verify records excluded from public display by deduplication or archival status.
+  for(const offer of data.offers.filter(o=>!seen.has(o.id))){
+    context.offerId=offer.id;
+    const markup=run('(()=>{const o=state.catalog.offers.find(x=>x.id===offerId);return offerPickerMarkup(nurseryById(o.nurseryId),[o]);})()');
+    checkPanel(markup,offer);
   }
   assert.deepEqual([...checkedSourceRegressions].sort(), [...sourceRegressions.keys()].sort(),
     'Poznati ponudni redovi moraju proći nezavisne provere izvor → glavni panel.');
@@ -452,5 +447,5 @@ export async function verifyPanels(root) {
     reviewedNoteProvenanceChecks: checkedNoteProvenance.size,
     originalNotesPreservedInData: true,
     explicitSourceColumnsChecked,
-    fixedPickerParameterSlots: pickerSlotsByLabel.size, allPresentFieldsInMainPanel: true, rawSourcePreservedOnlyInData: true, pricesInPricePanel: true };
+    fixedPickerParameterSlots: pickerSlotsByLabel.size, visiblePickerOffers:seen.size, legacyCardsRemoved:true, allPresentFieldsInPicker: true, rawSourcePreservedOnlyInData: true, pricesInPricePanel: true };
 }

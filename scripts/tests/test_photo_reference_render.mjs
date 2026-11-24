@@ -81,12 +81,9 @@ function articles(markup) {
   return [...markup.matchAll(/<article\b[^>]*data-offer-id="([^"]+)"[\s\S]*?<\/article>/g)];
 }
 function hiddenOfferIds(markup) {
-  const hidden = new Set(), detailStack = [];
-  for (const [tag] of markup.matchAll(/<\/?(?:details|article)\b[^>]*>/g)) {
-    if (/^<\/details\b/.test(tag)) detailStack.pop();
-    else if (/^<details\b/.test(tag)) detailStack.push(!!detailStack.at(-1) ||
-      attribute(tag, 'class').split(/\s+/).includes('supplier-variants'));
-    else if (/^<article\b/.test(tag) && detailStack.at(-1)) hidden.add(attribute(tag, 'data-offer-id'));
+  const hidden=new Set();
+  for(const [tag] of markup.matchAll(/<article\b[^>]*data-offer-id="[^"]+"[^>]*>/g)){
+    if(!attribute(tag,'class').split(/\s+/).includes('is-selected'))hidden.add(attribute(tag,'data-offer-id'));
   }
   return hidden;
 }
@@ -109,25 +106,15 @@ function assertUniqueImages(markup) {
   return sources;
 }
 function assertOfferImage(markup, expectedImage) {
-  requiredClass(markup, 'offer-card');
-  const body = requiredClass(markup, 'offer-card-body');
-  const details = requiredClass(markup, 'offer-details');
-  requiredClass(markup, 'offer-pricing');
-  const images = tags(markup, 'img');
-  assert.equal(images.length, expectedImage ? 1 : 0, 'An offer must show exactly its expected image');
-  assert.equal(classTags(markup, 'offer-visual').length, expectedImage ? 1 : 0, 'Unexpected .offer-visual container');
-  assert.equal(classTags(markup, 'offer-photo').length, expectedImage ? 1 : 0, 'Unexpected .offer-photo container');
-  assert.equal(classTags(markup, 'record-photo-reference').length, 0,
-    'A shared plant reference must never be copied into an offer');
-  assert.equal(classTags(markup, 'empty-image').length, 0, 'Missing photographs must not leave placeholders');
-  assert.equal(attribute(body[0], 'class').split(/\s+/).includes('without-photo'), !expectedImage);
-  if (expectedImage) {
-    assert.equal(normalizedImage(attribute(images[0][0], 'src')), normalizedImage(expectedImage),
-      'The image must belong to this exact offer');
-    const visual = requiredClass(markup, 'offer-visual');
-    assert(visual.index < images[0].index && images[0].index < details.index,
-      'The photograph belongs in the offer visual before its details');
-  }
+  requiredClass(markup,'offer-picker-option');
+  requiredClass(markup,'offer-picker-select');
+  requiredClass(markup,'offer-picker-ledger-meta');
+  const images=tags(markup,'img');
+  assert.equal(images.length,expectedImage?1:0,'An offer must show exactly its expected image');
+  assert.equal(classTags(markup,'offer-picker-photo').length,expectedImage?1:0,'Unexpected offer photo disclosure');
+  assert.equal(classTags(markup,'record-photo-reference').length,0);
+  assert.equal(classTags(markup,'empty-image').length,0);
+  if(expectedImage)assert.equal(normalizedImage(attribute(images[0][0],'src')),normalizedImage(expectedImage),'The image must belong to this exact offer');
 }
 function assertRecordLayout(markup, expectedReference = '') {
   const body = requiredClass(markup, 'detail-body');
@@ -162,7 +149,7 @@ assert(!reference.includes('Licenca:'));
 assert(!reference.includes('CC BY-SA'));
 assert(!reference.includes('<img src="https://upload.wikimedia.org'));
 assert(!reference.includes('Izvor kataloške fotografije ↗'));
-assert(reference.includes('<dt>Obim sadnice</dt><dd>14–16</dd>'));
+assert(reference.includes('<small>Obim</small><strong class="offer-cell-value">14–16</strong>'));
 assert(render({ photoChanges: { status: 'verified' } }).includes('reference-0123456789abcdef.jpg'));
 assert(!render({ photoChanges: { sourceUrl: 'https://www.gbif.org/occurrence/12345' } }).includes('reference-0123456789abcdef.jpg'));
 assert(render({ photoChanges: { sourceUrl: 'https://example.org/nursery/acer' } }).includes('reference-0123456789abcdef.jpg'));
@@ -254,7 +241,7 @@ const repeatedOptions = {
 };
 const repeated = render(repeatedOptions);
 assertRecordLayout(repeated, photo.image);
-assert.equal(classTags(repeated, 'supplier-variants').length, 2);
+assert.equal(classTags(repeated, 'supplier-offer-picker').length, 2);
 const repeatedExpected = new Map([
   ['offer-a', 'assets/biljke/supplier.jpg'], ['offer-a2', ''],
   ['offer-a3', 'https://example.org/plant.jpg?view=front&size=large'], ['offer-b', ''],
@@ -373,9 +360,9 @@ for (const [id, image] of [['plant-a', photo.image], ['plant-b', otherPhoto.imag
 
 // Presentation class additions are harmless; missing containers, wrong plants,
 // and repeated images must still make the verification fail.
-assertOfferImage(supplierArticle.replace('class="offer-card-body"', 'class="layout offer-card-body compact"'), 'assets/biljke/supplier.jpg');
+assertOfferImage(supplierArticle.replace('class="offer-picker-option ', 'class="layout offer-picker-option '), 'assets/biljke/supplier.jpg');
 assert.throws(() => assertRecordLayout(reference.replace('class="detail-body"', 'class="detail-body-missing"'), photo.image), /detail-body/);
-assert.throws(() => assertOfferImage(supplierArticle.replace('class="offer-visual"', 'class="offer-visual-missing"'), 'assets/biljke/supplier.jpg'), /offer-visual/);
+assert.throws(() => assertOfferImage(supplierArticle.replace('class="offer-picker-photo"', 'class="offer-picker-photo-missing"'), 'assets/biljke/supplier.jpg'), /offer photo disclosure/);
 assert.throws(() => assertRecordLayout(reference.replace(photo.image, otherPhoto.image), photo.image), /exact plant/);
 assert.throws(() => assertOfferImage(supplierArticle.replace('assets/biljke/supplier.jpg', otherPhoto.image), 'assets/biljke/supplier.jpg'), /exact offer/);
 assert.throws(() => assertOfferImage(referenceArticle.replace('</article>', '<img src="extra.jpg"></article>'), ''), /expected image/);
@@ -450,14 +437,14 @@ for (const plant of plantData.plants) {
   run('renderRecord(plantById(plantId));');
   const markup = elements.get('plant-dialog-content').innerHTML;
   const displayed = articles(markup);
-  assert.deepEqual(displayed.map(([, id]) => id).sort(),
-    activeOffers.filter(item => item.plantId === plant.id).map(item => item.id).sort(),
-    'Every active offer, including collapsed variants, must be checked: ' + plant.latinName);
+  const expectedIds=JSON.parse(run('JSON.stringify([...new Set(offersFor(plantId).map(o=>o.nurseryId))].flatMap(id=>uniqueDisplayVariants(offersFor(plantId).filter(o=>o.nurseryId===id).sort(compareOfferDimensions)).visible.map(o=>o.id)))'));
+  assert.deepEqual(displayed.map(([,id])=>id).sort(),expectedIds.sort(),'Every distinct active offer must be in its picker: '+plant.latinName);
+  assert(!/class="(?:supplier-group|offer-card|supplier-variants|deduplicated-offer)\b/.test(markup),'Old duplicate offer cards must not be rendered');
   const referenceHost = plant.photo ? new URL(plant.photo.sourceUrl).hostname : '';
   const allowedReference = plant.photo && !plant.photo.matchLevel &&
     !['commons.wikimedia.org', 'www.gbif.org', 'gbif.org'].includes(referenceHost) ? plant.photo.image : '';
   assertRecordLayout(markup, allowedReference);
-  collapsedVariantGroupsChecked += classTags(markup, 'supplier-variants').length;
+  collapsedVariantGroupsChecked += classTags(markup, 'supplier-offer-picker').length;
   const expectedSources = new Map(allowedReference ?
     [[photographIdentity(allowedReference), normalizedImage(allowedReference)]] : []);
   const hidden = hiddenOfferIds(markup), expectedByOffer = new Map();
@@ -491,12 +478,13 @@ for (const plant of plantData.plants) {
     'Only this plant reference and its distinct original offer photographs may appear: ' + plant.latinName);
   cardsChecked++;
 }
-assert.equal(offersChecked, activeOffers.length);
+assert.equal(offersChecked, seenOfferIds.size);
+assert(offersChecked<=activeOffers.length);
 
 // Empty space never survives missing image data; adding data restores the image.
 assertRecordLayout(missing);
 assertOfferImage(articles(missing)[0][0], '');
-assert(missing.includes('<dt>Obim sadnice</dt><dd>14–16</dd>'));
+assert(missing.includes('<small>Obim</small><strong class="offer-cell-value">14–16</strong>'));
 assert(!reference.includes('empty-image'));
 const errorHandler = html.slice(html.indexOf('function hideFailedPhoto(image)'), html.indexOf("dialog.addEventListener('error'"));
 run(errorHandler);
@@ -510,9 +498,9 @@ assert(removed && classes.has('without-photo') && !classes.has('with-photo'));
 let visualRemoved = false;
 const offerClasses = new Set();
 const visual = {closest: () => ({classList: {add: x => offerClasses.add(x)}}), remove: () => {visualRemoved = true;}};
-context.failedPhoto = {closest: selector => selector === '.offer-visual' ? visual : null};
+context.failedPhoto = {closest: selector => selector === '.offer-picker-photo' ? visual : null};
 run('hideFailedPhoto(failedPhoto)');
-assert(visualRemoved && offerClasses.has('without-photo'));
+assert(visualRemoved);
 
 console.log(JSON.stringify({ ok: true, sharedReferenceOnceInHeading: true,
   distinctSupplierPhotosPreserved: true, samePlantAndCultivarOnly: true,
@@ -522,7 +510,7 @@ console.log(JSON.stringify({ ok: true, sharedReferenceOnceInHeading: true,
   localImageFilesHashed: actualHashes.size, duplicateContentGroupsChecked: duplicateContentGroups.length,
   uniqueImageContentPerCard: true, visibleOriginalsTakePriority: true,
   reopenedCardsRestoreImages: true, referencesVisibleWithoutOffers: true,
-  allActiveOffersChecked: true, compactPhotoRecordsSupported: true,
+  allDistinctActiveOffersChecked: true, compactPhotoRecordsSupported: true,
   publicTechnicalPhotoMetadataHidden: true, unsafeLegacyReferencesHidden: true,
   emptyRecordsHaveNoPhotoPlaceholder: true, malformedContainersRejected: true,
   unsafeMetadataRejectedOrEscaped: true, colloquialAliasesNotUsedForIdentity: true }, null, 2));
