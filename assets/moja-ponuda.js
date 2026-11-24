@@ -60,7 +60,7 @@
         button.disabled = active;
         button.classList.toggle('is-added', active);
         const compact = button.classList.contains('offer-picker-quote-add');
-        button.textContent = active ? '✓ U mojoj ponudi' : (compact ? '+ Moja ponuda' : 'Dodaj u moju ponudu');
+        button.textContent = active ? 'U mojoj ponudi' : (compact ? 'Moja ponuda' : 'Dodaj u moju ponudu');
         if(compact) button.setAttribute('aria-label', active ?
           'Ova varijanta je već u Mojoj ponudi' : 'Dodaj varijantu u Moju ponudu');
       });
