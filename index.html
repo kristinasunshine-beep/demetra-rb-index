@@ -1047,7 +1047,7 @@ body.control-room .record-offer-pickers .offer-picker-count{background:#f8f8f8;b
 </style>
 
 
-<style id="reference-segment-picker-r21">
+<style id="reference-segment-picker-r22">
 body.control-room{--index-emphasis-weight:700;--index-label-weight:400;--index-detail-size:16px;--index-key-size:20px;--index-key-line:24px}
 body.control-room .record-offer-pickers .supplier-offer-picker,
 body.control-room .record-offer-pickers .supplier-offer-picker[open]{border:3px solid #161A19;border-radius:0;box-shadow:none;padding:0}
@@ -1130,9 +1130,11 @@ body.control-room .offer-picker-photo img{display:block;max-width:100%;max-heigh
 body.control-room .offer-picker-price-group{margin-left:auto;display:flex;flex-direction:column;align-items:flex-end;gap:2px}
 /* Reuse the intro watermark dimensions, colour, transparency and responsive sizing. */
 body.control-room #plant-dialog-content{display:flex;flex-direction:column;min-height:100%}
-body.control-room .record-footer-mark{position:relative;flex:0 0 260px;min-height:260px;margin-top:auto;overflow:hidden;pointer-events:none}
-body.control-room .record-footer-mark .control-hero-mark{left:50%;right:auto;transform:translateX(-50%)}
-@media(max-width:760px){body.control-room #plant-dialog-content{min-height:100dvh}}
+body.control-room .record-footer-mark{display:flex;justify-content:center;align-items:flex-end;flex:0 0 auto;margin-top:auto;padding:8px 0 14px;pointer-events:none}
+body.control-room .record-footer-mark .control-hero-mark{position:static;inset:auto;transform:none;flex:0 0 auto;width:175px;height:175px;max-width:100%;opacity:.075}
+body.control-room .record-footer-mark .control-hero-mark svg{display:block;width:100%;height:100%}
+@media(max-width:1100px){body.control-room .record-footer-mark .control-hero-mark{width:152.5px;height:152.5px}}
+@media(max-width:760px){body.control-room #plant-dialog-content{min-height:100dvh}body.control-room .record-footer-mark .control-hero-mark{width:115px;height:115px}}
 </style>
 </head>
   <body class="control-room" data-view="search">
