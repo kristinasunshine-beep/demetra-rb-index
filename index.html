@@ -849,7 +849,7 @@ body[data-view="search"] .search-field:focus-within .search-icon { color:var(--a
 </style>
       <link rel="stylesheet" href="./assets/moja-ponuda.css">
       <link rel="stylesheet" href="./assets/brza-preporuka.css?v=page-nav-fix-20261123">
-      <link rel="stylesheet" href="./assets/control-room.css?v=date-only-footer-20261123">
+      <link rel="stylesheet" href="./assets/control-room.css?v=offer-date-quote-r2-20261124">
     <link rel="stylesheet" href="./assets/control-room-mobile-outline.css?v=outline-r6-20261118">
     <!-- Mobile-only union outline: source glyphs render together before their contour,
          so touching letter edges cannot create internal crossing strokes. -->
@@ -1871,7 +1871,6 @@ function offerPickerChoiceMarkup(offer) {
     '<strong>'+escapeHTML(field.value)+'</strong></span>').join('');
   const delivery=lettered.find(field=>field.label==='Način isporuke');
   const deliveryText=delivery && !shown.includes(delivery) ? delivery.value : '';
-  const sourceDate=offer.sourceDate ? formattedDate(offer.sourceDate) : 'Nije naveden';
   return '<span class="offer-picker-choice-content">'+
     '<span class="offer-picker-main">'+
       '<span class="offer-picker-measures">'+
@@ -1883,18 +1882,15 @@ function offerPickerChoiceMarkup(offer) {
     '<span class="offer-picker-side">'+
       '<small class="offer-picker-price-label">Cena</small>'+
       '<strong class="offer-picker-price">'+escapeHTML(formattedPrice(offer))+'</strong>'+
-      '<small class="offer-picker-date">Izvor: '+escapeHTML(sourceDate)+'</small>'+
     '</span>'+
   '</span>';
 }
 function offerPickerMarkup(nursery,variants){
   const current=variants[0],count=variants.length;
   return '<details class="supplier-offer-picker" data-current-offer-id="'+escapeHTML(current.id)+'">'+
-    // Only the heading is visible at rest; no duplicate selected offer preview.
     '<summary class="offer-picker-trigger" aria-label="Izaberi ponudu rasadnika '+escapeHTML(nursery.name)+'">'+
       '<span class="offer-picker-title-group">'+
-        '<strong class="offer-picker-title">Izaberi ponudu</strong>'+
-        '<span class="offer-picker-supplier">'+escapeHTML(nursery.name)+'</span>'+
+        '<strong class="offer-picker-title">'+escapeHTML(nursery.name)+'</strong>'+
       '</span>'+
       '<span class="offer-picker-trigger-meta">'+
         '<span class="offer-picker-count">'+count+' '+(count===1?'ponuda':count>=2&&count<=4?'ponude':'ponuda')+'</span>'+
@@ -1903,15 +1899,29 @@ function offerPickerMarkup(nursery,variants){
     '</summary>'+
     '<div class="offer-picker-menu" role="group" aria-label="Dostupne varijante · '+escapeHTML(nursery.name)+'">'+
       '<div class="offer-picker-menu-hint"><span>VARIJANTE SADNICE</span>'+
-      '<span>DIMENZIJE · CENA · IZVOR</span></div>'+
+        '<span>DIMENZIJE · CENA · DATUM</span></div>'+
       '<div class="offer-picker-options">'+
       variants.map((offer,i)=>
-        '<button type="button" class="offer-picker-option'+(i===0?' is-selected':'')+
-        '" data-offer-picker-item data-offer-id="'+escapeHTML(offer.id)+'" aria-pressed="'+(i===0?'true':'false')+'">'+
-          '<span class="offer-picker-option-index" aria-hidden="true">'+String(i+1).padStart(2,'0')+'</span>'+
-          offerPickerChoiceMarkup(offer)+
-          '<span class="offer-picker-option-indicator" aria-hidden="true"></span>'+
-        '</button>').join('')+
+        '<div class="offer-picker-option'+(i===0?' is-selected':'')+'" data-offer-row="'+escapeHTML(offer.id)+'">'+
+          '<button type="button" class="offer-picker-select'+(i===0?' is-selected':'')+
+            '" data-offer-picker-item data-offer-id="'+escapeHTML(offer.id)+
+            '" aria-pressed="'+(i===0?'true':'false')+
+            '" aria-label="Prikaži varijantu '+(i+1)+' rasadnika '+escapeHTML(nursery.name)+'">'+
+            '<span class="offer-picker-option-index" aria-hidden="true">'+String(i+1).padStart(2,'0')+'</span>'+
+            offerPickerChoiceMarkup(offer)+
+            '<span class="offer-picker-option-indicator" aria-hidden="true"></span>'+
+          '</button>'+
+          '<div class="offer-picker-option-footer">'+
+            '<span class="offer-picker-footer-space" aria-hidden="true"></span>'+
+            (offer.sourceDate ?
+              '<time class="offer-picker-date" datetime="'+escapeHTML(offer.sourceDate)+'">'+
+                escapeHTML(formattedDate(offer.sourceDate))+'</time>' :
+              '<span class="offer-picker-date offer-picker-date--unknown">Datum nije naveden</span>')+
+            '<button type="button" class="offer-picker-quote-add" data-action="add-to-quote"'+
+              ' data-offer-id="'+escapeHTML(offer.id)+'" aria-label="Dodaj varijantu u Moju ponudu">'+
+              '+ Moja ponuda</button>'+
+          '</div>'+
+        '</div>').join('')+
       '</div>'+
     '</div></details>';
 }
@@ -2047,6 +2057,7 @@ function bindOfferPicker() {
     picker.querySelectorAll('button[data-offer-picker-item]').forEach(option=>{
       const selected=option===choice;
       option.classList.toggle('is-selected',selected);
+      option.closest('.offer-picker-option')?.classList.toggle('is-selected',selected);
       option.setAttribute('aria-pressed',String(selected));
     });
     picker.open=false;
