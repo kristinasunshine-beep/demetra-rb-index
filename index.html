@@ -1047,7 +1047,8 @@ body.control-room .record-offer-pickers .offer-picker-count{background:#f8f8f8;b
 </style>
 
 
-<style id="reference-segment-picker-r16">
+<style id="reference-segment-picker-r17">
+body.control-room{--index-emphasis-weight:700;--index-label-weight:400;--index-detail-size:13px;--index-key-size:18px;--index-key-line:22px}
 body.control-room .record-offer-pickers .supplier-offer-picker,
 body.control-room .record-offer-pickers .supplier-offer-picker[open]{border:3px solid #161A19;border-radius:0;box-shadow:none;padding:0}
 body.control-room .record-offer-pickers .offer-picker-trigger,
@@ -1076,11 +1077,11 @@ body.control-room .offer-picker-measure[data-slot="3"]{grid-column:3;grid-row:1}
 body.control-room .offer-picker-measure[data-slot="4"]{grid-column:4;grid-row:1}
 body.control-room .offer-picker-measure[data-slot="extra"]{grid-row:auto;margin-top:0}
 body.control-room .offer-picker-measure small{display:block;margin:0;padding:0;font:400 12px/14px var(--sans);color:#555;text-transform:uppercase;letter-spacing:0;white-space:nowrap}
-body.control-room .offer-picker-measure .offer-cell-value{display:block;margin:0;padding:0;font:400 18px/22px var(--sans);color:#161A19;overflow-wrap:break-word;word-break:normal;align-self:start}
-body.control-room .offer-picker-measure strong.offer-cell-value{font:700 18px/22px var(--sans);letter-spacing:0}
+body.control-room .offer-picker-measure .offer-cell-value{display:block;margin:0;padding:0;font:400 var(--index-detail-size)/var(--index-key-line) var(--sans);color:#161A19;overflow-wrap:break-word;word-break:normal;align-self:start}
+body.control-room .offer-picker-measure strong.offer-cell-value{font:var(--index-emphasis-weight) var(--index-key-size)/var(--index-key-line) var(--sans);letter-spacing:0}
 body.control-room .offer-picker-ledger-meta{grid-area:meta;display:flex;align-items:center;justify-content:flex-end;gap:24px;min-width:0;margin-top:7px;padding-top:6px;border-top:1px solid #dedede}
 body.control-room .offer-picker-date{margin-right:auto;white-space:nowrap;font:500 13px/1.25 var(--sans);color:#555}
-body.control-room .offer-picker-price{margin:0 0 0 auto;font:800 23px/1.15 var(--sans);letter-spacing:-.015em;white-space:nowrap}
+body.control-room .offer-picker-price{margin:0 0 0 auto;font:var(--index-emphasis-weight) 20px/var(--index-key-line) var(--sans);letter-spacing:0;white-space:nowrap}
 body.control-room .offer-picker-quote-add{flex:0 0 auto;font:650 13px/1.25 var(--sans);min-width:0;width:auto;min-height:32px;padding:6px 15px;border-radius:10px;background:#234d36;border-color:#234d36;color:#fff}
 body.control-room .offer-picker-quote-add.is-added,body.control-room .offer-picker-quote-add:disabled{background:#e9eee8;border-color:#c6d3c5;color:#234d36}
 @container(max-width:480px){
@@ -1097,10 +1098,10 @@ body.control-room .offer-picker-quote-add.is-added,body.control-room .offer-pick
  body.control-room .offer-picker-measure[data-slot]{grid-column:auto;grid-row:auto;margin-top:0}
  body.control-room .offer-picker-measure{padding:0 8px}
  body.control-room .offer-picker-measure small{font-size:11px;line-height:14px}
- body.control-room .offer-picker-measure .offer-cell-value{font-size:16px;line-height:20px}
- body.control-room .offer-picker-measure strong.offer-cell-value{font:700 16px/20px var(--sans)}
+ body.control-room .offer-picker-measure .offer-cell-value{font-size:12px;line-height:20px}
+ body.control-room .offer-picker-measure strong.offer-cell-value{font:var(--index-emphasis-weight) 16px/20px var(--sans)}
  body.control-room .offer-picker-ledger-meta{margin-top:6px;padding-top:6px;gap:14px;flex-wrap:wrap}
- body.control-room .offer-picker-price{font-size:20px}
+ body.control-room .offer-picker-price{font-size:18px;line-height:20px}
  body.control-room .offer-picker-quote-add{min-height:34px;font-size:12px;padding:6px 12px}
 }
 body.control-room .offer-picker-measure:has(strong.offer-cell-value) small{font-weight:400;color:#555}
@@ -1115,6 +1116,17 @@ body.control-room .offer-picker-measure:has(strong.offer-cell-value) small{font-
   body.control-room .offer-picker-measure[data-slot]{grid-column:auto;grid-row:span 2}
  }
 }
+/* Shared emphasis across catalogue cards, quote and recommendation; retain distinct information hierarchy. */
+body.control-room .measurements .measurement--priority dt,
+body.control-room .quote-parameters .quote-parameter--priority dt{font-weight:var(--index-label-weight)}
+body.control-room .measurements .measurement--priority dd,
+body.control-room .offer-card-body.without-photo .measurements .measurement--priority dd:not(.missing),
+body.control-room .offer-price strong,
+body.control-room .quote-amount strong,
+body.control-room .quote-total>strong,
+body.control-room .quote-quick-params .quote-quick-param--priority,
+body.control-room .quote-parameters .quote-parameter--priority dd,
+body.control-room .recommend-parameters>div.recommend-parameter--priority{font-weight:var(--index-emphasis-weight)}
 </style>
 </head>
   <body class="control-room" data-view="search">
@@ -1948,7 +1960,7 @@ function renderOffer(offer, plant, nursery, photoValue = offer.image) {
     (offer.demo || nursery.demo ? '<span class="demo-badge">Demo ponuda</span>' : '') +
     '</div><dl class="measurements">' +
     measurements.map(([label, value, fullWidth]) =>
-      '<div class="measurement' + (/^(Obim|Visina) sadnice$/.test(label) && offerDimensionMetric(value) !== null ? ' measurement--priority' : '') + '"' + (fullWidth ? ' style="grid-column:1 / -1"' : '') + '><dt>' + escapeHTML(label) + '</dt><dd' +
+      '<div class="measurement' + ((/^(Obim|Visina) sadnice$/.test(label) && offerDimensionMetric(value) !== null || label === 'Tip sadnice' && /^(Standard|Multistem)$/.test(value)) ? ' measurement--priority' : '') + '"' + (fullWidth ? ' style="grid-column:1 / -1"' : '') + '><dt>' + escapeHTML(label) + '</dt><dd' +
       (!value || /nije|nepoznat/i.test(value) ? ' class="missing"' : '') + '>' +
       escapeHTML(value || 'Nije navedeno') + '</dd></div>'
     ).join('') + '</dl><div class="offer-pricing"><div class="price-caption">' + priceLabel + '</div>' +
