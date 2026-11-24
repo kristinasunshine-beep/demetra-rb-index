@@ -1047,8 +1047,8 @@ body.control-room .record-offer-pickers .offer-picker-count{background:#f8f8f8;b
 </style>
 
 
-<style id="reference-segment-picker-r17">
-body.control-room{--index-emphasis-weight:700;--index-label-weight:400;--index-detail-size:13px;--index-key-size:18px;--index-key-line:22px}
+<style id="reference-segment-picker-r18">
+body.control-room{--index-emphasis-weight:700;--index-label-weight:400;--index-detail-size:16px;--index-key-size:20px;--index-key-line:24px}
 body.control-room .record-offer-pickers .supplier-offer-picker,
 body.control-room .record-offer-pickers .supplier-offer-picker[open]{border:3px solid #161A19;border-radius:0;box-shadow:none;padding:0}
 body.control-room .record-offer-pickers .offer-picker-trigger,
@@ -1069,14 +1069,11 @@ body.control-room .offer-picker-option.is-selected{background:#f7f7f7;box-shadow
 body.control-room .offer-picker-option.is-selected:hover,body.control-room .offer-picker-option.is-selected:focus-within{background:#f5f5f5}
 body.control-room .offer-picker-select{display:flex;align-items:stretch;align-self:stretch;gap:0;padding:0;min-width:0;min-height:0}
 body.control-room .offer-picker-option-index{display:flex;align-items:center;justify-content:flex-start;flex:0 0 26px;align-self:stretch;margin:0;color:#FA593B;font:650 13px/1.25 var(--sans)}
-body.control-room .offer-picker-measures{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));align-items:stretch;column-gap:0;row-gap:5px;min-width:0;flex:1}
-body.control-room .offer-picker-measure{display:grid;grid-template-rows:14px auto;align-items:start;align-content:start;justify-items:start;gap:2px;min-width:0;padding:0 12px;margin:0;border-left:1px solid #dedede}
-body.control-room .offer-picker-measure[data-slot="1"]{grid-column:1;grid-row:1}
-body.control-room .offer-picker-measure[data-slot="2"]{grid-column:2;grid-row:1}
-body.control-room .offer-picker-measure[data-slot="3"]{grid-column:3;grid-row:1}
-body.control-room .offer-picker-measure[data-slot="4"]{grid-column:4;grid-row:1}
-body.control-room .offer-picker-measure[data-slot="extra"]{grid-row:auto;margin-top:0}
-body.control-room .offer-picker-measure small{display:block;margin:0;padding:0;font:400 12px/14px var(--sans);color:#555;text-transform:uppercase;letter-spacing:0;white-space:nowrap}
+body.control-room .offer-picker-measures{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));align-items:stretch;column-gap:0;row-gap:2px;grid-auto-rows:min-content;min-width:0;flex:1}
+body.control-room .offer-picker-measure{display:grid;grid-template-rows:minmax(14px,auto) auto;align-items:start;align-content:start;justify-items:start;gap:2px;min-width:0;padding:0 12px;margin:0;border-left:1px solid #dedede}
+/* Explicit positions; missing values never move another parameter into their slot. */
+body.control-room .offer-picker-measure[data-slot]{grid-column:var(--slot-col);grid-row:var(--slot-band)}
+body.control-room .offer-picker-measure small{display:block;margin:0;padding:0;font:400 12px/14px var(--sans);color:#555;text-transform:uppercase;letter-spacing:0;white-space:normal;overflow-wrap:break-word}
 body.control-room .offer-picker-measure .offer-cell-value{display:block;margin:0;padding:0;font:400 var(--index-detail-size)/var(--index-key-line) var(--sans);color:#161A19;overflow-wrap:break-word;word-break:normal;align-self:start}
 body.control-room .offer-picker-measure strong.offer-cell-value{font:var(--index-emphasis-weight) var(--index-key-size)/var(--index-key-line) var(--sans);letter-spacing:0}
 body.control-room .offer-picker-ledger-meta{grid-area:meta;display:flex;align-items:center;justify-content:flex-end;gap:24px;min-width:0;margin-top:7px;padding-top:6px;border-top:1px solid #dedede}
@@ -1095,11 +1092,11 @@ body.control-room .offer-picker-quote-add.is-added,body.control-room .offer-pick
  body.control-room .offer-picker-option{padding:8px 12px}
  body.control-room .offer-picker-option-index{flex-basis:20px;font-size:12px}
  body.control-room .offer-picker-measures{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:4px}
- body.control-room .offer-picker-measure[data-slot]{grid-column:auto;grid-row:auto;margin-top:0}
+ body.control-room .offer-picker-measure[data-slot]{grid-column:var(--slot-mobile-col);grid-row:var(--slot-mobile-band);margin-top:0}
  body.control-room .offer-picker-measure{padding:0 8px}
  body.control-room .offer-picker-measure small{font-size:11px;line-height:14px}
- body.control-room .offer-picker-measure .offer-cell-value{font-size:12px;line-height:20px}
- body.control-room .offer-picker-measure strong.offer-cell-value{font:var(--index-emphasis-weight) 16px/20px var(--sans)}
+ body.control-room .offer-picker-measure .offer-cell-value{font-size:15px;line-height:22px}
+ body.control-room .offer-picker-measure strong.offer-cell-value{font:var(--index-emphasis-weight) 18px/22px var(--sans)}
  body.control-room .offer-picker-ledger-meta{margin-top:6px;padding-top:6px;gap:14px;flex-wrap:wrap}
  body.control-room .offer-picker-price{font-size:18px;line-height:20px}
  body.control-room .offer-picker-quote-add{min-height:34px;font-size:12px;padding:6px 12px}
@@ -1107,13 +1104,10 @@ body.control-room .offer-picker-quote-add.is-added,body.control-room .offer-pick
 body.control-room .offer-picker-measure:has(strong.offer-cell-value) small{font-weight:400;color:#555}
 @media(prefers-reduced-motion:reduce){body.control-room .offer-picker-option::before{transition:none}}
 @supports(grid-template-rows:subgrid){
- body.control-room .offer-picker-measures{grid-auto-rows:auto;row-gap:2px}
- body.control-room .offer-picker-measure{grid-row:span 2;grid-template-rows:subgrid}
- body.control-room .offer-picker-measure[data-slot="1"],body.control-room .offer-picker-measure[data-slot="2"],body.control-room .offer-picker-measure[data-slot="3"],body.control-room .offer-picker-measure[data-slot="4"]{grid-row:1 / span 2}
- body.control-room .offer-picker-measure[data-slot="extra"]{grid-row:span 2}
- body.control-room .offer-picker-measure small{white-space:normal;overflow-wrap:break-word}
+ body.control-room .offer-picker-measures{grid-auto-rows:min-content;row-gap:2px}
+ body.control-room .offer-picker-measure[data-slot]{grid-row:var(--slot-row) / span 2;grid-template-rows:subgrid}
  @container(max-width:480px){
-  body.control-room .offer-picker-measure[data-slot]{grid-column:auto;grid-row:span 2}
+  body.control-room .offer-picker-measure[data-slot]{grid-column:var(--slot-mobile-col);grid-row:var(--slot-mobile-row) / span 2}
  }
 }
 /* Shared emphasis across catalogue cards, quote and recommendation; retain distinct information hierarchy. */
@@ -2109,18 +2103,49 @@ function uniqueDisplayVariants(variants) {
 
 // A structured, keyboard-accessible menu keeps size parameters prominent while
 // showing price and source date separately, without changing the existing order.
-function offerPickerChoiceMarkup(offer) {
-  const slots={'Obim':1,'Visina':2,'Saksija':3,'Način isporuke':4};
-  const fields=offerDropdownMeasurements(offer)
-    .filter(field=>!isStemHeightLabel(field.label)&&hasMeasurementValue(field.value));
-  if (offer.seedlingType==='standard'||offer.seedlingType==='multistem') {
-    fields.push({label:'Tip sadnice',value:offer.seedlingType==='standard'?'Standard':'Multistem'});
+// Global semantic slots: four columns on desktop, two on narrow screens.
+const PICKER_CORE_SLOTS=['Obim','Visina','Tip sadnice','Isporuka','Saksija','Krošnja','Busen','Presađivanja'];
+const PICKER_SHORT_LABELS=new Map([
+  ['obim sadnice','Obim'],['visina sadnice','Visina'],['tip sadnice','Tip sadnice'],
+  ['nacin isporuke','Isporuka'],['velicina saksije','Saksija'],['sirina krosnje','Krošnja'],
+  ['velicina busena','Busen'],['broj presadjivanja','Presađivanja']
+]);
+function offerPickerFields(offer) {
+  const fields=new Map();
+  for(const [rawLabel,rawValue] of offerParameters(offer)){
+    if(isStemHeightLabel(rawLabel)||!hasMeasurementValue(rawValue))continue;
+    const label=PICKER_SHORT_LABELS.get(normalize(rawLabel))||rawLabel;
+    const key=normalize(label),value=String(rawValue).trim();
+    if(!key)continue;
+    if(!fields.has(key))fields.set(key,{key,label,values:[]});
+    const entry=fields.get(key);
+    if(!entry.values.includes(value))entry.values.push(value);
   }
-  fields.sort((a,b)=>(slots[a.label]||5)-(slots[b.label]||5));
+  return [...fields.values()].map(({key,label,values})=>({key,label,value:values.join(' · ')}));
+}
+let pickerSlotCatalog=null,pickerSlotMap=null;
+function offerPickerSlotRegistry(offer) {
+  const catalog=state.catalog?.offers;
+  if(catalog&&pickerSlotCatalog===catalog&&pickerSlotMap)return pickerSlotMap;
+  const core=PICKER_CORE_SLOTS.map(normalize),known=new Set(core),extra=new Set();
+  for(const row of catalog||[offer])for(const field of offerPickerFields(row)){
+    if(!known.has(field.key))extra.add(field.key);
+  }
+  const slots=new Map([...core,...[...extra].sort()].map((key,index)=>[key,index+1]));
+  if(catalog){pickerSlotCatalog=catalog;pickerSlotMap=slots}
+  return slots;
+}
+function offerPickerChoiceMarkup(offer) {
+  const slots=offerPickerSlotRegistry(offer);
+  const fields=offerPickerFields(offer).map(field=>({...field,slot:slots.get(field.key)}))
+    .sort((a,b)=>a.slot-b.slot);
   const measures=fields.map(field=>{
-    const label=field.label==='Način isporuke'?'Isporuka':field.label;
-    const tag=/^(?:Obim|Visina|Tip sadnice)$/.test(label)||/^(?:Standard|Multistem)$/i.test(field.value)?'strong':'span';
-    return '<span class="offer-picker-measure" data-slot="'+(slots[field.label]||'extra')+'"><small>'+escapeHTML(label)+'</small><'+tag+' class="offer-cell-value">'+escapeHTML(field.value)+'</'+tag+'></span>';
+    const n=field.slot-1;
+    const desktopBand=Math.floor(n/4)+1,mobileBand=Math.floor(n/2)+1;
+    const position='--slot-col:'+(n%4+1)+';--slot-band:'+desktopBand+';--slot-row:'+(2*desktopBand-1)+
+      ';--slot-mobile-col:'+(n%2+1)+';--slot-mobile-band:'+mobileBand+';--slot-mobile-row:'+(2*mobileBand-1);
+    const tag=/^(?:Obim|Visina|Tip sadnice)$/.test(field.label)?'strong':'span';
+    return '<span class="offer-picker-measure" data-slot="'+field.slot+'" style="'+position+'"><small>'+escapeHTML(field.label)+'</small><'+tag+' class="offer-cell-value">'+escapeHTML(field.value)+'</'+tag+'></span>';
   }).join('');
   return measures?'<span class="offer-picker-measures">'+measures+'</span>':'';
 }

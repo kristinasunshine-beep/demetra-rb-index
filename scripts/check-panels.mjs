@@ -246,12 +246,29 @@ export async function verifyPanels(root) {
     assert.equal(matches[0].rootType, 'Busen (RB)', 'Abies Glauca: rb je način isporuke.');
     assert.equal(matches[0].price, null, 'Cena ponuđenog concolor ne pripada traženom Glauca kultivaru.');
   }
+  const pickerSlotsByLabel = new Map(), pickerLabelsBySlot = new Map();
+  const corePickerSlots = new Map(['Obim','Visina','Tip sadnice','Isporuka','Saksija','Krošnja','Busen','Presađivanja'].map((name,i)=>[name,i+1]));
   const checkedSourceRegressions = new Set();
   function checkPanel(markup, offer) {
     const label = offer.id + ': ';
     const original = originalById.get(offer.id);
     context.offerId=offer.id;
     const picker = run('offerPickerChoiceMarkup(state.catalog.offers.find(x=>x.id===offerId))');
+    const positioned = [...picker.matchAll(/data-slot="(\d+)" style="([^"]+)"><small>([^<]+)<\/small><(?:strong|span) class="offer-cell-value">([^<]*)<\/(?:strong|span)>/g)];
+    const occupied = new Set();
+    for(const [,rawSlot,style,name,value] of positioned){
+      const slot=Number(rawSlot),n=slot-1,desktopBand=Math.floor(n/4)+1,mobileBand=Math.floor(n/2)+1;
+      assert(slot>0&&!occupied.has(slot),label+'svaki parametar mora imati sopstvenu poziciju.');
+      occupied.add(slot);
+      assert(present(value),label+'nepostojeći parametar ne sme biti prikazan.');
+      if(corePickerSlots.has(name))assert.equal(slot,corePickerSlots.get(name),label+'nepromenljiva pozicija '+name);
+      const key=normalized(name);
+      if(pickerSlotsByLabel.has(key))assert.equal(slot,pickerSlotsByLabel.get(key),label+'parametar menja poziciju između ponuda.');
+      if(pickerLabelsBySlot.has(slot))assert.equal(key,pickerLabelsBySlot.get(slot),label+'drugi parametar zauzima istu poziciju.');
+      pickerSlotsByLabel.set(key,slot);pickerLabelsBySlot.set(slot,key);
+      assert.equal(style,'--slot-col:'+(n%4+1)+';--slot-band:'+desktopBand+';--slot-row:'+(2*desktopBand-1)+';--slot-mobile-col:'+(n%2+1)+';--slot-mobile-band:'+mobileBand+';--slot-mobile-row:'+(2*mobileBand-1),label+'desktop i mobilne koordinate moraju biti fiksne.');
+    }
+    assert.equal(positioned.length,(picker.match(/class="offer-picker-measure"/g)||[]).length,label+'svaka prikazana vrednost mora imati poziciju.');
     if (offer.seedlingType==='standard'||offer.seedlingType==='multistem') {
       const typeValue=offer.seedlingType==='standard'?'Standard':'Multistem';
       assert(picker.includes('<small>Tip sadnice</small><strong class="offer-cell-value">'+typeValue+'</strong>'),label+'Tip sadnice mora biti boldovan u padajućem meniju.');
@@ -435,5 +452,5 @@ export async function verifyPanels(root) {
     reviewedNoteProvenanceChecks: checkedNoteProvenance.size,
     originalNotesPreservedInData: true,
     explicitSourceColumnsChecked,
-    allPresentFieldsInMainPanel: true, rawSourcePreservedOnlyInData: true, pricesInPricePanel: true };
+    fixedPickerParameterSlots: pickerSlotsByLabel.size, allPresentFieldsInMainPanel: true, rawSourcePreservedOnlyInData: true, pricesInPricePanel: true };
 }
