@@ -61,7 +61,7 @@ export async function verifyPanels(root) {
   const present = value => !!normalized(value) && !/^(?:[-–—]+|\/|n\.?\s*a\.?|n\/a|null|undefined|nije\s+(?:naveden[oa]?|poznat[oa]?|dostupan[oa]?)(?:\s+u\s+ponudi)?|nepoznat[oa]?|bez\s+podataka)$/.test(normalized(value));
   function expectedHeight(original) {
     return present(original.height) ? original.height :
-      (original.additionalParameters || []).find(p => stem(p.label) && present(p.value))?.value || original.height;
+      (original.additionalParameters || []).find(p => stem(p.label) && present(p.value))?.value || original.height || '';
   }
   function expectedExtraFields(original) {
     const parts = value => {
@@ -251,7 +251,7 @@ export async function verifyPanels(root) {
     const label = offer.id + ': ';
     const original = originalById.get(offer.id);
     const panel = markup.match(/<dl class="measurements">([\s\S]*?)<\/dl>/)?.[1];
-    assert(panel, label + 'nedostaje glavni panel parametara.');
+    assert(panel !== undefined, label + 'nedostaje glavni panel parametara.');
     const entries = [...panel.matchAll(/<dt>([^<]+)<\/dt><dd(?: class="missing")?>([\s\S]*?)<\/dd>/g)];
     const extra = expectedExtraFields(original);
     const values = new Map(entries.map(entry => [entry[1], entry[2]]));
