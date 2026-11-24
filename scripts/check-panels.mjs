@@ -402,10 +402,10 @@ export async function verifyPanels(root) {
     context.plantId = plant.id;
     run('renderRecord(plantById(plantId));');
     const markup = elements.get('plant-dialog-content').innerHTML;
-    const introMark=html.match(/<div class="control-hero-mark" aria-hidden="true"><svg[\s\S]*?<\/svg><\/div>/)?.[0];
-    assert(introMark, 'Izvorni znak uvodnog panela mora postojati.');
-    const footerMark='<div class="record-footer-mark" aria-hidden="true">'+introMark+'</div>';
-    assert(markup.endsWith(footerMark),plant.id+': identičan dekorativni znak mora biti na samom dnu kartice.');
+    const completeMark=html.match(/<span class="brand-mark-control" aria-hidden="true">(<svg[\s\S]*?<\/svg>)<\/span>/)?.[1];
+    assert(completeMark&&completeMark.includes('M8 26h16'),'Originalni znak mora imati horizontalnu osnovu.');
+    const footerMark='<div class="record-footer-mark" aria-hidden="true"><div class="control-hero-mark" aria-hidden="true">'+completeMark.replace('stroke="#FA593B"','stroke="currentColor"')+'</div></div>';
+    assert(markup.endsWith(footerMark),plant.id+': kompletan dekorativni znak mora biti na samom dnu kartice.');
     assert.equal((markup.match(/class="record-footer-mark"/g)||[]).length,1,plant.id+': znak se prikazuje tačno jednom.');
     assert(markup.includes('<h2 id="plant-detail-title">' + esc(plant.latinName) + '</h2>'),
       plant.id + ': kartica mora prikazati naziv svoje biljke.');
