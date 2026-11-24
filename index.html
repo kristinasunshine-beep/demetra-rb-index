@@ -1097,6 +1097,56 @@ body.control-room .offer-picker-quote-add{align-self:center;justify-self:stretch
  body.control-room .offer-picker-extra .offer-picker-cell{flex-basis:50%}
 }
 </style>
+
+<style id="industrial-offer-picker-r8">
+body.control-room .record-offer-pickers{gap:12px}
+body.control-room .record-offer-pickers .supplier-offer-picker,
+body.control-room .record-offer-pickers .supplier-offer-picker[open]{border:2px solid #161A19;border-radius:0;box-shadow:none}
+body.control-room .record-offer-pickers .offer-picker-trigger,
+body.control-room .record-offer-pickers .offer-picker-trigger:hover,
+body.control-room .record-offer-pickers .supplier-offer-picker[open] .offer-picker-trigger{background:#fff;border:0;border-radius:0}
+body.control-room .record-offer-pickers .offer-picker-title{font-weight:700}
+body.control-room .record-offer-pickers .offer-picker-chevron{border-right:3px solid #FA593B;border-bottom:3px solid #FA593B}
+body.control-room .record-offer-pickers .offer-picker-count{border-radius:0;background:#fbfbfb;border:1px solid #d9d9d9}
+body.control-room .offer-picker-menu::before{height:2px;background:#161A19}
+body.control-room .offer-picker-options{gap:0;background:#fff}
+body.control-room .offer-picker-option{
+ display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"params meta";
+ align-items:stretch;min-height:82px;padding:0;gap:0;background:#fbfbfb;
+ border:0;border-bottom:1px solid #161A19;border-radius:0!important;box-shadow:none
+}
+body.control-room .offer-picker-option:hover,body.control-room .offer-picker-option:focus-within{background:#f9f9f9}
+body.control-room .offer-picker-option.is-selected{background:#f8f8f8;box-shadow:inset 4px 0 #FA593B}
+body.control-room .offer-picker-option.is-selected:hover,body.control-room .offer-picker-option.is-selected:focus-within{background:#f6f6f6}
+body.control-room .offer-picker-select{grid-area:params;display:flex;align-items:stretch;align-self:stretch;gap:0;min-width:0;min-height:82px;padding:0;border-radius:0}
+body.control-room .offer-picker-option-index{flex:0 0 40px;align-self:stretch;margin:0;border-right:1px solid #161A19;color:#FA593B}
+body.control-room .offer-picker-segments{display:flex;flex:1;min-width:0;flex-wrap:wrap;align-items:stretch;align-content:stretch}
+body.control-room .offer-picker-cell{flex:0 1 112px;min-width:0;max-width:100%;border:0;border-right:1px solid #161A19;border-radius:0;padding:11px 10px;min-height:68px;gap:4px}
+body.control-room .offer-picker-cell small{font:400 10px/1.2 var(--mono);color:#444}
+body.control-room .offer-cell-value{font:400 14px/1.25 var(--sans);color:#161A19;overflow-wrap:break-word;word-break:normal}
+body.control-room .offer-picker-cell.metric .offer-cell-value{font:750 24px/1.1 var(--sans);letter-spacing:-.045em}
+body.control-room .offer-picker-ledger-meta{grid-area:meta;display:flex;min-width:0;align-items:stretch;border-left:1px solid #161A19}
+body.control-room .offer-picker-date{flex:0 0 98px;border:0;border-right:1px solid #161A19;padding:8px 6px;font-weight:400}
+body.control-room .offer-picker-price{flex:0 0 auto;min-width:132px;justify-content:center;text-align:center;border:0;border-right:1px solid #161A19;padding:10px 12px;font:900 29px/1.1 var(--sans);letter-spacing:-.04em;white-space:nowrap}
+body.control-room .offer-picker-quote-add{flex:0 0 126px;align-self:center;min-height:44px;margin:8px;padding:8px 5px;border-radius:0!important;font-weight:500}
+@container (max-width:850px){
+ body.control-room .offer-picker-option{grid-template-columns:minmax(0,1fr);grid-template-areas:"params" "meta";min-height:0;gap:0}
+ body.control-room .offer-picker-select{min-height:68px;border-bottom:1px solid #161A19}
+ body.control-room .offer-picker-ledger-meta{border-left:0;flex-wrap:wrap;justify-content:flex-end}
+ body.control-room .offer-picker-date{flex:1 1 88px}
+ body.control-room .offer-picker-price{flex:1 1 auto;min-width:0;font-size:25px}
+ body.control-room .offer-picker-quote-add{flex:0 1 126px}
+ body.control-room .offer-picker-cell{flex:1 1 110px;min-height:65px;border-bottom:1px solid #161A19}
+}
+@container (max-width:430px){
+ body.control-room .offer-picker-option-index{flex-basis:26px}
+ body.control-room .offer-picker-cell{flex:1 1 90px;padding:9px 6px}
+ body.control-room .offer-picker-cell.metric .offer-cell-value{font-size:21px}
+ body.control-room .offer-picker-price{font-size:22px;padding:8px 5px}
+ body.control-room .offer-picker-date{flex:1 1 68px;font-size:10px}
+ body.control-room .offer-picker-quote-add{flex:0 1 106px;margin:5px;font-size:11px}
+}
+</style>
 </head>
   <body class="control-room" data-view="search">
     <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden;pointer-events:none">
@@ -2068,16 +2118,21 @@ function uniqueDisplayVariants(variants) {
 // A structured, keyboard-accessible menu keeps size parameters prominent while
 // showing price and source date separately, without changing the existing order.
 function offerPickerChoiceMarkup(offer) {
-  const fields=offerDropdownMeasurements(offer);
-  const take=label=>fields.find(field=>field.label===label);
-  const primary=['Obim','Visina','Saksija','Način isporuke'];
-  const cell=(label,field,metric=false)=>'<span class="offer-picker-cell'+(metric?' metric':'')+(!field?' empty':'')+'"><small>'+escapeHTML(label)+'</small><'+(metric?'strong':'span')+' class="offer-cell-value">'+escapeHTML(field?.value || '—')+'</'+(metric?'strong':'span')+'></span>';
-  const extra=fields.filter(field=>!primary.includes(field.label));
-  return '<span class="offer-picker-segments">'+
-    cell('Obim',take('Obim'),true)+cell('Visina',take('Visina'),true)+
-    cell('Saksija',take('Saksija'))+cell('Isporuka',take('Način isporuke'))+
-    (extra.length?'<span class="offer-picker-extra">'+extra.map(field=>cell(field.label,field)).join('')+'</span>':'')+
-    '</span>';
+  const order=['Obim','Visina','Saksija','Način isporuke','Krošnja','Busen','Presađivanja'];
+  const rank=label=>order.includes(label)?order.indexOf(label):order.length;
+  const present=value=>{
+    const raw=String(value??'').trim();
+    return raw && !/^(?:[-–—]+|\/|n\.?\s*a\.?|n\/a|null|undefined|nije\s+(?:naveden[oa]?|poznat[oa]?|dostupan[oa]?)(?:\s+u\s+ponudi)?|nepoznat[oa]?|bez\s+podataka)$/i.test(raw);
+  };
+  const fields=offerDropdownMeasurements(offer).filter(field=>present(field.value))
+    .sort((a,b)=>rank(a.label)-rank(b.label));
+  const measures=fields.map(field=>{
+    const label=field.label==='Način isporuke'?'Isporuka':field.label;
+    const metric=/^(?:obim|visina)(?:\s|$)/i.test(label);
+    const tag=metric?'strong':'span';
+    return '<span class="offer-picker-cell'+(metric?' metric':'')+'"><small>'+escapeHTML(label)+'</small><'+tag+' class="offer-cell-value">'+escapeHTML(field.value)+'</'+tag+'></span>';
+  }).join('');
+  return measures?'<span class="offer-picker-segments">'+measures+'</span>':'';
 }
 function offerPickerMarkup(nursery,variants){
   const current=variants[0],count=variants.length;
@@ -2100,14 +2155,14 @@ function offerPickerMarkup(nursery,variants){
             '<span class="offer-picker-option-index" aria-hidden="true">'+String(i+1).padStart(2,'0')+'</span>'+
             offerPickerChoiceMarkup(offer)+
           '</button>'+
-          (offer.sourceDate ?
-            '<time class="offer-picker-date" datetime="'+escapeHTML(offer.sourceDate)+'">'+
-              escapeHTML(formattedDate(offer.sourceDate))+'</time>' :
-            '<span class="offer-picker-date offer-picker-date--unknown">Datum nije naveden</span>')+
-          '<strong class="offer-picker-price">'+escapeHTML(formattedPrice(offer))+'</strong>'+
-          '<button type="button" class="offer-picker-quote-add" data-action="add-to-quote"'+
-            ' data-offer-id="'+escapeHTML(offer.id)+'" aria-label="Dodaj varijantu u Moju ponudu">'+
-            '+ Moja ponuda</button>'+
+          '<div class="offer-picker-ledger-meta">'+
+            (offer.sourceDate?
+              '<time class="offer-picker-date" datetime="'+escapeHTML(offer.sourceDate)+'">'+escapeHTML(formattedDate(offer.sourceDate))+'</time>':'')+
+            (catalogEuroPrice(offer)!==null?'<strong class="offer-picker-price">'+escapeHTML(formattedPrice(offer))+'</strong>':'')+
+            '<button type="button" class="offer-picker-quote-add" data-action="add-to-quote"'+
+              ' data-offer-id="'+escapeHTML(offer.id)+'" aria-label="Dodaj varijantu u Moju ponudu">'+
+              '+ Moja ponuda</button>'+
+          '</div>'+
         '</div>').join('')+
       '</div>'+
     '</div></details>';
