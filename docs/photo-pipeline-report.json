@@ -1,13 +1,13 @@
 {
   "schemaVersion": 2,
   "status": "partial",
-  "requests": 449,
+  "requests": 453,
   "workers": 8,
   "events": [],
   "sourceHealth": {
     "portal.volentis.com": {
-      "requests": 113,
-      "succeeded": 112,
+      "requests": 107,
+      "succeeded": 106,
       "retries": 0,
       "httpErrors": {
         "404": 1
@@ -21,71 +21,80 @@
       }
     },
     "www.willaert.be": {
-      "requests": 106,
-      "succeeded": 106,
+      "requests": 103,
+      "succeeded": 103,
       "retries": 0,
       "httpErrors": {},
       "stopped": false,
       "requestIntervalSeconds": 1.0
     },
     "catalogue.vannuccipiante.it": {
-      "requests": 4,
-      "succeeded": 4,
+      "requests": 3,
+      "succeeded": 3,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "www.vdberk.com": {
-      "requests": 13,
-      "succeeded": 13,
-      "retries": 0,
-      "httpErrors": {},
-      "stopped": false
-    },
-    "webshop.vannuccipiante.it": {
-      "requests": 3,
-      "succeeded": 2,
-      "retries": 0,
-      "httpErrors": {
-        "503": 1
-      },
-      "stopped": true,
-      "lastFailure": {
-        "source": "https://webshop.vannuccipiante.it/product/cupressus-arizonica-fastigiata-dinnesto/",
-        "reason": "http_error",
-        "detail": "Source returned HTTP 503.",
-        "httpStatus": 503
-      }
-    },
-    "smitsbv.nl": {
-      "requests": 15,
-      "succeeded": 15,
-      "retries": 0,
-      "httpErrors": {},
-      "stopped": false
-    },
-    "www.lorberg.com": {
-      "requests": 54,
-      "succeeded": 54,
-      "retries": 0,
-      "httpErrors": {},
-      "stopped": false
-    },
-    "innocentiemangonipiante.it": {
-      "requests": 131,
-      "succeeded": 131,
-      "retries": 0,
-      "httpErrors": {},
-      "stopped": false
-    },
-    "www.lve-baumschule.de": {
       "requests": 9,
       "succeeded": 9,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
+    "webshop.vannuccipiante.it": {
+      "requests": 22,
+      "succeeded": 22,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": false
+    },
+    "smitsbv.nl": {
+      "requests": 23,
+      "succeeded": 23,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": false
+    },
+    "www.lorberg.com": {
+      "requests": 55,
+      "succeeded": 55,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": false
+    },
+    "innocentiemangonipiante.it": {
+      "requests": 103,
+      "succeeded": 103,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": false
+    },
+    "www.lve-baumschule.de": {
+      "requests": 26,
+      "succeeded": 25,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": false,
+      "lastFailure": {
+        "source": "https://www.lve-baumschule.de/juniperus-sabina-rockery-gem/6354020",
+        "reason": "timeout",
+        "detail": "Source exceeded its time limit."
+      }
+    },
     "www.vannuccipiante.it": {
+      "requests": 1,
+      "succeeded": 0,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": true,
+      "lastFailure": {
+        "source": "https://www.vannuccipiante.it/healthy_plants/betula-utilis-doorenbos-b-jacquemontii/",
+        "reason": "download_failed",
+        "detail": "<urlopen error timed out>"
+      }
+    },
+    "www.ebben.nl": {
       "requests": 1,
       "succeeded": 1,
       "retries": 0,
@@ -95,7 +104,7 @@
   },
   "coverage": {
     "schemaVersion": 2,
-    "checkedAt": "2026-11-24T13:11:23Z",
+    "checkedAt": "2026-11-24T15:04:27Z",
     "status": "partial",
     "plants": 623,
     "plantsInventoried": 623,
