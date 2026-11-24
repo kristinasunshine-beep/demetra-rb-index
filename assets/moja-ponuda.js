@@ -59,7 +59,10 @@
         const active = selected.has(button.dataset.offerId);
         button.disabled = active;
         button.classList.toggle('is-added', active);
-        button.textContent = active ? '✓ U mojoj ponudi' : 'Dodaj u moju ponudu';
+        const compact = button.classList.contains('offer-picker-quote-add');
+        button.textContent = active ? '✓ U mojoj ponudi' : (compact ? '+ Moja ponuda' : 'Dodaj u moju ponudu');
+        if(compact) button.setAttribute('aria-label', active ?
+          'Ova varijanta je već u Mojoj ponudi' : 'Dodaj varijantu u Moju ponudu');
       });
       // Count botanical species, not duplicate nursery offers of the same plant.
       const count = new Set(quote.items.map(item => item.plantId || item.latinName)).size;
