@@ -250,6 +250,15 @@ export async function verifyPanels(root) {
   function checkPanel(markup, offer) {
     const label = offer.id + ': ';
     const original = originalById.get(offer.id);
+    context.offerId=offer.id;
+    const picker = run('offerPickerChoiceMarkup(state.catalog.offers.find(x=>x.id===offerId))');
+    if (offer.seedlingType==='standard'||offer.seedlingType==='multistem') {
+      const typeValue=offer.seedlingType==='standard'?'Standard':'Multistem';
+      assert(picker.includes('<small>Tip sadnice</small><strong class="offer-cell-value">'+typeValue+'</strong>'),label+'Tip sadnice mora biti boldovan u padajućem meniju.');
+    }
+    for (const [name,key] of [['Obim','circumference'],['Visina','height']]) {
+      if (present(offer[key])) assert(picker.includes('<small>'+name+'</small><strong class="offer-cell-value">'+esc(offer[key])+'</strong>'),label+name+' mora biti boldovan u padajućem meniju.');
+    }
     const panel = markup.match(/<dl class="measurements">([\s\S]*?)<\/dl>/)?.[1];
     assert(panel !== undefined, label + 'nedostaje glavni panel parametara.');
     const entries = [...panel.matchAll(/<dt>([^<]+)<\/dt><dd(?: class="missing")?>([\s\S]*?)<\/dd>/g)];
