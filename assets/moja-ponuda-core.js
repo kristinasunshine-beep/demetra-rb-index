@@ -45,6 +45,21 @@
       return [text(pair[0], 200), typeof pair[1] === 'number' && Number.isFinite(pair[1]) ? pair[1] : text(pair[1])];
     }).filter(([label,value])=>!taxText(label)&&!taxText(value));
   }
+  function canonicalHeightPairs(value) {
+    const rows=pairs(value);
+    const normLabel=label=>String(label).normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim();
+    const alias=label=>/^(?:visina (?:cistog debla|do krosnje)|clear stem height|stem height)$/.test(normLabel(label));
+    const primary=label=>/^(?:visina|visina sadnice|visina biljke)$/.test(normLabel(label));
+    const present=v=>String(v??'').trim()&&!/^(?:[-–—]+|nije navedeno|nepoznato)$/i.test(String(v).trim());
+    const redundant=rows.find(([label,v])=>alias(label)&&present(v));
+    const result=rows.filter(([label])=>!alias(label));
+    const idx=result.findIndex(([label])=>primary(label));
+    if(redundant && !result.some(([label,v])=>primary(label)&&present(v))){
+      if(idx>=0)result[idx]=[result[idx][0],redundant[1]];
+      else result.push(['Visina sadnice',redundant[1]]);
+    }
+    return result;
+  }
   function normalizeItem(value) {
     if (!plain(value) || !value.offerId || !value.plantId || !value.latinName) throw new Error('Neispravna stavka ponude.');
     const item = {
@@ -55,7 +70,7 @@
       currency: text(value.currency || 'EUR', 10).toUpperCase(),
       sourcePriceCurrency: text(value.sourcePriceCurrency || value.currency || 'EUR', 10).toUpperCase(),
       sourcePrice: value.sourcePrice === null || value.sourcePrice === undefined ? null : Number(value.sourcePrice),
-      parameters: pairs(value.parameters || []), details: pairs(value.details || []),
+      parameters: canonicalHeightPairs(value.parameters || []), details: pairs(value.details || []).filter(([label])=>!/(?:visina (?:čistog debla|cistog debla|do krošnje|do krosnje)|clear stem height)/i.test(label)).map(([label,v])=>[label,typeof v==='string'?v.replace(/visin[aeu] (?:[čc]istog debla|do kro[šs]nje)|clear stem height/gi,'Visina'):v]),
       quantity: text(value.quantity ?? '1', 40), price: text(value.price ?? value.sourcePrice ?? '', 40),
       note: cleanNote(text(value.note, 4000)), priceEdited: value.priceEdited === true
     };
