@@ -55,3 +55,9 @@ body.control-room .recommend-table .recommend-delete:hover{background:#F8EDE9}
 body.control-room .recommend-table .recommend-delete:disabled{opacity:.45;cursor:default}
 body.control-room .recommend-table .recommend-parameters{min-width:220px}
 body.control-room .recommend-table .recommend-price,body.control-room .recommend-table td:nth-child(5)>strong{font-weight:700}
+
+/* Pagination uses the same green buttons and white lettering in every state. */
+body.control-room #recommend-pagination[hidden]{display:none!important}
+body.control-room #recommend-pagination button{color:#FFFFFF;background:#5f774a;border-color:#5f774a}
+body.control-room #recommend-pagination button:not(:disabled):hover,body.control-room #recommend-pagination button:not(:disabled):focus-visible{color:#FFFFFF;background:#435d32;border-color:#435d32}
+body.control-room #recommend-pagination button:disabled{color:#FFFFFF;background:#68736B;border-color:#68736B;opacity:1;cursor:default}

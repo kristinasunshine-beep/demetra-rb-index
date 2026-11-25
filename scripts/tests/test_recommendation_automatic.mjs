@@ -408,3 +408,22 @@ test('PDF names without dimensions return same-taxon archive offers; remove offe
  assert(rows.some(row=>row.includes('Acer palmatum')&&row.includes('Ponude uklonjene')));
  assert.deepEqual(XLSX.utils.sheet_to_json(output.Sheets['Prepoznate biljke'],{header:1}).map(r=>r[0]),['Latinski naziv biljke','Acer palmatum']);
 });
+
+
+function verifyPagination(source){
+ const els=new Map();function element(id){if(!els.has(id))els.set(id,{id,hidden:false,disabled:false,innerHTML:"",textContent:"",handlers:{},classList:{toggle(){},add(){},remove(){}},setAttribute(){},scrollIntoView(){},focus(){},addEventListener(n,fn){this.handlers[n]=fn},querySelector(q){return element(q.slice(1))}});return els.get(id)}
+ let worker;class FakeWorker{constructor(){worker=this;}postMessage(){} terminate(){}}
+ const win={},doc={baseURI:"https://example.invalid/",getElementById:element,body:{dataset:{}}};
+ new Function("window","document","Worker","URL",source)(win,doc,FakeWorker,function(){});
+ win.DemetraRecommendation.create({getCatalog:()=>({})});
+ element("recommend-file").handlers.change({target:{files:[{name:"test.xlsx"}],value:""}});
+ if(!worker)throw Error("Worker not initialized");
+ const result=n=>worker.onmessage({data:{type:"results",processed:n,recognized:n,matched:0,unmatched:n,preview:Array.from({length:n},(_,i)=>({id:String(i),name:"Plant "+i,suppliers:Array.from({length:24},(_,j)=>({offerIds:[i+"-"+j],name:"Nursery",price:30,matchCount:1,requestedCount:1,candidate:true})),parameters:[]}))}});
+ result(7);if(!element("recommend-pagination").hidden||element("recommend-page-label").textContent!==""||!element("recommend-next-page").disabled)throw Error("Single page failure");
+ result(26);if(element("recommend-pagination").hidden||element("recommend-next-page").disabled)throw Error("Multiple page failure");
+ element("recommend-next-page").handlers.click();if(!element("recommend-results-body").innerHTML.includes('data-result-id="25"')||!element("recommend-next-page").disabled)throw Error("Second page failure");
+ element("recommend-prev-page").handlers.click();if(!element("recommend-results-body").innerHTML.includes('data-result-id="0"'))throw Error("Previous page failure");
+ result(25);if(!element("recommend-pagination").hidden)throw Error("25-row boundary failure");
+}
+
+test('pagination appears only above 25 recognized plants, independent of offer count',()=>verifyPagination(readFileSync(resolve(assets,'brza-preporuka.js'),'utf8')));

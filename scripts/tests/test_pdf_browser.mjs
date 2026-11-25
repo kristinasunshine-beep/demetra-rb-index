@@ -75,15 +75,28 @@ try{
        const base={matchCount:1,requestedCount:2,candidate:true,matchedParameters:['Visina'],offeredParameters:'Visina: 300; Saksija: 50 L',historical:false};
        const supplier=(id,name)=>({...base,offerIds:[id],name,price:30});
        const preview=[{id:'a',name:'Acer campestre',parameters:[],quantity:5,suppliers:[supplier('1','Arbor'),supplier('2','Volentis')]},{id:'b',name:'Tilia cordata',parameters:[],quantity:1,suppliers:[supplier('3','Lorberg')]}];
-       queueMicrotask(()=>this.onmessage({data:{type:'results',processed:2,recognized:2,matched:0,unmatched:2,preview}}));
+       if(data.file?.name==='large.xlsx')for(let i=2;i<26;i++)preview.push({id:'extra-'+i,name:'Test plant '+i,parameters:[],quantity:1,suppliers:[]});
+       queueMicrotask(()=>this.onmessage({data:{type:'results',processed:preview.length,recognized:preview.length,matched:0,unmatched:preview.length,preview}}));
      }
      terminate(){}
    };
    window.DemetraRecommendation.create({getCatalog:()=>catalog}).open();
  });
+ await page.locator('#recommend-file').setInputFiles({name:'large.xlsx',mimeType:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',buffer:Buffer.from('fixture')});
+ await page.locator('#recommend-pagination').waitFor({state:'visible'});
+ for(const id of ['recommend-prev-page','recommend-next-page'])assert.equal(await page.locator('#'+id).evaluate(el=>getComputedStyle(el).color),'rgb(255, 255, 255)');
+ await page.locator('#recommend-next-page').click();
+ assert.equal(await page.locator('[data-result-id="extra-25"]').count(),1);
+ await page.locator('#recommend-prev-page').click();
+ assert.equal(await page.locator('[data-result-offer="1"]').count(),1);
  await page.locator('#recommend-file').setInputFiles({name:'test.xlsx',mimeType:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',buffer:Buffer.from('fixture')});
  await page.locator('[data-result-offer="1"]').waitFor();
  assert.equal(await page.locator('.recommend-preselection').count(),0);
+ await page.locator('#recommend-pagination').waitFor({state:'hidden'});
+ assert.equal(await page.locator('#recommend-page-label').textContent(),'');
+ assert.equal(await page.locator('#recommend-next-page').isVisible(),false);
+ assert.equal(await page.locator('#recommend-prev-page').isVisible(),false);
+ assert.equal(await page.locator('#recommend-restore-plant').isVisible(),true);
  assert.equal(await page.locator('[data-result-offer]').count(),3);
  await page.locator('[data-result-offer="1"] [data-remove-kind="offer"]').click();
  assert.equal(await page.locator('[data-result-offer]').count(),2);
