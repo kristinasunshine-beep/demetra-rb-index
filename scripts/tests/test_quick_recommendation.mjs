@@ -83,6 +83,10 @@ assert.equal(palmatum.plantId,'plant-acer-palmatum');
 assert(palmatum.suppliers.length>0,'Real catalog must return Acer palmatum by exact name when the source has no parameters');
 assert(palmatum.suppliers.every(s=>s.nameOnly&&s.candidate&&s.requestedCount===0));
 console.log('Real Acer palmatum archive offers: '+palmatum.suppliers.length);
+const liriope=Core.recommendQuick(actualIndex,{name:'Liriope muscari'});
+assert(liriope.suppliers.length>0,'Real Liriope archive has eligible offers');
+const liriopeRows=liriope.suppliers.filter(s=>s.name==='Vannucci Piante'&&s.price===4.5);
+console.log('Real Liriope muscari / Vannucci / 4.50 EUR: '+JSON.stringify(liriopeRows.map(s=>({id:s.offerIds[0],parameters:s.offeredParameters,sourceDate:s.sourceDate}))));
 const archivedTable=[
   ['Cupressus sempervirens','visina 300/400 cm, kontejnerirano, 3x presađivano','Arhiva','record-6792bed22c891f','780.00 EUR'],
   ['Celtis australis','visina 400cm, kontejnerirano, 3x presađivano','Arhiva','record-386f70c062c2d0','165.00 EUR'],

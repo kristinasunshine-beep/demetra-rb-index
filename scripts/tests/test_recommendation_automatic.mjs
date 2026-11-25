@@ -439,3 +439,24 @@ test('large real worker export has valid workbook package for strict XML checks'
  const dir=process.env.DEMETRA_QUOTE_TEST_OUTPUT;
  if(dir){mkdirSync(dir,{recursive:true});writeFileSync(resolve(dir,'provera-brza-preporuka.xlsx'),Buffer.from(bytes));}
 });
+
+test('identical archive offers are shown once; preserve different prices, nurseries, specifications and source requests',async()=>{
+ const C=require(resolve(assets,'brza-preporuka-core.js'));
+ const base={id:'dup-a',plantId:'liriope',nurseryId:'n1',price:4.5,currency:'EUR',unit:'kom',potSize:'CLT 3 (oznaka izvora)',rootType:'Kontejner (CLT)',sourceDate:'2026-04-20',priceKind:'historical'};
+ const fixture={...catalog,plants:[{id:'liriope',latinName:'Liriope muscari'}],offers:[base,{...base,id:'dup-b'},{...base,id:'higher',price:5},{...base,id:'different-pot',potSize:'CLT 5'},{...base,id:'different-nursery',nurseryId:'n2'},{...base,id:'different-form',additionalParameters:[{label:'Forma sadnice',value:'Soliter'}]}]};
+ const res=C.recommendQuick(C.makeIndex(fixture),{name:'Liriope muscari'});
+ assert.equal(res.suppliers.length,5);
+ assert.equal(res.suppliers.filter(s=>s.offerIds[0]==='dup-a'||s.offerIds[0]==='dup-b').length,1);
+ assert(res.suppliers.some(s=>s.offeredParameters.includes('Soliter')));
+ const instance=worker(fixture);
+ const result=await instance.process(workbook([['Biljke',[['Latinski naziv biljke','Količina'],['Liriope muscari',3],['Liriope muscari',7]]]]));
+ assert.equal(result.preview.length,2);
+ assert(result.preview.every(r=>r.suppliers.length===5));
+ const item=result.preview[0], offer=item.suppliers.find(s=>s.offerIds[0]==='dup-a'||s.offerIds[0]==='dup-b');
+ const bytes=await instance.download([],true,[JSON.stringify([item.id,offer.offerIds[0]])]);
+ const output=XLSX.read(bytes,{type:'array'});
+ const rows=XLSX.utils.sheet_to_json(output.Sheets['Brza preporuka'],{header:1,defval:''});
+ assert.equal(rows.slice(18).filter(row=>row.includes('Liriope muscari')).length,9);
+ assert.equal(rows.slice(18).filter(row=>row.includes('Liriope muscari')&&row.includes(3)).length,4);
+ assert.equal(rows.slice(18).filter(row=>row.includes('Liriope muscari')&&row.includes(7)).length,5);
+});

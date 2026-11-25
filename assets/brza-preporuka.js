@@ -27,12 +27,15 @@
     function renderRankedPage(){
       const total=rankedResults.length,from=pageIndex*pageSize,rows=rankedResults.slice(from,from+pageSize);
       const disabled=busy?' disabled':'';
+      const sourceCounts=new Map();for(const item of rankedResults){const key=item.plantId||String(item.canonicalName||item.name).trim();sourceCounts.set(key,(sourceCounts.get(key)||0)+1);}
       const button=(kind,id,offer,label)=>'<button type="button" class="recommend-delete" data-remove-kind="'+kind+'" data-request-id="'+escape(id)+'"'+(offer?' data-offer-id="'+escape(offer)+'"':'')+disabled+'>'+label+'</button>';
       el('recommend-results-body').innerHTML=rows.flatMap(r=>{
         const suppliers=r.suppliers?.length?r.suppliers:[null];
-        const name=r.plantId?'<a class="recommend-plant-link" href="#plant='+encodeURIComponent(r.plantId)+'">'+escape(r.canonicalName||r.name)+'</a>':escape(r.canonicalName||r.name);
+        const latinName=String(r.canonicalName||'').trim()||String(r.name||'').trim();
+        const name=r.plantId?'<a class="recommend-plant-link" href="#plant='+encodeURIComponent(r.plantId)+'">'+escape(latinName)+'</a>':escape(latinName);
         const requested=(r.parameters||[]).map(p=>p.label+': '+p.value).join(' · ');
-        return suppliers.map((s,i)=>'<tr data-result-id="'+escape(r.id)+'"'+(s?' data-result-offer="'+escape(s.offerIds[0])+'"':'')+' class="'+(i===0?'recommend-plant-start ':'')+(s&&!s.candidate?'is-match':'is-unmatched')+'"><td>'+(i?'':name+(requested?'<small>Traženo: '+escape(requested)+'</small>':''))+'</td><td class="recommend-parameters">'+(s?(s.offeredParameters||'').split('; ').filter(Boolean).map(v=>'<div>'+escape(v)+'</div>').join('')||'—':'—')+'</td><td>'+escape(s?.name||'—')+'</td><td class="recommend-price">'+(Number.isFinite(s?.price)?escape(euros(s.price)):'—')+'</td><td>'+(s?'<strong>'+escape(s.matchCount+'/'+s.requestedCount)+'</strong><small>'+escape(s.nameOnly?'Poklapanje naziva · bez specifikacije':s.candidate?'Delimično podudaranje':'Tačno podudaranje')+'</small>'+(s.matchedParameters?.length?'<small>Poklopljeno: '+escape(s.matchedParameters.join(', '))+'</small>':'')+(s.historical?'<small>Proveriti aktuelnost cene</small>':''):escape(r.allOffersRemoved?'Sve ponude su uklonjene':r.status==='not_found'?'Naziv nije pronađen':!r.parameters?.length?'Nema validne rasadničke ponude':'Nema podudarnog parametra'))+'</td><td>'+(i?'':escape(r.quantity??''))+'</td><td>'+(s?button('offer',r.id,s.offerIds[0],'Ukloni ponudu'):'')+'</td></tr>');
+        const origin=sourceCounts.get(r.plantId||latinName)>1&&r.sheet&&r.row?'<small>'+escape(r.sheet)+' · red '+escape(r.row)+'</small>':'';
+        return suppliers.map((s,i)=>'<tr data-result-id="'+escape(r.id)+'"'+(s?' data-result-offer="'+escape(s.offerIds[0])+'"':'')+' class="'+(i===0?'recommend-plant-start ':'')+(s&&!s.candidate?'is-match':'is-unmatched')+'"><td>'+name+origin+(requested?'<small>Traženo: '+escape(requested)+'</small>':'')+'</td><td class="recommend-parameters">'+(s?(s.offeredParameters||'').split('; ').filter(Boolean).map(v=>'<div>'+escape(v)+'</div>').join('')||'—':'—')+'</td><td>'+escape(s?.name||'—')+'</td><td class="recommend-price">'+(Number.isFinite(s?.price)?escape(euros(s.price)):'—')+'</td><td>'+(s?'<strong>'+escape(s.matchCount+'/'+s.requestedCount)+'</strong><small>'+escape(s.nameOnly?'Poklapanje naziva · bez specifikacije':s.candidate?'Delimično podudaranje':'Tačno podudaranje')+'</small>'+(s.matchedParameters?.length?'<small>Poklopljeno: '+escape(s.matchedParameters.join(', '))+'</small>':'')+(s.historical?'<small>Proveriti aktuelnost cene</small>':''):escape(r.allOffersRemoved?'Sve ponude su uklonjene':r.status==='not_found'?'Naziv nije pronađen':!r.parameters?.length?'Nema validne rasadničke ponude':'Nema podudarnog parametra'))+'</td><td>'+(i?'':escape(r.quantity??''))+'</td><td>'+(s?button('offer',r.id,s.offerIds[0],'Ukloni ponudu'):'')+'</td></tr>');
       }).join('');
       const offerCount=rankedResults.reduce((n,r)=>n+r.suppliers.length,0);
       el('recommend-pagination').hidden=total<=pageSize;
@@ -71,7 +74,7 @@
     el('recommend-next-page').addEventListener('click',()=>turnPage(1));
     function ensureWorker(){
       if(worker)return worker;
-      const workerUrl=assets.workerSource?URL.createObjectURL(new Blob([assets.workerSource],{type:'text/javascript'})):new URL('./assets/brza-preporuka-worker.js?v=xlsx-structure-r9-20261125',document.baseURI);
+      const workerUrl=assets.workerSource?URL.createObjectURL(new Blob([assets.workerSource],{type:'text/javascript'})):new URL('./assets/brza-preporuka-worker.js?v=distinct-offers-r11-20261125',document.baseURI);
       worker=new Worker(workerUrl);if(assets.workerSource)URL.revokeObjectURL(workerUrl);
       worker.onmessage=({data})=>{
         if(data.type==='progress')status(data.message);

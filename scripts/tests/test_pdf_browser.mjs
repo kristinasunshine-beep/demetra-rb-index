@@ -98,6 +98,7 @@ try{
  assert.equal(await page.locator('#recommend-prev-page').isVisible(),false);
  assert.equal(await page.locator('#recommend-restore-plant').isVisible(),true);
  assert.equal(await page.locator('[data-result-offer]').count(),3);
+ for(const id of ['1','2'])assert.equal(await page.locator('[data-result-offer="'+id+'"] td:first-child').textContent(),'Acer campestre','Every offer shows its Latin name');
  await page.locator('[data-result-offer="1"] [data-remove-kind="offer"]').click();
  assert.equal(await page.locator('[data-result-offer]').count(),2);
  assert.equal(await page.locator('[data-remove-kind="plant"]').count(),0);

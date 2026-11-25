@@ -588,12 +588,26 @@
     };
     // Equal weight per distinct, genuinely supplied botanical parameter.
     // Never substitute another taxon or pool parameters from different variants.
-    const ranked=available.map(offer=>{
+    const rankedAll=available.map(offer=>{
       const evaluated=parameters.map(p=>({...p,result:compare(offer,p)}));
       return {offer,evaluated,count:evaluated.filter(p=>p.result==='match').length};
     }).filter(r=>nameOnly||r.count>=1).sort((a,b)=>b.count-a.count||euroPrice(a.offer)-euroPrice(b.offer)||
       String(a.offer.nurseryId).localeCompare(String(b.offer.nurseryId))||String(a.offer.id).localeCompare(String(b.offer.id)));
     const exactIds=new Set(exact.status==='matched'?exact.suppliers.flatMap(s=>s.offerIds||[]):[]);
+    const distinct=new Map();
+    for(const row of rankedAll){
+      const offer=row.offer;
+      const fields=parametersForCandidate(offer).split('; ').filter(Boolean).map(v=>v.normalize('NFC').trim().replace(/\s+/g,' ')).sort();
+      const key=JSON.stringify([variantKey(offer),euroPrice(offer),fields,row.evaluated.map(p=>[p.key,p.result])]);
+      const previous=distinct.get(key);
+      if(!previous){distinct.set(key,row);continue;}
+      const prior=previous.offer;
+      // Prefer confirmed match and verified source; otherwise retain the most recent original.
+      const rank=o=>[Number(exactIds.has(o.id)),Number(o.priceRefresh?.status==='verified'),dateValue(o)];
+      const x=rank(offer),y=rank(prior);
+      if(x[0]>y[0]||x[0]===y[0]&&(x[1]>y[1]||x[1]===y[1]&&x[2]>y[2]))distinct.set(key,row);
+    }
+    const ranked=[...distinct.values()];
     const candidates=ranked.map(({offer,evaluated,count})=>({
       nurseryId:offer.nurseryId,name:index.nurseries.get(offer.nurseryId)?.name||offer.nurseryId,
       price:euroPrice(offer),currency:'EUR',offerIds:[offer.id],
