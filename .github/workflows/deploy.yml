@@ -94,8 +94,10 @@ jobs:
           node scripts/tests/test_archive_coverage.mjs
           node --test scripts/tests/test_mobile_and_serbian_prices.mjs
           node scripts/tests/test_photo_reference_render.mjs
+          export DEMETRA_QUOTE_TEST_OUTPUT="$RUNNER_TEMP/demetra-xlsx-validation"
           node --test scripts/tests/test_my_quote.mjs
           node --test scripts/tests/test_quick_recommendation.mjs scripts/tests/test_folder_price_refresh.mjs scripts/tests/test_prepare_morning_prices.mjs scripts/tests/test_recommendation_excel_preservation.mjs scripts/tests/test_recommendation_automatic.mjs scripts/tests/test_currency_normalization.mjs
+          python scripts/tests/validate_export_xlsx.py "$DEMETRA_QUOTE_TEST_OUTPUT/provera-moja-ponuda.xlsx" "$DEMETRA_QUOTE_TEST_OUTPUT/provera-brza-preporuka.xlsx"
           python -m unittest discover -s scripts/tests -p 'test_source_panel_semantics.py'
           python -m unittest discover -s scripts/tests -p 'test_recover_arbor_catalog.py'
           python scripts/photo_source_policy.py

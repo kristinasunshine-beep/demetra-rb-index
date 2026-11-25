@@ -237,7 +237,7 @@
         if (!ref) continue;
         const first = Number(ref[2]), last = Number(ref[4]);
         if (first <= 15 && last <= 15) kept.push(tag);
-        else if (first >= 20 && last <= 22) {
+        else if (first >= 20 && last <= 21) {
           kept.push(tag.replace(ref[0], 'ref="' + ref[1] + (first - 4) +
             ':' + ref[3] + (last - 4) + '"'));
         }
@@ -439,17 +439,45 @@
   }
   // A4 portrait with visible quantity and hidden currency.
   function configureA4(xml, lastRow, recommendation = false) {
-    xml = xml.replace('</sheetPr>', '<pageSetUpPr fitToPage="1"/></sheetPr>');
+    // Excel requires one pageSetUpPr in sheetPr (not an appended duplicate).
+    if (/<pageSetUpPr\b/.test(xml)) {
+      xml=xml.replace(/<pageSetUpPr\b[^>]*(?:\/>|>[\s\S]*?<\/pageSetUpPr>)/g,'');
+    }
+    if (/<\/sheetPr>/.test(xml)) xml=xml.replace('</sheetPr>','<pageSetUpPr fitToPage="1"/></sheetPr>');
+    else if (/<sheetPr\b[^>]*\/>/.test(xml)) xml=xml.replace(/<sheetPr\b[^>]*\/>/,tag=>tag.slice(0,-2)+'><pageSetUpPr fitToPage="1"/></sheetPr>');
+    else xml=xml.replace(/(<worksheet\b[^>]*>)/,'$1<sheetPr><pageSetUpPr fitToPage="1"/></sheetPr>');
     xml = xml.replace(/<pane\b[^>]*\/>/, '<pane ySplit="18" topLeftCell="A19" activePane="bottomLeft" state="frozen"/>');
-    xml = xml.replace('</cols>', '<col min="11" max="12" width="2" hidden="1" customWidth="1"/></cols>');
+    // Preserve non-overlapping column definitions; replace hidden internal columns.
+    xml=xml.replace(/<cols\b[^>]*>[\s\S]*?<\/cols>/,section=>{
+      const tags=[...section.matchAll(/<col\b[^>]*\/>/g)].map(m=>m[0]);
+      const printable=new Map();
+      for(const tag of tags){
+        const lo=Number(tag.match(/\bmin="(\d+)"/)?.[1]),hi=Number(tag.match(/\bmax="(\d+)"/)?.[1]);
+        for(let n=Math.max(1,lo);n<=Math.min(10,hi);n++)printable.set(n,tag.replace(/\bmin="\d+"/,'min="'+n+'"').replace(/\bmax="\d+"/,'max="'+n+'"'));
+      }
+      return '<cols>'+[...printable.entries()].sort((a,b)=>a[0]-b[0]).map(x=>x[1]).join('')+'<col min="11" max="12" width="2" hidden="1" customWidth="1"/></cols>';
+    });
     xml = xml.replace(/<mergeCells\b[^>]*>([\s\S]*?)<\/mergeCells>/, (_, body) => {
       const original = [...body.matchAll(/<mergeCell\b[^>]*\bref="[^"]+"[^>]*\/>/g)].map(m=>m[0])
+        .filter(tag=>Number(tag.match(/\bref="[A-Z]+(\d+)/)?.[1])<18)
         .map(tag=>tag.replace(/:I(\d+)"/, ':J$1"'));
+      // Keep original header merges, but never allow duplicated or intersecting ranges.
+      const occupied=new Set(),clean=[];
+      function addMerge(tag){
+        const m=tag.match(/\bref="([A-Z]+)(\d+):([A-Z]+)(\d+)"/);
+        if(!m)return;
+        const col=s=>[...s].reduce((n,c)=>n*26+c.charCodeAt(0)-64,0);
+        const cells=[];
+        for(let r=Number(m[2]);r<=Number(m[4]);r++)for(let c=col(m[1]);c<=col(m[3]);c++)cells.push(r+':'+c);
+        if(cells.some(cell=>occupied.has(cell)))return;
+        cells.forEach(cell=>occupied.add(cell));clean.push(tag);
+      }
+      original.forEach(addMerge);
       const additions = [];
       for (let row=18; row<lastRow+(recommendation?1:0); row++) additions.push('B'+row+':C'+row,'D'+row+':E'+row,'H'+row+':I'+row);
       if(!recommendation) additions.push('H'+lastRow+':I'+lastRow);
-      return '<mergeCells count="'+(original.length+additions.length)+'">'+original.join('')+
-        additions.map(ref=>'<mergeCell ref="'+ref+'"/>').join('')+'</mergeCells>';
+      additions.forEach(ref=>addMerge('<mergeCell ref="'+ref+'"/>'));
+      return '<mergeCells count="'+clean.length+'">'+clean.join('')+'</mergeCells>';
     });
     xml = xml.replace(/<pageMargins\b[^>]*\/>/, '<pageMargins left="0.25" right="0.25" top="0.3" bottom="0.3" header="0.15" footer="0.15"/>');
     xml = xml.replace(/<pageSetup\b[^>]*\/>/g, '');

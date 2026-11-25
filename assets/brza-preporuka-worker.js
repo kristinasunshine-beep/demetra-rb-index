@@ -1,5 +1,5 @@
 'use strict';
-importScripts('vendor/xlsx-0.20.3.full.min.js','vendor/jszip-3.10.1.min.js','brza-preporuka-core.js?v=description-quantity-r7-20261125','recommendation-excel.js?v=strict-source-quantity-r1-20261125','moja-ponuda-core.js?v=archive-name-only-r6-20261125');
+importScripts('vendor/xlsx-0.20.3.full.min.js','vendor/jszip-3.10.1.min.js','brza-preporuka-core.js?v=description-quantity-r7-20261125','recommendation-excel.js?v=strict-source-quantity-r1-20261125','moja-ponuda-core.js?v=xlsx-structure-r9-20261125');
 const Core=self.DemetraRecommendCore;
 let sheets=[],results=null,originalWorkbook=null,recognitionRows=null,entries=[];
 function send(type,data={}){postMessage({type,...data});}
@@ -79,7 +79,7 @@ async function appendRecognizedSheet(bytes,rows){
   if(!book.includes('</sheets>')||!rels.includes('</Relationships>')||!types.includes('</Types>'))
     throw new Error('Excel nema očekivanu strukturu za izdvojeni pregled biljaka.');
   const sheetName='Prepoznate biljke';
-  book=book.replace('</sheets>','<sheet name="'+sheetName+'" sheetId="'+sheetId+'" r:id="'+rId+'"/></sheets>');
+  book=book.replace('</sheets>','<sheet name="'+sheetName+'" sheetId="'+sheetId+'" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" r:id="'+rId+'"/></sheets>');
   rels=rels.replace('</Relationships>','<Relationship Id="'+rId+'" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="'+target+'"/></Relationships>');
   types=types.replace('</Types>','<Override PartName="/'+file+'" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/></Types>');
   const rowXml=rows.map((values,r)=>{

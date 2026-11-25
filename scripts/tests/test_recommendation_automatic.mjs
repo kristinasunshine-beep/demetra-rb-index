@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import {readFileSync} from 'node:fs';
+import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
 import {createRequire} from 'node:module';
 import {dirname,resolve,sep} from 'node:path';
 import {fileURLToPath} from 'node:url';
@@ -427,3 +427,15 @@ function verifyPagination(source){
 }
 
 test('pagination appears only above 25 recognized plants, independent of offer count',()=>verifyPagination(readFileSync(resolve(assets,'brza-preporuka.js'),'utf8')));
+
+test('large real worker export has valid workbook package for strict XML checks',async()=>{
+ const instance=worker();
+ const input=workbook([['Biljke',[['Latinski naziv biljke','Količina'],...Array.from({length:168},()=>[plant,7])]]]);
+ const result=await instance.process(input);assert.equal(result.preview.length,168);
+ const bytes=await instance.download([],true);
+ const workbookFile=XLSX.read(bytes,{type:'array'});
+ assert.deepEqual(workbookFile.SheetNames,['Brza preporuka','Prepoznate biljke']);
+ assert.equal(XLSX.utils.sheet_to_json(workbookFile.Sheets['Prepoznate biljke'],{header:1}).length,169);
+ const dir=process.env.DEMETRA_QUOTE_TEST_OUTPUT;
+ if(dir){mkdirSync(dir,{recursive:true});writeFileSync(resolve(dir,'provera-brza-preporuka.xlsx'),Buffer.from(bytes));}
+});
