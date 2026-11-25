@@ -1071,6 +1071,11 @@ body.control-room #plant-dialog-content .offer-picker-option::before{transform:s
  body.control-room #plant-dialog-content .offer-picker-option:hover{background:#F8EDE9!important}
  body.control-room #plant-dialog-content .offer-picker-option:hover::before{transform:scaleX(1)!important}
 }
+/* Touch devices use the selected row instead of desktop-only hover. */
+@media(hover:none), (pointer:coarse){
+ body.control-room #plant-dialog-content .offer-picker-option.is-selected{background:#F8EDE9!important}
+ body.control-room #plant-dialog-content .offer-picker-option.is-selected::before{transform:scaleX(1)!important}
+}
 body.control-room .offer-picker-select{display:flex;align-items:stretch;align-self:stretch;gap:0;padding:0;min-width:0;min-height:0}
 body.control-room .offer-picker-option-index{display:flex;align-items:center;justify-content:flex-start;flex:0 0 26px;align-self:stretch;margin:0;color:#FA593B;font:650 13px/1.25 var(--sans)}
 body.control-room .offer-picker-measures{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));align-items:stretch;column-gap:0;row-gap:2px;grid-auto-rows:min-content;min-width:0;flex:1}
