@@ -78,6 +78,11 @@ const priorOutput=[['Naziv biljke','Parametri sadnice',...Core.EXTRA_HEADERS],[r
 const repeat=Core.detectSheet(priorOutput,index);assert.deepEqual(repeat.map,{name:0,preferences:1});assert.equal(Core.recommend(index,Core.requestFromRow(priorOutput[1],repeat.map,repeat.headers)).price,65);
 const actual=await Promise.all(['biljke','rasadnici','kataloske-stavke'].map(async n=>JSON.parse(await readFile(root+'/data/'+n+'.json','utf8'))));
 const actualIndex=Core.makeIndex({plants:actual[0].plants,nurseries:actual[1].nurseries,offers:actual[2].offers});
+const palmatum=Core.recommendQuick(actualIndex,{name:'Acer palmatum'});
+assert.equal(palmatum.plantId,'plant-acer-palmatum');
+assert(palmatum.suppliers.length>0,'Real catalog must return Acer palmatum by exact name when the source has no parameters');
+assert(palmatum.suppliers.every(s=>s.nameOnly&&s.candidate&&s.requestedCount===0));
+console.log('Real Acer palmatum archive offers: '+palmatum.suppliers.length);
 const archivedTable=[
   ['Cupressus sempervirens','visina 300/400 cm, kontejnerirano, 3x presađivano','Arhiva','record-6792bed22c891f','780.00 EUR'],
   ['Celtis australis','visina 400cm, kontejnerirano, 3x presađivano','Arhiva','record-386f70c062c2d0','165.00 EUR'],

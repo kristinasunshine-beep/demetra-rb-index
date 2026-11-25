@@ -1,5 +1,5 @@
 'use strict';
-importScripts('vendor/xlsx-0.20.3.full.min.js','vendor/jszip-3.10.1.min.js','brza-preporuka-core.js?v=editable-results-r5-20261125','recommendation-excel.js?v=strict-source-quantity-r1-20261125','moja-ponuda-core.js?v=editable-results-r5-20261125');
+importScripts('vendor/xlsx-0.20.3.full.min.js','vendor/jszip-3.10.1.min.js','brza-preporuka-core.js?v=archive-name-only-r6-20261125','recommendation-excel.js?v=strict-source-quantity-r1-20261125','moja-ponuda-core.js?v=archive-name-only-r6-20261125');
 const Core=self.DemetraRecommendCore;
 let sheets=[],results=null,originalWorkbook=null,recognitionRows=null,entries=[];
 function send(type,data={}){postMessage({type,...data});}
@@ -27,6 +27,7 @@ function conciseParameters(request){
   return parts.join(' · ');
 }
 function overviewStatus(result,supplier){
+  if(result.allOffersRemoved)return 'Sve ponude su uklonjene';
   if(result.status==='needs_data')return 'Nedostaju tip sadnice ili odgovarajuća mera · proveriti izvor';
   if(!result.recognized)return result.candidates?.length?'Proveriti botanički naziv':'Biljka nije prepoznata';
   if(supplier?.historical||result.archival||/ARHIVA/i.test(String(supplier?.name||'')))
@@ -46,7 +47,7 @@ function overviewItems(request,result){
       supplier.name:'—';
     return [plant,params,nursery,
       Number.isFinite(supplier?.price)?supplier.price:'',
-      (supplier?`${supplier.matchCount}/${supplier.requestedCount} · ${supplier.candidate?'Potencijalni kandidat':'Tačno podudaranje'}${supplier.matchedParameters.length?' · Poklopljeno: '+supplier.matchedParameters.join(', '):''}${supplier.offeredParameters?' · Ponuđeno: '+supplier.offeredParameters:''}${supplier.historical?' · Proveriti aktuelnost cene':''}`:overviewStatus(result,supplier)),
+      (supplier?`${supplier.matchCount}/${supplier.requestedCount} · ${supplier.nameOnly?'Poklapanje naziva · bez specifikacije':supplier.candidate?'Potencijalni kandidat':'Tačno podudaranje'}${supplier.matchedParameters.length?' · Poklopljeno: '+supplier.matchedParameters.join(', '):''}${supplier.offeredParameters?' · Ponuđeno: '+supplier.offeredParameters:''}${supplier.historical?' · Proveriti aktuelnost cene':''}`:overviewStatus(result,supplier)),
       result.plantId?'https://kristinasunshine-beep.github.io/demetra-rb-index/#plant='+encodeURIComponent(result.plantId):'',quantityValue(request.quantity)];
   });
 }
@@ -205,16 +206,15 @@ self.onmessage=async({data})=>{try{
     send('results',{matched,unmatched,needsData,notFound,processed,recognized,archival,preview});
   }else if(data.type==='export'){
     if(!results)throw new Error('Prvo pokreni poređenje.');
-    const excluded=new Set(data.excludedIds||[]),excludedOffers=new Set(data.excludedOffers||[]);
-    const selected=entries.filter(entry=>!excluded.has(entry.id)).flatMap(entry=>{
+    const excludedOffers=new Set(data.excludedOffers||[]);
+    const selected=entries.map(entry=>{
       const original=entry.result.suppliers||[],suppliers=original.filter(s=>!excludedOffers.has(JSON.stringify([entry.id,s.offerIds[0]])));
-      if(original.length&&!suppliers.length)return [];
-      if(suppliers.length===original.length)return [entry];
+      if(suppliers.length===original.length)return entry;
       const confirmed=suppliers.find(s=>!s.candidate);
       const summary=suppliers.map(s=>s.name+' — '+s.price.toFixed(2)+' € · '+s.matchCount+'/'+s.requestedCount+' parametara; '+s.offeredParameters).join('\n');
-      const message=confirmed?'Potpuno podudaranje među zadržanim ponudama.':'Zadržane ponude sa delimičnim podudaranjem.';
-      const result={...entry.result,suppliers,status:confirmed?'matched':'unmatched',message,values:[summary,confirmed?.name||'',confirmed?.price??'',confirmed?.offeredParameters||'',confirmed?.sourceDate||'',message]};
-      return [{...entry,result,overview:overviewItems(entry.request,result),values:result.values}];
+      const message=!suppliers.length?'Sve ponude su uklonjene':confirmed?'Potpuno podudaranje među zadržanim ponudama.':suppliers[0].nameOnly?'Poklapanje naziva · bez specifikacije':'Zadržane ponude sa delimičnim podudaranjem.';
+      const result={...entry.result,suppliers,allOffersRemoved:!suppliers.length,status:confirmed?'matched':suppliers[0]?.nameOnly?'needs_data':'unmatched',message,values:[summary,confirmed?.name||'',confirmed?.price??'',confirmed?.offeredParameters||'',confirmed?.sourceDate||'',message]};
+      return {...entry,result,overview:overviewItems(entry.request,result),values:result.values};
     });
     if(!selected.length)throw new Error('Nema stavki za izvoz.');
     const selectedRecognition=[recognitionRows[0],...selected.map(entry=>entry.recognition)];
@@ -227,7 +227,7 @@ self.onmessage=async({data})=>{try{
       if(!overview)throw new Error('Nema stavki za izvoz.');
       const tableRows=selected.flatMap(entry=>{
         const rows=entry.overview;
-        return rows.map((row,i)=>[...row,entry.result.suppliers?.[i]?.offeredParameters||'',entry.result.suppliers?.[i]?entry.result.suppliers[i].matchCount+'/'+entry.result.suppliers[i].requestedCount:'—']);
+        return rows.map((row,i)=>[...row,entry.result.suppliers?.[i]?.offeredParameters||'',entry.result.suppliers?.[i]?(entry.result.suppliers[i].nameOnly?'0/0 · Bez specifikacije':entry.result.suppliers[i].matchCount+'/'+entry.result.suppliers[i].requestedCount):(entry.result.allOffersRemoved?'Ponude uklonjene':'—')]);
       });
       const output=await self.DemetraQuoteCore.buildXlsx(await shared.arrayBuffer(),null,JSZip,tableRows);
       const bytes=await appendRecognizedSheet(output,selectedRecognition);

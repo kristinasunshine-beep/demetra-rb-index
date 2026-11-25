@@ -196,7 +196,9 @@ test('rank by number of matching botanical fields, then by price; keep all eligi
   const r=C.recommendQuick(idx,req);
   assert.deepEqual(r.suppliers.map(s=>[s.offerIds[0],s.matchCount,s.price]),[['full-expensive',3,120],['two-cheap',2,20],['two-next',2,30],['one',1,5]]);
   assert.equal(r.suppliers[0].candidate,false);assert(r.suppliers.slice(1).every(s=>s.candidate));assert.equal(r.price,120);
-  assert.equal(C.recommendQuick(idx,{name:plant}).suppliers.length,0);
+  const nameOnly=C.recommendQuick(idx,{name:plant});
+  assert.equal(nameOnly.status,'needs_data');assert.equal(nameOnly.suppliers.length,5);assert(nameOnly.suppliers.every(s=>s.nameOnly&&s.candidate&&s.matchCount===0&&s.requestedCount===0));
+  assert.deepEqual(nameOnly.suppliers.map(s=>s.price),[2,5,20,30,120]);
   assert.equal(C.recommendQuick(idx,{name:plant,height:'999'}).suppliers.length,0);
 });
 
@@ -314,11 +316,13 @@ test('all sheets and arbitrary cells are scanned; unrelated text never enters th
   assert.equal(result.preview.length,3);
   assert(result.preview.every(row=>row.canonicalName===plant));
   assert.equal(result.preview[0].quantity,7);
-  const book=XLSX.read(await instance.download([result.preview[1].id]),{type:'array'});
+  const removedItem=result.preview[1];
+  const book=XLSX.read(await instance.download([removedItem.id],false,removedItem.suppliers.map(s=>JSON.stringify([removedItem.id,s.offerIds[0]]))),{type:'array'});
   const recognition=XLSX.utils.sheet_to_json(book.Sheets['Prepoznate biljke'],{header:1,defval:''});
-  assert.equal(recognition.length,3);
+  assert.equal(recognition.length,4);
   const overview=XLSX.utils.sheet_to_json(book.Sheets['Pregled preporuke'],{header:1,defval:''});
-  assert(overview.slice(1).every(row=>row[0]===plant&&row[6]!==9));
+  assert(overview.slice(1).every(row=>row[0]===plant));
+  assert(overview.slice(1).some(row=>row[6]===9&&row[2]==='—'&&row[4]==='Sve ponude su uklonjene'));
 });
 
 test('Italian availability heading and OCR fragments never become botanical recommendations',async()=>{
@@ -353,13 +357,13 @@ test('final panel selection filters the actual shared memorandum download and re
   ]]]));
   assert.equal(result.preview.length,2);
   const excluded=[result.preview[0].id];
-  const output=XLSX.read(await instance.download(excluded,true),{type:'array'});
+  const output=XLSX.read(await instance.download(excluded,true,result.preview[0].suppliers.map(s=>JSON.stringify([result.preview[0].id,s.offerIds[0]]))),{type:'array'});
   const report=XLSX.utils.sheet_to_json(output.Sheets['Brza preporuka'],{header:1,defval:''});
   assert(report[17].includes('Količina'));
   assert(report.slice(18).some(row=>row.includes('Fraxinus ornus')&&row.includes(12)));
-  assert(!JSON.stringify(report.slice(18)).includes('Elsrijk'));
+  assert(report.slice(18).some(row=>row.includes(plant)&&row.includes('Ponude uklonjene')));
   const recognized=XLSX.utils.sheet_to_json(output.Sheets['Prepoznate biljke'],{header:1});
-  assert.deepEqual(recognized.map(row=>row[0]),['Latinski naziv biljke','Fraxinus ornus']);
+  assert.deepEqual(recognized.map(row=>row[0]),['Latinski naziv biljke',plant,'Fraxinus ornus']);
   const restored=XLSX.read(await instance.download([],true),{type:'array'});
   assert(XLSX.utils.sheet_to_json(restored.Sheets['Brza preporuka'],{header:1}).some(row=>row.includes(plant)&&row.includes(7)));
 });
@@ -386,4 +390,19 @@ test('remove one nursery offer without removing other offers or the botanical id
  assert.equal(XLSX.utils.sheet_to_json(output.Sheets['Prepoznate biljke'],{header:1}).length,2);
  const restored=XLSX.read(await instance.download([],true),{type:'array'});
  assert(XLSX.utils.sheet_to_json(restored.Sheets['Brza preporuka'],{header:1}).some(row=>row.includes(first.name)));
+});
+
+test('PDF names without dimensions return same-taxon archive offers; remove offers only, preserve all recognized names',async()=>{
+ const fixture={...catalog,plants:[...catalog.plants,{id:'pal',latinName:'Acer palmatum'}],offers:[...catalog.offers,
+ {id:'pal-old',plantId:'pal',nurseryId:'n1',price:35,currency:'EUR',unit:'kom',height:'100–125',priceKind:'historical',validUntil:'2020-01-01'},
+ {id:'pal-other',plantId:'pal',nurseryId:'n2',price:55,currency:'EUR',unit:'kom',height:'150–175',priceKind:'historical'}]};
+ const instance=worker(fixture);
+ const result=await instance.processPdf([['Latinski naziv'],['Acer palmatum']]);
+ const item=result.preview[0];assert.equal(item.canonicalName,'Acer palmatum');
+ assert.deepEqual(item.suppliers.map(s=>s.offerIds[0]),['pal-old','pal-other']);
+ assert(item.suppliers.every(s=>s.nameOnly&&s.candidate&&s.historical&&s.requestedCount===0));
+ const output=XLSX.read(await instance.download([item.id],true,item.suppliers.map(s=>JSON.stringify([item.id,s.offerIds[0]]))),{type:'array'});
+ const rows=XLSX.utils.sheet_to_json(output.Sheets['Brza preporuka'],{header:1,defval:''});
+ assert(rows.some(row=>row.includes('Acer palmatum')&&row.includes('Ponude uklonjene')));
+ assert.deepEqual(XLSX.utils.sheet_to_json(output.Sheets['Prepoznate biljke'],{header:1}).map(r=>r[0]),['Latinski naziv biljke','Acer palmatum']);
 });

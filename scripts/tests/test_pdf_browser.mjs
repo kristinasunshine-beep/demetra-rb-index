@@ -87,12 +87,15 @@ try{
  assert.equal(await page.locator('[data-result-offer]').count(),3);
  await page.locator('[data-result-offer="1"] [data-remove-kind="offer"]').click();
  assert.equal(await page.locator('[data-result-offer]').count(),2);
- await page.locator('[data-result-id="b"] [data-remove-kind="plant"]').click();
+ assert.equal(await page.locator('[data-remove-kind="plant"]').count(),0);
+ await page.locator('[data-result-offer="3"] [data-remove-kind="offer"]').click();
  assert.equal(await page.locator('[data-result-offer]').count(),1);
+ assert.equal(await page.locator('[data-result-id="b"]').count(),1);
+ assert((await page.locator('[data-result-id="b"]').innerText()).includes('Sve ponude su uklonjene'));
  await page.locator('#recommend-restore-plant').click();
  assert.equal(await page.locator('[data-result-offer]').count(),2);
  await page.locator('#recommend-download').click();
  assert.deepEqual(await page.evaluate(()=>window.testExport.excludedOffers),[JSON.stringify(['a','1'])]);
- assert.deepEqual(await page.evaluate(()=>window.testExport.excludedIds),[]);
+ assert.equal(await page.evaluate(()=>window.testExport.excludedIds),undefined);
  console.log('Editable recommendation results panel verified.');
 }finally{await browser.close();server.close();}

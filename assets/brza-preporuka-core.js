@@ -569,8 +569,9 @@
     if(!found.id)return {...recommendQuickExact(index,input,options),canonicalName:recognizedSource.latinName,requestedParameters:parameters};
     const original=index.byPlant.get(found.id)||[];
     const today=options.today||new Date().toISOString().slice(0,10);
+    const nameOnly=parameters.length===0;
     const available=newestVariants(original.filter(o=>(o.parameterRole||o.sourceEvidence?.parameterRole)!=='requested'))
-      .filter(o=>validPurchasePrice(o)&&!unavailable(o)&&o.priceRefresh?.status!=='pending'&&!(o.validUntil&&o.validUntil<today));
+      .filter(o=>validPurchasePrice(o)&&!unavailable(o)&&o.priceRefresh?.status!=='pending'&&(nameOnly||!(o.validUntil&&o.validUntil<today)));
     const narrowed={...index,byPlant:new Map(index.byPlant)};
     narrowed.byPlant.set(found.id,available);
     const exact=recommendQuickExact(narrowed,input,options);
@@ -584,7 +585,7 @@
     const ranked=available.map(offer=>{
       const evaluated=parameters.map(p=>({...p,result:compare(offer,p)}));
       return {offer,evaluated,count:evaluated.filter(p=>p.result==='match').length};
-    }).filter(r=>r.count>=1).sort((a,b)=>b.count-a.count||euroPrice(a.offer)-euroPrice(b.offer)||
+    }).filter(r=>nameOnly||r.count>=1).sort((a,b)=>b.count-a.count||euroPrice(a.offer)-euroPrice(b.offer)||
       String(a.offer.nurseryId).localeCompare(String(b.offer.nurseryId))||String(a.offer.id).localeCompare(String(b.offer.id)));
     const exactIds=new Set(exact.status==='matched'?exact.suppliers.flatMap(s=>s.offerIds||[]):[]);
     const candidates=ranked.map(({offer,evaluated,count})=>({
@@ -595,8 +596,8 @@
       differentParameters:evaluated.filter(p=>p.result==='different').map(p=>p.label),
       unknownParameters:evaluated.filter(p=>p.result==='unknown').map(p=>p.label),
       offeredParameters:parametersForCandidate(offer),sourceDate:dateValue(offer),
-      historical:offer.priceKind==='historical'||!offer.priceRefresh?.checkedAt,
-      candidate:!(exactIds.has(offer.id)&&count===parameters.length)
+      historical:offer.priceKind==='historical'||!offer.priceRefresh?.checkedAt||Boolean(offer.validUntil&&offer.validUntil<today),
+      nameOnly,candidate:nameOnly||!(exactIds.has(offer.id)&&count===parameters.length)
     }));
     const result={...exact,plantId:found.id,requestedParameters:parameters,
       canonicalName:recognizedSource.latinName,suppliers:candidates};
@@ -608,9 +609,9 @@
       result.message='Potpuno podudaranje. Ponude su rangirane prema broju poklopljenih parametara, zatim prema ceni.';
       result.values=[summary,confirmed.name,confirmed.price,parametersForCandidate(best),dateValue(best),result.message];
     }else{
-      result.status=exact.status==='needs_data'?'needs_data':'unmatched';
+      result.status=nameOnly||exact.status==='needs_data'?'needs_data':'unmatched';
       result.price=null;result.supplier=null;result.offerId=null;
-      result.message=top?'Potencijalni kandidati: rangirano po broju poklopljenih parametara, zatim po ceni.':'Nema ponude sa najmanje jednim poklopljenim parametrom. '+exact.message;
+      result.message=nameOnly?(top?'Naziv se tačno poklapa. Izvor ne sadrži prepoznate parametre; prikazane su ponude iste biljke, po rastućoj ceni, za ručnu proveru.':'Naziv se poklapa, ali nema validne rasadničke ponude.'):(top?'Potencijalni kandidati: rangirano po broju poklopljenih parametara, zatim po ceni.':'Nema ponude sa najmanje jednim poklopljenim parametrom. '+exact.message);
       if(input._validationError)result.message=input._validationError+' '+result.message;
       result.values=[summary,'','','','',result.message];
     }

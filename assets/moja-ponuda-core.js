@@ -377,7 +377,7 @@
     let rows = '', nextRow = 19;
     if (recommendation) recommendationRows.forEach((row,index) => {
       const [plant, requested, nursery, price, result, url, quantity, offered, match] = row;
-      const description = offered===undefined?[cleanNote(requested),cleanNote(result)].filter(Boolean).join('\n'):[cleanNote(offered),requested?'Traženo: '+cleanNote(requested):''].filter(Boolean).join('\n');
+      const description = offered===undefined?[cleanNote(requested),cleanNote(result)].filter(Boolean).join('\n'):[cleanNote(offered),requested?'Traženo: '+cleanNote(requested):'',!offered?cleanNote(result):''].filter(Boolean).join('\n');
       readableChunks(description,20,24).forEach((part,chunk) => {
         const number = nextRow++;
         const link = !chunk && /^https:\/\/kristinasunshine-beep\.github\.io\/demetra-rb-index\/#plant=[A-Za-z0-9%._~-]+$/.test(String(url||''));
