@@ -66,4 +66,33 @@ try{
  await row(3).locator('.offer-picker-quote-add').hover();await verify(3);
  await page.locator('#plant-detail-title').hover();await verify(0);
  console.log('Single pointer highlight verified: no default or retained selection color.');
+ await page.evaluate(()=>{
+   document.getElementById('plant-dialog').close();
+   const catalog={plants:[{id:'a',latinName:'Acer campestre'}],nurseries:[],offers:[]};
+   window.Worker=class{
+     postMessage(data){
+       if(data.type==='export'){window.testExport=data;return;}
+       const base={matchCount:1,requestedCount:2,candidate:true,matchedParameters:['Visina'],offeredParameters:'Visina: 300; Saksija: 50 L',historical:false};
+       const supplier=(id,name)=>({...base,offerIds:[id],name,price:30});
+       const preview=[{id:'a',name:'Acer campestre',parameters:[],quantity:5,suppliers:[supplier('1','Arbor'),supplier('2','Volentis')]},{id:'b',name:'Tilia cordata',parameters:[],quantity:1,suppliers:[supplier('3','Lorberg')]}];
+       queueMicrotask(()=>this.onmessage({data:{type:'results',processed:2,recognized:2,matched:0,unmatched:2,preview}}));
+     }
+     terminate(){}
+   };
+   window.DemetraRecommendation.create({getCatalog:()=>catalog}).open();
+ });
+ await page.locator('#recommend-file').setInputFiles({name:'test.xlsx',mimeType:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',buffer:Buffer.from('fixture')});
+ await page.locator('[data-result-offer="1"]').waitFor();
+ assert.equal(await page.locator('.recommend-preselection').count(),0);
+ assert.equal(await page.locator('[data-result-offer]').count(),3);
+ await page.locator('[data-result-offer="1"] [data-remove-kind="offer"]').click();
+ assert.equal(await page.locator('[data-result-offer]').count(),2);
+ await page.locator('[data-result-id="b"] [data-remove-kind="plant"]').click();
+ assert.equal(await page.locator('[data-result-offer]').count(),1);
+ await page.locator('#recommend-restore-plant').click();
+ assert.equal(await page.locator('[data-result-offer]').count(),2);
+ await page.locator('#recommend-download').click();
+ assert.deepEqual(await page.evaluate(()=>window.testExport.excludedOffers),[JSON.stringify(['a','1'])]);
+ assert.deepEqual(await page.evaluate(()=>window.testExport.excludedIds),[]);
+ console.log('Editable recommendation results panel verified.');
 }finally{await browser.close();server.close();}

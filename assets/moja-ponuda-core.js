@@ -354,7 +354,7 @@
     // Quantity is a visible numeric field; currency remains internal.
     const tableColumns = ['A', 'B', 'D', 'F', 'G', 'H', 'J'];
     const fieldStyles = [0,1,2,5,4,6,7];
-    const headers = recommendation ? ['R.br.', 'Biljka', 'Parametri sadnice / rezultat', 'Količina', 'Rasadnik', 'Nabavna cena', 'Digitalna kartica'] : ['R.br.', 'Biljka', 'Parametri sadnice', 'Količina', 'Jed.', 'Cena', 'Iznos'];
+    const headers = recommendation ? ['R.br.', 'Biljka', 'Parametri ponuđene biljke', 'Količina', 'Rasadnik', 'Nabavna cena', 'Poklapanje'] : ['R.br.', 'Biljka', 'Parametri sadnice', 'Količina', 'Jed.', 'Cena', 'Iznos'];
     main = main.replace(/<row\b[^>]*\br="18"[^>]*>[\s\S]*?<\/row>/,
       '<row r="18" ht="30" customHeight="1">' + headers.map((value, index) =>
         cell(tableColumns[index] + '18', value, headerStyles[fieldStyles[index]])).join('') + '</row>');
@@ -376,16 +376,16 @@
     }
     let rows = '', nextRow = 19;
     if (recommendation) recommendationRows.forEach((row,index) => {
-      const [plant, requested, nursery, price, result, url, quantity] = row;
-      const description = [cleanNote(requested),cleanNote(result)].filter(Boolean).join('\n');
+      const [plant, requested, nursery, price, result, url, quantity, offered, match] = row;
+      const description = offered===undefined?[cleanNote(requested),cleanNote(result)].filter(Boolean).join('\n'):[cleanNote(offered),requested?'Traženo: '+cleanNote(requested):''].filter(Boolean).join('\n');
       readableChunks(description,20,24).forEach((part,chunk) => {
         const number = nextRow++;
         const link = !chunk && /^https:\/\/kristinasunshine-beep\.github\.io\/demetra-rb-index\/#plant=[A-Za-z0-9%._~-]+$/.test(String(url||''));
-        const values=chunk?['','',part,'','','','']:[index+1,plant,part,quantity??'',nursery,Number.isFinite(price)?price:'',link?'Otvori karticu':''];
+        const values=chunk?['','',part,'','','','']:[index+1,plant,part,quantity??'',nursery,Number.isFinite(price)?price:'',match??(link?'Otvori karticu':'')];
         const height=lineHeight(values,[4,21,20,10,12,13,15],30);
         rows += '<row r="'+number+'" ht="'+height+'" customHeight="1">'+values.map((value,column)=>{
           const ref=tableColumns[column]+number;
-          if(column===6 && link) return '<c r="'+ref+'" s="'+styles[1]+'" t="str"><f>HYPERLINK(&quot;'+xmlEscape(url)+'&quot;,&quot;Otvori karticu&quot;)</f><v>Otvori karticu</v></c>';
+          if(column===1 && link) return '<c r="'+ref+'" s="'+styles[1]+'" t="str"><f>HYPERLINK(&quot;'+xmlEscape(url)+'&quot;,&quot;'+xmlEscape(String(plant).replace(/"/g,'""'))+'&quot;)</f><v>'+xmlEscape(plant)+'</v></c>';
           return cell(ref,value,column===5?totalStyles.EUR:column===6?styles[1]:styles[fieldStyles[column]]);
         }).join('')+'</row>';
       });

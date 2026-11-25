@@ -1,5 +1,5 @@
 'use strict';
-importScripts('vendor/xlsx-0.20.3.full.min.js','vendor/jszip-3.10.1.min.js','brza-preporuka-core.js?v=final-selection-r4-20261125','recommendation-excel.js?v=strict-source-quantity-r1-20261125','moja-ponuda-core.js?v=strict-source-quantity-r1-20261125');
+importScripts('vendor/xlsx-0.20.3.full.min.js','vendor/jszip-3.10.1.min.js','brza-preporuka-core.js?v=editable-results-r5-20261125','recommendation-excel.js?v=strict-source-quantity-r1-20261125','moja-ponuda-core.js?v=editable-results-r5-20261125');
 const Core=self.DemetraRecommendCore;
 let sheets=[],results=null,originalWorkbook=null,recognitionRows=null,entries=[];
 function send(type,data={}){postMessage({type,...data});}
@@ -171,7 +171,7 @@ self.onmessage=async({data})=>{try{
         const recognition=recognitionRow(request,index);
         recognitionRows.push(recognition);
         const result=Core.recommendQuick(index,request,{currency:'EUR'}),outRow=config.hasHeader===false?r+1:r;
-        entries.push({id,recognition,overview:overviewItems(request,result),sheet,outRow,values:result.values});
+        entries.push({id,recognition,request,result,overview:overviewItems(request,result),sheet,outRow,values:result.values});
         result.values.forEach((v,c)=>{const old=sheet.rows[outRow][sheet.originalColumns+c];sheet.rows[outRow][sheet.originalColumns+c]=old!==undefined&&old!==''&&v!==''?String(old)+'\n'+String(v):old??v;});
         if(result.status!=='empty')overviewRows.push(...overviewItems(request,result));
         if(result.status!=='empty'){
@@ -205,7 +205,17 @@ self.onmessage=async({data})=>{try{
     send('results',{matched,unmatched,needsData,notFound,processed,recognized,archival,preview});
   }else if(data.type==='export'){
     if(!results)throw new Error('Prvo pokreni poređenje.');
-    const excluded=new Set(data.excludedIds||[]),selected=entries.filter(entry=>!excluded.has(entry.id));
+    const excluded=new Set(data.excludedIds||[]),excludedOffers=new Set(data.excludedOffers||[]);
+    const selected=entries.filter(entry=>!excluded.has(entry.id)).flatMap(entry=>{
+      const original=entry.result.suppliers||[],suppliers=original.filter(s=>!excludedOffers.has(JSON.stringify([entry.id,s.offerIds[0]])));
+      if(original.length&&!suppliers.length)return [];
+      if(suppliers.length===original.length)return [entry];
+      const confirmed=suppliers.find(s=>!s.candidate);
+      const summary=suppliers.map(s=>s.name+' — '+s.price.toFixed(2)+' € · '+s.matchCount+'/'+s.requestedCount+' parametara; '+s.offeredParameters).join('\n');
+      const message=confirmed?'Potpuno podudaranje među zadržanim ponudama.':'Zadržane ponude sa delimičnim podudaranjem.';
+      const result={...entry.result,suppliers,status:confirmed?'matched':'unmatched',message,values:[summary,confirmed?.name||'',confirmed?.price??'',confirmed?.offeredParameters||'',confirmed?.sourceDate||'',message]};
+      return [{...entry,result,overview:overviewItems(entry.request,result),values:result.values}];
+    });
     if(!selected.length)throw new Error('Nema stavki za izvoz.');
     const selectedRecognition=[recognitionRows[0],...selected.map(entry=>entry.recognition)];
     const selectedOverview=selected.flatMap(entry=>entry.overview);
@@ -215,7 +225,11 @@ self.onmessage=async({data})=>{try{
       const shared=await fetch(data.sharedTemplateUrl,{cache:'no-store'});if(!shared.ok)throw new Error('Zajednički Excel obrazac trenutno nije dostupan.');
       const overview=results.find(sheet=>sheet.overview);
       if(!overview)throw new Error('Nema stavki za izvoz.');
-      const output=await self.DemetraQuoteCore.buildXlsx(await shared.arrayBuffer(),null,JSZip,selectedOverview);
+      const tableRows=selected.flatMap(entry=>{
+        const rows=entry.overview;
+        return rows.map((row,i)=>[...row,entry.result.suppliers?.[i]?.offeredParameters||'',entry.result.suppliers?.[i]?entry.result.suppliers[i].matchCount+'/'+entry.result.suppliers[i].requestedCount:'—']);
+      });
+      const output=await self.DemetraQuoteCore.buildXlsx(await shared.arrayBuffer(),null,JSZip,tableRows);
       const bytes=await appendRecognizedSheet(output,selectedRecognition);
       postMessage({type:'download',bytes},[bytes]);return;
     }

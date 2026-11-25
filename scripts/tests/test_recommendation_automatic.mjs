@@ -69,9 +69,9 @@ function worker(){
       assert(result,'PDF import must yield results');
       return result;
     },
-    async download(excludedIds=[],shared=false){
+    async download(excludedIds=[],shared=false,excludedOffers=[]){
       commands.push('export');
-      await context.onmessage({data:{type:'export',excludedIds,templateUrl:'test-template.xlsx',...(shared?{sharedTemplateUrl:'shared-template.xlsx'}:{})}});
+      await context.onmessage({data:{type:'export',excludedIds,excludedOffers,templateUrl:'test-template.xlsx',...(shared?{sharedTemplateUrl:'shared-template.xlsx'}:{})}});
       assert.equal(messages.filter(m=>m.type==='error').length,0,JSON.stringify(messages.filter(m=>m.type==='error')));
       const result=messages.findLast(m=>m.type==='download');assert(result,'Export must produce a download');
       return result.bytes;
@@ -362,4 +362,24 @@ test('final panel selection filters the actual shared memorandum download and re
   assert.deepEqual(recognized.map(row=>row[0]),['Latinski naziv biljke','Fraxinus ornus']);
   const restored=XLSX.read(await instance.download([],true),{type:'array'});
   assert(XLSX.utils.sheet_to_json(restored.Sheets['Brza preporuka'],{header:1}).some(row=>row.includes(plant)&&row.includes(7)));
+});
+
+test('remove one nursery offer without removing other offers or the botanical identity; actual shared download honors edits',async()=>{
+ const instance=worker();
+ const result=await instance.process(workbook([['Biljke',[
+  ['Latinski naziv biljke','Tip sadnice','Visina (cm)','Količina'],
+  [plant,'Standard','300–350',7]
+ ]]]));
+ const item=result.preview[0];assert(item.suppliers.length>=2);
+ const [first,second]=item.suppliers;
+ const key=JSON.stringify([item.id,first.offerIds[0]]);
+ const output=XLSX.read(await instance.download([],true,[key]),{type:'array'});
+ const report=XLSX.utils.sheet_to_json(output.Sheets['Brza preporuka'],{header:1,defval:''});
+ assert(report[17].includes('Poklapanje'));
+ assert(!report.slice(18).some(row=>row.includes(first.name)));
+ assert(report.slice(18).some(row=>row.includes(second.name)&&row.includes(second.price)&&row.includes(second.matchCount+'/'+second.requestedCount)));
+ assert(report.slice(18).some(row=>row.join(' ').includes(second.offeredParameters.split('; ')[0])));
+ assert.equal(XLSX.utils.sheet_to_json(output.Sheets['Prepoznate biljke'],{header:1}).length,2);
+ const restored=XLSX.read(await instance.download([],true),{type:'array'});
+ assert(XLSX.utils.sheet_to_json(restored.Sheets['Brza preporuka'],{header:1}).some(row=>row.includes(first.name)));
 });

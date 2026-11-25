@@ -594,7 +594,7 @@
       matchedParameters:evaluated.filter(p=>p.result==='match').map(p=>p.label),
       differentParameters:evaluated.filter(p=>p.result==='different').map(p=>p.label),
       unknownParameters:evaluated.filter(p=>p.result==='unknown').map(p=>p.label),
-      offeredParameters:parametersForCandidate(offer),
+      offeredParameters:parametersForCandidate(offer),sourceDate:dateValue(offer),
       historical:offer.priceKind==='historical'||!offer.priceRefresh?.checkedAt,
       candidate:!(exactIds.has(offer.id)&&count===parameters.length)
     }));
@@ -616,7 +616,15 @@
     }
     return result;
   }
-  function parametersForCandidate(offer){return parameters(offer);}
+  function parametersForCandidate(offer){
+    const main=parameters(offer).split('; ').filter(Boolean),seen=new Set(main.map(v=>norm(v.split(':')[0])));
+    for(const p of offer.additionalParameters||[]){
+      const key=headerField(p.label),label=norm(p.label),value=String(p.value??'').trim();
+      if(!label||!value||seen.has(label)||key&&key!=='preferences'||/^(?:visina cistog debla|visina do krosnje|clear stem height|stem height)$/.test(label)||/\b(?:pdv|vat|cena|price|valuta|currency|sifra|id|izvor|source)\b/.test(label)||/^(?:nije navedeno|nepoznat|n\/a|-)/i.test(value))continue;
+      main.push(p.label+': '+value);seen.add(label);
+    }
+    return main.join('; ');
+  }
   // PDF rows: reconstruct table cells when headings are readable, otherwise
   // use the original text lines and a known botanical name as a record anchor.
   // PDF rows contain original text cells in reading order, with blank

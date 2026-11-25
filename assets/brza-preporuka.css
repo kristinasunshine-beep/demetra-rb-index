@@ -45,14 +45,13 @@
   body.control-room .recommend-navigation #recommend-page-label{order:-1;flex:1 0 100%;text-align:center}
 }
 
-/* Final selection belongs exclusively to the quick recommendation panel. */
-body.control-room .recommend-preselection{border:1px solid #161A19;margin:16px 0;padding:12px;background:#fff}
-body.control-room .recommend-selection-head{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
-body.control-room .recommend-selection-head button{border:1px solid #161A19;background:white;color:#161A19;padding:7px 10px;cursor:pointer}
-body.control-room .recommend-selection-head button:disabled{opacity:.45;cursor:default}
-body.control-room .recommend-selection-list{max-height:290px;overflow:auto}
-body.control-room .recommend-selection-item{display:grid;grid-template-columns:20px minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px 4px;border-top:1px solid #D8DDD4;cursor:pointer;font:14px/1.3 var(--sans)}
-body.control-room .recommend-selection-item input{width:17px;height:17px;accent-color:#234d36}
-body.control-room .recommend-selection-item small{display:block;font:12px/1.3 var(--sans);color:#68736B;overflow-wrap:anywhere}
-body.control-room .recommend-selection-state{font:11px/1.2 var(--sans);color:#68736B}
-body.control-room .recommend-selection-item:has(input:not(:checked)){background:#F8EDE9}
+/* Editable recommendation rows, not an independent selection list. */
+body.control-room .recommend-table .recommend-plant-start td{border-top:2px solid #161A19}
+body.control-room .recommend-table td:nth-child(3){min-width:130px}
+body.control-room .recommend-table td:nth-child(4){min-width:105px;white-space:nowrap}
+body.control-room .recommend-table td:last-child{min-width:125px}
+body.control-room .recommend-table .recommend-delete{display:block;margin:8px 0 0;padding:6px 9px;min-height:32px;border:1px solid #FA593B;background:#fff;color:#161A19;border-radius:4px;cursor:pointer;font:600 12px/1.2 var(--sans);white-space:nowrap}
+body.control-room .recommend-table .recommend-delete:hover{background:#F8EDE9}
+body.control-room .recommend-table .recommend-delete:disabled{opacity:.45;cursor:default}
+body.control-room .recommend-table .recommend-parameters{min-width:220px}
+body.control-room .recommend-table .recommend-price,body.control-room .recommend-table td:nth-child(5)>strong{font-weight:700}
