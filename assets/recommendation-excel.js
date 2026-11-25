@@ -39,7 +39,7 @@
   }
   function resultHeader(sheet,column){return String(sheet.rows[sheet.headerRow]?.[column]||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();}
   function isPriceColumn(sheet,column){return sheet.processed&&column>=sheet.originalColumns&&/\bcena\b/.test(resultHeader(sheet,column));}
-  const overviewWidths=[22,25,17,13,13,10];
+  const overviewWidths=[20,22,16,12,12,10,9];
   function overviewHeight(sheet,r){if(r===sheet.headerRow)return 30;return Math.min(400,Math.max(22,...(sheet.rows[r]||[]).map((v,c)=>{const value=c===5&&v?'Otvori digitalnu karticu':String(v??'');return value.split('\n').reduce((n,line)=>n+Math.max(1,Math.ceil(line.length/Math.max(5,overviewWidth(c)-2))),0)*13+6;})));}
   const overviewPageSetup='<pageMargins left="0.25" right="0.25" top="0.25" bottom="0.3" header="0.1" footer="0.1"/><pageSetup orientation="portrait" paperSize="9" fitToWidth="1" fitToHeight="0"/>';
   function overviewWidth(column){return overviewWidths[column]||25;}

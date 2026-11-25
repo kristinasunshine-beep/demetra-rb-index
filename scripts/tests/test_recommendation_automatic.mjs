@@ -69,9 +69,9 @@ function worker(){
       assert(result,'PDF import must yield results');
       return result;
     },
-    async download(){
+    async download(excludedIds=[]){
       commands.push('export');
-      await context.onmessage({data:{type:'export',templateUrl:'test-template.xlsx'}});
+      await context.onmessage({data:{type:'export',excludedIds,templateUrl:'test-template.xlsx'}});
       assert.equal(messages.filter(m=>m.type==='error').length,0,JSON.stringify(messages.filter(m=>m.type==='error')));
       const result=messages.findLast(m=>m.type==='download');assert(result,'Export must produce a download');
       return result.bytes;
@@ -99,12 +99,12 @@ test('one upload processes every input row and preserves the notes sheet',async(
   assert(!recognized[1].join(' ').includes('Količina'));
   assert.equal(recognized.at(-1)[0],"Acer campestre 'Pogresan kultivar'");
   const glance=XLSX.utils.sheet_to_json(book.Sheets['Pregled preporuke'],{header:1,defval:''});
-  assert.deepEqual(glance[0],['Latinski naziv biljke','Parametri iz tvoje tabele','Spisak rasadnika','Nabavna cena (€)','Rezultat','Digitalna kartica']);
+  assert.deepEqual(glance[0],['Latinski naziv biljke','Parametri iz tvoje tabele','Spisak rasadnika','Nabavna cena (€)','Rezultat','Digitalna kartica','Količina']);
   assert.ok(glance.length>=count+1,'overview includes every original plant and all supplier rows');
   assert.equal(glance.filter(row=>row[0]===plant).length>=count-1,true,'multiple rasadnici are shown as separate rows, without hiding the input plants');
   assert.equal(glance[1][0],plant);
   assert.ok(glance[1][2].includes('Rasadnik A'),'nursery visible in its own cell');
-  assert.equal(glance[1][3],65,'Supplier price in separate column');
+  assert.equal(glance[1][3],65,'Supplier price in separate column');assert.equal(glance[1][6],3,'Visible source quantity');
   const actual=XLSX.utils.sheet_to_json(book.Sheets.Sadnice,{header:1,defval:''});
   assert.equal(actual.length,rows.length);
   for(let r=0;r<rows.length;r++)for(let c=0;c<rows[r].length;c++)assert.equal(actual[r][c],rows[r][c],`Original cell ${r+1}:${c+1}`);
@@ -302,4 +302,21 @@ test('PDF-to-Excel excludes tender prose, even inside mapped Latin name columns'
   const book=XLSX.read(await instance.download(),{type:'array'});
   const recognized=XLSX.utils.sheet_to_json(book.Sheets['Prepoznate biljke'],{header:1,defval:''});
   assert.deepEqual(recognized.map(r=>r[0]),['Latinski naziv biljke',plant,'Celtis australis']);
+});
+
+test('all sheets and arbitrary cells are scanned; unrelated text never enters the recommendation; exclusions apply to export',async()=>{
+  const input=workbook([
+    ['Specifikacije',[['ID stavke','Naziv za pretragu','Veličina i posuda','Količina'],['A1',plant,'standard; visina 300–350',7]]],
+    ['Drugi list',[['Opis','Količina'],['Sadnja: Acer campestre Elsrijk; Standard; visina 300–350',9],['Ukupno radovi',123],['Napomena o dokumentu',5]]],
+    ['Treći list',[['Nije biljka'],['Administrativni tekst'],['','',plant,'Standard; visina 300–350']]]
+  ]);
+  const instance=worker(),result=await instance.process(input);
+  assert.equal(result.preview.length,3);
+  assert(result.preview.every(row=>row.canonicalName===plant));
+  assert.equal(result.preview[0].quantity,7);
+  const book=XLSX.read(await instance.download([result.preview[1].id]),{type:'array'});
+  const recognition=XLSX.utils.sheet_to_json(book.Sheets['Prepoznate biljke'],{header:1,defval:''});
+  assert.equal(recognition.length,3);
+  const overview=XLSX.utils.sheet_to_json(book.Sheets['Pregled preporuke'],{header:1,defval:''});
+  assert(overview.slice(1).every(row=>row[0]===plant&&row[6]!==9));
 });

@@ -1,7 +1,7 @@
 'use strict';
-importScripts('vendor/xlsx-0.20.3.full.min.js','vendor/jszip-3.10.1.min.js','brza-preporuka-core.js?v=botanical-only-r2-20261123','recommendation-excel.js?v=portrait-export-r2-20261121','moja-ponuda-core.js?v=shared-report-r1-20261121');
+importScripts('vendor/xlsx-0.20.3.full.min.js','vendor/jszip-3.10.1.min.js','brza-preporuka-core.js?v=strict-source-quantity-r1-20261125','recommendation-excel.js?v=strict-source-quantity-r1-20261125','moja-ponuda-core.js?v=strict-source-quantity-r1-20261125');
 const Core=self.DemetraRecommendCore;
-let sheets=[],results=null,originalWorkbook=null,recognitionRows=null;
+let sheets=[],results=null,originalWorkbook=null,recognitionRows=null,entries=[];
 function send(type,data={}){postMessage({type,...data});}
 
 const OVERVIEW_HEADERS=[
@@ -10,7 +10,8 @@ const OVERVIEW_HEADERS=[
   'Spisak rasadnika',
   'Nabavna cena (€)',
   'Rezultat',
-  'Digitalna kartica'
+  'Digitalna kartica',
+  'Količina'
 ];
 function conciseParameters(request){
   const parsed=Core.parsePreferences([request.preferences,request.sourceDescription].filter(Boolean).join('; '));
@@ -46,13 +47,14 @@ function overviewItems(request,result){
     return [plant,params,nursery,
       Number.isFinite(supplier?.price)?supplier.price:'',
       (supplier?`${supplier.matchCount}/${supplier.requestedCount} · ${supplier.candidate?'Potencijalni kandidat':'Tačno podudaranje'}${supplier.matchedParameters.length?' · Poklopljeno: '+supplier.matchedParameters.join(', '):''}${supplier.offeredParameters?' · Ponuđeno: '+supplier.offeredParameters:''}${supplier.historical?' · Proveriti aktuelnost cene':''}`:overviewStatus(result,supplier)),
-      result.plantId?'https://kristinasunshine-beep.github.io/demetra-rb-index/#plant='+encodeURIComponent(result.plantId):''];
+      result.plantId?'https://kristinasunshine-beep.github.io/demetra-rb-index/#plant='+encodeURIComponent(result.plantId):'',quantityValue(request.quantity)];
   });
 }
 
 // A dedicated initial-recognition sheet: canonical Latin botanical identity
 // plus exactly the recorded parameters from digital-card fields. No source
 // IDs, quantity, tax, prices or administrative columns are projected here.
+function quantityValue(value){const raw=String(value??'').trim();if(!raw)return '';const n=Number(raw.replace(',','.'));return Number.isFinite(n)&&n>0?n:raw;}
 function recognitionRow(request,index){
   const entry=Core.recognizeSourceRow(index,request);
   return [entry.latinName,entry.parameters.map(p=>p.label+': '+p.value).join('\n')];
@@ -110,34 +112,49 @@ function readRows(sheet){
 }
 self.onmessage=async({data})=>{try{
   if(data.type==='process'){
-    results=null;originalWorkbook=null;recognitionRows=[['Latinski naziv biljke','Prepoznati parametri sadnice']];send('progress',{message:'Čitam Excel tabelu…'});
+    results=null;entries=[];originalWorkbook=null;recognitionRows=[['Latinski naziv biljke','Prepoznati parametri sadnice']];send('progress',{message:'Čitam Excel tabelu…'});
     const input=data.pdfRows?null:await data.file.arrayBuffer();
     const index=Core.makeIndex(data.catalog);
     if(/\.pdf$/i.test(data.file.name)){
       const rows=Core.pdfPlantRows(data.pdfRows||[],index);
-      if(rows.length<2)throw new Error('U PDF dokumentu nisu prepoznate biljke. Proveri čitljivost i botaničke nazive.');
+      
       sheets=[{name:'PDF specifikacija',rows,columns:Math.max(...rows.map(r=>r.length))}];
+      const known=new Set(rows.slice(1).flatMap(row=>Core.sourceRequests(index,row,{name:0,cultivar:2},rows[0]).map(x=>x.identity)));
+      const rawRows=(data.pdfRows||[]).map(row=>Array.isArray(row)?row:[row]);
+      const fallback=rawRows.filter(row=>Core.sourceRequests(index,row,{},[]).some(x=>!known.has(x.identity)));
+      if(fallback.length)sheets.push({name:'PDF dodatni tekst',rows:fallback,columns:Math.max(...fallback.map(r=>r.length))});
     }else{
       const book=XLSX.read(input,{type:'array',dense:true,cellDates:true,cellNF:true,bookVBA:false,raw:/\.(csv|tsv)$/i.test(data.file.name)});
       if(/\.xlsx$/i.test(data.file.name))originalWorkbook=input;
       sheets=book.SheetNames.map(name=>({name,...readRows(book.Sheets[name])}));
     }
     let matched=0,unmatched=0,processed=0,recognized=0,archival=0,needsData=0,notFound=0;const preview=[];
-    // A cost analysis workbook repeats the same plant in Kalkulacija,
-    // Specifikacije, Poređenje and Cene. Only the dedicated specifications
-    // sheet is the source of planting requirements when present.
-    const specificationSheets=new Set(sheets.filter(sheet=>{
-      const hdr=sheet.rows.slice(0,15);
-      return hdr.some(row=>row.some(v=>Core.norm(v)==='naziv za pretragu') &&
-        row.some(v=>Core.norm(v)==='velicina i posuda'));
-    }).map(sheet=>sheet.name));
-    const activeSheets=specificationSheets.size?specificationSheets:null;
-
+    // Every worksheet and every row, including hidden sheets and prose cells.
+    // An identical explicit source ID may recur in a calculation and specification.
+    // Prefer the richer record only when the same source identity is explicit.
+    const scan=sheets.map((sheet,i)=>{
+      const config=Core.detectSheet(sheet.rows,index,sheet.name);
+      const headers=Array.from({length:sheet.columns},(_,c)=>config.headers?.[c]||'');
+      const idColumn=headers.findIndex(v=>/^(?:id stavke|sifra stavke|izvorna celija|source id)$/.test(Core.norm(v)));
+      return {config,headers,idColumn,requests:sheet.rows.map((row,r)=>Core.sourceRequests(index,row,config.map||{},headers)
+        .map(hit=>({...hit,r,i,sourceId:idColumn>=0?String(row[idColumn]??'').trim():'',score:Core.requestedParameters(index,hit.request).length})))};
+    });
+    const bySource=new Map();
+    for(const group of scan)for(const row of group.requests)for(const hit of row){
+      if(!hit.sourceId)continue;
+      const key=hit.identity+'|'+hit.sourceId+'|'+String(hit.request.quantity??'');
+      const previous=bySource.get(key);
+      if(!previous||hit.score>previous.score)bySource.set(key,hit);
+    }
+    for(const group of scan)group.requests=group.requests.map(row=>row.filter(hit=>{
+      if(!hit.sourceId)return true;
+      return bySource.get(hit.identity+'|'+hit.sourceId+'|'+String(hit.request.quantity??''))===hit;
+    }));
     results=[];const addedSheets=[],names=new Set(sheets.map(s=>s.name));
     const overviewRows=[OVERVIEW_HEADERS.slice()];
     for(let i=0;i<sheets.length;i++){
-      const original=sheets[i],config=Core.detectSheet(original.rows,index,original.name);let sheet={...original,rows:original.rows.map(row=>row.slice()),processed:false};results.push(sheet);
-      if(!config?.enabled || activeSheets&&!activeSheets.has(original.name))continue;
+      const original=sheets[i],{config,requests}=scan[i];let sheet={...original,rows:original.rows.map(row=>row.slice()),processed:false};results.push(sheet);
+      if(!requests.some(row=>row.length))continue;
       const headers=Array.from({length:original.columns},(_,c)=>config.headers?.[c]||original.rows[config.headerRow]?.[c]||'Kolona '+XLSX.utils.encode_col(c));
       if(config.hasHeader===false){
         let name=('Preporuka '+original.name).slice(0,31),n=2;while(names.has(name))name=('Preporuka '+original.name).slice(0,27)+' '+n++;names.add(name);
@@ -145,24 +162,17 @@ self.onmessage=async({data})=>{try{
       }
       sheet.processed=true;sheet.headerRow=config.hasHeader===false?0:config.headerRow;sheet.originalColumns=sheet.columns;sheet.columns+=Core.EXTRA_HEADERS.length;
       Core.EXTRA_HEADERS.forEach((v,c)=>{sheet.rows[sheet.headerRow][sheet.originalColumns+c]=v;});
-      for(let r=config.dataStartRow??config.headerRow+1;r<original.rows.length;r++){
-        if(!original.rows[r]?.some(value=>String(value??'').trim()))continue;
-        const request=Core.requestFromRow(original.rows[r],config.map,headers);
-        // First-pass hard gate: source records and preview/export must only
-        // contain Latin botanical names, including genuine unindexed taxa.
-        // Skip tender notes, explanatory prose, category labels and headers.
-        if(!Core.isBotanicalSource(index,request))continue;
-        // Skip lawn seed, ancillary works and headings in dedicated botanical
-        // specification sheets; the original worksheet remains untouched.
-        if(activeSheets){
-          const group=String(original.rows[r][2]??'');
-          if(/travnjak|radovi|materijal|seme|sjeme|supstrat|đubriv|gnojiv/i.test(group))continue;
-          if(!/^[A-Z][a-z]{2,}\s+[a-z][a-z-]{2,}/.test(String(request.name??'').trim()))continue;
-        }
+      for(let r=0;r<original.rows.length;r++){
+        const rowHits=requests[r]||[];
+        for(const [ordinal,hit] of rowHits.entries()){
+        const request=hit.request;
+        const id=i+':'+r+':'+ordinal;
         if(original.rows[r].includes('Formula bez sačuvane vrednosti'))request._validationError='Formula u izvornoj tabeli nema sačuvanu vrednost za poređenje.';
-        recognitionRows.push(recognitionRow(request,index));
+        const recognition=recognitionRow(request,index);
+        recognitionRows.push(recognition);
         const result=Core.recommendQuick(index,request,{currency:'EUR'}),outRow=config.hasHeader===false?r+1:r;
-        result.values.forEach((v,c)=>{sheet.rows[outRow][sheet.originalColumns+c]=v;});
+        entries.push({id,recognition,overview:overviewItems(request,result),sheet,outRow,values:result.values});
+        result.values.forEach((v,c)=>{const old=sheet.rows[outRow][sheet.originalColumns+c];sheet.rows[outRow][sheet.originalColumns+c]=old!==undefined&&old!==''&&v!==''?String(old)+'\n'+String(v):old??v;});
         if(result.status!=='empty')overviewRows.push(...overviewItems(request,result));
         if(result.status!=='empty'){
           processed++;
@@ -174,10 +184,11 @@ self.onmessage=async({data})=>{try{
           if(result.archival)archival++;
           {
             const parameters=result.requestedParameters||[];
-            preview.push({sheet:original.name,row:r+1,
+            preview.push({id,quantity:quantityValue(request.quantity),sheet:original.name,row:r+1,
               name:request.cultivar&&!Core.norm(request.name).endsWith(' '+Core.norm(request.cultivar))?request.name+' '+request.cultivar:request.name,
               parameters,...result});
           }
+        }
         }
         if(r%200===0){send('progress',{message:`Obrađeno ${processed.toLocaleString('sr-Latn-RS')} stavki…`,processed});await new Promise(resolve=>setTimeout(resolve,0));}
       }
@@ -193,18 +204,30 @@ self.onmessage=async({data})=>{try{
     send('results',{matched,unmatched,needsData,notFound,processed,recognized,archival,preview});
   }else if(data.type==='export'){
     if(!results)throw new Error('Prvo pokreni poređenje.');
+    const excluded=new Set(data.excludedIds||[]),selected=entries.filter(entry=>!excluded.has(entry.id));
+    if(!selected.length)throw new Error('Nema stavki za izvoz.');
+    const selectedRecognition=[recognitionRows[0],...selected.map(entry=>entry.recognition)];
+    const selectedOverview=selected.flatMap(entry=>entry.overview);
     send('progress',{message:'Pripremam novu Excel tabelu…'});
     const response=await fetch(data.templateUrl,{cache:'no-store'});if(!response.ok)throw new Error('Excel obrazac trenutno nije dostupan.');
     if(data.sharedTemplateUrl){
       const shared=await fetch(data.sharedTemplateUrl,{cache:'no-store'});if(!shared.ok)throw new Error('Zajednički Excel obrazac trenutno nije dostupan.');
       const overview=results.find(sheet=>sheet.overview);
       if(!overview)throw new Error('Nema stavki za izvoz.');
-      const output=await self.DemetraQuoteCore.buildXlsx(await shared.arrayBuffer(),null,JSZip,overview.rows.slice(1));
-      const bytes=await appendRecognizedSheet(output,recognitionRows);
+      const output=await self.DemetraQuoteCore.buildXlsx(await shared.arrayBuffer(),null,JSZip,selectedOverview);
+      const bytes=await appendRecognizedSheet(output,selectedRecognition);
       postMessage({type:'download',bytes},[bytes]);return;
     }
-    const bytes=await self.DemetraRecommendationExcel.build(await response.arrayBuffer(),results,JSZip,(sheet,row,total)=>{if(row%2000===0)send('progress',{message:`Pakujem list ${sheet+1}: ${row.toLocaleString('sr-Latn-RS')} / ${total.toLocaleString('sr-Latn-RS')} redova…`});},originalWorkbook);
-    const withRecognition=await appendRecognizedSheet(bytes,recognitionRows);
+    const exportSheets=results.map(sheet=>({...sheet,rows:sheet.rows.map(row=>row.slice())}));
+    for(const [i,sheet] of results.entries()){
+      const copy=exportSheets[i];
+      if(sheet.overview){copy.rows=[OVERVIEW_HEADERS.slice(),...selectedOverview];continue;}
+      if(!sheet.processed)continue;
+      for(const entry of entries.filter(e=>e.sheet===sheet))for(let c=0;c<Core.EXTRA_HEADERS.length;c++)copy.rows[entry.outRow][sheet.originalColumns+c]='';
+      for(const entry of selected.filter(e=>e.sheet===sheet))entry.values.forEach((v,c)=>{const at=sheet.originalColumns+c,old=copy.rows[entry.outRow][at];copy.rows[entry.outRow][at]=old&&v?String(old)+'\n'+String(v):old||v;});
+    }
+    const bytes=await self.DemetraRecommendationExcel.build(await response.arrayBuffer(),exportSheets,JSZip,(sheet,row,total)=>{if(row%2000===0)send('progress',{message:`Pakujem list ${sheet+1}: ${row.toLocaleString('sr-Latn-RS')} / ${total.toLocaleString('sr-Latn-RS')} redova…`});},originalWorkbook);
+    const withRecognition=await appendRecognizedSheet(bytes,selectedRecognition);
     postMessage({type:'download',bytes:withRecognition},[withRecognition]);
   }
 }catch(error){results=null;send('error',{message:error.message||'Tabela nije mogla da se obradi.'});}};

@@ -126,7 +126,7 @@ assert(sheet.includes('customHeight="1"'),'Rows must retain custom height for wr
 assert(sheet.includes('orientation="portrait"')&&sheet.includes('paperSize="9"'),'Excel must print on portrait A4');
 assert(sheet.includes('fitToWidth="1"')&&sheet.includes('fitToHeight="0"'),'Fit to one A4 page wide');
 assert(!sheet.includes('Valuta'),'No visible currency column');
-assert(sheet.includes('<mergeCell ref="B18:C18"')&&sheet.includes('<mergeCell ref="D19:F19"'),'Names and parameters must use their two-column areas');
+assert(sheet.includes('<mergeCell ref="B18:C18"')&&sheet.includes('<mergeCell ref="D19:E19"'),'Names and parameters must use their two-column areas');
 const totalStyle=Number(sheet.match(/<c r="J21" s="(\d+)"/)?.[1]);
 assert(Number.isInteger(totalStyle),'Total formula must have currency style');
 const styleXml=await zip.file('xl/styles.xml').async('string');
@@ -135,9 +135,12 @@ assert(workbook.includes('_xlnm.Print_Area')&&workbook.includes("'Moja ponuda'!$
   'A4 print area must end after totals, without the hidden currency column');
 
 const tableHeader=sheet.match(/<row\b[^>]*\br="18"[^>]*>[\s\S]*?<\/row>/)?.[0]||'';
-assert(!/<t[^>]*>(?:Rasadnik|Količina)<\/t>/.test(sheet),'Supplier and quantity excluded');
+assert(!/<t[^>]*>Rasadnik<\/t>/.test(sheet),'Supplier excluded');
+assert(tableHeader.includes('Količina'),'Quantity must be visible in the output');
+assert(/<c r="F19"[^>]*><v>3<\/v><\/c>/.test(sheet));
+assert(/<c r="F20"[^>]*><v>2<\/v><\/c>/.test(sheet));
 assert(!/\bPDV\b/.test(sheet),'VAT text excluded');
-assert(sheet.includes('min="11" max="12" width="2" hidden="1"'),'Internal quantity and currency hidden');
+assert(sheet.includes('min="11" max="12" width="2" hidden="1"'),'Internal currency and spare column hidden');
 const firstPlant=sheet.match(/<row\b[^>]*\br="19"[^>]*>[\s\S]*?<\/row>/)?.[0]||'';
 assert(tableHeader.includes('Biljka')&&tableHeader.includes('Parametri sadnice'),
   'Plant table header must move to row 18.');
@@ -146,8 +149,8 @@ assert(firstPlant.includes('r="B19"') && firstPlant.includes(Core.xmlEscape(firs
 for(const number of [23,24]) assert(!sheet.includes('<row r="'+number+'"'),
   'No abandoned header rows or whitespace should remain after moving the table.');
 
-assert(sheet.includes('<f>ROUND(L19*H19,2)</f><v>37.5</v>'));
-assert(sheet.includes('<f>ROUND(L20*H20,2)</f><v>40</v>'));
+assert(sheet.includes('<f>ROUND(F19*H19,2)</f><v>37.5</v>'));
+assert(sheet.includes('<f>ROUND(F20*H20,2)</f><v>40</v>'));
 assert(sheet.includes('<f>SUM(J19:J20)</f><v>77.5</v>'));
 assert(sheet.includes('001234567')&&sheet.includes('00123456'));
 assert(sheet.includes('U Beogradu, 11.11.2026.'),'Date directly next to city');

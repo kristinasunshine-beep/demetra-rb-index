@@ -351,10 +351,10 @@
     const totalStyles = await currencyTotalStyles(zip, recommendation ? [{currency:'EUR'}] : total.totals, recommendation ? styles[6] : sumStyles[7]);
     const headerStyles = rowStyles(main, 22, allCols);
     main = compactQuoteHeader(main);
-    // Quantity and currency remain internal, excluded from the printed document.
-    const tableColumns = ['A', 'B', 'D', 'G', 'H', 'J'];
-    const fieldStyles = [0,1,2,4,6,7];
-    const headers = recommendation ? ['R.br.', 'Biljka', 'Parametri sadnice / rezultat', 'Rasadnik', 'Nabavna cena', 'Digitalna kartica'] : ['R.br.', 'Biljka', 'Parametri sadnice', 'Jed.', 'Cena', 'Iznos'];
+    // Quantity is a visible numeric field; currency remains internal.
+    const tableColumns = ['A', 'B', 'D', 'F', 'G', 'H', 'J'];
+    const fieldStyles = [0,1,2,5,4,6,7];
+    const headers = recommendation ? ['R.br.', 'Biljka', 'Parametri sadnice / rezultat', 'Količina', 'Rasadnik', 'Nabavna cena', 'Digitalna kartica'] : ['R.br.', 'Biljka', 'Parametri sadnice', 'Količina', 'Jed.', 'Cena', 'Iznos'];
     main = main.replace(/<row\b[^>]*\br="18"[^>]*>[\s\S]*?<\/row>/,
       '<row r="18" ht="30" customHeight="1">' + headers.map((value, index) =>
         cell(tableColumns[index] + '18', value, headerStyles[fieldStyles[index]])).join('') + '</row>');
@@ -376,17 +376,17 @@
     }
     let rows = '', nextRow = 19;
     if (recommendation) recommendationRows.forEach((row,index) => {
-      const [plant, requested, nursery, price, result, url] = row;
+      const [plant, requested, nursery, price, result, url, quantity] = row;
       const description = [cleanNote(requested),cleanNote(result)].filter(Boolean).join('\n');
-      readableChunks(description,29,24).forEach((part,chunk) => {
+      readableChunks(description,20,24).forEach((part,chunk) => {
         const number = nextRow++;
         const link = !chunk && /^https:\/\/kristinasunshine-beep\.github\.io\/demetra-rb-index\/#plant=[A-Za-z0-9%._~-]+$/.test(String(url||''));
-        const values=chunk?['','',part,'','','']:[index+1,plant,part,nursery,Number.isFinite(price)?price:'',link?'Otvori karticu':''];
-        const height=lineHeight(values,[4,21,29,12,13,15],30);
+        const values=chunk?['','',part,'','','','']:[index+1,plant,part,quantity??'',nursery,Number.isFinite(price)?price:'',link?'Otvori karticu':''];
+        const height=lineHeight(values,[4,21,20,10,12,13,15],30);
         rows += '<row r="'+number+'" ht="'+height+'" customHeight="1">'+values.map((value,column)=>{
           const ref=tableColumns[column]+number;
-          if(column===5 && link) return '<c r="'+ref+'" s="'+styles[1]+'" t="str"><f>HYPERLINK(&quot;'+xmlEscape(url)+'&quot;,&quot;Otvori karticu&quot;)</f><v>Otvori karticu</v></c>';
-          return cell(ref,value,column===4?totalStyles.EUR:column===5?styles[1]:styles[fieldStyles[column]]);
+          if(column===6 && link) return '<c r="'+ref+'" s="'+styles[1]+'" t="str"><f>HYPERLINK(&quot;'+xmlEscape(url)+'&quot;,&quot;Otvori karticu&quot;)</f><v>Otvori karticu</v></c>';
+          return cell(ref,value,column===5?totalStyles.EUR:column===6?styles[1]:styles[fieldStyles[column]]);
         }).join('')+'</row>';
       });
     });
@@ -394,16 +394,16 @@
       const result = total.rows[index];
       // Excel caps a row at 409 pt. Continue long descriptions in visible
       // rows of the same table instead of clipping or shrinking the text.
-      const chunks = readableChunks(compactParameters(item), 29, 24);
+      const chunks = readableChunks(compactParameters(item), 20, 24);
       chunks.forEach((description, part) => {
         const number = nextRow++;
-        const values = part ? ['', '', description, '', '', ''] :
-          [index + 1, item.latinName, description, item.unit,result.price.value,result.amount];
-        const height = lineHeight(values, [4, 21, 29, 12, 13, 15], 30);
+        const values = part ? ['', '', description, '', '', '', ''] :
+          [index + 1, item.latinName, description,result.quantity.value,item.unit,result.price.value,result.amount];
+        const height = lineHeight(values, [4, 21, 20, 10, 12, 13, 15], 30);
         rows += '<row r="'+number+'" ht="'+height+'" customHeight="1">' +
           values.map((value, column) => cell(tableColumns[column] + number, value, styles[fieldStyles[column]],
-            !part && column === 5 ? 'ROUND(L'+number+'*H'+number+',2)' : '')).join('') +
-          (!part ? cell('K'+number, item.currency, '4')+cell('L'+number,result.quantity.value,'4') : '') + '</row>';
+            !part && column === 6 ? 'ROUND(F'+number+'*H'+number+',2)' : '')).join('') +
+          (!part ? cell('K'+number, item.currency, '4') : '') + '</row>';
       });
     });
     const lastData = nextRow - 1, lastRow = lastData + (recommendation ? 0 : total.totals.length);
@@ -416,7 +416,7 @@
         cell('J'+sumRow, subtotal.amount, totalStyles[subtotal.currency], formula) + '</row>';
     });
     main = replaceRows(main, 19, rows, 'L', lastRow);
-    main = main.replace(/sqref="F23"/g, 'sqref="L19:L'+lastData+'"')
+    main = main.replace(/sqref="F23"/g, 'sqref="F19:F'+lastData+'"')
       .replace(/sqref="G23"/g, 'sqref="H19:H'+lastData+'"');
     if (recommendation) main = main.replace(/<dataValidations\b[^>]*>[\s\S]*?<\/dataValidations>/g,'');
     main = configureA4(main, lastRow, recommendation);
@@ -437,7 +437,7 @@
     return zip.generateAsync({ type: 'uint8array', compression: 'DEFLATE',
       mimeType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
   }
-  // A4 portrait with hidden internal quantity and currency.
+  // A4 portrait with visible quantity and hidden currency.
   function configureA4(xml, lastRow, recommendation = false) {
     xml = xml.replace('</sheetPr>', '<pageSetUpPr fitToPage="1"/></sheetPr>');
     xml = xml.replace(/<pane\b[^>]*\/>/, '<pane ySplit="18" topLeftCell="A19" activePane="bottomLeft" state="frozen"/>');
@@ -446,7 +446,7 @@
       const original = [...body.matchAll(/<mergeCell\b[^>]*\bref="[^"]+"[^>]*\/>/g)].map(m=>m[0])
         .map(tag=>tag.replace(/:I(\d+)"/, ':J$1"'));
       const additions = [];
-      for (let row=18; row<lastRow+(recommendation?1:0); row++) additions.push('B'+row+':C'+row,'D'+row+':F'+row,'H'+row+':I'+row);
+      for (let row=18; row<lastRow+(recommendation?1:0); row++) additions.push('B'+row+':C'+row,'D'+row+':E'+row,'H'+row+':I'+row);
       if(!recommendation) additions.push('H'+lastRow+':I'+lastRow);
       return '<mergeCells count="'+(original.length+additions.length)+'">'+original.join('')+
         additions.map(ref=>'<mergeCell ref="'+ref+'"/>').join('')+'</mergeCells>';
