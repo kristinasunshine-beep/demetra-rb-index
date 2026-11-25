@@ -1,22 +1,22 @@
 {
-  "checkedAt": "2026-11-24T07:59:45.353Z",
+  "checkedAt": "2026-11-25T08:40:28.753Z",
   "sourceReadable": true,
   "verifiedPrices": 4019,
   "updatedPrices": 0,
   "pendingPrices": 0,
-  "newSourceFiles": 2,
+  "newSourceFiles": 0,
   "changedSourceFiles": 0,
   "source": "Poslovni folder Rasadnici ponude",
   "catalogReviewComplete": false,
   "unreviewedSourceFiles": 25,
   "addedPlants": 0,
-  "addedVariants": 7,
+  "addedVariants": 0,
   "addedNurseries": 0,
   "restoredPrices": 0,
   "pendingCatalogRows": 3108,
   "lastCatalogAdditionAt": "2026-11-24T08:27:20.677Z",
   "archiveFilesInspected": 206,
   "pricedCatalogOffers": 4019,
-  "pendingNewCatalogRows": 4,
-  "newCatalogDocumentsReviewed": 2
+  "pendingNewCatalogRows": 0,
+  "newCatalogDocumentsReviewed": 0
 }
