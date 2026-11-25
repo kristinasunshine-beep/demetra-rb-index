@@ -1047,7 +1047,7 @@ body.control-room .record-offer-pickers .offer-picker-count{background:#f8f8f8;b
 </style>
 
 
-<style id="reference-segment-picker-r25">
+<style id="reference-segment-picker-r26">
 body.control-room{--index-emphasis-weight:700;--index-label-weight:400;--index-detail-size:16px;--index-key-size:20px;--index-key-line:24px}
 body.control-room .record-offer-pickers .supplier-offer-picker,
 body.control-room .record-offer-pickers .supplier-offer-picker[open]{border:3px solid #161A19;border-radius:0;box-shadow:none;padding:0}
@@ -1061,10 +1061,11 @@ body.control-room .record-offer-pickers .offer-picker-trigger-meta{display:flex;
 body.control-room .record-offer-pickers .offer-picker-chevron{width:14px;height:14px;flex:0 0 14px;border-right:4px solid #FA593B;border-bottom:4px solid #FA593B;margin:0 4px 3px 0}
 body.control-room .offer-picker-options{display:grid;gap:7px;padding:0 0 6px;background:#fff}
 body.control-room .offer-picker-menu::before{display:none}
-body.control-room .offer-picker-option{position:relative;display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"params" "meta";align-items:stretch;gap:0;padding:8px 18px;min-height:0;border:0;border-radius:0;box-shadow:none;background:#FFFFFF;transition:background .15s ease}
-body.control-room .offer-picker-option::before{content:"";position:absolute;inset:0 auto 0 0;width:8px;background:#FA593B;transform:scaleX(0);transform-origin:left;transition:transform .15s ease;pointer-events:none;z-index:1}
-body.control-room .offer-picker-option:hover::before,body.control-room .offer-picker-option:focus-within::before,body.control-room .offer-picker-option.is-selected::before{transform:scaleX(1)}
-body.control-room .offer-picker-option:hover,body.control-room .offer-picker-option:focus-within,body.control-room .offer-picker-option.is-selected,body.control-room .offer-picker-option.is-selected:hover,body.control-room .offer-picker-option.is-selected:focus-within{background:#F8EDE9;box-shadow:none}
+body.control-room .offer-picker-option{position:relative;display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"params" "meta";align-items:stretch;gap:0;padding:8px 18px;min-height:0;border:0;border-radius:0;box-shadow:none;background:#FFFFFF;transition:none}
+body.control-room .offer-picker-option::before{content:"";position:absolute;inset:0 auto 0 0;width:8px;background:#FA593B;transform:scaleX(0);transform-origin:left;transition:none;pointer-events:none;z-index:1}
+body.control-room .offer-picker-option:hover::before,body.control-room #plant-dialog-content:not(:has(.offer-picker-option:hover)) .offer-picker-option:has(:focus-visible)::before{transform:scaleX(1)}
+body.control-room .offer-picker-option.is-selected,body.control-room .offer-picker-option:focus-within,body.control-room .offer-picker-option.is-selected:focus-within{background:#FFFFFF;box-shadow:none}
+body.control-room .offer-picker-option:hover,body.control-room .offer-picker-option.is-selected:hover,body.control-room .offer-picker-option:focus-within:hover,body.control-room #plant-dialog-content:not(:has(.offer-picker-option:hover)) .offer-picker-option:has(:focus-visible){background:#F8EDE9;box-shadow:none}
 body.control-room .offer-picker-select{display:flex;align-items:stretch;align-self:stretch;gap:0;padding:0;min-width:0;min-height:0}
 body.control-room .offer-picker-option-index{display:flex;align-items:center;justify-content:flex-start;flex:0 0 26px;align-self:stretch;margin:0;color:#FA593B;font:650 13px/1.25 var(--sans)}
 body.control-room .offer-picker-measures{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));align-items:stretch;column-gap:0;row-gap:2px;grid-auto-rows:min-content;min-width:0;flex:1}
@@ -1138,7 +1139,8 @@ body.control-room .offer-picker-option .offer-picker-select,
 body.control-room .offer-picker-option .offer-picker-select:hover,
 body.control-room .offer-picker-option .offer-picker-select:focus-visible,
 body.control-room .offer-picker-option .offer-picker-select.is-selected{background:transparent}
-body.control-room .offer-picker-option .offer-picker-select:focus-visible{outline:2px solid #FA593B;outline-offset:-2px}
+body.control-room .offer-picker-option .offer-picker-select:focus-visible{outline:none}
+body.control-room #plant-dialog-content:not(:has(.offer-picker-option:hover)) .offer-picker-option .offer-picker-select:focus-visible{outline:2px solid #FA593B;outline-offset:-2px}
 </style>
 </head>
   <body class="control-room" data-view="search">
@@ -1251,8 +1253,8 @@ body.control-room .offer-picker-option .offer-picker-select:focus-visible{outlin
     <script src="./assets/narodni-nazivi.js?v=20261116"></script>
     <script src="./assets/moja-ponuda-core.js?v=strict-source-quantity-r1-20261125"></script>
     <script src="./assets/moja-ponuda.js?v=compact-picker-r15-20261124"></script>
-    <script src="./assets/brza-preporuka-core.js?v=strict-source-quantity-r1-20261125"></script>
-    <script src="./assets/brza-preporuka.js?v=strict-source-quantity-r1-20261125"></script>
+    <script src="./assets/brza-preporuka-core.js?v=strict-source-quantity-r3-20261125"></script>
+    <script src="./assets/brza-preporuka.js?v=strict-source-quantity-r3-20261125"></script>
     <script type="module">
 // BEGIN CATALOG CORE
 const {validateImport,searchPlants,normalize,isStemHeightLabel,hasMeasurementValue}=(()=>{

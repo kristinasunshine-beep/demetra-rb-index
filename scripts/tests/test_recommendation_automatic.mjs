@@ -12,7 +12,7 @@ const XLSX=require(resolve(assets,'vendor/xlsx-0.20.3.full.min.js'));
 const Zip=require(resolve(assets,'vendor/jszip-3.10.1.min.js'));
 const plant="Acer campestre 'Elsrijk'";
 const catalog={
-  plants:[{id:'p1',latinName:plant,synonyms:[]}],
+  plants:[{id:'p1',latinName:plant,synonyms:[]},{id:'p2',latinName:'Fraxinus excelsior',synonyms:[]},{id:'p3',latinName:'Tamarix ramosissima',synonyms:[]},{id:'p4',latinName:'Celtis occidentalis',synonyms:[]}],
   nurseries:[{id:'n1',name:'Rasadnik A'},{id:'n2',name:'Rasadnik B'}],
   offers:[
     {id:'eur',plantId:'p1',nurseryId:'n1',seedlingType:'Standard',circumference:'18–20',height:'300–350',price:65,currency:'EUR',unit:'kom',taxStatus:'Bez PDV-a',sourceDate:'2026-11-13'},
@@ -319,4 +319,27 @@ test('all sheets and arbitrary cells are scanned; unrelated text never enters th
   assert.equal(recognition.length,3);
   const overview=XLSX.utils.sheet_to_json(book.Sheets['Pregled preporuke'],{header:1,defval:''});
   assert(overview.slice(1).every(row=>row[0]===plant&&row[6]!==9));
+});
+
+test('Italian availability heading and OCR fragments never become botanical recommendations',async()=>{
+  const instance=worker();
+  const result=await instance.processPdf([
+    ["VIVAI NORD YOUNG PLANT AVAILABILITY 20_04_2026"],
+    ["Disponibilita isponibilita g giovani p piante a l"],
+    ["Disponibilità giovani piante"],
+    ["Jedinica mere"],
+    ["Acer campestre Elsrijk","Standard","visina 300–350"],
+    ["Acer campestre 'Pogresan kultivar'","Standard","visina 300–350"]
+  ]);
+  assert.equal(result.processed,2);
+  assert.equal(result.preview[0].canonicalName,plant);
+  assert.equal(result.preview[1].status,'not_found');
+  const output=XLSX.read(await instance.download(),{type:'array'});
+  const names=XLSX.utils.sheet_to_json(output.Sheets['Prepoznate biljke'],{header:1}).map(row=>row[0]);
+  assert.deepEqual(names,['Latinski naziv biljke',plant,"Acer campestre 'Pogresan kultivar'"]);
+});
+test('heading-only PDF returns zero recommendations, not a fabricated plant',async()=>{
+  const instance=worker();
+  const result=await instance.processPdf([['Disponibilita giovani piante'],['Jedinica mere'],['Young plant availability']]);
+  assert.equal(result.processed,0);assert.deepEqual(result.preview,[]);
 });

@@ -38,7 +38,7 @@ export function layoutRows(items,previous=null){
   }
   return {rows,columns};
 }
-export async function extractPdfRows(bytes,{signal,onProgress=()=>{}}={}){
+export async function extractPdfRows(bytes,{signal,onProgress=()=>{},hasBotanicalRows=null}={}){
   cancelled(signal);
   const pdfjs=await import(url('pdfjs/pdf.min.mjs'));
   pdfjs.GlobalWorkerOptions.workerSrc=url('pdfjs/pdf.worker.min.mjs');
@@ -53,7 +53,8 @@ export async function extractPdfRows(bytes,{signal,onProgress=()=>{}}={}){
       const page=await doc.getPage(n),content=await page.getTextContent();
       let items=content.items.filter(i=>i.str?.trim());
       // A scan may contain only a page number or a short header text layer.
-      if(items.map(i=>i.str).join(' ').trim().length<35){
+      const nativeRows=layoutRows(items,columns).rows;
+      if(items.map(i=>i.str).join(' ').trim().length<35 || (hasBotanicalRows&&!hasBotanicalRows(nativeRows))){
         onProgress('Prepoznajem skeniranu stranu (OCR) · '+n+' / '+doc.numPages);
         if(!globalThis.Tesseract){
           await new Promise((resolve,reject)=>{
@@ -69,8 +70,12 @@ export async function extractPdfRows(bytes,{signal,onProgress=()=>{}}={}){
         await page.render({canvasContext:canvas.getContext('2d'),viewport}).promise;
         const recognized=await ocr.recognize(canvas,{}, {text:true,blocks:true});
         const words=(recognized.data.blocks||[]).flatMap(b=>(b.paragraphs||[]).flatMap(p=>(p.lines||[]).flatMap(l=>l.words||[])));
-        items=words.map(w=>({str:w.text,x:w.bbox.x0/2.5,y:(canvas.height-(w.bbox.y0+w.bbox.y1)/2)/2.5,width:(w.bbox.x1-w.bbox.x0)/2.5}));
-        if(!items.length&&recognized.data.text?.trim())for(const line of recognized.data.text.split(/\r?\n/))if(line.trim())rows.push([line.trim()]);
+        const ocrItems=words.map(w=>({str:w.text,x:w.bbox.x0/2.5,y:(canvas.height-(w.bbox.y0+w.bbox.y1)/2)/2.5,width:(w.bbox.x1-w.bbox.x0)/2.5}));
+        if(ocrItems.length){
+          const ocrRows=layoutRows(ocrItems,columns).rows;
+          if(!hasBotanicalRows||hasBotanicalRows(ocrRows)||!items.length)items=ocrItems;
+        }
+        if(!ocrItems.length&&recognized.data.text?.trim())for(const line of recognized.data.text.split(/\r?\n/))if(line.trim())rows.push([line.trim()]);
         canvas.width=canvas.height=0;
       }
       const parsed=layoutRows(items,columns);columns=parsed.columns;rows.push(...parsed.rows);page.cleanup();

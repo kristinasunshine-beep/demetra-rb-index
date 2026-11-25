@@ -52,7 +52,7 @@
     el('recommend-next-page').addEventListener('click',()=>turnPage(1));
     function ensureWorker(){
       if(worker)return worker;
-      const workerUrl=assets.workerSource?URL.createObjectURL(new Blob([assets.workerSource],{type:'text/javascript'})):new URL('./assets/brza-preporuka-worker.js?v=strict-source-quantity-r1-20261125',document.baseURI);
+      const workerUrl=assets.workerSource?URL.createObjectURL(new Blob([assets.workerSource],{type:'text/javascript'})):new URL('./assets/brza-preporuka-worker.js?v=strict-source-quantity-r3-20261125',document.baseURI);
       worker=new Worker(workerUrl);if(assets.workerSource)URL.revokeObjectURL(workerUrl);
       worker.onmessage=({data})=>{
         if(data.type==='progress')status(data.message);
@@ -60,7 +60,7 @@
           hasResult=true;setBusy(false);el('recommend-results').hidden=false;el('recommend-result-heading').textContent=filename;
           el('recommend-result-counts').textContent=`Obrađeno: ${data.processed.toLocaleString('sr-Latn-RS')} · Prepoznato: ${(data.recognized??data.matched).toLocaleString('sr-Latn-RS')} · Tačno podudaranje: ${data.matched.toLocaleString('sr-Latn-RS')} · Nepotpuna specifikacija: ${(data.needsData??0).toLocaleString('sr-Latn-RS')} · Nije pronađeno u indeksu: ${(data.notFound??0).toLocaleString('sr-Latn-RS')} · Nema potvrđene ponude: ${data.unmatched.toLocaleString('sr-Latn-RS')}`;
           rankedResults=data.preview;pageIndex=0;excludedIds=new Set();removed=[];renderRankedPage();
-          el('recommend-results').scrollIntoView({behavior:'smooth',block:'start'});status('Gotovo. Preuzmi Excel sa preporukama.');
+          el('recommend-results').scrollIntoView({behavior:'smooth',block:'start'});status(data.processed?'Gotovo. Preuzmi Excel sa preporukama.':'Nijedan botanički naziv nije prepoznat. Proveri čitljivost dokumenta.',!data.processed);
         }
         if(data.type==='download'){
           const url=URL.createObjectURL(new Blob([data.bytes],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}));
@@ -79,8 +79,9 @@
         let pdfRows=null;
         if(/\.pdf$/i.test(file.name)){
           pdfAbort=new AbortController();
-          const module=await import(new URL('./assets/pdf-import.mjs?v=ocr-lines-r2-20261121',document.baseURI).href);
-          pdfRows=await module.extractPdfRows(await file.arrayBuffer(),{signal:pdfAbort.signal,onProgress:message=>{if(current===generation)status(message);}});
+          const module=await import(new URL('./assets/pdf-import.mjs?v=botanical-ocr-r3-20261125',document.baseURI).href);
+          const botanicalIndex=window.DemetraRecommendCore.makeIndex(catalog);
+          pdfRows=await module.extractPdfRows(await file.arrayBuffer(),{signal:pdfAbort.signal,hasBotanicalRows:rows=>rows.some(row=>window.DemetraRecommendCore.sourceRequests(botanicalIndex,row,{},[]).some(hit=>!hit.identity.startsWith('unknown:'))),onProgress:message=>{if(current===generation)status(message);}});
         }
         if(current===generation)ensureWorker().postMessage({type:'process',file,catalog,pdfRows});
       }catch(error){if(current===generation){setBusy(false);status(error.message,true);}}

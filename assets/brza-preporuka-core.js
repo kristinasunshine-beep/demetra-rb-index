@@ -162,8 +162,11 @@
     const exact=findPlant(index,raw);
     if(exact.id)return [{name:raw,identity:exact.id,tail:exact.remainder||''}];
     // A complete unknown binomial/cultivar is review-only, never a known parent species.
-    const standalone=looksBotanical(raw)&&(!/^(?:ovaj|ova|ovo|sve|svi|dva|tri|jedan|jedna|zadrzi|primer|napomena|izvor|spisak|lista|tabela|proveriti|ukupno|za|bez|sa|na|u|the|this|all|please|total|note)\b/i.test(raw));
-    if(explicit&&standalone)return [{name:raw,identity:'unknown:'+norm(raw),tail:''}];
+    const genus=norm(raw).split(' ')[0];
+    const knownGenus=sourceMatcher(index).has(genus);
+    const standalone=knownGenus&&!headerField(raw)&&!informationalHeader(raw)&&looksBotanical(raw)&&(!/^(?:ovaj|ova|ovo|sve|svi|dva|tri|jedan|jedna|zadrzi|primer|napomena|izvor|spisak|lista|tabela|proveriti|ukupno|za|bez|sa|na|u|the|this|all|please|total|note)\b/i.test(raw));
+    const unknownShape=/^[\s"'“”‘’]*[A-Z][a-z]{2,}\s+(?:[×x]\s+)?[a-z][a-z-]{2,}(?:\s+['"‘’“”]?[A-Z][A-Za-z0-9'-]*['"‘’“”]?){0,4}[\s"'“”‘’]*$/u;
+    if(explicit&&standalone&&unknownShape.test(raw))return [{name:raw,identity:'unknown:'+norm(raw),tail:''}];
     const tokens=[...raw.matchAll(/[\p{L}\p{N}]+|×/gu)].map(m=>({word:norm(m[0]),start:m.index,end:m.index+m[0].length}));
     const byFirst=sourceMatcher(index),hits=[];
     for(let i=0;i<tokens.length;i++){
@@ -185,7 +188,7 @@
     }
     if(hits.length)return hits.map((hit,i)=>({...hit,tail:raw.slice(hit.end,hits[i+1]?.start??raw.length).trim()}));
     // Unknown taxa in a standalone name cell are accepted for review only.
-    if(standalone&&/^[A-Z][a-z]{2,}\s+[a-z][a-z-]{2,}(?:\s+['"‘’“”]?[A-Z][A-Za-z0-9'-]*['"‘’“”]?){0,4}$/.test(raw))
+    if(standalone&&unknownShape.test(raw))
       return [{name:raw,identity:'unknown:'+norm(raw),tail:''}];
     return [];
   }
@@ -195,7 +198,7 @@
     if(String(base.name??'').trim()&&String(base.cultivar??'').trim()){
       const full=norm(base.name).endsWith(' '+norm(base.cultivar))?String(base.name):String(base.name)+' '+base.cultivar;
       const found=findPlant(index,full);
-      if(found.id||looksBotanical(full))hits.push({name:full,identity:found.id||'unknown:'+norm(full),tail:'',column:[...nameColumns][0]});
+      if(found.id||sourceNames(index,full,true).some(hit=>hit.identity.startsWith('unknown:')))hits.push({name:full,identity:found.id||'unknown:'+norm(full),tail:'',column:[...nameColumns][0]});
     }
     for(let column=0;column<row.length;column++){
       if(hits.some(h=>h.column===column)&&nameColumns.has(column))continue;
@@ -225,7 +228,7 @@
       }
       if(!one)request._validationError='Više biljaka u istom redu: zajednički parametri i količina nisu automatski pripisani pojedinačnoj biljci.';
       return {request,identity:hit.identity,column:hit.column};
-    }).filter(entry=>isBotanicalSource(index,entry.request));
+    }).filter(entry=>isBotanicalSource(index,entry.request)&&(!entry.identity.startsWith('unknown:')||sourceMatcher(index).has(norm(entry.request.name).split(' ')[0])));
   }
   function parsePreferences(value){
     let s=String(value??'').trim().replace(/[–—−]/g,'-');const fields={},conflicts=[];
@@ -633,7 +636,8 @@
       return keys.includes('name')&&keys.some(k=>k&&k!=='name')?row.slice():null;
     }
     function append(name,spec,cv='',raw='',quantity=''){
-      if(!isBotanicalSource(index,{name,cultivar:cv})){current=null;return;}
+      const full=cv&&!norm(name).endsWith(' '+norm(cv))?name+' '+cv:name;
+      if(!sourceNames(index,full,true).length){current=null;return;}
       const found=findPlant(index,name,cv);
       current=[found.id?index.plants.get(found.id).latinName:name,explicitMeasure(spec),found.id?'':cv,raw,quantity];
       result.push(current);

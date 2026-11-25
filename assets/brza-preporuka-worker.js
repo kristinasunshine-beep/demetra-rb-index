@@ -1,5 +1,5 @@
 'use strict';
-importScripts('vendor/xlsx-0.20.3.full.min.js','vendor/jszip-3.10.1.min.js','brza-preporuka-core.js?v=strict-source-quantity-r1-20261125','recommendation-excel.js?v=strict-source-quantity-r1-20261125','moja-ponuda-core.js?v=strict-source-quantity-r1-20261125');
+importScripts('vendor/xlsx-0.20.3.full.min.js','vendor/jszip-3.10.1.min.js','brza-preporuka-core.js?v=strict-source-quantity-r3-20261125','recommendation-excel.js?v=strict-source-quantity-r1-20261125','moja-ponuda-core.js?v=strict-source-quantity-r1-20261125');
 const Core=self.DemetraRecommendCore;
 let sheets=[],results=null,originalWorkbook=null,recognitionRows=null,entries=[];
 function send(type,data={}){postMessage({type,...data});}
@@ -194,6 +194,7 @@ self.onmessage=async({data})=>{try{
       }
     }
     results.push(...addedSheets);
+    if(!processed)send('progress',{message:'Nije pronađen nijedan potvrđen botanički naziv u dokumentu.'});
     if(overviewRows.length>1){
       let overviewName='Pregled preporuke',ordinal=2;
       while(names.has(overviewName))overviewName='Pregled preporuke '+ordinal++;
