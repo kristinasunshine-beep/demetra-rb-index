@@ -29,7 +29,7 @@ function workbook(sheets){
 
 // Execute the production browser worker and every real import, without a DOM,
 // a fake matcher, network access, or files outside this repository.
-function worker(){
+function worker(testCatalog=catalog){
   const messages=[],commands=[];
   const sandbox={console,setTimeout,clearTimeout,TextEncoder,TextDecoder,ArrayBuffer,Uint8Array,DataView,
     postMessage(message){messages.push(structuredClone(message));},
@@ -53,7 +53,7 @@ function worker(){
     messages,commands,
     async process(input){
       commands.push('process');
-      await context.onmessage({data:{type:'process',file:{name:'input.xlsx',arrayBuffer:async()=>input},catalog:structuredClone(catalog)}});
+      await context.onmessage({data:{type:'process',file:{name:'input.xlsx',arrayBuffer:async()=>input},catalog:structuredClone(testCatalog)}});
       assert.equal(messages.filter(m=>m.type==='error').length,0,JSON.stringify(messages.filter(m=>m.type==='error')));
       const result=messages.findLast(m=>m.type==='results');
       assert(result,'A single process command must produce results');
@@ -63,7 +63,7 @@ function worker(){
     },
     async processPdf(pdfRows){
       commands.push('process');
-      await context.onmessage({data:{type:'process',file:{name:'plants.pdf'},pdfRows,catalog:structuredClone(catalog)}});
+      await context.onmessage({data:{type:'process',file:{name:'plants.pdf'},pdfRows,catalog:structuredClone(testCatalog)}});
       assert.equal(messages.filter(m=>m.type==='error').length,0,JSON.stringify(messages.filter(m=>m.type==='error')));
       const result=messages.findLast(m=>m.type==='results');
       assert(result,'PDF import must yield results');
@@ -365,13 +365,17 @@ test('final panel selection filters the actual shared memorandum download and re
 });
 
 test('remove one nursery offer without removing other offers or the botanical identity; actual shared download honors edits',async()=>{
- const instance=worker();
+ // Keep the baseline placeholder and wrong-currency regression fixtures intact.
+ // This scenario requires a second independently eligible, partially matching EUR offer.
+ const eligible={...catalog.offers.find(o=>o.id==='wrong-size'),id:'eligible-second',price:95};
+ const instance=worker({...catalog,offers:[...catalog.offers,eligible]});
  const result=await instance.process(workbook([['Biljke',[
   ['Latinski naziv biljke','Tip sadnice','Visina (cm)','Količina'],
   [plant,'Standard','300–350',7]
  ]]]));
- const item=result.preview[0];assert(item.suppliers.length>=2);
+ const item=result.preview[0];assert.deepEqual(item.suppliers.map(s=>s.offerIds[0]),['eur','eligible-second']);
  const [first,second]=item.suppliers;
+ assert.equal(first.matchCount,2);assert.equal(second.matchCount,1);
  const key=JSON.stringify([item.id,first.offerIds[0]]);
  const output=XLSX.read(await instance.download([],true,[key]),{type:'array'});
  const report=XLSX.utils.sheet_to_json(output.Sheets['Brza preporuka'],{header:1,defval:''});
