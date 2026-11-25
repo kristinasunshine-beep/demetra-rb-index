@@ -44,3 +44,15 @@
   body.control-room .recommend-navigation button{flex:1 1 120px}
   body.control-room .recommend-navigation #recommend-page-label{order:-1;flex:1 0 100%;text-align:center}
 }
+
+/* Final selection belongs exclusively to the quick recommendation panel. */
+body.control-room .recommend-preselection{border:1px solid #161A19;margin:16px 0;padding:12px;background:#fff}
+body.control-room .recommend-selection-head{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+body.control-room .recommend-selection-head button{border:1px solid #161A19;background:white;color:#161A19;padding:7px 10px;cursor:pointer}
+body.control-room .recommend-selection-head button:disabled{opacity:.45;cursor:default}
+body.control-room .recommend-selection-list{max-height:290px;overflow:auto}
+body.control-room .recommend-selection-item{display:grid;grid-template-columns:20px minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px 4px;border-top:1px solid #D8DDD4;cursor:pointer;font:14px/1.3 var(--sans)}
+body.control-room .recommend-selection-item input{width:17px;height:17px;accent-color:#234d36}
+body.control-room .recommend-selection-item small{display:block;font:12px/1.3 var(--sans);color:#68736B;overflow-wrap:anywhere}
+body.control-room .recommend-selection-state{font:11px/1.2 var(--sans);color:#68736B}
+body.control-room .recommend-selection-item:has(input:not(:checked)){background:#F8EDE9}

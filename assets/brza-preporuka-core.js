@@ -166,7 +166,7 @@
     const knownGenus=sourceMatcher(index).has(genus);
     const standalone=knownGenus&&!headerField(raw)&&!informationalHeader(raw)&&looksBotanical(raw)&&(!/^(?:ovaj|ova|ovo|sve|svi|dva|tri|jedan|jedna|zadrzi|primer|napomena|izvor|spisak|lista|tabela|proveriti|ukupno|za|bez|sa|na|u|the|this|all|please|total|note)\b/i.test(raw));
     const unknownShape=/^[\s"'“”‘’]*[A-Z][a-z]{2,}\s+(?:[×x]\s+)?[a-z][a-z-]{2,}(?:\s+['"‘’“”]?[A-Z][A-Za-z0-9'-]*['"‘’“”]?){0,4}[\s"'“”‘’]*$/u;
-    if(explicit&&standalone&&unknownShape.test(raw))return [{name:raw,identity:'unknown:'+norm(raw),tail:''}];
+    if(explicit&&standalone&&(unknownShape.test(raw)||/^[\s"'“”‘’]*[A-Z][a-z]{2,}\s+[a-z][a-z-]{2,}\s+['‘’][^'‘’]+['‘’]\s*$/.test(raw)))return [{name:raw,identity:'unknown:'+norm(raw),tail:''}];
     const tokens=[...raw.matchAll(/[\p{L}\p{N}]+|×/gu)].map(m=>({word:norm(m[0]),start:m.index,end:m.index+m[0].length}));
     const byFirst=sourceMatcher(index),hits=[];
     for(let i=0;i<tokens.length;i++){

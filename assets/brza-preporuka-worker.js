@@ -1,5 +1,5 @@
 'use strict';
-importScripts('vendor/xlsx-0.20.3.full.min.js','vendor/jszip-3.10.1.min.js','brza-preporuka-core.js?v=strict-source-quantity-r3-20261125','recommendation-excel.js?v=strict-source-quantity-r1-20261125','moja-ponuda-core.js?v=strict-source-quantity-r1-20261125');
+importScripts('vendor/xlsx-0.20.3.full.min.js','vendor/jszip-3.10.1.min.js','brza-preporuka-core.js?v=final-selection-r4-20261125','recommendation-excel.js?v=strict-source-quantity-r1-20261125','moja-ponuda-core.js?v=strict-source-quantity-r1-20261125');
 const Core=self.DemetraRecommendCore;
 let sheets=[],results=null,originalWorkbook=null,recognitionRows=null,entries=[];
 function send(type,data={}){postMessage({type,...data});}
@@ -231,4 +231,4 @@ self.onmessage=async({data})=>{try{
     const withRecognition=await appendRecognizedSheet(bytes,selectedRecognition);
     postMessage({type:'download',bytes:withRecognition},[withRecognition]);
   }
-}catch(error){results=null;send('error',{message:error.message||'Tabela nije mogla da se obradi.'});}};
+}catch(error){if(data.type==='process')results=null;send('error',{message:error.message||'Tabela nije mogla da se obradi.'});}};

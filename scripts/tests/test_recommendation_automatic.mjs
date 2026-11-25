@@ -34,8 +34,8 @@ function worker(){
   const sandbox={console,setTimeout,clearTimeout,TextEncoder,TextDecoder,ArrayBuffer,Uint8Array,DataView,
     postMessage(message){messages.push(structuredClone(message));},
     async fetch(url){
-      assert.equal(url,'test-template.xlsx');
-      const bytes=readFileSync(resolve(assets,'brza-preporuka-template.xlsx'));
+      assert(['test-template.xlsx','shared-template.xlsx'].includes(url));
+      const bytes=readFileSync(resolve(assets,url==='shared-template.xlsx'?'moja-ponuda-template.xlsx':'brza-preporuka-template.xlsx'));
       return {ok:true,arrayBuffer:async()=>bytes.buffer.slice(bytes.byteOffset,bytes.byteOffset+bytes.byteLength)};
     }
   };
@@ -69,9 +69,9 @@ function worker(){
       assert(result,'PDF import must yield results');
       return result;
     },
-    async download(excludedIds=[]){
+    async download(excludedIds=[],shared=false){
       commands.push('export');
-      await context.onmessage({data:{type:'export',excludedIds,templateUrl:'test-template.xlsx'}});
+      await context.onmessage({data:{type:'export',excludedIds,templateUrl:'test-template.xlsx',...(shared?{sharedTemplateUrl:'shared-template.xlsx'}:{})}});
       assert.equal(messages.filter(m=>m.type==='error').length,0,JSON.stringify(messages.filter(m=>m.type==='error')));
       const result=messages.findLast(m=>m.type==='download');assert(result,'Export must produce a download');
       return result.bytes;
@@ -342,4 +342,24 @@ test('heading-only PDF returns zero recommendations, not a fabricated plant',asy
   const instance=worker();
   const result=await instance.processPdf([['Disponibilita giovani piante'],['Jedinica mere'],['Young plant availability']]);
   assert.equal(result.processed,0);assert.deepEqual(result.preview,[]);
+});
+
+test('final panel selection filters the actual shared memorandum download and recognition sheet, and can be restored',async()=>{
+  const instance=worker();
+  const result=await instance.process(workbook([['Biljke',[
+    ['Latinski naziv biljke','Tip sadnice','Visina (cm)','Količina'],
+    [plant,'Standard','300–350',7],
+    ['Fraxinus ornus','Standard','300–350',12]
+  ]]]));
+  assert.equal(result.preview.length,2);
+  const excluded=[result.preview[0].id];
+  const output=XLSX.read(await instance.download(excluded,true),{type:'array'});
+  const report=XLSX.utils.sheet_to_json(output.Sheets['Brza preporuka'],{header:1,defval:''});
+  assert(report[17].includes('Količina'));
+  assert(report.slice(18).some(row=>row.includes('Fraxinus ornus')&&row.includes(12)));
+  assert(!JSON.stringify(report.slice(18)).includes('Elsrijk'));
+  const recognized=XLSX.utils.sheet_to_json(output.Sheets['Prepoznate biljke'],{header:1});
+  assert.deepEqual(recognized.map(row=>row[0]),['Latinski naziv biljke','Fraxinus ornus']);
+  const restored=XLSX.read(await instance.download([],true),{type:'array'});
+  assert(XLSX.utils.sheet_to_json(restored.Sheets['Brza preporuka'],{header:1}).some(row=>row.includes(plant)&&row.includes(7)));
 });
