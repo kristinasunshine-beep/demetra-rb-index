@@ -317,6 +317,8 @@ test('all sheets and arbitrary cells are scanned; unrelated text never enters th
   assert(result.preview.every(row=>row.canonicalName===plant));
   assert.equal(result.preview[0].quantity,7);
   const removedItem=result.preview[1];
+  assert.equal(removedItem.quantity,9,'Explicit quantity header must survive Latin-name extraction from the description');
+  assert(removedItem.suppliers.length>0,'The target must actually have offers before deletion');
   const book=XLSX.read(await instance.download([removedItem.id],false,removedItem.suppliers.map(s=>JSON.stringify([removedItem.id,s.offerIds[0]]))),{type:'array'});
   const recognition=XLSX.utils.sheet_to_json(book.Sheets['Prepoznate biljke'],{header:1,defval:''});
   assert.equal(recognition.length,4);

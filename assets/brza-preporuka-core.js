@@ -80,6 +80,12 @@
     const auxiliary=tokens.some(v=>/^(?:parametar|parameter|naziv parametra)$/.test(v))&&tokens.some(v=>/^(?:vrednost|vrijednost|value)$/.test(v));
     if(auxiliary)return {headerRow:guess.row,map:{},headers,dataStartRow:guess.dataStartRow,hasHeader:true,enabled:false,reason:'Pomoćni list sa pojedinačnim parametrima sačuvan je bez dupliranja biljaka.'};
     let hasHeader=guess.hasHeader,headerRow=guess.row,dataStartRow=guess.dataStartRow,map={...guess.map},effectiveHeaders=headers;
+    // An explicit specification/quantity header is valid even if the Latin
+    // identity is embedded in a description instead of a dedicated name column.
+    if(!hasHeader&&index&&map.quantity!==undefined&&map.preferences!==undefined&&
+      rows.slice(dataStartRow).some(row=>row.some(v=>typeof v==='string'&&sourceNames(index,v).some(hit=>!hit.identity.startsWith('unknown:'))))){
+      hasHeader=true;
+    }
     if(!hasHeader){
       const counts=new Map();for(let r=0;r<Math.min(rows.length,240);r++)(rows[r]||[]).forEach((v,c)=>{if(!index||!String(v??'').trim())return;const found=findPlant(index,v);if(found.id||looksBotanical(v)){const hit=counts.get(c)||{count:0,first:r};hit.count+=found.id?3:1;counts.set(c,hit);}});
       const ranked=[...counts.entries()].sort((a,b)=>b[1].count-a[1].count);

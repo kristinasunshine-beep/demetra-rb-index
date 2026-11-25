@@ -70,7 +70,7 @@
     el('recommend-next-page').addEventListener('click',()=>turnPage(1));
     function ensureWorker(){
       if(worker)return worker;
-      const workerUrl=assets.workerSource?URL.createObjectURL(new Blob([assets.workerSource],{type:'text/javascript'})):new URL('./assets/brza-preporuka-worker.js?v=archive-name-only-r6-20261125',document.baseURI);
+      const workerUrl=assets.workerSource?URL.createObjectURL(new Blob([assets.workerSource],{type:'text/javascript'})):new URL('./assets/brza-preporuka-worker.js?v=description-quantity-r7-20261125',document.baseURI);
       worker=new Worker(workerUrl);if(assets.workerSource)URL.revokeObjectURL(workerUrl);
       worker.onmessage=({data})=>{
         if(data.type==='progress')status(data.message);
