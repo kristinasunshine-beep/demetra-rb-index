@@ -42,4 +42,28 @@ try{
    assert.deepEqual(colors.closed,['rgb(95, 119, 74)','rgb(255, 255, 255)'],'Closed selector '+width);
    assert.deepEqual(colors.opened,colors.closed,'Open selector '+width);
  }
+
+ // Exercise the actual portal styles and browser pointer/focus states, not a source-string assertion.
+ await page.setViewportSize({width:1440,height:900});
+ await page.evaluate(()=>{
+   const dialog=document.getElementById('plant-dialog'),root=document.getElementById('plant-dialog-content');
+   root.innerHTML='<h2 id="plant-detail-title">Test</h2><div class="record-offer-pickers"><details class="supplier-offer-picker" open><summary class="offer-picker-trigger">Arbor</summary><div class="offer-picker-menu"><div class="offer-picker-options">'+[1,2,3].map(i=>'<article class="offer-picker-option'+(i===1?' is-selected':'')+'" data-test-row="'+i+'"><button class="offer-picker-select'+(i===1?' is-selected':'')+'" type="button" aria-pressed="'+(i===1)+'">Ponuda '+i+'</button><div class="offer-picker-ledger-meta"><button class="offer-picker-quote-add">Moja ponuda</button></div></article>').join('')+'</div></div></details></div>';
+   if(!dialog.open)dialog.showModal();
+ });
+ const row=i=>page.locator('[data-test-row="'+i+'"]');
+ const highlights=()=>page.locator('[data-test-row]').evaluateAll(rows=>rows.map(el=>({bg:getComputedStyle(el).backgroundColor,bar:getComputedStyle(el,'::before').transform})));
+ const verify=async active=>{
+   const state=await highlights();
+   for(let i=0;i<state.length;i++){
+     assert.equal(state[i].bg,i+1===active?'rgb(248, 237, 233)':'rgb(255, 255, 255)',JSON.stringify(state));
+     assert.equal(state[i].bar,i+1===active?'matrix(1, 0, 0, 1, 0, 0)':'matrix(0, 0, 0, 1, 0, 0)',JSON.stringify(state));
+   }
+ };
+ await page.locator('#plant-detail-title').hover();await verify(0);
+ await row(1).hover();await verify(1);
+ await row(1).locator('.offer-picker-select').focus();
+ await row(2).hover();await verify(2);
+ await row(3).locator('.offer-picker-quote-add').hover();await verify(3);
+ await page.locator('#plant-detail-title').hover();await verify(0);
+ console.log('Single pointer highlight verified: no default or retained selection color.');
 }finally{await browser.close();server.close();}
