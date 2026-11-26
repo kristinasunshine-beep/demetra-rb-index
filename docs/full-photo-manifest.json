@@ -12974,6 +12974,346 @@
       "sha256": "adca02fd637c49df8e1cd284a2d6886442bcab997489e1c756bfec4df252aaac",
       "checkedAt": "2026-11-23T15:01:32Z",
       "matchLevel": "exact"
+    },
+    "plant-b771e8a1fe62ed": {
+      "nurseryId": "willaert",
+      "provider": "other_catalogue_nursery",
+      "matchedName": "Abelia grandiflora 'Edward Goucher'",
+      "sourceUrl": "https://www.willaert.be/nl/plant/abelia-grandiflora-edward-goucher/abegouch/",
+      "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/ABEGOUCH_369_1710201812721.jpg",
+      "resolver": "willaert_catalog_card",
+      "identityEvidence": {
+        "kind": "exact_named_catalog_card",
+        "name": "Abelia grandiflora 'Edward Goucher'",
+        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Abelia+grandiflora+%27Edward+Goucher%27",
+        "detailUrl": "https://www.willaert.be/nl/plant/abelia-grandiflora-edward-goucher/abegouch/",
+        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/ABEGOUCH_369_1710201812721.jpg",
+        "canonicalName": "Abelia grandiflora 'Edward Goucher'"
+      },
+      "canonicalName": "Abelia grandiflora 'Edward Goucher'",
+      "imageHosts": [
+        "www.willaert.be"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "abelia grandiflora edward goucher",
+      "latinName": "Abelia grandiflora 'Edward Goucher'",
+      "image": "assets/biljke/reference-ee0c466b050231ea53fc395c.jpg",
+      "sha256": "ee0c466b050231ea53fc395cafdd52a05812f4281528a538d5ff5afc6c4dc4a8",
+      "checkedAt": "2026-11-26T08:35:23Z",
+      "matchLevel": "exact"
+    },
+    "plant-939a6b2c310688": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "innocenti-mangoni",
+      "imageUrl": "https://innocentiemangonipiante.it/wp-content/uploads/2023/06/1642753432.jpeg",
+      "sourceUrl": "https://innocentiemangonipiante.it/en/spiraea-x-arguta/",
+      "matchedName": "Spiraea x arguta",
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Spiraea x arguta"
+      },
+      "imageHosts": [
+        "innocentiemangonipiante.it"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "spiraea x arguta",
+      "latinName": "Spiraea x arguta",
+      "image": "assets/biljke/reference-2b2293eec67d94910d9a854a.jpg",
+      "sha256": "2b2293eec67d94910d9a854a78bfb927e2cbb533a4d7db9171ee87b213304954",
+      "checkedAt": "2026-11-26T08:35:27Z",
+      "matchLevel": "exact"
+    },
+    "plant-50a41b2d933a27": {
+      "nurseryId": "willaert",
+      "provider": "other_catalogue_nursery",
+      "matchedName": "Tamarix tetrandra",
+      "sourceUrl": "https://www.willaert.be/nl/plant/tamarix-tetrandra/tatetran/",
+      "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/TAMARIX__TETRANDRA.jpg",
+      "resolver": "willaert_catalog_card",
+      "identityEvidence": {
+        "kind": "exact_named_catalog_card",
+        "name": "Tamarix tetrandra",
+        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Tamarix+tetrandra",
+        "detailUrl": "https://www.willaert.be/nl/plant/tamarix-tetrandra/tatetran/",
+        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/TAMARIX__TETRANDRA.jpg",
+        "canonicalName": "Tamarix tetrandra"
+      },
+      "canonicalName": "Tamarix tetrandra",
+      "imageHosts": [
+        "www.willaert.be"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "tamarix tetrandra",
+      "latinName": "Tamarix tetrandra",
+      "image": "assets/biljke/reference-c064f66c8d16710e2acbb81e.jpg",
+      "sha256": "c064f66c8d16710e2acbb81ed3995121b2d9dfbe012a8c00066f7ee319fb31b1",
+      "checkedAt": "2026-11-26T08:35:27Z",
+      "matchLevel": "exact"
+    },
+    "plant-cf04fd2bfc9ceb": {
+      "nurseryId": "willaert",
+      "provider": "other_catalogue_nursery",
+      "matchedName": "Myrtus communis",
+      "sourceUrl": "https://www.willaert.be/nl/plant/myrtus-communis/mycommun/",
+      "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/MYCOMMUN_369_15072026102842.jpg",
+      "resolver": "willaert_catalog_card",
+      "identityEvidence": {
+        "kind": "exact_named_catalog_card",
+        "name": "Myrtus communis",
+        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Myrtus+communis",
+        "detailUrl": "https://www.willaert.be/nl/plant/myrtus-communis/mycommun/",
+        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/MYCOMMUN_369_15072026102842.jpg",
+        "canonicalName": "Myrtus communis"
+      },
+      "canonicalName": "Myrtus communis",
+      "imageHosts": [
+        "www.willaert.be"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "myrtus communis",
+      "latinName": "Myrtus communis",
+      "image": "assets/biljke/reference-f4f0e9a70e716bb0e76c3edc.jpg",
+      "sha256": "f4f0e9a70e716bb0e76c3edc739db5a7dd89cf27892ea14fb21cb009dae80f3b",
+      "checkedAt": "2026-11-26T08:35:32Z",
+      "matchLevel": "exact"
+    },
+    "plant-e25b089c3455ee": {
+      "nurseryId": "willaert",
+      "provider": "other_catalogue_nursery",
+      "matchedName": "Fallopia baldschuanica",
+      "sourceUrl": "https://www.willaert.be/nl/plant/fallopia-baldschuanica/fabaldsc/",
+      "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/FABALDSC_369_30122014132119.jpg",
+      "resolver": "willaert_catalog_card",
+      "identityEvidence": {
+        "kind": "exact_named_catalog_card",
+        "name": "Fallopia baldschuanica",
+        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Fallopia+baldschuanica",
+        "detailUrl": "https://www.willaert.be/nl/plant/fallopia-baldschuanica/fabaldsc/",
+        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/FABALDSC_369_30122014132119.jpg",
+        "canonicalName": "Fallopia baldschuanica"
+      },
+      "canonicalName": "Fallopia baldschuanica",
+      "imageHosts": [
+        "www.willaert.be"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "fallopia baldschuanica",
+      "latinName": "Fallopia baldschuanica",
+      "image": "assets/biljke/reference-cadd0ae4a8d6f1c21cc4681a.jpg",
+      "sha256": "cadd0ae4a8d6f1c21cc4681a8da0dcf81145b54b10ba2bac5fbf9130c84ce5a8",
+      "checkedAt": "2026-11-26T08:35:34Z",
+      "matchLevel": "exact"
+    },
+    "plant-24d3e8dc228776": {
+      "nurseryId": "willaert",
+      "provider": "other_catalogue_nursery",
+      "matchedName": "Echinacea purpurea 'White Swan'",
+      "sourceUrl": "https://www.willaert.be/nl/plant/echinacea-purpurea-white-swan/ecpwswan/",
+      "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/ECPWSWAN_369_1602202310537.jpg",
+      "resolver": "willaert_catalog_card",
+      "identityEvidence": {
+        "kind": "exact_named_catalog_card",
+        "name": "Echinacea purpurea 'White Swan'",
+        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Echinacea+purpurea+%27White+Swan%27",
+        "detailUrl": "https://www.willaert.be/nl/plant/echinacea-purpurea-white-swan/ecpwswan/",
+        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/ECPWSWAN_369_1602202310537.jpg",
+        "canonicalName": "Echinacea purpurea 'White Swan'"
+      },
+      "canonicalName": "Echinacea purpurea 'White Swan'",
+      "imageHosts": [
+        "www.willaert.be"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "echinacea purpurea white swan",
+      "latinName": "Echinacea purpurea 'White Swan'",
+      "image": "assets/biljke/reference-3188d2274dc557bf7a04b23e.jpg",
+      "sha256": "3188d2274dc557bf7a04b23e8f4cd385f5762f6dab368a9383e5bc59baa4774f",
+      "checkedAt": "2026-11-26T08:35:37Z",
+      "matchLevel": "exact"
+    },
+    "plant-97c7c377d17d54": {
+      "nurseryId": "willaert",
+      "provider": "other_catalogue_nursery",
+      "matchedName": "Parthenocissus tricuspidata 'Veitchii'",
+      "sourceUrl": "https://www.willaert.be/nl/plant/parthenocissus-tricuspidata-veitchii/patveitc/",
+      "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/PATVEITC_369_3012201416256.JPG",
+      "resolver": "willaert_catalog_card",
+      "identityEvidence": {
+        "kind": "exact_named_catalog_card",
+        "name": "Parthenocissus tricuspidata ' Veitchii'",
+        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Parthenocissus+tricuspidata+%27+Veitchii%27",
+        "detailUrl": "https://www.willaert.be/nl/plant/parthenocissus-tricuspidata-veitchii/patveitc/",
+        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/PATVEITC_369_3012201416256.JPG",
+        "canonicalName": "Parthenocissus tricuspidata 'Veitchii'"
+      },
+      "canonicalName": "Parthenocissus tricuspidata 'Veitchii'",
+      "imageHosts": [
+        "www.willaert.be"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "parthenocissus tricuspidata veitchii",
+      "latinName": "Parthenocissus tricuspidata 'Veitchii'",
+      "image": "assets/biljke/reference-b8d78801ddc21b439dc76909.jpg",
+      "sha256": "b8d78801ddc21b439dc76909c7b3d8a26570bcd9408aa65be1c72f829e1f1dc9",
+      "checkedAt": "2026-11-26T08:35:39Z",
+      "matchLevel": "exact"
+    },
+    "plant-d31cb8dac4cd2b": {
+      "nurseryId": "willaert",
+      "provider": "other_catalogue_nursery",
+      "matchedName": "Aster novae-angliae 'Purple Dome'",
+      "sourceUrl": "https://www.willaert.be/nl/plant/aster-novae-angliae-purple-dome/asnapdom/",
+      "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/ASNAPDOM_369_1410202414482.jpg",
+      "resolver": "willaert_catalog_card",
+      "identityEvidence": {
+        "kind": "exact_named_catalog_card",
+        "name": "Aster novae angliae 'Purple Dome'",
+        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Aster+novae+angliae+%27Purple+Dome%27",
+        "detailUrl": "https://www.willaert.be/nl/plant/aster-novae-angliae-purple-dome/asnapdom/",
+        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/ASNAPDOM_369_1410202414482.jpg",
+        "canonicalName": "Aster novae-angliae 'Purple Dome'"
+      },
+      "canonicalName": "Aster novae-angliae 'Purple Dome'",
+      "imageHosts": [
+        "www.willaert.be"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "aster novae angliae purple dome",
+      "latinName": "Aster novae-angliae 'Purple Dome'",
+      "image": "assets/biljke/reference-af3293c6c30651e5cf919dbc.jpg",
+      "sha256": "af3293c6c30651e5cf919dbcf01aa320dd24252b6228e7307794637c0a08a1e0",
+      "checkedAt": "2026-11-26T08:35:43Z",
+      "matchLevel": "exact"
+    },
+    "plant-83184ab6f038c1": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "innocenti-mangoni",
+      "imageUrl": "https://innocentiemangonipiante.it/wp-content/uploads/2023/10/1643645146.jpeg",
+      "sourceUrl": "https://innocentiemangonipiante.it/en/artemisia-arborescens-powis-castle/",
+      "matchedName": "Artemisia arborescens 'Powis Castle'",
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Artemisia arborescens 'Powis Castle'"
+      },
+      "imageHosts": [
+        "innocentiemangonipiante.it"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "artemisia arborescens powis castle",
+      "latinName": "Artemisia arborescens 'Powis Castle'",
+      "image": "assets/biljke/reference-1fff63c429c1c597c23e8d21.jpg",
+      "sha256": "1fff63c429c1c597c23e8d217ce819fa542ae2ac52ba809294ef762927a7345f",
+      "checkedAt": "2026-11-26T08:35:44Z",
+      "matchLevel": "exact"
+    },
+    "plant-fab2d55f36e7bd": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "innocenti-mangoni",
+      "imageUrl": "https://innocentiemangonipiante.it/wp-content/uploads/2023/06/1642157323.jpg",
+      "sourceUrl": "https://innocentiemangonipiante.it/en/perovskia-atriplicifolia/",
+      "matchedName": "Perovskia atriplicifolia",
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Perovskia atriplicifolia"
+      },
+      "imageHosts": [
+        "innocentiemangonipiante.it"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "perovskia atriplicifolia",
+      "latinName": "Perovskia atriplicifolia",
+      "image": "assets/biljke/reference-5ff51916e8516c7a1e3e3659.jpg",
+      "sha256": "5ff51916e8516c7a1e3e365924185bbcdf36fe549ee66012ec7ff3841fd3dadb",
+      "checkedAt": "2026-11-26T08:35:47Z",
+      "matchLevel": "exact"
+    },
+    "plant-b8cb9c58ff4e5a": {
+      "nurseryId": "willaert",
+      "provider": "other_catalogue_nursery",
+      "matchedName": "Viburnum opulus",
+      "sourceUrl": "https://www.willaert.be/nl/plant/viburnum-opulus/viopulus/",
+      "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/VIBURNUM__OPULUS_3.jpg",
+      "resolver": "willaert_catalog_card",
+      "identityEvidence": {
+        "kind": "exact_named_catalog_card",
+        "name": "Viburnum opulus",
+        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Viburnum++opulus",
+        "detailUrl": "https://www.willaert.be/nl/plant/viburnum-opulus/viopulus/",
+        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/VIBURNUM__OPULUS_3.jpg",
+        "canonicalName": "Viburnum opulus"
+      },
+      "canonicalName": "Viburnum opulus",
+      "imageHosts": [
+        "www.willaert.be"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "viburnum opulus",
+      "latinName": "Viburnum opulus",
+      "image": "assets/biljke/reference-65145708d00918baad9e418f.jpg",
+      "sha256": "65145708d00918baad9e418f0150eda533c698a3b4fbec6c1651af2005d3c796",
+      "checkedAt": "2026-11-26T08:35:48Z",
+      "matchLevel": "exact"
+    },
+    "plant-43fb6659e5332b": {
+      "nurseryId": "willaert",
+      "provider": "other_catalogue_nursery",
+      "matchedName": "Pennisetum alopecuroides",
+      "sourceUrl": "https://www.willaert.be/nl/plant/pennisetum-alopecuroides/pealopec/",
+      "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/PENNISETUM_ALOPECUROIDES.jpg",
+      "resolver": "willaert_catalog_card",
+      "identityEvidence": {
+        "kind": "exact_named_catalog_card",
+        "name": "Pennisetum alopecuroides",
+        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Pennisetum+alopecuroides",
+        "detailUrl": "https://www.willaert.be/nl/plant/pennisetum-alopecuroides/pealopec/",
+        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/PENNISETUM_ALOPECUROIDES.jpg",
+        "canonicalName": "Pennisetum alopecuroides"
+      },
+      "canonicalName": "Pennisetum alopecuroides",
+      "imageHosts": [
+        "www.willaert.be"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "pennisetum alopecuroides",
+      "latinName": "Pennisetum alopecuroides",
+      "image": "assets/biljke/reference-c8a22d1e511bfcb4be9f1dcc.jpg",
+      "sha256": "c8a22d1e511bfcb4be9f1dcc0859e7130a180fecad179bcbaec6fc5be526d7a5",
+      "checkedAt": "2026-11-26T08:35:50Z",
+      "matchLevel": "exact"
+    },
+    "plant-a9874496b684ce": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "innocenti-mangoni",
+      "imageUrl": "https://innocentiemangonipiante.it/wp-content/uploads/2023/10/1643618423.jpg",
+      "sourceUrl": "https://innocentiemangonipiante.it/en/pinus-mugo/",
+      "matchedName": "Pinus mugo",
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Pinus mugo"
+      },
+      "imageHosts": [
+        "innocentiemangonipiante.it"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "pinus mugo",
+      "latinName": "Pinus mugo",
+      "image": "assets/biljke/reference-567b6c12b9d210749fb36daa.jpg",
+      "sha256": "567b6c12b9d210749fb36daad40a57ab3cd78d548addb35f2be970161392b9a0",
+      "checkedAt": "2026-11-26T08:35:59Z",
+      "matchLevel": "exact"
     }
   },
   "retiredReferences": {

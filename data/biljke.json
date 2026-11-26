@@ -9005,7 +9005,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-2b2293eec67d94910d9a854a.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/spiraea-x-arguta/"
+      }
     },
     {
       "id": "plant-50a41b2d933a27",
@@ -9015,7 +9019,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-c064f66c8d16710e2acbb81e.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/tamarix-tetrandra/tatetran/"
+      }
     },
     {
       "id": "plant-b8cb9c58ff4e5a",
@@ -9025,7 +9033,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-65145708d00918baad9e418f.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/viburnum-opulus/viopulus/"
+      }
     },
     {
       "id": "plant-b771e8a1fe62ed",
@@ -9035,7 +9047,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-ee0c466b050231ea53fc395c.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/abelia-grandiflora-edward-goucher/abegouch/"
+      }
     },
     {
       "id": "plant-c3d0945c6c6a06",
@@ -9055,7 +9071,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-b8d78801ddc21b439dc76909.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/parthenocissus-tricuspidata-veitchii/patveitc/"
+      }
     },
     {
       "id": "plant-e25b089c3455ee",
@@ -9065,7 +9085,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-cadd0ae4a8d6f1c21cc4681a.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/fallopia-baldschuanica/fabaldsc/"
+      }
     },
     {
       "id": "plant-3b46eb63597a36",
@@ -9085,7 +9109,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-f4f0e9a70e716bb0e76c3edc.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/myrtus-communis/mycommun/"
+      }
     },
     {
       "id": "plant-83184ab6f038c1",
@@ -9095,7 +9123,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-1fff63c429c1c597c23e8d21.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/artemisia-arborescens-powis-castle/"
+      }
     },
     {
       "id": "plant-d31cb8dac4cd2b",
@@ -9105,7 +9137,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-af3293c6c30651e5cf919dbc.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/aster-novae-angliae-purple-dome/asnapdom/"
+      }
     },
     {
       "id": "plant-24d3e8dc228776",
@@ -9115,7 +9151,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-3188d2274dc557bf7a04b23e.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/echinacea-purpurea-white-swan/ecpwswan/"
+      }
     },
     {
       "id": "plant-fab2d55f36e7bd",
@@ -9125,7 +9165,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-5ff51916e8516c7a1e3e3659.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/perovskia-atriplicifolia/"
+      }
     },
     {
       "id": "plant-8b48be0e5170c6",
@@ -9175,7 +9219,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-c8a22d1e511bfcb4be9f1dcc.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/pennisetum-alopecuroides/pealopec/"
+      }
     },
     {
       "id": "plant-a9874496b684ce",
@@ -9185,7 +9233,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-567b6c12b9d210749fb36daa.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/pinus-mugo/"
+      }
     }
   ]
 }
