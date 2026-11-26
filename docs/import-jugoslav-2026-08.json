@@ -1,0 +1,211 @@
+{
+  "schemaVersion": 1,
+  "sourceFile": "Tirsova 2 sadnice kolicina - Jugoslav.xlsx",
+  "sourceSha256": "e42f375b6a26a472ff0cef9421ce192f1167b81642bf3ed8ee9d132cf54d53f2",
+  "sheet": "Sheet2",
+  "sourcePeriod": "2026-08",
+  "periodEvidence": "A35: avgust 2026. - Jugoslav",
+  "nurseryId": "rasadnik-jugoslav-unresolved",
+  "nurseryName": "Jugoslav",
+  "country": "Srbija",
+  "rows": [
+    {
+      "row": 1,
+      "request": "Spiraea x arguta 10l",
+      "offered": "5l-400 din",
+      "latinName": "Spiraea x arguta"
+    },
+    {
+      "row": 2,
+      "request": "Tamarix tetrandra 10l",
+      "offered": "5l-400 din",
+      "latinName": "Tamarix tetrandra"
+    },
+    {
+      "row": 3,
+      "request": "Cotinus coggygria `Royal Purple` 10l",
+      "offered": "",
+      "latinName": "Cotinus coggygria 'Royal Purple'"
+    },
+    {
+      "row": 4,
+      "request": "Viburnum opulus 10l",
+      "offered": "5l-1200 din",
+      "latinName": "Viburnum opulus"
+    },
+    {
+      "row": 5,
+      "request": "Abelia grandiflora 'Edward Goucher' 5l, 30/40cm",
+      "offered": "5l-1000 din",
+      "latinName": "Abelia grandiflora 'Edward Goucher'"
+    },
+    {
+      "row": 6,
+      "request": "Juniperus horizontalis 10l",
+      "offered": "3l-550 din",
+      "latinName": "Juniperus horizontalis"
+    },
+    {
+      "row": 7,
+      "request": "Jasminum nudiflorum 10l",
+      "offered": "5l-400 din",
+      "latinName": "Jasminum nudiflorum"
+    },
+    {
+      "row": 8,
+      "request": "Lonicera Japonica 5l 150/175cm",
+      "offered": "5l-400 din H150cm",
+      "latinName": "Lonicera japonica"
+    },
+    {
+      "row": 9,
+      "request": "Parthenocissus tricuspidata 'Veitchii' 5l 150/175cm",
+      "offered": "5l-1200 din H150cm",
+      "latinName": "Parthenocissus tricuspidata 'Veitchii'"
+    },
+    {
+      "row": 10,
+      "request": "Fallopia baldschuanica 5l 150/175cm",
+      "offered": "",
+      "latinName": "Fallopia baldschuanica"
+    },
+    {
+      "row": 11,
+      "request": "Hedera helix  'Gold Child' 5l 150/175cm",
+      "offered": "5l-1800 din H150cm",
+      "latinName": "Hedera helix 'Gold Child'"
+    },
+    {
+      "row": 12,
+      "request": "Buddleja davidii 'Black Knight'10l",
+      "offered": "5l-500 din",
+      "latinName": "Buddleja davidii 'Black Knight'"
+    },
+    {
+      "row": 13,
+      "request": "Weigela florida 'Variegata' 10l",
+      "offered": "5l-600 din",
+      "latinName": "Weigela florida 'Variegata'"
+    },
+    {
+      "row": 14,
+      "request": "Abelia grandiflora 'Edward Goucher' 5l, 30/40cm",
+      "offered": "5l-1000 din",
+      "latinName": "Abelia grandiflora 'Edward Goucher'"
+    },
+    {
+      "row": 15,
+      "request": "Myrtus communis 5l, 30/40cm",
+      "offered": "",
+      "latinName": "Myrtus communis"
+    },
+    {
+      "row": 16,
+      "request": "Artemisia arborescens 'Powis Castle' P17 2l",
+      "offered": "1l-300din",
+      "latinName": "Artemisia arborescens 'Powis Castle'"
+    },
+    {
+      "row": 17,
+      "request": "Aster novae-angliae  'Purple Dome' P17 2l",
+      "offered": "1l-300din",
+      "latinName": "Aster novae-angliae 'Purple Dome'"
+    },
+    {
+      "row": 18,
+      "request": "Echinacea purpurea 'White Swan' P17 2l",
+      "offered": "1l-240 din",
+      "latinName": "Echinacea purpurea 'White Swan'"
+    },
+    {
+      "row": 19,
+      "request": "Lavandula angustifolia P19 3l",
+      "offered": "5l-1000 din",
+      "latinName": "Lavandula angustifolia"
+    },
+    {
+      "row": 20,
+      "request": "Perovskia atriplicifolia P17 2l",
+      "offered": "1.5l-250 din",
+      "latinName": "Perovskia atriplicifolia"
+    },
+    {
+      "row": 21,
+      "request": "Rudbeckia fulgida P17 2l",
+      "offered": "1.5l-250 din",
+      "latinName": "Rudbeckia fulgida"
+    },
+    {
+      "row": 22,
+      "request": "Rosmarinus officinalis P19 3l",
+      "offered": "3l-400 din",
+      "latinName": "Rosmarinus officinalis"
+    },
+    {
+      "row": 23,
+      "request": "Santolina chamaecyparissus P17",
+      "offered": "1.5l-250 din",
+      "latinName": "Santolina chamaecyparissus"
+    },
+    {
+      "row": 24,
+      "request": "Salvia nemorosa 'Negrito' P17",
+      "offered": "1.5l-240 din",
+      "latinName": "Salvia nemorosa 'Negrito'"
+    },
+    {
+      "row": 25,
+      "request": "Thymus citriodorus 'Doone Walley', P17",
+      "offered": "",
+      "latinName": "Thymus citriodorus 'Doone Walley'"
+    },
+    {
+      "row": 26,
+      "request": "Verbena bonariensis P17 2l",
+      "offered": "1.5l-250 din",
+      "latinName": "Verbena bonariensis"
+    },
+    {
+      "row": 27,
+      "request": "Cortaderia selloana 'White' P22 5l",
+      "offered": "3l-500 din",
+      "latinName": "Cortaderia selloana 'White'"
+    },
+    {
+      "row": 28,
+      "request": "Miscanthus sinensis 'Silberfeder' P22 5l",
+      "offered": "3l-500 din",
+      "latinName": "Miscanthus sinensis 'Silberfeder'"
+    },
+    {
+      "row": 29,
+      "request": "Stipa tenuissima P15 1.5l",
+      "offered": "1.5l-350 din",
+      "latinName": "Stipa tenuissima"
+    },
+    {
+      "row": 30,
+      "request": "Pennisetum alopecuroides P15 1.5l",
+      "offered": "1.5l-350 din",
+      "latinName": "Pennisetum alopecuroides"
+    },
+    {
+      "row": 31,
+      "request": "Pennisetum setaceum 'Rubrum' P17 2l",
+      "offered": "",
+      "latinName": "Pennisetum setaceum 'Rubrum'"
+    },
+    {
+      "row": 32,
+      "request": "Pinus mugo 25l 40-50cm",
+      "offered": "fi40-1200 din",
+      "latinName": "Pinus mugo"
+    },
+    {
+      "row": 33,
+      "request": "Euonymus japonica 'Paloma Blanca'  10l",
+      "offered": "5l-2200 din",
+      "latinName": "Euonymus japonicus 'Paloma Blanca'"
+    }
+  ]
+}
