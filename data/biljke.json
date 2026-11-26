@@ -9287,7 +9287,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-acc151211d214a851b5dc297.jpg",
+        "sourceUrl": "https://smitsbv.nl/en/products/juniperus-chinensis/"
+      }
     },
     {
       "id": "plant-dadea911925e52",
@@ -9297,7 +9301,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-94451e5b9e66c9422bec13aa.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/agapanthus-africanus/agafrica/"
+      }
     },
     {
       "id": "plant-7437c10c9338ee",
@@ -9307,7 +9315,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-cc8a9b4e03e3c2c361893246.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/agave-filifera/"
+      }
     },
     {
       "id": "plant-ba054fe6a596de",
@@ -9317,7 +9329,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-d5764bebb14d934d7443fe14.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/agave-geminiflora/"
+      }
     },
     {
       "id": "plant-b96e0f3337ea29",
@@ -9347,7 +9363,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-6697e39e37968a89c81b7dbb.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/alyogyne-huegelii/alyogyne/"
+      }
     },
     {
       "id": "plant-b49138d93f425c",
@@ -9377,7 +9397,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-e6c701f61650acfe170b4298.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/campsis-radicans/caradica/"
+      }
     },
     {
       "id": "plant-c5107928639a5c",
@@ -9397,7 +9421,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-410ab26fc1d2ce628130cc5e.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4003730.json"
+      }
     },
     {
       "id": "plant-02566b1e0ed45b",
@@ -9407,7 +9435,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-472d76e4006a961d1a21f7d7.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/pandorea-jasminoides/"
+      }
     },
     {
       "id": "plant-82c11957b39a6f",
@@ -9497,7 +9529,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-dfae2c3a87e5e229a2599530.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/carex-buchananii/"
+      }
     },
     {
       "id": "plant-eea1c9decc6ca2",
@@ -9527,7 +9563,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-1460e579847021bff486a7db.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4004540.json"
+      }
     },
     {
       "id": "plant-dbb43157dae713",
@@ -9597,7 +9637,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-986cc2b8106e8b9c507bb7a1.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/cordyline-australis-peko/"
+      }
     },
     {
       "id": "plant-65558e0eeb3584",
@@ -9617,7 +9661,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-b819974be14ee9d5c9ef4d81.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/cordyline-australis-red-star/"
+      }
     },
     {
       "id": "plant-df4c6470a12bc9",
@@ -9647,7 +9695,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-6797e2a0d88896f5fb14901c.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/cupressus-macrocarpa-goldcrest/cumgoldc/"
+      }
     },
     {
       "id": "plant-6b03f04d11d3aa",
@@ -9657,7 +9709,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-7f8f63252f9ea803eb1eb909.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4006080.json"
+      }
     },
     {
       "id": "plant-5ec1363a7d3a75",
@@ -9677,7 +9733,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-372767d48bd11726ec055f94.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4006230.json"
+      }
     },
     {
       "id": "plant-4ae977dd53b507",
@@ -9697,7 +9757,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-e0a94fb6f353c0077021a7e7.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4006440.json"
+      }
     },
     {
       "id": "plant-936cf2a80ca867",
@@ -9717,7 +9781,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-15f60aaf2b78931ae7011f0f.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4006570.json"
+      }
     },
     {
       "id": "plant-27de87533546cc",
@@ -9747,7 +9815,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-03024ad0ae81855a53abb077.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/eugenia-myrtifolia/"
+      }
     },
     {
       "id": "plant-e4ef6888136198",
@@ -9847,7 +9919,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-b3ece01f0a8421033cc499b0.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/lonicera-caprifolium/locaprif/"
+      }
     },
     {
       "id": "plant-693268f379d0a2",
@@ -9857,7 +9933,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-e172595a460d1b15f4dc1253.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/melia-azedarach/meazedar/"
+      }
     },
     {
       "id": "plant-5dbb5f335230c8",
@@ -9887,7 +9967,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-884602ab4f03633b061da3af.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4011000.json"
+      }
     },
     {
       "id": "plant-794ad992482e36",
@@ -9897,7 +9981,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-5932be447d6a2128e2edd7aa.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4011050.json"
+      }
     },
     {
       "id": "plant-25c0e4a32dea73",
@@ -9907,7 +9995,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-1a75b81bd3131e31a8021780.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/myrtus-communis-tarentina/"
+      }
     },
     {
       "id": "plant-df83d29e4f6903",
@@ -9917,7 +10009,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-d1176b8e46664c19f2d71116.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/nerium-oleander/neoleand/"
+      }
     },
     {
       "id": "plant-7e0e101b1c60b5",
@@ -9927,7 +10023,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-123dbb1a99cc601065169920.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/olea-europaea/oleuropa/"
+      }
     },
     {
       "id": "plant-f632072ce5c08f",
@@ -9957,7 +10057,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-6004b8ac68582311d02a0e60.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/phillyrea-angustifolia/phangust/"
+      }
     },
     {
       "id": "plant-7bc25fa3e9be8a",
@@ -9977,7 +10081,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-f86705ee896769d0f48ce26f.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/phoenix-canariensis/phcanari/"
+      }
     },
     {
       "id": "plant-4e286439796223",
@@ -9987,7 +10095,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-2064a9bb38f39b9ccd842e8c.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/phoenix-roebelenii-2/"
+      }
     },
     {
       "id": "plant-cd6a1900e36428",
@@ -10007,7 +10119,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-b131ff69fc2f44159da35fbf.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4012500.json"
+      }
     },
     {
       "id": "plant-92631072292c87",
@@ -10047,7 +10163,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-fb8403c918f36bf65ede6b44.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4014250.json"
+      }
     },
     {
       "id": "plant-742b5abf4033bd",
@@ -10067,7 +10187,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-6990c598069ea602b3ad4927.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4014330.json"
+      }
     },
     {
       "id": "plant-429f1796d7f2dc",
@@ -10077,7 +10201,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-1c2337a69cab82ebe3a5d0d4.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/solanum-rantonnetii/"
+      }
     },
     {
       "id": "plant-3bcc172358ec9e",
@@ -10097,7 +10225,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-253f218d25c953811f9c5177.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4015550.json"
+      }
     },
     {
       "id": "plant-137bd26ed77013",
@@ -10107,7 +10239,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-67e246239b498f7300567a21.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4015730.json"
+      }
     },
     {
       "id": "plant-cee22c42d15c57",
@@ -10117,7 +10253,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-9886ccb75ea8df579729656e.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4015820.json"
+      }
     },
     {
       "id": "plant-b14dc9f2c919eb",
@@ -10137,7 +10277,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-d4348017e89139c3dbfdc099.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/yucca-elephantipes/"
+      }
     },
     {
       "id": "plant-b7023ff82e7af4",
@@ -10157,7 +10301,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-717bd86134c4dc3d98c7d12c.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4016010.json"
+      }
     },
     {
       "id": "plant-319e61bdd1f704",
@@ -10177,7 +10325,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-7978f2aadc80a5b80279c986.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4016020.json"
+      }
     },
     {
       "id": "plant-e07d1ab35380c0",
@@ -10187,7 +10339,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-0ca83e576f92644eccc668cb.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4000150.json"
+      }
     },
     {
       "id": "plant-2b2b6e65c84762",
@@ -10197,7 +10353,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-e815a96121a4890b8e5b33c8.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/acer-conspicuum-red-flamingo/accrflam/"
+      }
     },
     {
       "id": "plant-148f8d6bff49f3",
@@ -10207,7 +10367,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-65af779bd526a1b85568c2c8.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/acer-japonicum-aconitifolium/acjaconi/"
+      }
     },
     {
       "id": "plant-f84b096a246db1",
@@ -10217,7 +10381,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-2e59a311266bed42b18a31f2.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/acer-palmatum-butterfly/acpbutte/"
+      }
     },
     {
       "id": "plant-425894698c6cc3",
@@ -10227,7 +10395,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-75bf5f1997e3dd29d9754a8a.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4001250.json"
+      }
     },
     {
       "id": "plant-b858d04241aa8d",
@@ -10237,7 +10409,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-e0e2e9a304010fa2eff90b6c.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/acer-palmatum-dissectum-viridis/"
+      }
     },
     {
       "id": "plant-b05a6fdf14f63e",
@@ -10247,7 +10423,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-1f0875512a2b72c9f6cce88d.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/acer-palmatum-fireglow/acpfireg/"
+      }
     },
     {
       "id": "plant-385e18d647885f",
@@ -10257,7 +10437,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-63ce4d72b211e02a9330354d.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/acer-palmatum-osakazuki/acposaka/"
+      }
     },
     {
       "id": "plant-276aa0e8be2aa9",
@@ -10277,7 +10461,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-da5354e9ddf7aa781f516039.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/acer-palmatum-skeeters-broom/acpsbroo/"
+      }
     },
     {
       "id": "plant-5f2c0df62e15bb",
@@ -10287,7 +10475,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-e1b661c481cfffbe6ebadbb6.jpg",
+        "sourceUrl": "https://portal.volentis.com/en/offers/details/acer-rubrum-brandywine-fullground-avenue"
+      }
     },
     {
       "id": "plant-c952b460076ae5",
@@ -10297,7 +10489,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-6b5d64585c5d71acb3e61910.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/aucuba-japonica-crotonifolia/aujcroto/"
+      }
     },
     {
       "id": "plant-997cd749518e77",
@@ -10317,7 +10513,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-b4212d07908d85ff5252910c.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/camellia-sasanqua-plantation-pink/"
+      }
     },
     {
       "id": "plant-34c87d52de8de3",
@@ -10337,7 +10537,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-e3ab3a3de40a4005fae46dad.jpg",
+        "sourceUrl": "https://www.lve-baumschule.de/carpinus-betulus-pendula/68177040"
+      }
     },
     {
       "id": "plant-006a12aff015e9",
@@ -10347,7 +10551,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-85bd841a589f696f4749f7da.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/cercis-canadensis-red-force/"
+      }
     },
     {
       "id": "plant-5b75d8d01d357b",
@@ -10357,7 +10565,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-0d1e3e77f0f481f9b0495853.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/cercis-chinensis-shirobana/cecshiro/"
+      }
     },
     {
       "id": "plant-2dd895b0ee726b",
@@ -10367,7 +10579,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-4173372c9767825d0963012e.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/chionanthus-retusus/chretusu/"
+      }
     },
     {
       "id": "plant-f0990aa4c4bef2",
@@ -10387,7 +10603,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-5bfa12b4ce8c2662a61d30aa.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/clerodendrum-trichotomum/cltricho/"
+      }
     },
     {
       "id": "plant-f2336cac804b2f",
@@ -10407,7 +10627,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-a39d94e710d87320f75cf71a.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/cornus-controversa-variegata/cocvarie/"
+      }
     },
     {
       "id": "plant-c2798157457406",
@@ -10417,7 +10641,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-aafd5c2ef0744f994c72c903.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/cornus-controversa/cocontro/"
+      }
     },
     {
       "id": "plant-b4b256828c860d",
@@ -10427,7 +10655,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-5941df6b47a335ba9e782844.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4005260.json"
+      }
     },
     {
       "id": "plant-e0efe42305cfc1",
@@ -10437,7 +10669,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-1330896a0b86210f7cbff298.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/en/collezione-generale/cornus/2003634/florida-rubra/4005310"
+      }
     },
     {
       "id": "plant-a87874f107fdcd",
@@ -10447,7 +10683,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-0068a5cc0c98a3300f87ae2a.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/cornus-florida/coflorid/"
+      }
     },
     {
       "id": "plant-13ab7af4c1f9f0",
@@ -10457,7 +10697,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-8fa7342e3552c27a31857114.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/cornus-kousa-big-apple/"
+      }
     },
     {
       "id": "plant-50ecae64fcae1d",
@@ -10467,7 +10711,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-d32b2087de04845015c91edf.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/cornus-kousa-milky-way/cokmway/"
+      }
     },
     {
       "id": "plant-2ff5026a03ea98",
@@ -10487,7 +10735,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-1f45820d7effca67196361f7.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/cornus-kousa-satomi/coksatom/"
+      }
     },
     {
       "id": "plant-74c79fa81263fa",
@@ -10547,7 +10799,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-14626f2c60da0a51305893a6.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4005320.json"
+      }
     },
     {
       "id": "plant-7179ab1634a275",
@@ -10607,7 +10863,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-8cc7080b0f9fb12077fd228d.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/cupressocyparis-leylandii-vito/"
+      }
     },
     {
       "id": "plant-dc045c4498d8fb",
@@ -10627,7 +10887,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-31baf7ed6b0d9e8f08d74122.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4006000.json"
+      }
     },
     {
       "id": "plant-306be1fbbb0152",
@@ -10637,7 +10901,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-0433091381d1187288431707.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/cupressus-sempervirens-totem/custotem/"
+      }
     },
     {
       "id": "plant-98cea8a124a374",
@@ -10657,7 +10925,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-b1c04ca55627c650f0e2aa5c.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/edgeworthia-chrysantha/edchrysa/"
+      }
     },
     {
       "id": "plant-60425de1ab8bdf",
@@ -10677,7 +10949,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-a034bdacdcd7da9c7ca76316.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/elaeagnus-x-ebbingei-eleador/"
+      }
     },
     {
       "id": "plant-11c282845979df",
@@ -10697,7 +10973,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-1080aeabdc980e2433784117.jpg",
+        "sourceUrl": "https://portal.volentis.com/en/offers/details/fagus-sylvatica-dawyck-fullground-feathered"
+      }
     },
     {
       "id": "plant-fdefb6b05a0a63",
@@ -10717,7 +10997,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-731cf67d30782cb0af4a2597.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/fraxinus-excelsior-crispa/"
+      }
     },
     {
       "id": "plant-b7d7f967c5af0d",
@@ -10737,7 +11021,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-e1de97e9043ab40b5b29f0d6.jpg",
+        "sourceUrl": "https://www.vdberk.com/trees/ginkgo-biloba-obelisk/"
+      }
     },
     {
       "id": "plant-19bb1cd0786a81",
@@ -10747,7 +11035,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-df13da9c068f0fe6454c002b.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4018380.json"
+      }
     },
     {
       "id": "plant-f35b28b680f257",
@@ -10757,7 +11049,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-98856291743cd665121d61f0.jpg",
+        "sourceUrl": "https://www.lorberg.com/en-gb/article/436/hamamelis-x-intermedia-feuerzauber"
+      }
     },
     {
       "id": "plant-e080d44be1a927",
@@ -10767,7 +11063,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-125eb6534bff1ca0a5915a01.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/hamamelis-x-intermedia-jelena/haijelen/"
+      }
     },
     {
       "id": "plant-c366d96244df9d",
@@ -10787,7 +11087,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-fefa13b6f1ce5a9c217cec39.jpg",
+        "sourceUrl": "https://www.lorberg.com/de-de/hedera-helix-hibernica"
+      }
     },
     {
       "id": "plant-047658d0d1d3cb",
@@ -10807,7 +11111,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-c36c2391e6ace6f6cc6dd877.jpg",
+        "sourceUrl": "https://www.lorberg.com/en-gb/article/106/hibiscus-syriacus-william-r-smith"
+      }
     },
     {
       "id": "plant-5203408aec0b0b",
@@ -10817,7 +11125,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-0caf07489726da620992f0b6.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/hibiscus-syriacus-woodbridge/hiswoodb/"
+      }
     },
     {
       "id": "plant-1f44508b04a7aa",
@@ -10827,7 +11139,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-651ae58da4c298c9b86d7a9b.jpg",
+        "sourceUrl": "https://www.vdberk.com/trees/hovenia-dulcis/"
+      }
     },
     {
       "id": "plant-20418e90c7a0db",
@@ -10847,7 +11163,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-d77e89877d91b7c58b5fc493.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/hydrangea-macrophylla-zorro/hymzorro/"
+      }
     },
     {
       "id": "plant-fda8a8d8c66cad",
@@ -10867,7 +11187,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-677ed874a3895b3c76b53e99.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/hydrangea-quercifolia/hyquerci/"
+      }
     },
     {
       "id": "plant-ac5b338e8498f5",
@@ -10877,7 +11201,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-9f2ad215d1861ee1323b6fb8.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/ilex-crenata-fastigiata/ilcfasti/"
+      }
     },
     {
       "id": "plant-bae09446edd57b",
@@ -10907,7 +11235,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-5f606ced0d456adf5f670680.jpg",
+        "sourceUrl": "https://smitsbv.nl/en/products/ilex-maximowicziana-kanehirae/"
+      }
     },
     {
       "id": "plant-43f7aa5829bec4",
@@ -10917,7 +11249,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-8acd581c637469f9c6ccffa1.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/ilex-nellie-r-stevens/ilnrstev/"
+      }
     },
     {
       "id": "plant-619264eeb072db",
@@ -11017,7 +11353,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-2b19e0d9c6c29e42f645854b.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/lagerstroemia-natchez/lanatche/"
+      }
     },
     {
       "id": "plant-8d95149300b3cd",
@@ -11217,7 +11557,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-8cbc59b482362f111f86eeee.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/ligustrum-japonicum-rotundifolium/lijrotun/"
+      }
     },
     {
       "id": "plant-e83a2fc91e0dfe",
@@ -11227,7 +11571,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-d03484adf1ed5215108dc5ca.jpg",
+        "sourceUrl": "https://portal.volentis.com/en/offers/details/liquidambar-styraciflua-slender-silhouette-container-feathered"
+      }
     },
     {
       "id": "plant-fc792eca58cbd1",
@@ -11247,7 +11595,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-2003fddee9aec30435ab4b50.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/magnolia-grandiflora-alta/magalta/"
+      }
     },
     {
       "id": "plant-35be792d33f2fe",
@@ -11307,7 +11659,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-62eb3341c06684f6113be5d4.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/nandina-domestica/nadomest/"
+      }
     },
     {
       "id": "plant-cd67accef282dd",
@@ -11317,7 +11673,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-54ad262207cb2ced965f64f3.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/osmanthus-armatus/"
+      }
     },
     {
       "id": "plant-3c2a2f44d562b8",
@@ -11327,7 +11687,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-e72415981116734d86454f9a.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4011400.json"
+      }
     },
     {
       "id": "plant-f76de8852cbbf6",
@@ -11377,7 +11741,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-65340537c166748ee8bc46c2.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/parrotia-persica-pendula/"
+      }
     },
     {
       "id": "plant-bc9477b31a0d09",
@@ -11387,7 +11755,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-b50786cf546501f2e4a02128.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/parrotia-persica-persian-spire/pappspir/"
+      }
     },
     {
       "id": "plant-e285ad8516b172",
@@ -11407,7 +11779,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-ed8218bb68170ab18d2c2d37.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/photinia-x-fraseri-magical-volcano/phmvolca/"
+      }
     },
     {
       "id": "plant-8540af3753b93c",
@@ -11417,7 +11793,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-39d8a51f291f4873bfdbed9f.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4011900.json"
+      }
     },
     {
       "id": "plant-1720667d233a3a",
@@ -11437,7 +11817,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-57e5ff088577cefd9cc285c0.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/picea-pungens-edith/"
+      }
     },
     {
       "id": "plant-97597abd318c34",
@@ -11447,7 +11831,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-97f2307b0a7173bbbab78f6a.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4012370.json"
+      }
     },
     {
       "id": "plant-1f5524ededd1cd",
@@ -11457,7 +11845,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-cd8eb8a33e4b7a9e0ae52bfc.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/pittosporum-tobira/pitobira/"
+      }
     },
     {
       "id": "plant-7f888ce9316212",
@@ -11477,7 +11869,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-898c2cc7e68e00dc53de23ea.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/prunus-okame/prokame/"
+      }
     },
     {
       "id": "plant-71bf34aee1d86b",
@@ -11497,7 +11893,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-83a6eb1953df6a7f55c6c91f.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/prunus-subhirtella-pendula/"
+      }
     },
     {
       "id": "plant-4886d92baf459b",
@@ -11507,7 +11907,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-494e3ecbd062bc1f2dfddc3f.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/pyracantha-soleil-dor/pysor/"
+      }
     },
     {
       "id": "plant-561d4aa4d41193",
@@ -11517,7 +11921,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-784447bf710a174c780d12ee.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/pyracantha-ventoux-red/"
+      }
     },
     {
       "id": "plant-525eef040eef5b",
@@ -11527,7 +11935,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-371794ce71ab530bfe715f70.jpg",
+        "sourceUrl": "https://www.vdberk.com/trees/quercus-phillyreoides/"
+      }
     },
     {
       "id": "plant-1930231df25b1f",
@@ -11537,7 +11949,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-b1f2ba82fe5f6b698425c39f.jpg",
+        "sourceUrl": "https://www.vdberk.com/trees/quercus-robur-timuki/"
+      }
     },
     {
       "id": "plant-4cb02c58284bdc",
@@ -11547,7 +11963,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-4a7c5d2305148e36e1879dd1.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/quercus-rysophylla/"
+      }
     },
     {
       "id": "plant-37c08c7690771f",
@@ -11597,7 +12017,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-a49a6d4b38b848a0bc9ff817.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/sciadopitys-verticillata/scvertic/"
+      }
     },
     {
       "id": "plant-6cb517b2e8d03c",
@@ -11607,7 +12031,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-5812badf28d3809a6fe4e46c.jpg",
+        "sourceUrl": "https://www.lve-baumschule.de/spiraea-trilobata/6355526"
+      }
     },
     {
       "id": "plant-4c384ae7368a20",
@@ -11617,7 +12045,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-a0717dc3458d5d9254e77bbb.jpg",
+        "sourceUrl": "https://www.lve-baumschule.de/styrax-japonicus/6355547"
+      }
     },
     {
       "id": "plant-92b7000c6a54c4",
@@ -11627,7 +12059,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-777f09d494695ecae8f2deb7.jpg",
+        "sourceUrl": "https://www.lve-baumschule.de/styrax-obassia/6355548"
+      }
     },
     {
       "id": "plant-0a3408a8ef4fd9",
@@ -11637,7 +12073,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-0bdfcc20132eeccb6a420219.jpg",
+        "sourceUrl": "https://smitsbv.nl/en/products/sycoparrotia-semidecidua/"
+      }
     },
     {
       "id": "plant-a75fe3e370c80e",
@@ -11647,7 +12087,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-adabd57e8453ee77c50a3a4f.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/taxus-baccata-david/tabdavid/"
+      }
     },
     {
       "id": "plant-6002c435c270d0",
@@ -11657,7 +12101,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-c697465028e92ddaca97b808.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/taxus-media-hillii/tamhilli/"
+      }
     },
     {
       "id": "plant-255676ab60f944",
@@ -11687,7 +12135,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-2a019ea9e94f6977b3de51ba.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/trachelospermum-jasminoides/trjasmin/"
+      }
     },
     {
       "id": "plant-9e1d13a6966718",
@@ -11697,7 +12149,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-a6d8a475bf8a15a3abd34f8f.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/ulmus-minor-jacqueline-hillier/ulmjhill/"
+      }
     },
     {
       "id": "plant-5d509b242b91c1",
@@ -11767,7 +12223,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-e55205f5ce5e56688fc48fcc.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/viburnum-farreri/vifarrer/"
+      }
     },
     {
       "id": "plant-1ea5cb35561459",
@@ -11827,7 +12287,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-2ae1f2244ae0ce4fa359beec.jpg",
+        "sourceUrl": "https://www.vdberk.com/trees/zanthoxylum-piperitum/"
+      }
     },
     {
       "id": "plant-7b9a7d7fb1957f",
@@ -11857,7 +12321,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-9f3575c6cdde9238a8a68fcb.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/acer-shirasawanum-jordan/"
+      }
     },
     {
       "id": "plant-c4778a7cd9b02d",
@@ -11887,7 +12355,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-87617b0932dd50fc000bdfcb.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4016901.json"
+      }
     },
     {
       "id": "plant-b3172c80c46eeb",
@@ -11907,7 +12379,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-b6aef90f6fa38c60dca50d6e.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/acer-palmatum-garnet/acpgarne/"
+      }
     },
     {
       "id": "plant-677e1f1bfbb6f0",
@@ -11957,7 +12433,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-3b7f688b8427e4085c80452a.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4016282.json"
+      }
     },
     {
       "id": "plant-ac5a6899412368",
@@ -11987,7 +12467,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-8b039cd1c08587b69fb64cb5.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/acer-palmatum-koto-no-ito/"
+      }
     },
     {
       "id": "plant-41d7570b386f3c",
@@ -11997,7 +12481,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-2a109a4a678183ee9aa8216a.jpg",
+        "sourceUrl": "https://www.vdberk.com/trees/acer-palmatum-masu-kagami/"
+      }
     },
     {
       "id": "plant-2242f017407aea",
@@ -12017,7 +12505,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-e82b3190b9b7277322e463db.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/acer-palmatum-orange-dream/acpodrea/"
+      }
     },
     {
       "id": "plant-c66702b325b260",
@@ -12027,7 +12519,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-68001300af2d7830fef5f628.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4017183.json"
+      }
     },
     {
       "id": "plant-92b392527d0c4a",
@@ -12067,7 +12563,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-6a9da8c352bd277afa03486d.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/acer-palmatum-seiun-kaku/acpskaku/"
+      }
     },
     {
       "id": "plant-b8211edb971beb",
@@ -12107,7 +12607,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-5bef05872cfad1eeeec2f738.jpg",
+        "sourceUrl": "https://portal.volentis.com/en/offers/details/acer-rubrum-october-glory-fullground-avenue"
+      }
     },
     {
       "id": "plant-b6adf419bce196",
@@ -12127,7 +12631,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-111f3a6b62a5504e4dafbfd7.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/berberis-x-ottawensis-superba/"
+      }
     },
     {
       "id": "plant-8464d6f81475fd",
@@ -12177,7 +12685,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-ab94cf5604cdc3f9b9375d36.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/betula-nigra-summer-cascade/"
+      }
     },
     {
       "id": "plant-ee6dc0431f6658",
@@ -12187,7 +12699,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-12a32412065adbe4ccb3bb2b.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/buddleja-davidii-nanho-blue/budnblue/"
+      }
     },
     {
       "id": "plant-60c7599d6e08b8",
@@ -12197,7 +12713,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-362c7eeae48584946f663f3b.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/buddleja-davidii-nanho-purple/budnpurp/"
+      }
     },
     {
       "id": "plant-84274df4692927",
@@ -12207,7 +12727,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-e9a2eab04e05aafe083e3653.jpg",
+        "sourceUrl": "https://www.lorberg.com/en-gb/article/336/buddleja-davidii-pink-delight"
+      }
     },
     {
       "id": "plant-c9fd06ab7ca92f",
@@ -12217,7 +12741,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-fdaa4e413287c053c0d7612e.jpg",
+        "sourceUrl": "https://www.lorberg.com/en-gb/article/372/buddleja-davidii-white-profusion"
+      }
     },
     {
       "id": "plant-3e0bf101e55226",
@@ -12227,7 +12755,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-07e37bb0afb26ae6a6f779e5.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/buxus-microphylla-faulkner/bumfaulk/"
+      }
     },
     {
       "id": "plant-8d65dcb0a70bc4",
@@ -12237,7 +12769,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-2557cf08faf84f6f032888e4.jpg",
+        "sourceUrl": "https://www.lve-baumschule.de/buxus-sempervirens-handsworthiensis/6353110"
+      }
     },
     {
       "id": "plant-cb4529cc68404d",
@@ -12267,7 +12803,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-f4b65325bab0268bdf975765.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/carpinus-betulus-rockhampton-red/cabrred/"
+      }
     },
     {
       "id": "plant-4d9d6c697d3698",
@@ -12287,7 +12827,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-ba77e7de54c2d2fff7c813e9.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/cephalotaxus-harringtonia-fastigiata/cehfasti/"
+      }
     },
     {
       "id": "plant-dd89ed1945597a",
@@ -12317,7 +12861,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-08756b06ab900b6b442d134b.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/choisya-aztec-pearl/chapearl/"
+      }
     },
     {
       "id": "plant-c5c937c53334f2",
@@ -12327,7 +12875,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-9b5d4e3e1581ca0a43f3f2fd.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/choisya-ternata-sundance/"
+      }
     },
     {
       "id": "plant-17f0aa128795af",
@@ -12337,7 +12889,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-2edf8b378ffe16c8da7f0b13.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4018522.json"
+      }
     },
     {
       "id": "plant-266817f050a0cd",
@@ -12347,7 +12903,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-f23b3fe0cabfcfa35f5baf92.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/cornus-alternifolia-argentea/coaargen/"
+      }
     },
     {
       "id": "plant-774969ce90f222",
@@ -12387,7 +12947,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-9c546a99bbcca54832aa27df.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/cupressocyparis-leylandii-oger/"
+      }
     },
     {
       "id": "plant-6c07273c405713",
@@ -12397,7 +12961,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-81847bb52584cf09cba0d4e1.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/deutzia-gracilis/degracil/"
+      }
     },
     {
       "id": "plant-1e8d343d72ad6b",
@@ -12527,7 +13095,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-dd3b122e775702b67d4abd22.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/hydrangea-arborescens-annabelle/hyaannab/"
+      }
     },
     {
       "id": "plant-acee5dff31485d",
@@ -12547,7 +13119,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-89b445ffc039dd50d07cd9a0.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/hydrangea-paniculata-baby-lace/hydpblac/"
+      }
     },
     {
       "id": "plant-62734b4d0b4bc9",
@@ -12567,7 +13143,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-7cd54d24b4d002085558a6a0.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/hydrangea-paniculata-levana/hyplevan/"
+      }
     },
     {
       "id": "plant-5b53ad9f87452e",
@@ -12577,7 +13157,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-8d0ae01c026b70c363fcbd22.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4008770.json"
+      }
     },
     {
       "id": "plant-c75d9f7341ca22",
@@ -12607,7 +13191,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-259adb37795490cab590dc2d.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/juniperus-conferta-blue-pacific/jucbpaci/"
+      }
     },
     {
       "id": "plant-d40344a9c3275a",
@@ -12617,7 +13205,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-afcb9749079bf703a7c16058.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/juniperus-x-pfitzeriana-gold-coast/"
+      }
     },
     {
       "id": "plant-d527beeed034e8",
@@ -12637,7 +13229,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-231269ffa7a6e1af9a4fef89.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/juniperus-x-pfitzeriana-old-gold/"
+      }
     },
     {
       "id": "plant-c225a25f413c15",
@@ -12647,7 +13243,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-35fb43fc20752c60ae127dda.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/juniperus-x-pfitzeriana-pfitzeriana-compacta/"
+      }
     },
     {
       "id": "plant-c87ba80b3082a4",
@@ -12657,7 +13257,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-391cac7b51d9ba1902ee84e1.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/juniperus-x-pfitzeriana-pfitzeriana-glauca/"
+      }
     },
     {
       "id": "plant-792660d3ecec9d",
@@ -12667,7 +13271,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-e47d2d46f2add62158e69bfc.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/juniperus-sabina-tamariscifolia/"
+      }
     },
     {
       "id": "plant-d976f093a791bc",
@@ -12677,7 +13285,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-f03c2006780b2360e011a265.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/juniperus-virginiana-grey-owl/"
+      }
     },
     {
       "id": "plant-2c94b16a619f68",
@@ -12697,7 +13309,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-f02b79b9475fa78e2d3e00a7.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/kerria-japonica-pleniflora/kejpleni/"
+      }
     },
     {
       "id": "plant-b4f0c3de55eb91",
@@ -12717,7 +13333,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-78cabafe4a4e1db59a02631d.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/ligustrum-japonicum-texanum/lijtexan/"
+      }
     },
     {
       "id": "plant-0a244f78ba98e6",
@@ -12737,7 +13357,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-53de2f96c4cc14008ee2b244.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/lonicera-henryi-copper-beauty/"
+      }
     },
     {
       "id": "plant-ca7e2b4d75f045",
@@ -12757,7 +13381,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-76e06cbfe95064a5c1106771.jpg",
+        "sourceUrl": "https://portal.volentis.com/en/offers/details/malus-adirondack-fullground-avenue"
+      }
     },
     {
       "id": "plant-ae273db02c9735",
@@ -12767,7 +13395,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-6a3d65d9e238661de133ebb1.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/malus-coccinella/"
+      }
     },
     {
       "id": "plant-55e16427f3dacf",
@@ -12787,7 +13419,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-77adc662d1529ba59271a3b5.jpg",
+        "sourceUrl": "https://www.vdberk.com/trees/malus-gorgeous/"
+      }
     },
     {
       "id": "plant-9ac50a0bbcdbc9",
@@ -12797,7 +13433,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-d7b6ede279a5aae51931d944.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/malus-john-downie/majdowni/"
+      }
     },
     {
       "id": "plant-dc5f9981fd026c",
@@ -12807,7 +13447,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-6138c398cfc3f73bfc4d546e.jpg",
+        "sourceUrl": "https://portal.volentis.com/en/offers/details/malus-red-sentinel-fullground-avenue"
+      }
     },
     {
       "id": "plant-da4cb347372ad4",
@@ -12817,7 +13461,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-bddfc6dff0638c468636e3a3.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4017032.json"
+      }
     },
     {
       "id": "plant-8cdb21092c1eb3",
@@ -12837,7 +13485,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-d75debec53d75cbe732d8d02.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/osmanthus-heterophyllus-purpureus/"
+      }
     },
     {
       "id": "plant-37669818292e5a",
@@ -12877,7 +13529,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-51379e65680f0e89e79bbc5e.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4012510.json"
+      }
     },
     {
       "id": "plant-46c122e5d11a7c",
@@ -12887,7 +13543,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-f24e7775037950ef792f36a7.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/potentilla-fruticosa-abbotswood/pofabbot/"
+      }
     },
     {
       "id": "plant-f1cd36d3166a5e",
@@ -12897,7 +13557,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-24dbe79cf040724ff4e3c07c.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/potentilla-fruticosa-goldfinger/pofgoldf/"
+      }
     },
     {
       "id": "plant-eb804d2055bedc",
@@ -12927,7 +13591,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-774f82116e07d3d3cc1bb4f1.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/prunus-laurocerasus-sofia/"
+      }
     },
     {
       "id": "plant-80f5eb3556da9b",
@@ -12937,7 +13605,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-6904ec9e1863023385d35ff1.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/prunus-the-bride/prbride/"
+      }
     },
     {
       "id": "plant-cd3a15e7768c92",
@@ -12947,7 +13619,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-6a5b1edc0686650bd1745899.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/pseudocydonia-sinensis/"
+      }
     },
     {
       "id": "plant-85578b3a67ac83",
@@ -12957,7 +13633,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-7888fbaf1f3b445bf206ccba.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/pyracantha-navaho/"
+      }
     },
     {
       "id": "plant-4d050933665d24",
@@ -12967,7 +13647,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-5218e311d0d3a3dabdc073fa.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/pyrus-calleryana-bradford/"
+      }
     },
     {
       "id": "plant-6e03abac97b120",
@@ -12987,7 +13671,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-e458b25c02d4c0f5a074a43d.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/quercus-myrsinifolia/"
+      }
     },
     {
       "id": "plant-bcacbc32a58643",
@@ -12997,7 +13685,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-f3f5ff7153f80150d941fae6.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/rhaphiolepis-umbellata/rhumbell/"
+      }
     },
     {
       "id": "plant-e9782ae8b96437",
@@ -13027,7 +13719,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-76dde0c1ba846092e316356f.jpg",
+        "sourceUrl": "https://www.vdberk.com/trees/stewartia-rostrata/"
+      }
     },
     {
       "id": "plant-1cc190787016f9",
@@ -13037,7 +13733,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-5c91fe65707606d85ce8fbeb.jpg",
+        "sourceUrl": "https://portal.volentis.com/en/offers/details/tetradium-daniellii-fullground-avenue"
+      }
     },
     {
       "id": "plant-5801fdabffb6fb",
@@ -13067,7 +13767,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-ff9a30d99ad043dd2ca1f0a6.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/viburnum-plicatum-lanarth/viplanar/"
+      }
     },
     {
       "id": "plant-57cf725464cc3a",
@@ -13077,7 +13781,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-88ec1cbffa443d93a2583e2b.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4015680.json"
+      }
     }
   ]
 }

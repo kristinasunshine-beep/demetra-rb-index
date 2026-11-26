@@ -1,10 +1,10 @@
 {
   "schemaVersion": 2,
-  "checkedAt": "2026-11-26T09:47:00Z",
+  "checkedAt": "2026-11-26T12:03:55Z",
   "status": "partial",
-  "plants": 642,
-  "plantsInventoried": 642,
-  "plantsWithPhoto": 549,
+  "plants": 1022,
+  "plantsInventoried": 1022,
+  "plantsWithPhoto": 726,
   "plantsWithoutPhoto": [
     {
       "plantId": "plant-9030e7f16d3409",
@@ -377,9 +377,821 @@
     {
       "plantId": "plant-7a5838bb21ff92",
       "latinName": "Cortaderia selloana 'White'"
+    },
+    {
+      "plantId": "plant-b96e0f3337ea29",
+      "latinName": "Aloysia citrodora"
+    },
+    {
+      "plantId": "plant-90dac460401839",
+      "latinName": "Alyogyne 'Delightfully'"
+    },
+    {
+      "plantId": "plant-b49138d93f425c",
+      "latinName": "Asparagus densiflorus 'Myersii'"
+    },
+    {
+      "plantId": "plant-8356554b515d2b",
+      "latinName": "Beaucarnea recurvata"
+    },
+    {
+      "plantId": "plant-c5107928639a5c",
+      "latinName": "Tecoma capensis"
+    },
+    {
+      "plantId": "plant-82c11957b39a6f",
+      "latinName": "Podranea ricasoliana 'Contesa Sara'"
+    },
+    {
+      "plantId": "plant-c707829395c420",
+      "latinName": "Podranea ricasoliana"
+    },
+    {
+      "plantId": "plant-79d11c75b3ccab",
+      "latinName": "Boronia crenulata"
+    },
+    {
+      "plantId": "plant-6bd23e6e3311d1",
+      "latinName": "Bougainvillea 'Alexandra'"
+    },
+    {
+      "plantId": "plant-6aa01ce30c06bc",
+      "latinName": "Bougainvillea 'Mini Thai'"
+    },
+    {
+      "plantId": "plant-1e544a8ce102df",
+      "latinName": "Brachychiton acerifolius"
+    },
+    {
+      "plantId": "plant-257034127dbc20",
+      "latinName": "Callistemon 'Captain Cook'"
+    },
+    {
+      "plantId": "plant-10efcc7fa1d8de",
+      "latinName": "Callistemon citrinus 'Esplendens'"
+    },
+    {
+      "plantId": "plant-eea1c9decc6ca2",
+      "latinName": "Carissa macrocarpa"
+    },
+    {
+      "plantId": "plant-1b444c25dd4978",
+      "latinName": "Cestrum nocturnum"
+    },
+    {
+      "plantId": "plant-dbb43157dae713",
+      "latinName": "Coleonema pulchrum"
+    },
+    {
+      "plantId": "plant-fa942b9aca0b1d",
+      "latinName": "Coprosma 'Pacific Sunrise'"
+    },
+    {
+      "plantId": "plant-4ea068be135a01",
+      "latinName": "Coprosma 'Pink Splendor'"
+    },
+    {
+      "plantId": "plant-dfeb11dd544052",
+      "latinName": "Coprosma repens 'Marble Queen'"
+    },
+    {
+      "plantId": "plant-beb6cb6fc7cb36",
+      "latinName": "Cordyline australis 'Dazzler'"
+    },
+    {
+      "plantId": "plant-97c95a31543e4e",
+      "latinName": "Cordyline australis 'Mint Chocolate'"
+    },
+    {
+      "plantId": "plant-65558e0eeb3584",
+      "latinName": "Cordyline australis 'Pink Passion'"
+    },
+    {
+      "plantId": "plant-df4c6470a12bc9",
+      "latinName": "Cordyline 'Black Night'"
+    },
+    {
+      "plantId": "plant-5e45072e113ca9",
+      "latinName": "Cordyline 'Burgundy'"
+    },
+    {
+      "plantId": "plant-5ec1363a7d3a75",
+      "latinName": "Dasylirion longissimum"
+    },
+    {
+      "plantId": "plant-4ae977dd53b507",
+      "latinName": "Dodonaea viscosa 'Purpurea'"
+    },
+    {
+      "plantId": "plant-936cf2a80ca867",
+      "latinName": "Duranta repens"
+    },
+    {
+      "plantId": "plant-27de87533546cc",
+      "latinName": "Eremophila maculata"
+    },
+    {
+      "plantId": "plant-504f70487bb40f",
+      "latinName": "Escallonia 'Pink Elle'"
+    },
+    {
+      "plantId": "plant-e4ef6888136198",
+      "latinName": "Eugenia myrtifolia 'Teenie Genie'"
+    },
+    {
+      "plantId": "plant-c56e38947fb928",
+      "latinName": "Eugenia 'Newport'"
+    },
+    {
+      "plantId": "plant-d2809165915017",
+      "latinName": "Euryops pectinatus"
+    },
+    {
+      "plantId": "plant-0b4ef630b5e368",
+      "latinName": "Ficus benghalensis"
+    },
+    {
+      "plantId": "plant-0b46674680ddfe",
+      "latinName": "Ficus benjamina 'Danielle'"
+    },
+    {
+      "plantId": "plant-1778eef26fe018",
+      "latinName": "Ficus benjamina"
+    },
+    {
+      "plantId": "plant-8eb33e0f2a9cd3",
+      "latinName": "Ficus retusa"
+    },
+    {
+      "plantId": "plant-50d0844947d3df",
+      "latinName": "Jasminum multipartitum"
+    },
+    {
+      "plantId": "plant-9d6a157d0ce4c5",
+      "latinName": "Lavandula pinnata"
+    },
+    {
+      "plantId": "plant-5dbb5f335230c8",
+      "latinName": "Metrosideros excelsa"
+    },
+    {
+      "plantId": "plant-a29288f9798ef2",
+      "latinName": "Metrosideros 'Thomasii'"
+    },
+    {
+      "plantId": "plant-f632072ce5c08f",
+      "latinName": "Olea europaea 'Arbequino'"
+    },
+    {
+      "plantId": "plant-530a3acca33ea7",
+      "latinName": "Olea europaea 'Lechín'"
+    },
+    {
+      "plantId": "plant-7bc25fa3e9be8a",
+      "latinName": "Philodendron xanadu"
+    },
+    {
+      "plantId": "plant-cd6a1900e36428",
+      "latinName": "Phormium 'Special Red'"
+    },
+    {
+      "plantId": "plant-92631072292c87",
+      "latinName": "Pittosporum tobira 'Nana'"
+    },
+    {
+      "plantId": "plant-3cdff5192ba29f",
+      "latinName": "Plumbago capensis"
+    },
+    {
+      "plantId": "plant-9147c259611f60",
+      "latinName": "Schefflera actinophylla"
+    },
+    {
+      "plantId": "plant-742b5abf4033bd",
+      "latinName": "Schinus terebinthifolius"
+    },
+    {
+      "plantId": "plant-3bcc172358ec9e",
+      "latinName": "Thuja occidentalis 'Nana'"
+    },
+    {
+      "plantId": "plant-b14dc9f2c919eb",
+      "latinName": "Westringia longifolia"
+    },
+    {
+      "plantId": "plant-b7023ff82e7af4",
+      "latinName": "Yucca elephantipes 'Jewel'"
+    },
+    {
+      "plantId": "plant-319e61bdd1f704",
+      "latinName": "Yucca 'Puck'"
+    },
+    {
+      "plantId": "plant-276aa0e8be2aa9",
+      "latinName": "Acer palmatum 'Silhouette'"
+    },
+    {
+      "plantId": "plant-997cd749518e77",
+      "latinName": "Buddleja 'Rocketstar Indigo'"
+    },
+    {
+      "plantId": "plant-34c87d52de8de3",
+      "latinName": "Carpinus betulus 'Bonanomi'"
+    },
+    {
+      "plantId": "plant-f0990aa4c4bef2",
+      "latinName": "Citrus limon"
+    },
+    {
+      "plantId": "plant-f2336cac804b2f",
+      "latinName": "Cornus capitata"
+    },
+    {
+      "plantId": "plant-2ff5026a03ea98",
+      "latinName": "Cornus kousa 'Re Tivano'"
+    },
+    {
+      "plantId": "plant-74c79fa81263fa",
+      "latinName": "Cornus mas 'Flava'"
+    },
+    {
+      "plantId": "plant-fb8e961d5505d4",
+      "latinName": "Cornus mas 'Golden Glory'"
+    },
+    {
+      "plantId": "plant-06eda7966a8997",
+      "latinName": "Cornus mas 'Pioneer'"
+    },
+    {
+      "plantId": "plant-e8b9d815a28d4c",
+      "latinName": "Cornus mas 'Swietlana'"
+    },
+    {
+      "plantId": "plant-22667cd195a9c1",
+      "latinName": "Cornus mas 'Yantarny'"
+    },
+    {
+      "plantId": "plant-7179ab1634a275",
+      "latinName": "Crataegus macracantha 'Scimitar'"
+    },
+    {
+      "plantId": "plant-9211b6cc95e127",
+      "latinName": "Crataegus × media 'Punicea'"
+    },
+    {
+      "plantId": "plant-cd5c67d484cddc",
+      "latinName": "Crataegus punctata 'Aurea'"
+    },
+    {
+      "plantId": "plant-02c0099941fee4",
+      "latinName": "Crataegus succulenta 'Gregory Canyon'"
+    },
+    {
+      "plantId": "plant-c3d29aac89baf7",
+      "latinName": "Cryptomeria japonica 'Pipo'"
+    },
+    {
+      "plantId": "plant-dc045c4498d8fb",
+      "latinName": "Cupressus sempervirens 'Gracilis'"
+    },
+    {
+      "plantId": "plant-98cea8a124a374",
+      "latinName": "Distylium racemosum"
+    },
+    {
+      "plantId": "plant-60425de1ab8bdf",
+      "latinName": "Elaeagnus commutata 'Aurea'"
+    },
+    {
+      "plantId": "plant-11c282845979df",
+      "latinName": "Euonymus americanus 'Evergreen'"
+    },
+    {
+      "plantId": "plant-fdefb6b05a0a63",
+      "latinName": "Fagus sylvatica 'Sandrode'"
+    },
+    {
+      "plantId": "plant-b7d7f967c5af0d",
+      "latinName": "Ginkgo biloba 'Menhir'"
+    },
+    {
+      "plantId": "plant-c366d96244df9d",
+      "latinName": "Hamamelis × intermedia 'Ruby Glow'"
+    },
+    {
+      "plantId": "plant-047658d0d1d3cb",
+      "latinName": "Hibiscus syriacus 'Oiseau Blue'"
+    },
+    {
+      "plantId": "plant-20418e90c7a0db",
+      "latinName": "Hydrangea macrophylla 'Générale Vicomtesse de Vibraye'"
+    },
+    {
+      "plantId": "plant-fda8a8d8c66cad",
+      "latinName": "Hydrangea paniculata 'Quick Fire Fab'"
+    },
+    {
+      "plantId": "plant-bae09446edd57b",
+      "latinName": "Ilex × koehneana 'Castaneifolia'"
+    },
+    {
+      "plantId": "plant-a9344153d25ce2",
+      "latinName": "Ilex 'Lydia Morris'"
+    },
+    {
+      "plantId": "plant-619264eeb072db",
+      "latinName": "Illicium floridanum 'Woodland Ruby'"
+    },
+    {
+      "plantId": "plant-d4bcb45f35348c",
+      "latinName": "Lagerstroemia 'Apalachee'"
+    },
+    {
+      "plantId": "plant-948411575a86d6",
+      "latinName": "Lagerstroemia 'Bianco Grassi'"
+    },
+    {
+      "plantId": "plant-2ef5da27832d19",
+      "latinName": "Lagerstroemia 'Biloxi'"
+    },
+    {
+      "plantId": "plant-c339b996c103dd",
+      "latinName": "Lagerstroemia 'Carolina Beauty'"
+    },
+    {
+      "plantId": "plant-fd7c3afa0e413f",
+      "latinName": "Lagerstroemia 'Dynamite'"
+    },
+    {
+      "plantId": "plant-a2c6b2e808d68a",
+      "latinName": "Lagerstroemia 'Gaby Rose'"
+    },
+    {
+      "plantId": "plant-dca1b4a8d3a922",
+      "latinName": "Lagerstroemia 'Lie De Vin'"
+    },
+    {
+      "plantId": "plant-8c60edf3bc141b",
+      "latinName": "Lagerstroemia 'Miami'"
+    },
+    {
+      "plantId": "plant-8d95149300b3cd",
+      "latinName": "Lagerstroemia 'Osage'"
+    },
+    {
+      "plantId": "plant-2ba93979aab48e",
+      "latinName": "Lagerstroemia 'Petit Snow'"
+    },
+    {
+      "plantId": "plant-62e83abbea87b4",
+      "latinName": "Lagerstroemia 'Petite Orchid'"
+    },
+    {
+      "plantId": "plant-df23254391bd44",
+      "latinName": "Lagerstroemia 'Pink Velour'"
+    },
+    {
+      "plantId": "plant-5df49668eb1f83",
+      "latinName": "Lagerstroemia 'Powhatan'"
+    },
+    {
+      "plantId": "plant-8a397a957a9e54",
+      "latinName": "Lagerstroemia 'Prerose'"
+    },
+    {
+      "plantId": "plant-6b051f9ae019b0",
+      "latinName": "Lagerstroemia 'Rhapsody In Pink'"
+    },
+    {
+      "plantId": "plant-86074658bfe252",
+      "latinName": "Lagerstroemia 'Rosea Nova'"
+    },
+    {
+      "plantId": "plant-5b167bc0f37eef",
+      "latinName": "Lagerstroemia 'Rosso Grassi'"
+    },
+    {
+      "plantId": "plant-0b42335cc03d9f",
+      "latinName": "Lagerstroemia 'Rubra Magnifica'"
+    },
+    {
+      "plantId": "plant-4a476734a9a928",
+      "latinName": "Lagerstroemia 'Seaburn'"
+    },
+    {
+      "plantId": "plant-3d70b71a30aadd",
+      "latinName": "Lagerstroemia 'Sioux'"
+    },
+    {
+      "plantId": "plant-fecac41f03fd55",
+      "latinName": "Lagerstroemia 'Superviolacea'"
+    },
+    {
+      "plantId": "plant-11132616088409",
+      "latinName": "Lagerstroemia 'Tonto'"
+    },
+    {
+      "plantId": "plant-d0615c07d18e2b",
+      "latinName": "Lagerstroemia 'Turenne'"
+    },
+    {
+      "plantId": "plant-eb2ff7ffd7dfcb",
+      "latinName": "Lagerstroemia 'Viola Grassi'"
+    },
+    {
+      "plantId": "plant-4e5a0427ff652f",
+      "latinName": "Lagerstroemia 'Watermelon'"
+    },
+    {
+      "plantId": "plant-052ee08519459b",
+      "latinName": "Lagerstroemia 'Yuma'"
+    },
+    {
+      "plantId": "plant-bb4c0a2dc18760",
+      "latinName": "Leitneria floridana"
+    },
+    {
+      "plantId": "plant-fc792eca58cbd1",
+      "latinName": "Magnolia 'Aurora'"
+    },
+    {
+      "plantId": "plant-35be792d33f2fe",
+      "latinName": "Magnolia grandiflora 'Gallisoniensis'"
+    },
+    {
+      "plantId": "plant-44c0ce05bcad25",
+      "latinName": "Magnolia 'Lois'"
+    },
+    {
+      "plantId": "plant-f2da324506890e",
+      "latinName": "Malus arnoldiana"
+    },
+    {
+      "plantId": "plant-45ad18cd15d497",
+      "latinName": "Malus 'New York'"
+    },
+    {
+      "plantId": "plant-7070c06a7e26da",
+      "latinName": "Metasequoia glyptostroboides 'Chubby'"
+    },
+    {
+      "plantId": "plant-f76de8852cbbf6",
+      "latinName": "Osmanthus heterophyllus 'Aquifolius'"
+    },
+    {
+      "plantId": "plant-893e0aa82ab589",
+      "latinName": "Osmanthus heterophyllus 'Ilicifolius'"
+    },
+    {
+      "plantId": "plant-8c69cc0c737175",
+      "latinName": "Parrotia persica 'Burgundy'"
+    },
+    {
+      "plantId": "plant-c3cae196d94032",
+      "latinName": "Parrotia persica 'Het Plantsoen'"
+    },
+    {
+      "plantId": "plant-e285ad8516b172",
+      "latinName": "Photinia × fraseri 'Carre' Rouge'"
+    },
+    {
+      "plantId": "plant-1720667d233a3a",
+      "latinName": "Photinia × fraseri 'Tuscany'"
+    },
+    {
+      "plantId": "plant-7f888ce9316212",
+      "latinName": "Prunus incisa 'Marie Mallet'"
+    },
+    {
+      "plantId": "plant-71bf34aee1d86b",
+      "latinName": "Prunus serrulata 'Kiku-Shidare'"
+    },
+    {
+      "plantId": "plant-37c08c7690771f",
+      "latinName": "Quercus schochiana"
+    },
+    {
+      "plantId": "plant-e83e46b616a5ed",
+      "latinName": "Rhamnus frangula 'Fine Line'"
+    },
+    {
+      "plantId": "plant-1d8323864f6065",
+      "latinName": "Salix babylonica 'Pendula'"
+    },
+    {
+      "plantId": "plant-7b739d2db15bfb",
+      "latinName": "Salix exigua"
+    },
+    {
+      "plantId": "plant-255676ab60f944",
+      "latinName": "Trachelospermum asiaticum 'Nagaba'"
+    },
+    {
+      "plantId": "plant-5cd875c54f08cf",
+      "latinName": "Trachelospermum asiaticum 'Summer Sunset'"
+    },
+    {
+      "plantId": "plant-5d509b242b91c1",
+      "latinName": "Viburnum burejaeticum"
+    },
+    {
+      "plantId": "plant-dbb66e5bd98ec5",
+      "latinName": "Viburnum cassinoides 'Little Ditty'"
+    },
+    {
+      "plantId": "plant-c9177dea20e0d5",
+      "latinName": "Viburnum dilatatum 'Cardinal Candy'"
+    },
+    {
+      "plantId": "plant-dd7afff0c5e183",
+      "latinName": "Viburnum dilatatum 'Michael Dodge'"
+    },
+    {
+      "plantId": "plant-ace6a7576942fa",
+      "latinName": "Viburnum dilatatum 'Tandoori Orange'"
+    },
+    {
+      "plantId": "plant-bd4e0348b62320",
+      "latinName": "Viburnum 'Emerald Triumph'"
+    },
+    {
+      "plantId": "plant-1ea5cb35561459",
+      "latinName": "Viburnum parvifolium"
+    },
+    {
+      "plantId": "plant-9bd3c567193cc1",
+      "latinName": "Viburnum 'Sweet Talker'"
+    },
+    {
+      "plantId": "plant-46d815baf08d3c",
+      "latinName": "Weigela florida 'Lime Monster'"
+    },
+    {
+      "plantId": "plant-a2b0e8535b7d6f",
+      "latinName": "Wisteria brachybotrys 'Schowa Beni'"
+    },
+    {
+      "plantId": "plant-3978b2e2bbbc48",
+      "latinName": "Wisteria brachybotrys 'Shiro Kapitan'"
+    },
+    {
+      "plantId": "plant-7b9a7d7fb1957f",
+      "latinName": "Zelkova serrata 'Sartori'"
+    },
+    {
+      "plantId": "plant-0cd57788eda47f",
+      "latinName": "Acer cissifolium 'Samarand'"
+    },
+    {
+      "plantId": "plant-c4778a7cd9b02d",
+      "latinName": "Acer palmatum 'Arakawa'"
+    },
+    {
+      "plantId": "plant-1af257cb48db28",
+      "latinName": "Acer palmatum 'Asahi-Zuru'"
+    },
+    {
+      "plantId": "plant-b3172c80c46eeb",
+      "latinName": "Acer palmatum 'Brown Sugar'"
+    },
+    {
+      "plantId": "plant-677e1f1bfbb6f0",
+      "latinName": "Acer palmatum 'Enkan'"
+    },
+    {
+      "plantId": "plant-b4c0e43caa5f85",
+      "latinName": "Acer palmatum 'Fior D'arancio'"
+    },
+    {
+      "plantId": "plant-2d198c92dd537f",
+      "latinName": "Acer palmatum 'Hoshi-Kuzu'"
+    },
+    {
+      "plantId": "plant-a6b9b83b507c1a",
+      "latinName": "Acer palmatum 'Japanese Sunrise'"
+    },
+    {
+      "plantId": "plant-ac5a6899412368",
+      "latinName": "Acer palmatum 'Kagiri-Nishiki'"
+    },
+    {
+      "plantId": "plant-20d9ce9d1da829",
+      "latinName": "Acer palmatum 'Ki-Hachijo'"
+    },
+    {
+      "plantId": "plant-2242f017407aea",
+      "latinName": "Acer palmatum 'Okushimo'"
+    },
+    {
+      "plantId": "plant-92b392527d0c4a",
+      "latinName": "Acer palmatum 'Pixie'"
+    },
+    {
+      "plantId": "plant-bdd3f2e4be9ef2",
+      "latinName": "Acer palmatum 'Red Pygmy'"
+    },
+    {
+      "plantId": "plant-a5102b5e9c375b",
+      "latinName": "Acer palmatum 'Seigen'"
+    },
+    {
+      "plantId": "plant-b8211edb971beb",
+      "latinName": "Acer palmatum 'Sherwood Flame'"
+    },
+    {
+      "plantId": "plant-f5d2fb5e489272",
+      "latinName": "Acer palmatum 'Shin-Nyo'"
+    },
+    {
+      "plantId": "plant-cd5b65aa3b9b83",
+      "latinName": "Acer palmatum 'Waka-Momiji'"
+    },
+    {
+      "plantId": "plant-b6adf419bce196",
+      "latinName": "Acer rubrum 'Red King'"
+    },
+    {
+      "plantId": "plant-8464d6f81475fd",
+      "latinName": "Berberis thunbergii 'Bonanza Gold'"
+    },
+    {
+      "plantId": "plant-480ec18760946c",
+      "latinName": "Berberis thunbergii 'Fireball'"
+    },
+    {
+      "plantId": "plant-add84336ab6372",
+      "latinName": "Berberis thunbergii 'Inspiration'"
+    },
+    {
+      "plantId": "plant-c47c62de861965",
+      "latinName": "Berberis thunbergii 'Sartori'"
+    },
+    {
+      "plantId": "plant-cb4529cc68404d",
+      "latinName": "Callicarpa 'Pearl Glam'"
+    },
+    {
+      "plantId": "plant-d2337877319149",
+      "latinName": "Carpinus betulus 'Albert Beekman'"
+    },
+    {
+      "plantId": "plant-4d9d6c697d3698",
+      "latinName": "Ceanothus × delileanus 'Gloire De Versailles'"
+    },
+    {
+      "plantId": "plant-dd89ed1945597a",
+      "latinName": "Chaenomeles cathayensis"
+    },
+    {
+      "plantId": "plant-5114ce73b7e1ee",
+      "latinName": "Chamaecyparis pisifera 'Filifera Nana Aurea'"
+    },
+    {
+      "plantId": "plant-774969ce90f222",
+      "latinName": "Cornus kousa 'Copacabana'"
+    },
+    {
+      "plantId": "plant-28f3b32fccf44b",
+      "latinName": "Cryptomeria japonica 'Little Diamond'"
+    },
+    {
+      "plantId": "plant-6b5af8c8bfec67",
+      "latinName": "Cupressocyparis leylandii 'Haggerston Grey'"
+    },
+    {
+      "plantId": "plant-1e8d343d72ad6b",
+      "latinName": "Deutzia 'Yuki Cherry Blossom'"
+    },
+    {
+      "plantId": "plant-4aff7f90c32a7d",
+      "latinName": "Elaeagnus 'Quicksilver'"
+    },
+    {
+      "plantId": "plant-99cf20b8627c62",
+      "latinName": "Elsholtzia stauntonii 'Alba'"
+    },
+    {
+      "plantId": "plant-5b03abbad28ece",
+      "latinName": "Enkianthus campanulatus 'Prettycoat'"
+    },
+    {
+      "plantId": "plant-d514045142ef0f",
+      "latinName": "Euonymus japonicus 'Gold Rocket'"
+    },
+    {
+      "plantId": "plant-27456e98d51d51",
+      "latinName": "Ficus pumila 'Minima'"
+    },
+    {
+      "plantId": "plant-8347ae7298d934",
+      "latinName": "Gardenia jasminoides 'Radicans'"
+    },
+    {
+      "plantId": "plant-ab04bf7511f164",
+      "latinName": "Hamamelis × intermedia 'Pallida'"
+    },
+    {
+      "plantId": "plant-68aef8a8ff08a4",
+      "latinName": "Hamamelis × intermedia 'Westerstede'"
+    },
+    {
+      "plantId": "plant-d3c3152986d7fb",
+      "latinName": "Hamamelis × intermedia 'Yamina'"
+    },
+    {
+      "plantId": "plant-1c42a2399e657e",
+      "latinName": "Hesperaloe parviflora"
+    },
+    {
+      "plantId": "plant-bc123aa5050de6",
+      "latinName": "Holboellia latifolia"
+    },
+    {
+      "plantId": "plant-acee5dff31485d",
+      "latinName": "Hydrangea macrophylla 'Snowball'"
+    },
+    {
+      "plantId": "plant-62734b4d0b4bc9",
+      "latinName": "Hydrangea paniculata 'Early Harry'"
+    },
+    {
+      "plantId": "plant-c75d9f7341ca22",
+      "latinName": "Ilex × attenuata 'Sunny Foster'"
+    },
+    {
+      "plantId": "plant-a8e80b62d0eb88",
+      "latinName": "Itea virginica 'Scentlove'"
+    },
+    {
+      "plantId": "plant-d527beeed034e8",
+      "latinName": "Juniperus × pfitzeriana 'Hill's Blue'"
+    },
+    {
+      "plantId": "plant-2c94b16a619f68",
+      "latinName": "Juniperus virginiana 'Hetz'"
+    },
+    {
+      "plantId": "plant-b4f0c3de55eb91",
+      "latinName": "Ligustrum japonicum 'Silver Star'"
+    },
+    {
+      "plantId": "plant-0a244f78ba98e6",
+      "latinName": "Lindera reflexa"
+    },
+    {
+      "plantId": "plant-ca7e2b4d75f045",
+      "latinName": "Lonicera japonica 'Mint Crisp'"
+    },
+    {
+      "plantId": "plant-55e16427f3dacf",
+      "latinName": "Malus 'Comtesse De Paris'"
+    },
+    {
+      "plantId": "plant-8cdb21092c1eb3",
+      "latinName": "Osmanthus heterophyllus 'Gulftide'"
+    },
+    {
+      "plantId": "plant-37669818292e5a",
+      "latinName": "Pinus armandii"
+    },
+    {
+      "plantId": "plant-3e166163dcca8c",
+      "latinName": "Pinus cembra 'Sartori'"
+    },
+    {
+      "plantId": "plant-841550f38eba9b",
+      "latinName": "Pittosporum heterophyllum 'Albovariegatum'"
+    },
+    {
+      "plantId": "plant-eb804d2055bedc",
+      "latinName": "Potentilla fruticosa 'Pink Queen'"
+    },
+    {
+      "plantId": "plant-337b7d2eb40c08",
+      "latinName": "Prunus laurocerasus 'Magnoliifolia'"
+    },
+    {
+      "plantId": "plant-6e03abac97b120",
+      "latinName": "Quercus dalechampii"
+    },
+    {
+      "plantId": "plant-e9782ae8b96437",
+      "latinName": "Rosa 'Climbing Iceberg'"
+    },
+    {
+      "plantId": "plant-0f5301240fb95a",
+      "latinName": "Sequoia sempervirens 'Adpressa'"
+    },
+    {
+      "plantId": "plant-5801fdabffb6fb",
+      "latinName": "Thuja occidentalis 'Flevoland'"
+    },
+    {
+      "plantId": "plant-bc8d932a1f1f34",
+      "latinName": "Thuja occidentalis 'Golden Brabant'"
     }
   ],
-  "coveragePercent": 85.51,
-  "activeOffers": 4587,
-  "remainingOffers": 161
+  "coveragePercent": 71.04,
+  "activeOffers": 5671,
+  "remainingOffers": 593
 }
