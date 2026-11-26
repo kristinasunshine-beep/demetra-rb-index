@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-26T07:44:33.508Z",
+  "updatedAt": "2026-11-26T11:21:32.190Z",
   "plants": [
     {
       "id": "plant-abies-concolor",
@@ -9278,6 +9278,3806 @@
         "image": "assets/biljke/reference-567b6c12b9d210749fb36daa.jpg",
         "sourceUrl": "https://innocentiemangonipiante.it/en/pinus-mugo/"
       }
+    },
+    {
+      "id": "plant-61a0e92fe6b0de",
+      "latinName": "Juniperus chinensis",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-dadea911925e52",
+      "latinName": "Agapanthus africanus",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-7437c10c9338ee",
+      "latinName": "Agave filifera",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-ba054fe6a596de",
+      "latinName": "Agave geminiflora",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-b96e0f3337ea29",
+      "latinName": "Aloysia citrodora",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-90dac460401839",
+      "latinName": "Alyogyne 'Delightfully'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-b30841027ef2a9",
+      "latinName": "Alyogyne huegelii",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-b49138d93f425c",
+      "latinName": "Asparagus densiflorus 'Myersii'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-8356554b515d2b",
+      "latinName": "Beaucarnea recurvata",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-072e4298ab774c",
+      "latinName": "Campsis radicans",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-c5107928639a5c",
+      "latinName": "Tecoma capensis",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-df6fad023d7d10",
+      "latinName": "Campsis grandiflora",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-02566b1e0ed45b",
+      "latinName": "Pandorea jasminoides",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-82c11957b39a6f",
+      "latinName": "Podranea ricasoliana 'Contesa Sara'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-c707829395c420",
+      "latinName": "Podranea ricasoliana",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-79d11c75b3ccab",
+      "latinName": "Boronia crenulata",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-6bd23e6e3311d1",
+      "latinName": "Bougainvillea 'Alexandra'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-6aa01ce30c06bc",
+      "latinName": "Bougainvillea 'Mini Thai'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-1e544a8ce102df",
+      "latinName": "Brachychiton acerifolius",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-257034127dbc20",
+      "latinName": "Callistemon 'Captain Cook'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-10efcc7fa1d8de",
+      "latinName": "Callistemon citrinus 'Esplendens'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-5b78e1d2761542",
+      "latinName": "Carex buchananii",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-eea1c9decc6ca2",
+      "latinName": "Carissa macrocarpa",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-1b444c25dd4978",
+      "latinName": "Cestrum nocturnum",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-2dbc168175e3df",
+      "latinName": "Cinnamomum camphora",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-dbb43157dae713",
+      "latinName": "Coleonema pulchrum",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-fa942b9aca0b1d",
+      "latinName": "Coprosma 'Pacific Sunrise'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-4ea068be135a01",
+      "latinName": "Coprosma 'Pink Splendor'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-dfeb11dd544052",
+      "latinName": "Coprosma repens 'Marble Queen'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-beb6cb6fc7cb36",
+      "latinName": "Cordyline australis 'Dazzler'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-97c95a31543e4e",
+      "latinName": "Cordyline australis 'Mint Chocolate'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-bdf67a99693427",
+      "latinName": "Cordyline australis 'Peko'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-65558e0eeb3584",
+      "latinName": "Cordyline australis 'Pink Passion'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-ae3de470352e31",
+      "latinName": "Cordyline australis 'Red Star'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-df4c6470a12bc9",
+      "latinName": "Cordyline 'Black Night'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-5e45072e113ca9",
+      "latinName": "Cordyline 'Burgundy'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-97798d8c1df311",
+      "latinName": "Cupressus macrocarpa 'Goldcrest'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-6b03f04d11d3aa",
+      "latinName": "Cycas revoluta",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-5ec1363a7d3a75",
+      "latinName": "Dasylirion longissimum",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-7a1475cc84bdb2",
+      "latinName": "Dasylirion serratifolium",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-4ae977dd53b507",
+      "latinName": "Dodonaea viscosa 'Purpurea'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-e9c17fe2793775",
+      "latinName": "Dracaena draco",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-936cf2a80ca867",
+      "latinName": "Duranta repens",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-dec65c146f75be",
+      "latinName": "Elaeagnus × ebbingei 'Compacta'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-27de87533546cc",
+      "latinName": "Eremophila maculata",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-504f70487bb40f",
+      "latinName": "Escallonia 'Pink Elle'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-63c35c63a5c000",
+      "latinName": "Eugenia myrtifolia",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-e4ef6888136198",
+      "latinName": "Eugenia myrtifolia 'Teenie Genie'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-c56e38947fb928",
+      "latinName": "Eugenia 'Newport'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-d2809165915017",
+      "latinName": "Euryops pectinatus",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-0b4ef630b5e368",
+      "latinName": "Ficus benghalensis",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-0b46674680ddfe",
+      "latinName": "Ficus benjamina 'Danielle'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-1778eef26fe018",
+      "latinName": "Ficus benjamina",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-8eb33e0f2a9cd3",
+      "latinName": "Ficus retusa",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-50d0844947d3df",
+      "latinName": "Jasminum multipartitum",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-9d6a157d0ce4c5",
+      "latinName": "Lavandula pinnata",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-85416cc49339d6",
+      "latinName": "Lonicera caprifolium",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-693268f379d0a2",
+      "latinName": "Melia azedarach",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-5dbb5f335230c8",
+      "latinName": "Metrosideros excelsa",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-a29288f9798ef2",
+      "latinName": "Metrosideros 'Thomasii'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-de8dcd10d93c7c",
+      "latinName": "Musa basjoo",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-794ad992482e36",
+      "latinName": "Myrsine africana",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-25c0e4a32dea73",
+      "latinName": "Myrtus communis 'Tarentina'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-df83d29e4f6903",
+      "latinName": "Nerium oleander",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-7e0e101b1c60b5",
+      "latinName": "Olea europaea",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-f632072ce5c08f",
+      "latinName": "Olea europaea 'Arbequino'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-530a3acca33ea7",
+      "latinName": "Olea europaea 'Lechín'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-77fe2392896f02",
+      "latinName": "Phillyrea angustifolia",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-7bc25fa3e9be8a",
+      "latinName": "Philodendron xanadu",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-d6e2fefc2d2b78",
+      "latinName": "Phoenix canariensis",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-4e286439796223",
+      "latinName": "Phoenix roebelenii",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-cd6a1900e36428",
+      "latinName": "Phormium 'Special Red'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-26ecdce6d09310",
+      "latinName": "Pistacia lentiscus",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-92631072292c87",
+      "latinName": "Pittosporum tobira 'Nana'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-3cdff5192ba29f",
+      "latinName": "Plumbago capensis",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-9147c259611f60",
+      "latinName": "Schefflera actinophylla",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-6450a16e18fa4b",
+      "latinName": "Schinus molle",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-742b5abf4033bd",
+      "latinName": "Schinus terebinthifolius",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-0b0b33e219f29e",
+      "latinName": "Solanum jasminoides",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-429f1796d7f2dc",
+      "latinName": "Solanum rantonnetii",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-3bcc172358ec9e",
+      "latinName": "Thuja occidentalis 'Nana'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-2d6c89dd61f41c",
+      "latinName": "Viburnum lucidum",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-137bd26ed77013",
+      "latinName": "Washingtonia robusta",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-cee22c42d15c57",
+      "latinName": "Westringia fruticosa",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-b14dc9f2c919eb",
+      "latinName": "Westringia longifolia",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-693bc53c7ef40d",
+      "latinName": "Yucca elephantipes",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-b7023ff82e7af4",
+      "latinName": "Yucca elephantipes 'Jewel'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-d35803a679fa1e",
+      "latinName": "Yucca gloriosa 'Variegata'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-319e61bdd1f704",
+      "latinName": "Yucca 'Puck'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-515ce91e013c0a",
+      "latinName": "Yucca rostrata",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-e07d1ab35380c0",
+      "latinName": "Abies nordmanniana 'Pendula'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-2b2b6e65c84762",
+      "latinName": "Acer conspicuum 'Red Flamingo'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-148f8d6bff49f3",
+      "latinName": "Acer japonicum 'Aconitifolium'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-f84b096a246db1",
+      "latinName": "Acer palmatum 'Butterfly'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-425894698c6cc3",
+      "latinName": "Acer palmatum 'Dissectum Ornatum'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-b858d04241aa8d",
+      "latinName": "Acer palmatum 'Dissectum Viridis'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-b05a6fdf14f63e",
+      "latinName": "Acer palmatum 'Fireglow'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-385e18d647885f",
+      "latinName": "Acer palmatum 'Osakazuki'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-276aa0e8be2aa9",
+      "latinName": "Acer palmatum 'Silhouette'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-441ae63f1012d0",
+      "latinName": "Acer palmatum 'Skeeter'S Broom'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-5f2c0df62e15bb",
+      "latinName": "Acer rubrum 'Brandywine'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-c952b460076ae5",
+      "latinName": "Aucuba japonica 'Crotonifolia'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-997cd749518e77",
+      "latinName": "Buddleja 'Rocketstar Indigo'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-8a6d689efec1fd",
+      "latinName": "Camellia sasanqua 'Plantation Pink'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-34c87d52de8de3",
+      "latinName": "Carpinus betulus 'Bonanomi'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-9071f7a075ecca",
+      "latinName": "Carpinus betulus 'Pendula'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-006a12aff015e9",
+      "latinName": "Cercis canadensis 'Red Force'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-5b75d8d01d357b",
+      "latinName": "Cercis chinensis 'Shirobana'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-2dd895b0ee726b",
+      "latinName": "Chionanthus retusus",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-f0990aa4c4bef2",
+      "latinName": "Citrus limon",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-d1bf426a985ac2",
+      "latinName": "Clerodendrum trichotomum",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-f2336cac804b2f",
+      "latinName": "Cornus capitata",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-2c043edd5a8467",
+      "latinName": "Cornus controversa 'Variegata'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-c2798157457406",
+      "latinName": "Cornus controversa",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-b4b256828c860d",
+      "latinName": "Cornus florida 'Cherokee Daybreak'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-e0efe42305cfc1",
+      "latinName": "Cornus florida 'Rubra'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-a87874f107fdcd",
+      "latinName": "Cornus florida",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-13ab7af4c1f9f0",
+      "latinName": "Cornus kousa 'Big Apple'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-50ecae64fcae1d",
+      "latinName": "Cornus kousa 'Milky Way'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-2ff5026a03ea98",
+      "latinName": "Cornus kousa 'Re Tivano'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-69843c1e97d46e",
+      "latinName": "Cornus kousa 'Satomi'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-74c79fa81263fa",
+      "latinName": "Cornus mas 'Flava'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-fb8e961d5505d4",
+      "latinName": "Cornus mas 'Golden Glory'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-06eda7966a8997",
+      "latinName": "Cornus mas 'Pioneer'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-e8b9d815a28d4c",
+      "latinName": "Cornus mas 'Swietlana'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-22667cd195a9c1",
+      "latinName": "Cornus mas 'Yantarny'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-6405bc4d836629",
+      "latinName": "Cornus 'Venus'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-7179ab1634a275",
+      "latinName": "Crataegus macracantha 'Scimitar'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-9211b6cc95e127",
+      "latinName": "Crataegus × media 'Punicea'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-cd5c67d484cddc",
+      "latinName": "Crataegus punctata 'Aurea'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-02c0099941fee4",
+      "latinName": "Crataegus succulenta 'Gregory Canyon'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-c3d29aac89baf7",
+      "latinName": "Cryptomeria japonica 'Pipo'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-121644d6d96d5d",
+      "latinName": "Cupressocyparis leylandii 'Vito'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-dc045c4498d8fb",
+      "latinName": "Cupressus sempervirens 'Gracilis'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-b58f0a76abb5dd",
+      "latinName": "Cupressus sempervirens 'Pyramidalis'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-306be1fbbb0152",
+      "latinName": "Cupressus sempervirens 'Totem'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-98cea8a124a374",
+      "latinName": "Distylium racemosum",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-be83d7b48870ac",
+      "latinName": "Edgeworthia chrysantha",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-60425de1ab8bdf",
+      "latinName": "Elaeagnus commutata 'Aurea'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-ed3966c4e6e752",
+      "latinName": "Elaeagnus × ebbingei 'Eleador'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-11c282845979df",
+      "latinName": "Euonymus americanus 'Evergreen'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-1f3e191b74361d",
+      "latinName": "Fagus sylvatica 'Dawyck'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-fdefb6b05a0a63",
+      "latinName": "Fagus sylvatica 'Sandrode'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-a2405731ae40a0",
+      "latinName": "Fraxinus excelsior 'Crispa'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-b7d7f967c5af0d",
+      "latinName": "Ginkgo biloba 'Menhir'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-9cdcc2a459cd62",
+      "latinName": "Ginkgo biloba 'Obelisk'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-19bb1cd0786a81",
+      "latinName": "Ginkgo biloba 'Tubifolia'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-f35b28b680f257",
+      "latinName": "Hamamelis × intermedia 'Feuerzauber'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-e080d44be1a927",
+      "latinName": "Hamamelis × intermedia 'Jelena'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-c366d96244df9d",
+      "latinName": "Hamamelis × intermedia 'Ruby Glow'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-4ba213b505262b",
+      "latinName": "Hedera helix 'Hibernica'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-047658d0d1d3cb",
+      "latinName": "Hibiscus syriacus 'Oiseau Blue'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-ab84546c895692",
+      "latinName": "Hibiscus syriacus 'William R. Smith'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-5203408aec0b0b",
+      "latinName": "Hibiscus syriacus 'Woodbridge'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-1f44508b04a7aa",
+      "latinName": "Hovenia dulcis",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-20418e90c7a0db",
+      "latinName": "Hydrangea macrophylla 'Générale Vicomtesse de Vibraye'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-e6d9cfeb08c680",
+      "latinName": "Hydrangea macrophylla 'Zorro'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-fda8a8d8c66cad",
+      "latinName": "Hydrangea paniculata 'Quick Fire Fab'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-4a536f368a0b9f",
+      "latinName": "Hydrangea quercifolia",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-ac5b338e8498f5",
+      "latinName": "Ilex crenata 'Fastigiata'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-bae09446edd57b",
+      "latinName": "Ilex × koehneana 'Castaneifolia'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-a9344153d25ce2",
+      "latinName": "Ilex 'Lydia Morris'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-55e77c55ee8d5b",
+      "latinName": "Ilex maximowicziana 'Kanehirae'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-43f7aa5829bec4",
+      "latinName": "Ilex 'Nellie R. Stevens'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-619264eeb072db",
+      "latinName": "Illicium floridanum 'Woodland Ruby'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-d4bcb45f35348c",
+      "latinName": "Lagerstroemia 'Apalachee'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-948411575a86d6",
+      "latinName": "Lagerstroemia 'Bianco Grassi'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-2ef5da27832d19",
+      "latinName": "Lagerstroemia 'Biloxi'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-c339b996c103dd",
+      "latinName": "Lagerstroemia 'Carolina Beauty'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-fd7c3afa0e413f",
+      "latinName": "Lagerstroemia 'Dynamite'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-a2c6b2e808d68a",
+      "latinName": "Lagerstroemia 'Gaby Rose'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-dca1b4a8d3a922",
+      "latinName": "Lagerstroemia 'Lie De Vin'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-8c60edf3bc141b",
+      "latinName": "Lagerstroemia 'Miami'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-5d9352f01844ef",
+      "latinName": "Lagerstroemia 'Natchez'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-8d95149300b3cd",
+      "latinName": "Lagerstroemia 'Osage'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-2ba93979aab48e",
+      "latinName": "Lagerstroemia 'Petit Snow'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-62e83abbea87b4",
+      "latinName": "Lagerstroemia 'Petite Orchid'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-df23254391bd44",
+      "latinName": "Lagerstroemia 'Pink Velour'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-5df49668eb1f83",
+      "latinName": "Lagerstroemia 'Powhatan'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-8a397a957a9e54",
+      "latinName": "Lagerstroemia 'Prerose'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-6b051f9ae019b0",
+      "latinName": "Lagerstroemia 'Rhapsody In Pink'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-86074658bfe252",
+      "latinName": "Lagerstroemia 'Rosea Nova'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-5b167bc0f37eef",
+      "latinName": "Lagerstroemia 'Rosso Grassi'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-0b42335cc03d9f",
+      "latinName": "Lagerstroemia 'Rubra Magnifica'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-4a476734a9a928",
+      "latinName": "Lagerstroemia 'Seaburn'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-3d70b71a30aadd",
+      "latinName": "Lagerstroemia 'Sioux'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-fecac41f03fd55",
+      "latinName": "Lagerstroemia 'Superviolacea'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-11132616088409",
+      "latinName": "Lagerstroemia 'Tonto'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-d0615c07d18e2b",
+      "latinName": "Lagerstroemia 'Turenne'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-eb2ff7ffd7dfcb",
+      "latinName": "Lagerstroemia 'Viola Grassi'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-4e5a0427ff652f",
+      "latinName": "Lagerstroemia 'Watermelon'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-052ee08519459b",
+      "latinName": "Lagerstroemia 'Yuma'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-bb4c0a2dc18760",
+      "latinName": "Leitneria floridana",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-975e432187733e",
+      "latinName": "Ligustrum japonicum 'Rotundifolium'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-e83a2fc91e0dfe",
+      "latinName": "Liquidambar styraciflua 'Slender Silhouette'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-fc792eca58cbd1",
+      "latinName": "Magnolia 'Aurora'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-224d040c865ba7",
+      "latinName": "Magnolia grandiflora 'Alta'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-35be792d33f2fe",
+      "latinName": "Magnolia grandiflora 'Gallisoniensis'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-44c0ce05bcad25",
+      "latinName": "Magnolia 'Lois'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-f2da324506890e",
+      "latinName": "Malus arnoldiana",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-45ad18cd15d497",
+      "latinName": "Malus 'New York'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-7070c06a7e26da",
+      "latinName": "Metasequoia glyptostroboides 'Chubby'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-37cb9231bc3cd9",
+      "latinName": "Nandina domestica",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-cd67accef282dd",
+      "latinName": "Osmanthus armatus",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-3c2a2f44d562b8",
+      "latinName": "Osmanthus fragrans",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-f76de8852cbbf6",
+      "latinName": "Osmanthus heterophyllus 'Aquifolius'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-893e0aa82ab589",
+      "latinName": "Osmanthus heterophyllus 'Ilicifolius'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-8c69cc0c737175",
+      "latinName": "Parrotia persica 'Burgundy'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-c3cae196d94032",
+      "latinName": "Parrotia persica 'Het Plantsoen'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-cf7903e5af30ff",
+      "latinName": "Parrotia persica 'Pendula'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-bc9477b31a0d09",
+      "latinName": "Parrotia persica 'Persian Spire'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-e285ad8516b172",
+      "latinName": "Photinia × fraseri 'Carre' Rouge'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-ebd4e8ec8cd653",
+      "latinName": "Photinia × fraseri 'Magical Volcano'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-8540af3753b93c",
+      "latinName": "Photinia × fraseri 'Pink Marble'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-1720667d233a3a",
+      "latinName": "Photinia × fraseri 'Tuscany'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-7f52095386b309",
+      "latinName": "Picea pungens 'Edith'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-97597abd318c34",
+      "latinName": "Pinus parviflora 'Glauca'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-1f5524ededd1cd",
+      "latinName": "Pittosporum tobira",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-7f888ce9316212",
+      "latinName": "Prunus incisa 'Marie Mallet'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-c9ed54e89fd7e3",
+      "latinName": "Prunus 'Okame'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-71bf34aee1d86b",
+      "latinName": "Prunus serrulata 'Kiku-Shidare'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-a31481848153a9",
+      "latinName": "Prunus subhirtella 'Pendula'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-4886d92baf459b",
+      "latinName": "Pyracantha 'Soleil d’Or'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-561d4aa4d41193",
+      "latinName": "Pyracantha 'Ventoux Red'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-525eef040eef5b",
+      "latinName": "Quercus phillyreoides",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-1930231df25b1f",
+      "latinName": "Quercus robur 'Timuki'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-4cb02c58284bdc",
+      "latinName": "Quercus rysophylla",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-37c08c7690771f",
+      "latinName": "Quercus schochiana",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-e83e46b616a5ed",
+      "latinName": "Rhamnus frangula 'Fine Line'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-1d8323864f6065",
+      "latinName": "Salix babylonica 'Pendula'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-7b739d2db15bfb",
+      "latinName": "Salix exigua",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-cbaca82187bc10",
+      "latinName": "Sciadopitys verticillata",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-6cb517b2e8d03c",
+      "latinName": "Spiraea trilobata",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-4c384ae7368a20",
+      "latinName": "Styrax japonicus",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-92b7000c6a54c4",
+      "latinName": "Styrax obassia",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-0a3408a8ef4fd9",
+      "latinName": "Sycoparrotia semidecidua",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-a75fe3e370c80e",
+      "latinName": "Taxus baccata 'David'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-6002c435c270d0",
+      "latinName": "Taxus media 'Hillii'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-255676ab60f944",
+      "latinName": "Trachelospermum asiaticum 'Nagaba'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-5cd875c54f08cf",
+      "latinName": "Trachelospermum asiaticum 'Summer Sunset'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-260edab706222b",
+      "latinName": "Trachelospermum jasminoides",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-9e1d13a6966718",
+      "latinName": "Ulmus minor 'Jacqueline Hillier'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-5d509b242b91c1",
+      "latinName": "Viburnum burejaeticum",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-dbb66e5bd98ec5",
+      "latinName": "Viburnum cassinoides 'Little Ditty'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-c9177dea20e0d5",
+      "latinName": "Viburnum dilatatum 'Cardinal Candy'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-dd7afff0c5e183",
+      "latinName": "Viburnum dilatatum 'Michael Dodge'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-ace6a7576942fa",
+      "latinName": "Viburnum dilatatum 'Tandoori Orange'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-bd4e0348b62320",
+      "latinName": "Viburnum 'Emerald Triumph'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-63b7f2d07e3b72",
+      "latinName": "Viburnum farreri",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-1ea5cb35561459",
+      "latinName": "Viburnum parvifolium",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-9bd3c567193cc1",
+      "latinName": "Viburnum 'Sweet Talker'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-46d815baf08d3c",
+      "latinName": "Weigela florida 'Lime Monster'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-a2b0e8535b7d6f",
+      "latinName": "Wisteria brachybotrys 'Schowa Beni'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-3978b2e2bbbc48",
+      "latinName": "Wisteria brachybotrys 'Shiro Kapitan'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-c5e055f06f3d59",
+      "latinName": "Zanthoxylum piperitum",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-7b9a7d7fb1957f",
+      "latinName": "Zelkova serrata 'Sartori'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-0cd57788eda47f",
+      "latinName": "Acer cissifolium 'Samarand'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-7162f1625765ed",
+      "latinName": "Acer shirasawanum 'Jordan'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-c4778a7cd9b02d",
+      "latinName": "Acer palmatum 'Arakawa'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-1af257cb48db28",
+      "latinName": "Acer palmatum 'Asahi-Zuru'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-fbeb8fb0766bfd",
+      "latinName": "Acer palmatum 'Beni-Otake'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-b3172c80c46eeb",
+      "latinName": "Acer palmatum 'Brown Sugar'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-16124210c1f4dc",
+      "latinName": "Acer palmatum 'Garnet'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-677e1f1bfbb6f0",
+      "latinName": "Acer palmatum 'Enkan'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-b4c0e43caa5f85",
+      "latinName": "Acer palmatum 'Fior D'arancio'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-2d198c92dd537f",
+      "latinName": "Acer palmatum 'Hoshi-Kuzu'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-a6b9b83b507c1a",
+      "latinName": "Acer palmatum 'Japanese Sunrise'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-1a839e9065b304",
+      "latinName": "Acer palmatum 'Jerre Schwartz'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-ac5a6899412368",
+      "latinName": "Acer palmatum 'Kagiri-Nishiki'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-20d9ce9d1da829",
+      "latinName": "Acer palmatum 'Ki-Hachijo'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-fb78a57a656536",
+      "latinName": "Acer palmatum 'Koto-No-Ito'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-41d7570b386f3c",
+      "latinName": "Acer palmatum 'Masu-Kagami'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-2242f017407aea",
+      "latinName": "Acer palmatum 'Okushimo'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-1aa1f3ff1c0191",
+      "latinName": "Acer palmatum 'Orange Dream'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-c66702b325b260",
+      "latinName": "Acer palmatum 'Phoenix'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-92b392527d0c4a",
+      "latinName": "Acer palmatum 'Pixie'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-bdd3f2e4be9ef2",
+      "latinName": "Acer palmatum 'Red Pygmy'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-a5102b5e9c375b",
+      "latinName": "Acer palmatum 'Seigen'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-9452ca520f6322",
+      "latinName": "Acer palmatum 'Seiun-Kaku'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-b8211edb971beb",
+      "latinName": "Acer palmatum 'Sherwood Flame'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-f5d2fb5e489272",
+      "latinName": "Acer palmatum 'Shin-Nyo'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-cd5b65aa3b9b83",
+      "latinName": "Acer palmatum 'Waka-Momiji'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-69b7456aa7a42c",
+      "latinName": "Acer rubrum 'October Glory'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-b6adf419bce196",
+      "latinName": "Acer rubrum 'Red King'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-b51b104d145a84",
+      "latinName": "Berberis × ottawensis 'Superba'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-8464d6f81475fd",
+      "latinName": "Berberis thunbergii 'Bonanza Gold'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-480ec18760946c",
+      "latinName": "Berberis thunbergii 'Fireball'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-add84336ab6372",
+      "latinName": "Berberis thunbergii 'Inspiration'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-c47c62de861965",
+      "latinName": "Berberis thunbergii 'Sartori'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-c581bb8ab47c0f",
+      "latinName": "Betula nigra 'Summer Cascade'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-ee6dc0431f6658",
+      "latinName": "Buddleja davidii 'Nanho Blue'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-60c7599d6e08b8",
+      "latinName": "Buddleja davidii 'Nanho Purple'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-84274df4692927",
+      "latinName": "Buddleja davidii 'Pink Delight'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-c9fd06ab7ca92f",
+      "latinName": "Buddleja davidii 'White Profusion'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-3e0bf101e55226",
+      "latinName": "Buxus microphylla 'Faulkner'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-8d65dcb0a70bc4",
+      "latinName": "Buxus sempervirens 'Handsworthiensis'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-cb4529cc68404d",
+      "latinName": "Callicarpa 'Pearl Glam'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-d2337877319149",
+      "latinName": "Carpinus betulus 'Albert Beekman'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-4f1c2cb1129fc1",
+      "latinName": "Carpinus betulus 'Rockhampton Red'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-4d9d6c697d3698",
+      "latinName": "Ceanothus × delileanus 'Gloire De Versailles'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-ce7e92bf48f1ff",
+      "latinName": "Cephalotaxus harringtonia 'Fastigiata'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-dd89ed1945597a",
+      "latinName": "Chaenomeles cathayensis",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-5114ce73b7e1ee",
+      "latinName": "Chamaecyparis pisifera 'Filifera Nana Aurea'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-5c8c66d2322678",
+      "latinName": "Choisya 'Aztec Pearl'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-c5c937c53334f2",
+      "latinName": "Choisya ternata 'Sundance'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-17f0aa128795af",
+      "latinName": "Cornus alba 'Miracle'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-266817f050a0cd",
+      "latinName": "Cornus alternifolia 'Argentea'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-774969ce90f222",
+      "latinName": "Cornus kousa 'Copacabana'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-28f3b32fccf44b",
+      "latinName": "Cryptomeria japonica 'Little Diamond'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-6b5af8c8bfec67",
+      "latinName": "Cupressocyparis leylandii 'Haggerston Grey'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-3ef7bc81e26821",
+      "latinName": "Cupressocyparis leylandii 'Oger'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-6c07273c405713",
+      "latinName": "Deutzia gracilis",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-1e8d343d72ad6b",
+      "latinName": "Deutzia 'Yuki Cherry Blossom'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-4aff7f90c32a7d",
+      "latinName": "Elaeagnus 'Quicksilver'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-99cf20b8627c62",
+      "latinName": "Elsholtzia stauntonii 'Alba'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-5b03abbad28ece",
+      "latinName": "Enkianthus campanulatus 'Prettycoat'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-d514045142ef0f",
+      "latinName": "Euonymus japonicus 'Gold Rocket'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-27456e98d51d51",
+      "latinName": "Ficus pumila 'Minima'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-8347ae7298d934",
+      "latinName": "Gardenia jasminoides 'Radicans'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-ab04bf7511f164",
+      "latinName": "Hamamelis × intermedia 'Pallida'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-68aef8a8ff08a4",
+      "latinName": "Hamamelis × intermedia 'Westerstede'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-d3c3152986d7fb",
+      "latinName": "Hamamelis × intermedia 'Yamina'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-1c42a2399e657e",
+      "latinName": "Hesperaloe parviflora",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-bc123aa5050de6",
+      "latinName": "Holboellia latifolia",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-700d6ec0ca36d2",
+      "latinName": "Hydrangea arborescens 'Annabelle'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-acee5dff31485d",
+      "latinName": "Hydrangea macrophylla 'Snowball'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-62e16efcd060bd",
+      "latinName": "Hydrangea paniculata 'Baby Lace'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-62734b4d0b4bc9",
+      "latinName": "Hydrangea paniculata 'Early Harry'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-220a729bb0491c",
+      "latinName": "Hydrangea paniculata 'Levana'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-5b53ad9f87452e",
+      "latinName": "Hydrangea petiolaris",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-c75d9f7341ca22",
+      "latinName": "Ilex × attenuata 'Sunny Foster'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-a8e80b62d0eb88",
+      "latinName": "Itea virginica 'Scentlove'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-f295ed467a129c",
+      "latinName": "Juniperus conferta 'Blue Pacific'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-d40344a9c3275a",
+      "latinName": "Juniperus × pfitzeriana 'Gold Coast'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-d527beeed034e8",
+      "latinName": "Juniperus × pfitzeriana 'Hill's Blue'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-42250ccc14b157",
+      "latinName": "Juniperus × pfitzeriana 'Old Gold'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-c225a25f413c15",
+      "latinName": "Juniperus × pfitzeriana 'Pfitzeriana Compacta'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-c87ba80b3082a4",
+      "latinName": "Juniperus × pfitzeriana 'Pfitzeriana Glauca'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-792660d3ecec9d",
+      "latinName": "Juniperus sabina 'Tamariscifolia'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-d976f093a791bc",
+      "latinName": "Juniperus virginiana 'Grey Owl'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-2c94b16a619f68",
+      "latinName": "Juniperus virginiana 'Hetz'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-063e85a9aafbca",
+      "latinName": "Kerria japonica 'Pleniflora'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-b4f0c3de55eb91",
+      "latinName": "Ligustrum japonicum 'Silver Star'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-06969865d955b4",
+      "latinName": "Ligustrum japonicum 'Texanum'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-0a244f78ba98e6",
+      "latinName": "Lindera reflexa",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-a79197d0fb84d0",
+      "latinName": "Lonicera henryi 'Copper Beauty'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-ca7e2b4d75f045",
+      "latinName": "Lonicera japonica 'Mint Crisp'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-9a5e0acda47aa6",
+      "latinName": "Malus 'Adirondack'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-ae273db02c9735",
+      "latinName": "Malus 'Coccinella'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-55e16427f3dacf",
+      "latinName": "Malus 'Comtesse De Paris'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-3a83fbf55e83d5",
+      "latinName": "Malus 'Gorgeous'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-9ac50a0bbcdbc9",
+      "latinName": "Malus 'John Downie'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-dc5f9981fd026c",
+      "latinName": "Malus 'Red Sentinel'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-da4cb347372ad4",
+      "latinName": "Nandina domestica 'Twilight'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-8cdb21092c1eb3",
+      "latinName": "Osmanthus heterophyllus 'Gulftide'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-e76c51b94197db",
+      "latinName": "Osmanthus heterophyllus 'Purpureus'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-37669818292e5a",
+      "latinName": "Pinus armandii",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-3e166163dcca8c",
+      "latinName": "Pinus cembra 'Sartori'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-841550f38eba9b",
+      "latinName": "Pittosporum heterophyllum 'Albovariegatum'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-b5e56b877c0c66",
+      "latinName": "Pittosporum heterophyllum",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-46c122e5d11a7c",
+      "latinName": "Potentilla fruticosa 'Abbotswood'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-f1cd36d3166a5e",
+      "latinName": "Potentilla fruticosa 'Goldfinger'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-eb804d2055bedc",
+      "latinName": "Potentilla fruticosa 'Pink Queen'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-337b7d2eb40c08",
+      "latinName": "Prunus laurocerasus 'Magnoliifolia'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-d79014b4efc728",
+      "latinName": "Prunus laurocerasus 'Sofia'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-80f5eb3556da9b",
+      "latinName": "Prunus 'The Bride'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-cd3a15e7768c92",
+      "latinName": "Pseudocydonia sinensis",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-85578b3a67ac83",
+      "latinName": "Pyracantha 'Navaho'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-4d050933665d24",
+      "latinName": "Pyrus calleryana 'Bradford'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-6e03abac97b120",
+      "latinName": "Quercus dalechampii",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-02174263b03fb9",
+      "latinName": "Quercus myrsinifolia",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-bcacbc32a58643",
+      "latinName": "Rhaphiolepis umbellata",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-e9782ae8b96437",
+      "latinName": "Rosa 'Climbing Iceberg'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-0f5301240fb95a",
+      "latinName": "Sequoia sempervirens 'Adpressa'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-da7dc141c0a57c",
+      "latinName": "Stewartia rostrata",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-1cc190787016f9",
+      "latinName": "Tetradium daniellii",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-5801fdabffb6fb",
+      "latinName": "Thuja occidentalis 'Flevoland'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-bc8d932a1f1f34",
+      "latinName": "Thuja occidentalis 'Golden Brabant'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-fa5a184082243c",
+      "latinName": "Viburnum plicatum 'Lanarth'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-57cf725464cc3a",
+      "latinName": "Viburnum tinus 'Spirit'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
     }
   ]
 }

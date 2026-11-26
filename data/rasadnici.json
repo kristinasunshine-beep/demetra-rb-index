@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-23T10:39:47.128Z",
+  "updatedAt": "2026-11-26T11:21:32.190Z",
   "nurseries": [
     {
       "id": "vannucci-piante",
@@ -282,6 +282,41 @@
         "websitePrinted": "www.vdberk.com",
         "quoteReference": "3061180",
         "sourceDate": "2026-02-20"
+      }
+    },
+    {
+      "id": "viveros-las-cunas",
+      "name": "Viveros Las Cunas",
+      "country": "Španija",
+      "website": "https://www.viveroslascunas.es/",
+      "contact": "",
+      "demo": false,
+      "verificationStatus": "verified_in_archive",
+      "catalogueAccess": "private_offer",
+      "identityEvidence": {
+        "sourceSha256": "f447863ca5fc55d6d6d8dd0ed70dd429f098e8c242112895a6b9280f877b0a6e",
+        "page": 1,
+        "text": "GRUPO VIVEROS LAS CUNAS (original printed logo)",
+        "officialContactUrl": "https://www.viveroslascunas.es/en/contactenos",
+        "officialCountryEvidence": "Vera, Spain; parent root verified official contact page."
+      }
+    },
+    {
+      "id": "vivai-nord",
+      "name": "Vivai Nord",
+      "country": "Italija",
+      "website": "https://www.vivainord.it/",
+      "contact": "",
+      "demo": false,
+      "verificationStatus": "verified_in_archive",
+      "catalogueAccess": "private_offer",
+      "identityEvidence": {
+        "sourceSha256": "9dcc437b1b09507a0e85b4f2f98a2a7e9321f458665188067f1adc6d6a059abd",
+        "page": 1,
+        "printedIssuer": "VIVAI NORD Sas di A. Sartori e C. Societa' Agricola",
+        "officialHistoryUrl": "https://www.vivainord.it/chi-siamo/",
+        "officialCountryEvidenceUrl": "https://planthealthportal.defra.gov.uk/assets/uploads/Copy-of-List-of-IT-place-of-production-free-from-Xf3.pdf",
+        "verificationNote": "Parent root verified Sartori company identity, Italian production listing and Lurago d'Erba; no country inferred solely from directory name."
       }
     }
   ]
