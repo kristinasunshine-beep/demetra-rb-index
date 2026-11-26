@@ -13562,6 +13562,28 @@
       "sha256": "a6dfe6253c84743cc26e7e4cdd8bf883a9cca3df4695d77cb3ad585165676638",
       "checkedAt": "2026-11-26T09:27:11Z",
       "matchLevel": "exact"
+    },
+    "plant-12d4512c15f964": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "van-den-berk",
+      "imageUrl": "https://www.vdberk.com/media/12150/betula-ermanii-holland.jpg",
+      "sourceUrl": "https://www.vdberk.com/trees/betula-ermanii-holland/",
+      "matchedName": "Betula ermanii 'Holland'",
+      "identityEvidence": {
+        "method": "product_og_image",
+        "canonicalName": "Betula ermanii 'Holland'"
+      },
+      "imageHosts": [
+        "www.vdberk.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "betula ermanii holland",
+      "latinName": "Betula ermanii 'Holland'",
+      "image": "assets/biljke/reference-ee8975c246b497ffa571f31a.jpg",
+      "sha256": "ee8975c246b497ffa571f31ad332b00bff05f1780472f9461f981e5f114dcb7c",
+      "checkedAt": "2026-11-26T09:43:21Z",
+      "matchLevel": "exact"
     }
   },
   "retiredReferences": {

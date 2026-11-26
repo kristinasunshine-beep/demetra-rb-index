@@ -1231,7 +1231,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-ee8975c246b497ffa571f31a.jpg",
+        "sourceUrl": "https://www.vdberk.com/trees/betula-ermanii-holland/"
+      }
     },
     {
       "id": "plant-208f42284d47c4",

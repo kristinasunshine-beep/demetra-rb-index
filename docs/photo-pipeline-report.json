@@ -1,20 +1,94 @@
 {
   "schemaVersion": 2,
-  "startedAt": "2026-11-26T09:28:11Z",
-  "finishedAt": "2026-11-26T09:28:19Z",
-  "scope": "all_catalog_plants",
-  "requests": 0,
-  "auditOnly": true,
-  "nonPhotoDataUnchanged": true,
-  "stages": {
-    "fullCoverage": {
-      "status": "completed"
+  "status": "partial",
+  "requests": 454,
+  "workers": 8,
+  "events": [],
+  "sourceHealth": {
+    "portal.volentis.com": {
+      "requests": 105,
+      "succeeded": 104,
+      "retries": 0,
+      "httpErrors": {
+        "404": 1
+      },
+      "stopped": false,
+      "lastFailure": {
+        "source": "https://portal.volentis.com/robots.txt",
+        "reason": "http_error",
+        "detail": "Source returned HTTP 404.",
+        "httpStatus": 404
+      }
+    },
+    "www.willaert.be": {
+      "requests": 104,
+      "succeeded": 104,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": false,
+      "requestIntervalSeconds": 1.0
+    },
+    "catalogue.vannuccipiante.it": {
+      "requests": 4,
+      "succeeded": 4,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": false
+    },
+    "webshop.vannuccipiante.it": {
+      "requests": 7,
+      "succeeded": 6,
+      "retries": 0,
+      "httpErrors": {
+        "503": 1
+      },
+      "stopped": true,
+      "lastFailure": {
+        "source": "https://webshop.vannuccipiante.it/product/liquidambar-styraciflua-gum-ball/",
+        "reason": "http_error",
+        "detail": "Source returned HTTP 503.",
+        "httpStatus": 503
+      }
+    },
+    "www.vdberk.com": {
+      "requests": 3,
+      "succeeded": 3,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": false
+    },
+    "innocentiemangonipiante.it": {
+      "requests": 160,
+      "succeeded": 160,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": false
+    },
+    "www.lorberg.com": {
+      "requests": 59,
+      "succeeded": 59,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": false
+    },
+    "www.lve-baumschule.de": {
+      "requests": 11,
+      "succeeded": 11,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": false
+    },
+    "smitsbv.nl": {
+      "requests": 1,
+      "succeeded": 1,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": false
     }
   },
-  "events": [],
   "coverage": {
     "schemaVersion": 2,
-    "checkedAt": "2026-11-26T09:28:20Z",
+    "checkedAt": "2026-11-26T09:47:00Z",
     "status": "partial",
     "plants": 642,
     "plantsInventoried": 642,
@@ -395,10 +469,9 @@
     ],
     "coveragePercent": 85.51,
     "activeOffers": 4587,
-    "remainingOffers": 162
+    "remainingOffers": 161
   },
-  "status": "partial",
-  "sourceErrors": 401,
-  "verifiedPlantReferences": 544,
-  "newlyVerified": 0
+  "nonPhotoDataUnchanged": true,
+  "newlyVerified": 1,
+  "refreshCandidates": 0
 }
