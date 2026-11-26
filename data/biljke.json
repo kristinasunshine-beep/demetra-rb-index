@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-23T10:39:47.128Z",
+  "updatedAt": "2026-11-26T07:44:33.508Z",
   "plants": [
     {
       "id": "plant-abies-concolor",
@@ -8996,6 +8996,196 @@
         "image": "assets/biljke/reference-adca02fd637c49df8e1cd284.jpg",
         "sourceUrl": "https://innocentiemangonipiante.it/en/hydrangea-macrophylla/"
       }
+    },
+    {
+      "id": "plant-939a6b2c310688",
+      "latinName": "Spiraea x arguta",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-50a41b2d933a27",
+      "latinName": "Tamarix tetrandra",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-b8cb9c58ff4e5a",
+      "latinName": "Viburnum opulus",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-b771e8a1fe62ed",
+      "latinName": "Abelia grandiflora 'Edward Goucher'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-c3d0945c6c6a06",
+      "latinName": "Lonicera japonica",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-97c7c377d17d54",
+      "latinName": "Parthenocissus tricuspidata 'Veitchii'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-e25b089c3455ee",
+      "latinName": "Fallopia baldschuanica",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-3b46eb63597a36",
+      "latinName": "Hedera helix 'Gold Child'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-cf04fd2bfc9ceb",
+      "latinName": "Myrtus communis",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-83184ab6f038c1",
+      "latinName": "Artemisia arborescens 'Powis Castle'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-d31cb8dac4cd2b",
+      "latinName": "Aster novae-angliae 'Purple Dome'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-24d3e8dc228776",
+      "latinName": "Echinacea purpurea 'White Swan'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-fab2d55f36e7bd",
+      "latinName": "Perovskia atriplicifolia",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-8b48be0e5170c6",
+      "latinName": "Rudbeckia fulgida",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-c8b7d1f6b63cc6",
+      "latinName": "Salvia nemorosa 'Negrito'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-14707bd7a6bdd8",
+      "latinName": "Thymus citriodorus 'Doone Walley'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-7a5838bb21ff92",
+      "latinName": "Cortaderia selloana 'White'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-43fb6659e5332b",
+      "latinName": "Pennisetum alopecuroides",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-a9874496b684ce",
+      "latinName": "Pinus mugo",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
     }
   ]
 }

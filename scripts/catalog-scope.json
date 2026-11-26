@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "origin": "private_offer",
-  "policy": "Biljke se dodaju samo iz ponuda i upita firme. Katalozi dopunjavaju postojeće biljke; automatsko ažuriranje ne proširuje spisak.",
+  "policy": "Biljke se dodaju samo iz dostavljenih i pregledanih ponuda i upita firme. Odobreni uvozi proširuju spisak uz dokaz izvornog reda; jutarnje cenovno ažuriranje ne proširuje spisak.",
   "nurseryIds": [
     "arbor",
     "biojela",
@@ -2747,6 +2747,12 @@
           "sourceId": "src-7da01642a42d65",
           "row": 61,
           "rawNameSha256": "54eb979b20ac7df051b5b3ce1278c8558465550fc133e8a0ada2b6bf5ebf9baa"
+        },
+        {
+          "id": "occ-619bdbe6e31770ab2871",
+          "sourceId": "src-e42f375b6a26a4",
+          "row": 12,
+          "rawNameSha256": "112f5c34a707545b26ce0c74295762cb5db238493b5fcbea65df3eff2f47b896"
         }
       ]
     },
@@ -4487,6 +4493,12 @@
           "sourceId": "src-7da01642a42d65",
           "row": 19,
           "rawNameSha256": "94ecde135b70ffe7a377fccbfb51beb4f9926d428cb72e20c212acd7057744e1"
+        },
+        {
+          "id": "occ-6b82506c359190c07cb7",
+          "sourceId": "src-e42f375b6a26a4",
+          "row": 3,
+          "rawNameSha256": "c8bd72ea2c638eb2cf25af1be9a42281be3759e0036ecb32a0abc7451ff73cbb"
         }
       ]
     },
@@ -5384,6 +5396,12 @@
           "sourceId": "src-7da01642a42d65",
           "row": 80,
           "rawNameSha256": "af73a5a7387b91f41e0df7cd15b43862716521a542ab0b9b2a2a5eb1c5d66448"
+        },
+        {
+          "id": "occ-1a618cdb691a2c739454",
+          "sourceId": "src-e42f375b6a26a4",
+          "row": 33,
+          "rawNameSha256": "f25195b63821dc31e3d577f643cda027ea7ebf5d3d01a91e7398bfaec54fa7ef"
         }
       ]
     },
@@ -7073,6 +7091,12 @@
           "page": 1,
           "row": 13,
           "rawNameSha256": "e7c54c19134516b10c35608b55b9802b7f7a1f8248e99573abbe3d257a4446d5"
+        },
+        {
+          "id": "occ-18dbebc0ad9bbd5dcb5b",
+          "sourceId": "src-e42f375b6a26a4",
+          "row": 7,
+          "rawNameSha256": "a7576832a79f10c4b07c496fe3a2ac1d5bb80bb82aa922bd8178bc22d34a887e"
         }
       ]
     },
@@ -7174,6 +7198,12 @@
           "page": 1,
           "line": 97,
           "rawNameSha256": "4da83e3416889365e53a574462baa651794f0761fa8025b768906ee8d20f2b41"
+        },
+        {
+          "id": "occ-077f90db4e8ce8283ff4",
+          "sourceId": "src-e42f375b6a26a4",
+          "row": 6,
+          "rawNameSha256": "4ca464e1b3007526891bf0ca97a37accc235fc615ef96b26d6d4e8226b95435f"
         }
       ]
     },
@@ -7475,6 +7505,12 @@
           "sourceId": "src-e6253527548f19",
           "page": 1,
           "rawNameSha256": "7eb2d6e9495a18ceb9d771592c1ccc616e8f7e96b97c02e2af7d9803d41d544f"
+        },
+        {
+          "id": "occ-9e1730a9fd895dcff85b",
+          "sourceId": "src-e42f375b6a26a4",
+          "row": 19,
+          "rawNameSha256": "2134dd3f1154fb1ecaff923ef67f44d6622b5e4445d2814df60c3043f4f39727"
         }
       ]
     },
@@ -8584,6 +8620,12 @@
           "sourceId": "src-7da01642a42d65",
           "row": 212,
           "rawNameSha256": "2b7fe460125aae6fd975b97144aed39efe45a242df6138de23ce9730ed8f7635"
+        },
+        {
+          "id": "occ-be8104ba0198441cd304",
+          "sourceId": "src-e42f375b6a26a4",
+          "row": 28,
+          "rawNameSha256": "114d6d9aece77e6459f0aca4fa6bcea5dd0cbf3b632be5a83e18994aadcaa1de"
         }
       ]
     },
@@ -9228,6 +9270,12 @@
           "sourceId": "src-696204ba883b1d",
           "row": 13,
           "rawNameSha256": "37378b06eaf107de1acb82249015bccb413cef719a37235a74d7dc73342dcf5e"
+        },
+        {
+          "id": "occ-dde5a32468ac0fa33892",
+          "sourceId": "src-e42f375b6a26a4",
+          "row": 31,
+          "rawNameSha256": "149a4490728f0cdaa70fcc98951618bff5fe704fdb6fa0c429ddc31f827e7777"
         }
       ]
     },
@@ -12446,6 +12494,12 @@
           "sourceId": "src-7da01642a42d65",
           "row": 243,
           "rawNameSha256": "22159d60bb4c7ee874209bd29c389a90d065832c571e5887f3e02736a76ec053"
+        },
+        {
+          "id": "occ-a85267d8ddc7859629c5",
+          "sourceId": "src-e42f375b6a26a4",
+          "row": 22,
+          "rawNameSha256": "33063314f0d65c83da754ca6bed12e7c510b66a11ce0db72dff3a7300ed2c806"
         }
       ]
     },
@@ -12717,6 +12771,12 @@
           "sourceId": "src-7da01642a42d65",
           "row": 177,
           "rawNameSha256": "2a87276dbe3189479dfa2fea2966e06cdac08211b9724beb3c3b62693c1ec742"
+        },
+        {
+          "id": "occ-b68e8b0f4c0ecc22f083",
+          "sourceId": "src-e42f375b6a26a4",
+          "row": 23,
+          "rawNameSha256": "4ecb48ab2bb6e6eaed9d77a1e691a7b652bbb229b8894d2ce0ac401922162fda"
         }
       ]
     },
@@ -13183,6 +13243,12 @@
           "sourceId": "src-e6253527548f19",
           "page": 1,
           "rawNameSha256": "48958ab66c904040562ade3f2e5eac0dda7e1580dbeb5aee7cddc3cd494568e2"
+        },
+        {
+          "id": "occ-92b820efb9aaab0de560",
+          "sourceId": "src-e42f375b6a26a4",
+          "row": 29,
+          "rawNameSha256": "343a839ac86f1f835f188ffa06e129c1e6349724ac0ff190f3b4a7346f86413c"
         }
       ]
     },
@@ -14291,6 +14357,12 @@
           "sourceId": "src-7da01642a42d65",
           "row": 184,
           "rawNameSha256": "9eeaa10d61da390fd686788ca15cde6d0783ba5905cf178c717a9b157f5ede9c"
+        },
+        {
+          "id": "occ-98d3848fce23e9959711",
+          "sourceId": "src-e42f375b6a26a4",
+          "row": 26,
+          "rawNameSha256": "5f7a88a6ca33173daa0a252e767633c6c9496cdcae7c2e1e82d63459ec22a22a"
         }
       ]
     },
@@ -14578,6 +14650,12 @@
           "sourceId": "src-7da01642a42d65",
           "row": 38,
           "rawNameSha256": "85db42ba28748da63804ec5066da98626598f9465abf7eeb3c5754332a4c6a20"
+        },
+        {
+          "id": "occ-58ad1c9d88b6a2e0c7ae",
+          "sourceId": "src-e42f375b6a26a4",
+          "row": 13,
+          "rawNameSha256": "25cd39357a99089a26aa1382b291d18fa03ac0584e8dbf2be941e54bbd2c2a95"
         }
       ]
     },
@@ -14729,6 +14807,240 @@
           "page": 2,
           "row": 4,
           "rawNameSha256": "6c1f4144dd3f9d6887663f9c07be582375bbbb5a951bf606b7d3b703fcc0f3a3"
+        }
+      ]
+    },
+    {
+      "id": "plant-939a6b2c310688",
+      "latinName": "Spiraea x arguta",
+      "offerEvidence": [
+        {
+          "id": "occ-a3110dc9fa71cadf3c70",
+          "sourceId": "src-e42f375b6a26a4",
+          "row": 1,
+          "rawNameSha256": "a40bff739a931b7aa1878f7788bc961e35cfb8df38814f7036e683a5ad390303"
+        }
+      ]
+    },
+    {
+      "id": "plant-50a41b2d933a27",
+      "latinName": "Tamarix tetrandra",
+      "offerEvidence": [
+        {
+          "id": "occ-d7bd5143cb4dc7803686",
+          "sourceId": "src-e42f375b6a26a4",
+          "row": 2,
+          "rawNameSha256": "0df2ab712a5876db754785edc4fe14034f0b83f46b970e241d62a271c75d7894"
+        }
+      ]
+    },
+    {
+      "id": "plant-b8cb9c58ff4e5a",
+      "latinName": "Viburnum opulus",
+      "offerEvidence": [
+        {
+          "id": "occ-02433c40562a4a3b6436",
+          "sourceId": "src-e42f375b6a26a4",
+          "row": 4,
+          "rawNameSha256": "69a5f5734ad573a14f6f738a5f9e352cfe4669f611c688189f60c54ac18952e9"
+        }
+      ]
+    },
+    {
+      "id": "plant-b771e8a1fe62ed",
+      "latinName": "Abelia grandiflora 'Edward Goucher'",
+      "offerEvidence": [
+        {
+          "id": "occ-9c848bca45a3bcb35282",
+          "sourceId": "src-e42f375b6a26a4",
+          "row": 5,
+          "rawNameSha256": "23c73ae47ae6932f95a884f863b9f852992219f6bf6f89da1e2c7d55700a41f0"
+        },
+        {
+          "id": "occ-a5c4b7ae8f3dcdf6d4d9",
+          "sourceId": "src-e42f375b6a26a4",
+          "row": 14,
+          "rawNameSha256": "23c73ae47ae6932f95a884f863b9f852992219f6bf6f89da1e2c7d55700a41f0"
+        }
+      ]
+    },
+    {
+      "id": "plant-c3d0945c6c6a06",
+      "latinName": "Lonicera japonica",
+      "offerEvidence": [
+        {
+          "id": "occ-600f00472193ea4386dc",
+          "sourceId": "src-e42f375b6a26a4",
+          "row": 8,
+          "rawNameSha256": "1de46bc7a67d44f5d003462375a129650261f0496cec259b60e7aa9d44136e0a"
+        }
+      ]
+    },
+    {
+      "id": "plant-97c7c377d17d54",
+      "latinName": "Parthenocissus tricuspidata 'Veitchii'",
+      "offerEvidence": [
+        {
+          "id": "occ-252d721007828cc53004",
+          "sourceId": "src-e42f375b6a26a4",
+          "row": 9,
+          "rawNameSha256": "39bcc5b26e818da5df1b11e1466a793129a158e57fc120456034229db37eac6d"
+        }
+      ]
+    },
+    {
+      "id": "plant-e25b089c3455ee",
+      "latinName": "Fallopia baldschuanica",
+      "offerEvidence": [
+        {
+          "id": "occ-31bc50e745bf9d7b3981",
+          "sourceId": "src-e42f375b6a26a4",
+          "row": 10,
+          "rawNameSha256": "ec1c1a4f332a503cf2984b7a683f92284fefd3385b416afad7d57f31a8fb4a2b"
+        }
+      ]
+    },
+    {
+      "id": "plant-3b46eb63597a36",
+      "latinName": "Hedera helix 'Gold Child'",
+      "offerEvidence": [
+        {
+          "id": "occ-bb9b39f606a8e4f7aa1a",
+          "sourceId": "src-e42f375b6a26a4",
+          "row": 11,
+          "rawNameSha256": "b799a34f6a6ab483707cc146f1fdb0b0ca8b546a6067407f6839c8c57a081540"
+        }
+      ]
+    },
+    {
+      "id": "plant-cf04fd2bfc9ceb",
+      "latinName": "Myrtus communis",
+      "offerEvidence": [
+        {
+          "id": "occ-5ab06f4b6b7e6d95ae86",
+          "sourceId": "src-e42f375b6a26a4",
+          "row": 15,
+          "rawNameSha256": "63558d9e983ffdba4ec3b3394e20fcba3368debd266c25241973e0335ab3900e"
+        }
+      ]
+    },
+    {
+      "id": "plant-83184ab6f038c1",
+      "latinName": "Artemisia arborescens 'Powis Castle'",
+      "offerEvidence": [
+        {
+          "id": "occ-e9b4460fa8ec70158b25",
+          "sourceId": "src-e42f375b6a26a4",
+          "row": 16,
+          "rawNameSha256": "c418b192d037d5fac6061613eb8a3c0c6a48228b44ea567a1ca009d1b7472153"
+        }
+      ]
+    },
+    {
+      "id": "plant-d31cb8dac4cd2b",
+      "latinName": "Aster novae-angliae 'Purple Dome'",
+      "offerEvidence": [
+        {
+          "id": "occ-e0a12e3cf1c441f92b1f",
+          "sourceId": "src-e42f375b6a26a4",
+          "row": 17,
+          "rawNameSha256": "606edc78e937169513cfacedf674001926c317de97abd3b1363676cdacdad23f"
+        }
+      ]
+    },
+    {
+      "id": "plant-24d3e8dc228776",
+      "latinName": "Echinacea purpurea 'White Swan'",
+      "offerEvidence": [
+        {
+          "id": "occ-0e74372d0e9a194ed5ec",
+          "sourceId": "src-e42f375b6a26a4",
+          "row": 18,
+          "rawNameSha256": "0c133253ce723db7c64f609bb097eb5431c9c93d89151e10cf8a85edf8222bd6"
+        }
+      ]
+    },
+    {
+      "id": "plant-fab2d55f36e7bd",
+      "latinName": "Perovskia atriplicifolia",
+      "offerEvidence": [
+        {
+          "id": "occ-7e8c738f4bf98e6ec142",
+          "sourceId": "src-e42f375b6a26a4",
+          "row": 20,
+          "rawNameSha256": "f9ba92cdfae732f474baf73210bd66121dc9a562de6776177fa8f68b89c5c3bf"
+        }
+      ]
+    },
+    {
+      "id": "plant-8b48be0e5170c6",
+      "latinName": "Rudbeckia fulgida",
+      "offerEvidence": [
+        {
+          "id": "occ-1dcfc13c95a13a0d19db",
+          "sourceId": "src-e42f375b6a26a4",
+          "row": 21,
+          "rawNameSha256": "f52399799d2f734aa5a5d476130147547c8225bc2d5564706585bcddf433736c"
+        }
+      ]
+    },
+    {
+      "id": "plant-c8b7d1f6b63cc6",
+      "latinName": "Salvia nemorosa 'Negrito'",
+      "offerEvidence": [
+        {
+          "id": "occ-9312ca2d28911c6ac951",
+          "sourceId": "src-e42f375b6a26a4",
+          "row": 24,
+          "rawNameSha256": "12dd236bfa34dc1049806c627ab8eaaefcebac9ae66801afb4e63e16ca9c2cbe"
+        }
+      ]
+    },
+    {
+      "id": "plant-14707bd7a6bdd8",
+      "latinName": "Thymus citriodorus 'Doone Walley'",
+      "offerEvidence": [
+        {
+          "id": "occ-7f8a2a7d970c0f70c4d1",
+          "sourceId": "src-e42f375b6a26a4",
+          "row": 25,
+          "rawNameSha256": "3f067f18c4f9355efa770b9a7c658209dc3a10ffc566ee526ff863b7aea8b333"
+        }
+      ]
+    },
+    {
+      "id": "plant-7a5838bb21ff92",
+      "latinName": "Cortaderia selloana 'White'",
+      "offerEvidence": [
+        {
+          "id": "occ-c7cdac35af62d2f6832d",
+          "sourceId": "src-e42f375b6a26a4",
+          "row": 27,
+          "rawNameSha256": "8ba8fe211801130cbb15a0c180b346af34d4968a67416895345e055721f6b964"
+        }
+      ]
+    },
+    {
+      "id": "plant-43fb6659e5332b",
+      "latinName": "Pennisetum alopecuroides",
+      "offerEvidence": [
+        {
+          "id": "occ-fd530bd819bbb6173968",
+          "sourceId": "src-e42f375b6a26a4",
+          "row": 30,
+          "rawNameSha256": "d8da5000434aeedd502b98a3fce538e31de5da468fa589da2df8c055cbde0134"
+        }
+      ]
+    },
+    {
+      "id": "plant-a9874496b684ce",
+      "latinName": "Pinus mugo",
+      "offerEvidence": [
+        {
+          "id": "occ-253adf8e51885915e3f5",
+          "sourceId": "src-e42f375b6a26a4",
+          "row": 32,
+          "rawNameSha256": "8027add40474f635b0b4265267ad1ec86c71df0f83752e561517dba8408f57d5"
         }
       ]
     }
