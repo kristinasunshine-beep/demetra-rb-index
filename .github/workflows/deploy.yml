@@ -33,7 +33,11 @@ jobs:
         uses: actions/checkout@v7.0.1
         with:
           ref: main
+          fetch-depth: 0
           persist-credentials: false
+
+      - name: Zaštiti postojeći katalog od gubitka zapisa
+        run: node scripts/check-catalog-preservation.mjs
 
       - name: Pripremi Node
         uses: actions/setup-node@v7.1.0
