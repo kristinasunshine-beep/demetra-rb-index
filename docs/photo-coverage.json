@@ -1,10 +1,10 @@
 {
   "schemaVersion": 2,
-  "checkedAt": "2026-11-26T08:38:42Z",
+  "checkedAt": "2026-11-26T09:28:20Z",
   "status": "partial",
   "plants": 642,
   "plantsInventoried": 642,
-  "plantsWithPhoto": 540,
+  "plantsWithPhoto": 549,
   "plantsWithoutPhoto": [
     {
       "plantId": "plant-9030e7f16d3409",
@@ -53,10 +53,6 @@
     {
       "plantId": "plant-a61d5a8e74adf3",
       "latinName": "Betula pendula 'Golden Cloud'"
-    },
-    {
-      "plantId": "plant-73e835a5884bea",
-      "latinName": "Betula utilis"
     },
     {
       "plantId": "plant-fc589f296b8c7a",
@@ -163,20 +159,12 @@
       "latinName": "Euonymus fortunei"
     },
     {
-      "plantId": "plant-8d20ec29466565",
-      "latinName": "Fagus sylvatica 'Albovariegata'"
-    },
-    {
       "plantId": "plant-f9553bb4e36e5b",
       "latinName": "Fagus sylvatica 'Atropurpurea Fastigiata'"
     },
     {
       "plantId": "plant-7ddbfac0f54d7b",
       "latinName": "Fraxinus americana 'Raywood'"
-    },
-    {
-      "plantId": "plant-dca581b8d717dc",
-      "latinName": "Ginkgo biloba 'Globus'"
     },
     {
       "plantId": "plant-d1062b9945f832",
@@ -215,10 +203,6 @@
       "latinName": "Hydrangea arborescens 'Sweet Annabelle'"
     },
     {
-      "plantId": "plant-4ae8a353cc72d2",
-      "latinName": "Ilex crenata Dark Star"
-    },
-    {
       "plantId": "plant-5893766152d9ef",
       "latinName": "Juniperus horizontalis"
     },
@@ -249,10 +233,6 @@
     {
       "plantId": "plant-1aef7306d1e449",
       "latinName": "Magnolia 'Albatross'"
-    },
-    {
-      "plantId": "plant-6b45ada40f7f76",
-      "latinName": "Malus domestica (Idared) alma"
     },
     {
       "plantId": "plant-46ea4c0a14ebcf",
@@ -291,10 +271,6 @@
       "latinName": "Picea pungens 'Glauca Pendula'"
     },
     {
-      "plantId": "plant-pinus-nigra",
-      "latinName": "Pinus nigra"
-    },
-    {
       "plantId": "plant-28b3c6503e5071",
       "latinName": "Pinus nigra 'Austriana'"
     },
@@ -307,20 +283,12 @@
       "latinName": "Prunus serrula 'Globosa'"
     },
     {
-      "plantId": "plant-50ae05a518834d",
-      "latinName": "Prunus serrulata"
-    },
-    {
       "plantId": "plant-612231899c309b",
       "latinName": "Prunus shirotaea"
     },
     {
       "plantId": "plant-82388a3f4a1284",
       "latinName": "Prunus subhirtella 'Pink Perfection'"
-    },
-    {
-      "plantId": "plant-0745a6109ba8ea",
-      "latinName": "Pyrus communis (Williams) körte"
     },
     {
       "plantId": "plant-e0076da0f09d2f",
@@ -395,10 +363,6 @@
       "latinName": "Lonicera japonica"
     },
     {
-      "plantId": "plant-3b46eb63597a36",
-      "latinName": "Hedera helix 'Gold Child'"
-    },
-    {
       "plantId": "plant-8b48be0e5170c6",
       "latinName": "Rudbeckia fulgida"
     },
@@ -415,7 +379,7 @@
       "latinName": "Cortaderia selloana 'White'"
     }
   ],
-  "coveragePercent": 84.11,
+  "coveragePercent": 85.51,
   "activeOffers": 4587,
-  "remainingOffers": 218
+  "remainingOffers": 162
 }

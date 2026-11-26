@@ -86,6 +86,42 @@
     {
       "nurseryId": "ebben",
       "pageUrl": "https://www.ebben.nl/en/treeebb/sttenuis-stipa-tenuissima/"
+    },
+    {
+      "nurseryId": "van-den-berk",
+      "pageUrl": "https://www.vdberk.com/trees/betula-utilis/"
+    },
+    {
+      "nurseryId": "van-den-berk",
+      "pageUrl": "https://www.vdberk.com/trees/ginkgo-biloba-globus-barabits-sztrada/"
+    },
+    {
+      "nurseryId": "ebben",
+      "pageUrl": "https://www.ebben.nl/en/treeebb/pinigra-pinus-nigra/"
+    },
+    {
+      "nurseryId": "ebben",
+      "pageUrl": "https://www.ebben.nl/en/treeebb/pruserru-prunus-serrulata/"
+    },
+    {
+      "nurseryId": "van-den-berk",
+      "pageUrl": "https://www.vdberk.com/trees/fagus-sylvatica-albomarginata/"
+    },
+    {
+      "nurseryId": "innocenti-mangoni",
+      "pageUrl": "https://innocentiemangonipiante.it/en/ilex-crenata-caroline-upright/"
+    },
+    {
+      "nurseryId": "vannucci-piante",
+      "pageUrl": "https://webshop.vannuccipiante.it/product/malus-domestica-idared/"
+    },
+    {
+      "nurseryId": "van-den-berk",
+      "pageUrl": "https://www.vdberk.com/trees/pyrus-communis-williams/"
+    },
+    {
+      "nurseryId": "willaert",
+      "pageUrl": "https://www.willaert.be/nl/plant/hedera-helix-goldchild/hehgoldc/"
     }
   ],
   "exactNameAliases": {
@@ -1236,6 +1272,66 @@
           "https://innocentiemangonipiante.it/en/fagus-sylvatica-dawyck-purple/"
         ],
         "reason": "RHS explicitly confirms Purpurea Fastigiata as a synonym of Dawyck Purple. The already verified Innocenti and Mangoni Dawyck Purple catalogue photograph is reused for this exact cultivar; it is a plant reference, not evidence of offer size or delivery form. The separate feathered form retains its separately reviewed photograph."
+      }
+    ],
+    "plant-dca581b8d717dc": [
+      {
+        "name": "Ginkgo biloba GLOBUS ('Barabits Sztráda')",
+        "evidenceUrls": [
+          "https://www.vdberk.com/trees/ginkgo-biloba-globus-barabits-sztrada/"
+        ],
+        "reason": "Supplier explicitly identifies GLOBUS as trade name of the same Hungarian Barabits Sztrada selection."
+      }
+    ],
+    "plant-8d20ec29466565": [
+      {
+        "name": "Fagus sylvatica 'Albomarginata'",
+        "evidenceUrls": [
+          "https://www.rhs.org.uk/plants/91625/fagus-sylvatica-albovariegata-%28v%29/details",
+          "https://www.vdberk.com/trees/fagus-sylvatica-albomarginata/"
+        ],
+        "reason": "RHS lists Albomarginata as synonym of accepted Albovariegata; complete species and selection retained."
+      }
+    ],
+    "plant-4ae8a353cc72d2": [
+      {
+        "name": "Ilex crenata 'Caroline Upright'",
+        "evidenceUrls": [
+          "https://arboretumwojslawice.pl/index-plantarum/index-plantarum-drzewa-lisciaste/",
+          "https://innocentiemangonipiante.it/en/ilex-crenata-caroline-upright/"
+        ],
+        "reason": "Official Arboretum Wojslawice botanical index explicitly pairs DARK STAR with Caroline Upright, supplier van der Sande 2001; distinct from Dark Green."
+      }
+    ],
+    "plant-6b45ada40f7f76": [
+      {
+        "name": "Malus domestica 'Idared'",
+        "evidenceUrls": [
+          "https://webshop.vannuccipiante.it/product/malus-domestica-idared/"
+        ],
+        "reason": "Original complete botanical name explicitly contains Malus domestica and Idared; trailing Hungarian common-name descriptor alma is not a cultivar. Photo-only normalization; original catalogue name unchanged.",
+        "manualPhotoOnly": true
+      }
+    ],
+    "plant-0745a6109ba8ea": [
+      {
+        "name": "Pyrus communis 'Williams'",
+        "evidenceUrls": [
+          "https://innocentiemangonipiante.it/en/pyrus-communis-williams/",
+          "https://www.vdberk.com/trees/pyrus-communis-williams/"
+        ],
+        "reason": "Original archive row Trees47 explicitly states Pyrus communis (Williams) körte. Complete species and cultivar retained, Hungarian common-name descriptor omitted for this photo only.",
+        "manualPhotoOnly": true
+      }
+    ],
+    "plant-3b46eb63597a36": [
+      {
+        "name": "Hedera helix 'Goldchild'",
+        "evidenceUrls": [
+          "https://www.ducrettet.com/uploads/catalogues/schneider-catalogue-2018-bedding-plants.pdf",
+          "https://www.willaert.be/nl/plant/hedera-helix-goldchild/hehgoldc/"
+        ],
+        "reason": "Primary Schneider catalogue printed p16 lists Goldchild in heading and Gold Child for same Hedera helix product87801. Scoped spacing equivalent only; Willaert photo not borrowed from another ivy cultivar."
       }
     ]
   },

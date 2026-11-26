@@ -13314,6 +13314,254 @@
       "sha256": "567b6c12b9d210749fb36daad40a57ab3cd78d548addb35f2be970161392b9a0",
       "checkedAt": "2026-11-26T08:35:59Z",
       "matchLevel": "exact"
+    },
+    "plant-73e835a5884bea": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "van-den-berk",
+      "imageUrl": "https://www.vdberk.com/media/12710/betula-utilis.jpg",
+      "sourceUrl": "https://www.vdberk.com/trees/betula-utilis/",
+      "matchedName": "Betula utilis",
+      "identityEvidence": {
+        "method": "product_og_image",
+        "canonicalName": "Betula utilis"
+      },
+      "imageHosts": [
+        "www.vdberk.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "betula utilis",
+      "latinName": "Betula utilis",
+      "image": "assets/biljke/reference-92d0c6045f5e39f1aac21251.jpg",
+      "sha256": "92d0c6045f5e39f1aac21251e4f1ab983bedda490b948ce2b79827928407cc96",
+      "checkedAt": "2026-11-26T09:25:17Z",
+      "matchLevel": "exact"
+    },
+    "plant-pinus-nigra": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "ebben",
+      "sourceUrl": "https://www.ebben.nl/en/treeebb/pinigra-pinus-nigra/",
+      "imageUrl": "https://www.ebben.nl/files/treeEbb/images/852x480/pinus-nigra-high-stem-4_1.jpg",
+      "matchedName": "Pinus nigra",
+      "identityEvidence": {
+        "method": "reviewed_exact_product_heading_and_gallery",
+        "canonicalName": "Pinus nigra",
+        "name": "Pinus nigra"
+      },
+      "imageHosts": [
+        "www.ebben.nl"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "pinus nigra",
+      "latinName": "Pinus nigra",
+      "image": "assets/biljke/reference-64c03bb91601ca751e4111f6.jpg",
+      "sha256": "64c03bb91601ca751e4111f6c9680eba39a03d2ab39408b8208b97724d9c52df",
+      "checkedAt": "2026-11-26T09:25:19Z",
+      "matchLevel": "exact"
+    },
+    "plant-50ae05a518834d": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "ebben",
+      "sourceUrl": "https://www.ebben.nl/en/treeebb/pruserru-prunus-serrulata/",
+      "imageUrl": "https://www.ebben.nl/files/treeEbb/images/852x480/prunus-serrulata-multi-stem-2_1.jpg",
+      "matchedName": "Prunus serrulata",
+      "identityEvidence": {
+        "method": "reviewed_exact_product_heading_and_gallery",
+        "canonicalName": "Prunus serrulata",
+        "name": "Prunus serrulata"
+      },
+      "imageHosts": [
+        "www.ebben.nl"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "prunus serrulata",
+      "latinName": "Prunus serrulata",
+      "image": "assets/biljke/reference-22cd73bab8ce5df3971d4e3c.jpg",
+      "sha256": "22cd73bab8ce5df3971d4e3cb5a3fc9ee047642e8fdeb07a44e52ffa10fa1ef9",
+      "checkedAt": "2026-11-26T09:25:20Z",
+      "matchLevel": "exact"
+    },
+    "plant-8d20ec29466565": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "van-den-berk",
+      "imageUrl": "https://www.vdberk.com/media/41190/fagus-sylvatica-albomarginata.jpg",
+      "sourceUrl": "https://www.vdberk.com/trees/fagus-sylvatica-albomarginata/",
+      "matchedName": "Fagus sylvatica 'Albomarginata'",
+      "identityEvidence": {
+        "method": "product_og_image",
+        "canonicalName": "Fagus sylvatica 'Albovariegata'",
+        "reviewedAlias": {
+          "evidenceUrls": [
+            "https://www.rhs.org.uk/plants/91625/fagus-sylvatica-albovariegata-%28v%29/details",
+            "https://www.vdberk.com/trees/fagus-sylvatica-albomarginata/"
+          ],
+          "reason": "RHS lists Albomarginata as synonym of accepted Albovariegata; complete species and selection retained."
+        }
+      },
+      "imageHosts": [
+        "www.vdberk.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "fagus sylvatica albomarginata",
+      "latinName": "Fagus sylvatica 'Albovariegata'",
+      "image": "assets/biljke/reference-8bcd052652285f1e90edbc61.jpg",
+      "sha256": "8bcd052652285f1e90edbc61a73ecb8055e4c8d851d042ef043a4e6a019d02e6",
+      "checkedAt": "2026-11-26T09:25:20Z",
+      "matchLevel": "exact"
+    },
+    "plant-4ae8a353cc72d2": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "innocenti-mangoni",
+      "imageUrl": "https://innocentiemangonipiante.it/wp-content/uploads/2023/10/1646909101.jpeg",
+      "sourceUrl": "https://innocentiemangonipiante.it/en/ilex-crenata-caroline-upright/",
+      "matchedName": "Ilex crenata 'Caroline Upright'",
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Ilex crenata Dark Star",
+        "reviewedAlias": {
+          "evidenceUrls": [
+            "https://arboretumwojslawice.pl/index-plantarum/index-plantarum-drzewa-lisciaste/",
+            "https://innocentiemangonipiante.it/en/ilex-crenata-caroline-upright/"
+          ],
+          "reason": "Official Arboretum Wojslawice botanical index explicitly pairs DARK STAR with Caroline Upright, supplier van der Sande 2001; distinct from Dark Green."
+        }
+      },
+      "imageHosts": [
+        "innocentiemangonipiante.it"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "ilex crenata caroline upright",
+      "latinName": "Ilex crenata Dark Star",
+      "image": "assets/biljke/reference-acd7ee29c72bfffd2a7e25fe.jpg",
+      "sha256": "acd7ee29c72bfffd2a7e25fe78c3fc20d194b4ce26f2b09f0b8084c92b2d26c4",
+      "checkedAt": "2026-11-26T09:25:21Z",
+      "matchLevel": "exact"
+    },
+    "plant-0745a6109ba8ea": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "van-den-berk",
+      "imageUrl": "https://www.vdberk.com/media/608370/pyrus-communis-williams-bon-chretien.jpg",
+      "sourceUrl": "https://www.vdberk.com/trees/pyrus-communis-williams/",
+      "matchedName": "Pyrus communis 'Williams'",
+      "identityEvidence": {
+        "method": "product_og_image",
+        "canonicalName": "Pyrus communis (Williams) körte",
+        "reviewedAlias": {
+          "evidenceUrls": [
+            "https://innocentiemangonipiante.it/en/pyrus-communis-williams/",
+            "https://www.vdberk.com/trees/pyrus-communis-williams/"
+          ],
+          "reason": "Original archive row Trees47 explicitly states Pyrus communis (Williams) kÃ¶rte. Complete species and cultivar retained, Hungarian common-name descriptor omitted for this photo only."
+        }
+      },
+      "imageHosts": [
+        "www.vdberk.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "pyrus communis williams körte",
+      "latinName": "Pyrus communis (Williams) körte",
+      "image": "assets/biljke/reference-2689041471814c1b87683ee3.jpg",
+      "sha256": "2689041471814c1b87683ee3d7502b4b4a4121e627bf9d27973d014ba605cc59",
+      "checkedAt": "2026-11-26T09:25:23Z",
+      "matchLevel": "exact"
+    },
+    "plant-dca581b8d717dc": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "van-den-berk",
+      "imageUrl": "https://www.vdberk.com/media/406970/ginkgo-biloba-globus-barabits-sztrada.jpg",
+      "sourceUrl": "https://www.vdberk.com/trees/ginkgo-biloba-globus-barabits-sztrada/",
+      "matchedName": "Ginkgo biloba GLOBUS ('Barabits Sztráda')",
+      "identityEvidence": {
+        "method": "product_og_image",
+        "canonicalName": "Ginkgo biloba 'Globus'",
+        "reviewedAlias": {
+          "evidenceUrls": [
+            "https://www.vdberk.com/trees/ginkgo-biloba-globus-barabits-sztrada/"
+          ],
+          "reason": "Supplier explicitly identifies GLOBUS as trade name of the same Hungarian Barabits Sztrada selection."
+        }
+      },
+      "imageHosts": [
+        "www.vdberk.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "ginkgo biloba globus",
+      "latinName": "Ginkgo biloba 'Globus'",
+      "image": "assets/biljke/reference-127b68ce0c78192e85ab5609.jpg",
+      "sha256": "127b68ce0c78192e85ab560919cbc0837d51e9d17401fc465ae27a60a35941f4",
+      "checkedAt": "2026-11-26T09:27:06Z",
+      "matchLevel": "exact"
+    },
+    "plant-6b45ada40f7f76": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "vannucci-piante",
+      "sourceUrl": "https://webshop.vannuccipiante.it/product/malus-domestica-idared/",
+      "imageUrl": "https://webshop.vannuccipiante.it/wp-content/uploads/2026/05/4297___Malus_domestica___Idared___-2.jpg",
+      "matchedName": "Malus domestica 'Idared'",
+      "identityEvidence": {
+        "method": "reviewed_exact_product_heading_and_gallery",
+        "canonicalName": "Malus domestica (Idared) alma",
+        "name": "Malus domestica 'Idared'",
+        "reviewedAlias": {
+          "evidenceUrls": [
+            "https://webshop.vannuccipiante.it/product/malus-domestica-idared/"
+          ],
+          "reason": "Original complete botanical name explicitly contains Malus domestica and Idared; trailing Hungarian common-name descriptor alma is not a cultivar. Photo-only normalization; original catalogue name unchanged."
+        }
+      },
+      "imageHosts": [
+        "catalogue.vannuccipiante.it",
+        "webshop.vannuccipiante.it",
+        "www.vannuccipiante.it"
+      ],
+      "imagePathPrefixes": {
+        "catalogue.vannuccipiante.it": [
+          "/images/"
+        ]
+      },
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "malus domestica idared alma",
+      "latinName": "Malus domestica (Idared) alma",
+      "image": "assets/biljke/reference-594bae57677d8d1621889ce5.jpg",
+      "sha256": "594bae57677d8d1621889ce5d3e0fafcbce6e7357fc424299bcbede6773c1e59",
+      "checkedAt": "2026-11-26T09:27:09Z",
+      "matchLevel": "exact"
+    },
+    "plant-3b46eb63597a36": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "willaert",
+      "sourceUrl": "https://www.willaert.be/nl/plant/hedera-helix-goldchild/hehgoldc",
+      "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/HEHGOLDC_369_20032026113942.jpg",
+      "matchedName": "Hedera helix 'Goldchild'",
+      "identityEvidence": {
+        "method": "reviewed_exact_product_heading_and_gallery",
+        "canonicalName": "Hedera helix 'Gold Child'",
+        "name": "Hedera helix 'Goldchild'",
+        "reviewedAlias": {
+          "evidenceUrls": [
+            "https://www.ducrettet.com/uploads/catalogues/schneider-catalogue-2018-bedding-plants.pdf",
+            "https://www.willaert.be/nl/plant/hedera-helix-goldchild/hehgoldc/"
+          ],
+          "reason": "Primary Schneider catalogue printed p16 lists Goldchild in heading and Gold Child for same Hedera helix product87801. Scoped spacing equivalent only; Willaert photo not borrowed from another ivy cultivar."
+        }
+      },
+      "imageHosts": [
+        "www.willaert.be"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "hedera helix gold child",
+      "latinName": "Hedera helix 'Gold Child'",
+      "image": "assets/biljke/reference-a6dfe6253c84743cc26e7e4c.jpg",
+      "sha256": "a6dfe6253c84743cc26e7e4cdd8bf883a9cca3df4695d77cb3ad585165676638",
+      "checkedAt": "2026-11-26T09:27:11Z",
+      "matchLevel": "exact"
     }
   },
   "retiredReferences": {

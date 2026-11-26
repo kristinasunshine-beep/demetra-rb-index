@@ -1,102 +1,24 @@
 {
   "schemaVersion": 2,
-  "status": "partial",
-  "requests": 559,
-  "workers": 8,
-  "events": [],
-  "sourceHealth": {
-    "portal.volentis.com": {
-      "requests": 126,
-      "succeeded": 125,
-      "retries": 0,
-      "httpErrors": {
-        "404": 1
-      },
-      "stopped": false,
-      "lastFailure": {
-        "source": "https://portal.volentis.com/robots.txt",
-        "reason": "http_error",
-        "detail": "Source returned HTTP 404.",
-        "httpStatus": 404
-      }
-    },
-    "www.willaert.be": {
-      "requests": 136,
-      "succeeded": 136,
-      "retries": 0,
-      "httpErrors": {},
-      "stopped": false,
-      "requestIntervalSeconds": 1.0
-    },
-    "catalogue.vannuccipiante.it": {
-      "requests": 4,
-      "succeeded": 4,
-      "retries": 0,
-      "httpErrors": {},
-      "stopped": false
-    },
-    "innocentiemangonipiante.it": {
-      "requests": 179,
-      "succeeded": 179,
-      "retries": 0,
-      "httpErrors": {},
-      "stopped": false
-    },
-    "www.lorberg.com": {
-      "requests": 42,
-      "succeeded": 42,
-      "retries": 0,
-      "httpErrors": {},
-      "stopped": false
-    },
-    "webshop.vannuccipiante.it": {
-      "requests": 21,
-      "succeeded": 21,
-      "retries": 0,
-      "httpErrors": {},
-      "stopped": false
-    },
-    "www.lve-baumschule.de": {
-      "requests": 14,
-      "succeeded": 14,
-      "retries": 0,
-      "httpErrors": {},
-      "stopped": false
-    },
-    "www.vdberk.com": {
-      "requests": 13,
-      "succeeded": 13,
-      "retries": 0,
-      "httpErrors": {},
-      "stopped": false
-    },
-    "smitsbv.nl": {
-      "requests": 23,
-      "succeeded": 23,
-      "retries": 0,
-      "httpErrors": {},
-      "stopped": false
-    },
-    "www.vannuccipiante.it": {
-      "requests": 1,
-      "succeeded": 0,
-      "retries": 0,
-      "httpErrors": {},
-      "stopped": true,
-      "lastFailure": {
-        "source": "https://www.vannuccipiante.it/healthy_plants/betula-utilis-doorenbos-b-jacquemontii/",
-        "reason": "download_failed",
-        "detail": "The read operation timed out"
-      }
+  "startedAt": "2026-11-26T09:28:11Z",
+  "finishedAt": "2026-11-26T09:28:19Z",
+  "scope": "all_catalog_plants",
+  "requests": 0,
+  "auditOnly": true,
+  "nonPhotoDataUnchanged": true,
+  "stages": {
+    "fullCoverage": {
+      "status": "completed"
     }
   },
+  "events": [],
   "coverage": {
     "schemaVersion": 2,
-    "checkedAt": "2026-11-26T08:38:42Z",
+    "checkedAt": "2026-11-26T09:28:20Z",
     "status": "partial",
     "plants": 642,
     "plantsInventoried": 642,
-    "plantsWithPhoto": 540,
+    "plantsWithPhoto": 549,
     "plantsWithoutPhoto": [
       {
         "plantId": "plant-9030e7f16d3409",
@@ -145,10 +67,6 @@
       {
         "plantId": "plant-a61d5a8e74adf3",
         "latinName": "Betula pendula 'Golden Cloud'"
-      },
-      {
-        "plantId": "plant-73e835a5884bea",
-        "latinName": "Betula utilis"
       },
       {
         "plantId": "plant-fc589f296b8c7a",
@@ -255,20 +173,12 @@
         "latinName": "Euonymus fortunei"
       },
       {
-        "plantId": "plant-8d20ec29466565",
-        "latinName": "Fagus sylvatica 'Albovariegata'"
-      },
-      {
         "plantId": "plant-f9553bb4e36e5b",
         "latinName": "Fagus sylvatica 'Atropurpurea Fastigiata'"
       },
       {
         "plantId": "plant-7ddbfac0f54d7b",
         "latinName": "Fraxinus americana 'Raywood'"
-      },
-      {
-        "plantId": "plant-dca581b8d717dc",
-        "latinName": "Ginkgo biloba 'Globus'"
       },
       {
         "plantId": "plant-d1062b9945f832",
@@ -307,10 +217,6 @@
         "latinName": "Hydrangea arborescens 'Sweet Annabelle'"
       },
       {
-        "plantId": "plant-4ae8a353cc72d2",
-        "latinName": "Ilex crenata Dark Star"
-      },
-      {
         "plantId": "plant-5893766152d9ef",
         "latinName": "Juniperus horizontalis"
       },
@@ -341,10 +247,6 @@
       {
         "plantId": "plant-1aef7306d1e449",
         "latinName": "Magnolia 'Albatross'"
-      },
-      {
-        "plantId": "plant-6b45ada40f7f76",
-        "latinName": "Malus domestica (Idared) alma"
       },
       {
         "plantId": "plant-46ea4c0a14ebcf",
@@ -383,10 +285,6 @@
         "latinName": "Picea pungens 'Glauca Pendula'"
       },
       {
-        "plantId": "plant-pinus-nigra",
-        "latinName": "Pinus nigra"
-      },
-      {
         "plantId": "plant-28b3c6503e5071",
         "latinName": "Pinus nigra 'Austriana'"
       },
@@ -399,20 +297,12 @@
         "latinName": "Prunus serrula 'Globosa'"
       },
       {
-        "plantId": "plant-50ae05a518834d",
-        "latinName": "Prunus serrulata"
-      },
-      {
         "plantId": "plant-612231899c309b",
         "latinName": "Prunus shirotaea"
       },
       {
         "plantId": "plant-82388a3f4a1284",
         "latinName": "Prunus subhirtella 'Pink Perfection'"
-      },
-      {
-        "plantId": "plant-0745a6109ba8ea",
-        "latinName": "Pyrus communis (Williams) körte"
       },
       {
         "plantId": "plant-e0076da0f09d2f",
@@ -487,10 +377,6 @@
         "latinName": "Lonicera japonica"
       },
       {
-        "plantId": "plant-3b46eb63597a36",
-        "latinName": "Hedera helix 'Gold Child'"
-      },
-      {
         "plantId": "plant-8b48be0e5170c6",
         "latinName": "Rudbeckia fulgida"
       },
@@ -507,11 +393,12 @@
         "latinName": "Cortaderia selloana 'White'"
       }
     ],
-    "coveragePercent": 84.11,
+    "coveragePercent": 85.51,
     "activeOffers": 4587,
-    "remainingOffers": 218
+    "remainingOffers": 162
   },
-  "nonPhotoDataUnchanged": true,
-  "newlyVerified": 13,
-  "refreshCandidates": 0
+  "status": "partial",
+  "sourceErrors": 401,
+  "verifiedPlantReferences": 544,
+  "newlyVerified": 0
 }

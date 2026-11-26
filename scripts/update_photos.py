@@ -377,7 +377,9 @@ def to_jpeg(body, limits):
         with warnings.catch_warnings():
             warnings.simplefilter("error", Image.DecompressionBombWarning)
             with Image.open(BytesIO(body)) as source:
-                require(source.format in {"JPEG", "PNG", "WEBP", "GIF", "AVIF"},
+                # MPO is a JPEG container; use its first photograph, just as for GIF.
+                # The same byte, pixel and decoded-image limits still apply.
+                require(source.format in {"JPEG", "MPO", "PNG", "WEBP", "GIF", "AVIF"},
                         "unsupported_image", "Only supported raster photographs are accepted.")
                 require(0 < source.width * source.height <= limits["maxPixels"],
                         "image_too_large", "Image exceeds the pixel limit.")

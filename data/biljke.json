@@ -1373,7 +1373,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-92d0c6045f5e39f1aac21251.jpg",
+        "sourceUrl": "https://www.vdberk.com/trees/betula-utilis/"
+      }
     },
     {
       "id": "plant-03be2c36cba9f4",
@@ -3268,7 +3272,11 @@
       "searchAliases": [
         "Fagus sylv. 'Albovariegata'"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-8bcd052652285f1e90edbc61.jpg",
+        "sourceUrl": "https://www.vdberk.com/trees/fagus-sylvatica-albomarginata/"
+      }
     },
     {
       "id": "plant-e4692474ba5482",
@@ -3710,7 +3718,11 @@
       "searchAliases": [
         "Ginkgo biloba Globus"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-127b68ce0c78192e85ab5609.jpg",
+        "sourceUrl": "https://www.vdberk.com/trees/ginkgo-biloba-globus-barabits-sztrada/"
+      }
     },
     {
       "id": "plant-cd48a494b63f41",
@@ -4364,7 +4376,11 @@
       "searchAliases": [
         "Ilex crenata Dark Star BALL"
       ],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-acd7ee29c72bfffd2a7e25fe.jpg",
+        "sourceUrl": "https://innocentiemangonipiante.it/en/ilex-crenata-caroline-upright/"
+      }
     },
     {
       "id": "plant-c055ddac0a8ad6",
@@ -5181,7 +5197,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-594bae57677d8d1621889ce5.jpg",
+        "sourceUrl": "https://webshop.vannuccipiante.it/product/malus-domestica-idared/"
+      }
     },
     {
       "id": "plant-436f94cedc6b35",
@@ -6122,7 +6142,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-64c03bb91601ca751e4111f6.jpg",
+        "sourceUrl": "https://www.ebben.nl/en/treeebb/pinigra-pinus-nigra/"
+      }
     },
     {
       "id": "plant-28b3c6503e5071",
@@ -6800,7 +6824,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-22cd73bab8ce5df3971d4e3c.jpg",
+        "sourceUrl": "https://www.ebben.nl/en/treeebb/pruserru-prunus-serrulata/"
+      }
     },
     {
       "id": "plant-3d9e89d595caec",
@@ -7092,7 +7120,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-2689041471814c1b87683ee3.jpg",
+        "sourceUrl": "https://www.vdberk.com/trees/pyrus-communis-williams/"
+      }
     },
     {
       "id": "plant-d6bc33f781049f",
@@ -9099,7 +9131,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-a6dfe6253c84743cc26e7e4c.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/hedera-helix-goldchild/hehgoldc"
+      }
     },
     {
       "id": "plant-cf04fd2bfc9ceb",
