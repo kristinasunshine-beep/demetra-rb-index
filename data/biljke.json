@@ -2754,7 +2754,9 @@
       "category": "Biljka",
       "description": "",
       "synonyms": [],
-      "searchAliases": [],
+      "searchAliases": [
+        "Cupressus semprevirens"
+      ],
       "demo": false,
       "photo": {
         "image": "assets/biljke/reference-0743bc6d46103c64218ed010.jpg",
@@ -10886,7 +10888,10 @@
       "category": "Biljka",
       "description": "",
       "synonyms": [],
-      "searchAliases": [],
+      "searchAliases": [
+        "Cupressus pyramidalis",
+        "Cupressus sempervirens pyramidalis"
+      ],
       "demo": false,
       "photo": {
         "image": "assets/biljke/reference-31baf7ed6b0d9e8f08d74122.jpg",
@@ -13960,7 +13965,9 @@
       "category": "Biljka",
       "description": "",
       "synonyms": [],
-      "searchAliases": [],
+      "searchAliases": [
+        "Ligustrum vulgaris"
+      ],
       "demo": false,
       "photo": {
         "image": "assets/biljke/reference-a6a735d4bd59532d09f7389e.jpg",
@@ -13974,7 +13981,9 @@
       "category": "Biljka",
       "description": "",
       "synonyms": [],
-      "searchAliases": [],
+      "searchAliases": [
+        "Vitex agnus castus"
+      ],
       "demo": false,
       "photo": {
         "image": "assets/biljke/reference-54cf2e3cc11275d47755975d.jpg",
