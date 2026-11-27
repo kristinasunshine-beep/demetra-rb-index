@@ -1,13 +1,27 @@
 {
   "schemaVersion": 2,
   "status": "partial",
-  "requests": 922,
+  "requests": 1003,
   "workers": 8,
   "events": [],
   "sourceHealth": {
+    "webshop.vannuccipiante.it": {
+      "requests": 55,
+      "succeeded": 55,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": false
+    },
+    "catalogue.vannuccipiante.it": {
+      "requests": 36,
+      "succeeded": 36,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": false
+    },
     "portal.volentis.com": {
-      "requests": 303,
-      "succeeded": 302,
+      "requests": 314,
+      "succeeded": 313,
       "retries": 0,
       "httpErrors": {
         "404": 1
@@ -21,30 +35,30 @@
       }
     },
     "www.willaert.be": {
-      "requests": 302,
-      "succeeded": 302,
+      "requests": 315,
+      "succeeded": 315,
       "retries": 0,
       "httpErrors": {},
       "stopped": false,
       "requestIntervalSeconds": 1.0
     },
-    "catalogue.vannuccipiante.it": {
-      "requests": 19,
-      "succeeded": 19,
-      "retries": 0,
-      "httpErrors": {},
-      "stopped": false
-    },
-    "webshop.vannuccipiante.it": {
-      "requests": 43,
-      "succeeded": 43,
-      "retries": 0,
-      "httpErrors": {},
-      "stopped": false
-    },
     "innocentiemangonipiante.it": {
-      "requests": 137,
-      "succeeded": 131,
+      "requests": 208,
+      "succeeded": 202,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": false
+    },
+    "www.lorberg.com": {
+      "requests": 46,
+      "succeeded": 46,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": false
+    },
+    "www.vannuccipiante.it": {
+      "requests": 1,
+      "succeeded": 1,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
@@ -63,16 +77,9 @@
       "httpErrors": {},
       "stopped": false
     },
-    "www.lorberg.com": {
-      "requests": 72,
-      "succeeded": 72,
-      "retries": 0,
-      "httpErrors": {},
-      "stopped": false
-    },
     "www.lve-baumschule.de": {
-      "requests": 33,
-      "succeeded": 33,
+      "requests": 15,
+      "succeeded": 15,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
@@ -80,11 +87,11 @@
   },
   "coverage": {
     "schemaVersion": 2,
-    "checkedAt": "2026-11-27T00:49:08Z",
+    "checkedAt": "2026-11-27T11:04:06Z",
     "status": "partial",
-    "plants": 1022,
-    "plantsInventoried": 1022,
-    "plantsWithPhoto": 726,
+    "plants": 1037,
+    "plantsInventoried": 1037,
+    "plantsWithPhoto": 737,
     "plantsWithoutPhoto": [
       {
         "plantId": "plant-9030e7f16d3409",
@@ -1269,13 +1276,29 @@
       {
         "plantId": "plant-bc8d932a1f1f34",
         "latinName": "Thuja occidentalis 'Golden Brabant'"
+      },
+      {
+        "plantId": "plant-23d902a619e368",
+        "latinName": "Lavandula latifolia"
+      },
+      {
+        "plantId": "plant-4208857008120a",
+        "latinName": "Euphorbia dendroides"
+      },
+      {
+        "plantId": "plant-c0a54c8c0c7723",
+        "latinName": "Carex flacca 'Blue Zinger'"
+      },
+      {
+        "plantId": "plant-51427f06a13555",
+        "latinName": "Verbena hastata"
       }
     ],
-    "coveragePercent": 71.04,
-    "activeOffers": 5671,
-    "remainingOffers": 593
+    "coveragePercent": 71.07,
+    "activeOffers": 5707,
+    "remainingOffers": 598
   },
   "nonPhotoDataUnchanged": true,
-  "newlyVerified": 0,
+  "newlyVerified": 11,
   "refreshCandidates": 0
 }

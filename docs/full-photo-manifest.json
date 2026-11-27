@@ -18475,6 +18475,364 @@
       "sha256": "ff9a30d99ad043dd2ca1f0a60204b1b7360ccd8cec92c4a070be39a109230bda",
       "checkedAt": "2026-11-26T12:01:00Z",
       "matchLevel": "exact"
+    },
+    "plant-03a4ef0da10727": {
+      "nurseryId": "vannucci-piante",
+      "provider": "supplying_nursery",
+      "matchedName": "Phlomis fruticosa",
+      "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4011750.json",
+      "imageUrl": "https://catalogue.vannuccipiante.it/images/Phlomis%20fruticosa_AVX200044B.jpg",
+      "resolver": "vannucci_public_catalogue",
+      "identityEvidence": {
+        "kind": "exact_public_catalogue_record",
+        "name": "Phlomis fruticosa",
+        "catalogueId": 4011750,
+        "indexUrl": "https://catalogue.vannuccipiante.it/data/species/plants-index.json",
+        "detailUrl": "https://catalogue.vannuccipiante.it/data/species/4011750.json",
+        "imageUrl": "https://catalogue.vannuccipiante.it/images/Phlomis%20fruticosa_AVX200044B.jpg",
+        "canonicalName": "Phlomis fruticosa"
+      },
+      "canonicalName": "Phlomis fruticosa",
+      "imageHosts": [
+        "catalogue.vannuccipiante.it",
+        "webshop.vannuccipiante.it",
+        "www.vannuccipiante.it"
+      ],
+      "imagePathPrefixes": {
+        "catalogue.vannuccipiante.it": [
+          "/images/"
+        ]
+      },
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "phlomis fruticosa",
+      "latinName": "Phlomis fruticosa",
+      "image": "assets/biljke/reference-e06ca8054b2928fac3f8b219.jpg",
+      "sha256": "e06ca8054b2928fac3f8b219beb6006d77d648b75660d01faec1e93637a9ee7b",
+      "checkedAt": "2026-11-27T10:56:49Z",
+      "matchLevel": "exact"
+    },
+    "plant-7d72bb1678118d": {
+      "nurseryId": "vannucci-piante",
+      "provider": "supplying_nursery",
+      "matchedName": "Ceratonia siliqua",
+      "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4004220.json",
+      "imageUrl": "https://catalogue.vannuccipiante.it/images/ceratonia%20siliqua_AVX20001A1.jpg",
+      "resolver": "vannucci_public_catalogue",
+      "identityEvidence": {
+        "kind": "exact_public_catalogue_record",
+        "name": "Ceratonia siliqua",
+        "catalogueId": 4004220,
+        "indexUrl": "https://catalogue.vannuccipiante.it/data/species/plants-index.json",
+        "detailUrl": "https://catalogue.vannuccipiante.it/data/species/4004220.json",
+        "imageUrl": "https://catalogue.vannuccipiante.it/images/ceratonia%20siliqua_AVX20001A1.jpg",
+        "canonicalName": "Ceratonia siliqua"
+      },
+      "canonicalName": "Ceratonia siliqua",
+      "imageHosts": [
+        "catalogue.vannuccipiante.it",
+        "webshop.vannuccipiante.it",
+        "www.vannuccipiante.it"
+      ],
+      "imagePathPrefixes": {
+        "catalogue.vannuccipiante.it": [
+          "/images/"
+        ]
+      },
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "ceratonia siliqua",
+      "latinName": "Ceratonia siliqua",
+      "image": "assets/biljke/reference-e09e676b450533078fb50727.jpg",
+      "sha256": "e09e676b450533078fb50727f3bd733b2d0a3f7cbffea750289649238b6031d5",
+      "checkedAt": "2026-11-27T10:56:52Z",
+      "matchLevel": "exact"
+    },
+    "plant-911d78a9965ada": {
+      "nurseryId": "vannucci-piante",
+      "provider": "supplying_nursery",
+      "matchedName": "Ostrya carpinifolia",
+      "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4011440.json",
+      "imageUrl": "https://catalogue.vannuccipiante.it/images/Ostrya%20carpinifolia_AVX2000434.jpg",
+      "resolver": "vannucci_public_catalogue",
+      "identityEvidence": {
+        "kind": "exact_public_catalogue_record",
+        "name": "Ostrya carpinifolia",
+        "catalogueId": 4011440,
+        "indexUrl": "https://catalogue.vannuccipiante.it/data/species/plants-index.json",
+        "detailUrl": "https://catalogue.vannuccipiante.it/data/species/4011440.json",
+        "imageUrl": "https://catalogue.vannuccipiante.it/images/Ostrya%20carpinifolia_AVX2000434.jpg",
+        "canonicalName": "Ostrya carpinifolia"
+      },
+      "canonicalName": "Ostrya carpinifolia",
+      "imageHosts": [
+        "catalogue.vannuccipiante.it",
+        "webshop.vannuccipiante.it",
+        "www.vannuccipiante.it"
+      ],
+      "imagePathPrefixes": {
+        "catalogue.vannuccipiante.it": [
+          "/images/"
+        ]
+      },
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "ostrya carpinifolia",
+      "latinName": "Ostrya carpinifolia",
+      "image": "assets/biljke/reference-fedfa1531406386bce79e53c.jpg",
+      "sha256": "fedfa1531406386bce79e53c505b9b2ea51640415e96f0e306048aaf6bd8bf2e",
+      "checkedAt": "2026-11-27T10:56:52Z",
+      "matchLevel": "exact"
+    },
+    "plant-83e016810b65e0": {
+      "nurseryId": "vannucci-piante",
+      "provider": "supplying_nursery",
+      "matchedName": "Tamarix gallica",
+      "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4017492.json",
+      "imageUrl": "https://catalogue.vannuccipiante.it/images/Tamarix%20gallica%20clt.110.jpg",
+      "resolver": "vannucci_public_catalogue",
+      "identityEvidence": {
+        "kind": "exact_public_catalogue_record",
+        "name": "Tamarix gallica",
+        "catalogueId": 4017492,
+        "indexUrl": "https://catalogue.vannuccipiante.it/data/species/plants-index.json",
+        "detailUrl": "https://catalogue.vannuccipiante.it/data/species/4017492.json",
+        "imageUrl": "https://catalogue.vannuccipiante.it/images/Tamarix%20gallica%20clt.110.jpg",
+        "canonicalName": "Tamarix gallica"
+      },
+      "canonicalName": "Tamarix gallica",
+      "imageHosts": [
+        "catalogue.vannuccipiante.it",
+        "webshop.vannuccipiante.it",
+        "www.vannuccipiante.it"
+      ],
+      "imagePathPrefixes": {
+        "catalogue.vannuccipiante.it": [
+          "/images/"
+        ]
+      },
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "tamarix gallica",
+      "latinName": "Tamarix gallica",
+      "image": "assets/biljke/reference-f8988da0b4d588adef04fd28.jpg",
+      "sha256": "f8988da0b4d588adef04fd28f70d98d6958ee279212ae55417f01dbc0b796962",
+      "checkedAt": "2026-11-27T10:56:56Z",
+      "matchLevel": "exact"
+    },
+    "plant-4022b4299176b8": {
+      "nurseryId": "willaert",
+      "provider": "other_catalogue_nursery",
+      "matchedName": "Euphorbia characias",
+      "sourceUrl": "https://www.willaert.be/nl/plant/euphorbia-characias/eucharac/",
+      "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/EUCHARAC_369_30122014131924.jpg",
+      "resolver": "willaert_catalog_card",
+      "identityEvidence": {
+        "kind": "exact_named_catalog_card",
+        "name": "Euphorbia characias",
+        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Euphorbia+characias",
+        "detailUrl": "https://www.willaert.be/nl/plant/euphorbia-characias/eucharac/",
+        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/EUCHARAC_369_30122014131924.jpg",
+        "canonicalName": "Euphorbia characias"
+      },
+      "canonicalName": "Euphorbia characias",
+      "imageHosts": [
+        "www.willaert.be"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "euphorbia characias",
+      "latinName": "Euphorbia characias",
+      "image": "assets/biljke/reference-56c5f3fb945827f824ed55a6.jpg",
+      "sha256": "56c5f3fb945827f824ed55a65d59e7646f319649e6289b45653021ad90d6d686",
+      "checkedAt": "2026-11-27T10:56:58Z",
+      "matchLevel": "exact"
+    },
+    "plant-c5771f9a6f11fa": {
+      "nurseryId": "vannucci-piante",
+      "provider": "supplying_nursery",
+      "matchedName": "Teucrium fruticans",
+      "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4015060.json",
+      "imageUrl": "https://catalogue.vannuccipiante.it/images/teucrium%20FRUTICANS_AVX200056B.jpg",
+      "resolver": "vannucci_public_catalogue",
+      "identityEvidence": {
+        "kind": "exact_public_catalogue_record",
+        "name": "Teucrium fruticans",
+        "catalogueId": 4015060,
+        "indexUrl": "https://catalogue.vannuccipiante.it/data/species/plants-index.json",
+        "detailUrl": "https://catalogue.vannuccipiante.it/data/species/4015060.json",
+        "imageUrl": "https://catalogue.vannuccipiante.it/images/teucrium%20FRUTICANS_AVX200056B.jpg",
+        "canonicalName": "Teucrium fruticans"
+      },
+      "canonicalName": "Teucrium fruticans",
+      "imageHosts": [
+        "catalogue.vannuccipiante.it",
+        "webshop.vannuccipiante.it",
+        "www.vannuccipiante.it"
+      ],
+      "imagePathPrefixes": {
+        "catalogue.vannuccipiante.it": [
+          "/images/"
+        ]
+      },
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "teucrium fruticans",
+      "latinName": "Teucrium fruticans",
+      "image": "assets/biljke/reference-ac108fa6773f8629f3f01821.jpg",
+      "sha256": "ac108fa6773f8629f3f018210295bf02a7b2a7f83ce0e15f544f2bea792843f8",
+      "checkedAt": "2026-11-27T10:57:02Z",
+      "matchLevel": "exact"
+    },
+    "plant-6f0bd84635a447": {
+      "provider": "other_catalogue_nursery",
+      "nurseryId": "lorberg",
+      "imageUrl": "https://www.lorberg.com/content/files/7205/Ligustrum-vulgare-1200x630-proportionalbiggest.webp",
+      "sourceUrl": "https://www.lorberg.com/en-gb/article/1436/ligustrum-vulgare",
+      "matchedName": "Ligustrum vulgare",
+      "identityEvidence": {
+        "method": "product_jsonld",
+        "canonicalName": "Ligustrum vulgare"
+      },
+      "imageHosts": [
+        "www.lorberg.com"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "ligustrum vulgare",
+      "latinName": "Ligustrum vulgare",
+      "image": "assets/biljke/reference-a6a735d4bd59532d09f7389e.jpg",
+      "sha256": "a6a735d4bd59532d09f7389ea14af6c1377c34223f9b1cc4bee2491e5d931a28",
+      "checkedAt": "2026-11-27T10:57:03Z",
+      "matchLevel": "exact"
+    },
+    "plant-c42eca7e5f4571": {
+      "nurseryId": "willaert",
+      "provider": "other_catalogue_nursery",
+      "matchedName": "Ligustrum lucidum",
+      "sourceUrl": "https://www.willaert.be/nl/plant/ligustrum-lucidum/lilucidu/",
+      "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/LIGUSTRUM_LUCIDUM.jpg",
+      "resolver": "willaert_catalog_card",
+      "identityEvidence": {
+        "kind": "exact_named_catalog_card",
+        "name": "Ligustrum lucidum",
+        "pageUrl": "https://www.willaert.be/nl/plantengids?ajax=1&action=getMorePlants&pageIndex=0&search=Ligustrum+lucidum",
+        "detailUrl": "https://www.willaert.be/nl/plant/ligustrum-lucidum/lilucidu/",
+        "imageUrl": "https://www.willaert.be/websites/1/uploads/image/PRODUCTIMAGES/LIGUSTRUM_LUCIDUM.jpg",
+        "canonicalName": "Ligustrum lucidum"
+      },
+      "canonicalName": "Ligustrum lucidum",
+      "imageHosts": [
+        "www.willaert.be"
+      ],
+      "imagePathPrefixes": {},
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "ligustrum lucidum",
+      "latinName": "Ligustrum lucidum",
+      "image": "assets/biljke/reference-495e0e79ca4a4575952c8292.jpg",
+      "sha256": "495e0e79ca4a4575952c829263de7a867a5a5c92566fbe9b7a876b68254f5c09",
+      "checkedAt": "2026-11-27T10:57:04Z",
+      "matchLevel": "exact"
+    },
+    "plant-3cbed76e7a1306": {
+      "nurseryId": "vannucci-piante",
+      "provider": "supplying_nursery",
+      "matchedName": "Quercus ilex",
+      "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4013440.json",
+      "imageUrl": "https://catalogue.vannuccipiante.it/images/quercus%20ilex%2025-30%20%282%29.jpg",
+      "resolver": "vannucci_public_catalogue",
+      "identityEvidence": {
+        "kind": "exact_public_catalogue_record",
+        "name": "Quercus ilex",
+        "catalogueId": 4013440,
+        "indexUrl": "https://catalogue.vannuccipiante.it/data/species/plants-index.json",
+        "detailUrl": "https://catalogue.vannuccipiante.it/data/species/4013440.json",
+        "imageUrl": "https://catalogue.vannuccipiante.it/images/quercus%20ilex%2025-30%20%282%29.jpg",
+        "canonicalName": "Quercus ilex"
+      },
+      "canonicalName": "Quercus ilex",
+      "imageHosts": [
+        "catalogue.vannuccipiante.it",
+        "webshop.vannuccipiante.it",
+        "www.vannuccipiante.it"
+      ],
+      "imagePathPrefixes": {
+        "catalogue.vannuccipiante.it": [
+          "/images/"
+        ]
+      },
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "quercus ilex",
+      "latinName": "Quercus ilex",
+      "image": "assets/biljke/reference-a5a908d70ca4fa0461335535.jpg",
+      "sha256": "a5a908d70ca4fa04613355352abecedf167bee63cad8bdd85f19973b034eacfb",
+      "checkedAt": "2026-11-27T10:57:05Z",
+      "matchLevel": "exact"
+    },
+    "plant-6854bebbc070a9": {
+      "nurseryId": "vannucci-piante",
+      "provider": "supplying_nursery",
+      "matchedName": "Arbutus unedo",
+      "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4002050.json",
+      "imageUrl": "https://catalogue.vannuccipiante.it/images/arbutus_unedo-2.jpg",
+      "resolver": "vannucci_public_catalogue",
+      "identityEvidence": {
+        "kind": "exact_public_catalogue_record",
+        "name": "Arbutus unedo",
+        "catalogueId": 4002050,
+        "indexUrl": "https://catalogue.vannuccipiante.it/data/species/plants-index.json",
+        "detailUrl": "https://catalogue.vannuccipiante.it/data/species/4002050.json",
+        "imageUrl": "https://catalogue.vannuccipiante.it/images/arbutus_unedo-2.jpg",
+        "canonicalName": "Arbutus unedo"
+      },
+      "canonicalName": "Arbutus unedo",
+      "imageHosts": [
+        "catalogue.vannuccipiante.it",
+        "webshop.vannuccipiante.it",
+        "www.vannuccipiante.it"
+      ],
+      "imagePathPrefixes": {
+        "catalogue.vannuccipiante.it": [
+          "/images/"
+        ]
+      },
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "arbutus unedo",
+      "latinName": "Arbutus unedo",
+      "image": "assets/biljke/reference-0f7331de741538796fe172b3.jpg",
+      "sha256": "0f7331de741538796fe172b3e76c2f466aa4acb6d8d4c44287abca669cd95e75",
+      "checkedAt": "2026-11-27T10:57:12Z",
+      "matchLevel": "exact"
+    },
+    "plant-e7dfa303d53977": {
+      "nurseryId": "vannucci-piante",
+      "provider": "supplying_nursery",
+      "matchedName": "Vitex agnus-castus",
+      "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4015690.json",
+      "imageUrl": "https://catalogue.vannuccipiante.it/images/vitex%20agnus%20castus%20clt.%2010%20%281%29_AVX2311098.jpg",
+      "resolver": "vannucci_public_catalogue",
+      "identityEvidence": {
+        "kind": "exact_public_catalogue_record",
+        "name": "Vitex agnus-castus",
+        "catalogueId": 4015690,
+        "indexUrl": "https://catalogue.vannuccipiante.it/data/species/plants-index.json",
+        "detailUrl": "https://catalogue.vannuccipiante.it/data/species/4015690.json",
+        "imageUrl": "https://catalogue.vannuccipiante.it/images/vitex%20agnus%20castus%20clt.%2010%20%281%29_AVX2311098.jpg",
+        "canonicalName": "Vitex agnus-castus"
+      },
+      "canonicalName": "Vitex agnus-castus",
+      "imageHosts": [
+        "catalogue.vannuccipiante.it",
+        "webshop.vannuccipiante.it",
+        "www.vannuccipiante.it"
+      ],
+      "imagePathPrefixes": {
+        "catalogue.vannuccipiante.it": [
+          "/images/"
+        ]
+      },
+      "license": "existing_catalogue_source_policy",
+      "taxonKey": "vitex agnus castus",
+      "latinName": "Vitex agnus-castus",
+      "image": "assets/biljke/reference-54cf2e3cc11275d47755975d.jpg",
+      "sha256": "54cf2e3cc11275d47755975dd1af18273a096bc2784719554f74f14a7a1cecec",
+      "checkedAt": "2026-11-27T10:57:20Z",
+      "matchLevel": "exact"
     }
   },
   "retiredReferences": {

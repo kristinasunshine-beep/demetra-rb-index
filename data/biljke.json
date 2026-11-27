@@ -13795,7 +13795,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-a5a908d70ca4fa0461335535.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4013440.json"
+      }
     },
     {
       "id": "plant-c42eca7e5f4571",
@@ -13805,7 +13809,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-495e0e79ca4a4575952c8292.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/ligustrum-lucidum/lilucidu/"
+      }
     },
     {
       "id": "plant-7d72bb1678118d",
@@ -13815,7 +13823,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-e09e676b450533078fb50727.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4004220.json"
+      }
     },
     {
       "id": "plant-911d78a9965ada",
@@ -13825,7 +13837,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-fedfa1531406386bce79e53c.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4011440.json"
+      }
     },
     {
       "id": "plant-83e016810b65e0",
@@ -13835,7 +13851,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-f8988da0b4d588adef04fd28.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4017492.json"
+      }
     },
     {
       "id": "plant-6854bebbc070a9",
@@ -13845,7 +13865,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-0f7331de741538796fe172b3.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4002050.json"
+      }
     },
     {
       "id": "plant-23d902a619e368",
@@ -13865,7 +13889,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-e06ca8054b2928fac3f8b219.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4011750.json"
+      }
     },
     {
       "id": "plant-c5771f9a6f11fa",
@@ -13875,7 +13903,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-ac108fa6773f8629f3f01821.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4015060.json"
+      }
     },
     {
       "id": "plant-4022b4299176b8",
@@ -13885,7 +13917,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-56c5f3fb945827f824ed55a6.jpg",
+        "sourceUrl": "https://www.willaert.be/nl/plant/euphorbia-characias/eucharac/"
+      }
     },
     {
       "id": "plant-4208857008120a",
@@ -13925,7 +13961,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-a6a735d4bd59532d09f7389e.jpg",
+        "sourceUrl": "https://www.lorberg.com/en-gb/article/1436/ligustrum-vulgare"
+      }
     },
     {
       "id": "plant-e7dfa303d53977",
@@ -13935,7 +13975,11 @@
       "description": "",
       "synonyms": [],
       "searchAliases": [],
-      "demo": false
+      "demo": false,
+      "photo": {
+        "image": "assets/biljke/reference-54cf2e3cc11275d47755975d.jpg",
+        "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4015690.json"
+      }
     }
   ]
 }

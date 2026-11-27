@@ -1,10 +1,10 @@
 {
   "schemaVersion": 2,
-  "checkedAt": "2026-11-27T00:49:08Z",
+  "checkedAt": "2026-11-27T11:04:06Z",
   "status": "partial",
-  "plants": 1022,
-  "plantsInventoried": 1022,
-  "plantsWithPhoto": 726,
+  "plants": 1037,
+  "plantsInventoried": 1037,
+  "plantsWithPhoto": 737,
   "plantsWithoutPhoto": [
     {
       "plantId": "plant-9030e7f16d3409",
@@ -1189,9 +1189,25 @@
     {
       "plantId": "plant-bc8d932a1f1f34",
       "latinName": "Thuja occidentalis 'Golden Brabant'"
+    },
+    {
+      "plantId": "plant-23d902a619e368",
+      "latinName": "Lavandula latifolia"
+    },
+    {
+      "plantId": "plant-4208857008120a",
+      "latinName": "Euphorbia dendroides"
+    },
+    {
+      "plantId": "plant-c0a54c8c0c7723",
+      "latinName": "Carex flacca 'Blue Zinger'"
+    },
+    {
+      "plantId": "plant-51427f06a13555",
+      "latinName": "Verbena hastata"
     }
   ],
-  "coveragePercent": 71.04,
-  "activeOffers": 5671,
-  "remainingOffers": 593
+  "coveragePercent": 71.07,
+  "activeOffers": 5707,
+  "remainingOffers": 598
 }
