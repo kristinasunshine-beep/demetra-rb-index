@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-11-26T11:21:32.190Z",
+  "updatedAt": "2026-11-27T09:35:01.513Z",
   "plants": [
     {
       "id": "plant-abies-concolor",
@@ -13786,6 +13786,156 @@
         "image": "assets/biljke/reference-88ec1cbffa443d93a2583e2b.jpg",
         "sourceUrl": "https://catalogue.vannuccipiante.it/data/species/4015680.json"
       }
+    },
+    {
+      "id": "plant-3cbed76e7a1306",
+      "latinName": "Quercus ilex",
+      "commonName": "",
+      "category": "Drveće",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-c42eca7e5f4571",
+      "latinName": "Ligustrum lucidum",
+      "commonName": "",
+      "category": "Drveće",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-7d72bb1678118d",
+      "latinName": "Ceratonia siliqua",
+      "commonName": "",
+      "category": "Drveće",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-911d78a9965ada",
+      "latinName": "Ostrya carpinifolia",
+      "commonName": "",
+      "category": "Drveće",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-83e016810b65e0",
+      "latinName": "Tamarix gallica",
+      "commonName": "",
+      "category": "Drveće",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-6854bebbc070a9",
+      "latinName": "Arbutus unedo",
+      "commonName": "",
+      "category": "Drveće",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-23d902a619e368",
+      "latinName": "Lavandula latifolia",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-03a4ef0da10727",
+      "latinName": "Phlomis fruticosa",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-c5771f9a6f11fa",
+      "latinName": "Teucrium fruticans",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-4022b4299176b8",
+      "latinName": "Euphorbia characias",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-4208857008120a",
+      "latinName": "Euphorbia dendroides",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-c0a54c8c0c7723",
+      "latinName": "Carex flacca 'Blue Zinger'",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-51427f06a13555",
+      "latinName": "Verbena hastata",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-6f0bd84635a447",
+      "latinName": "Ligustrum vulgare",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
+    },
+    {
+      "id": "plant-e7dfa303d53977",
+      "latinName": "Vitex agnus-castus",
+      "commonName": "",
+      "category": "Biljka",
+      "description": "",
+      "synonyms": [],
+      "searchAliases": [],
+      "demo": false
     }
   ]
 }
