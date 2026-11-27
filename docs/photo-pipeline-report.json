@@ -1,27 +1,20 @@
 {
   "schemaVersion": 2,
   "status": "partial",
-  "requests": 1003,
+  "requests": 935,
   "workers": 8,
   "events": [],
   "sourceHealth": {
-    "webshop.vannuccipiante.it": {
-      "requests": 55,
-      "succeeded": 55,
-      "retries": 0,
-      "httpErrors": {},
-      "stopped": false
-    },
     "catalogue.vannuccipiante.it": {
-      "requests": 36,
-      "succeeded": 36,
+      "requests": 19,
+      "succeeded": 19,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "portal.volentis.com": {
-      "requests": 314,
-      "succeeded": 313,
+      "requests": 308,
+      "succeeded": 307,
       "retries": 0,
       "httpErrors": {
         "404": 1
@@ -35,30 +28,23 @@
       }
     },
     "www.willaert.be": {
-      "requests": 315,
-      "succeeded": 315,
+      "requests": 307,
+      "succeeded": 307,
       "retries": 0,
       "httpErrors": {},
       "stopped": false,
       "requestIntervalSeconds": 1.0
     },
     "innocentiemangonipiante.it": {
-      "requests": 208,
-      "succeeded": 202,
+      "requests": 145,
+      "succeeded": 139,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
-    "www.lorberg.com": {
-      "requests": 46,
-      "succeeded": 46,
-      "retries": 0,
-      "httpErrors": {},
-      "stopped": false
-    },
-    "www.vannuccipiante.it": {
-      "requests": 1,
-      "succeeded": 1,
+    "webshop.vannuccipiante.it": {
+      "requests": 48,
+      "succeeded": 48,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
@@ -77,9 +63,16 @@
       "httpErrors": {},
       "stopped": false
     },
+    "www.lorberg.com": {
+      "requests": 63,
+      "succeeded": 63,
+      "retries": 0,
+      "httpErrors": {},
+      "stopped": false
+    },
     "www.lve-baumschule.de": {
-      "requests": 15,
-      "succeeded": 15,
+      "requests": 32,
+      "succeeded": 32,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
@@ -87,7 +80,7 @@
   },
   "coverage": {
     "schemaVersion": 2,
-    "checkedAt": "2026-11-27T11:04:06Z",
+    "checkedAt": "2026-11-27T11:32:56Z",
     "status": "partial",
     "plants": 1037,
     "plantsInventoried": 1037,
@@ -1299,6 +1292,6 @@
     "remainingOffers": 598
   },
   "nonPhotoDataUnchanged": true,
-  "newlyVerified": 11,
+  "newlyVerified": 0,
   "refreshCandidates": 0
 }
