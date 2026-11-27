@@ -1841,7 +1841,6 @@ function updateSearch() {
   state.matches = searchPlants(state.catalog, state.query, {
     limit: Math.max(state.catalog.plants.length, 5)
   });
-  if(state.matches.length===1 && normalize(state.matches[0].latinName)===normalize(state.query)){ closeSuggestions(); setStatus(''); return; }
   state.suggestions = state.matches.slice(0, 5);
   state.activeIndex = -1;
   state.popupOpen = true;
