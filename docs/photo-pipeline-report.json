@@ -1,13 +1,13 @@
 {
   "schemaVersion": 2,
   "status": "partial",
-  "requests": 910,
+  "requests": 980,
   "workers": 8,
   "events": [],
   "sourceHealth": {
     "portal.volentis.com": {
-      "requests": 307,
-      "succeeded": 306,
+      "requests": 312,
+      "succeeded": 311,
       "retries": 0,
       "httpErrors": {
         "404": 1
@@ -21,30 +21,30 @@
       }
     },
     "catalogue.vannuccipiante.it": {
-      "requests": 19,
-      "succeeded": 19,
+      "requests": 20,
+      "succeeded": 20,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "www.willaert.be": {
-      "requests": 306,
-      "succeeded": 306,
+      "requests": 311,
+      "succeeded": 311,
       "retries": 0,
       "httpErrors": {},
       "stopped": false,
       "requestIntervalSeconds": 1.0
     },
     "webshop.vannuccipiante.it": {
-      "requests": 43,
-      "succeeded": 43,
+      "requests": 39,
+      "succeeded": 39,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "innocentiemangonipiante.it": {
-      "requests": 132,
-      "succeeded": 126,
+      "requests": 221,
+      "succeeded": 215,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
@@ -64,15 +64,15 @@
       "stopped": false
     },
     "www.lorberg.com": {
-      "requests": 54,
-      "succeeded": 54,
+      "requests": 53,
+      "succeeded": 53,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
     },
     "www.lve-baumschule.de": {
-      "requests": 36,
-      "succeeded": 36,
+      "requests": 11,
+      "succeeded": 11,
       "retries": 0,
       "httpErrors": {},
       "stopped": false
@@ -80,7 +80,7 @@
   },
   "coverage": {
     "schemaVersion": 2,
-    "checkedAt": "2026-11-27T14:10:40Z",
+    "checkedAt": "2026-11-28T00:16:54Z",
     "status": "partial",
     "plants": 1037,
     "plantsInventoried": 1037,
